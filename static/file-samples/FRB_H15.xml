@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>  <message:MessageGroup xmlns:message="http://www.SDMX.org/resources/SDMXML/schemas/v1_0/message"  xmlns:common="http://www.SDMX.org/resources/SDMXML/schemas/v1_0/common"  xmlns:frb="http://www.federalreserve.gov/structure/compact/common"  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  xsi:schemaLocation="http://www.SDMX.org/resources/SDMXML/schemas/v1_0/message SDMXMessage.xsd http://www.federalreserve.gov/structure/compact/common frb_common.xsd"><message:Header xmlns:message="http://www.SDMX.org/resources/SDMXML/schemas/v1_0/message">
+    <message:ID>H15</message:ID>
+    <message:Test>false</message:Test>
+    <message:Name>H.15 Selected Interest Rates</message:Name>
+    <message:Prepared>2021-06-21T15:40:02</message:Prepared>
+    <message:Sender id="FRB">
+      <message:Name>Federal Reserve Board</message:Name>
+      <message:Contact>
+        <message:Name>Banking Analysis Section</message:Name>
+        <message:Email>MA-BA-Releases@frb.gov</message:Email>
+      </message:Contact>
+    </message:Sender>
+  </message:Header>
+<frb:DataSet id="H15" xmlns:kf="http://www.federalreserve.gov/structure/compact/H15_H15" xsi:schemaLocation="http://www.federalreserve.gov/structure/compact/H15_H15 H15_H15.xsd"  > 
+<kf:Series CURRENCY="NA" FREQ="9" INSTRUMENT="FF" MATURITY="O" SERIES_NAME="RIFSPFF_N.B" UNIT="Percent:_Per_Year" UNIT_MULT="1"  > 
+<frb:Annotations>
+<common:Annotation>
+<common:AnnotationType>Short Description</common:AnnotationType>
+<common:AnnotationText>Federal funds</common:AnnotationText>
+</common:Annotation>
+<common:Annotation>
+<common:AnnotationType>Long Description</common:AnnotationType>
+<common:AnnotationText>Federal funds effective rate</common:AnnotationText>
+</common:Annotation>
+</frb:Annotations>
+<frb:Obs OBS_STATUS="A" OBS_VALUE="0.08" TIME_PERIOD="2021-02-01" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="0.08" TIME_PERIOD="2021-02-02" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="0.08" TIME_PERIOD="2021-02-03" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="0.08" TIME_PERIOD="2021-02-04" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="0.08" TIME_PERIOD="2021-02-05" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="0.07" TIME_PERIOD="2021-02-08" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="0.08" TIME_PERIOD="2021-02-09" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="0.08" TIME_PERIOD="2021-02-10" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="0.08" TIME_PERIOD="2021-02-11" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="0.08" TIME_PERIOD="2021-02-12" />
+<frb:Obs OBS_STATUS="ND" OBS_VALUE="-9999" TIME_PERIOD="2021-02-15" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="0.08" TIME_PERIOD="2021-02-16" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="0.08" TIME_PERIOD="2021-02-17" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="0.07" TIME_PERIOD="2021-02-18" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="0.07" TIME_PERIOD="2021-02-19" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="0.07" TIME_PERIOD="2021-02-22" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="0.07" TIME_PERIOD="2021-02-23" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="0.07" TIME_PERIOD="2021-02-24" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="0.07" TIME_PERIOD="2021-02-25" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="0.07" TIME_PERIOD="2021-02-26" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="0.07" TIME_PERIOD="2021-03-01" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="0.07" TIME_PERIOD="2021-03-02" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="0.07" TIME_PERIOD="2021-03-03" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="0.07" TIME_PERIOD="2021-03-04" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="0.07" TIME_PERIOD="2021-03-05" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="0.07" TIME_PERIOD="2021-03-08" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="0.07" TIME_PERIOD="2021-03-09" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="0.07" TIME_PERIOD="2021-03-10" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="0.07" TIME_PERIOD="2021-03-11" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="0.07" TIME_PERIOD="2021-03-12" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="0.07" TIME_PERIOD="2021-03-15" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="0.07" TIME_PERIOD="2021-03-16" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="0.07" TIME_PERIOD="2021-03-17" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="0.07" TIME_PERIOD="2021-03-18" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="0.07" TIME_PERIOD="2021-03-19" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="0.07" TIME_PERIOD="2021-03-22" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="0.07" TIME_PERIOD="2021-03-23" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="0.07" TIME_PERIOD="2021-03-24" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="0.07" TIME_PERIOD="2021-03-25" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="0.07" TIME_PERIOD="2021-03-26" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="0.07" TIME_PERIOD="2021-03-29" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="0.07" TIME_PERIOD="2021-03-30" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="0.06" TIME_PERIOD="2021-03-31" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="0.07" TIME_PERIOD="2021-04-01" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="0.07" TIME_PERIOD="2021-04-02" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="0.07" TIME_PERIOD="2021-04-05" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="0.07" TIME_PERIOD="2021-04-06" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="0.07" TIME_PERIOD="2021-04-07" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="0.07" TIME_PERIOD="2021-04-08" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="0.07" TIME_PERIOD="2021-04-09" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="0.07" TIME_PERIOD="2021-04-12" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="0.07" TIME_PERIOD="2021-04-13" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="0.07" TIME_PERIOD="2021-04-14" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="0.07" TIME_PERIOD="2021-04-15" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="0.07" TIME_PERIOD="2021-04-16" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="0.07" TIME_PERIOD="2021-04-19" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="0.07" TIME_PERIOD="2021-04-20" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="0.07" TIME_PERIOD="2021-04-21" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="0.07" TIME_PERIOD="2021-04-22" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="0.07" TIME_PERIOD="2021-04-23" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="0.07" TIME_PERIOD="2021-04-26" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="0.07" TIME_PERIOD="2021-04-27" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="0.07" TIME_PERIOD="2021-04-28" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="0.06" TIME_PERIOD="2021-04-29" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="0.05" TIME_PERIOD="2021-04-30" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="0.06" TIME_PERIOD="2021-05-03" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="0.06" TIME_PERIOD="2021-05-04" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="0.06" TIME_PERIOD="2021-05-05" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="0.06" TIME_PERIOD="2021-05-06" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="0.06" TIME_PERIOD="2021-05-07" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="0.06" TIME_PERIOD="2021-05-10" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="0.06" TIME_PERIOD="2021-05-11" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="0.06" TIME_PERIOD="2021-05-12" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="0.06" TIME_PERIOD="2021-05-13" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="0.06" TIME_PERIOD="2021-05-14" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="0.06" TIME_PERIOD="2021-05-17" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="0.06" TIME_PERIOD="2021-05-18" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="0.06" TIME_PERIOD="2021-05-19" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="0.06" TIME_PERIOD="2021-05-20" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="0.06" TIME_PERIOD="2021-05-21" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="0.06" TIME_PERIOD="2021-05-24" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="0.06" TIME_PERIOD="2021-05-25" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="0.06" TIME_PERIOD="2021-05-26" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="0.06" TIME_PERIOD="2021-05-27" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="0.05" TIME_PERIOD="2021-05-28" />
+<frb:Obs OBS_STATUS="ND" OBS_VALUE="-9999" TIME_PERIOD="2021-05-31" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="0.06" TIME_PERIOD="2021-06-01" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="0.06" TIME_PERIOD="2021-06-02" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="0.06" TIME_PERIOD="2021-06-03" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="0.06" TIME_PERIOD="2021-06-04" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="0.06" TIME_PERIOD="2021-06-07" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="0.06" TIME_PERIOD="2021-06-08" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="0.06" TIME_PERIOD="2021-06-09" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="0.06" TIME_PERIOD="2021-06-10" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="0.06" TIME_PERIOD="2021-06-11" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="0.06" TIME_PERIOD="2021-06-14" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="0.06" TIME_PERIOD="2021-06-15" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="0.06" TIME_PERIOD="2021-06-16" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="0.10" TIME_PERIOD="2021-06-17" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="0.10" TIME_PERIOD="2021-06-18" />
+</kf:Series>
+</frb:DataSet>
+</message:MessageGroup>

@@ -1,0 +1,78 @@
+.header {
+    background-image: url(/img/page-background.jpg);
+    background-size: contain;
+}
+.textheader {
+    background: black;
+    padding-left: 30px;
+    padding-bottom: 10px;
+}
+.titleline {
+    color: white;
+    font-size: 250%;
+    font-weight: bolder;
+}
+.tagline {
+    color: white;
+    font-size: 100%;
+    font-weight: bolder;
+}
+.bluetitle {
+    color: #1d9bd7;
+}
+.sectionskip {
+  padding: 3rem 0;
+}
+@media only screen and (max-width: 800px) {
+    .textheader {
+        background: black;
+        padding-left: 5px;
+        padding-bottom: 10px;
+    }
+}
+
+.sectionskip2 {
+  padding: 1rem 0;
+}
+
+.rowheader {
+    background: #046fb7;
+    border-color: #046fb7;
+    border-width: 2px;
+    text-align: center;
+    font-weight: bolder;
+    font-size: 150%;
+    color: white;
+}
+.rowinfo {
+    text-align: center;
+    font-weight: bolder;
+    font-size: 100%;
+    color: black;
+}
+.bodyinfo {
+    text-align: left;
+    font-weight: bolder;
+    font-size: 100%;
+    color: #1d9bd7;
+}
+.rowimage {
+    text-align: center;
+}
+ul.support li.support::marker {
+  font-size: 150%;
+  color: #046fb7;
+}
+
+.item {
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 240px);
+  border: 1px solid #046fb7;
+}
+
+.container {
+    display: grid;
+    column-gap: 4px;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+

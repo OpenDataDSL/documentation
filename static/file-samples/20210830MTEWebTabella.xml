@@ -1,0 +1,312 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:MainDataTable="Table" msdata:UseCurrentLocale="true">
+      <xs:complexType>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="Table">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="IdSessioneMercato" type="xs:int" minOccurs="0" />
+                <xs:element name="NomeProdotto" type="xs:string" minOccurs="0" />
+                <xs:element name="BestA" type="xs:decimal" minOccurs="0" />
+                <xs:element name="BestV" type="xs:decimal" minOccurs="0" />
+                <xs:element name="MinPrice" type="xs:decimal" minOccurs="0" />
+                <xs:element name="MaxPrice" type="xs:decimal" minOccurs="0" />
+                <xs:element name="LastPrice" type="xs:decimal" minOccurs="0" />
+                <xs:element name="LastQty" type="xs:int" minOccurs="0" />
+                <xs:element name="RefPrice" type="xs:decimal" minOccurs="0" />
+                <xs:element name="PrezzoConUltSes" type="xs:decimal" minOccurs="0" />
+                <xs:element name="PrezzoConVarVsPre" type="xs:decimal" minOccurs="0" />
+                <xs:element name="_PreRefPrice" type="xs:decimal" minOccurs="0" />
+                <xs:element name="VarRefPrice" type="xs:decimal" minOccurs="0" />
+                <xs:element name="NumeroContratti" type="xs:int" minOccurs="0" />
+                <xs:element name="_PreNumeroContratti" type="xs:int" minOccurs="0" />
+                <xs:element name="VolumeMwh" type="xs:int" minOccurs="0" />
+                <xs:element name="VarVolumi" type="xs:double" minOccurs="0" />
+                <xs:element name="VolumiOTC" type="xs:int" minOccurs="0" />
+                <xs:element name="PosizioneAperta" type="xs:int" minOccurs="0" />
+                <xs:element name="PosizioneApertaMwh" type="xs:int" minOccurs="0" />
+                <xs:element name="FirstPrice" type="xs:decimal" minOccurs="0" />
+                <xs:element name="NuovoPrezzoControllo" type="xs:decimal" minOccurs="0" />
+                <xs:element name="NumeroContrattiOTC" type="xs:int" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:choice>
+      </xs:complexType>
+    </xs:element>
+  </xs:schema>
+  <Table>
+    <IdSessioneMercato>4106</IdSessioneMercato>
+    <NomeProdotto>BL-M-2021-09</NomeProdotto>
+    <LastPrice>0.0000</LastPrice>
+    <LastQty>0</LastQty>
+    <PrezzoConUltSes>117.6900</PrezzoConUltSes>
+    <PrezzoConVarVsPre>5.0000000000000</PrezzoConVarVsPre>
+    <NumeroContratti>0</NumeroContratti>
+    <_PreNumeroContratti>0</_PreNumeroContratti>
+    <VolumeMwh>0</VolumeMwh>
+    <VolumiOTC>0</VolumiOTC>
+    <PosizioneAperta>66</PosizioneAperta>
+    <PosizioneApertaMwh>47520</PosizioneApertaMwh>
+    <FirstPrice>0.0000</FirstPrice>
+    <NuovoPrezzoControllo>117.6900</NuovoPrezzoControllo>
+    <NumeroContrattiOTC>0</NumeroContrattiOTC>
+  </Table>
+  <Table>
+    <IdSessioneMercato>4106</IdSessioneMercato>
+    <NomeProdotto>BL-M-2021-10</NomeProdotto>
+    <LastPrice>0.0000</LastPrice>
+    <LastQty>0</LastQty>
+    <PrezzoConUltSes>124.0300</PrezzoConUltSes>
+    <PrezzoConVarVsPre>5.0000000000000</PrezzoConVarVsPre>
+    <NumeroContratti>0</NumeroContratti>
+    <_PreNumeroContratti>0</_PreNumeroContratti>
+    <VolumeMwh>0</VolumeMwh>
+    <VolumiOTC>0</VolumiOTC>
+    <PosizioneAperta>0</PosizioneAperta>
+    <PosizioneApertaMwh>0</PosizioneApertaMwh>
+    <FirstPrice>0.0000</FirstPrice>
+    <NuovoPrezzoControllo>124.0300</NuovoPrezzoControllo>
+    <NumeroContrattiOTC>0</NumeroContrattiOTC>
+  </Table>
+  <Table>
+    <IdSessioneMercato>4106</IdSessioneMercato>
+    <NomeProdotto>BL-M-2021-11</NomeProdotto>
+    <LastPrice>0.0000</LastPrice>
+    <LastQty>0</LastQty>
+    <PrezzoConUltSes>125.3000</PrezzoConUltSes>
+    <PrezzoConVarVsPre>5.0000000000000</PrezzoConVarVsPre>
+    <NumeroContratti>0</NumeroContratti>
+    <_PreNumeroContratti>0</_PreNumeroContratti>
+    <VolumeMwh>0</VolumeMwh>
+    <VolumiOTC>0</VolumiOTC>
+    <PosizioneAperta>0</PosizioneAperta>
+    <PosizioneApertaMwh>0</PosizioneApertaMwh>
+    <FirstPrice>0.0000</FirstPrice>
+    <NuovoPrezzoControllo>125.3000</NuovoPrezzoControllo>
+    <NumeroContrattiOTC>0</NumeroContrattiOTC>
+  </Table>
+  <Table>
+    <IdSessioneMercato>4106</IdSessioneMercato>
+    <NomeProdotto>BL-Q-2021-04</NomeProdotto>
+    <LastPrice>0.0000</LastPrice>
+    <LastQty>0</LastQty>
+    <PrezzoConUltSes>117.5600</PrezzoConUltSes>
+    <PrezzoConVarVsPre>5.0000000000000</PrezzoConVarVsPre>
+    <NumeroContratti>0</NumeroContratti>
+    <_PreNumeroContratti>0</_PreNumeroContratti>
+    <VolumeMwh>0</VolumeMwh>
+    <VolumiOTC>0</VolumiOTC>
+    <PosizioneAperta>66</PosizioneAperta>
+    <PosizioneApertaMwh>145794</PosizioneApertaMwh>
+    <FirstPrice>0.0000</FirstPrice>
+    <NuovoPrezzoControllo>117.5600</NuovoPrezzoControllo>
+    <NumeroContrattiOTC>0</NumeroContrattiOTC>
+  </Table>
+  <Table>
+    <IdSessioneMercato>4106</IdSessioneMercato>
+    <NomeProdotto>BL-Q-2022-01</NomeProdotto>
+    <LastPrice>0.0000</LastPrice>
+    <LastQty>0</LastQty>
+    <PrezzoConUltSes>115.2200</PrezzoConUltSes>
+    <PrezzoConVarVsPre>0.0000000000000</PrezzoConVarVsPre>
+    <NumeroContratti>0</NumeroContratti>
+    <_PreNumeroContratti>0</_PreNumeroContratti>
+    <VolumeMwh>0</VolumeMwh>
+    <VolumiOTC>0</VolumiOTC>
+    <PosizioneAperta>0</PosizioneAperta>
+    <PosizioneApertaMwh>0</PosizioneApertaMwh>
+    <FirstPrice>0.0000</FirstPrice>
+    <NuovoPrezzoControllo>115.2200</NuovoPrezzoControllo>
+    <NumeroContrattiOTC>0</NumeroContrattiOTC>
+  </Table>
+  <Table>
+    <IdSessioneMercato>4106</IdSessioneMercato>
+    <NomeProdotto>BL-Q-2022-02</NomeProdotto>
+    <LastPrice>0.0000</LastPrice>
+    <LastQty>0</LastQty>
+    <PrezzoConUltSes>76.6900</PrezzoConUltSes>
+    <PrezzoConVarVsPre>0.0000000000000</PrezzoConVarVsPre>
+    <NumeroContratti>0</NumeroContratti>
+    <_PreNumeroContratti>0</_PreNumeroContratti>
+    <VolumeMwh>0</VolumeMwh>
+    <VolumiOTC>0</VolumiOTC>
+    <PosizioneAperta>0</PosizioneAperta>
+    <PosizioneApertaMwh>0</PosizioneApertaMwh>
+    <FirstPrice>0.0000</FirstPrice>
+    <NuovoPrezzoControllo>76.6900</NuovoPrezzoControllo>
+    <NumeroContrattiOTC>0</NumeroContrattiOTC>
+  </Table>
+  <Table>
+    <IdSessioneMercato>4106</IdSessioneMercato>
+    <NomeProdotto>BL-Q-2022-03</NomeProdotto>
+    <LastPrice>0.0000</LastPrice>
+    <LastQty>0</LastQty>
+    <PrezzoConUltSes>80.4900</PrezzoConUltSes>
+    <PrezzoConVarVsPre>0.0000000000000</PrezzoConVarVsPre>
+    <NumeroContratti>0</NumeroContratti>
+    <_PreNumeroContratti>0</_PreNumeroContratti>
+    <VolumeMwh>0</VolumeMwh>
+    <VolumiOTC>0</VolumiOTC>
+    <PosizioneAperta>0</PosizioneAperta>
+    <PosizioneApertaMwh>0</PosizioneApertaMwh>
+    <FirstPrice>0.0000</FirstPrice>
+    <NuovoPrezzoControllo>80.4900</NuovoPrezzoControllo>
+    <NumeroContrattiOTC>0</NumeroContrattiOTC>
+  </Table>
+  <Table>
+    <IdSessioneMercato>4106</IdSessioneMercato>
+    <NomeProdotto>BL-Y-2022</NomeProdotto>
+    <LastPrice>0.0000</LastPrice>
+    <LastQty>0</LastQty>
+    <PrezzoConUltSes>93.6300</PrezzoConUltSes>
+    <PrezzoConVarVsPre>0.0000000000000</PrezzoConVarVsPre>
+    <NumeroContratti>0</NumeroContratti>
+    <_PreNumeroContratti>0</_PreNumeroContratti>
+    <VolumeMwh>0</VolumeMwh>
+    <VolumiOTC>0</VolumiOTC>
+    <PosizioneAperta>1</PosizioneAperta>
+    <PosizioneApertaMwh>8760</PosizioneApertaMwh>
+    <FirstPrice>0.0000</FirstPrice>
+    <NuovoPrezzoControllo>93.6300</NuovoPrezzoControllo>
+    <NumeroContrattiOTC>0</NumeroContrattiOTC>
+  </Table>
+  <Table>
+    <IdSessioneMercato>4106</IdSessioneMercato>
+    <NomeProdotto>PL-M-2021-09</NomeProdotto>
+    <LastPrice>0.0000</LastPrice>
+    <LastQty>0</LastQty>
+    <PrezzoConUltSes>133.4100</PrezzoConUltSes>
+    <PrezzoConVarVsPre>5.0100000000000</PrezzoConVarVsPre>
+    <NumeroContratti>0</NumeroContratti>
+    <_PreNumeroContratti>0</_PreNumeroContratti>
+    <VolumeMwh>0</VolumeMwh>
+    <VolumiOTC>0</VolumiOTC>
+    <PosizioneAperta>10</PosizioneAperta>
+    <PosizioneApertaMwh>2640</PosizioneApertaMwh>
+    <FirstPrice>0.0000</FirstPrice>
+    <NuovoPrezzoControllo>133.4100</NuovoPrezzoControllo>
+    <NumeroContrattiOTC>0</NumeroContrattiOTC>
+  </Table>
+  <Table>
+    <IdSessioneMercato>4106</IdSessioneMercato>
+    <NomeProdotto>PL-M-2021-10</NomeProdotto>
+    <LastPrice>0.0000</LastPrice>
+    <LastQty>0</LastQty>
+    <PrezzoConUltSes>139.2000</PrezzoConUltSes>
+    <PrezzoConVarVsPre>5.0000000000000</PrezzoConVarVsPre>
+    <NumeroContratti>0</NumeroContratti>
+    <_PreNumeroContratti>0</_PreNumeroContratti>
+    <VolumeMwh>0</VolumeMwh>
+    <VolumiOTC>0</VolumiOTC>
+    <PosizioneAperta>0</PosizioneAperta>
+    <PosizioneApertaMwh>0</PosizioneApertaMwh>
+    <FirstPrice>0.0000</FirstPrice>
+    <NuovoPrezzoControllo>139.2000</NuovoPrezzoControllo>
+    <NumeroContrattiOTC>0</NumeroContrattiOTC>
+  </Table>
+  <Table>
+    <IdSessioneMercato>4106</IdSessioneMercato>
+    <NomeProdotto>PL-M-2021-11</NomeProdotto>
+    <LastPrice>0.0000</LastPrice>
+    <LastQty>0</LastQty>
+    <PrezzoConUltSes>142.9400</PrezzoConUltSes>
+    <PrezzoConVarVsPre>5.0000000000000</PrezzoConVarVsPre>
+    <NumeroContratti>0</NumeroContratti>
+    <_PreNumeroContratti>0</_PreNumeroContratti>
+    <VolumeMwh>0</VolumeMwh>
+    <VolumiOTC>0</VolumiOTC>
+    <PosizioneAperta>0</PosizioneAperta>
+    <PosizioneApertaMwh>0</PosizioneApertaMwh>
+    <FirstPrice>0.0000</FirstPrice>
+    <NuovoPrezzoControllo>142.9400</NuovoPrezzoControllo>
+    <NumeroContrattiOTC>0</NumeroContrattiOTC>
+  </Table>
+  <Table>
+    <IdSessioneMercato>4106</IdSessioneMercato>
+    <NomeProdotto>PL-Q-2021-04</NomeProdotto>
+    <LastPrice>0.0000</LastPrice>
+    <LastQty>0</LastQty>
+    <PrezzoConUltSes>136.2800</PrezzoConUltSes>
+    <PrezzoConVarVsPre>5.0000000000000</PrezzoConVarVsPre>
+    <NumeroContratti>0</NumeroContratti>
+    <_PreNumeroContratti>0</_PreNumeroContratti>
+    <VolumeMwh>0</VolumeMwh>
+    <VolumiOTC>0</VolumiOTC>
+    <PosizioneAperta>10</PosizioneAperta>
+    <PosizioneApertaMwh>7920</PosizioneApertaMwh>
+    <FirstPrice>0.0000</FirstPrice>
+    <NuovoPrezzoControllo>136.2800</NuovoPrezzoControllo>
+    <NumeroContrattiOTC>0</NumeroContrattiOTC>
+  </Table>
+  <Table>
+    <IdSessioneMercato>4106</IdSessioneMercato>
+    <NomeProdotto>PL-Q-2022-01</NomeProdotto>
+    <LastPrice>0.0000</LastPrice>
+    <LastQty>0</LastQty>
+    <PrezzoConUltSes>127.4100</PrezzoConUltSes>
+    <PrezzoConVarVsPre>0.0000000000000</PrezzoConVarVsPre>
+    <NumeroContratti>0</NumeroContratti>
+    <_PreNumeroContratti>0</_PreNumeroContratti>
+    <VolumeMwh>0</VolumeMwh>
+    <VolumiOTC>0</VolumiOTC>
+    <PosizioneAperta>0</PosizioneAperta>
+    <PosizioneApertaMwh>0</PosizioneApertaMwh>
+    <FirstPrice>0.0000</FirstPrice>
+    <NuovoPrezzoControllo>127.4100</NuovoPrezzoControllo>
+    <NumeroContrattiOTC>0</NumeroContrattiOTC>
+  </Table>
+  <Table>
+    <IdSessioneMercato>4106</IdSessioneMercato>
+    <NomeProdotto>PL-Q-2022-02</NomeProdotto>
+    <LastPrice>0.0000</LastPrice>
+    <LastQty>0</LastQty>
+    <PrezzoConUltSes>79.1800</PrezzoConUltSes>
+    <PrezzoConVarVsPre>0.0000000000000</PrezzoConVarVsPre>
+    <NumeroContratti>0</NumeroContratti>
+    <_PreNumeroContratti>0</_PreNumeroContratti>
+    <VolumeMwh>0</VolumeMwh>
+    <VolumiOTC>0</VolumiOTC>
+    <PosizioneAperta>0</PosizioneAperta>
+    <PosizioneApertaMwh>0</PosizioneApertaMwh>
+    <FirstPrice>0.0000</FirstPrice>
+    <NuovoPrezzoControllo>79.1800</NuovoPrezzoControllo>
+    <NumeroContrattiOTC>0</NumeroContrattiOTC>
+  </Table>
+  <Table>
+    <IdSessioneMercato>4106</IdSessioneMercato>
+    <NomeProdotto>PL-Q-2022-03</NomeProdotto>
+    <LastPrice>0.0000</LastPrice>
+    <LastQty>0</LastQty>
+    <PrezzoConUltSes>86.6000</PrezzoConUltSes>
+    <PrezzoConVarVsPre>0.0000000000000</PrezzoConVarVsPre>
+    <NumeroContratti>0</NumeroContratti>
+    <_PreNumeroContratti>0</_PreNumeroContratti>
+    <VolumeMwh>0</VolumeMwh>
+    <VolumiOTC>0</VolumiOTC>
+    <PosizioneAperta>0</PosizioneAperta>
+    <PosizioneApertaMwh>0</PosizioneApertaMwh>
+    <FirstPrice>0.0000</FirstPrice>
+    <NuovoPrezzoControllo>86.6000</NuovoPrezzoControllo>
+    <NumeroContrattiOTC>0</NumeroContrattiOTC>
+  </Table>
+  <Table>
+    <IdSessioneMercato>4106</IdSessioneMercato>
+    <NomeProdotto>PL-Y-2022</NomeProdotto>
+    <LastPrice>0.0000</LastPrice>
+    <LastQty>0</LastQty>
+    <PrezzoConUltSes>105.5100</PrezzoConUltSes>
+    <PrezzoConVarVsPre>0.0000000000000</PrezzoConVarVsPre>
+    <NumeroContratti>0</NumeroContratti>
+    <_PreNumeroContratti>0</_PreNumeroContratti>
+    <VolumeMwh>0</VolumeMwh>
+    <VolumiOTC>0</VolumiOTC>
+    <PosizioneAperta>0</PosizioneAperta>
+    <PosizioneApertaMwh>0</PosizioneApertaMwh>
+    <FirstPrice>0.0000</FirstPrice>
+    <NuovoPrezzoControllo>105.5100</NuovoPrezzoControllo>
+    <NumeroContrattiOTC>0</NumeroContrattiOTC>
+  </Table>
+</NewDataSet>

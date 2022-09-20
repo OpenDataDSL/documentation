@@ -1,0 +1,389 @@
+{
+    "ProductGroupDetails": {
+        "ProductGroupCode": "Butter",
+        "ProductGroupName": "Butter",
+        "ProductGroupGUID": "99efee49-8443-466f-8776-a81506e6bebf",
+        "ContractPeriods": {
+            "ContractPeriodDetails": [{
+                    "ContractPeriodName": "Contract 1",
+                    "ContractPeriodGUID": "75f3a494-65ae-4b40-8fb2-03cf40a4c4be",
+                    "ContractMonth": "Dec20",
+                    "ProductGroupSources": {
+                        "ProductGroupSourceDetails": {
+                            "ProductGroupSourceCode": "NZ",
+                            "ContractPeriodProductGroupSourceAveragePrice": "3920",
+                            "Sellers": {
+                                "SellerDetails": {
+                                    "SellerGroupName": "Fonterra",
+                                    "SellerGroupGUID": "4f46c153-e0de-4f81-a228-f750d6e311a4",
+                                    "ContractPeriodSellerGroupAveragePublishedPrice": "3920",
+                                    "Products": {
+                                        "ProductDetails": [{
+                                                "ProductSpec": "Salted 25kg",
+                                                "ProductGUID": "99efee49-8443-466f-8776-a81506e6bebf",
+                                                "ProductSourceRegion": "NZ",
+                                                "ProductSourceGroup": "NZ",
+                                                "PublishedPrice": "",
+                                                "SupplyOffered": "true",
+                                                "ProductSold": "false",
+                                                "DisplayIndividualPrice": "true"
+                                            }, {
+                                                "ProductSpec": "Unsalted 25kg",
+                                                "ProductGUID": "99efee49-8443-466f-8776-a81506e6bebf",
+                                                "ProductSourceRegion": "NZ",
+                                                "ProductSourceGroup": "NZ",
+                                                "PublishedPrice": "3920",
+                                                "SupplyOffered": "true",
+                                                "ProductSold": "true",
+                                                "DisplayIndividualPrice": "true"
+                                            }
+                                        ]
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "PriceIndexPercentageChange": "2.6",
+                    "ContractPeriodAveragePublishedPrice": "3920",
+                    "ProductRegions": {
+                        "ProductRegionDetails": {
+                            "ProductRegionName": "Oceania",
+                            "ProductRegionAveragePrice": "3920",
+                            "ProductSubRegions": {
+                                "ProductSubRegionDetails": {
+                                    "ProductSubRegionName": "New Zealand",
+                                    "ProductSubRegionAveragePrice": "3920",
+                                    "ProductSubRegionProducts": {
+                                        "ProductSubRegionProductDetails": [{
+                                                "ProductDisplayName": "Salted Average Price",
+                                                "ProductAveragePrice": ""
+                                            }, {
+                                                "ProductDisplayName": "Unsalted Average Price",
+                                                "ProductAveragePrice": "3920"
+                                            }
+                                        ]
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }, {
+                    "ContractPeriodName": "Contract 2",
+                    "ContractPeriodGUID": "9ae9802f-7a92-4ef6-ace4-e87aa476dc18",
+                    "ContractMonth": "Jan21",
+                    "ProductGroupSources": {
+                        "ProductGroupSourceDetails": {
+                            "ProductGroupSourceCode": "NZ",
+                            "ContractPeriodProductGroupSourceAveragePrice": "3845",
+                            "Sellers": {
+                                "SellerDetails": {
+                                    "SellerGroupName": "Fonterra",
+                                    "SellerGroupGUID": "4f46c153-e0de-4f81-a228-f750d6e311a4",
+                                    "ContractPeriodSellerGroupAveragePublishedPrice": "3845",
+                                    "Products": {
+                                        "ProductDetails": [{
+                                                "ProductSpec": "Salted 25kg",
+                                                "ProductGUID": "99efee49-8443-466f-8776-a81506e6bebf",
+                                                "ProductSourceRegion": "NZ",
+                                                "ProductSourceGroup": "NZ",
+                                                "PublishedPrice": "3845",
+                                                "SupplyOffered": "true",
+                                                "ProductSold": "true",
+                                                "DisplayIndividualPrice": "true"
+                                            }, {
+                                                "ProductSpec": "Unsalted 25kg",
+                                                "ProductGUID": "99efee49-8443-466f-8776-a81506e6bebf",
+                                                "ProductSourceRegion": "NZ",
+                                                "ProductSourceGroup": "NZ",
+                                                "PublishedPrice": "3845",
+                                                "SupplyOffered": "true",
+                                                "ProductSold": "true",
+                                                "DisplayIndividualPrice": "true"
+                                            }
+                                        ]
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "PriceIndexPercentageChange": "4.8",
+                    "ContractPeriodAveragePublishedPrice": "3845",
+                    "ProductRegions": {
+                        "ProductRegionDetails": {
+                            "ProductRegionName": "Oceania",
+                            "ProductRegionAveragePrice": "3845",
+                            "ProductSubRegions": {
+                                "ProductSubRegionDetails": {
+                                    "ProductSubRegionName": "New Zealand",
+                                    "ProductSubRegionAveragePrice": "3845",
+                                    "ProductSubRegionProducts": {
+                                        "ProductSubRegionProductDetails": [{
+                                                "ProductDisplayName": "Salted Average Price",
+                                                "ProductAveragePrice": "3845"
+                                            }, {
+                                                "ProductDisplayName": "Unsalted Average Price",
+                                                "ProductAveragePrice": "3845"
+                                            }
+                                        ]
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }, {
+                    "ContractPeriodName": "Contract 3",
+                    "ContractPeriodGUID": "fa996d20-2a71-491b-82c9-004b54afbf56",
+                    "ContractMonth": "Feb21",
+                    "ProductGroupSources": {
+                        "ProductGroupSourceDetails": {
+                            "ProductGroupSourceCode": "NZ",
+                            "ContractPeriodProductGroupSourceAveragePrice": "3815",
+                            "Sellers": {
+                                "SellerDetails": {
+                                    "SellerGroupName": "Fonterra",
+                                    "SellerGroupGUID": "4f46c153-e0de-4f81-a228-f750d6e311a4",
+                                    "ContractPeriodSellerGroupAveragePublishedPrice": "3815",
+                                    "Products": {
+                                        "ProductDetails": [{
+                                                "ProductSpec": "Salted 25kg",
+                                                "ProductGUID": "99efee49-8443-466f-8776-a81506e6bebf",
+                                                "ProductSourceRegion": "NZ",
+                                                "ProductSourceGroup": "NZ",
+                                                "PublishedPrice": "3815",
+                                                "SupplyOffered": "true",
+                                                "ProductSold": "true",
+                                                "DisplayIndividualPrice": "true"
+                                            }, {
+                                                "ProductSpec": "Unsalted 25kg",
+                                                "ProductGUID": "99efee49-8443-466f-8776-a81506e6bebf",
+                                                "ProductSourceRegion": "NZ",
+                                                "ProductSourceGroup": "NZ",
+                                                "PublishedPrice": "3815",
+                                                "SupplyOffered": "true",
+                                                "ProductSold": "true",
+                                                "DisplayIndividualPrice": "true"
+                                            }
+                                        ]
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "PriceIndexPercentageChange": "4.5",
+                    "ContractPeriodAveragePublishedPrice": "3815",
+                    "ProductRegions": {
+                        "ProductRegionDetails": {
+                            "ProductRegionName": "Oceania",
+                            "ProductRegionAveragePrice": "3815",
+                            "ProductSubRegions": {
+                                "ProductSubRegionDetails": {
+                                    "ProductSubRegionName": "New Zealand",
+                                    "ProductSubRegionAveragePrice": "3815",
+                                    "ProductSubRegionProducts": {
+                                        "ProductSubRegionProductDetails": [{
+                                                "ProductDisplayName": "Salted Average Price",
+                                                "ProductAveragePrice": "3815"
+                                            }, {
+                                                "ProductDisplayName": "Unsalted Average Price",
+                                                "ProductAveragePrice": "3815"
+                                            }
+                                        ]
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }, {
+                    "ContractPeriodName": "Contract 4",
+                    "ContractPeriodGUID": "9ef8e725-ae80-4168-a0f9-8707d3347d59",
+                    "ContractMonth": "Mar21",
+                    "ProductGroupSources": {
+                        "ProductGroupSourceDetails": {
+                            "ProductGroupSourceCode": "NZ",
+                            "ContractPeriodProductGroupSourceAveragePrice": "3781",
+                            "Sellers": {
+                                "SellerDetails": {
+                                    "SellerGroupName": "Fonterra",
+                                    "SellerGroupGUID": "4f46c153-e0de-4f81-a228-f750d6e311a4",
+                                    "ContractPeriodSellerGroupAveragePublishedPrice": "3781",
+                                    "Products": {
+                                        "ProductDetails": [{
+                                                "ProductSpec": "Salted 25kg",
+                                                "ProductGUID": "99efee49-8443-466f-8776-a81506e6bebf",
+                                                "ProductSourceRegion": "NZ",
+                                                "ProductSourceGroup": "NZ",
+                                                "PublishedPrice": "3805",
+                                                "SupplyOffered": "true",
+                                                "ProductSold": "true",
+                                                "DisplayIndividualPrice": "true"
+                                            }, {
+                                                "ProductSpec": "Unsalted 25kg",
+                                                "ProductGUID": "99efee49-8443-466f-8776-a81506e6bebf",
+                                                "ProductSourceRegion": "NZ",
+                                                "ProductSourceGroup": "NZ",
+                                                "PublishedPrice": "3780",
+                                                "SupplyOffered": "true",
+                                                "ProductSold": "true",
+                                                "DisplayIndividualPrice": "true"
+                                            }
+                                        ]
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "PriceIndexPercentageChange": "3.0",
+                    "ContractPeriodAveragePublishedPrice": "3781",
+                    "ProductRegions": {
+                        "ProductRegionDetails": {
+                            "ProductRegionName": "Oceania",
+                            "ProductRegionAveragePrice": "3781",
+                            "ProductSubRegions": {
+                                "ProductSubRegionDetails": {
+                                    "ProductSubRegionName": "New Zealand",
+                                    "ProductSubRegionAveragePrice": "3781",
+                                    "ProductSubRegionProducts": {
+                                        "ProductSubRegionProductDetails": [{
+                                                "ProductDisplayName": "Salted Average Price",
+                                                "ProductAveragePrice": "3805"
+                                            }, {
+                                                "ProductDisplayName": "Unsalted Average Price",
+                                                "ProductAveragePrice": "3780"
+                                            }
+                                        ]
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }, {
+                    "ContractPeriodName": "Contract 5",
+                    "ContractPeriodGUID": "5909ea38-aa00-4a85-97f7-c70d6df13e0d",
+                    "ContractMonth": "Apr21",
+                    "ProductGroupSources": {
+                        "ProductGroupSourceDetails": {
+                            "ProductGroupSourceCode": "NZ",
+                            "ContractPeriodProductGroupSourceAveragePrice": "3790",
+                            "Sellers": {
+                                "SellerDetails": {
+                                    "SellerGroupName": "Fonterra",
+                                    "SellerGroupGUID": "4f46c153-e0de-4f81-a228-f750d6e311a4",
+                                    "ContractPeriodSellerGroupAveragePublishedPrice": "3790",
+                                    "Products": {
+                                        "ProductDetails": [{
+                                                "ProductSpec": "Salted 25kg",
+                                                "ProductGUID": "99efee49-8443-466f-8776-a81506e6bebf",
+                                                "ProductSourceRegion": "NZ",
+                                                "ProductSourceGroup": "NZ",
+                                                "PublishedPrice": "",
+                                                "SupplyOffered": "true",
+                                                "ProductSold": "false",
+                                                "DisplayIndividualPrice": "true"
+                                            }, {
+                                                "ProductSpec": "Unsalted 25kg",
+                                                "ProductGUID": "99efee49-8443-466f-8776-a81506e6bebf",
+                                                "ProductSourceRegion": "NZ",
+                                                "ProductSourceGroup": "NZ",
+                                                "PublishedPrice": "3790",
+                                                "SupplyOffered": "true",
+                                                "ProductSold": "true",
+                                                "DisplayIndividualPrice": "true"
+                                            }
+                                        ]
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "PriceIndexPercentageChange": "2.8",
+                    "ContractPeriodAveragePublishedPrice": "3790",
+                    "ProductRegions": {
+                        "ProductRegionDetails": {
+                            "ProductRegionName": "Oceania",
+                            "ProductRegionAveragePrice": "3790",
+                            "ProductSubRegions": {
+                                "ProductSubRegionDetails": {
+                                    "ProductSubRegionName": "New Zealand",
+                                    "ProductSubRegionAveragePrice": "3790",
+                                    "ProductSubRegionProducts": {
+                                        "ProductSubRegionProductDetails": [{
+                                                "ProductDisplayName": "Salted Average Price",
+                                                "ProductAveragePrice": ""
+                                            }, {
+                                                "ProductDisplayName": "Unsalted Average Price",
+                                                "ProductAveragePrice": "3790"
+                                            }
+                                        ]
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }, {
+                    "ContractPeriodName": "Contract 6",
+                    "ContractPeriodGUID": "27266163-d1a6-4bd0-960e-16d2d699dbf5",
+                    "ContractMonth": "May21",
+                    "ProductGroupSources": {
+                        "ProductGroupSourceDetails": {
+                            "ProductGroupSourceCode": "NZ",
+                            "ContractPeriodProductGroupSourceAveragePrice": "",
+                            "Sellers": {
+                                "SellerDetails": {
+                                    "SellerGroupName": "Fonterra",
+                                    "SellerGroupGUID": "4f46c153-e0de-4f81-a228-f750d6e311a4",
+                                    "ContractPeriodSellerGroupAveragePublishedPrice": "",
+                                    "Products": {
+                                        "ProductDetails": [{
+                                                "ProductSpec": "Salted 25kg",
+                                                "ProductGUID": "99efee49-8443-466f-8776-a81506e6bebf",
+                                                "ProductSourceRegion": "NZ",
+                                                "ProductSourceGroup": "NZ",
+                                                "PublishedPrice": "",
+                                                "SupplyOffered": "false",
+                                                "ProductSold": "false",
+                                                "DisplayIndividualPrice": "true"
+                                            }, {
+                                                "ProductSpec": "Unsalted 25kg",
+                                                "ProductGUID": "99efee49-8443-466f-8776-a81506e6bebf",
+                                                "ProductSourceRegion": "NZ",
+                                                "ProductSourceGroup": "NZ",
+                                                "PublishedPrice": "",
+                                                "SupplyOffered": "false",
+                                                "ProductSold": "false",
+                                                "DisplayIndividualPrice": "true"
+                                            }
+                                        ]
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "PriceIndexPercentageChange": "",
+                    "ContractPeriodAveragePublishedPrice": "",
+                    "ProductRegions": {
+                        "ProductRegionDetails": {
+                            "ProductRegionName": "Oceania",
+                            "ProductRegionAveragePrice": "",
+                            "ProductSubRegions": {
+                                "ProductSubRegionDetails": {
+                                    "ProductSubRegionName": "New Zealand",
+                                    "ProductSubRegionAveragePrice": "",
+                                    "ProductSubRegionProducts": {
+                                        "ProductSubRegionProductDetails": [{
+                                                "ProductDisplayName": "Salted Average Price",
+                                                "ProductAveragePrice": ""
+                                            }, {
+                                                "ProductDisplayName": "Unsalted Average Price",
+                                                "ProductAveragePrice": ""
+                                            }
+                                        ]
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}

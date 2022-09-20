@@ -1,0 +1,31 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+      <xs:complexType>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="Asta">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="DataSessione" type="xs:string" minOccurs="0" />
+                <xs:element name="NomeProdotto" type="xs:string" minOccurs="0" />
+                <xs:element name="Prezzo" type="xs:decimal" minOccurs="0" />
+                <xs:element name="Volumi" type="xs:decimal" minOccurs="0" />
+                <xs:element name="Acquisti" type="xs:decimal" minOccurs="0" />
+                <xs:element name="Vendite" type="xs:decimal" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:choice>
+      </xs:complexType>
+    </xs:element>
+  </xs:schema>
+  <Asta>
+    <DataSessione>20210901</DataSessione>
+    <NomeProdotto>MGP-2021-09-02</NomeProdotto>
+    <Prezzo>52.2500</Prezzo>
+    <Volumi>87312.00000</Volumi>
+    <Acquisti>87312.00000</Acquisti>
+    <Vendite>0.00000</Vendite>
+  </Asta>
+</NewDataSet>
