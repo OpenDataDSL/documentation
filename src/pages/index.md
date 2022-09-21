@@ -2,6 +2,7 @@
 title: Documentation Home
 sidebar_position: 1
 hide_title: true
+hide_table_of_contents: true
 tags:
   - product
   - home

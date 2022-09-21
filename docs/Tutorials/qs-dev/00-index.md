@@ -23,9 +23,6 @@ If you have programmed in other 2nd or 3rd generation languages at any level, yo
 ## Preparation
 This quickstart track requires some preparation in order to follow along with the content.
 
-### OpenDataDSL Account
-If you haven't already created a FREE OpenDataDSL account, [sign up for one here](/SignUp)
-
 ### Visual Studio Code
 If you don't already have Microsoft VSCode installed, install it now using [this link](https://code.visualstudio.com/download)
 

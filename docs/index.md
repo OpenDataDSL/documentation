@@ -1,6 +1,5 @@
 ---
 id: home
-slug: /home
 title: Documentation Home
 sidebar_position: 1
 hide_title: true

@@ -35,9 +35,6 @@ In each module, we will give examples in various languages and all the code for 
 ## Preparation
 This quickstart track requires some preparation in order to follow along with the content.
 
-### OpenDataDSL Account
-If you haven't already created a FREE OpenDataDSL account, [sign up for one here](/SignUp)
-
 ### Language specific preparation
 <Tabs groupId="language">
 <TabItem value="rest" label="REST" default>

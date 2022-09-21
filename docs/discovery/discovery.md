@@ -28,14 +28,6 @@ OpenDataDSL is comprised of the following:
 
 <InDepth href="/docs/product/intro" />
 
-## How OpenDataDSL Works
-
-:::info
-### All the OpenDataDSL user software is FREE to use for any number of users
-:::
-
-You get started with OpenDataDSL by logging into the [Portal](https://portal.opendatadsl.com) using your corporate
-credentials and entering some information about you and your company - see [SignUp](/SignUp).
 
 ## Why Choose OpenDataDSL
 Here are the top 5 reasons to choose OpenDataDSL

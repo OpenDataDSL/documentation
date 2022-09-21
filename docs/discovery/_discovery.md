@@ -6,13 +6,12 @@ import styles from '/src/components/StartBuilding.module.css';
 
 <Container className={styles.datablock}>
     <Card style={{width:"18rem"}}>
-        <Card.Header><a href="/docs/discovery/discovery"><FontAwesomeIcon icon={faPlug} /><b> Getting Started</b></a></Card.Header>
+        <Card.Header><a href="/docs/discovery"><FontAwesomeIcon icon={faPlug} /><b> Getting Started</b></a></Card.Header>
             <Card.Body>
               <Card.Text>A brief introduction to the features and ecosystem of OpenDataDSL with an overview of what OpenDataDSL can do and how it works.</Card.Text>
               <ul>
-                  <li><a href="/docs/discovery/discovery#what-is-opendatadsl">What is OpenDataDSL</a></li>
-                  <li><a href="/docs/discovery/discovery#how-opendatadsl-works">How OpenDataDSL Works</a></li>
-                  <li><a href="/docs/discovery/discovery#why-choose-opendatadsl">Why choose OpenDataDSL</a></li>
+                  <li><a href="/docs/discovery#what-is-opendatadsl">What is OpenDataDSL</a></li>
+                  <li><a href="/docs/discovery#why-choose-opendatadsl">Why choose OpenDataDSL</a></li>
               </ul>
             </Card.Body>
     </Card>    

@@ -28,62 +28,6 @@ module.exports = {
     metadata: [{name: 'keywords', content: 'smart, smart curves, forward curves, market data, commodity, energy, timeseries, data management, blog'}],
     footer: {
       style: 'dark',
-      links: [
-        {
-          title: 'Documentation',
-          items: [
-            {
-              label: 'Home',
-              to: '/home',
-            },
-            {
-              label: 'Tutorials',
-              to: '/tutorials/tutorials',
-            },
-            {
-              label: 'Data Catalog',
-              to: '/data',
-            },
-            {
-              label: 'Tags',
-              to: '/tags',
-            },
-          ],
-        },
-        {
-          title: 'Community',
-          items: [
-            {
-              label: 'Stack Overflow',
-              href: 'https://stackoverflow.com/questions/tagged/odsl',
-            },
-            {
-              label: 'Twitter',
-              href: 'https://twitter.com/opendatadsl',
-            },
-            {
-              label: 'LinkedIn',
-              href: 'https://www.linkedin.com/company/opendatadsl'
-            },
-            {
-              label: 'Facebook',
-              href: 'https://www.facebook.com/OpenDataDSL'
-            },
-            {
-              label: 'Pinterest',
-              href: 'https://www.pinterest.co.uk/OpenDataDSL'
-            },
-            {
-              label: 'Instagram',
-              href: 'https://www.instagram.com/opendatadsl'
-            },
-            {
-              label: 'Vimeo',
-              href: 'https://vimeo.com/user155861440'
-            }
-          ],
-        },
-      ],
       copyright: `Copyright © ${new Date().getFullYear()} Walkfares Ltd.`,
     },
     prism: {

@@ -125,7 +125,7 @@ If you have other internal systems like risk systems or SAP that require any pub
 
 Check out some of the interesting links below:
 
-* [Take a **Discovery Tour** for an overview of the product features](/docs/discovery/getting-started)
+* [Take a **Discovery Tour** for an overview of the product features](/docs/discovery)
 * [Get started quickly with one of our **QuickStart Tracks**](/docs/discovery/quick-start)
 * [Browse through the **Data Catalog** to see what data is available](/docs/data/catalog)
-* [Check out our **Tutorials** section](/docs/tutorials/tutorials)    
+* [Check out our **Tutorials** section](/docs/tutorials)    

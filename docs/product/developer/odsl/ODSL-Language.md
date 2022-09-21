@@ -15,7 +15,7 @@ This guide is broken into easy to follow sections that describe the syntax and g
 
 If you haven’t already done so, download and [install Microsoft VS Code and our ODSL Extension](/docs/user/vscode) in order to make editing and debugging ODSL files easier
 
-### [ODSL Tutorials](/docs/tutorials/tutorials)
+### [ODSL Tutorials](/docs/tutorials)
 A set of tutorials helping you to get acquainted with the OpenDataDSL language
 
 ### [Commands](/docs/odsl/command/commands)
