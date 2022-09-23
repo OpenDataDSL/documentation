@@ -5,7 +5,7 @@ slug: /api/rest/standards
 Standards and Conventions
 =========================
 
-A useful guide to the conventions used within the REST API
+A useful guide to the conventions used within the REST API.
 
 ## REST Remote Service URL
 
