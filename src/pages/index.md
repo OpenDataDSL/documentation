@@ -27,7 +27,7 @@ The OpenDataDSL components and API's let you quickly and seamlessly build your o
 
 
 ## Quick start for MongoDB Users
-If you are an existing MongoDB User, click here to get started.
+If you are an existing MongoDB User, click [here](/docs/tutorials/qs/mongodb) to get started.
 
 ### Tutorials
 
