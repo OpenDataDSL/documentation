@@ -20,15 +20,20 @@ import {Introduction} from '/src/components/Discovery.js';
 
 
 ## What is OpenDataDSL?
-OpenDataDSL is THE Data Management Programming Language - the tool that makes managing data easy!
 
-The OpenDataDSL components and API's let you quickly and seamlessly build your own world-scale data management platform in the cloud.
-We load any data that can be freely distributed and make it available to you - you can model, collect, load, check and report 
-on any data you own or subscribe to using the same tools and user experience.
+> **OpenDataDSL is a Data Management System for MongoDB - the database for modern apps!**
+
+The OpenDataDSL components and API's let you quickly and seamlessly build your own world-scale data management platform in the cloud using [MongoDB Atlas](https://www.mongodb.com/atlas/database)
+
+
+## Quick start for MongoDB Users
+If you are an existing MongoDB User, click here to get started.
 
 ### Tutorials
 
 <Tutorials />
+
+<br/>
 
 ### Discover OpenDataDSL
 
@@ -36,6 +41,4 @@ on any data you own or subscribe to using the same tools and user experience.
 
 <DiscoveryPages />
 
-### Get started
 
-<StartBuilding />

@@ -27,6 +27,9 @@ An in-depth description of all the built-in variable types
 ### [Functions](/docs/odsl/function/functions)
 An OpenDataDSL guide to the built-in functions that can be used in your code
 
+### [Aggregation Stages](/docs/odsl/stages)
+An OpenDataDSL guide to the MongoDB aggregation stages
+
 ### [Language Glossary](/docs/odsl/glossary)
 A cheat-sheet of the OpenDataDSL keywords and language syntax
 

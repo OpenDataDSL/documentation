@@ -7,7 +7,6 @@ tags:
   - odsl
   - developer
 ---
-import StartBuilding from '/src/components/StartBuilding.js';
 import {QuickStart} from '/src/components/Discovery.js';
 import Track from '/docs/Tutorials/qs-dev/_track.md'
 
@@ -40,7 +39,3 @@ Once installed, opening or creating a file with the extension `.odsl` initiates 
 ## Let's get started!
 
 <Track />
-
----
-
-<StartBuilding />
