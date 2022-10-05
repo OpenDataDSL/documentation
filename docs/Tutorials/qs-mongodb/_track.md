@@ -53,45 +53,14 @@ import styles from '/src/components/StartBuilding.module.css';
         <Card.Header className="bg-success text-white"><FontAwesomeIcon icon={faChevronCircleRight} /><b> Aggregating</b></Card.Header>
             <Card.Body>
               <Card.Text>A tutorial on using the MongoDB aggregation pipeline in ODSL.</Card.Text>
-              <Button href="/docs/tutorials/qs/developer/aggregation">Get Started</Button>
+              <Button href="/docs/tutorials/qs/mongodb/aggregation">Get Started</Button>
             </Card.Body>
     </Card>
     <Card style={{width:"16rem"}}>
-        <Card.Header className="bg-success text-white"><FontAwesomeIcon icon={faChevronCircleRight} /><b> Timeseries</b></Card.Header>
+        <Card.Header className="bg-success text-white"><FontAwesomeIcon icon={faChevronCircleRight} /><b> Data Quality</b></Card.Header>
             <Card.Body>
-              <Card.Text>An in-depth guide to working with TimeSeries, Curve and Event data.</Card.Text>
+              <Card.Text>A tutorial showing you how to ensure the data in your collections is of high quality</Card.Text>
               <Button href="/docs/tutorials/qs/developer/data">Get Started</Button>
-            </Card.Body>
-    </Card>
-    <Card className="bg-danger text-white" style={{width:"9rem"}}>
-        <Card.Header ><b> Advanced</b></Card.Header>
-            <Card.Body>
-              <Card.Text>Loading data, analytics and automation.</Card.Text>
-              <br />
-              <FontAwesomeIcon icon={faCertificate} />
-              <FontAwesomeIcon icon={faCertificate} />
-              <FontAwesomeIcon icon={faCertificate} />
-            </Card.Body>
-    </Card>    
-    <Card style={{width:"16rem"}}>
-        <Card.Header className="bg-danger text-white"><FontAwesomeIcon icon={faChevronCircleRight} /><b> Analysis</b></Card.Header>
-            <Card.Body>
-              <Card.Text>Utilise aggregation pipelines and statistical functions to analyse your data.</Card.Text>
-              <Button href="/docs/tutorials/qs/developer/analysis">Get Started</Button>
-            </Card.Body>
-    </Card>
-    <Card style={{width:"16rem"}}>
-        <Card.Header className="bg-danger text-white"><FontAwesomeIcon icon={faChevronCircleRight} /><b> ETL</b></Card.Header>
-            <Card.Body>
-              <Card.Text>A tutorial on extracting data from remote services, transforming and loading it.</Card.Text>
-              <Button href="/docs/tutorials/qs/developer/etl">Get Started</Button>
-            </Card.Body>
-    </Card>
-    <Card style={{width:"16rem"}}>
-        <Card.Header className="bg-danger text-white"><FontAwesomeIcon icon={faChevronCircleRight} /><b> Automation</b></Card.Header>
-            <Card.Body>
-              <Card.Text>A tutorial taking you through automation using workflows and processes.</Card.Text>
-              <Button href="/docs/tutorials/qs/developer/automation">Get Started</Button>
             </Card.Body>
     </Card>
 </Container>
