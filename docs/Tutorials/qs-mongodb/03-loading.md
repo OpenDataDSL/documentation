@@ -85,6 +85,33 @@ result = ${transformer:"sensor_tx"}.run(input)
 save ${object:result}
 ```
 
+### Saving to your own collection
+As well as saving to the default ```private``` collection, you can also save to any named collection.
+
+We just have to make a small modification to the save command to specify the name of the collection to save to, in this case ```sensors```
+
+```js
+s9797 = object as sensor
+    name = "Bromley"
+    temperature = TimeSeries("2022-10-03T09:30:27", "SPARSE", 15)
+    humidity = TimeSeries("2022-10-03T09:30:27", "SPARSE", 32)
+end
+save ${object:"sensors"/s9797}
+```
+
+:::note
+If the named collection doesn't exist, it will be created on the fly
+:::
+
+### Retrieving data from your own collection
+To search for data in your own collection, just specify the name of the collection to search in, e.g.:
+
+```js
+find ${object:"sensors"}
+```
+
+To retrieve a single document using it's ```_id``` property
+
 ## Methods of loading data - commercial licenses
 
 Here are some ways you can load data into MongoDB using a commercial OpenDataDSL license.

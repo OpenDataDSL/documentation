@@ -1,12 +1,17 @@
 Used to delete items from the database
 
 #### Syntax
+Standard form:
 ```js
 delete activevar (log string)?
 ```
-#### Description
+Bulk delete form:
+```js
+delete activevar (log string)? (where condition)?
+```
 
-Deletes an item from the database, the activevar item can be one of:
+#### Description
+In the standard form, it deletes an item from the database, the activevar item can be one of:
 
 *   action    
 *   calendar
@@ -24,6 +29,8 @@ Deletes an item from the database, the activevar item can be one of:
 *   type
 *   workflow
     
+In bulk delete form, only the following services are supported:
+*   object
 
 The optional **log** option allows you to specify a reason for the deletion which is added to the audit log
 

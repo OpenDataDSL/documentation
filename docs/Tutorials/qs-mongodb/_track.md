@@ -5,9 +5,9 @@ import styles from '/src/components/StartBuilding.module.css';
 
 <Container className={styles.datablock}>
     <Card className="bg-info text-white" style={{width:"9rem"}}>
-        <Card.Header ><b> Core</b></Card.Header>
+        <Card.Header ><b> Level 1</b></Card.Header>
             <Card.Body>
-              <Card.Text>Core functionality.</Card.Text>
+              <Card.Text>Essential knowledge.</Card.Text>
               <br />
               <FontAwesomeIcon icon={faCertificate} />
             </Card.Body>
@@ -34,7 +34,7 @@ import styles from '/src/components/StartBuilding.module.css';
             </Card.Body>
     </Card>    
     <Card className="bg-success text-white" style={{width:"9rem"}}>
-        <Card.Header ><b> Intermediate</b></Card.Header>
+        <Card.Header ><b> Level 2</b></Card.Header>
             <Card.Body>
               <Card.Text>Searching, aggregating and Timeseries.</Card.Text>
               <br />
@@ -52,15 +52,46 @@ import styles from '/src/components/StartBuilding.module.css';
     <Card style={{width:"16rem"}}>
         <Card.Header className="bg-success text-white"><FontAwesomeIcon icon={faChevronCircleRight} /><b> Aggregating</b></Card.Header>
             <Card.Body>
-              <Card.Text>A tutorial on using the MongoDB aggregation pipeline in ODSL.</Card.Text>
+              <Card.Text>Utilise aggregation pipelines and statistical functions to analyse your data.</Card.Text>
               <Button href="/docs/tutorials/qs/mongodb/aggregation">Get Started</Button>
             </Card.Body>
     </Card>
     <Card style={{width:"16rem"}}>
-        <Card.Header className="bg-success text-white"><FontAwesomeIcon icon={faChevronCircleRight} /><b> Data Quality</b></Card.Header>
+        <Card.Header className="bg-success text-white"><FontAwesomeIcon icon={faChevronCircleRight} /><b> Timeseries</b></Card.Header>
+            <Card.Body>
+              <Card.Text>An in-depth guide on creating, updating, validating and visualising Timeseries</Card.Text>
+              <Button href="/docs/tutorials/qs/mongodb/timeseries">Get Started</Button>
+            </Card.Body>
+    </Card>
+    <Card className="bg-danger text-white" style={{width:"9rem"}}>
+        <Card.Header ><b> Level 3</b></Card.Header>
+            <Card.Body>
+              <Card.Text>Data Quality, commercial plans.</Card.Text>
+              <br />
+              <FontAwesomeIcon icon={faCertificate} />
+              <FontAwesomeIcon icon={faCertificate} />
+              <FontAwesomeIcon icon={faCertificate} />
+            </Card.Body>
+    </Card>    
+    <Card style={{width:"16rem"}}>
+        <Card.Header className="bg-danger text-white"><FontAwesomeIcon icon={faChevronCircleRight} /><b> Quality Management</b></Card.Header>
             <Card.Body>
               <Card.Text>A tutorial showing you how to ensure the data in your collections is of high quality</Card.Text>
-              <Button href="/docs/tutorials/qs/developer/data">Get Started</Button>
+              <Button href="/docs/tutorials/qs/mongodb/quality">Get Started</Button>
+            </Card.Body>
+    </Card>
+    <Card style={{width:"16rem"}}>
+        <Card.Header className="bg-danger text-white"><FontAwesomeIcon icon={faChevronCircleRight} /><b> Standard Plan</b></Card.Header>
+            <Card.Body>
+              <Card.Text>An overview of the features of the OpenDataDSL standard plan</Card.Text>
+              <Button href="/docs/tutorials/qs/mongodb/standard">Get Started</Button>
+            </Card.Body>
+    </Card>
+    <Card style={{width:"16rem"}}>
+        <Card.Header className="bg-danger text-white"><FontAwesomeIcon icon={faChevronCircleRight} /><b> Premium Plan</b></Card.Header>
+            <Card.Body>
+              <Card.Text>An overview of the features of the OpenDataDSL premium plan</Card.Text>
+              <Button href="/docs/tutorials/qs/mongodb/premium">Get Started</Button>
             </Card.Body>
     </Card>
 </Container>
