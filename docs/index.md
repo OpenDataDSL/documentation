@@ -35,7 +35,3 @@ on any data you own or subscribe to using the same tools and user experience.
 #### Follow these Quick Discovery Guides to familiarise yourself with OpenDataDSL
 
 <DiscoveryPages />
-
-### Get started
-
-<StartBuilding />

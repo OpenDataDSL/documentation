@@ -48,7 +48,3 @@ As well as providing our off-the-shelf applications, we also have a number of Op
 Example repositories include:
 * Source code for a c# application to load subscriptions in a SQL Server database - [Tutorial](/docs/tutorials/localsqlserver)
 * ODSL source code examples
-
----
-
-<StartBuilding />

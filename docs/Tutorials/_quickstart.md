@@ -13,10 +13,10 @@ import styles from '/src/components/StartBuilding.module.css';
             </Card.Body>
     </Card>    
     <Card style={{width:"18rem"}}>
-        <Card.Header className="bg-success text-white"><FontAwesomeIcon icon={faTable} /><b> Data Modeller</b></Card.Header>
+        <Card.Header className="bg-success text-white"><FontAwesomeIcon icon={faCubes} /><b> MongoDB User</b></Card.Header>
             <Card.Body>
-              <Card.Text>Take this track to learn how to model and store data in OpenDataDSL.</Card.Text>
-              <Button href="/docs/tutorials/qs/modeller">Get Started</Button>
+              <Card.Text>Take this track to learn how to connect and use your MongoDB data.</Card.Text>
+              <Button href="/docs/tutorials/qs/mongodb">Get Started</Button>
             </Card.Body>
     </Card>
     <Card style={{width:"18rem"}}>
@@ -27,3 +27,13 @@ import styles from '/src/components/StartBuilding.module.css';
             </Card.Body>
     </Card>
 </Container>
+
+<!--
+    <Card style={{width:"18rem"}}>
+        <Card.Header className="bg-success text-white"><FontAwesomeIcon icon={faTable} /><b> Data Modeller</b></Card.Header>
+            <Card.Body>
+              <Card.Text>Take this track to learn how to model and store data in OpenDataDSL.</Card.Text>
+              <Button href="/docs/tutorials/qs/modeller">Get Started</Button>
+            </Card.Body>
+    </Card>
+-->

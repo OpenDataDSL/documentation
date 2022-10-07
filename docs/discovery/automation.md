@@ -47,7 +47,3 @@ You can also view your processes running in real-time.
 ![](/videos/OpenDataDSL-ProcessTimeline.gif)
 
 <InDepth href="/docs/odsl/dm/workflow" />
-
----
-
-<StartBuilding />

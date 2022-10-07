@@ -19,6 +19,3 @@ import Track from '/docs/Tutorials/qs-dm/_track.md'
 # Coming Soon
 #### Call back later!
 
----
-
-<StartBuilding />

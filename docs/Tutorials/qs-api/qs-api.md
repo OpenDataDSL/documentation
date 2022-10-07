@@ -98,7 +98,3 @@ The maven `pom.xml` to create your java project
 
 </TabItem>
 </Tabs>
-
----
-
-<StartBuilding />

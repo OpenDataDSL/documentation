@@ -41,7 +41,3 @@ Workflows offer various smart features that help with adapting to the standard o
 * Providing re-schedules to handle 3rd-party system downtimes and optimise the process running time  
 
 <InDepth href="/docs/odsl/dm/workflow" />
-
----
-
-<StartBuilding />

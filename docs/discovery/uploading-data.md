@@ -46,7 +46,3 @@ Here are a few of the built-in ETL features:
     * Create a time-triggered process for automation and monitoring 
 
 <InDepth href="/docs/odsl/dm/workflow" />
-
----
-
-<StartBuilding />

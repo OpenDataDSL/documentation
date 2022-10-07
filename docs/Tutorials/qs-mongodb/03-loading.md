@@ -112,6 +112,11 @@ find ${object:"sensors"}
 
 To retrieve a single document using it's ```_id``` property
 
+```js
+sensor = ${object:"sensors"/"s9797"}
+print sensor
+```
+
 ## Methods of loading data - commercial licenses
 
 Here are some ways you can load data into MongoDB using a commercial OpenDataDSL license.

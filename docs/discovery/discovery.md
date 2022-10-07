@@ -36,7 +36,3 @@ Here are the top 5 reasons to choose OpenDataDSL
 * Secure - using your own IDP
 * High performance and scalability
 * DSL which simplifies data management
-
----
-
-<StartBuilding />

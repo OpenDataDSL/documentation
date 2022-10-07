@@ -53,6 +53,3 @@ Access to your own `private` data is configured using Azure Active Directory Gro
 
 <InDepth href="/docs/it/security" />
 
----
-
-<StartBuilding />

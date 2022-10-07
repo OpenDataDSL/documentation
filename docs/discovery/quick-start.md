@@ -17,6 +17,3 @@ import QuickStart from '/docs/Tutorials/_quickstart.md';
 
 <QuickStart />
 
----
-
-<StartBuilding />

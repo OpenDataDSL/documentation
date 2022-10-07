@@ -52,7 +52,3 @@ Some example integrations:
 * Feed a BI Reporting Tool - such as SAP Business Objects, QlikSense or Tableau etc.
 
 <InDepth href="/docs/tutorials/gettingstarted1" />
-
----
-
-<StartBuilding />

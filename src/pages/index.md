@@ -16,28 +16,28 @@ import Tutorials from '/src/components/Tutorials.js';
 import DiscoveryPages from '/docs/discovery/_discovery.md';
 import {Introduction} from '/src/components/Discovery.js';
 
-<Introduction text="Start your OpenDataDSL discovery here" />
 
-
-## What is OpenDataDSL?
+# What is OpenDataDSL?
 
 > **OpenDataDSL is a Data Management System for MongoDB - the database for modern apps!**
 
 The OpenDataDSL components and API's let you quickly and seamlessly build your own world-scale data management platform in the cloud using [MongoDB Atlas](https://www.mongodb.com/atlas/database)
 
 
-## Quick start for MongoDB Users
+# Quick start for MongoDB Users
+<a href="/docs/tutorials/qs/mongodb"><img src="/img/mongodb.png" alt="MongoDB" width="200" /></a>
+
 If you are an existing MongoDB User, click [here](/docs/tutorials/qs/mongodb) to get started.
 
-### Tutorials
+# Tutorials
 
 <Tutorials />
 
 <br/>
 
-### Discover OpenDataDSL
+# Discover OpenDataDSL
 
-#### Follow these Quick Discovery Guides to familiarise yourself with OpenDataDSL
+## Follow these Quick Discovery Guides to familiarise yourself with OpenDataDSL
 
 <DiscoveryPages />
 

@@ -253,6 +253,4 @@ Here we need to decide which consumer(s) we want to create for our subscription
 
 * [Feed SQL Server Database](/docs/tutorials/gettingstarted1sql)
 * [Feed ServiceBus](/docs/tutorials/gettingstarted1camel)
-* [Feed BI Reporting Tool](#feed-bi-reporting-tool)
 
-### Feed BI Reporting Tool

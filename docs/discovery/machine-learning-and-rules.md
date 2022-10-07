@@ -38,7 +38,3 @@ We are continually working on adding more smart features to our existing applica
 As most of the value in our data is within TimeSeries and Forward Curves, we are currently building some insights that will help you:
 * Detect anomolies and alert you in real-time
 * Analyse trends to give you a head start on potential up-coming events
-
----
-
-<StartBuilding />
