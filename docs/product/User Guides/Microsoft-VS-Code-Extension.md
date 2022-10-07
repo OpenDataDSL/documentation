@@ -97,7 +97,7 @@ Pressing ctrl-space at the start of a line gives you a full list of the availabl
 
 A very powerful feature of the ODSL extension in VSCode is the ability to debug ODSL files, stepping through, checking variables etc.
 
-To start a debug session on the currently edited ODSL file, right-click anywhere in the file and select the menu item **ODSL: Debug Editor Contents**
+To start a debug session on the currently edited ODSL file, right-click anywhere in the file and select the menu item **Debug Editor Contents**
 
 ### Breakpoints
 
@@ -131,3 +131,26 @@ Or using the following keys:
     
 *   Stop `Shift+F5`
     
+### Debugging regions of code
+
+You can create folding regions within your code that can break large scripts up into manageable sections that can be debugged independently.
+
+A region wrapper looks like this:
+
+```js
+//#region Add a name here if you like
+
+//#endregion
+```
+
+You can also use the ```region``` snippet to create a region.
+
+To debug a region of code, right-click anywhere in the file and select the menu item **Debug Region**
+
+### Running selected text
+
+You can select an a line or lines of code in a file and just run that bit of code by right-clicking in the file and select the menu item **Run Selected Text**
+
+:::note
+You cannot debug when running selected text
+:::
