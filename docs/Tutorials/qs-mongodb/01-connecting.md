@@ -26,6 +26,12 @@ To change this:
 * Type **odsl** in the search box
 * Change the MongoDB connection string in the setting odsl.c.mongodb
 
+![ODSL Settings](img_2.png)
+
+:::caution No MongoDB Connection Setting?
+Check you have the **ODSL Community Version** installed
+:::
+
 #### Commercial versions
 All the commercial versions private connection default to your own managed MongoDB database in our secure MongoDB cluster.
 
