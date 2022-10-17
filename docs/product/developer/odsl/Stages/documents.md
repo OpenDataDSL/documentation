@@ -20,7 +20,7 @@ documents arrayExpression
 ## Behaviour
 ```documents``` can take the following as the **arrayExpression**
 * A Json array expression, e.g. ```[{x:2},{x:3}]```
-* A variable which evaluates to an array, e.g. a [List](/odsl/variable/list) variable 
+* A variable which evaluates to an array, e.g. a [List](/docs/odsl/variable/list) variable 
 
 ## Examples
 
