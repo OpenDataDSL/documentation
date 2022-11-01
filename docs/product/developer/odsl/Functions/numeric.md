@@ -26,7 +26,7 @@ import Tanh from './all/_tanh.md';
 import ToDegrees from './all/_toDegrees.md';
 import ToRadians from './all/_toRadians.md';
 
-Functions that take a Scalar as their input
+Functions that take a Numeric Scalar as their input
 
 ## abs
 <Abs  />

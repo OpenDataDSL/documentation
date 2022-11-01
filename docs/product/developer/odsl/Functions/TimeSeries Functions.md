@@ -31,6 +31,7 @@ import Min from './all/_min.md';
 import Geomean from './all/_geomean.md';
 import Pct from './all/_pct.md';
 import Scale from './all/_scale.md';
+import Shift from './all/_shift.md';
 import SimpleRegression from './all/_simpleRegression.md'
 
 Functions that take a TimeSeries as their input
@@ -94,6 +95,9 @@ Functions that take a TimeSeries as their input
 
 ## scale
 <Scale />
+
+## shift
+<Shift />
 
 ## simpleRegression
 <SimpleRegression />
