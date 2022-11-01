@@ -12,6 +12,7 @@ import Atan2 from './all/_atan2.md';
 import Cbrt from './all/_cbrt.md';
 import Cos from './all/_cos.md';
 import Cosh from './all/_cosh.md';
+import Csum from './all/_csum.md';
 import Exp from './all/_exp.md';
 import Log from './all/_log.md';
 import Log10 from './all/_log10.md';
@@ -54,6 +55,9 @@ Functions that take a list of values as input
 
 ## cosh
 <Cosh  />
+
+## csum
+<Csum  />
 
 ## exp
 <Exp  />
