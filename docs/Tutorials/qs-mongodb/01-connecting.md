@@ -56,15 +56,53 @@ You can do this by running the following code in an odsl file (see [here](/docs/
 tenant = Object()
 tenant.connections = Object()
 
-// Change the name of the property to what you want to name the connection
-// Set the value of the property to be the full MongoDB connection string
+```
 
-// The following are examples showing srv and direct connection strings
+You then need to add your connection information to a property with the name you want the connection to me known as, e.g. something like this:
 
-tenant.connections.m101 = "mongodb+srv://user:password@xxxxx.mongodb.net/admin?authSource=admin&replicaSet=atlas-xxxx-shard-0&readPreference=primary&ssl=true"
-tenant.connections.m121 = "mongodb://user:password@cluster0-shard-00-00-xxxxx.mongodb.net:27017,cluster0-shard-00-01-xxxxx.mongodb.net:27017,cluster0-shard-00-02-xxxxx.mongodb.net:27017/admin?authSource=admin&replicaSet=Cluster0-shard-0&tls=true"
+```js
+tenant.connections.mycluster = "mongodb:// ' rest of url '
+```
+
+#### Save your tenant
+After you have added your connection information, you need to save it:
+
+```js
+
+// Save our tenant connection info
 save ${tenant:tenant}
 ```
+
+You have 2 choices with user credentials
+
+* You can opt to add them to the url so that all users of the connection have the same rights
+* You can provide the credentials separately per user
+
+#### With user credentials in the url
+
+```js
+tenant.connections.m101 = "mongodb+srv://user:password@xxxxx.mongodb.net/admin?authSource=admin&ssl=true"
+```
+
+#### Without credentials in the url
+
+```js
+tenant.connections.m101 = "mongodb+srv://xxxxx.mongodb.net/admin?authSource=admin&ssl=true"
+```
+
+Each user would then need to add their credentials for this connection as follows:
+
+```js
+me = ${user:"me"}
+me.connections.m101.username = "username"
+me.connections.m101.password = "password"
+save ${user:me}
+```
+
+:::info
+Only support for the default SCRAM authentication in the 'admin' database is supported at the moment 
+:::
+
 
 :::info
 You need to create a named database connection called m101 to a MongoDB cluster containing the MongoDB Sample Dataset for the rest of this quickstart tutorial.
