@@ -4,13 +4,13 @@ tags:
   - function
   - general
 ---
-import Clone from './all/_clone.md';
-import Evaluate from './all/_evaluate.md';
-import Random from './all/_random.md';
-import RandomInteger from './all/_randomInteger.md';
-import Ref from './all/_ref.md';
-import Variable from './all/_variable.md';
-import Variables from './all/_variables.md';
+import Clone from './all/clone.md';
+import Evaluate from './all/evaluate.md';
+import Random from './all/random.md';
+import RandomInteger from './all/randomInteger.md';
+import Ref from './all/ref.md';
+import Variable from './all/variable.md';
+import Variables from './all/variables.md';
 
 A set a non-specific helper functions
 

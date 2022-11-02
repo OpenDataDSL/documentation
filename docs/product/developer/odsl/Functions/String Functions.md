@@ -4,21 +4,21 @@ tags:
   - function
   - string
 ---
-import Clean from './all/_clean.md';
-import Compare from './all/_compare.md';
-import Concatenate from './all/_concatenate.md';
-import Contains from './all/_contains.md';
-import EndsWith from './all/_endsWith.md';
-import Equals from './all/_equals.md';
-import Json from './all/_json.md';
-import Left from './all/_left.md';
-import Length from './all/_length.md';
-import Lower from './all/_lower.md';
-import Remove from './all/_remove.md';
-import Replace from './all/_replace.md';
-import StartsWith from './all/_startsWith.md';
-import Trim from './all/_trim.md';
-import Upper from './all/_upper.md';
+import Clean from './all/clean.md';
+import Compare from './all/compare.md';
+import Concatenate from './all/concatenate.md';
+import Contains from './all/contains.md';
+import EndsWith from './all/endsWith.md';
+import Equals from './all/equals.md';
+import Json from './all/json.md';
+import Left from './all/left.md';
+import Length from './all/length.md';
+import Lower from './all/lower.md';
+import Remove from './all/remove.md';
+import Replace from './all/replace.md';
+import StartsWith from './all/startsWith.md';
+import Trim from './all/trim.md';
+import Upper from './all/upper.md';
 
 A set of functions that help you manipulate string variables
 

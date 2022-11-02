@@ -4,31 +4,31 @@ tags:
   - function
   - curve
 ---
-import Abs from './all/_abs.md';
-import Acos from './all/_acos.md';
-import Asin from './all/_asin.md';
-import Atan from './all/_atan.md';
-import Atan2 from './all/_atan2.md';
-import Cbrt from './all/_cbrt.md';
-import Cos from './all/_cos.md';
-import Cosh from './all/_cosh.md';
-import Exp from './all/_exp.md';
-import Log from './all/_log.md';
-import Log10 from './all/_log10.md';
-import Log1p from './all/_log1p.md';
-import Pow from './all/_pow.md';
-import Sin from './all/_sin.md';
-import Sinh from './all/_sinh.md';
-import Sqrt from './all/_sqrt.md';
-import Tan from './all/_tan.md';
-import Tanh from './all/_tanh.md';
-import ToDegrees from './all/_toDegrees.md';
-import ToRadians from './all/_toRadians.md';
-import AsMonths from './all/_asMonths.md';
-import BootstrapCurve from './all/_bootstrapCurve.md';
-import ExtendCurve from './all/_extendCurve.md';
-import ForwardFillCurve from './all/_forwardFillCurve.md';
-import Shape from './all/_shape.md';
+import Abs from './all/abs.md';
+import Acos from './all/acos.md';
+import Asin from './all/asin.md';
+import Atan from './all/atan.md';
+import Atan2 from './all/atan2.md';
+import Cbrt from './all/cbrt.md';
+import Cos from './all/cos.md';
+import Cosh from './all/cosh.md';
+import Exp from './all/exp.md';
+import Log from './all/log.md';
+import Log10 from './all/log10.md';
+import Log1p from './all/log1p.md';
+import Pow from './all/pow.md';
+import Sin from './all/sin.md';
+import Sinh from './all/sinh.md';
+import Sqrt from './all/sqrt.md';
+import Tan from './all/tan.md';
+import Tanh from './all/tanh.md';
+import ToDegrees from './all/toDegrees.md';
+import ToRadians from './all/toRadians.md';
+import AsMonths from './all/asMonths.md';
+import BootstrapCurve from './all/bootstrapCurve.md';
+import ExtendCurve from './all/extendCurve.md';
+import ForwardFillCurve from './all/forwardFillCurve.md';
+import Shape from './all/shape.md';
 
 Functions that work with forward curves
 

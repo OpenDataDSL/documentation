@@ -4,9 +4,9 @@ tags:
   - function
   - date
 ---
-import Format from './all/_format.md';
-import Parse from './all/_parse.md';
-import DaylightSavings from './all/_daylightSavings.md';
+import Format from './all/format.md';
+import Parse from './all/parse.md';
+import DaylightSavings from './all/daylightSavings.md';
 
 A set of functions that help you deal with dates
 

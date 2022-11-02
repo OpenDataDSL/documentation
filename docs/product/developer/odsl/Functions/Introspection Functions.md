@@ -4,11 +4,11 @@ tags:
   - function
   - introspection
 ---
-import Method from './all/_methods.md';
-import Properties from './all/_properties.md';
-import TypeOf from './all/_typeOf.md';
-import Variable from './all/_variable.md';
-import Variables from './all/_variables.md';
+import Method from './all/methods.md';
+import Properties from './all/properties.md';
+import TypeOf from './all/typeOf.md';
+import Variable from './all/variable.md';
+import Variables from './all/variables.md';
 
 Functions that provide information about variables
 
