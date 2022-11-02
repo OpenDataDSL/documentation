@@ -12,6 +12,9 @@ import Atan2 from './all/_atan2.md';
 import Cbrt from './all/_cbrt.md';
 import Cos from './all/_cos.md';
 import Cosh from './all/_cosh.md';
+import Cave from './all/_cave.md';
+import Cmax from './all/_cmax.md';
+import Cmin from './all/_cmin.md';
 import Csum from './all/_csum.md';
 import Exp from './all/_exp.md';
 import Log from './all/_log.md';
@@ -60,6 +63,15 @@ Functions that take a TimeSeries as their input
 
 ## cosh
 <Cosh  />
+
+## cave
+<Cave  />
+
+## cmax
+<Cmax  />
+
+## cmin
+<Cmin  />
 
 ## csum
 <Csum  />
