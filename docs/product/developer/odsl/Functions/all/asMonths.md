@@ -1,7 +1,12 @@
 ---
 slug: /odsl/function/asMonths
+tags:
+- function
+- curve
+- contract
+- contracts
 ---
-A curve function that breaks a single contract into a list of monthly contracts, e.g. a quarter into 3 months
+A [curve](/docs/odsl/variable/curve) function that breaks a single [contract](/docs/odsl/variable/contract) into a list of monthly [contracts](/docs/odsl/variable/contracts), e.g. a quarter into 3 months
 
 #### Syntax
 ```js

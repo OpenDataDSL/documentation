@@ -1,5 +1,12 @@
 ---
 slug: /odsl/function/asin
+tags:
+- function
+- statistics
+- scalar
+- curve
+- timeseries
+- list
 ---
 Returns the arc sine of a value; the returned angle is in the range -pi/2 through pi/2. 
 
@@ -8,10 +15,10 @@ Returns the arc sine of a value; the returned angle is in the range -pi/2 throug
 * If the argument is zero, then the result is a zero with the same sign as the argument.
 
 Works with:
-* Scalars
-* Timeseries
-* Curves
-* Lists/Arrays
+* [Scalars](/docs/odsl/variable/scalar)
+* [Timeseries](/docs/odsl/variable/timeseries)
+* [Curves](/docs/odsl/variable/curve)
+* [Lists/Arrays](/docs/odsl/variable/list)
 
 #### Syntax
 ```js

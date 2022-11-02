@@ -50,12 +50,20 @@ A timeseries has the following properties:
 
 |**Name**|**Description**|**Type**|
 |-|-|-|
+|name|The name of the timeseries|String|
+|description|A description of this timeseries|String|
+|source|The source of this timeseries|String|
+|currency|The ISO currency|String|
+|units|The ISO units|String|
+|tenor|The tenor of this timeseries|String|
+|timezone|The timezone, defaults to UTC|String|
 |start|The first index of this timeseries|Date|
 |calendar|The calendar that this timeseries uses|Calendar|
 |observations|The list of values without the indexes|List|
 |values|The list of dates and values|List(TimeValue)|
-|description|A description of this timeseries|Scalar(String)|
-|source|The source of this timeseries|Scalar(String)|
+|localValues|The list of dates and values with the dates in the timezone of the timeseries|List(TimeValue)|
+|valueType|The value type either TRACKED or BASIC|String|
+|observed|The observed setting of the timeseries used for aggregating, can be beginning, end, summed, averaged, high or low|String|
 
 A timeseries also supports adding dynamic properties, e.g.
 
@@ -77,8 +85,15 @@ A timeseries has the following methods:
 |**Name**|**Description**|**Return Type**|
 |-|-|-|
 |add(Date, value)|Adds a new value to the timeseries at the specified index|This timeseries|
+|add(Date, value, List)|Adds a new value to the timeseries at the specified index with a list of status values|This timeseries|
 |add(timeseries)|Adds the values of the supplied timeseries to this timeseries|This timeseries|
 |add(Date, List)|Adds a list of values to the timeseries starting at the specified index|This timeseries|
+|addValue(value)|Adds a new value to the end of this timeseries|This timeseries|
+|range(start,end)|Returns a subset of this timeseries for the specified date range|timeseries|
+|last(n)|Returns a subset of this timeseries for the last n observations|timeseries|
+|from(start)|Returns a subset of this timeseries from the specified start date|timeseries|
+|getLastNValues(n)|Returns the last n values of this timeseries|List(TimeValue)|
+|addCheck(check)|Adds a quality check to this timeseries|timeseries|
 
 ## Accessing Observations
 
