@@ -15,8 +15,8 @@ The resource for using extractors to extract content from HTML pages
 The Extractor REST API is a full CRUD API allowing you to search and filter extractors as well as update, version and delete them. 
 It is accessed through the following URL:
 
-```json
-https://api.opendatadsl.com/service/extractor
+```js
+https://api.opendatadsl.com/api/extractor
 ```
 
 The API consists of the following calls:

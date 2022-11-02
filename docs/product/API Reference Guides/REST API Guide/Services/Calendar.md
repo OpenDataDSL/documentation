@@ -12,8 +12,8 @@ The calendar resource contains all the public and private calendars
 ## Calendar REST API
 
 The Calendar REST API is a full CRUD API allowing you to search and filter [calendars](/docs/odsl/calendar/calendars) as well as update, version and delete them. It is accessed through the following URL:
-```json
-https://api.opendatadsl.com/service/calendar
+```js
+https://api.opendatadsl.com/api/calendar
 ```
 The API consists of the following calls:
 

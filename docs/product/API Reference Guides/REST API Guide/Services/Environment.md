@@ -12,8 +12,8 @@ Contains information about your data environments
 ## Environment REST API
 
 The Environment REST API is a full CRUD API allowing you to search and filter your data environments as well as create, update and delete them. It is accessed through the following URL:
-```json
-https://api.opendatadsl.com/service/environment
+```js
+https://api.opendatadsl.com/api/environment
 ```
 The API consists of the following calls:
 

@@ -12,8 +12,8 @@ The curve resource contains all your proprietary forward curve configurations
 ## Curve REST API
 
 The Curve REST API is a full CRUD API allowing you to search and filter curve configurations as well as update, version and delete them. It is accessed through the following URL:
-```json
-https://api.opendatadsl.com/service/curve
+```js
+https://api.opendatadsl.com/api/curve
 ```
 The API consists of the following calls:
 

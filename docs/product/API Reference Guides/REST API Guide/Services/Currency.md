@@ -12,8 +12,8 @@ A read-only service to find and retrieve public and private currencies
 ## Currency REST API
 
 The Currency REST API is a read-only API allowing you to search and filter currency pairs and accessed through the following URL:
-```json
-https://api.opendatadsl.com/service/currency
+```js
+https://api.opendatadsl.com/api/currency
 ```
 
 The API consists of the following calls:
@@ -45,35 +45,35 @@ The currency pair entity is an object of type #ForeignExchange and contains (at 
 #### Listing currency providers
 
 In order to get a list of the currency providers, you can use the _distinct query parameter on either the public or private currency pairs, e.g.
-```json
-https://api.opendatadsl.com/service/currency/v1/public?_distinct=source
+```js
+https://api.opendatadsl.com/api/currency/v1/public?_distinct=source
 ```
 
 #### Listing base currencies for a provider
 
 To get a list of base currencies for a provider, you can filter the source and use the _distinct query parameter on the base property, e.g.
-```json
-https://api.opendatadsl.com/service/currency/v1/public?source=ECB&_distinct=base
+```js
+https://api.opendatadsl.com/api/currency/v1/public?source=ECB&_distinct=base
 ```
 #### List currencies for a provider
 
 To get a list of currencies for a specific base currency from a provider.
-```json
-https://api.opendatadsl.com/service/currency/v1/public?source=ECB&base=EUR&_distinct=currency
+```js
+https://api.opendatadsl.com/api/currency/v1/public?source=ECB&base=EUR&_distinct=currency
 ```
 
 #### List currency pair ids for a provider
 
 To get a list of object ids for a provider.
-```json
-https://api.opendatadsl.com/service/currency/v1/public?source=ECB&base=EUR&_distinct=_id
+```js
+https://api.opendatadsl.com/api/currency/v1/public?source=ECB&base=EUR&_distinct=_id
 ```
 
 #### Get the spot currency pair data for a specific currency from a provider
 
 This query will get the TimeSeries data for EUR/GBP from ECB
-```json
-https://api.opendatadsl.com/service/currency/v1/public
+```js
+https://api.opendatadsl.com/api/currency/v1/public
   ?source=ECB
   &base=EUR
   &currency=GBP

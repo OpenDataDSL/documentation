@@ -13,8 +13,8 @@ The resource for monitoring all your processes
 ## Process Execution REST API
 
 The Process Execution REST API is a read-only API allowing you to search and filter the process execution logs and accessed through the following URL:
-```json
-https://api.opendatadsl.com/service/process-exec
+```js
+https://api.opendatadsl.com/api/process-exec
 ```
 The API consists of the following calls:
 
@@ -172,21 +172,21 @@ The process execution log contains the following information:
 Here are some examples of REST queries you can use with the process execution service.
 
 ### Get a list of executions for a specific process
-```json
-https://api.opendatadsl.com/service/process-exec/v1
+```js
+https://api.opendatadsl.com/api/process-exec/v1
   ?name=ECB_FX
 ```
 
 ### Get a list of executions for a process for a date range
-```json
-https://api.opendatadsl.com/service/process-exec/v1
+```js
+https://api.opendatadsl.com/api/process-exec/v1
   ?name=ECB_FX
   &start=range(2021-07-19,2021-07-23)
 ```
 
 ### Get a list of executions that failed for a date range
-```json
-https://api.opendatadsl.com/service/process-exec/v1
+```js
+https://api.opendatadsl.com/api/process-exec/v1
   ?status=failed
   &start=range(2021-07-19,2021-07-23)
 ```
@@ -194,8 +194,8 @@ https://api.opendatadsl.com/service/process-exec/v1
 ## Running a Process
 
 You can run a process by executing a POST method with a JSON body with a name property, e.g. to run the ECB_FX process:
-```json
-POST https://api.opendatadsl.com/service/process-exec/v1
+```js
+POST https://api.opendatadsl.com/api/process-exec/v1
 Authorization: Bearer {{token}}
 
 {
@@ -204,8 +204,8 @@ Authorization: Bearer {{token}}
 ```
 
 To pass parameters to the process, simply add these as properties under a ‘body’ property on the JSON in the body of the request, e.g.
-```JSON
-POST https://api.opendatadsl.com/service/process-exec/v1
+```JS
+POST https://api.opendatadsl.com/api/process-exec/v1
 Authorization: Bearer {{token}}
 
 {

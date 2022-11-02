@@ -13,8 +13,8 @@ Contains all the public and private expiry calendars
 ## Expiry Calendar REST API
 
 The Expiry Calendar REST API is a full CRUD API allowing you to search and filter [expiry calendars](/docs/odsl/variable/expirycalendar) as well as update, version and delete them. It is accessed through the following URL:
-```json
-https://api.opendatadsl.com/service/expiry
+```js
+https://api.opendatadsl.com/api/expiry
 ```
 The API consists of the following calls:
 

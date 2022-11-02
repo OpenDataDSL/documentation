@@ -12,8 +12,8 @@ The user resource is a service to view and record your user information
 ## User REST API
 
 The User REST API is a private API allowing you to read and update your user information and is accessed through the following URL:
-```json
-https://api.opendatadsl.com/service/user
+```js
+https://api.opendatadsl.com/api/user
 ```
 The API consists of the following calls:
 
@@ -28,13 +28,16 @@ The API consists of the following calls:
 ## Updating your user information
 
 To update your company information you need to make a post request to the tenant service, you can use the template below to do this:
-```json
-POST https://api.opendatadsl.com/service/user/v1
+```js
+POST https://api.opendatadsl.com/api/user/v1
 Authorization: Bearer {{token}}
 
 {
-  "firstname": "",
-  "lastname": "",
-  "nickname": ""
+  "properties": {
+    "firstname": "Colin",
+    "lastname": "Hartley",
+    "nickname": "Ziggy",
+    "newsletter": "true"
+  }
 }
 ```

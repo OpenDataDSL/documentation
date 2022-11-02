@@ -14,8 +14,8 @@ The metric resource contains all the usage metrics we gather for billing purpose
 The Metric REST API is a read-only API allowing you to search and filter metrics. 
 It is accessed through the following URL:
 
-```json
-https://api.opendatadsl.com/service/metric
+```js
+https://api.opendatadsl.com/api/metric
 ```
 
 The API consists of the following calls:

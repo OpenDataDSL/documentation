@@ -13,8 +13,8 @@ The audit resource allows you to keep track of changes that have been made to ot
 
 The Audit REST API is a read-only API allowing you to search and filter the audit entries and accessed through the following URL:
 
-```json
-https://api.opendatadsl.com/service/audit
+```js
+https://api.opendatadsl.com/api/audit
 ```
 
 The API consists of the following calls:
@@ -68,35 +68,35 @@ You can use simple filtering using any of the field names of an audit entry or c
 ### Examples of listing audit entries
 
 Finding all audit entries for a specific service, e.g. calendar
-```json
-https://api.opendatadsl.com/service/audit/v1/public?service=calendar
+```js
+https://api.opendatadsl.com/api/audit/v1/public?service=calendar
 ```
 
 Finding all entries for a specific resource of a service
-```json
-https://api.opendatadsl.com/service/audit/v1/public?service=calendar&id=TEST
+```js
+https://api.opendatadsl.com/api/audit/v1/public?service=calendar&id=TEST
 ```
 
 Searching for audit entities using a search string
-```json
-https://api.opendatadsl.com/service/audit/v1/public?_search=final version
+```js
+https://api.opendatadsl.com/api/audit/v1/public?_search=final version
 ```
 
 Search using a search string within a date range
-```json
-https://api.opendatadsl.com/service/audit/v1/public
+```js
+https://api.opendatadsl.com/api/audit/v1/public
   ?_search=final version
   &timestamp=range(2021-05-11,2021-05-12)
 ```
 
 Finding all audit entries from a certain date
-```json
-https://api.opendatadsl.com/service/audit/v1/private?timestamp=gte(2021-05-11)
+```js
+https://api.opendatadsl.com/api/audit/v1/private?timestamp=gte(2021-05-11)
 ```
 
 Finding audit records for a specific service and resource within a date range
-```json
-https://api.opendatadsl.com/service/audit/v1/public
+```js
+https://api.opendatadsl.com/api/audit/v1/public
   ?service=calendar
   &id=TEST
   &timestamp=range(2020-01-01,2020-12-31)

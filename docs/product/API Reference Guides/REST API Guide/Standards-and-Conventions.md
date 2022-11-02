@@ -11,7 +11,7 @@ A useful guide to the conventions used within the REST API.
 
 All the REST remote service resources are accessible through a single URL endpoint:
 
-https://api.opendatadsl.com/service
+https://api.opendatadsl.com/api
 
 ## Security
 
@@ -42,10 +42,10 @@ As an example:
 
 ```js
 // Initial request 
-https://api.opendatadsl.com/service/action/v1/public?_limit=100&_skip=0
+https://api.opendatadsl.com/api/action/v1/public?_limit=100&_skip=0
 
 // The request to get the next 100 records
-https://api.opendatadsl.com/service/action/v1/public?_limit=100&_skip=100
+https://api.opendatadsl.com/api/action/v1/public?_limit=100&_skip=100
 ```
 
 After making the request, you should check the response headers for **x-total-count**, this tells you the total number of records for the request.

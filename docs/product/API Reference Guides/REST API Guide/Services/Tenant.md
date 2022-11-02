@@ -12,8 +12,8 @@ The tenant resource is a service to view and record your company information and
 ## Tenant REST API
 
 The Tenant REST API is a private API allowing you to read your tenant information and update your company information and is accessed through the following URL:
-```json
-https://api.opendatadsl.com/service/tenant
+```js
+https://api.opendatadsl.com/api/tenant
 ```
 The API consists of the following calls:
 
@@ -26,18 +26,20 @@ The API consists of the following calls:
 ## Updating your company information
 
 To update your company information you need to make a post request to the tenant service, you can use the template below to do this:
-```json
-POST https://api.opendatadsl.com/service/tenant/v1
+```js
+POST https://api.opendatadsl.com/api/tenant/v1
 Authorization: Bearer {{token}}
 
 {
-  "name": "",
-  "address1": "",
-  "address2": "",
-  "city": "",
-  "postcode": "",
-  "email": "",
-  "phone": "",
-  "accountContact": ""
+  "properties": {
+    "name": "",
+    "address1": "",
+    "address2": "",
+    "city": "",
+    "postcode": "",
+    "email": "",
+    "phone": "",
+    "accountContact": ""
+  }
 }
 ```

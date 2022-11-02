@@ -12,8 +12,8 @@ The data resource contains all the complex data types like TimeSeries and Curve
 ## Data REST API
 
 The Data REST API is a read-only API allowing you to search and filter the complex data types and is accessed through the following URL:
-```json
-https://api.opendatadsl.com/service/data
+```js
+https://api.opendatadsl.com/api/data
 ```
 
 :::note
@@ -155,75 +155,75 @@ The standard properties on a Contract are:
 
 ```js
 ### Get build info
-GET https://api.opendatadsl.com/service/data
+GET https://api.opendatadsl.com/api/data
 Authorization: Bearer {{token}}
 
 ### Get all public data types
-GET https://api.opendatadsl.com/service/data/v1/public?_distinct=_objtype
+GET https://api.opendatadsl.com/api/data/v1/public?_distinct=_objtype
 Authorization: Bearer {{token}}
 
 ### Get a public data
-GET https://api.opendatadsl.com/service/data/v1/public/%23ECB_FX.EURGBP:SPOT
+GET https://api.opendatadsl.com/api/data/v1/public/%23ECB_FX.EURGBP:SPOT
 Authorization: Bearer {{token}}
 
 ### Get a time-series range using last(n)
-GET https://api.opendatadsl.com/service/data/v1/public/%23ECB_FX.EURGBP:SPOT?_range=last(3)
+GET https://api.opendatadsl.com/api/data/v1/public/%23ECB_FX.EURGBP:SPOT?_range=last(3)
 Authorization: Bearer {{token}}
 
 ### Get a time-series range using from(d)
-GET https://api.opendatadsl.com/service/data/v1/public/%23ECB_FX.EURGBP:SPOT?_range=from(2021-03-08)
+GET https://api.opendatadsl.com/api/data/v1/public/%23ECB_FX.EURGBP:SPOT?_range=from(2021-03-08)
 Authorization: Bearer {{token}}
 
 ### Get a time-series range using between(d,d)
-GET https://api.opendatadsl.com/service/data/v1/public/%23ECB_FX.EURGBP:SPOT?_range=between(2021-02-26,2021-03-01)
+GET https://api.opendatadsl.com/api/data/v1/public/%23ECB_FX.EURGBP:SPOT?_range=between(2021-02-26,2021-03-01)
 Authorization: Bearer {{token}}
 
 ### Get a time-series range for a list of data
-GET https://api.opendatadsl.com/service/data/v1/public
+GET https://api.opendatadsl.com/api/data/v1/public
     ?_filter={"_objtype":"%23ForeignExchange"}
     &_range=last(1)
 Authorization: Bearer {{token}}
 
 ### Get a time-series range for a list of data using object filtering
-GET https://api.opendatadsl.com/service/object/v1/public
+GET https://api.opendatadsl.com/api/object/v1/public
     ?_filter={"_type":"%23ForeignExchange"}
     &_profile=SPOT
     &_range=last(1)
 Authorization: Bearer {{token}}
 
 ### Get a time-series range using from(n) with a rule date
-GET https://api.opendatadsl.com/service/data/v1/public/%23ECB_FX.EURGBP:SPOT?_range=from(t-D1h0m0s0)
+GET https://api.opendatadsl.com/api/data/v1/public/%23ECB_FX.EURGBP:SPOT?_range=from(t-D1h0m0s0)
 Authorization: Bearer {{token}}
 
 ### Get a curve
-GET https://api.opendatadsl.com/service/data/v1/private/TUTORIAL_ODSL_CURVE:PREMIUM:2021-07-06
+GET https://api.opendatadsl.com/api/data/v1/private/TUTORIAL_ODSL_CURVE:PREMIUM:2021-07-06
 Authorization: Bearer {{token}}
 
 ### Get ALL
-GET https://api.opendatadsl.com/service/data/v1/public
+GET https://api.opendatadsl.com/api/data/v1/public
     ?_project={"_type":1}
     &_sort={"_id":1}
     &_limit=-1
 Authorization: Bearer {{token}}
 
 ### Get data for multiple ids both private and public
-GET https://api.opendatadsl.com/service/data/v1/all
+GET https://api.opendatadsl.com/api/data/v1/all
     ?_id=%23ECB_FX.EURGBP:SPOT
     &_id=tsobj:SPOT
 Authorization: Bearer {{token}}
 
 ### Get data for multiple ids both private and public
-GET https://api.opendatadsl.com/service/data/v1/all
+GET https://api.opendatadsl.com/api/data/v1/all
     ?_id=%23DCE.AG.CN.A.NO1_SOYBEAN.FUT:OI:2021-11-30
     &_id=TUTORIAL_ODSL_CURVE:PREMIUM:2021-07-06
 Authorization: Bearer {{token}}
 
 ### Get Curve TimeSeries
-GET https://api.opendatadsl.com/service/data/v1/public/%23DCE.AG.CN.A.NO1_SOYBEAN.FUT:OI?tenor=M02
+GET https://api.opendatadsl.com/api/data/v1/public/%23DCE.AG.CN.A.NO1_SOYBEAN.FUT:OI?tenor=M02
 Authorization: Bearer {{token}}
 
 ### List curve tenors
-GET https://api.opendatadsl.com/service/data/v1/public/%23DCE.AG.CN.A.NO1_SOYBEAN.FUT:SETTLE?listTenors
+GET https://api.opendatadsl.com/api/data/v1/public/%23DCE.AG.CN.A.NO1_SOYBEAN.FUT:SETTLE?listTenors
 Authorization: Bearer {{token}}
 ```
 

@@ -12,8 +12,8 @@ The object resource contains all the reference and meta-data for all the public 
 ## Object REST API
 
 The Object REST API is a full CRUD API allowing you to search and filter objects as well as update, version and delete them. It is accessed through the following URL:
-```json
-https://api.opendatadsl.com/service/object
+```js
+https://api.opendatadsl.com/api/object
 ```
 The API consists of the following calls:
 
@@ -43,8 +43,8 @@ You can use the _search query parameter to find objects, it searches in the foll
 
 Example search request:
 
-```json
-https://api.opendatadsl.com/service/object/v1/public?_search=europe
+```js
+https://api.opendatadsl.com/api/object/v1/public?_search=europe
 ```
 
 The following fields are returned from the search command:
@@ -57,8 +57,8 @@ The following fields are returned from the search command:
     
 
 You can return additional fields in the search query by passing in a _project query parameter, e.g.
-```json
-https://api.opendatadsl.com/service/object/v1/public?_search=europe&_project=location,category
+```js
+https://api.opendatadsl.com/api/object/v1/public?_search=europe&_project=location,category
 ```
 
 ### Supported query parameters
@@ -85,8 +85,8 @@ You can use the following query parameters when searching for objects:
 ### Searching autocomplete
 
 The object service also includes an autocomplete helper which provides a list of phrases which you may be typing into the search box, to use this in the API, use the _searchinfo query parameter, e.g.
-```json
-https://api.opendatadsl.com/service/object/v1/public?_searchinfo=europe
+```js
+https://api.opendatadsl.com/api/object/v1/public?_searchinfo=europe
 ```
 This returns an array of JSON objects containing the _id and name field of objects you may be looking for like the below:
 ```json
@@ -115,10 +115,10 @@ You can filter the list of objects returned using either a simple or complex fil
 
 Simple filtering allows you to provide names of fields as query parameters and a value that you want to filter on, see below for examples:
 
-```json
-https://api.opendatadsl.com/service/object/v1/public?location=Europe
+```js
+https://api.opendatadsl.com/api/object/v1/public?location=Europe
 
-https://api.opendatadsl.com/service/object/v1/public?currency=EUR&class=SPOT
+https://api.opendatadsl.com/api/object/v1/public?currency=EUR&class=SPOT
 ```
 
 :::note
@@ -128,8 +128,8 @@ Simple filters are case-sensitive
 #### Filtering by object type
 
 You can also filter using the type of an object using the _type query parameter, e.g.
-```json
-https://api.opendatadsl.com/service/object/v1/public?_type=%23Company
+```js
+https://api.opendatadsl.com/api/object/v1/public?_type=%23Company
 ```
 
 :::note
@@ -137,8 +137,8 @@ https://api.opendatadsl.com/service/object/v1/public?_type=%23Company
 :::
 
 You can also use a #type (%23type) query parameter to specify the type and all subtypes, e.g.
-```json
-https://api.opendatadsl.com/service/object/v1/public?%23type=%23MarketData
+```js
+https://api.opendatadsl.com/api/object/v1/public?%23type=%23MarketData
 ```
 
 ### Simple filtering with functions
@@ -163,8 +163,8 @@ You can supply a complex filter as a URL encoded JSON object
 ## Getting An Object
 
 You can retrieve a single object using a HTTP GET request. The following example retrieves an object with _id TEST from your private repository:
-```json
-https://api.opendatadsl.com/service/object/v1/private/TEST
+```js
+https://api.opendatadsl.com/api/object/v1/private/TEST
 ```
 
 ### Defining the fields to return
@@ -172,8 +172,8 @@ https://api.opendatadsl.com/service/object/v1/private/TEST
 By default, all fields in the object are returned, but you can specify which fields you want/don’t want using the _project query parameter. The _project query parameter can be used simple as a list of fields you want (_id is always included too) or can be sent as JSON object declaring the fields to want or declaring the fields you don’t want.
 
 #### Simple project form
-```json
-https://api.opendatadsl.com/service/object/v1/public/%23BNM_FX_AEDMYR_1200?_project=base,currency
+```js
+https://api.opendatadsl.com/api/object/v1/public/%23BNM_FX_AEDMYR_1200?_project=base,currency
 ```
 
 Returns:
@@ -202,16 +202,16 @@ If the object has DATA (TimeSeries, Curves etc.) these are normally retrieved us
 
 The following example retrieves the SPOT timeseries:
 
-```json
-https://api.opendatadsl.com/service/object/v1/public/%23BNM_FX_AEDMYR_1200?_profile=SPOT
+```js
+https://api.opendatadsl.com/api/object/v1/public/%23BNM_FX_AEDMYR_1200?_profile=SPOT
 ```
 
 #### Getting data for multiple objects
 
 You can also supply the _profile parameter when using filter parameters in order to retrieve an array of DATA objects.
 
-```json
-https://api.opendatadsl.com/service/object/v1/public
+```js
+https://api.opendatadsl.com/api/object/v1/public
   ?_type=%23ForeignExchange
   &dataset=BNM_FX
   &_profile=SPOT
@@ -223,8 +223,8 @@ You can retrieve multiple objects at once if you know their _id using the ‘all
 
 Example getting multiple objects from both private and public:
 
-```json
-https://api.opendatadsl.com/service/object/v1/all
+```js
+https://api.opendatadsl.com/api/object/v1/all
   ?_id=%23AHDB
   &_id=%23AHDB_DR_PR
   &_id=ABC
@@ -232,8 +232,8 @@ https://api.opendatadsl.com/service/object/v1/all
 
 You can combine this also with the _project query parameter in order to specify which fields you want to return, e.g.
 
-```json
-https://api.opendatadsl.com/service/object/v1/all
+```js
+https://api.opendatadsl.com/api/object/v1/all
   ?_id=%23AHDB
   &_id=%23AHDB_DR_PR
   &_id=ABC
@@ -250,8 +250,8 @@ To create or update an object, you need to make a HTTP POST request to the objec
 
 Below is an example of updating a #SETTING object to your private repository:
 
-```json
-POST https://api.opendatadsl.com/service/object/v1
+```js
+POST https://api.opendatadsl.com/api/object/v1
 
 {
   "_id": "TEST",
@@ -271,8 +271,8 @@ All updates to objects are performed in a transaction, therefore if one fails, n
 
 Below is an example of updating multiple settings in one request:
 
-```json
-POST https://api.opendatadsl.com/service/object/v1
+```js
+POST https://api.opendatadsl.com/api/object/v1
 
 [
   {
@@ -298,8 +298,8 @@ The following examples show this in action:
 
 #### Create an object
 
-```json
-POST https://api.opendatadsl.com/service/object/v1
+```js
+POST https://api.opendatadsl.com/api/object/v1
 
 {
   "_id": "TESTMERGE",
@@ -311,8 +311,8 @@ POST https://api.opendatadsl.com/service/object/v1
 
 #### Retrieve the object
 
-```json
-GET https://api.opendatadsl.com/service/object/v1/private/TESTMERGE
+```js
+GET https://api.opendatadsl.com/api/object/v1/private/TESTMERGE
 ```
 #### The object
 
@@ -332,8 +332,8 @@ GET https://api.opendatadsl.com/service/object/v1/private/TESTMERGE
 
 #### Update (merge) the object
 
-```json
-POST https://api.opendatadsl.com/service/object/v1
+```js
+POST https://api.opendatadsl.com/api/object/v1
 
 {
   "_id": "TESTMERGE",
@@ -344,8 +344,8 @@ POST https://api.opendatadsl.com/service/object/v1
 
 #### Retrieve the object again
 
-```json
-GET https://api.opendatadsl.com/service/v1/private/TESTMERGE
+```js
+GET https://api.opendatadsl.com/api/v1/private/TESTMERGE
 ```
 
 #### The Object
@@ -368,8 +368,8 @@ Notice how the name and value remain in the object, the description has been add
 
 #### Replace the object
 
-```json
-POST https://api.opendatadsl.com/service/object/v1?_replace=true
+```js
+POST https://api.opendatadsl.com/api/object/v1?_replace=true
 
 {
   "_id": "TESTMERGE",
@@ -380,8 +380,8 @@ POST https://api.opendatadsl.com/service/object/v1?_replace=true
 
 #### Retrieve the object again
 
-```json
-GET https://api.opendatadsl.com/service/object/v1/private/TESTMERGE
+```js
+GET https://api.opendatadsl.com/api/object/v1/private/TESTMERGE
 ```
 
 #### The Object
@@ -409,14 +409,14 @@ If the object type you updating is a versioned type and the updated object is di
 
 You can tag a version of an object with a name such as PROD, FINAL etc. by using the HTTP PUT command as follows:
 
-```json
-PUT https://api.opendatadsl.com/service/object/v1/private/TESTMERGE/3/FINAL
+```js
+PUT https://api.opendatadsl.com/api/object/v1/private/TESTMERGE/3/FINAL
 ```
 
 You can now retrieve that version using the supplied tag, e.g.
 
-```json
-https://api.opendatadsl.com/service/object/v1/private/TESTMERGE/FINAL
+```js
+https://api.opendatadsl.com/api/object/v1/private/TESTMERGE/FINAL
 ```
 
 If you PUT a different version to the same tag name, then this version now has that tag and the tag is removed from the other version.
@@ -429,18 +429,18 @@ To delete an object or roll back to a previous version on an object, you need to
 
 Using DELETE without specifying a version, removes the latest version of the object, effectively performing a rollback to previous version on the object. If this is the only version, the object will be completely removed.
 
-```json
-DELETE https://api.opendatadsl.com/service/object/v1/private/TESTMERGE
+```js
+DELETE https://api.opendatadsl.com/api/object/v1/private/TESTMERGE
 ```
 
 Using DELETE specifying a version number or tagname deletes the specific version of the object. If this is the latest version of the object, the previous version of the object now becomes the current version.
 
-```json
-DELETE https://api.opendatadsl.com/service/object/v1/private/TESTMERGE/1
+```js
+DELETE https://api.opendatadsl.com/api/object/v1/private/TESTMERGE/1
 ```
 
 Using DELETE with * as the version, completely removes the object including all other versions.
 
-```json
-DELETE https://api.opendatadsl.com/service/object/v1/private/TESTMERGE/*
+```js
+DELETE https://api.opendatadsl.com/api/object/v1/private/TESTMERGE/*
 ```
