@@ -1,6 +1,6 @@
 ---
 title: Release Notes
-sidebar_position: 7
+sidebar_position: 10
 ---
 
 Release Notes
@@ -8,7 +8,64 @@ Release Notes
 
 Check here for details of our releases (both historic and upcoming)
 
-## Upcoming Release in July 2022
+## Upcoming Release in November 2022
+
+#### User Tasks
+User tasks are manual tasks assigned to users either by other users or by processes such as data quality.
+Tasks can be:
+* Emailed
+* Pushed to JIRA
+
+#### More Statistics Functions
+We will be adding for statistical functions for Timeseries and Curves.
+
+## Release History
+
+<details>
+<summary>October 2022</summary>
+
+#### More Statistics Functions
+We have added a few more functions that can be used in your ODSL scripts:
+* csum - Cumulative Sum
+* cmax - Cumulative Maximum
+* cmin - Cumulative Minimum
+* cave - Cumulative Average
+
+#### Calendar improvements
+Improvements to the Intraday calendars:
+* Add timezone
+* Add a flag to indicate that it is an intraday calendar
+
+#### Bulk updates and deletes
+Add support for performing bulk updates and deletes
+
+</details>
+
+<details>
+<summary>September 2022</summary>
+
+#### Added community version
+Added FREE community version of the ODSL VSCode editor.
+
+#### Quality Checks on Objects
+Added support for defining constraints (checks) on an object type, and also defaults for null values 
+
+#### Aggregation Framework in the ODSL Language
+Added language support for defining aggregations and aggregation stages.
+
+</details>
+
+<details>
+<summary>August 2022</summary>
+
+#### Custom MongoDB Collections
+We have added support for clients to connect to your own MongoDB clusters and use the tools directly on the collections holding your own data.
+
+
+</details>
+
+<details>
+<summary>July 2022</summary>
 
 #### Data Packages
 Data packages are pre-defined processes that users can deploy to their own environment to load data from providers into their private database.
@@ -21,7 +78,7 @@ Example events are:
 * A trade made with a broker, exchange etc.
 * A planned or unplanned outage (REMIT Urgent Market Message)
 
-## Release History
+</details>
 
 <details>
 <summary>June 2022</summary>
