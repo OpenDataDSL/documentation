@@ -68,7 +68,7 @@ save ${task: q1}
 </TabItem>
 <TabItem value="rest" label="REST API">
 
-```js
+```json
 POST https://api.opendatadsl.com/api/task/v1
 Authorization: Bearer {{token}}
 
@@ -106,7 +106,7 @@ Authorization: Bearer {{token}}
 </TabItem>
 </Tabs>
 
-## Getting a Specific Task
+## Reading a Specific Task
 All tasks are assigned a unique id, when you list the tasks you can see that id and read that specific task using the id.
 
 Example task:
@@ -158,7 +158,7 @@ One your work on a task is complete, you can mark it as complete using the follo
 // Get a task using the unique id
 task = ${task:"6368dacce8f3186ff70e02b3"}
 
-// Call the finish method to mark the task complete 
+// Set the complete flag to true 
 task.complete = true
 save ${task: task}
 ```
@@ -166,7 +166,7 @@ save ${task: task}
 </TabItem>
 <TabItem value="rest" label="REST API">
 
-```js
+```json
 POST https://api.opendatadsl.com/api/task/v1
 Authorization: Bearer {{token}}
 
