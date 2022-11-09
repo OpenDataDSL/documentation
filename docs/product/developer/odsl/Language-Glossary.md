@@ -514,7 +514,7 @@ end
 Used to persist a variable to the [OpenDataDSL services](/docs/odsl/service/services)
 
 ```js
-save ${object:test} "optional save reason"
+save test log "optional save reason"
 ```
 ### second(s)
 
@@ -547,6 +547,9 @@ next
 ### tag
 
 Used to add a named tag on a version of an element - see [Data Versioning](/docs/odsl/dm/versioning)
+
+### task
+A [Task](Task) is a physical task assigned to a user from either a user or the system
 
 ### then
 

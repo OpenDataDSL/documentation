@@ -159,4 +159,5 @@ A batch variable is a custom [list](List) variable that contains variables and s
 ### [Script](Script)
 A script variable is a wrapper for an ODSL script. It is used by the script service and can also run the script
     
-
+### [Task](Task)
+A task is a physical task assigned to a user from either a user or the system
