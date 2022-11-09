@@ -548,9 +548,6 @@ next
 
 Used to add a named tag on a version of an element - see [Data Versioning](/docs/odsl/dm/versioning)
 
-### task
-A [Task](Task) is a physical task assigned to a user from either a user or the system
-
 ### then
 
 Used as a keyword in the [phase](#phase) command to reschedule a [workflow](#workflow) for a period of time later - see [Workflows and Processes](/docs/odsl/dm/workflow)
