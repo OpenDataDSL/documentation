@@ -205,3 +205,21 @@ next
 ```
 
 Comments are ignored when the program is run
+
+## Regions
+You can create regions within your code that can be run and debugged independently.
+
+A region looks like this:
+```js
+//#region My region
+print "Hello World"
+//#endregion
+```
+
+You can easily create a region by typing ```region``` and select the offered snippet:
+
+![](region.png)
+
+To debug a region, right-click anywhere in the region and select ```Debug Region``` from the context menu.
+
+

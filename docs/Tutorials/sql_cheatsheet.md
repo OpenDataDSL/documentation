@@ -20,7 +20,7 @@ select * from object where product="Power" and country="UK"
 The equivalent command in ODSL is `find`, e.g.
 
 ```js
-results = find ${object} where product="Power" and country="UK"
+find ${object} where product="Power" and country="UK"
 ```
 
 ### Getting a specific object (row)
@@ -46,7 +46,7 @@ select distinct country from object
 ODSL
 
 ```js
-countries = find unique country from ${object}
+find unique country from ${object}
 ```
 
 ## Updating Data
@@ -68,7 +68,7 @@ In ODSL, this is all taken care of for you using the `save` command, e.g.
 sample = Object()
 sample.name = "Hello World"
 sample.country = "UK"    
-save ${object:sample}
+save sample
 ```
 
 ## Deleting Data

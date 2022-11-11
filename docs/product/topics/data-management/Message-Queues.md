@@ -42,14 +42,10 @@ The currently supported internal handlers are shown in the table below:
 To create or update a new queue in ODSL code, use the following syntax:
 
 ```js
-// Create a new queue
-myqueue = object as #QUEUE
-    queue = "myqueue"
-    handler = "loader"
-    timeout = "3m"
-    retention = "4d"
-end
-save ${queue:myqueue}
+q = Queue("myqueue")
+q.description = "My Queue"
+print q
+save q
 ```
 
 ### Queue properties

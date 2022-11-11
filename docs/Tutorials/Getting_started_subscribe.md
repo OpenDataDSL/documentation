@@ -59,10 +59,8 @@ In this step we will create a queue that will be used with the subscription that
 <TabItem value="odsl" label="OpenDataDSL">
 
 ```js
-tutorial = object as #QUEUE
-     queue = "tutorial"
-end
-save ${queue:tutorial}
+tutorial = Queue("tutorial")
+save tutorial
 ```
 
 </TabItem>
@@ -105,28 +103,14 @@ We now need to create a subscription that will feed some FX TimeSeries into our 
 
 ```js
 // Create the subscription
-sub_ecb_fx = object as #Subscription
-    name = "sub_ecb_fx"
-    enabled = true
-    objects[0] = object as #SubscriptionObject
-        key = "GBP"
-        id = "#ECB_FX.EURGBP:SPOT"
-    end
-    objects[1] = object as #SubscriptionObject
-        key = "JPY"
-        id = "#ECB_FX.EURJPY:SPOT"
-    end
-    objects[2] = object as #SubscriptionObject
-        key = "USD"
-        id = "#ECB_FX.EURUSD:SPOT"
-    end
-    targets[0] = object as #SubscriptionTarget
-        name = "QueueTarget"
-        queue = "tutorial"
-    end
-end
-
-save ${subscription:sub_ecb_fx}
+sub = Subscription()
+sub.name = "sub_ecb_fx"
+sub.addQueueTarget("tutorial")
+sub.addItem("#ECB_FX.EURGBP:SPOT", "GBP")
+sub.addItem("#ECB_FX.EURJPY:SPOT", "JPY")
+sub.addItem("#ECB_FX.EURUSD:SPOT", "USD")
+sub.addProcessTarget("MYPROCESS")
+save sub
 ```
 
 </TabItem>
