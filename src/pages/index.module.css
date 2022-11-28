@@ -1,0 +1,277 @@
+/**
+ * CSS files with the .module.css suffix will be treated as CSS modules
+ * and scoped locally.
+ */
+
+.heroBanner {
+  padding: 4rem 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.header {
+    background-image: url('/img/E167.jpg');
+    padding: 10px;
+}
+
+@media screen and (max-width: 966px) {
+  .heroBanner {
+    padding: 2rem;
+  }
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.signupbutton {
+  font-weight: 600;
+  color: #fff;
+  background-color: #7952b3;
+  border-color: #7952b3;
+  margin-right: 10px;
+  padding-top: 1px;
+  height: 30px;
+  width: 120px;
+}
+.infobutton {
+  font-weight: 600;
+  color: #fff;
+  background-color: transparent;
+  border-color: #7952b3;
+  padding-top: 1px;
+  height: 30px;
+  width: 120px;
+}
+.signupbutton:hover {
+    color: black;
+  background-color: white;
+  border-color: #7952b3;
+}
+.infobutton:hover {
+    color: black;
+  background-color: white;
+  border-color: #7952b3;
+}
+
+.headBanner {
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(170deg, #99c5f1 50%, #fff 50%);
+}
+
+.title {
+  font-size: 2.6rem;
+  font-weight: 500;
+}
+
+.tagline {
+  font-size: 1.4rem;
+  line-height: 120%;
+}
+
+.smallsectionskip {
+  background-color: #222;
+  padding: 0.2rem 0;
+}
+.sectionskip {
+  padding: 3rem 0;
+}
+
+.sectionBanner {
+  font-size: 3rem;
+  padding: 1rem 3rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.stayintouch {
+  padding: 1rem 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  background-image: url("/img/home/stayintouch.png");
+}
+
+.section {
+  padding: 4rem 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  background: #99c5f1;
+}
+
+.productBanner {
+  font-size: 48px;
+  font-weight: 600;
+  padding: 1rem 1rem 2rem 1rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.products {
+  padding: 1rem 0;
+  text-align: left;
+  position: relative;
+  overflow: hidden;
+  background: #ebedf0;
+}
+
+h2 {
+  font-size: 36px;
+  font-weight: 600;
+}
+
+@media only screen and (min-width: 800px) {
+    .product_screenshot {
+        visibility: visible;
+        cursor: zoom-in;
+        transition-duration: 0.5s;
+        transition-timing-function: linear;
+        transition-delay: 0.1s;
+    }
+    .product_screenshot:hover {
+        position: sticky;
+        max-width: 180%;
+        width: 180%;
+        left: -50%;
+        top: -50%;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .product_screenshot {
+        visibility: hidden;
+        height: 0px;
+    }
+}
+
+.datablock {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+}
+
+.padded {
+  padding: 1rem 1rem;
+}
+
+.logo {
+  box-sizing: border-box;
+}
+
+.datavideo {
+    margin: 0px;
+    width: 100%;
+    height: 1070.44px;
+    max-width: none;
+    box-sizing: border-box;
+    object-fit: fill;
+}
+
+.videoplayer {
+    width: 100%;
+    height: 1070.44px;
+    min-width: 0px;
+    margin: 0px 0px 0px 0px;
+    position: absolute;
+    max-width: none;
+}
+
+.videobg {
+    visibility: visible;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    display: block;
+    pointer-events: none;
+    transition: display .3s;
+}
+
+.mediaelement {
+    left: 0;
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 0;
+}
+
+.videocontainer {
+    overflow: hidden;
+    position: relative;
+    padding-top: 5vh;
+    padding-bottom: 5vh;
+    background-color: #000000!important;
+}
+
+@media only screen and (min-width: 800px) {
+    .h_text_block {
+        padding-left: 200px;
+        display: block;
+        background: transparent;
+    }
+    .h_text_major {
+        color: #444444;
+        font-size: 400%;
+        font-weight: bolder;
+    }
+    .h_text_minor {
+        color: #444444;
+        font-size: 200%;
+        font-weight: bolder;
+    }
+}
+@media only screen and (max-width: 800px) {
+    .h_text_block {
+        padding-left: 10px;
+        display: block;
+        background: transparent;
+    }
+    .h_text_major {
+        color: #444444;
+        font-size: 200%;
+        font-weight: bolder;
+    }
+    .h_text_minor {
+        color: #444444;
+        font-size: 100%;
+    }
+}
+
+.h_text_highlight {
+    color: #199fda;
+}
+.h_text_inner {
+    position:relative
+}
+
+.mc_div {
+  margin: auto;
+  margin-top: 15px;
+  width: 30%;
+  border: 1px solid green;
+  padding: 10px;
+}
+.mc_hidden {
+    position: absolute;
+    left: -5000px;
+}
+
+.hidden {
+    height: 0px;
+}
+
+.chat {
+    width:100%;
+    height:100%;
+}

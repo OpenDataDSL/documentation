@@ -9,6 +9,7 @@ tags:
 ---
 import StartBuilding from '/src/components/StartBuilding.js';
 import {Discovery, InDepth} from '/src/components/Discovery.js';
+import DiscoveryPages from '/docs/discovery/_discovery.md';
 
 <Discovery title="Getting Started" text="This discovery guide is a brief introduction to the features and ecosystem of OpenDataDSL." />
 
@@ -26,13 +27,4 @@ OpenDataDSL is comprised of the following:
 * A cluster of MongoDB Atlas databases
 * User interface tools such as the Portal, Excel Add-in and VSCode Extension
 
-<InDepth href="/docs/product/intro" />
-
-
-## Why Choose OpenDataDSL
-Here are the top 5 reasons to choose OpenDataDSL
-* Lower cost to market than the competition
-* Smart Curves and Timeseries
-* Secure - using your own IDP
-* High performance and scalability
-* DSL which simplifies data management
+<DiscoveryPages />
