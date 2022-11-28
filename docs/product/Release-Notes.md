@@ -8,8 +8,16 @@ Release Notes
 
 Check here for details of our releases (both historic and upcoming)
 
-## Upcoming Release in November 2022
+## Upcoming Release in December 2022
 
+#### Smart Data on Types
+We add the ability to define smart timeseries and curves on a type.
+All objects that directly implement the type will have those smart data objects dynamically added.
+
+## Release History
+
+<details>
+<summary>October 2022</summary>
 #### User Tasks
 User tasks are manual tasks assigned to users either by other users or by processes such as data quality.
 Tasks can be:
@@ -18,8 +26,7 @@ Tasks can be:
 
 #### More Statistics Functions
 We will be adding for statistical functions for Timeseries and Curves.
-
-## Release History
+</details>
 
 <details>
 <summary>October 2022</summary>
