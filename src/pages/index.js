@@ -143,7 +143,7 @@ function Products() {
                             <a href="/docs/tutorials/gettingstartedodsl"><h2>Easy 4GL Language</h2></a>
                         </div>
                         <div>
-                            <h3>Monitor your processes in real-time</h3>
+                            <h3>Powerful scripting language</h3>
                         </div>
                         <div>
                             <p>Let your creativity shine with our easy yet powerful scripting language. Use our VS Code extension to make coding easy with intellsense, syntax highlighting, code snippets, breakpoints and debugging</p>
