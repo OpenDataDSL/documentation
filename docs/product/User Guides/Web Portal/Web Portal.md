@@ -66,8 +66,12 @@ The auditing dashboard allows you to drill-down into specific events that have h
 ## Views
 OpenDataDSL views focus on various aspects of information in both the public and private spaces
 
-### Curves View
-The curves view allows you to manage and build your own forward curves.
+### Smart Data View
+The smart data view allows you to create, edit and view all your smart timeseries and curves.
+
+### Geo Data
+The geo data view gives you access to the stored geometry in your objects/documents.
+You can filter your data to zoom-in on the locations within the map
 
 ### Data View
 The data view gives you direct access to all the TimeSeries and Curves in OpenDataDSL.
@@ -77,11 +81,26 @@ You can filter and find, chart and export data.
 The objects view shows all the public and private objects in OpenDataDSL allowing you to filter, find and navigate through the object database.
 Clicking on data assets in an object allows you to inspect and chart that data.
 
-## Tools
-OpenDataDSL tools allow you to configure your account and settings
+### Events View
+The events view gives you access to all the stored events
 
-### Account Management Tool
+## Manage
+
+### Account Management
 The account management tool allows you to update your own personal details, your organization details and settings, billing information and support.
+
+### Data Packages
+Data packages are pre-configured ETL processes for data sets you may want to load into your private repository.
+These data sets generally require you have have an account with the vendor or are not freely distributable.
+
+### Subscriptions
+You can manage your subscribed data here along with the targets of these subscriptions
+
+### Queues
+You can view or manage you message queues here
+
+## Tools
+OpenDataDSL tools allow you to configure your settings
 
 ### Settings Tool
 The settings tool allows you to personalise the portal to suit your own preferences.

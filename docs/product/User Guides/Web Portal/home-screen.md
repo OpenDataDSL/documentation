@@ -9,7 +9,7 @@ tags:
 ---
 The home screen of the portal contains an up-to-date summary of all your vital statistics.
 
-Currently it contains the following summary charts:
+Currently it contains the following widgets:
 * The status of your process executions over the past 24 hours
 * A count of the total public Curves and TimeSeries
 * A count of the total public objects by type
@@ -17,5 +17,7 @@ Currently it contains the following summary charts:
 *An example of the summary information*
 
 ![](/img/portal/home_screen.png)
+
+Clicking on the menu button on the top right of the widget gives you additional options for the widget
  
 Clicking on the charts will take you to that specific section of the portal.
