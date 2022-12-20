@@ -19,6 +19,13 @@ It can be used with both the Desktop version and Web version of Excel.
 * Create, read and update Forward Curves
 * Create, read and update Events
 
+## Products supported
+
+* Excel 2019 or later on Mac
+* Excel on Mac (Microsoft 365)
+* Excel on Windows (Microsoft 365)
+* Excel on the web
+
 ## Installation
 
 To add the OpenDataDSL Add-in to your Office 365 Excel:
@@ -90,3 +97,6 @@ Objects in OpenDataDSL are the top level structures that contain information and
 
 <InDepth href="/docs/user/excel/events" />
 
+### Excel Functions
+
+<InDepth href="/docs/user/excel/functions" />

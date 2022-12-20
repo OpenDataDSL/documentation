@@ -147,7 +147,7 @@ The date/time of the observation
 The tenor of the curve
 
 ##### Event
-
+The name of the property on the event
 
 #### options
 This is a key=value pair list of options separated by semi-colons(;).
