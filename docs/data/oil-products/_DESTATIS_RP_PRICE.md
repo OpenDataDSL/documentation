@@ -5,7 +5,7 @@ The monthly updates of DESTATIS should be collected at the beginning for every m
 
 [Sample file for monthly updates of Destatis Producer Prices of Light Heating Oil,Motor Gasoline and Diesel Fuel](pathname:///file-samples/erzeugerpreise-preisreihe-heizoel-xlsx-5612402.xlsx)
 
-## Type
+### Type
 
 The data is stored as #Oil
 
