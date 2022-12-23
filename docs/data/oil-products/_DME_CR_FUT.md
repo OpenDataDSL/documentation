@@ -5,7 +5,7 @@ The DME OQD updates should be available between 23:00 BST/GMT, Monday to Friday 
 
 [Sample file for end of day updates of Oman Crude Oil Futures OQD](pathname:///file-samples/dme.settle.20220208.s.csv)
 
-## Type
+### Type
 
 The data is stored as #Oil
 

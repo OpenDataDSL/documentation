@@ -6,7 +6,7 @@ The schedule for collecting the power generation update is 23:00 UTC everyday.
 
 [Sample file for AEMO WEM Power Generation Update](pathname:///file-samples/facility-scada-2022-09.csv)
 
-## Type
+### Type
 
 The dataset is stored as #Electricity
 

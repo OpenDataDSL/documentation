@@ -6,7 +6,7 @@ The schedule for collecting the file is 20:00GMT on Hungarian business days.
 
 [Sample file for HUDEX Gas Futures](pathname:///file-samples/gas_daily_data_export_22_07_2021.xlsx)
 
-## Type
+### Type
 
 The dataset is stores as #NaturalGas
 

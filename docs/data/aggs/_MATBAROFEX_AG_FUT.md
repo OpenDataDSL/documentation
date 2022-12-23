@@ -6,7 +6,7 @@ The schedule for collecting the futures files is between 22:00 and 23:00 GMT on 
 
 [Sample file for MATba Futures](pathname:///file-samples/ajustes_20_07_2021.xml)
 
-## Type
+### Type
 
 The data is stored as #ForwardCurve
 

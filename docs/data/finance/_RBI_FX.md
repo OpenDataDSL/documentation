@@ -37,7 +37,7 @@ If factor is other than 1, multiply 1/factor to Rate to get FX Rate.
 
 ![](/attachments/216367236/216367253.png)
 
-## Type
+### Type
 
 The RBI FX Rates are stored under the type #ForeignExchange
 

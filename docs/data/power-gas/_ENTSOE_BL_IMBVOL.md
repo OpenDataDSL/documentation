@@ -10,7 +10,7 @@ The schedule for collecting the file around 01:00 GMT daily
 
 [Total Imbalance Volume for TenneT GER for 01 Dec 2020](pathname:///file-samples/001-TOTAL_IMBALANCE_VOLUMES_202012010000-202012012300.xml)
 
-## Type
+### Type
 
 The dataset is stored as type #Electricity
 

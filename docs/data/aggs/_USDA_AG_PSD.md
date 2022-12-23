@@ -3,7 +3,7 @@
 
 [Sample file for PSD Coffee](pathname:///file-samples/psd-coffee.xlsx)
 
-## Type
+### Type
 
 The data is stored as #Agriculture
 

@@ -8,7 +8,7 @@ End of day file is retrieved daily between 19:00GMT and 20:00GMT
 
 [Sample file for continuous price](pathname:///file-samples/20210901MGPGASSintesiScambio.xml)
 
-## Type
+### Type
 
 The data is stored as #NaturalGas
 

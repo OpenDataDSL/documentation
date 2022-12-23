@@ -7,7 +7,7 @@ The Milk Prices are collected from CLAL website: https://www.clal.it/index.php?s
 
 File is processed on every first and third Tuesdays of the month.
 
-## Type
+### Type
 
 The data is stored as type: #Agriculture
 

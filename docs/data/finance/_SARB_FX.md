@@ -22,7 +22,7 @@ Another set of indicators , [India: Rupee per Rand](https://wwwrs.resbank.co.za/
 
 ![](/attachments/216367329/216367350.png)
 
-## Type
+### Type
 
 The SARB FX Rates are stored under the type #ForeignExchange
 

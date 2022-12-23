@@ -18,7 +18,7 @@ In this table, we extract the 6th column ‘Middle Rate’ and load.
 
 ![](/attachments/216367291/216367308.png)
 
-## Type
+### Type
 
 The BOCH FX Rates are stored under the type #ForeignExchange
 

@@ -6,7 +6,7 @@ A weekly file that is updated every Wednesday on the vendor site.
 
 [Sample fil for Zuivenl](pathname:///file-samples/Noteringen-week-5-2021.pdf)
 
-## Type
+### Type
 
 The Zuivelnl Dairy Prices are stored in type: #Agriculture
 

@@ -10,7 +10,7 @@ The schedule for collecting the file around 01:00 GMT daily
 
 [Sample file for Cross Border Physical Flow for Netherlands > Belgium 19th Nov 2020](pathname:///file-samples/ENTSOE_TR_CRSBRD_PHYSFLOW_input.xml)
 
-## Type
+### Type
 
 The dataset is stored as type #Electricity
 

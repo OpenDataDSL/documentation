@@ -12,7 +12,7 @@ The schedule for collecting the file is between 23:00 and 01:00 GMT daily.
 [Sample file](pathname:///file-samples/ENTSOE_EL_TL_DA.xml)
 
 
-## Type
+### Type
 
 The dataset is stored as #Electricity
 

@@ -7,7 +7,7 @@ Daily updates are processes around 1:00 GMT of MGEX next business days.
 [Sample file for MGEX Futures](pathname:///file-samples/MWK22-Daily--historical-data.csv)
 
 
-## Type
+### Type
 
 The data is stored as #Agriculture.
 

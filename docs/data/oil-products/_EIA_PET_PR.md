@@ -12,7 +12,7 @@ File is processed on 20:30 GMT every Wednesday.
 
 [Sample file for EIA Petroleum and other Liquids Price](pathname:///file-samples/PET_PRI_SPT_S1_D.xls)
 
-## Type
+### Type
 
 The EIA Crude Oil and Petroleum Products Spot updates are stored under the type #Oil
 

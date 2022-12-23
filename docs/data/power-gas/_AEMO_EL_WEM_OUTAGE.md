@@ -6,7 +6,7 @@ The schedule for collecting the power generation update is 23:00 UTC everyday.
 
 [Sample file for AEMO WEM Power Outages](pathname:///file-samples/AEMO_WEM_outages-Oct2022.csv)
 
-## Type
+### Type
 
 The dataset is stored as #Electricity
 

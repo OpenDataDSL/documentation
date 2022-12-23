@@ -6,7 +6,7 @@ The schedule for collecting CEA power gneration update is around 21:00 IST daily
 
 [Sample file for CEA Power Generation](pathname:///file-samples/dgr2-2022-10-20.xls)
 
-## Type
+### Type
 
 The dataset is stored as #Electricity
 

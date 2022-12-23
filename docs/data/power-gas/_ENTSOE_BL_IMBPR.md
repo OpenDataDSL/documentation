@@ -10,7 +10,7 @@ The schedule for collecting the file around 01:00 GMT daily
 
 [Imbalance Price for Czech Republic for the year Dec 2020](pathname:///file-samples/001-IMBALANCE_PRICES_202012012300-202012182300.xml)
 
-## Type
+### Type
 
 The dataset is stored as type #Electricity
 

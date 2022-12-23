@@ -10,7 +10,7 @@ The schedule for collecting the file is around 22:00 GMT daily
 
 [Sample file for Active Planned Unavailability of a Generation Unit for Netherlands Dec 2020](pathname:///file-samples/OUTAGES_A80_202012180000-202012190000.zip)
 
-## Type
+### Type
 
 The dataset is stored as type #Electricity
 

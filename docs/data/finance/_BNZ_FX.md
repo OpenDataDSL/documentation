@@ -21,7 +21,7 @@ Rates under ‘YOU SEND INTL PAYMENT’ column is loaded.
 ![](/attachments/216367356/216367373.png)
 
 
-## Type
+### Type
 
 The BNZ FX Rates are stored under the type #ForeignExchange
 

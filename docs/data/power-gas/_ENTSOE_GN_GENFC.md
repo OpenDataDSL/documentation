@@ -16,7 +16,7 @@ The data doesn’t follow any holiday calendar and it is expected to load everyd
 
 ### Timezone
 
-The data is loaded to our databse in UTC.
+The data is loaded to database in UTC.
 
 ### Attributes
 

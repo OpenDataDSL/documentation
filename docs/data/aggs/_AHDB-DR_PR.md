@@ -6,7 +6,7 @@ Monthly updates are processed on 25th day of every month.
 
 [Sample file: uk-wholesale-prices.xls](pathname:///file-samples/UK%20wholesale%20prices-1.xlsx)
 
-## Type
+### Type
 
 The data is stored as #Agriculture
 

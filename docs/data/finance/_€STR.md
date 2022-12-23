@@ -14,7 +14,7 @@ File is processed between 7:00 AM and 8:00 GMT the following target2 business da
 
 Sample file [sample file](pathname://../../static/file-samples/data.csv)
 
-## Type
+### Type
 
 Data is stored as #ForwardCurve
 

@@ -6,7 +6,7 @@ The end of day updates are processed at 17:30 BST/GMT on DCE business days.
 
 [Sample file for DCE Futures](pathname:///file-samples/DCE_20211028_1635487856657_Daily.txt)
 
-## Type
+### Type
 
 The data is stored as #Agriculture.
 

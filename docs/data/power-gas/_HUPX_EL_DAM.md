@@ -6,7 +6,7 @@ The schedule for collecting the file is 16:00 GMT on Hungarian business days.
 
 [sample file for HUPEX Power Day-ahead](pathname:///file-samples/dam_weekly_data_export_HUPX_26-07-2021.xlsx)
 
-## Type
+### Type
 
 The dataset is stored as #Electricity
 

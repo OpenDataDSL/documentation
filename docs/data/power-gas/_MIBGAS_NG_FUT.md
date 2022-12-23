@@ -6,7 +6,7 @@ End of day file is processed at around 23:00UTC a on business days.
 
 [Sample file for MIBGAS Natural Gas Futures](pathname:///file-samples/daily-price-pvb-19_12_2022.csv)
 
-## Type
+### Type
 
 Mibgas Gas Futures data is stored under the type: #NaturalGas
 

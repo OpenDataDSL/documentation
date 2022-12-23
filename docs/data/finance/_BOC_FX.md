@@ -18,7 +18,7 @@ Schedule to process the updates at 23:30 GMT on Canada business days.
 
 ![](/attachments/216367259/229572776.png)
 
-## Type
+### Type
 
 The BOC FX Rates are stored under the type #ForeignExchange
 

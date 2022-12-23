@@ -20,7 +20,7 @@ The absolute agricultural price statistics are usually published by Eurostat at 
 
  [Sample file for Selling Prices of Crop Products (absolute prices):](pathname:///file-samples/apri_ap_crpouta.tsv)
 
-## Type
+### Type
 
 The data is stored as #Agriculture
 

@@ -2,7 +2,7 @@
 
 The end of day updates are processed at 20:00 BST/GMT on business days.
 
-## Type
+### Type
 
 The data is stored as #Agriculture.
 

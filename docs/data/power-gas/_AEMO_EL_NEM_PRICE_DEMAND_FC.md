@@ -6,7 +6,7 @@ The schedule for collecting the forecast update is every 5 minutes.
 
 [Sample file for AEMO NEM Forecast Price and Demand update](pathname:///file-samples/NEMPRICEANDDEMAND_NSW1_202209211545.csv)
 
-## Type
+### Type
 
 The dataset is stored as #Electricity
 

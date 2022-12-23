@@ -10,7 +10,7 @@ End of day updates file is retrieved between 19:00GMT and 20:00GMT
 
 [Sample file for Volume](pathname:///file-samples/20210902MI1PrezziConvenzionali.xml)
 
-## Type
+### Type
 
 The data is stored as #Electricity
 

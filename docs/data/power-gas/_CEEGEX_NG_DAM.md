@@ -6,7 +6,7 @@ The schedule for collecting the file is 20:00GMT on Hungarian business days.
 
 [Sample file for CEEGEX gas day-ahead](pathname:///file-samples/daily_market_data_export.xlsx)
 
-## Type
+### Type
 
 The dataset is stored as #NaturalGas
 

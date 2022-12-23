@@ -6,7 +6,7 @@ File is processed at 12:30 BST/GMT on every first and third Tuesdays of month.
 
 [Sample file](pathname://../../static/file-samples/GDT_Butter.json)
 
-## Type
+### Type
 
 The data is stored as #Agriculture
 

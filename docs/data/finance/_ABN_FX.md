@@ -15,7 +15,7 @@ Schedule to process the updates at 14:30 GMT on ABN FX business days.
 [Sample file: aabvv_20220601.pdf](pathname:///file-samples/aabvv_20220601.pdf)
 
 
-## Type
+### Type
 
 The ABN FX Rates are stored under the type #ForeignExchange
 

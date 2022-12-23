@@ -6,7 +6,7 @@ The Global Daily Trade Average Auction Prices are collected from CLAL website: h
 
 File is processed on every first and third Tuesdays of the month.
 
-## Type
+### Type
 
 The data is stored as type: #ForwardCurve
 

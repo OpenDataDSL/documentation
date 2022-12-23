@@ -22,7 +22,7 @@ Daily update are processed between 10.00 AM and 12.00 GMT the following London b
 
 Sample file [sample file](pathname://../../static/file-samples/IUDSOIA-Bank-of-England-Database.csv)
 
-## Type
+### Type
 
 Data is stored as #ForwardCurve
 

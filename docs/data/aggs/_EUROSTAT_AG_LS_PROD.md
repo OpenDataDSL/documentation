@@ -10,7 +10,7 @@ The production data of Livestock is usually published by Eurostat at end of Apri
 
  [Sample file for Poultry Farming - Hatcheries Hens:](pathname:///file-samples/apro_ec_strhen.tsv)
 
-## Type
+### Type
 
 The data is stored as #Agriculture
 

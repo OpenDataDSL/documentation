@@ -20,7 +20,7 @@ File collection is between 17.00 and 18.00 GMT on US business day.
 
 Sample file [sample file](pathname://../../static/file-samples/FRB_H15.xml)
 
-## Type
+### Type
 
 Data is stored as #ForwardCurve
 

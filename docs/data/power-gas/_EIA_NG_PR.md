@@ -12,7 +12,7 @@ File is processed on 30th of every month.
 
 [Sample file for EIA Gas Monthly Price](pathname:///file-samples/NG_PRI_SUM_DCU_NUS_M.xls)
 
-## Type
+### Type
 
 The data is stored as #NaturalGas
 

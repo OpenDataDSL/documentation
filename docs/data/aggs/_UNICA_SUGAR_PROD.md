@@ -6,7 +6,7 @@ The updates are available fortnightly. Schedule is set up to process the data in
 
 [sample file for Harvest update of South-Central region Bi-weekly Bulletin](pathname:///file-samples/1c63c3b100dba1a4eec786cdab90bed3.pdf)
 
-## Type
+### Type
 
 The data is storaed as #Agriculture
 

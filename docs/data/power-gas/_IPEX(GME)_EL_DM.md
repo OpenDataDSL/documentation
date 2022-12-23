@@ -6,7 +6,7 @@ End of day file is retrieved between 19:00 and 20:00 GMT on business days.
 
 [Sample file for MPEG Daily Market](pathname:///file-samples/20210901MPEGSintesiScambio.xml)
 
-## Type
+### Type
 
 The data is stored as #Electricity
 

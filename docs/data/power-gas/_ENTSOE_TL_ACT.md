@@ -6,7 +6,7 @@ Actual aggregated Net generation output (MW) per market time unit and per produc
 
 The vendor update file is collected and processed at 23:45 hours UTC on daily basis.
 
-## Type
+### Type
 
 The dataset is stored as #Electricity.
 

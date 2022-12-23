@@ -2,7 +2,7 @@
 
 The schedule for collecting the file is around 22:00GMT daily.
 
-## Type
+### Type
 
 The dataset is stored as #NaturalGas
 

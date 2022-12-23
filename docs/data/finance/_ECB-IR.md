@@ -18,7 +18,7 @@ File collection is between 7:00 AM and 8:00 GMT the following target2 business d
 
 Sample file [sample file](pathname://../../static/file-samples/ecb_ir_inputfile.xml)
 
-## Type
+### Type
 
 Data is stored as #InterestRates
 

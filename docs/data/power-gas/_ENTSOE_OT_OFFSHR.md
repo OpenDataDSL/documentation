@@ -6,7 +6,7 @@ The daily update file is collected from ENTSO-E website: https://transparency.en
 
 The schedule for collecting the file is around 22:00 GMT daily
 
-## Type
+### Type
 
 The dataset is stored as type #Electricity
 

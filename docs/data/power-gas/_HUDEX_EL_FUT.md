@@ -6,7 +6,7 @@ The schedule for collecting the file is 20:00GMT on Hungarian business days.
 
 [Sample file for HUDEX Power Futures](pathname:///file-samples/power_daily_data_export_19-07-2021.xlsx)
 
-## Type
+### Type
 
 The dataset is stored as #Electricity
 
@@ -44,6 +44,7 @@ Below set of expiry calendars are used in calculating rolling forward data. The 
 |Unit|MWH|
 |Market|Futures|
 |Commodity|Power|
+
 |Location|Hungary|
 |Region|Europe|
 |Quote Calendar|HHUDEXF|

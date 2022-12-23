@@ -16,7 +16,7 @@ Process is scheduled to run at 14:15 GMT on business days.
 
 ![](/attachments/216367314/229572805.png)
 
-## Type
+### Type
 
 The SBP FX Rates are stored under the type #ForeignExchange
 

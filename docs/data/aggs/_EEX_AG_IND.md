@@ -14,7 +14,7 @@ Weekly update file is processed around 19:00 BST/GMT every Wednesday.
 
 [Sample file for FAWH](pathname:///file-samples/FAWH_Index_DE.xls)
 
-## Type
+### Type
 
 The EEX Agricultural data is stored in type: #Agriculture
 

@@ -2,7 +2,7 @@
 
 The schedule for collecting the file is around 22:00GMT
 
-## Type
+### Type
 
 The data is stored as #Electricity
 

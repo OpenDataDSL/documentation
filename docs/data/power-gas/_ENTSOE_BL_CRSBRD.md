@@ -10,7 +10,7 @@ The schedule for collecting the file is around 23:00 GMT daily.
 
 [Sample file for Cross Border Balancing](pathname:///file-samples/ENTSOE_BL_CRSBRD_input.xml)
 
-## Type
+### Type
 
 The dataset is stored as type #Electricity
 

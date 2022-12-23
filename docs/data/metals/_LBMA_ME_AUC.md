@@ -6,7 +6,7 @@ Proces is scheduled to collect end of day updates at 16:00hours GMT on business 
 
 [Sample file for LBMA Gold Auction Spot Price](pathname:///file-samples/gas_daily_data_export_22_07_2021.xlsx)
 
-## Type
+### Type
 
 The data is stored as #Metals.
 

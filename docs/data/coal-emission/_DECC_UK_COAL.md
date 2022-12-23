@@ -5,7 +5,7 @@ The monthly updates of DECC is processed at the beginning of every month.
 
 [Sample file for monthly updates of DECC Coal Consumption and Stocks](pathname:///file-samples/ET_2.6_JUL_22.xlsx)
 
-## Type
+### Type
 
 The data is stored as #Coal
 

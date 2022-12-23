@@ -10,7 +10,7 @@ End of day file is retrieved daily between 19:00GMT and 20:00GMT daily
 
 [Sample file for Volume](pathname:///file-samples/20210902MGPQuantita.xml)
 
-## Type
+### Type
 
 The data is stored as #Electricity
 

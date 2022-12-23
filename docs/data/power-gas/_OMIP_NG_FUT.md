@@ -6,7 +6,7 @@ The schedule for collecting the file is 20:00 GMT Spain business days.
 
 Sample file
 
-## Type
+### Type
 
 OMIP Gas Futures data is stored under the type: #NaturalGas
 

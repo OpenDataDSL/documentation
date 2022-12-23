@@ -6,7 +6,7 @@ The schedule for collecting the files is between 22:00 and 23:00 BST/GMT on Arge
 
 [Sample file for MATba Spot](pathname:///file-samples/ajustes_20_07_2021.xml)
 
-## Type
+### Type
 
 The data is stored as #Agriculture
 

@@ -10,7 +10,7 @@ Annual file that is updated in last week of April.
 
 [Sample fil for Domestic Beer Sale](pathname:///file-samples/CMBTC-Table_9-CanMonthlyBeerSales-to-Dec_Feb22-v2.pdf)
 
-## Type
+### Type
 
 The Barley statistical updates are stored in type: #Agriculture
 

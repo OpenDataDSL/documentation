@@ -6,7 +6,7 @@ The file is processed at around 21:00 BST/GMT on Brazil business days.
 
 [Sample file for CEPEA Wheat Brazil Wholesale Price](pathname:///file-samples/CEPEA_20220811040438.xls)
 
-## Type
+### Type
 
 The data is stored as #Agriculture
 

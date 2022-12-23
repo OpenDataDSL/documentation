@@ -6,7 +6,7 @@ End of day file is retrieved between 19:00GMT and 20:00GMT on business days.
 
 [Sample file for MTE](pathname:///static/file-samples/20210830MTEWebTabella.xml)
 
-## Type
+### Type
 
 The data is stored as #Electricity
 

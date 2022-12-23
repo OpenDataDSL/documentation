@@ -10,7 +10,7 @@ The schedule for collecting the file is around 22:00 GMT daily
 
 [Sample file for Active Planned outage data published for Netherlands and Belgium hubs and the year 2020](pathname:///file-samples/ENTSOE_OT_CONS_input.xml)
 
-## Type
+### Type
 
 The dataset is stored as type #Electricity
 

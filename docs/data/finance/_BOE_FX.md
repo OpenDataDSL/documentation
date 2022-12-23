@@ -16,7 +16,7 @@ Daily FX rates are processed around 10.00 GMT the following London business day.
 
 ![](/attachments/216367276/229572792.png)
 
-## Type
+### Type
 
 The BOE FX Rates are stored under the type #ForeignExchange
 

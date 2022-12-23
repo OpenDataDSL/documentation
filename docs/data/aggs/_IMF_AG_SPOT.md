@@ -8,7 +8,7 @@ Monthly updates are processed on first Wednesday of every month.
 
 [Sample file: Primary_Commodity_Price_System_PCPS_Index.xlsx](pathname:///file-samples/Primary_Commodity_Price_System_PCPS_Index.xlsx)
 
-## Type
+### Type
 
 The data is stored as #Agriculture
 
