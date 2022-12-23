@@ -6,7 +6,7 @@ The schedule for collecting the file is at 17:00 GMT daily.
 
 [sample file for OTE Power Day-ahead](pathname:///file-samples/DM_23_02_2022_EN.xls)
 
-## Type
+### Type
 
 The dataset is stored as #Electricity
 

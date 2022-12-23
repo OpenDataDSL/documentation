@@ -608,7 +608,7 @@
         "start": "2021",
         "frequency": "DAILY",
         "link":"/docs/company/OTE",
-        "tags": ["Commodity", "Power"," NEW"]
+        "tags": ["Commodity", "Power"]
     },
     {
         "type": "FREE",
@@ -621,7 +621,7 @@
         "start": "2021",
         "frequency": "DAILY",
         "link":"/docs/company/IBEX",
-        "tags": ["Commodity", "Power"," NEW"]
+        "tags": ["Commodity", "Power"]
     },
     {
         "type": "BYOL",
@@ -634,7 +634,7 @@
         "start": "2021",
         "frequency": "BUSINESS",
         "link":"/docs/company/DME",
-        "tags": ["Commodity", "Oil"," NEW"]
+        "tags": ["Commodity", "Oil"]
     },
     {
         "type": "BYOL",
@@ -647,6 +647,71 @@
         "start": "2021",
         "frequency": "BUSINESS",
         "link":"/docs/company/MGEX",
-        "tags": ["Commodity", "Agriculture"," NEW"]
+        "tags": ["Commodity", "Agriculture"]
+    },
+    {
+        "type": "FREE",
+        "provider": "Mibgas",
+        "providerType":"Exchange",
+        "logo": "mibgas.png",
+        "dataset": "Natural Gas",
+        "text": "The Iberian Gas Market Natural Gas Futures",
+        "region": "Spain and Portugal",
+        "start": "2022",
+        "frequency": "BUSINESS",
+        "link":"/docs/company/MIBGAS",
+        "tags": ["Commodity", "Natural Gas"," NEW"]
+    },
+    {
+        "type": "FREE",
+        "provider": "AEMO",
+        "providerType":"Transmission System Operators",
+        "logo": "aemo-logo.jpg",
+        "dataset": "Electricity",
+        "text": "Australian Energy Market Operator",
+        "region": "Australia",
+        "start": "2022",
+        "frequency": "DAILY",
+        "link":"/docs/company/AEMO",
+        "tags": ["Commodity", "Power"," NEW"]
+    },
+    {
+        "type": "FREE",
+        "provider": "CEA",
+        "providerType":"Transmission System Operators",
+        "logo": "cea_logo.jpg",
+        "dataset": "Electricity",
+        "text": "Central Electricity Authority India Power Generation",
+        "region": "India",
+        "start": "2022",
+        "frequency": "DAILY",
+        "link":"/docs/company/CEA",
+        "tags": ["Commodity", "Power"," NEW"]
+    },
+    {
+        "type": "FREE",
+        "provider": "Indian Energy Exchange",
+        "providerType":"Exchange",
+        "logo": "iex.png",
+        "dataset": "Power",
+        "text": "Indian Energy Exchange Power Spot",
+        "region": "India",
+        "start": "2022",
+        "frequency": "DAILY",
+        "link":"/docs/company/IEX",
+        "tags": ["Commodity", "Power"," NEW"]
+    },
+    {
+        "type": "FREE",
+        "provider": "ABN AMRO Netherlands",
+        "providerType":"Financial Institutions",
+        "logo": "abn.png",
+        "dataset": "FX Reference Rates",
+        "text": "ABN AMRO Netherlands Exchange Rates",
+        "region": "Europe/Global",
+        "start": "2022",
+        "frequency": "DAILY",
+        "link":"/docs/data/fx#abn_fx",
+        "tags": ["Financial", "Foreign Exchange"," NEW"]
     }
 ]
