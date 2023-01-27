@@ -134,6 +134,9 @@ A table is a set of rows within a column oriented matrix
 ### [Row](Row)
 A row represents a single row of data usually associated with a row in a relational database table. A row is similar to an object in that it has dynamic properties except that you can only add Scalars or Dates as elements to a row
 
+### [Matrix](Matrix)
+A matrix represents a 2-dimensional array of numeric values
+
 ### [Workflow](Workflow)
 ---------------------------------
 

@@ -34,6 +34,9 @@ Functions that take a string as their input
 ## [Timeseries Functions](timeseries)
 Functions that take a TimeSeries as their input
 
+## [Matrix Functions](matrix)
+Functions whose output is a [matrix](/docs/odsl/variable/matrix)
+
 ## [Unit Test Functions](test)
 A set of functions that allow you to create test cases and test conditions
 

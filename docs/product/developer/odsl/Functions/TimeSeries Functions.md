@@ -37,6 +37,8 @@ import Pct from './all/pct.md';
 import Scale from './all/scale.md';
 import Shift from './all/shift.md';
 import SimpleRegression from './all/simpleRegression.md'
+import Correlation from './all/correlation.md';
+import Covariance from './all/covariance.md';
 
 Functions that take a TimeSeries as their input
 
@@ -58,11 +60,17 @@ Functions that take a TimeSeries as their input
 ## cbrt
 <Cbrt  />
 
+## correlation
+<Correlation />
+
 ## cos
 <Cos  />
 
 ## cosh
 <Cosh  />
+
+## covariance
+<Covariance />
 
 ## cave
 <Cave  />
