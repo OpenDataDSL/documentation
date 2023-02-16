@@ -12,10 +12,10 @@ A matrix represents a 2-dimensional array of numeric values - each row and colum
 
 To create a matrix, you can use the following constructor.
 ```js
-// Create a matrix with 4 columns and 5 rows
+// Create a matrix with 4 rows and 5 columns
 m1 = Matrix(4, 5)
 
-// Create a matrix with 3 columns and 3 rows with the labels A, B and C
+// Create a matrix with 3 rows and 3 columns with the labels A, B and C
 m2 = Matrix(["A","B","C"])
 ```
 
