@@ -15,6 +15,6 @@ Current Data RoadMap
 |THE Trading Hub Europe|Europe|Gas|
 |GIE Gas Infrastructure Europe|Europe|Gas|
 |Elexon Power Flow |United Kingdom|Power|
-|HEnEx Hellenic Energy Exchange|Greece|Power|
 |SEEPEX|Serbia|Power|
 |FAO FPMA Food Price Monitoring and Analysis Agricultural Statistics|Global|Agriculture|
+|NOOA National Oceanic and Atmospheric Administration|Global|Weather|
