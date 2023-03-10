@@ -46,4 +46,4 @@ Data is validated for missing data points.
 
 ### Licensing
 
-This data requires agreement with OMIPE before it can be supplied.
+Data is freely available in the vendor website and can be used by clients without permissions.
