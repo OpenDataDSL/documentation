@@ -1,5 +1,5 @@
 ---
-slug: /odsl/function/string
+slug: /odsl/function/strings
 tags:
   - function
   - string

@@ -28,7 +28,7 @@ Functions that take a number as their input
 ## [Statistical Functions](statistics)
 Frameworks and implementations for basic Descriptive statistics, frequency distributions, bivariate regression, and t-, chi-square and ANOVA test statistics. All these functions utilise numeric precision and missing value settings
 
-## [String Functions](string)
+## [String Functions](strings)
 Functions that take a string as their input
 
 ## [Timeseries Functions](timeseries)

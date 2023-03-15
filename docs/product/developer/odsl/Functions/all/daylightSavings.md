@@ -10,11 +10,11 @@ Returns
 
 #### Syntax
 ```js
-result = daylightSavings(date)
+result = daylightSavings(date, timezone)
 ```
 #### Example
 ```js
-print daylightSavings(Date("2021-10-31"))
+print daylightSavings(Date("2021-10-31"), "Europe/London")
 ```
 ```
 1

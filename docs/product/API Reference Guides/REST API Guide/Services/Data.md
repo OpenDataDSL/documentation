@@ -38,7 +38,9 @@ Below is a table of the query parameters that are usable with the data REST API
 |listTenors|Curve|listTenors|Lists all the relative tenors available in this curve|
 |_range last|TimeSeries|_range=last(3)|Returns the last n observations|
 |_range from|TimeSeries|_range=from(2021-03-01)|Returns all observations from the specified date|
+|_range from|TimeSeries|_range=from(2021-03-01,Europe/Paris)|Returns all observations from the specified date converted to the specified timezone|
 |_range between|TimeSeries|_range=between(2021-03-01,2021-03-31)|Returns only the observation within the specified range|
+|_range between|TimeSeries|_range=between(2021-03-01,2021-03-31,Europe/Paris)|Returns only the observation within the specified range in the specified timezone|
 |_id|Any|_id=MYCURVE:2021-03-01|Used when retrieving multiple data entities from anywhere (use all as source)|
 |currency|Any|currency=USD|Converts the TimeSeries or Curve to the supplied currency|
 |units|Any|units=MT|Converts the TimeSeries or Curve to the supplied units|

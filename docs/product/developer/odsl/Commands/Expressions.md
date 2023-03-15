@@ -43,6 +43,9 @@ expression >= expression
 expression like expression
 expression intersects expression
 expression within expression
+
+// Filter creation (usually used with event time series or event curves)
+? condition
 ```
 
 ## Use within the language
@@ -65,10 +68,16 @@ Expressions are used in various places within the ODSL language as shown in the 
 
 ## Examples
 
-### Assignment example
+### Assignment examples
 ```js
 result = a + 1
 ```
+
+#### Creating a filter on an event series
+```js
+event_series.filter = ? side = "ASK" and relative = "M01"
+```
+
 
 ### Printing example
 ```js

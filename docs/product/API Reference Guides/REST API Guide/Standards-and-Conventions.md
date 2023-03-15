@@ -29,6 +29,25 @@ By default all your requests will be routed to your **production** environment, 
 x-odsl-environment: <ENVNAME>
 ```
 
+## GET as POST
+For any GET requests to the REST API, you can also use POST using the following configuration:
+
+* Set a Content-Type header as ```application/x-www-form-urlencoded```
+* In the body, specify the query parameters
+
+The query parameter keys and values are encoded in key-value tuples separated by '&', with a '=' between the key and the value. 
+Non-alphanumeric characters in both keys and values are URL encoded.
+
+Example:
+
+```js
+POST https://api.opendatadsl.com/api/object/v1/public
+Authorization: Bearer {{token}}
+Content-Type: application/x-www-form-urlencoded
+
+_distinct=_type&_filter={_id:/AB/}
+```
+
 ## Pagination
 
 All the GET methods tagged in the documentation as **PAGED** break the list of results down into pages which you can control using the following query parameters:
