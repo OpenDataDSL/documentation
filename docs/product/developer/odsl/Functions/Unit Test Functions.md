@@ -11,7 +11,7 @@ import AssertNull from './all/assertNull.md';
 import AssertTrue from './all/assertTrue.md';
 import AssertType from './all/assertType.md';
 
-A set of functions that allow you to create test cases and test conditions
+Functions that allow you to create test cases and test conditions
 
 ## assertEquals
 <AssertEquals  />

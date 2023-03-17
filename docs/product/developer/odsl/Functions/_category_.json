@@ -1,4 +1,8 @@
 {
   "label": "Functions",
-  "position": 3
+  "position": 3,
+  "link": {
+    "type": "generated-index",
+    "description": "This section makes a deep-dive into certain aspects of OpenDataDSL for users, coders and developers."
+  }
 }
