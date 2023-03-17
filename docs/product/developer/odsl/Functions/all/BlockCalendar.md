@@ -1,7 +1,7 @@
 ---
 slug: /odsl/function/BlockCalendar
 ---
-A constructor to create a [calendar](/odsl/variable/calendar) for a period of the day.
+A constructor to create a [calendar](/docs/odsl/variable/calendar) for a period of the day.
 
 This is usually used for electricity blocks, such as peak, off-peak, morning etc.
 
