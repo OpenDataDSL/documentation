@@ -29,8 +29,8 @@ By default all your requests will be routed to your **production** environment, 
 x-odsl-environment: <ENVNAME>
 ```
 
-## GET as POST
-For any GET requests to the REST API, you can also use POST using the following configuration:
+## Using GET body for large URLs
+For any GET requests to the REST API where the URL is longer than 2048 characters, you can place the query parameters in the BODY of the GET request using the following configuration:
 
 * Set a Content-Type header as ```application/x-www-form-urlencoded```
 * In the body, specify the query parameters
@@ -41,7 +41,7 @@ Non-alphanumeric characters in both keys and values are URL encoded.
 Example:
 
 ```js
-POST https://api.opendatadsl.com/api/object/v1/public
+GET https://api.opendatadsl.com/api/object/v1/public
 Authorization: Bearer {{token}}
 Content-Type: application/x-www-form-urlencoded
 
@@ -68,6 +68,12 @@ https://api.opendatadsl.com/api/action/v1/public?_limit=100&_skip=100
 ```
 
 After making the request, you should check the response headers for **x-total-count**, this tells you the total number of records for the request.
+
+### Default page size
+If you don't specify a ```_limit``` query parameter a default limit of 100 is applied
+
+### Unlimited items
+You can specify a ```_limit``` of -1 for some services and request types to request all items without pagination 
 
 ## All Standard Parameters
 

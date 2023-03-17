@@ -3,7 +3,7 @@ slug: /odsl/function/CurveDate
 ---
 A constructor to create a curve date.
 
-A curve date consists of a [date](/odsl/variable/date) and an [expiry calendar](/odsl/variable/expirycalendar)
+A curve date consists of a [date](/docs/odsl/variable/date) and an [expiry calendar](/docs/odsl/variable/expirycalendar)
 
 #### Syntax
 ```js

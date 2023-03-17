@@ -1,7 +1,7 @@
 ---
 slug: /odsl/function/IntradayCalendar
 ---
-A constructor to create an intraday [calendar](/odsl/variable/calendar)
+A constructor to create an intraday [calendar](/docs/odsl/variable/calendar)
 
 An intraday calendar is a regular calendar with a period size of less than a day, e.g. hourly
 

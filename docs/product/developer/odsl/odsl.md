@@ -24,7 +24,7 @@ A detailed guide to the ODSL commands
 ### [Variables](/docs/odsl/variable/variables)
 An in-depth description of all the built-in variable types
 
-### [Functions](/docs/odsl/function/functions)
+### [Functions](/docs/category/functions)
 An OpenDataDSL guide to the built-in functions that can be used in your code
 
 ### [Aggregation Stages](/docs/odsl/stages)
