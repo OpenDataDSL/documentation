@@ -50,6 +50,7 @@ A curve has the following properties:
 |units|The units of measure for this curve|Scalar(String)|
 |contracts|The set of contracts on this curve|[Contracts](Contracts)|
 |size|The number of contracts on this curve|Scalar(int)|
+|precision|The data value [precision](/docs/kb/precision#data-precision-settings) configuration|String|
 |*|Any other dynamic properties added|Any|
 
 Examples of curve properties:

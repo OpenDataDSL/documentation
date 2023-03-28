@@ -34,6 +34,8 @@ A matrix has the following properties:
 |ySize|The number of rows|Integer|
 |currency|The currency of the values in this matrix|String|
 |units|The units of the values in this matrix|String|
+|timezone|The timezone for the values in this matrix|String|
+|precision|The data value [precision](/docs/kb/precision#data-precision-settings) configuration|String|
 
 ## Methods
 
@@ -92,3 +94,6 @@ m3.setColumnData("C2", [4,5,6])
 print m3
 print m3.transpose()
 ```
+
+## Further Reading
+* [Matrix Functions](/docs/odsl/function/matrix)

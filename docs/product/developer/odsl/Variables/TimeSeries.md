@@ -64,6 +64,7 @@ A timeseries has the following properties:
 |localValues|The list of dates and values with the dates in the timezone of the timeseries|List(TimeValue)|
 |valueType|The value type either TRACKED or BASIC|String|
 |observed|The observed setting of the timeseries used for aggregating, can be beginning, end, summed, averaged, high or low|String|
+|precision|The data value [precision](/docs/kb/precision#data-precision-settings) configuration|String|
 
 A timeseries also supports adding dynamic properties, e.g.
 

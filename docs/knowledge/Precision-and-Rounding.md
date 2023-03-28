@@ -9,7 +9,9 @@ Precision and Rounding
 
 This article explains how you can control the decimal precision and rounding method in your scripts
 
-## Setting Precision
+## Global Precision Settings
+
+### Setting Precision
 
 To set the precision or the maximum number of decimal places shown, use the set precision command as follows:
 ```js
@@ -20,7 +22,7 @@ set precision 2
 The default setting for precision is 6 decimal places
 :::
 
-## Setting the Rounding Method
+### Setting the Rounding Method
 
 To set the rounding method used to round values to the configured precision, use the set rounding command as follows:
 ```js
@@ -87,4 +89,29 @@ for i=0 to 9
     set rounding half_even
     assertEquals(half_even[i], values[i])
 next
+```
+
+## Data Precision Settings
+You can set the specific precision requirements directly on a [timeseries](/docs/odsl/variable/timeseries), [curve](/docs/odsl/variable/curve) or [matrix](/docs/odsl/variable/matrix) using the precision property.
+
+The precision property has the following properties:
+* roundingMode - Used to define how you want numbers to [round up](/docs/kb/precision#setting-the-rounding-method)
+* scale - Used to define the number of decimal places you want to retain
+* store - If true, it will store the *scaled* number, false will retain the full number but will still display using the precision settings
+
+### Examples using data precision
+Setting the precision on a timeseries
+
+```js
+ts = TimeSeries("BUSINESS")
+ts.precision.roundingMode = "ceiling"
+ts.precision.scale = 4
+
+ts.add("2023-03-23", 1.23456789)
+print ts.values
+```
+```
+[
+2023-03-23	1.2346
+]
 ```
