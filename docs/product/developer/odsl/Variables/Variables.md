@@ -164,3 +164,6 @@ A script variable is a wrapper for an ODSL script. It is used by the script serv
     
 ### [Task](Task)
 A task is a physical task assigned to a user from either a user or the system
+
+### [Report](report)
+A report is a configuration containing an expression that can be run to produce a user definable report
