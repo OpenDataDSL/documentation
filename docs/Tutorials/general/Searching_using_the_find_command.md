@@ -1,5 +1,6 @@
 ---
 slug: /tutorials/searching
+description: The syntax of the find command
 tags:
   - tutorial
   - odsl

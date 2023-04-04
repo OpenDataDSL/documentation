@@ -1,5 +1,6 @@
 ---
 slug: /tutorials/localsqlserver
+description: Loading ODSL data into SQL Server
 tags:
   - tutorial
   - loader

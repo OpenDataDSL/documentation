@@ -1,5 +1,6 @@
 ---
 slug: /tutorials/gettingstartedodsl
+description: The basics of programming in ODSL 
 tags:
   - tutorial
   - odsl
@@ -218,7 +219,7 @@ print "Hello World"
 
 You can easily create a region by typing ```region``` and select the offered snippet:
 
-![](region.png)
+![](../region.png)
 
 To debug a region, right-click anywhere in the region and select ```Debug Region``` from the context menu.
 

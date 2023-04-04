@@ -1,7 +1,7 @@
 ---
 slug: /tutorials/smart-curves
 title: Smart Curves
-description: A tutorial exploring using SmartCurves in the OpenDataDSL language, REST API and the Web Portal
+description: Explore SmartCurves in the ODSL language, REST API and the Portal
 tags:
 - tutorial
 - odsl

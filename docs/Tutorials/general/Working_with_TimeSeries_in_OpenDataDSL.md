@@ -1,5 +1,6 @@
 ---
 slug: /tutorials/workingtimeseries
+description: Exploring a few aspects of TimeSeries in the OpenDataDSL language
 tags:
   - tutorial
   - odsl
