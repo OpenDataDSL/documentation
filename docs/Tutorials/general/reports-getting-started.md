@@ -3,7 +3,7 @@ slug: /tutorials/reports-getting-started
 description: Gettings started with reports
 tags:
 - tutorial
-- subscription
+- report
 - getting-started
 ---
 Getting started with Reports
@@ -74,7 +74,7 @@ save USER_METRICS
 </TabItem>
 <TabItem value="rest" label="REST API">
 
-```json
+```js
 POST https://api.opendatadsl.com/api/reportconfig/v1/private
 
 {
@@ -106,12 +106,12 @@ print report.data
 //#endregion
 
 //#region Run the report directly
-report = ${report:"USER_METRICS"}
+report = run report USER_METRICS
 print report.data
 //#endregion
 
 //#region Run the report with a range
-rep = ${report:"USER_METRICS", "_range=between(2023-01-01,2023-01-31)"}
+rep = run report USER_METRICS with "between(2023-01-01,2023-01-31)"
 print rep.data
 //#endregion
 
@@ -119,13 +119,15 @@ print rep.data
 </TabItem>
 <TabItem value="rest" label="REST API">
 
-```json
-### Run the report
+```js
+### Run the report without saving it
 GET https://api.opendatadsl.com/api/report/v1/private/USER_METRICS
+    ?_run=true
 
 ### Run the report for a date range
 GET https://api.opendatadsl.com/api/report/v1/private/USER_METRICS
-    ?_range=between(2023-01-01,2023-01-31)
+    ?_run=true
+    &_range=between(2023-01-01,2023-01-31)
 ```
 
 </TabItem>
@@ -153,7 +155,7 @@ save ${report:"USER_METRICS", "_range=between(2023-01-01,2023-01-31)"}
 </TabItem>
 <TabItem value="rest" label="REST API">
 
-```json
+```js
 ### Run and save the report
 POST https://api.opendatadsl.com/api/report/v1/private/USER_METRICS
 
@@ -173,7 +175,7 @@ You can get the saved report by using the version number of the report or ~LATES
 
 ```js
 //#region Get the saved report
-rep = ${report:"USER_METRICS/~LATEST"}
+rep = ${report:"USER_METRICS"}
 print rep.data
 //#endregion
 
@@ -182,9 +184,48 @@ print rep.data
 </TabItem>
 <TabItem value="rest" label="REST API">
 
-```json
+```js
 ### Get the saved report
-GET https://api.opendatadsl.com/api/report/v1/private/USER_METRICS/~LATEST
+GET https://api.opendatadsl.com/api/report/v1/private/USER_METRICS
+```
+
+</TabItem>
+</Tabs>
+
+## Versioning
+Both report configurations and reports are versioned - this means when they are saved, if there are changes made, the old version is saved in the archive and the new version becomes current with a new version number.
+
+Versioning is covered in detail in [Data Versioning](/docs/odsl/dm/versioning), but below are some examples of how to use versioning with respect to reports and report configurations.
+
+### Report configurations
+You may want to tag a specific version of a report configuration as the production version whilst you work on a future version - that way users can still use the version you want them to use.
+
+<Tabs groupId="tool">
+<TabItem value="odsl" label="ODSL code" default>
+
+```js
+//#region Tag a version of a report
+tag ${report:"USER_METRICS":1} as MAR23
+//#endregion
+
+//#region Get a tagged version of a report
+rep = ${report:"USER_METRICS":MAR23}
+print rep
+//#endregion
+
+```
+
+</TabItem>
+<TabItem value="rest" label="REST API">
+
+```js
+
+### Tag a report version with a name
+PUT https://api.opendatadsl.com/api/report/v1/private/USER_METRICS/1/MAR23
+
+### Get a tagged version of a report
+GET https://api.opendatadsl.com/api/report/v1/private/USER_METRICS/MAR23
+
 ```
 
 </TabItem>

@@ -21,6 +21,7 @@ When things stop working or start producing incorrect results, you need to be ab
 ### Utilise tagging to ensure stability
 
 If you [tag](#tagging-a-version) versions with names, e.g. PROD, you can implement a phased approach of releasing new versions of elements into the system.
+There is a dynamic tag (~LATEST) which always points to the last or current version.
 
 ## How it works
 
@@ -35,6 +36,8 @@ Automatic versioning is always-on which means that any change to the element res
 *   Actions    
 *   Calendars
 *   Extractors
+*   Report configurations
+*   Reports
 *   Scripts
 *   Transformers
 *   Types
