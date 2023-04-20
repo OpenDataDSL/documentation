@@ -278,7 +278,7 @@
         "providerType":"Producers",
         "logo": "unica.png",
         "dataset": "Agricultural",
-        "text": "Brazilian Sugarcane industry production reports",
+        "text": "Brazilian Sugarcane industry Production Reports",
         "region": "Brazil",
         "start": "2021",
         "frequency": "DAILY",
@@ -456,11 +456,11 @@
     },
     {
         "type": "FREE",
-        "provider": "ENTSOE",
+        "provider": "European Network of Transmission System Operators",
         "providerType":"Transmission System Operators",
         "logo": "entsoe.svg",
         "dataset": "Power",
-        "text": "European Network of Transmission System Operators",
+        "text": "Electricity Generation,Transportation and Consumption Data",
         "region": "Europe",
         "start": "2021",
         "frequency": "DAILY",
@@ -677,29 +677,29 @@
     },
     {
         "type": "FREE",
-        "provider": "AEMO",
+        "provider": "Australian Energy Market Operator",
         "providerType":"Transmission System Operators",
         "logo": "aemo-logo.jpg",
         "dataset": "Power",
-        "text": "Australian Energy Market Operator",
+        "text": "Electricity Generation,Transportation and Consumption Data",
         "region": "Australia",
         "start": "2022",
         "frequency": "DAILY",
         "link":"/docs/company/AEMO",
-        "tags": ["Commodity", "Power"," NEW"]
+        "tags": ["Commodity", "Power"]
     },
     {
         "type": "FREE",
-        "provider": "CEA",
+        "provider": "Central Electricity Authority India Power Generation",
         "providerType":"Transmission System Operators",
         "logo": "cea_logo.jpg",
         "dataset": "Power",
-        "text": "Central Electricity Authority India Power Generation",
+        "text": "Electricity Generation,Transportation and Consumption Data",
         "region": "India",
         "start": "2022",
         "frequency": "DAILY",
         "link":"/docs/company/CEA",
-        "tags": ["Commodity", "Power"," NEW"]
+        "tags": ["Commodity", "Power"]
     },
     {
         "type": "FREE",
@@ -707,12 +707,12 @@
         "providerType":"Exchange",
         "logo": "iex.png",
         "dataset": "Power",
-        "text": "Indian Energy Exchange Power Spot",
+        "text": "Electricity Day ahead MArket Price",
         "region": "India",
         "start": "2022",
         "frequency": "DAILY",
         "link":"/docs/company/IEX",
-        "tags": ["Commodity", "Power"," NEW"]
+        "tags": ["Commodity", "Power"]
     },
     {
         "type": "FREE",
@@ -725,7 +725,7 @@
         "start": "2022",
         "frequency": "DAILY",
         "link":"/docs/company/HENEX",
-        "tags": ["Commodity", "Power"," NEW"]
+        "tags": ["Commodity", "Power"]
     },    
     {
         "type": "FREE",
@@ -739,5 +739,31 @@
         "frequency": "DAILY",
         "link":"/docs/company/DWD",
         "tags": ["Commodity","Weather"," NEW"]
+    },
+    {
+        "type": "BYOL",
+        "provider": "Pennsylvania-New Jersey-Maryland Interconnection",
+        "providerType":"Independent System Operator",
+        "logo": "pjm.png",
+        "dataset": "Power",
+        "text": "Locational Marginal Pricing,Electricity Generation,Transportation and Consumption Data",
+        "region": "North America",
+        "start": "2023",
+        "frequency": "DAILY",
+        "link":"/docs/company/PJM",
+        "tags": ["Commodity", "Power"," NEW"]
+    },
+    {
+        "type": "FREE",
+        "provider": "The Commodity Futures Trading Commission",
+        "providerType":"Public Agency",
+        "logo": "cftc.png",
+        "dataset": "Agriculture",
+        "text": "Commitment of Traders",
+        "region": "North America",
+        "start": "2023",
+        "frequency": "WEEKLY",
+        "link":"/docs/company/CFTC",
+        "tags": ["Commodity", "Agriculture"," NEW"]
     }
 ]
