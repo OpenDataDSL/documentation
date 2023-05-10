@@ -1,20 +1,20 @@
 ---
 slug: /tutorials/gettingstarted1
+title: Subscribing to Data-Feeds - Part 1
+description: Subscribe to data changes
+sidebar_position: 2
 tags:
   - tutorial
   - subscription
   - getting-started
 ---
-Subscribing to Data-Feeds
-==========================================
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
+## Introduction
 
 A "Getting Started" guide to OpenDataDSL - subscribe to our **FREE** public data feeds.
-
-## Introduction
 
 This is the first of the "Getting Started" series of tutorials which take you through real-world examples of how to 
 work with OpenDataDSL.

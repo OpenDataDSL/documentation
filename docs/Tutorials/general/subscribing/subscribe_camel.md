@@ -1,5 +1,8 @@
 ---
 slug: /tutorials/gettingstarted1camel
+title: Subscribing to Data-Feeds - Part 3
+description: Integration using Apache Camel
+sidebar_position: 4
 tags:
   - tutorial
   - subscription
@@ -8,8 +11,6 @@ tags:
   - kafka
   - java
 ---
-Subscribing - Camel
-==========================================
 
 ## Introduction
 

@@ -1,13 +1,14 @@
 ---
 slug: /tutorials/gettingstarted1sql
+title: Subscribing to Data-Feeds - Part 2
+description: Feed to SQL Server
+sidebar_position: 3
 tags:
   - tutorial
   - subscription
   - getting-started
   - sql
 ---
-Subscribing - SQL Loader
-==========================================
 
 ## Introduction
 
