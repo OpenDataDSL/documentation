@@ -45,7 +45,7 @@ The following table shows the entities that can be subscribed to by each method:
 
 |Entity|Event-Driven|Real-Time|
 |-|-|-|
-|Data Updates|
+|**Data Updates**|
 |Object|yes|yes|
 |Data - timeseries|yes|yes|
 |Data - curve|yes|yes|
@@ -54,10 +54,11 @@ The following table shows the entities that can be subscribed to by each method:
 |Report|yes|-|
 |Calendar|yes|yes|
 |Expiry Calendar|yes|yes|
-|Process Execution Message|-|yes|
-|Process Run|yes|yes|
 |Action|-|yes|
 |Workflow|-|yes|
+|**Server Events**|
+|Process Execution Message|-|yes|
+|Process Run|-|yes|
 
 
 ## Event-driven data flows
@@ -101,19 +102,19 @@ The rest of the properties for the subscription target are specific to the type 
 
 In OpenDataDSL, as of today, you can perform one of the following event-driven actions (known as targets):
 
-* **Build a forward curve**
+* [Build a forward curve](curve)
   > Usually when the input data for a curve is updated you would want to build a smart curve
 * [Send an email](email)
   > Use the updated data and a template to send a HTML email to a user or users
-* **Run a process/workflow**
+* [Run a process/workflow](process)
   > Trigger a process to run possibly to load some other data
-* **Publish the data to another tenant**
+* [Publish the data to another tenant](publish)
   > Another independent tenant can be updated with this data
-* **Send the data to a message queue**
+* [Send the data to a message queue](queue)
   > Send the updated data as a message to be consumed by a downstream system
-* **Run a report**
+* [Run a report](report)
   > Run a report, maybe aggregating data from other sources
-* **Run an ODSL script**
+* [Run an ODSL script](script)
   > The possibilities are endless, maybe you want to perform some derivations based on the updated data
 
 ## Real-time data changes

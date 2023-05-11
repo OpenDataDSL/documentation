@@ -3,15 +3,17 @@ slug: /topics/subscribe/email
 title: Target - Email
 description: A subscription target to automate sending emails
 tags:
-- tutorial
 - subscription
 - email
+- target
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 ## Configuration
+
+The **name** of this target is ```EmailTarget```
 
 To configure the email send action, you need to provide the following:
 * **subject**
@@ -33,7 +35,7 @@ To add an email target to an existing subscription:
 * Click the + button next to targets
 * Select EmailTarget
 * Fill out the to, subject and html fields appropriately
-* Client the save button
+* Click the save button
 
 
 </TabItem>
@@ -50,7 +52,7 @@ save sub
 <TabItem value="rest" label="REST API">
 
 ```js
-POST https://api.opendatadsl.com/service/queue/v1
+POST https://api.opendatadsl.com/service/subscription/v1
 Authorization: Bearer {{token}}
 
 {
