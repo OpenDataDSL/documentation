@@ -106,11 +106,20 @@ var services = [
     {
         name: "Object",
         link: "/docs/api/rest/service/object",
-        text: "The object resource contains all the reference and meta-data for all data in OpenDataDSL",
+        text: "The object resource contains the master data records for all data in OpenDataDSL",
         rw: true,
         pub: true,
         pri: true,
         ver: "If the Object type is versioned"
+    },
+    {
+        name: "Policy",
+        link: "/docs/api/rest/service/policy",
+        text: "Manage your security policies",
+        rw: true,
+        pub: false,
+        pri: true,
+        ver: false
     },
     {
         name: "Process",
@@ -138,6 +147,24 @@ var services = [
         pub: false,
         pri: true,
         ver: false
+    },
+    {
+        name: "Report",
+        link: "/docs/api/rest/service/report",
+        text: "View reports",
+        rw: true,
+        pub: true,
+        pri: true,
+        ver: true
+    },
+    {
+        name: "Report Configuration",
+        link: "/docs/api/rest/service/reportconfig",
+        text: "Manage your report configurations",
+        rw: true,
+        pub: true,
+        pri: true,
+        ver: true
     },
     {
         name: "Script",

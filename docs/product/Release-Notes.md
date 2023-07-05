@@ -8,16 +8,46 @@ Release Notes
 
 Check here for details of our releases (both historic and upcoming)
 
-## Upcoming Release in December 2022
+## Upcoming Features for Releases in 2023
 
-#### Smart Data on Types
-We add the ability to define smart timeseries and curves on a type.
-All objects that directly implement the type will have those smart data objects dynamically added.
+#### New data type - Events
+Events are data that happened at a point in time for an amount of time, such as power station outages.
+We allow capturing these events and creating dynamic timeseries and curves from them.
+
+#### New data type - Matrix
+Added support for storing matrices for various statistical uses, e.g. correlation and covariance matrices.
+Added support for converting timeseries and curves into matrices
+
+#### New service - Reports
+New custom report functionality using custom ODSL code to generate any shape data to be presented in a report.
+Reports can be formatted using ```Mustache``` which is a popular HTML templating syntax.
+
+#### Granular Security Policies
+Support for more granular security policies which can filter down to an individual document.
+
+#### Correlation and covariance matrix functions
+Add function to calculate correlation and covariance matrices.
+
+#### Improvements to searching
+Added more ways to perform searching for data
+
+#### ODSL language improvements
+* Added publish command to publish data to other tenants
+* Added sendmail command to send data as an email
+* Added set credentials command to store custom source user credentials
+* Added element-wise multiply and divide operators for matrices
+* Added single line if statements and conditional expressions
+* Improved type creation, adding support for bespoke error messages
+* Extended run command to support running reports
 
 ## Release History
 
 <details>
-<summary>October 2022</summary>
+<summary>2022</summary>
+#### Smart Data on Types
+We add the ability to define smart timeseries and curves on a type.
+All objects that directly implement the type will have those smart data objects dynamically added.
+
 #### User Tasks
 User tasks are manual tasks assigned to users either by other users or by processes such as data quality.
 Tasks can be:
@@ -26,10 +56,6 @@ Tasks can be:
 
 #### More Statistics Functions
 We will be adding for statistical functions for Timeseries and Curves.
-</details>
-
-<details>
-<summary>October 2022</summary>
 
 #### More Statistics Functions
 We have added a few more functions that can be used in your ODSL scripts:
@@ -46,11 +72,6 @@ Improvements to the Intraday calendars:
 #### Bulk updates and deletes
 Add support for performing bulk updates and deletes
 
-</details>
-
-<details>
-<summary>September 2022</summary>
-
 #### Added community version
 Added FREE community version of the ODSL VSCode editor.
 
@@ -60,19 +81,8 @@ Added support for defining constraints (checks) on an object type, and also defa
 #### Aggregation Framework in the ODSL Language
 Added language support for defining aggregations and aggregation stages.
 
-</details>
-
-<details>
-<summary>August 2022</summary>
-
 #### Custom MongoDB Collections
 We have added support for clients to connect to your own MongoDB clusters and use the tools directly on the collections holding your own data.
-
-
-</details>
-
-<details>
-<summary>July 2022</summary>
 
 #### Data Packages
 Data packages are pre-defined processes that users can deploy to their own environment to load data from providers into their private database.
@@ -85,11 +95,6 @@ Example events are:
 * A trade made with a broker, exchange etc.
 * A planned or unplanned outage (REMIT Urgent Market Message)
 
-</details>
-
-<details>
-<summary>June 2022</summary>
-
 #### Curve Change Values
 Added a 'change' value to show the absolute change of all tenors in a curve from the previous built curve
 
@@ -97,22 +102,11 @@ Added a 'change' value to show the absolute change of all tenors in a curve from
 Allow users to create regions in ODSL code to break a script up into smaller sections.
 These regions can be folded and run/debugged independently
 
-
-</details>
-
-<details>
-<summary>May 2022</summary>
-
 #### Date Rule Grammar
 Added support for using dynamic dates such as T-1W (go back 1 week)
 
 #### Support for unit conversion custom factors
 You can now add properties on TimeSeries or Curves to provide absolute conversion factors to a specified unit
-
-</details>
-
-<details>
-<summary>April 2022</summary>
 
 #### Smart Curve Caching Improvements
 Added support for caching options, you can now choose from:
@@ -121,11 +115,6 @@ Added support for caching options, you can now choose from:
 * Cache when any dependencies are updated
 * Cache based on a cron schedule
 
-</details>
-
-<details>
-<summary>March 2022</summary>
-
 #### Curve Calendar Enhancements
 Various minor improvements
 * Use of holiday calendars for absolute movement of expiry calendars
@@ -133,11 +122,6 @@ Various minor improvements
 
 #### Add support for TOP in FIND command
 Allows you to return a small sample of items when using the find command in ODSL
-
-</details>
-
-<details>
-<summary>February 2022</summary>
 
 #### Smart TimeSeries
 The exciting introduction of Smart TimeSeries allowing you to create on-demand TimeSeries using a formula/expression.
@@ -153,11 +137,6 @@ Initial release of the Excel Add-in which will allow you to:
 #### Gas Days
 A new calendar supporting Gas Day hourly data aggregation and reporting.
 
-</details>
-
-<details>
-<summary>January 2022</summary>
-
 #### Smart Curves
 The exciting introduction of [Smart Curves](/docs/odsl/variable/smartcurve) allowing you to create on-demand curves without using a Curve Builder.
 
@@ -168,14 +147,10 @@ See [documentation](/docs/kb/pc#custom)
 </details>
 
 <details>
-<summary>December 2021</summary>
+<summary>2021</summary>
 
 #### Command Line Interface
 Initial release of the CLI which will allow you to run scripts locally and initiate interactive sessions
-
-</details>
-<details>
-<summary>November 2021</summary>
 
 #### New account management option in the Portal
 This is the place to go to manage your OpenDataDSL account:
@@ -187,10 +162,6 @@ This is the place to go to manage your OpenDataDSL account:
 #### TimeSeries Scaling
 Added support for rescaling TimeSeries for both aggregation to a lower frequency and distribution to a higher frequency.
 See the documentation [here](/docs/odsl/calendar/scaling)
-
-</details>
-<details>
-<summary>October 2021</summary>
 
 #### Improvement to calendar holiday rules
 Added support for options on the following rule types:
@@ -205,10 +176,6 @@ Syntax:
 pause number ('second'|'seconds'|'minute'|'minutes'|'hour'|'hours')
 ```
 
-</details>
-<details>
-<summary>September 2021</summary>
-
 #### Added support for using XSLTs in the [XML](/docs/odsl/service/xml#using-an-xslt) Service
 You can now use an XSLT transformer when reading XML data, e.g.
 
@@ -222,26 +189,14 @@ You can now emails using a subscription - see [here](/docs/odsl/dm/subscriptions
 A few minor enhancements
 * Added [daylightSavings](/docs/odsl/function/date#daylightsavings) function to test if the passed in date is a DST changeover day
 
-</details>
-<details>
-<summary>August 2021</summary>
-
 #### Getting ready for the soft launch!
 
 We are putting the finishing touches on the Web Portal that will allow us to start welcoming prospective clients to start using it.
 Designing the screens that will get you started
 
-</details>
-<details>
-<summary>July 2021</summary>
-
 #### Added support for real-time events
 
 We completed the first stage of the [real-time API](/docs/api/realtime) allowing for a more responsive experience in the GUI and the more collaboration opportunities in other applications
-</details>
-
-<details>
-<summary>June 2021</summary>
 
 #### Curve configurations in the web portal
 
@@ -301,11 +256,6 @@ We have added support for the following special characters in cron expressions f
         
     *   `0 0 * 1 L *`
         
-</details>
-
-<details>
-<summary>May 2021</summary>
-
 #### REST API improvements
 
 We added a \_search query parameter to allow for text searching of objects. Simply pass in a search expression to get results based on values in the fields: \_id, name, description and classification.
@@ -334,11 +284,6 @@ Links allow you to view related data and information
 
 ![](/attachments/131316/305889696.png)
 
-</details>
-
-<details>
-<summary>April 2021</summary>
-
 #### Curve Building Support
 
 We added support for creating your own forward curves using logic created in OpenDataDSL scripts. You can create an object of type #CurveConfig with 1 or more inputs and 1 or more outputs and save to the new CURVE service, example configuration:
@@ -364,11 +309,6 @@ MY_CURVE = object as #CurveConfig
 end
 save ${curve:MY_CURVE}
 ```
-</details>
-
-<details>
-<summary>March 2021</summary>
-
 #### Data aggregation support
 
 Added the ability to filter, group and aggregate any data using ODSL and the REST services, e.g.
@@ -389,10 +329,6 @@ Add _range query option to specify a date range for time-series retrieval. Add 3
 *   from(d) - from date d to the latest
 *   between(d1, d2) - between 2 dates, d1 and d2
     
-</details>
-<details>
-<summary>February 2021</summary>
-
 #### Object and data storage
 
 Improvements to the way objects and data is stored to allow greater query flexibility. Users can now query across all types of objects.
@@ -413,10 +349,6 @@ data = find profile SPOT from ${currency:public} where source == "ECB_FX"
 Added the ability to view process executions in the web portal:
 
 ![](/attachments/131316/187269165.png)
-
-</details>
-<details>
-<summary>January 2021</summary>
 
 #### Indexes
 

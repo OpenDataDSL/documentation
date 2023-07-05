@@ -23,7 +23,7 @@ The API consists of the following calls:
 |-|-|-|-|
 |GET|||Get the build information for this service|
 |GET|{release}/{source}|v1/public  v1/private|List public or private actions|
-|GET|{release}/{source}/{key}|v1/private/TEST|Retrieve a single action using it’s unique id|
+|GET|{release}/{source}/{key}|v1/private/TEST|Retrieve a single action using its unique id|
 |GET|{release}/{source}/{key}/{version}|v1/private/TEST/1|Retrieve a version of a single action|
 |GET|{release}/{source}/{key}/*|v1/private/TEST/*|Get a list of versions for a specific action|
 |PUT|{release}/{source}/{key}/{version}/{tag}|v1/private/TEST/1/PROD|Tag a version with a name (which can be used instead of the version number when retrieving it)|

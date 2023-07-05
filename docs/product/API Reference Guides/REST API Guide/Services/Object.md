@@ -7,7 +7,7 @@ tags:
   - service
   - object
 ---
-The object resource contains all the reference and meta-data for all the public and private data in OpenDataDSL
+The object resource contains the master data records for all the public and private data in OpenDataDSL
 
 ## Object REST API
 
