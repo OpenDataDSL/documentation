@@ -49,7 +49,7 @@ A report is based on a user defined configuration with the following properties:
 |template|The mustache template name used to format the results of the report as HTML|String|
 |tags|A list of tags for the report|List|
 |enabled|A flag indicating that this report should be automatically run if a cron schedule is defined|Boolean|
-|cron|A [cron expression](/kb/cron) to schedule this report|String|
+|cron|A [cron expression](/docs/kb/cron) to schedule this report|String|
 
 ### Version
 Report configurations are versioned, so they also contain version information:
