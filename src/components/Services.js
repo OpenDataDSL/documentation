@@ -11,7 +11,9 @@ var services = [
         rw: true,
         pub: true,
         pri: true,
-        ver: true
+        ver: true,
+        dread: false,
+        unres: false
     },
     {
         name: "Audit",
@@ -20,7 +22,20 @@ var services = [
         rw: false,
         pub: true,
         pri: true,
-        ver: false
+        ver: false,
+        dread: true,
+        unres: true
+    },
+    {
+        name: "Batch",
+        link: "/docs/api/rest/service/batch",
+        text: "Batch updates of objects",
+        rw: true,
+        pub: false,
+        pri: true,
+        ver: false,
+        dread: true,
+        unres: true
     },
     {
         name: "Calendar",
@@ -29,6 +44,8 @@ var services = [
         rw: true,
         pub: true,
         pri: true,
+        dread: true,
+        unres: false,
         ver: true
     },
     {
@@ -38,6 +55,8 @@ var services = [
         rw: false,
         pub: true,
         pri: true,
+        dread: true,
+        unres: false,
         ver: true
     },
     {
@@ -47,6 +66,8 @@ var services = [
         rw: true,
         pub: false,
         pri: true,
+        dread: false,
+        unres: false,
         ver: true
     },
     {
@@ -56,6 +77,8 @@ var services = [
         rw: "Read-only, use the Object service to write Data",
         pub: true,
         pri: true,
+        dread: false,
+        unres: false,
         ver: "If Object type is versioned"
     },
     {
@@ -65,6 +88,8 @@ var services = [
         rw: true,
         pub: false,
         pri: true,
+        dread: false,
+        unres: false,
         ver: false
     },
     {
@@ -74,6 +99,8 @@ var services = [
         rw: true,
         pub: true,
         pri: true,
+        dread: false,
+        unres: false,
         ver: true
     },
     {
@@ -83,6 +110,8 @@ var services = [
         rw: true,
         pub: true,
         pri: true,
+        dread: false,
+        unres: false,
         ver: true
     },
     {
@@ -92,6 +121,8 @@ var services = [
         rw: true,
         pub: false,
         pri: true,
+        dread: false,
+        unres: false,
         ver: false
     },
     {
@@ -101,6 +132,8 @@ var services = [
         rw: false,
         pub: false,
         pri: true,
+        dread: false,
+        unres: false,
         ver: false
     },
     {
@@ -110,6 +143,8 @@ var services = [
         rw: true,
         pub: true,
         pri: true,
+        dread: false,
+        unres: false,
         ver: "If the Object type is versioned"
     },
     {
@@ -119,6 +154,8 @@ var services = [
         rw: true,
         pub: false,
         pri: true,
+        dread: false,
+        unres: false,
         ver: false
     },
     {
@@ -128,6 +165,8 @@ var services = [
         rw: true,
         pub: false,
         pri: true,
+        dread: false,
+        unres: false,
         ver: true
     },
     {
@@ -137,6 +176,8 @@ var services = [
         rw: false,
         pub: false,
         pri: true,
+        dread: false,
+        unres: false,
         ver: false
     },
     {
@@ -146,6 +187,8 @@ var services = [
         rw: true,
         pub: false,
         pri: true,
+        dread: false,
+        unres: false,
         ver: false
     },
     {
@@ -155,6 +198,8 @@ var services = [
         rw: true,
         pub: true,
         pri: true,
+        dread: false,
+        unres: false,
         ver: true
     },
     {
@@ -164,6 +209,8 @@ var services = [
         rw: true,
         pub: true,
         pri: true,
+        dread: false,
+        unres: false,
         ver: true
     },
     {
@@ -173,6 +220,8 @@ var services = [
         rw: true,
         pub: false,
         pri: true,
+        dread: false,
+        unres: false,
         ver: true
     },
     {
@@ -182,6 +231,8 @@ var services = [
         rw: true,
         pub: false,
         pri: true,
+        dread: true,
+        unres: false,
         ver: true
     },
     {
@@ -191,6 +242,8 @@ var services = [
         rw: false,
         pub: false,
         pri: true,
+        dread: true,
+        unres: false,
         ver: false
     },
     {
@@ -200,6 +253,8 @@ var services = [
         rw: true,
         pub: false,
         pri: true,
+        dread: false,
+        unres: false,
         ver: false
     },
     {
@@ -209,7 +264,20 @@ var services = [
         rw: true,
         pub: true,
         pri: true,
+        dread: false,
+        unres: false,
         ver: true
+    },
+    {
+        name: "Task",
+        link: "/docs/api/rest/service/task",
+        text: "Tasks assigned to users",
+        rw: true,
+        pub: false,
+        pri: true,
+        dread: true,
+        unres: true,
+        ver: false
     },
     {
         name: "Type",
@@ -218,6 +286,8 @@ var services = [
         rw: true,
         pub: true,
         pri: true,
+        dread: true,
+        unres: false,
         ver: true
     },
     {
@@ -227,6 +297,8 @@ var services = [
         rw: true,
         pub: false,
         pri: true,
+        dread: "For you",
+        unres: "For you",
         ver: false
     },
     {
@@ -236,6 +308,8 @@ var services = [
         rw: true,
         pub: true,
         pri: true,
+        dread: false,
+        unres: false,
         ver: true
     }
 
@@ -251,6 +325,8 @@ export function Services() {
                 <th>Public</th>
                 <th>Private</th>
                 <th>Versioned</th>
+                <th>Read by default</th>
+                <th>Unrestricted</th>
             </tr>
         </thead>
     <tbody>
@@ -260,7 +336,7 @@ export function Services() {
     );
 }
 
-function TableRow({name, link, text, rw, pub, pri, ver}) {
+function TableRow({name, link, text, rw, pub, pri, ver, dread, unres}) {
   return (
     <tr>
         <td>
@@ -271,6 +347,8 @@ function TableRow({name, link, text, rw, pub, pri, ver}) {
         <td>{pub==true?<FontAwesomeIcon icon={faCheck} />:<sub>{pub}</sub>}</td>
         <td>{pri==true?<FontAwesomeIcon icon={faCheck} />:<sub>{pri}</sub>}</td>
         <td>{ver==true?<FontAwesomeIcon icon={faCheck} />:<sub>{ver}</sub>}</td>
+        <td>{dread==true?<FontAwesomeIcon icon={faCheck} />:<sub>{dread}</sub>}</td>
+        <td>{unres==true?<FontAwesomeIcon icon={faCheck} />:<sub>{unres}</sub>}</td>
     </tr>
   )
 }
