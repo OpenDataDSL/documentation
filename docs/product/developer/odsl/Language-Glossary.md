@@ -42,6 +42,9 @@ As is used in the following commands:
     
 *   [WF_EVENT](#wf_event)
     
+### byref
+
+Used in [user definable functions](/docs/odsl/command/function) to pass parameters 'by reference'
 
 ### ceiling
 
@@ -555,6 +558,10 @@ Used as a keyword in the [phase](#phase) command to reschedule a [workflow](#wor
 ```js
 phase "EXTRACT" retries 1 delay 10 seconds then reschedule 1 hour
 ```
+
+### throw
+Used to throw a custom exception
+
 ### to
 
 Used in the following statements:

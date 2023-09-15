@@ -7,7 +7,7 @@ tags:
 User Defined Functions
 ======================
 
-Create your own functions in OpenDataDSL
+Create your own user definable functions in OpenDataDSL
 
 ## Introduction
 
@@ -17,17 +17,19 @@ You can create your own user defined functions and use them in your code, you ca
 
 The syntax for creating a function is the following:
 
-```
-FUNCTION name ( (id (, id)*)? ) 
-  ( statement )*
-END
+```js
+function name ( ((byref)? param (, (byref)? param)*)? )
+  (comment)?
+  (statement)*
+end
 ```
 
 *   A function has to have a valid name    
 *   A function can have 0 or more input parameters
+*   Input parameters are passed 'by value' which can be over-ridden using the byef parameter modifier
 *   A function can return a variable - simply set the variable to the name of the function
 *   A function can call other functions, both user defined and built-in functions
-*   If there is a comment as the first line of the function, then this becomes the description of the function which is shown when hovering over a call to the function
+*   If there is a comment above the function, then this becomes the description of the function which is shown when hovering over a call to the function
   
 
 ### Examples
@@ -43,8 +45,11 @@ end
 A function that bootstraps and shapes an input curve
 
 ```js
+/**
+ * Create an arbitrage free monthly curve from the input curve and use simple shaping
+ * @param input The input curve
+ */
 function bootstrapAndShape(input)
-    // Create an arbitrage free monthly curve from the input curve and use simple shaping
     boot = bootstrapCurve(input)
     bootstrapAndShape = shape(boot)
 end
