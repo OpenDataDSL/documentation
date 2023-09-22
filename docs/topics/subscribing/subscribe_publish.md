@@ -1,11 +1,12 @@
 ---
-slug: /topics/subscribe/process
-title: Target - Process
-description: A subscription target to trigger process executions
+slug: /topics/subscribe/publish
+title: Target - Publish
+description: A subscription target to publish data to another tenant
 tags:
 - subscription
-- process
+- publish
 - target
+- topics
 ---
 
 import Tabs from '@theme/Tabs';
@@ -13,15 +14,15 @@ import TabItem from '@theme/TabItem';
 
 ## Configuration
 
-The **name** of this target is ```ProcessTarget```
+The **name** of this target is ```PublishTarget```
 
-To configure the process run action, you need to provide the following:
-* **process**
-  > The name of the process to run
+To configure the publish action, you need to provide the following:
+* **to**
+  > The name of the tenant to publish the data to
 
-### Adding a process target
+### Adding a publish target
 
-To add a process target to an existing subscription:
+To add a publish target to an existing subscription:
 
 <Tabs groupId="tool">
 <TabItem value="portal" label="Web Portal" default>
@@ -29,8 +30,8 @@ To add a process target to an existing subscription:
 * Select **Subscriptions**
 * Find the subscription you want to add the target to.
 * Click the + button next to targets
-* Select ProcessTarget
-* Fill out the process field appropriately
+* Select PublishTarget
+* Fill out the to field appropriately
 * Click the save button
 
 
@@ -38,9 +39,9 @@ To add a process target to an existing subscription:
 <TabItem value="odsl" label="OpenDataDSL">
 
 ```js
-// Adding a process run target to an existing subscription
+// Adding a publish target to an existing subscription
 sub = ${subscription:"MySubscription"}
-sub.addProcessTarget("myprocess")
+sub.addPublishTarget("tenant")
 save sub
 ```
 
@@ -54,8 +55,8 @@ Authorization: Bearer {{token}}
 {
     "name": "MySubscription",
     "targets":[{
-      "name": "ProcessTarget",
-      "process": "myprocess"
+      "name": "PublishTarget",
+      "process": "tenant"
     }]
 }
 ```

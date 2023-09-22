@@ -4,6 +4,7 @@ sidebar_position: 10
 tags:
   - data_management
   - geospatial
+  - topics
 ---
 Geospatial Data and Queries
 ===========================

@@ -4,7 +4,7 @@ title: Reporting Basics
 description: The basics of creating and running reports
 sidebar_position: 1
 tags:
-- topic
+- topics
 - reporting
 - basics
 ---

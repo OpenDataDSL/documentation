@@ -4,6 +4,7 @@ sidebar_position: 4
 tags:
   - data_management
   - auditing
+  - topics
 ---
 Data Auditing
 =============

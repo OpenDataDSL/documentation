@@ -4,7 +4,7 @@ title: Subscribing Basics
 description: The basics of event-driven programming in OpenDataDSL
 sidebar_position: 1
 tags:
-- topic
+- topics
 - subscription
 - basics
 - event-driven

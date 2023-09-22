@@ -6,6 +6,7 @@ sidebar_position: 1
 tags:
 - curve_management
 - curve
+- topics
 ---
 Introduction
 =============

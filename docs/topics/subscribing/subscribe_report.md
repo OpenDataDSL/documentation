@@ -5,7 +5,8 @@ description: A subscription target to run a report
 tags:
 - subscription
 - report
-- target
+- target  
+- topics
 ---
 
 import Tabs from '@theme/Tabs';

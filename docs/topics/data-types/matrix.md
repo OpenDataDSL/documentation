@@ -31,3 +31,9 @@ A matrix has:
 This matrix has an ondate of the 31st March 2023 and represents a correlation matrix for 5 industries.
 
 ![](matrix.png)
+
+## More information
+Some links with further information about matrices:
+
+* [Matrix variable in ODSL](/docs/odsl/variable/matrix)
+* [Matrix functions](/docs/odsl/function/matrix)

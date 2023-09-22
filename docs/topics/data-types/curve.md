@@ -32,5 +32,9 @@ This curve has an ondate of the 21st September 2023 and has 6 monthly delivery p
 ## More information
 Some links with further information about curves:
 
-* [Forward Curves](/docs/topics/curves/intro)
-* [Tenor Period Codes](/docs/kb/pc)
+* [Forward curves](/docs/topics/curves/intro)
+* [Tenor period codes](/docs/kb/pc)
+* [Curve variable in ODSL](/docs/odsl/variable/curve)
+* [Curve functions in ODSL](/docs/odsl/function/curve)
+* [Curve REST service](/docs/api/rest/service/curve)
+* [Curve entity structure](/docs/api/rest/service/data#curve-entity)

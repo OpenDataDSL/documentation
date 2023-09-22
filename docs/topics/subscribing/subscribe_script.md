@@ -6,6 +6,7 @@ tags:
 - subscription
 - script
 - target
+- topics
 ---
 
 import Tabs from '@theme/Tabs';

@@ -6,6 +6,7 @@ tags:
 - subscription
 - queue
 - target
+- topics
 ---
 
 import Tabs from '@theme/Tabs';
