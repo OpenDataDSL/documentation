@@ -1,0 +1,8 @@
+{
+  "label": "Forward Curves",
+  "position": 1,
+  "link": {
+    "type": "generated-index",
+    "description": "Topics concerning the management of forward curves"
+  }
+}

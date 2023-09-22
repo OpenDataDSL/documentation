@@ -1,6 +1,6 @@
 {
   "label": "Data Management",
-  "position": 5,
+  "position": 1,
   "link": {
     "type": "generated-index",
     "description": "Various aspects of how data is managed within OpenDataDSL"
