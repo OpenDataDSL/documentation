@@ -187,7 +187,7 @@
         "providerType":"Public Agency",
         "logo": "ahdb.png",
         "dataset": "Dairy Prices",
-        "text": "United Kingdom Wholesale Monthly Prices",
+        "text": "United Kingdom Dairy Wholesale Monthly Prices",
         "region": "United Kingdom",
         "start": "2000",
         "frequency": "MONTHLY",
@@ -212,8 +212,8 @@
         "provider": "Dalian Commodity Exchange",
         "providerType":"Exchange",
         "logo": "dce.jpg",
-        "dataset": "Agriculture Futures",
-        "text": "Dalian Commodity Exchange Agriculture Futures",
+        "dataset": "Agricultural Futures",
+        "text": "Dalian Commodity Exchange Agricultural Futures",
         "region": "China",
         "start": "2021",
         "frequency": "DAILY",
@@ -538,7 +538,7 @@
         "providerType":"Exchange",
         "logo": "ncdex.png",
         "dataset": "Agriculture",
-        "text": "National Commodity & Derivatives Exchange Agriculture Futures",
+        "text": "National Commodity & Derivatives Exchange Agricultural Futures",
         "region": "India",
         "start": "2021",
         "frequency": "Various",
@@ -642,7 +642,7 @@
         "providerType":"Exchange",
         "logo": "mgex.png",
         "dataset": "Agriculture",
-        "text": "Minneapolis Grain Exchange Agriculture Futures",
+        "text": "Minneapolis Grain Exchange Agricultural Futures",
         "region": "United States",
         "start": "2021",
         "frequency": "BUSINESS",
@@ -738,7 +738,7 @@
         "start": "2023",
         "frequency": "DAILY",
         "link":"/docs/company/DWD",
-        "tags": ["Commodity","Weather"," NEW"]
+        "tags": ["Commodity","Weather"]
     },
     {
         "type": "BYOL",
@@ -751,7 +751,7 @@
         "start": "2023",
         "frequency": "DAILY",
         "link":"/docs/company/PJM",
-        "tags": ["Commodity", "Power"," NEW"]
+        "tags": ["Commodity", "Power"]
     },
     {
         "type": "FREE",
@@ -764,6 +764,32 @@
         "start": "2023",
         "frequency": "WEEKLY",
         "link":"/docs/company/CFTC",
+        "tags": ["Commodity", "Agriculture"]
+    },
+    {
+        "type": "FREE",
+        "provider": "Malaysian Palm Oil Board",
+        "providerType":"Public Agency",
+        "logo": "mpob.png",
+        "dataset": "Agriculture",
+        "text": "Palm Oil Prices",
+        "region": "Asia",
+        "start": "2023",
+        "frequency": "MONTHLY",
+        "link":"/docs/company/MPOB",
+        "tags": ["Commodity", "Agriculture"," NEW"]
+    },
+    {
+        "type": "BYOL",
+        "provider": "The Wall Street Journal",
+        "providerType":"News Agency",
+        "logo": "WSJ.png",
+        "dataset": "Agriculture",
+        "text": "Agricultural Futures",
+        "region": "North America",
+        "start": "2023",
+        "frequency": "DAILY",
+        "link":"/docs/company/WSJ",
         "tags": ["Commodity", "Agriculture"," NEW"]
     }
 ]
