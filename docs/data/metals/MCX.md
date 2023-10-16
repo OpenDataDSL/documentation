@@ -24,8 +24,6 @@ MCX offers trading in commodity derivative contracts across varied segments incl
 
 For more information, visit: https://www.mcxindia.com/home
 
-
-
 ## Datasets
 import McxCmdtyFut from './_MCX_CMDTY_FUT.md';
 

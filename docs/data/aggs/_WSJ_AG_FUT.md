@@ -39,4 +39,4 @@ Data is validated for missing data points using HUSA calendar for expected absen
 
 ### Licensing
 
-Data is freely available in the vendor website and can be used by clients without permissions from MGEX.
+Data is freely available in the vendor website and can be used by clients without permissions from WSJ.
