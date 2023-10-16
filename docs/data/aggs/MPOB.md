@@ -26,7 +26,7 @@ website: https://bepi.mpob.gov.my/
 
 ## Datasets
 import MpobAgExport from './_MPOB_AG_EXPORT.md';
-import MpobAgCpo from './_MPOB_AG_CPO.md';
+import MpobAgFut from './_MPOB_AG_FUT.md';
 
 ### MPOB_AG_EXPORT
 <details>
@@ -34,8 +34,8 @@ import MpobAgCpo from './_MPOB_AG_CPO.md';
 <MpobAgExport />
 </details>
 
-### MPOB_AG_CPO
+### MPOB_AG_FUT
 <details>
-<summary>Malaysian Palm Oil Board Daily Local Prices of Crude Palm Oil</summary>
-<MpobAgCpo />
+<summary>Malaysian Palm Oil Board Daily Palm Oil Market Report</summary>
+<MpobAgFut />
 </details>

@@ -1,20 +1,22 @@
 ### Schedule
-
+Daily update is collected at 15:00 GMT on Malaysian business days.
 
 
 ### Sample File
-
+[Sample file:mpobdownload.xlsx](pathname:///file-samples/daily_PO_market_11102023.xlsx)
 
 
 ### Type
 
 The data is stored under #Agriculture
 
+### Data Id naming convention
+
 Example data id and name
 
 |**Data Id**|**Name**|
 |-|-|
-
+|MPOB.MY.PO.CPKO.P_MAL.FUT|Malaysian Palm Oil Board Daily Palm Oil Market Futures Delivery Prices Crude Palm Kernel Oil (Local Delivered RM/T)|
 
 ### Attributes
 
@@ -22,18 +24,18 @@ Example data id and name
 |-|-|
 |Source|MPOB|
 |Source Name|Malaysian Palm Oil Board|
-|Dataset|MPOB_AG_CPO|
-|Dataset Name|Malaysian Palm Oil Board Daily Local Prices of Crude Palm Oil|
-|Frequency|Daily|
+|Dataset|MPOB_AG_FUT|
+|Dataset Name|Malaysian Palm Oil Board Delivery Prices of Palm Oil|
+|Frequency|BUSINESS|
 |Currency|MYR|
 |Unit|TONNE|
-|Market|Spot|
+|Market|Future|
 |Commodity|Agriculture|
 |Product|Crude Palm Oil (CPO)|
-|Category|Crude Palm Oil|
+|Category|Oil|
 |Location|Malaysia|
 |Region|Asia|
-|Quote Calendar|Daily|
+|Quote Calendar|HMY|
 
 ### Validation
 
