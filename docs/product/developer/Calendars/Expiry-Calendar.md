@@ -91,15 +91,52 @@ go to the end of the previous month then align for quarters after 2021-01-01
 
 ### Exceptions and complex rules
 
-Sometimes, the trading rules for a calendar include some complex rules that determine when trading of a certain product ceases. These can be mostly handled using an **except** clause in the expiry rule. The except clause syntax is as follows
+Sometimes, the trading rules for a calendar include some complex rules that determine when trading of a certain product ceases. These can be mostly handled using an **except if** or an **unless** clause in the expiry rule. 
+The except clause syntax is as follows
 
 ```js
 except if (exception information) then
 ```
 
+The unless clause syntax is as follows
+
+```js
+unless (exception information) then
+```
+
+The difference between an **except if** and an **unless** clause is the starting date that the exception clause uses:
+
+##### Except if
+The date tested in the exception clause is the calculated date after any preceeding clauses have been executed.
+
+##### Unless
+The date tested in the exception clause is the original start-of-delivery date, therefore ignoring any preceeding clauses.
+If the **unless exception** is true, then the date is reset to the original start-of-delivery date.
+
+##### Example of except if versus unless
+
+Consider the following 2 rules:
+
+**Unless Rule**
+
+go back 1 days using calendar *unless* there is a non-business day within 1 day before then go to the end of the current day using calendar
+
+** Except if Rule**
+
+go back 1 days using calendar *except if* there is a non-business day within 1 day before then go to the end of the current day using calendar
+
+
+Using a contract with a start date of Monday 23rd October 2023
+* The unless clause will create an expiry date of the 23rd October 2023. 
+* The except if clause will create an expiry date of the 20th October 2023.
+
+Using a contract with a start date of Tuesday 24th October 2023
+* The unless clause will create an expiry date of the 23rd October 2023.
+* The except if clause will create an expiry date of the 23rd October 2023.
+
 #### Proximity to a holiday date
 
-The exception information can involve proximity to a holiday date:
+The exception information can involve proximity to a holiday day:
 
 ```js
 there is a holiday (within)? t time (before|after)
@@ -113,6 +150,21 @@ e.g.
 ... except if there is a holiday within 7 days after then ...
 ```
 
+#### Proximity to a non-business date
+
+The exception information can involve proximity to a non-business day:
+
+```js
+there is a non-business day (within)? t time (before|after)
+```
+
+This checks to see if there is a non-business day either within or specifically on a number of days/weeks before or after.
+
+e.g.
+
+```js
+... except if there is a non-business day within 7 days after then ...
+```
 #### The week/month/quarter/season/year ends on a specific day
 
 You can make an exception for when the period ends on a specific day:
