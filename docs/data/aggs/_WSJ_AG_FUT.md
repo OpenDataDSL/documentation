@@ -1,6 +1,6 @@
 ### Schedule
 
-Daily file is collected and processed at 23:30 UTC on US business days.
+Daily file is collected and processed at 23:30 GMT on United States business days.
 
 ### Type
 
