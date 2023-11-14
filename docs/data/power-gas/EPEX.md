@@ -51,7 +51,7 @@ import EpexElAucDaAgg from './_EPEX_EL_AUC_DA_AGG.md';
 <EpexElAucId />
 </details>
 
-### _EPEX_EL_CONT_ID
+### EPEX_EL_CONT_ID
 <details>
 <summary>European Power Exchange Intra Day Continuous Price and Volume</summary>
 <EpexElContId />

@@ -895,5 +895,18 @@
         "frequency": "DAILY",
         "link":"/docs/company/EPEX",
         "tags": ["Commodity", "Power"," NEW"]
+    },
+    {
+        "type": "BYOL",
+        "provider": "Intercontinental Exchange",
+        "providerType":"Exchange",
+        "logo": "ice.png",
+        "dataset": "Power",
+        "text": "Power Futures",
+        "region": "Europe",
+        "start": "2023",
+        "frequency": "DAILY",
+        "link":"/docs/company/ICE",
+        "tags": ["Commodity", "Power"," NEW"]
     }
 ]
