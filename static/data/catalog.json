@@ -882,6 +882,18 @@
         "frequency": "BUSINESS",
         "link":"/docs/company/MCX",
         "tags": ["Commodity", "Metals"," NEW"]
+    },
+    {
+        "type": "BYOL",
+        "provider": "European Power Exchange",
+        "providerType":"Exchange",
+        "logo": "epex.png",
+        "dataset": "Power Spot",
+        "text": "European Power Exchange Power Spot",
+        "region": "Europe",
+        "start": "2023",
+        "frequency": "DAILY",
+        "link":"/docs/company/EPEX",
+        "tags": ["Commodity", "Power"," NEW"]
     }
-
 ]
