@@ -934,5 +934,18 @@
         "frequency": "BUSINESS",
         "link":"/docs/company/NORD",
         "tags": ["Commodity", "Power"," NEW"]
+    },
+    {
+        "type": "BYOL",
+        "provider": "Bloomberg",
+        "providerType":"3rd Party Provider",
+        "logo": "bloomberg.png",
+        "dataset": "FX,Crudes",
+        "text": "FX Snapshot,Crudes",
+        "region": "Global",
+        "start": "2023",
+        "frequency": "BUSINESS",
+        "link":"/docs/company/BLOOMBERG",
+        "tags": ["Commodity", "Foreign Exchange","Crudes"," NEW"]
     }
 ]
