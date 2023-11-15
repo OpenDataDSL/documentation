@@ -905,7 +905,7 @@
         "text": "Power Futures",
         "region": "Europe",
         "start": "2023",
-        "frequency": "DAILY",
+        "frequency": "BUSINESS",
         "link":"/docs/company/ICE",
         "tags": ["Commodity", "Power"," NEW"]
     },
@@ -940,13 +940,13 @@
         "provider": "Bloomberg",
         "providerType":"3rd Party Provider",
         "logo": "bloomberg.png",
-        "dataset": "FX,Oil",
-        "text": "FX Snapshot,Oil",
+        "dataset": "FX Rates",
+        "text": "FX Rates,Oil",
         "region": "Global",
         "start": "2023",
-        "frequency": "DAILY",
+        "frequency": "BUSINESS",
         "link":"/docs/company/BLOOMBERG",
-        "tags": ["Commodity", "Foreign Exchange","Oil"," NEW"]
+        "tags": ["Commodity", "Foreign Exchange Rates","Oil"," NEW"]
     },
     {
         "type": "BYOL",
@@ -957,7 +957,7 @@
         "text": "Futures",
         "region": "Global",
         "start": "2023",
-        "frequency": "DAILY",
+        "frequency": "BUSINESS",
         "link":"/docs/company/CME",
         "tags": ["Commodity", "Power","Natural Gas","Oil"," NEW"]
     },
