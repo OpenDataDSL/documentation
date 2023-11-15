@@ -940,13 +940,13 @@
         "provider": "Bloomberg",
         "providerType":"3rd Party Provider",
         "logo": "bloomberg.png",
-        "dataset": "FX Rates",
-        "text": "FX Rates,Oil",
+        "dataset": "FX Rates,Interest Rates,Natural Gas,Power",
+        "text": "Snapshot,Forwards,Spot",
         "region": "Global",
         "start": "2023",
         "frequency": "BUSINESS",
         "link":"/docs/company/BLOOMBERG",
-        "tags": ["Commodity", "Foreign Exchange Rates","Oil"," NEW"]
+        "tags": ["Commodity", "Foreign Exchange","Oil"," NEW"]
     },
     {
         "type": "BYOL",
