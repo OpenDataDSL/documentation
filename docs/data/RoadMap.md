@@ -7,14 +7,10 @@ Current Data RoadMap
 
 |**Provider**|**Country**|**Commodity**|
 |-|-|-|
-|CROPEX Croatian Power Exchange Ltd|Croatia|Power|
-|EEX Transperancy|Europe|Power&Gas|
-|BAFA Federal Office of Economics and Export Control|Germany|Oil|
-|PAJ Petroleum Association of Japan|Japan|Statistics|
-|ONS Office of National Statistics|United Kingdom|Statistics|
-|THE Trading Hub Europe|Europe|Gas|
-|GIE Gas Infrastructure Europe|Europe|Gas|
+|The London Energy Brokers' Association European Power Prompt Indices|Europe|Natural Gas|
+|Intercontinental Exchange Endex Power Futures|Europe|Power|
+|Nordpool Power Day Ahead Price and Volume|Europe|Power|
+|Trading Hub Europe|Europe|Gas|
 |Elexon Power Flow |United Kingdom|Power|
+|National Oceanic and Atmospheric Administration|Global|Weather|
 |SEEPEX|Serbia|Power|
-|FAO FPMA Food Price Monitoring and Analysis Agricultural Statistics|Global|Agriculture|
-|NOOA National Oceanic and Atmospheric Administration|Global|Weather|
