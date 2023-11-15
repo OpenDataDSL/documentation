@@ -14,10 +14,12 @@ It can be used with both the Desktop version and Web version of Excel.
 
 ## Features
 
-* Create, read and update Objects
+* Create, read and update Master Data
 * Create, read and update Timeseries
 * Create, read and update Forward Curves
+* Create, read and update Matrices
 * Create, read and update Events
+* Read Reports
 
 ## Products supported
 
@@ -30,17 +32,23 @@ It can be used with both the Desktop version and Web version of Excel.
 
 To add the OpenDataDSL Add-in to your Office 365 Excel:
 
-1 Go to the **Insert** tab and select Get Add-ins
-  ![](img/install1.png)
+
+1. Go to the **Home** tab and click the **Add-ins** button.
+
+  ![](img/install1a.png)
+
+2. Select the Get Add-ins button
+
+![](img/install2a.png)
 
 
-2 In the **Office Add-ins** dialog, select **STORE** and in the search box and type opendatadsl
+3. In the **Office Add-ins** dialog, select **STORE** and in the search box and type *opendatadsl* or *odsl*
   ![](img/install2.png)
 
 
-3 Click the **Add** button to add it to your Excel
+4. Click the **Add** button to add it to your Excel
 
-4 Go to the **Home** tab and you should now see an OpenDataDSL **Show Dashboard** button
+5. Go to the **Home** tab and you should now see an OpenDataDSL **Show Dashboard** button
 
 ### First time log-in
 The first time you click on the **Show Dashboard** button you will be asked to log in. 
@@ -67,21 +75,17 @@ The toolbar contains commands to help you work with your data
 |![refresh](img/icon-refresh.png)|Refresh the data in your spreadsheet|
 |![settings](img/icon-settings.png)|Add-in settings|
 |![user](img/icon-user.png)|Current user profile picture. The drop-menu contains commands to logout and to view copyright information|
-|![object](img/icon-object.png)|Object or document data|
-|![timeseries](img/icon-timeseries.png)|Timeseries data|
-|![curve](img/icon-curve.png)|Forward curve data|
-|![event](img/icon-event.png)|Event data|
 
 
 
 ### Finding Data
-From the home screen in the dashboard, click one of Timeseries, Curves, Events or Objects and type your search query into the search box to get a list of items.
+From the home screen in the dashboard, click one of Timeseries, Curves, Events or Master Data Records and type your search query into the search box to get a list of items.
 Entering further search terms will narrow down the items
 
 <InDepth href="/docs/user/excel/finding-data" />
 
-### Working with Objects
-Objects in OpenDataDSL are the top level structures that contain information and links to all its associated data.
+### Working with Master Data
+Master Data Records in OpenDataDSL are the top level structures that contain information and links to all its associated data.
 
 <InDepth href="/docs/user/excel/objects" />
 
@@ -93,9 +97,17 @@ Objects in OpenDataDSL are the top level structures that contain information and
 
 <InDepth href="/docs/user/excel/curves" />
 
+### Working with Matrices
+
+<InDepth href="/docs/user/excel/matrices" />
+
 ### Working with Events
 
 <InDepth href="/docs/user/excel/events" />
+
+### Working with Reports
+
+<InDepth href="/docs/user/excel/reports" />
 
 ### Excel Functions
 
