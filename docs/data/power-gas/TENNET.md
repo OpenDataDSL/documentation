@@ -25,10 +25,23 @@ For more information, visit: https://www.tennet.eu/
 
 ## Datasets
 import TennetElImb from './_TENNET_EL_IMB.md';
-
+import TennetElMeasured from './_TENNET_EL_MEASURED.md';
+import TennetElDelta from './_TENNET_EL_DELTA.md';
 
 ### TENNET_EL_IMB
 <details>
 <summary>TenneT Netherlands Power Imbalance Prices</summary>
 <TennetElImb />
+</details>
+
+### TENNET_EL_MEASURED
+<details>
+<summary>TenneT Netherlands Power Delta Measurement Volume</summary>
+<TennetElMeasured />
+</details>
+
+### TENNET_EL_DELTA
+<details>
+<summary>TenneT Netherlands Power Balance Delta Prices</summary>
+<TennetElDelta />
 </details>
