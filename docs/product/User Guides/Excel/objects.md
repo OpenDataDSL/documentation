@@ -130,7 +130,7 @@ To update multiple items, use the check boxes to toggle on/off from the range it
       
 ![](img/object-refresh1.png)
 
-Alternatively, you can click on the Master DAta link from the Refresh card on the home page.
+Alternatively, you can click on the Master Data link from the Refresh card on the home page.
 
 ![](img/object-refresh2.png)
 
