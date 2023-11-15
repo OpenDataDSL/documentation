@@ -57,9 +57,9 @@ You should log in using the same corporate credentials you use to log into the *
 
 ## Using the Excel Add-in
 
-![](img/excel-home.png)
-
 To show/hide the OpenDataDSL add-in task pane, use the **Show Dashboard** button available on the **Home** tab.
+
+![](img/excel-home.png)
 
 ### Toolbar
 The toolbar contains commands to help you work with your data
