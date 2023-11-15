@@ -24,10 +24,17 @@ For more information, visit: https://www.ice.com/index
 
 ## Datasets
 import IceElEndexFut from './_ICE_EL_ENDEX_FUT.md';
+import IceCrIfsgFut from './_ICE_CR_IFSG_FUT.md';
 
 
 #### ICE_EL_ENDEX_FUT
 <details>
 <summary>ICE Endex Power Futures</summary>
 <IceElEndexFut/>
+</details>
+
+#### ICE_CR_IFSG_FUT
+<details>
+<summary>ICE Singapore Crudes Futures</summary>
+<IceCrIfsgFut/>
 </details>

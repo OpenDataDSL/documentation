@@ -777,7 +777,7 @@
         "start": "2023",
         "frequency": "MONTHLY",
         "link":"/docs/company/MPOB",
-        "tags": ["Commodity", "Agriculture"," NEW"]
+        "tags": ["Commodity", "Agriculture"]
     },
     {
         "type": "BYOL",
@@ -790,7 +790,7 @@
         "start": "2023",
         "frequency": "DAILY",
         "link":"/docs/company/WSJ",
-        "tags": ["Commodity", "Agriculture"," NEW"]
+        "tags": ["Commodity", "Agriculture"]
     },
     {
         "type": "FREE",
@@ -803,7 +803,7 @@
         "start": "2023",
         "frequency": "DAILY",
         "link":"/docs/company/BALCO",
-        "tags": ["Commodity", "Metals"," NEW"]
+        "tags": ["Commodity", "Metals"]
     },
     {
         "type": "FREE",
@@ -816,7 +816,7 @@
         "start": "1991",
         "frequency": "MONTHLY",
         "link":"/docs/company/FAO",
-        "tags": ["Commodity", "Agriculture"," NEW"]
+        "tags": ["Commodity", "Agriculture"]
     },
     {
         "type": "FREE",
@@ -881,7 +881,7 @@
         "start": "2023",
         "frequency": "BUSINESS",
         "link":"/docs/company/MCX",
-        "tags": ["Commodity", "Metals"," NEW"]
+        "tags": ["Commodity", "Metals"]
     },
     {
         "type": "BYOL",
@@ -907,6 +907,32 @@
         "start": "2023",
         "frequency": "DAILY",
         "link":"/docs/company/ICE",
+        "tags": ["Commodity", "Power"," NEW"]
+    },
+    {
+        "type": "BYOL",
+        "provider": "London Energy Brokers' Association",
+        "providerType":"Broker",
+        "logo": "leba.png",
+        "dataset": "Natural Gas",
+        "text": "Natural Gas Futures",
+        "region": "Europe",
+        "start": "2023",
+        "frequency": "BUSINESS",
+        "link":"/docs/company/LEBA",
+        "tags": ["Commodity", "Natural Gas"," NEW"]
+    },
+    {
+        "type": "BYOL",
+        "provider": "Nord Pool",
+        "providerType":"Exchange",
+        "logo": "nord.png",
+        "dataset": "Power",
+        "text": "Power Day Ahead",
+        "region": "Europe",
+        "start": "2023",
+        "frequency": "BUSINESS",
+        "link":"/docs/company/NORD",
         "tags": ["Commodity", "Power"," NEW"]
     }
 ]
