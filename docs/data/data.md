@@ -8,7 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlay, faCalendarDay, faGlobe, faMoneyBill } from '@fortawesome/free-solid-svg-icons'
 import {DataCatalog} from '/src/components/Discovery.js';
 
-<DataCatalog text="This page contains a list of the data and loaders we have available now" />
+<DataCatalog text="This page contains a list of the data and loaders we have available NOW" />
 
 ## Complete Data List
 If you cannot find what you are looking for:

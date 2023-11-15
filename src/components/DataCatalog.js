@@ -30,10 +30,20 @@ function Block(props) {
           <FontAwesomeIcon icon={faGlobe} />&nbsp;{props.region}
           <hr />
           {props.tags.map((item) => (
-            <Button key={item}>{item}</Button>
+            <span><Button className="btn-sm" key={item}>{item}</Button>&nbsp;</span>
           ))}
         </Card.Body>
       </Card>
+    );
+  }
+
+function ProviderRow(props) {
+    return (
+      <tr style={{ width: '18rem' }}>
+        <td><Logo logo={props.logo} /></td>
+        <td>{props.provider}</td>
+        <td>{props.links.map((l) => <span key={l.text}><a href={l.link}>{l.text}</a><br/></span>)}</td>
+      </tr>
     );
   }
 
@@ -44,6 +54,39 @@ function Block(props) {
             {Data.map((props, idx) => (
               <Block key={idx} {...props} />
             ))}
+          </Container>
+        </div>
+    );
+  }
+
+  export function DataProviders() {
+    var sorted = Data.sort((a,b) => a.provider.localeCompare(b.provider));
+    var list = [];
+    var last = null;
+    for (var item of sorted) {
+        if (last != null) {
+            if (last.provider == item.provider) {
+                last.links.push({link: item.link, text: item.text})
+            } else {
+                item.links = [{link: item.link, text: item.text}];
+                list.push(item);
+                last = item;
+            }
+        } else {
+            last = item;
+        }
+    }
+    return (
+        <div>
+          <Container className={styles.datablock}>
+            <table>
+                <thead><tr><th>Logo</th><th>Provider</th><th>Data Sets</th></tr></thead>
+                <tbody>
+                    {list.map((props, idx) => (
+                      <ProviderRow key={idx} {...props} />
+                    ))}
+                </tbody>
+            </table>
           </Container>
         </div>
     );

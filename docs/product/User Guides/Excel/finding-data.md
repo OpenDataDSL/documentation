@@ -49,7 +49,10 @@ Will search the tags collection for the word wheat
 Will search id, name and description for the word europe and the tags collection for the word wheat
 
 ### Specific fields
-You can force the search engine to use a specific field to search for a term using the colon (:) operator.
+You can force the search engine to use a specific field to search for a term using the equal (=) operator or double-equal (==) operator to search for an exact term.
 
-**Example:** ```location:belgium```
+**Example:** ```location=belgium```
 Will search the location field for objects with the word belgium in it.
+
+**Example:** ```location==Belgium```
+Will find objects that have the exact word Belgium in the location field.

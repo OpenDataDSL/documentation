@@ -1,34 +1,39 @@
 ---
-title: Working with Events
-description: Working with events in the Excel Add-in
-sidebar_position: 6
-slug: /user/excel/events
+title: Working with Matrices
+description: Working with matrices in the Excel Add-in
+sidebar_position: 5
+slug: /user/excel/matrices
 tags:
 - excel
-- events
+- matrix
+- matrices
 ---
 
-## What are events?
+## What are matrices?
 
-Events are a thing that has happened at a point in time, similar to an observation in a TimeSeries only with a lot more information.
+Matrices are a table of data with labelled rows and columns
 
-Example events are:
-* An order placed with a broker, exchange etc.
-* A trade made with a broker, exchange etc.
-* A planned or unplanned outage (REMIT Urgent Market Message)
+Example:
+
+![img.png](img/matrix_example.png)
+
+Example uses of a matrix are:
+* A correlation matrix
+* A covariance matrix
+* A table of statistical information
 
 You have access to all public and your own private data from the Excel Add-in, this document shows you how to find the data you need.
 
-### Creating a new event
-1.	From the toolbar select **New > Event**. 
-      
-![img.png](img/event-create1.png)
+### Creating a new matrix
+1.	From the toolbar select **New > Matrices**.
 
-Alternatively, you can click on the Create link from the Event card on the home page. 
+![img.png](img/matrix-create1.png)
 
-![img.png](img/event-create2.png)
+Alternatively, you can click on the Create link from the Matrices card on the home page.
 
-2.	On the new event configuration pane select **Object Type**, **Event Type** and specify **Id** for the event being created. 
+![img.png](img/matrix-create2.png)
+
+2.	On the new matrix configuration pane select **Object Type**, **Event Type** and specify **Id** for the event being created.
 
 :::info Id Format
 The id should include the object id and event id in the format ```<object id>:<event id>```
@@ -74,13 +79,13 @@ This option will put the event ids on the first row, properties on the first col
 5.	Click **Create** to create the event based on the configuration.
 
 ### Downloading existing events
-1.	From the toolbar select **Download > Events**. 
-      
+1.	From the toolbar select **Download > Events**.
+
 ![img.png](img/event-download1.png)
 
-Alternatively, you can click on the **Download** link from the **Event** card on the home page. 
+Alternatively, you can click on the **Download** link from the **Event** card on the home page.
 
-![img.png](img/event-download2.png)
+![img.png](img/matrix-download2.png)
 
 2.	Search for the events you want to download. You can use filters and or the search box to narrow down the search results.
 
@@ -111,8 +116,8 @@ This option will put the event ids on the first row, properties on the first col
 ![img.png](img/event-download6.png)
 
 ### Updating existing events
-1.	From the toolbar select **Upload**. 
-      
+1.	From the toolbar select **Upload**.
+
 ![img.png](img/event-update1.png)
 ![img.png](img/event-update2.png)
 
@@ -124,9 +129,9 @@ Alternatively, you can click on the **Upload** link from the **Events** card on 
 
 ![img.png](img/event-update4.png)
 
-3.	Click the ![](img/icon-upload2.png) upload icon to upload the data. 
+3.	Click the ![](img/icon-upload2.png) upload icon to upload the data.
       To update multiple events, use the check boxes to toggle on/off from the range items listed and then click **Upload** button.
-      
+
 ![img.png](img/event-update5.png)
 
 4.	Optionally, before uploading you can specify default settings for new events which are not yet created. This step can be ignored if all the items already exist.
@@ -135,8 +140,8 @@ Alternatively, you can click on the **Upload** link from the **Events** card on 
 
 ### Refreshing existing events
 
-1.	From the toolbar select **Refresh**. 
-      
+1.	From the toolbar select **Refresh**.
+
 ![img.png](img/event-refresh1.png)
 
 Alternatively, you can click on the **Events** link from the **Refresh** card on the home page.
@@ -147,9 +152,9 @@ Alternatively, you can click on the **Events** link from the **Refresh** card on
 
 ![img.png](img/event-refresh3.png)
 
-3.	Click the ![](img/icon-refresh2.png)  refresh icon to refresh the data. 
+3.	Click the ![](img/icon-refresh2.png)  refresh icon to refresh the data.
       To refresh multiple events, use the check boxes to toggle on/off from the range items listed and then click Refresh button.
-      
+
 ![img.png](img/event-refresh4.png)
 
 4.	Click **Refresh** to refresh the event data on your worksheet.

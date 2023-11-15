@@ -31,11 +31,11 @@ It can be used with both the Desktop version and Web version of Excel.
 To add the OpenDataDSL Add-in to your Office 365 Excel:
 
 1 Go to the **Insert** tab and select Get Add-ins
-  ![](install1.png)
+  ![](img/install1.png)
 
 
 2 In the **Office Add-ins** dialog, select **STORE** and in the search box and type opendatadsl
-  ![](install2.png)
+  ![](img/install2.png)
 
 
 3 Click the **Add** button to add it to your Excel
@@ -45,32 +45,32 @@ To add the OpenDataDSL Add-in to your Office 365 Excel:
 ### First time log-in
 The first time you click on the **Show Dashboard** button you will be asked to log in. 
 You should log in using the same corporate credentials you use to log into the **ODSL Web Portal**.
-![](login.png)
+![](img/login.png)
 
 ## Using the Excel Add-in
 
-![](excel-home.png)
+![](img/excel-home.png)
 
 To show/hide the OpenDataDSL add-in task pane, use the **Show Dashboard** button available on the **Home** tab.
 
 ### Toolbar
 The toolbar contains commands to help you work with your data
 
-![](toolbar.png)
+![](img/toolbar.png)
 
 |Icon|Description|
 |-|-|
-|![home](icon-home.png)|Navigates to the home screen|
-|![create](icon-create.png)|Contains commands to create new ODSL objects, timeseries, curves, and events|
-|![download](icon-download.png)|Contains commands to download ODSL objects, timeseries, curves, and events|
-|![upload](icon-upload.png)|Upload new or updated data|
-|![refresh](icon-refresh.png)|Refresh the data in your spreadsheet|
-|![settings](icon-settings.png)|Add-in settings|
-|![user](icon-user.png)|Current user profile picture. The drop-menu contains commands to logout and to view copyright information|
-|![object](icon-object.png)|Object or document data|
-|![timeseries](icon-timeseries.png)|Timeseries data|
-|![curve](icon-curve.png)|Forward curve data|
-|![event](icon-event.png)|Event data|
+|![home](img/icon-home.png)|Navigates to the home screen|
+|![create](img/icon-create.png)|Contains commands to create new ODSL objects, timeseries, curves, and events|
+|![download](img/icon-download.png)|Contains commands to download ODSL objects, timeseries, curves, and events|
+|![upload](img/icon-upload.png)|Upload new or updated data|
+|![refresh](img/icon-refresh.png)|Refresh the data in your spreadsheet|
+|![settings](img/icon-settings.png)|Add-in settings|
+|![user](img/icon-user.png)|Current user profile picture. The drop-menu contains commands to logout and to view copyright information|
+|![object](img/icon-object.png)|Object or document data|
+|![timeseries](img/icon-timeseries.png)|Timeseries data|
+|![curve](img/icon-curve.png)|Forward curve data|
+|![event](img/icon-event.png)|Event data|
 
 
 

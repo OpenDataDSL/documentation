@@ -18,11 +18,11 @@ You have access to all public and your own private data from the Excel Add-in, t
 
 1.	From the toolbar select **New > Timeseries**. 
    
-![](create-timeseries1.png)   
+![](img/create-timeseries1.png)   
 
 Alternatively, you can click on the Create link from the Timeseries card on the home page. 
 
-![](create-timeseries2.png)
+![](img/create-timeseries2.png)
 
 2.	On the new timeseries configuration pane select **Object Type**, **Calendar**, and specify **Id** for the timeseries being created. 
       
@@ -36,11 +36,11 @@ Additionally, you can specify **Currency**, **Unit**, and **Timezone** fields fo
 To create multiple timeseries, specify multiple ids separated by comma, space, or semicolon. 
 :::
 
-![](create-timeseries3.png)
+![](img/create-timeseries3.png)
 
 3.	Under Options you can choose how you want to create the timeseries.
 
-![](create-timeseries4.png)
+![](img/create-timeseries4.png)
 
 :::info
 #### Add only template to worksheet
@@ -55,7 +55,7 @@ This option will only create the timeseries, it does not add to the worksheet. Y
 
 4.	Select the display layout for the timeseries on the worksheet.
 
-![](display-layout.png)
+![](img/display-layout.png)
 
 :::info
 #### Horizontal
@@ -71,26 +71,26 @@ This option will put the timeseries ids on the first row, indexes on the first c
 
 1.	From the toolbar select **Download > Timeseries** 
       
-![](timeseries-download1.png)
+![](img/timeseries-download1.png)
 
 Alternatively, you can click on the Download link from the Timeseries card on the home page. 
 
-![](timeseries-download2.png)
+![](img/timeseries-download2.png)
 
 2.	Search for the timeseries you want to download. You can use filters and or the search box to narrow down the search results.
 
-3.	Click the ![](icon-download2.png) download icon on each item to download data to the spreadsheet. 
-      To add multiple timeseries, you can click the ![](icon-plus.png) plus icon to add to the selection and then click the Download button.
+3.	Click the ![](img/icon-download2.png) download icon on each item to download data to the spreadsheet. 
+      To add multiple timeseries, you can click the ![](img/icon-plus.png) plus icon to add to the selection and then click the Download button.
       
-![](timeseries-download3.png)
+![](img/timeseries-download3.png)
 
 4.	Optionally, before downloading you can select the timeseries **Range** and the **Timezone** to use for the displayed data from the **Options** tab.
 
-![](timeseries-download4.png)
+![](img/timeseries-download4.png)
 
 5.	Select the display layout for the timeseries on the worksheet.
 
-![](display-layout.png)
+![](img/display-layout.png)
 
 :::info
 #### Horizontal
@@ -102,30 +102,30 @@ This option will put the timeseries ids on the first row, indexes on the first c
 
 6.	Click **Download** to download the timeseries onto the worksheet.
 
-![](timeseries-download5.png)
+![](img/timeseries-download5.png)
 
 ### Updating existing timeseries
 
 1.	From the toolbar select **Upload**. 
 
-![](timeseries-upload1.png)
+![](img/timeseries-upload1.png)
 
 Alternatively, you can click on the **Upload** link from the **Timeseries** card on the home page.
 
-![](timeseries-upload2.png)
-![](timeseries-upload3.png)
+![](img/timeseries-upload2.png)
+![](img/timeseries-upload3.png)
 
 2.	Select the timeseries range from the available ranges listed from the worksheet.
 
-![](timeseries-upload4.png)
+![](img/timeseries-upload4.png)
 
-3.	Click the ![](icon-upload2.png) upload icon to upload the data. To update multiple timeseries, use the check boxes to toggle on/off from the range items listed and then click **Upload** button.
+3.	Click the ![](img/icon-upload2.png) upload icon to upload the data. To update multiple timeseries, use the check boxes to toggle on/off from the range items listed and then click **Upload** button.
 
-![](timeseries-upload5.png)
+![](img/timeseries-upload5.png)
 
 4.	Optionally, before uploading you can specify default settings for new timeseries which are not yet created. This step can be ignored if all the items already exist.
 
-![](timeseries-upload6.png)
+![](img/timeseries-upload6.png)
 
 5.	Click **Upload** to upload the timeseries from your worksheet.
 
@@ -133,19 +133,19 @@ Alternatively, you can click on the **Upload** link from the **Timeseries** card
 
 1.	From the toolbar select **Refresh**. 
       
-![img.png](timeseries-refresh1.png)
+![img.png](img/timeseries-refresh1.png)
 
 Alternatively, you can click on the **Timeseries** link from the **Refresh** card on the home page.
 
-![img.png](timeseries-refresh2.png)
+![img.png](img/timeseries-refresh2.png)
 
 2.	Select the timeseries range from the available ranges listed from the worksheet.
 
-![img.png](timeseries-refresh3.png)
+![img.png](img/timeseries-refresh3.png)
 
-3.	Click the ![](icon-refresh2.png)  refresh icon to refresh the data. To refresh multiple timeseries, use the check boxes to toggle on/off from the range items listed and then click **Refresh** button.
+3.	Click the ![](img/icon-refresh2.png)  refresh icon to refresh the data. To refresh multiple timeseries, use the check boxes to toggle on/off from the range items listed and then click **Refresh** button.
 
-![img.png](timeseries-refresh4.png)
+![img.png](img/timeseries-refresh4.png)
 
 4.	Click **Refresh** to refresh the timeseries data on your worksheet.
 
