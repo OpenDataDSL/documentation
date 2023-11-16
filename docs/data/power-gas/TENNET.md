@@ -36,7 +36,7 @@ import TennetElDelta from './_TENNET_EL_DELTA.md';
 
 ### TENNET_EL_MEASURED
 <details>
-<summary>TenneT Netherlands Power Delta Measurement Volume</summary>
+<summary>TenneT Netherlands Power Measured Volume</summary>
 <TennetElMeasured />
 </details>
 
