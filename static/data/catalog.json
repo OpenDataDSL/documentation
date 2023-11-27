@@ -901,11 +901,11 @@
         "provider": "Intercontinental Exchange",
         "providerType":"Exchange",
         "logo": "ice.png",
-        "dataset": "Power",
+        "dataset": "Power,Natural Gas,Oil,Products",
         "text": "Power Futures",
         "region": "Europe",
         "start": "2023",
-        "frequency": "DAILY",
+        "frequency": "BUSINESS",
         "link":"/docs/company/ICE",
         "tags": ["Commodity", "Power"," NEW"]
     },
@@ -918,7 +918,7 @@
         "text": "Natural Gas Futures",
         "region": "Europe",
         "start": "2023",
-        "frequency": "BUSINESS",
+        "frequency": "DAILY",
         "link":"/docs/company/LEBA",
         "tags": ["Commodity", "Natural Gas"," NEW"]
     },
@@ -927,11 +927,11 @@
         "provider": "Nord Pool",
         "providerType":"Exchange",
         "logo": "nord.png",
-        "dataset": "Power",
+        "dataset": "Power Spot",
         "text": "Power Day Ahead",
         "region": "Europe",
         "start": "2023",
-        "frequency": "BUSINESS",
+        "frequency": "DAILY",
         "link":"/docs/company/NORD",
         "tags": ["Commodity", "Power"," NEW"]
     },
@@ -940,12 +940,38 @@
         "provider": "Bloomberg",
         "providerType":"3rd Party Provider",
         "logo": "bloomberg.png",
-        "dataset": "FX,Crudes",
-        "text": "FX Snapshot,Crudes",
+        "dataset": "FX Rates,Interest Rates,Natural Gas,Power",
+        "text": "Snapshot,Forwards,Spot",
         "region": "Global",
         "start": "2023",
         "frequency": "BUSINESS",
         "link":"/docs/company/BLOOMBERG",
-        "tags": ["Commodity", "Foreign Exchange","Crudes"," NEW"]
+        "tags": ["Commodity", "Foreign Exchange","Oil"," NEW"]
+    },
+    {
+        "type": "BYOL",
+        "provider": "Chicago Mercantile Exchange Group Inc",
+        "providerType":"Exchange",
+        "logo": "cme.jpg",
+        "dataset": "Power,Natural Gas,Oil,Products",
+        "text": "Futures",
+        "region": "Global",
+        "start": "2023",
+        "frequency": "BUSINESS",
+        "link":"/docs/company/CME",
+        "tags": ["Commodity", "Power","Natural Gas","Oil"," NEW"]
+    },
+    {
+        "type": "BYOL",
+        "provider": "Independent Commodity Intelligence Services",
+        "providerType":"3rd Party Provider",
+        "logo": "icis.png",
+        "dataset": "Natural Gas,Power",
+        "text": "Futures",
+        "region": "Europe",
+        "start": "2023",
+        "frequency": "DAILY",
+        "link":"/docs/company/ICIS",
+        "tags": ["Commodity","Natural Gas","Power"," NEW"]
     }
 ]
