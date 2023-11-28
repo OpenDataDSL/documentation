@@ -5,6 +5,8 @@ slug: /sdk/java
 tags:
   - java
   - sdk
+  - messaging
+  - realtime
 ---
 
 ## Installation
@@ -188,7 +190,6 @@ import sdk.RTD;
 public class Main {
     public static void main(String[] args) {
         ODSL odsl = new ODSL();
-        odsl.setStage("local");
         odsl.login();
 
 		RTD rtd = odsl.RTD();

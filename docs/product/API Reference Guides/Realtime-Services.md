@@ -1,8 +1,11 @@
 ---
 slug: /api/realtime
+title: Realtime Services
+description: An API reference guide to the realtime services
+tags:
+  - realtime
+  - signalr
 ---
-Realtime Services
-=================
 
 An API reference guide to the realtime services
 
