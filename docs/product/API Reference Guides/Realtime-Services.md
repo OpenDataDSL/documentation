@@ -22,6 +22,18 @@ It uses [SignalR](https://dotnet.microsoft.com/apps/aspnet/signalr) which is a f
 
 We expose a number of server-side methods which are detailed in this section.
 
+### General
+
+| **Service** | **Methods** |
+|-|-|
+|Master Data (object)|OnObjectCreate, OnObjectUpdate, OnObjectDelete|
+|Data (data)|OnDataCreate, OnDataUpdate, OnDataDelete|
+|Events (event)|OnEventCreate, OnEventUpdate, OnEventDelete|
+|Curve Management (curve)|OnCurveCreate, OnCurveUpdate, OnCurveDelete, OnCurveMessage|
+|Calendars (calendar)|OnCalendarCreate, OnCalendarUpdate, OnCalendarDelete|
+|Expiry Calendars (expiry)|OnExpiryCreate, OnExpiryUpdate, OnExpiryDelete|
+
+
 ### Processes
 
 #### executionMessage
@@ -47,9 +59,4 @@ This method is triggered by a running process at one of the following stages:
 
 The execution message contains the latest full execution log for a running process.
 
-### Objects
-
-#### updateObject
-
-This method is triggered when an object is updated and the object message is the latest full merged object (minus any extracted data)
 

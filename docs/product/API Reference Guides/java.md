@@ -187,16 +187,39 @@ package com.opendatadsl.realtime;
 import sdk.ODSL;
 import sdk.RTD;
 
-public class Main {
+public class MasterDataExample {
     public static void main(String[] args) {
+        ODSL odsl = new ODSL();
+        odsl.login();
+
+        RTD rtd = odsl.RTD();
+        rtd.connect();
+        rtd.addMessageHandler("OnObjectUpdate", new RTDProcessor());
+        rtd.subscribe("object", "AAA");
+    }
+}
+
+```
+
+### A curve management example
+
+```java
+package com.opendatadsl.realtime;
+
+import sdk.ODSL;
+import sdk.RTD;
+
+public class CurveManagementExample {
+	    public static void main(String[] args) {
         ODSL odsl = new ODSL();
         odsl.login();
 
 		RTD rtd = odsl.RTD();
 		rtd.connect();
-		rtd.addMessageHandler("OnObjectUpdate", new RTDProcessor());
-		rtd.addMessageHandler("OnDataUpdate", new RTDProcessor());
-		rtd.subscribe("object", "AAA");
+		rtd.addMessageHandler("OnCurveMessage", new RTDProcessor());
+		
+		// Subscribe to the curve management messages for an ondate
+		rtd.subscribe("curve", "2023-11-27");
     }
 }
 ```
