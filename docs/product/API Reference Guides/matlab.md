@@ -1,8 +1,11 @@
 ---
+title: MATLAB SDK
+description: Instructions on installing and using the MATLAB SDK for OpenDataDSL
 slug: /sdk/matlab
+tags:
+- matlab
+- sdk
 ---
-MATLAB SDK
-=================
 
 ## Windows Installation
 
