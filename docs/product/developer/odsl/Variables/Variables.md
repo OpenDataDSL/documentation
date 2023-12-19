@@ -167,3 +167,8 @@ A task is a physical task assigned to a user from either a user or the system
 
 ### [Report](report)
 A report is a configuration containing an expression that can be run to produce a user definable report
+
+### [Policy](Policy)
+---------------------------------------
+
+A policy variable allows you to restrict access to data within any service

@@ -89,15 +89,10 @@ You can also add application roles to an unattended application in Active Direct
 Adding application permissions requires Admin Consent
 :::
 
-### Data roles
+### Data policies
 
-Data roles determine what data (from the Object Service) a user can access. 
-All public data is accessible by everyone, but your own private proprietary data can be secured using Azure Active Directory Groups that you assign users to.
+Data policies determine what data a user can access. 
+All public data is accessible by everyone, but your own private proprietary data can be secured using policies.
 
-#### Private data roles
-
-Private data roles can be created by a company administrator or a user with the ‘data-role’ application role. 
-Roles can be added to your private objects using the **_access** property on your object which should match the private role that has been defined.
-
-You can assign an ‘ALL’ data role which allows access to all private data.
+* [Policies in ODSL](/docs/odsl/variable/policy)
 
