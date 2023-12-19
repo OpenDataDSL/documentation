@@ -41,18 +41,26 @@ A policy has the following methods:
 |addAction(action)|Adds an action to this policy|void|
 
 Example policy definition:
-```js
-// Create a policy to deny access to all Smart Timeseries
-
-DenyAccessToSmartTimeseries = Policy()
-DenyAccessToSmartTimeseries.description = "Deny any access to Smart Timeseries"
-DenyAccessToSmartTimeseries.service = "data"
-DenyAccessToSmartTimeseries.condition = "_type = 'VarSmartTimeSeries'"
-DenyAccessToSmartTimeseries.addMember("user@opendatadsl.com")
-DenyAccessToSmartTimeseries.setFullAccess()
-DenyAccessToSmartTimeseries.deny = true
-
-save DenyAccessToSmartTimeseries
+```json
+{
+  "_id": "DenyAccessToBWSSBData",
+  "description": "Deny all access to BWSSB data",
+  "source": "private",
+  "service": "object",
+  "condition": "source = 'BWSSB'",
+  "deny": true,
+  "actions": [
+    "create",
+    "read",
+    "update",
+    "delete",
+    "run"
+  ],
+  "members": [
+    "user@company.com"
+  ],
+  "enabled": true
+}
 ```
 
 ## Updating, Finding and Deleting Policies
