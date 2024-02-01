@@ -23,7 +23,7 @@ Below is a table with all the properties of a policy:
 |description|String|My test policy|A descriptive name for the policy|
 |enabled|Boolean|true|True if it is enabled, false to disable it|
 |source|String|private|The data source, defaults to private|
-|condition|String|'source = Platts'|The condition used to filter the data that this policy restricts|
+|condition|String|source = 'Platts'|The condition used to filter the data that this policy restricts|
 |deny|Boolean|false|True if this is a deny policy, false if this is an allow policy|
 |actions|List|read|The actions that this policy applies to (create, read, update, delete, run)|
 |members|List|user@company.com|The users or Azure Active Directory groups this policy applies to|

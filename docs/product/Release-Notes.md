@@ -6,10 +6,42 @@ sidebar_position: 10
 Release Notes
 =============
 
-Check here for details of our releases (both historic and upcoming)
+## Latest Release - Jan24
 
-## Upcoming Features for Releases in 2023
+#### Timeseries auto-scaling
+When retrieving timeseries with a lerge amount of observations, we now auto-scale the timeseries according to the following rules:
+* Intradaily -> Daily
+* Daily -> Monthly
+* Monthly -> Yearly
 
+The auto-scale thresholds are:
+* Portal = 5000 observations
+* Excel = 25000 observations
+* api = 25000 observations
+
+#### Curve Management Dashboard
+We have introduced a curve management dashboard to monitor the lifecycle of curves managed in the system.
+
+It has the following features:
+* Configuration of build, quality, approval and export groups
+* Build cut-off times with missing curve substitution rules
+* Automated curve quality checks
+* Manual approvals
+* Export scripts to manage the export and feedback from the export system
+
+#### Python SDK
+Added a python SDK in [PyPI](https://pypi.org/project/odsl/)
+
+The python SDK for OpenDataDSL has the following features:
+
+* Find any data in OpenDataDSL using the ```list``` command
+* Retrieve any data using the ```get``` command
+* Update any data (if you have permission) using the ```update``` command
+
+## Release History
+
+<details>
+<summary>2023</summary>
 #### New data type - Events
 Events are data that happened at a point in time for an amount of time, such as power station outages.
 We allow capturing these events and creating dynamic timeseries and curves from them.
@@ -40,7 +72,7 @@ Added more ways to perform searching for data
 * Improved type creation, adding support for bespoke error messages
 * Extended run command to support running reports
 
-## Release History
+</details>
 
 <details>
 <summary>2022</summary>
