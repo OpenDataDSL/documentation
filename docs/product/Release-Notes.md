@@ -9,7 +9,7 @@ Release Notes
 ## Latest Release - Jan24
 
 #### Timeseries auto-scaling
-When retrieving timeseries with a lerge amount of observations, we now auto-scale the timeseries according to the following rules:
+When retrieving timeseries with a large amount of observations, we now auto-scale the timeseries according to the following rules:
 * Intradaily -> Daily
 * Daily -> Monthly
 * Monthly -> Yearly
@@ -42,6 +42,7 @@ The python SDK for OpenDataDSL has the following features:
 
 <details>
 <summary>2023</summary>
+
 #### New data type - Events
 Events are data that happened at a point in time for an amount of time, such as power station outages.
 We allow capturing these events and creating dynamic timeseries and curves from them.
