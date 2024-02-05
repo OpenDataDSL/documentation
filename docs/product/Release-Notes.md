@@ -77,6 +77,7 @@ Added more ways to perform searching for data
 
 <details>
 <summary>2022</summary>
+
 #### Smart Data on Types
 We add the ability to define smart timeseries and curves on a type.
 All objects that directly implement the type will have those smart data objects dynamically added.
@@ -234,8 +235,6 @@ We completed the first stage of the [real-time API](/docs/api/realtime) allowing
 #### Curve configurations in the web portal
 
 We have added the capability of creating and editing curve configurations in the web portal:
-
-![](/attachments/131316/365232608.png)
 
 #### Added unit REST API
 
