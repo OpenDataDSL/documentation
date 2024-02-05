@@ -6,7 +6,15 @@ sidebar_position: 10
 Release Notes
 =============
 
-## Latest Release - Jan24
+## Latest Release - Feb24
+
+#### Custom period codes
+Added support for custom period codes, allowing you to set specific expiry and delivery dates.
+Custom period codes start with 'C', e.g.
+
+CFEB24_MAR24
+
+## Jan24
 
 #### Timeseries auto-scaling
 When retrieving timeseries with a large amount of observations, we now auto-scale the timeseries according to the following rules:
@@ -236,6 +244,8 @@ We completed the first stage of the [real-time API](/docs/api/realtime) allowing
 
 We have added the capability of creating and editing curve configurations in the web portal:
 
+<img src="https://doc.opendatadsl.com/attachments/131316/365232608.png" />
+
 #### Added unit REST API
 
 Added support for getting a list of units of measure symbols and details
@@ -304,17 +314,17 @@ We defined a base object type that all types derive from which contain the follo
 
 #### Objects and Data in the web portal
 
-![](/attachments/131316/305856952.png)
+<img src="https://doc.opendatadsl.com/attachments/131316/305856952.png" />
 
 #### Charts in the web portal
 
-![](/attachments/131316/305889704.png)
+<img src="https://doc.opendatadsl.com/attachments/131316/305889704.png" />
 
 #### Links in the web portal
 
 Links allow you to view related data and information
 
-![](/attachments/131316/305889696.png)
+<img src="https://doc.opendatadsl.com/attachments/131316/305889696.png" />
 
 #### Curve Building Support
 
@@ -380,7 +390,7 @@ data = find profile SPOT from ${currency:public} where source == "ECB_FX"
 
 Added the ability to view process executions in the web portal:
 
-![](/attachments/131316/187269165.png)
+<img src="https://doc.opendatadsl.com/attachments/131316/187269165.png" />
 
 #### Indexes
 
