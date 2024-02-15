@@ -19,15 +19,16 @@ Below is a table with all the properties of a policy:
 
 |**Name**|**Type**|**Example**|**Description**|
 |-|-|-|-|
-|service|String|data|The service that this policy relates to|
+|_id|String|RunAllReports|The unique id for this policy|
+|category|String|TeamUsers|An optional category used for filtering policies|
 |description|String|My test policy|A descriptive name for the policy|
-|enabled|Boolean|true|True if it is enabled, false to disable it|
-|source|String|private|The data source, defaults to private|
-|condition|String|source = 'Platts'|The condition used to filter the data that this policy restricts|
+|enabled|Boolean|true|True if it is enabled, false to disable it, by default the policy is enabled|
+|source|String|private|The data source, defaults to private if omitted|
+|service|String|data|The service that this policy relates to or * for all services|
+|condition|String|source = 'ICE'|The condition used to filter the data that this policy restricts|
 |deny|Boolean|false|True if this is a deny policy, false if this is an allow policy|
 |actions|List|read|The actions that this policy applies to (create, read, update, delete, run)|
-|members|List|user@company.com|The users or Azure Active Directory groups this policy applies to|
-
+|members|List|user@company.com|The user emails or Azure Active Directory group id's this policy applies to|
 
 ## Methods
 
@@ -35,15 +36,17 @@ A policy has the following methods:
 
 |**Name**|**Description**|**Return Type**|
 |-|-|-|
-|setFullAccess()|Sets this policy to cover all actions|void|
 |addMember(name)|Adds a member to this policy|void|
 |removeMember(name)|Removes a member from this policy|void|
 |addAction(action)|Adds an action to this policy|void|
+|addActions(action[])|Adds multiple actions to this policy|void|
+|setFullAccess()|Sets this policy to cover all actions|void|
 
 Example policy definition:
 ```json
 {
   "_id": "DenyAccessToBWSSBData",
+  "category": "TradingTeam",
   "description": "Deny all access to BWSSB data",
   "source": "private",
   "service": "object",
@@ -72,7 +75,7 @@ To save a policy in OpenDataDSL code, use the save command as follows:
 RunAllReports = Policy()
 RunAllReports.description = "Run all reports"
 RunAllReports.service = "report"
-RunAllReports.addMember("colin.hartley@opendatadsl.com")
+RunAllReports.addMember("user@company.com")
 RunAllReports.addAction("run")
 
 save RunAllReports

@@ -38,6 +38,7 @@ The action entity contains the following information:
 |-|-|-|
 |_id|String|The unique identifier for this policy|
 |_type|String|The type of the action - always Policy|
+|category|String|An optional category used for filtering policies|
 |description|String|A description of what this policy does|
 |source|String|The source of data that this policy covers|
 |service|String|The name of the service providing the data for this policy (can be * for all services)|
@@ -77,6 +78,7 @@ Below are some examples of security policies:
   {
     "_id": "ReadExampleReports",
     "_type": "Policy",
+    "category": "TeamUsers",
     "description": "Read access to reports in the Examples category",
     "source": "private",
     "service": "report",
@@ -97,6 +99,8 @@ Below are some examples of security policies:
 ```json
 {
   "_id": "ReadAllNCDEXData",
+  "_type": "Policy",
+  "category": "TeamUsers",
   "description": "Read all data from source NCDEX",
   "source": "private",
   "service": "object",
@@ -115,3 +119,4 @@ Below are some examples of security policies:
 
 ## Further Information
 
+For full details on policies and how to manage them, see [Policies in ODSL](/docs/odsl/variable/policy)

@@ -15,7 +15,7 @@ https://api.opendatadsl.com/api
 
 ## Security
 
-In order to use the REST API, you need to have a valid ID token and pass that as the Authorization header in the following way:
+In order to use the REST API, you need to have a valid ID or ACCESS token and pass that as the Authorization header in the following way:
 
 ```
 Authorization: Bearer <IDTOKEN>
