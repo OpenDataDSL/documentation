@@ -9,6 +9,10 @@ tags:
 
 ## Windows Installation
 
+:::info
+The OpenDataDSL MATLAB SDK requires a java SDK version of at least 11 - here are instructions from [MathWorks on how to upgrade your version of java.](https://uk.mathworks.com/matlabcentral/answers/130359-how-do-i-change-the-java-virtual-machine-jvm-that-matlab-is-using-on-windows)
+:::
+
 Follow these instructions to install the matlab client and configure it in MATLAB
 
 1. Download the [matlab-client zip](https://odsldownloads.z6.web.core.windows.net/sdk/matlab/matlab-client.zip) file
