@@ -32,7 +32,7 @@ It has specific constructs allowing you to:
 ### Why a dedicated programming language?
 OpenDataDSL is no ordinary language, it has been built from scratch to simplify all aspects of data management.
 When deciding to buy or build a data management system, you generally only have 2 choices for interaction with it:
-* A User Interface (Web/Excel/Desktop/Mobile)
+* A [User Interface](/docs/user) (Web/Excel/Desktop/Mobile)
 * An API (REST/Web Services/Proprietary)
 
 A dedicated programming language provides a 3rd option whose features rank between a GUI and an API:
@@ -46,16 +46,12 @@ it makes it easier to use than a regular programming language.
 As well as the above, here are a selection of additional features:
 
 #### APIs and SDKs
-*   Use Python, .NET, R, MatLab, Java or NodeJS client SDK to interact with the Cloud Services and Data
+*   Use [Python](/docs/sdk/python), .NET, R, [MatLab](/docs/sdk/matlab), [Java](/docs/sdk/java) or NodeJS client SDK to interact with the Cloud Services and Data
 
 #### User Interfaces
-*   Free Excel Add-in to read/write your data
-*   Free Web Portal to manage your account and visualise your data
-*   Free VSCode ODSL language extension for editing scripts
-
-#### Big Savings
-*   Unlimited users
-*   Only pay for what you use - simple pricing structure helps you start small and grow when you need it
+*   Free [Excel Add-in](/docs/user/excel) to read/write your data
+*   Free [Web Portal](/docs/user/portal) to manage your account and visualise your data
+*   Free [VSCode ODSL language extension](/docs/user/vscode) for editing scripts
 
 #### Easy to integrate
 *   Integrate with many popular OpenSource and paid-for applications
