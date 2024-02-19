@@ -35,10 +35,14 @@ The following entities are stored in each individual environment:
 * Actions
 * Audit records
 * Calendars
+* Curve management information
 * Data
 * Extractors
+* Groups
 * Objects
 * Processes and process execution records
+* Report configurations and reports
+* Security Policies
 * Scripts
 * Subscriptions and subscription records
 * Transformers

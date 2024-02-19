@@ -21,8 +21,15 @@ import TabItem from '@theme/TabItem';
 All the REST remote service resources are accessible through a single URL endpoint:
 
 ```
-https://api.opendatadsl.com/service
+https://api.opendatadsl.com/api
 ```
+
+E.g. to use the [data](/docs/api/rest/service/data) API, you would use the URL:
+
+```
+https://api.opendatadsl.com/api/data
+```
+
 
 ## Environments
 ### What is an environment

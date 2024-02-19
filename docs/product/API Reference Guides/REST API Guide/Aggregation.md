@@ -56,7 +56,7 @@ This creates an output similar to the following:
 
 ## Aggregation Pipeline
 
-You can aggregate data using the _aggregate query parameter. The _aggregate parameter requires a JSON object representing an array of MongoDB aggregation pipeline commands.
+You can aggregate data using the _aggregate query parameter. The _aggregate parameter requires a JSON array of MongoDB aggregation pipeline commands.
 
 An aggregation pipeline can be used to filter, group, and summarise data. The following example shows grouping process execution information and summing up the number of executions for each execution status:
 ```json

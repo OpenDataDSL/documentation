@@ -31,11 +31,20 @@ Example ( if you extracted the zip to c:\ ):
 ### Connecting
 To connect to OpenDataDSL, you need to create an instance of the ```sdk.ODSL``` class and then call ```login()``` as follows:
 
+#### Interactive login
 ```js
 % Connect
 ODSL=sdk.ODSL();
 ODSL.login();
 ```
+
+#### Using a secret
+```js
+% Connect
+ODSL=sdk.ODSL();
+ODSL.loginWithSecret("tenant id", "client id", "secret");
+```
+
 
 ### Getting data
 To read from any of the ODSL services, you need to use the ```get``` method on the ODSL sdk with the following syntax:
@@ -109,7 +118,7 @@ The following example waits for a new message, builds a curve and sends it to OD
 #### Connect to ODSL
 ```js
 import sdk.*;
-import com.walkfares.odsl.var.curve.*;
+import com.opendatadsl.odsl.var.curve.*;
 
 % Connect
 odsl = ODSL();
