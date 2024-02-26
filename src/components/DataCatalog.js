@@ -9,7 +9,7 @@ import { faPlay, faCalendarDay, faGlobe, faMoneyBill } from '@fortawesome/free-s
 var filters = {tags: ["Financial"]};
 
 function Logo(logo) {
-  var src = "/img/data/" + logo.logo;
+  var src = "https://doc.opendatadsl.com/img/data/" + logo.logo;
   return (
     <Card.Img variant="top" src={src} className={styles.logo} />
   )
