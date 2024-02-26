@@ -14,7 +14,7 @@ import {DataCatalog} from '/src/components/Discovery.js';
 
 ## Complete Data Provider List
 If you cannot find what you are looking for:
-* Check the current Data [Roadmap](RoadMap)
+* Check the current Data [Roadmap](https://doc.opendatadsl.com/docs/data/roadmap)
 * Log a data loader request in the [Service Desk](https://opendatadsl.atlassian.net/servicedesk)
 
 <DataProviders />

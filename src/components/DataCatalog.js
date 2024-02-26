@@ -11,7 +11,7 @@ var filters = {tags: ["Financial"]};
 function Logo(logo) {
   var src = "https://doc.opendatadsl.com/img/data/" + logo.logo;
   return (
-    <Card.Img variant="top" src={src} className={styles.logo} />
+    <Card.Img variant="top" src={src} className={"logo "+styles.logo} />
   )
 }
 function Block(props) {
@@ -42,7 +42,7 @@ function ProviderRow(props) {
       <tr style={{ width: '18rem' }}>
         <td><Logo logo={props.logo} /></td>
         <td>{props.provider}</td>
-        <td>{props.links.map((l) => <span key={l.text}><a href={l.link}>{l.text}</a><br/></span>)}</td>
+        <td>{props.links.map((l) => <span key={l.text}><a href={"https://doc.opendatadsl.com" + l.link}>{l.text}</a><br/></span>)}</td>
       </tr>
     );
   }
