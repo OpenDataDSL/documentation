@@ -50,16 +50,20 @@ To add the OpenDataDSL Add-in to your Office 365 Excel:
 
 5. Go to the **Home** tab and you should now see an OpenDataDSL **Show Dashboard** button
 
+### The dashboard
+
+To show/hide the OpenDataDSL add-in task pane, use the **Show Dashboard** button available on the **Home** tab.
+
+![](img/excel-home.png)
+
 ### First time log-in
+
 The first time you click on the **Show Dashboard** button you will be asked to log in. 
 You should log in using the same corporate credentials you use to log into the **ODSL Web Portal**.
 ![](img/login.png)
 
 ## Using the Excel Add-in
 
-To show/hide the OpenDataDSL add-in task pane, use the **Show Dashboard** button available on the **Home** tab.
-
-![](img/excel-home.png)
 
 ### Toolbar
 The toolbar contains commands to help you work with your data

@@ -14,7 +14,7 @@ Detailed technical information on user authorization and access control
 ## Authorization
 
 Users are authenticated using Azure AD for SSO. 
-Simply log into Microsofts Azure Active Directory using your companies email address, if you are the first person from your company to log in, you will be asked to enter some information about your company first.
+Simply log into Microsoft's Azure Active Directory using your companies email address, if you are the first person from your company to log in, you will be asked to enter some information about your company first.
 
 ## Authentication
 

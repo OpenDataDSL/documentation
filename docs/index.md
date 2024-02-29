@@ -26,6 +26,10 @@ The OpenDataDSL components and API's let you quickly and seamlessly build your o
 We load any data that can be freely distributed and make it available to you - you can model, collect, load, check and report 
 on any data you own or subscribe to using the same tools and user experience.
 
+:::info NEW - Proof of Concept Topics!
+If you are running a Proof of Concept - Check out our guides to get you started [HERE](/docs/category/proof-of-concept) 
+:::
+
 ### Tutorials
 
 <Tutorials />
