@@ -140,5 +140,36 @@ send batch
 
 ### Using Queues Externally
 
-To Do
+You can connect to a queue using the Microsoft Azure Service Bus SDK.
+Whenever you create a queue, a shared access key is created for that queue which you can use to connect to the queue.
 
+:::info
+If you use the [Java](/docs/sdk/java) or [Matlab](/docs/sdk/matlab) SDK's, these have helper methods to help you work with message queues 
+:::
+
+To find out the connection string to use to connect to the queue, retrieve the queue and use the property ```connection```
+
+For example, to get details for a queue named **export**
+```
+GET https://api.opendatadsl.com/api/queue/v1/export
+Authorization: Bearer {{token}}
+```
+
+Example output:
+```json
+{
+  "_id": "prod/<<redacted>>/export",
+  "tid": "<<redacted>>",
+  "tenant": "<<redacted>>",
+  "queue": "export",
+  "description": "Export Queue",
+  "retention": "PT480H",
+  "timeout": "PT5M",
+  "connection": "<<redacted>>>>",
+  "messageCount": 2,
+  "sizeInBytes": 1598,
+  "activeMessageCount": 2,
+  "deadLetterMessageCount": 0,
+  "scheduledMessageCount": 0
+}
+```
