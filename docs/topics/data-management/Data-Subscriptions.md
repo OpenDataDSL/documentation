@@ -48,7 +48,7 @@ s.addItem(ref("calendar","USA"))
 // Add using a reference to the item and a key name to assign to it
 s.addItem(ref("calendar","USA"), "USACAL")
 
-// Add using a reference to the item, a key name to assign to it and an action
+// Add using a reference to the item, a key name to assign to it and the action that triggers the subscription
 s.addItem(ref("calendar","USA"), "USACAL", "update")
 ```
 
@@ -67,7 +67,7 @@ Example:
 sub.addQueueTarget("sql")
 
 // With both the message subject and queue name
-sub.addQueueTarget("subject", sql")
+sub.addQueueTarget("subject", "sql")
 ```
 
 #### ProcessTarget
@@ -93,6 +93,7 @@ This target sends an email which can be populated with information from the fulf
 * to - The recipient(s) of the email
 * subject - The email subject message
 * html - The HTML body of the message
+* attachment - A boolean indicating if the data should be sent in an attached file, defaults to true
 
 The HTML body can include some variables which will be substituted when sent.
 Each variable is surrounded by curly braces, e.g. {var}
@@ -100,10 +101,47 @@ Each variable is surrounded by curly braces, e.g. {var}
 Example:
 ```js
 // Specify some HTML to send as the email body
-sub.addEmailTarget("me@abc.com", "Subject", "<p>Object id: {_id}</p>")
+sub.addEmailTarget("me@abc.com", "Subject", "<p>Object id: {_id}</p>", false)
 
 // Use the default html template for the item being sent
-sub.addEmailTarget("me@abc.com", "Subject", null)
+sub.addEmailTarget("me@abc.com", "Subject", null, true)
+```
+
+#### ReportTarget
+This target runs a report from a pre-defined [report configuration.](/docs/topics/reporting/basics).
+The additional properties required are:
+* report - The name of the report to run
+* range - An optional date range to use for the report
+
+Example:
+```js
+// Add a report target
+sub.addReportTarget("MYREPORT")
+
+// Add a report target with a date range for yesterday
+sub.addReportTarget("MYREPORT", "between(T-1Dh0m0s0, T-1Dh23m59s59)")
+```
+
+#### ScriptTarget
+This target runs a script stored in the server.
+The additional properties required are:
+* script - The name of the script to run
+
+Example:
+```js
+// Add a script target
+sub.addScriptTarget("MYSCRIPT")
+```
+
+#### PublishTarget
+This target publishes the updated data to another tenant.
+The additional properties required are:
+* to - The name of the tenant to publish to
+
+Example:
+```js
+// Add a publish target
+sub.addPublishTarget("TENANT")
 ```
 
 ### Subscription
