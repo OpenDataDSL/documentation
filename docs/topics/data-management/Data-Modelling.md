@@ -119,7 +119,7 @@ You can see that we have now created an Address type and added 6 properties of a
 
 Defining a property as Dimension informs user interfaces to generate a filtered list of possible options for this property when browsing for data. We would usually not define Dimension properties that are ‘usually unique’.
 
-### Objects
+### Objects (Master Data)
 
 We can create objects from these types using the **object as** creation syntax as follows:
 
@@ -138,6 +138,18 @@ ABCLondon = object as Address
     country = "England"
     postcode = "SW1 1AB"
 end
+```
+
+### Object IDs
+The ID of an object or master data is the variable name you give it.
+If you want to use a more complex ID, i.e. with dots in it, set the id using the id property, e.g.
+
+```js
+obj = object as Company
+  name = "My Company"
+end
+
+obj.id = "MY.COMPANY"
 ```
 
 ### Inspecting objects
@@ -271,19 +283,32 @@ This will calculate how old the person is today in years
 ### Saving types and objects
 ------------------------
 
-To store our work to the database, we need to use the active variable services for [types](/docs/odsl/service/type) and [objects](/docs/odsl/service/object). This is done using the **save** command as follows:
+To store our work to the database, we need to use the active variable services for [types](/docs/odsl/service/type) and [objects](/docs/odsl/service/object). 
+This is done using the **save** command:
+
+:::note
+You can save types and objects implicitly or explicitly, there is no difference between the 2 methods shown below
+:::
 
 ```js
-// Save the types
-save ${type:Company}
-save ${type:Address}
-save ${type:Person}
+// Save the types
 
-// Save the objects
-save ${object:ABC}
-save ${object:ABCLondon}
-save ${object:ABCNewcastle}
-save ${object:JohnDoe}
+// Implicit save - service is determined by the variable type
+save Company
+
+// Explicit save using the service name
+save ${type:Address}
+save ${type:Person}
+
+// Save the objects
+
+// Implicit save - service is determined by the variable type
+save ABC
+save ABCLondon
+
+// Explicit save using the service name
+save ${object:ABCNewcastle}
+save ${object:JohnDoe}
 ```
 
 ## Querying Data

@@ -6,7 +6,7 @@ import styles from '/src/components/StartBuilding.module.css';
 
 <Container className={styles.datablock}>
     <Card style={{width:"28rem"}}>
-        <Card.Header><a href="/docs/discovery"><b>Master Data or Object</b></a></Card.Header>
+        <Card.Header><b>Master Data or Object</b></Card.Header>
             <Card.Body>
                 <Card.Text>
 Master Data or Objects in OpenDataDSL are documents that contain descriptive information and properties which represent a specific product, entity or resource.
@@ -22,7 +22,7 @@ Master Data or Objects in OpenDataDSL are documents that contain descriptive inf
             </Card.Body>
     </Card>    
     <Card style={{width:"28rem"}}>
-        <Card.Header><a href="/docs/discovery"><b>Timeseries</b></a></Card.Header>
+        <Card.Header><b>Timeseries</b></Card.Header>
             <Card.Body>
                 <Card.Text>
 A timeseries is attached to master data and represents a value or metric which is recorded or observed at a point-in-time. 
@@ -38,7 +38,7 @@ Timeseries usually have a calendar which defines the interval size of the timese
             </Card.Body>
     </Card>    
     <Card style={{width:"28rem"}}>
-        <Card.Header><a href="/docs/discovery"><b>Curve</b></a></Card.Header>
+        <Card.Header><b>Curve</b></Card.Header>
             <Card.Body>
                 <Card.Text>
 A curve is a structure that represents values at a point-in-time that reference a future time period.
@@ -56,7 +56,7 @@ Those values can either be:
             </Card.Body>
     </Card>    
     <Card style={{width:"28rem"}}>
-        <Card.Header><a href="/docs/discovery"><b>Matrix</b></a></Card.Header>
+        <Card.Header><b>Matrix</b></Card.Header>
             <Card.Body>
                 <Card.Text>
 A matrix is a table of values that relate 2 items together.
@@ -71,7 +71,7 @@ The value in a matrix is usually a calculation or statistic.
             </Card.Body>
     </Card>    
     <Card style={{width:"28rem"}}>
-        <Card.Header><a href="/docs/discovery"><b>Event</b></a></Card.Header>
+        <Card.Header><b>Event</b></Card.Header>
             <Card.Body>
                 <Card.Text>
 Events are individual observations for a single time-point.
@@ -88,7 +88,7 @@ An event has a reference time and a start and end time as well as values and pro
             </Card.Body>
     </Card>    
     <Card style={{width:"28rem"}}>
-        <Card.Header><a href="/docs/discovery"><b>Report</b></a></Card.Header>
+        <Card.Header><b>Report</b></Card.Header>
             <Card.Body>
                 <Card.Text>
 A report can be any data in any structure that is generated and stored for a specific date.
@@ -105,7 +105,7 @@ A report can also have a template which defines the way the report is displayed 
             </Card.Body>
     </Card>    
     <Card style={{width:"28rem"}}>
-        <Card.Header><a href="/docs/discovery"><b>Subscription</b></a></Card.Header>
+        <Card.Header><b>Subscription</b></Card.Header>
             <Card.Body>
                 <Card.Text>
 You use subscriptions to trigger an action to be performed after something has been updated.
@@ -122,7 +122,7 @@ Subscriptions are the mechanism that makes OpenDataDSL event-driven.
             </Card.Body>
     </Card>    
     <Card style={{width:"28rem"}}>
-        <Card.Header><a href="/docs/discovery"><b>Queue</b></a></Card.Header>
+        <Card.Header><b>Queue</b></Card.Header>
             <Card.Body>
                 <Card.Text>
 A queue is a conduit for messages which are sent from the platform.
