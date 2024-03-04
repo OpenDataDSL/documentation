@@ -829,7 +829,7 @@
         "start": "2023",
         "frequency": "QUARTERHOURLY",
         "link":"/docs/company/ELIA",
-        "tags": ["Commodity", "Power"," NEW"]
+        "tags": ["Commodity", "Power"]
     },
     {
         "type": "FREE",
@@ -842,7 +842,7 @@
         "start": "2023",
         "frequency": "QUARTERHOURLY",
         "link":"/docs/company/TENNET",
-        "tags": ["Commodity", "Power"," NEW"]
+        "tags": ["Commodity", "Power"]
     },
     {
         "type": "FREE",
@@ -855,7 +855,7 @@
         "start": "2023",
         "frequency": "DAILY",
         "link":"/docs/company/CEGH",
-        "tags": ["Commodity", "Natural Gas"," NEW"]
+        "tags": ["Commodity", "Natural Gas"]
     },
     {
         "type": "FREE",
@@ -868,7 +868,7 @@
         "start": "2023",
         "frequency": "DAILY",
         "link":"/docs/company/GIE",
-        "tags": ["Commodity", "Natural Gas"," NEW"]
+        "tags": ["Commodity", "Natural Gas"]
     },
     {
         "type": "BYOL",
@@ -894,7 +894,7 @@
         "start": "2023",
         "frequency": "DAILY",
         "link":"/docs/company/EPEX",
-        "tags": ["Commodity", "Power"," NEW"]
+        "tags": ["Commodity", "Power"]
     },
     {
         "type": "BYOL",
@@ -902,7 +902,7 @@
         "providerType":"Exchange",
         "logo": "ice.png",
         "dataset": "Power,Natural Gas,Oil,Products",
-        "text": "Power Futures",
+        "text": "Power Futures,Gas Futures",
         "region": "Europe",
         "start": "2023",
         "frequency": "BUSINESS",
@@ -920,7 +920,7 @@
         "start": "2023",
         "frequency": "DAILY",
         "link":"/docs/company/LEBA",
-        "tags": ["Commodity", "Natural Gas"," NEW"]
+        "tags": ["Commodity", "Natural Gas"]
     },
     {
         "type": "BYOL",
@@ -933,7 +933,7 @@
         "start": "2023",
         "frequency": "DAILY",
         "link":"/docs/company/NORD",
-        "tags": ["Commodity", "Power"," NEW"]
+        "tags": ["Commodity", "Power"]
     },
     {
         "type": "BYOL",
@@ -946,7 +946,7 @@
         "start": "2023",
         "frequency": "BUSINESS",
         "link":"/docs/company/BLOOMBERG",
-        "tags": ["Commodity", "Foreign Exchange","Oil"," NEW"]
+        "tags": ["Commodity", "Foreign Exchange","Oil"]
     },
     {
         "type": "BYOL",
@@ -959,7 +959,7 @@
         "start": "2023",
         "frequency": "BUSINESS",
         "link":"/docs/company/CME",
-        "tags": ["Commodity", "Power","Natural Gas","Oil"," NEW"]
+        "tags": ["Commodity", "Power","Natural Gas","Oil"]
     },
     {
         "type": "BYOL",
@@ -972,6 +972,58 @@
         "start": "2023",
         "frequency": "DAILY",
         "link":"/docs/company/ICIS",
-        "tags": ["Commodity","Natural Gas","Power"," NEW"]
+        "tags": ["Commodity","Natural Gas","Power"]
+    },
+    {
+        "type": "FREE",
+        "provider": "Joint Allocation Office",
+        "providerType":"Service",
+        "logo": "jao.jpg",
+        "dataset": "Power",
+        "text": "Joint Allocation Office Actions",
+        "region": "Luxembourg",
+        "start": "2023",
+        "frequency": "DAILY",
+        "link":"/docs/company/JAO",
+        "tags": ["Commodity", "Power"," NEW"]
+    },
+    {
+        "type": "FREE",
+        "provider": "Short-term electricity Market Operator",
+        "providerType":"TSO",
+        "logo": "okte.png",
+        "dataset": "Power",
+        "text": "Short-term electricity Market Operator Slovakia Power Day Ahead Prices",
+        "region": "Slovakia",
+        "start": "2023",
+        "frequency": "DAILY",
+        "link":"/docs/company/OKTE",
+        "tags": ["Commodity", "Power"," NEW"]
+    },
+    {
+        "type": "FREE",
+        "provider": "SouthPool Energy Exchange Power",
+        "providerType":"Exchange",
+        "logo": "bsp.jpg",
+        "dataset": "Power",
+        "text": "SouthPool Energy Exchange Power Day Ahead Prices",
+        "region": "Slovenia",
+        "start": "2023",
+        "frequency": "DAILY",
+        "link":"/docs/company/BSP",
+        "tags": ["Commodity", "Power"," NEW"]
+    },
+    {
+        "type": "FREE",
+        "provider": "Operatorul Pietei de Energie Electrica si Gaze Naturale",
+        "providerType":"Exchange",
+        "logo": "opcom.jpg",
+        "dataset": "Power",
+        "text": "Operatorul Pietei de Energie Electrica si Gaze Naturale Day Ahead Prices",
+        "region": "Romania",
+        "start": "2023",
+        "frequency": "DAILY",
+        "link":"/docs/company/OPCOM",
+        "tags": ["Commodity", "Power"," NEW"]
     }
 ]
