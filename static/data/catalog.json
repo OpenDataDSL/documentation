@@ -980,11 +980,12 @@
         "providerType":"Service",
         "logo": "jao.jpg",
         "dataset": "Power",
-        "text": "Joint Allocation Office Actions",
-        "region": "Luxembourg",
+        "text": "Joint Allocation Office Actions Day Ahead Prices",
+        "region": "Luxembourg,Europe",
         "start": "2023",
         "frequency": "DAILY",
         "link":"/docs/company/JAO",
+        "releaseDate":"2024-02",
         "tags": ["Commodity", "Power"," NEW"]
     },
     {
@@ -998,6 +999,7 @@
         "start": "2023",
         "frequency": "DAILY",
         "link":"/docs/company/OKTE",
+        "releaseDate":"2024-02",
         "tags": ["Commodity", "Power"," NEW"]
     },
     {
@@ -1011,6 +1013,7 @@
         "start": "2023",
         "frequency": "DAILY",
         "link":"/docs/company/BSP",
+        "releaseDate":"2024-02",
         "tags": ["Commodity", "Power"," NEW"]
     },
     {
@@ -1019,11 +1022,12 @@
         "providerType":"Exchange",
         "logo": "opcom.jpg",
         "dataset": "Power",
-        "text": "Operatorul Pietei de Energie Electrica si Gaze Naturale Day Ahead Prices",
+        "text": "The operator of the Electric Energy and Natural Gas Market Day Ahead Prices",
         "region": "Romania",
         "start": "2023",
         "frequency": "DAILY",
         "link":"/docs/company/OPCOM",
+        "releaseDate":"2024-02",
         "tags": ["Commodity", "Power"," NEW"]
     }
 ]

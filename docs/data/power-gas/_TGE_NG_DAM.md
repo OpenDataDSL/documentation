@@ -39,8 +39,6 @@ Validation information
 
 ### Licensing
 
-Data is freely available in the vendor website tge.pl/en-home that can be used by clients without permission..
-
-The data received through the Exchange Information Platform requires agreement with TGE before it can be supplied.
+This data requires agreement with TGE before it can be supplied.
 
 https://tge.pl/TGE_Services
