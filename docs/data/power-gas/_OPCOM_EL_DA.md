@@ -1,6 +1,6 @@
 ### Schedule
 
-OKTE power day ahead updates are retrieved around 17:30 GMT daily.
+OPCOM power day ahead updates are retrieved around 17:30 GMT daily.
 
 ### Sample File
 
