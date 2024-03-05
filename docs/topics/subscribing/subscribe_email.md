@@ -23,6 +23,8 @@ To configure the email send action, you need to provide the following:
   > The email address of the recipient(s) of the email, separate multiple email addresses with either comma (,), semi-colon (;) or space
 * **html**
   > The mustache template script name
+* **attachment**
+  > A boolean specifying that you want to send the data as an email attachment, defaults to true
 
 ### Adding an email target
 
@@ -35,7 +37,7 @@ To add an email target to an existing subscription:
 * Find the subscription you want to add the target to.
 * Click the + button next to targets
 * Select EmailTarget
-* Fill out the to, subject and html fields appropriately
+* Fill out the to, subject, html and attachment fields appropriately
 * Click the save button
 
 
@@ -45,7 +47,7 @@ To add an email target to an existing subscription:
 ```js
 // Adding an email target to an existing subscription
 sub = ${subscription:"MySubscription"}
-sub.addEmailTarget("user1@company.com,user2@company.com", "Subject", "template")
+sub.addEmailTarget("user1@company.com,user2@company.com", "Subject", "template", true)
 save sub
 ```
 
@@ -62,7 +64,8 @@ Authorization: Bearer {{token}}
       "name": "EmailTarget",
       "subject": "Subject",
       "to": "user1@company.com,user2@company.com",
-      "html": "template"
+      "html": "template",
+      "attachment": true
     }]
 }
 ```

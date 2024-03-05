@@ -6,13 +6,31 @@ sidebar_position: 10
 Release Notes
 =============
 
-## Latest Release - Feb24
+## Latest Release - Mar24
+
+#### Azure blob subscription target
+Add support for sending subscribed data to an Azure Blob, this will allow for greater integration with Azure middleware services.
+
+Amongst others, Azure Data Factory pipelines can be triggered from Azure Blob updates.
+
+## Feb24
 
 #### Custom period codes
 Added support for custom period codes, allowing you to set specific expiry and delivery dates.
 Custom period codes start with 'C', e.g.
 
 CFEB24_MAR24
+
+#### Email subscription target update
+Added support for adding subscribed data as email attachments.
+
+#### CurveSeries performance improvements
+Improved the read/write performance for Curve Series.
+
+A Curve Series is used for forward curves with a few thousand tenors, e.g. hourly curves with 5 years of tenors.
+
+#### Severe quality status for curves
+Added a quality status **severe** indicating that the curve has been built, but it is incomplete or insufficient quality and needs to be rebuilt before using for exports etc.
 
 ## Jan24
 

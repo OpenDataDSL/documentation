@@ -46,7 +46,7 @@ The following table shows the entities that can be subscribed to by each method:
 |Entity|Event-Driven|Real-Time|
 |-|-|-|
 |**Data Updates**|
-|Object|yes|yes|
+|Object (Master Data)|yes|yes|
 |Data - timeseries|yes|yes|
 |Data - curve|yes|yes|
 |Data - matrix|yes|yes|
@@ -116,6 +116,8 @@ In OpenDataDSL, as of today, you can perform one of the following event-driven a
   > Run a report, maybe aggregating data from other sources
 * [Run an ODSL script](script)
   > The possibilities are endless, maybe you want to perform some derivations based on the updated data
+* [Write a blob to an Azure Storage Container](blob)
+  > Writes the data to a blob in a container, this can be used to trigger other Azure Middleware Services
 
 ## Real-time data changes
 
