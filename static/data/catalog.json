@@ -983,7 +983,7 @@
         "text": "Joint Allocation Office Actions Day Ahead Prices",
         "region": "Luxembourg,Europe",
         "start": "2023",
-        "frequency": "DAILY",
+        "frequency": "HOURLY",
         "link":"/docs/company/JAO",
         "releaseDate":"2024-02",
         "tags": ["Commodity", "Power"," NEW"]
@@ -997,7 +997,7 @@
         "text": "Short-term electricity Market Operator Slovakia Power Day Ahead Prices",
         "region": "Slovakia",
         "start": "2023",
-        "frequency": "DAILY",
+        "frequency": "HOURLY",
         "link":"/docs/company/OKTE",
         "releaseDate":"2024-02",
         "tags": ["Commodity", "Power"," NEW"]
@@ -1010,8 +1010,8 @@
         "dataset": "Power",
         "text": "SouthPool Energy Exchange Power Day Ahead Prices",
         "region": "Slovenia",
-        "start": "2023",
-        "frequency": "DAILY",
+        "start": "2012",
+        "frequency": "HOURLY",
         "link":"/docs/company/BSP",
         "releaseDate":"2024-02",
         "tags": ["Commodity", "Power"," NEW"]
@@ -1025,7 +1025,7 @@
         "text": "The operator of the Electric Energy and Natural Gas Market Day Ahead Prices",
         "region": "Romania",
         "start": "2023",
-        "frequency": "DAILY",
+        "frequency": "HOURLY",
         "link":"/docs/company/OPCOM",
         "releaseDate":"2024-02",
         "tags": ["Commodity", "Power"," NEW"]

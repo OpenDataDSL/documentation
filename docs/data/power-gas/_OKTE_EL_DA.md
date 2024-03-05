@@ -4,7 +4,7 @@ OKTE power day ahead updates are retrieved around 11:00 GMT daily.
 
 ### Sample File
 
-[Sample file for BSP Power Day Ahead Updates](pathname:///file-samples/Total_results_DAM_2024-02-21_2024-02-21.xlsx)
+[Sample file for OKTE Power Day Ahead Updates](pathname:///file-samples/Total_results_DAM_2024-02-21_2024-02-21.xlsx)
 
 ### Type
 
