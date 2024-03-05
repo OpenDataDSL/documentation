@@ -6,7 +6,7 @@ tags:
   - spot
   - europe
   - power
-  - Slovenia
+  - slovenia
 ---
 
 BSP
@@ -16,7 +16,7 @@ SouthPool Energy Exchange Power Day Ahead Prices
 
 ![](/img/data/bsp.jpg)
 
-Short-term electricity Market Operator - OKTE, a.s.started performing its activities as from 1 January 2011. OKTE, a.s. was established as a subsidiary of Transmission System Operator (Slovenská elektrizačná prenosová sústava, a.s.) which is the owner of 100% of its shares.OKTE, a.s. organize and evaluate the organized Short-term cross-border electricity market and provide clearing of imbalances in the Slovak Republic. Simultaneously OKTE, a.s. is in the process extension of its scope of activities, specially the administration and collection of metered values and central invoicing.
+BSP Energy Exchange provides market participants with the high-quality and comprehensive services of an organized electricity market. The company provides Day-ahead and Intra-day trading on the Slovenian electricity market.The company was founded in 2008 by Borzen, Power Market Operator, and Eurex Frankfurt, European Derivatives Exchange, AG. Since the change in ownership structure in 2010, shareholders of BSP have become Borzen, d.o.o and Elektro-Slovenija, d.o.o., both with the same 50% share. The company is entering the market under the trademark name BSP SouthPool. The vision of BSP is to be an important part of the process of market integration with the neighboring markets and regions into a single European electricity market through the market coupling mechanism.
 
 For more information, visit: https://www.bsp-southpool.com/home.html
 
