@@ -29,7 +29,7 @@ module.exports = {
     metadata: [{name: 'keywords', content: 'smart, smart curves, forward curves, market data, commodity, energy, timeseries, data management, blog'}],
     footer: {
       style: 'dark',
-      copyright: `Copyright © ${new Date().getFullYear()} Walkfares Ltd.`,
+      copyright: `Copyright © ${new Date().getFullYear()} OpenDataDSL Ltd.`,
     },
     prism: {
       theme: lightCodeTheme,
