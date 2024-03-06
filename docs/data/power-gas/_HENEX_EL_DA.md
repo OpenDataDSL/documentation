@@ -18,7 +18,7 @@ HENEX Power day ahead data is stored under the type: #Electricity
 
 ### Daylight Savings Treatment
 
-The hourly power updates are provided by HENEX in CET. These are loaded to ODSL database in UTC.
+The hourly power updates are provided by HENEX in CET. 
 
 During the change to summertime HENEX delivers 23hourly pricing and volume updates. These are adjusted to the correct UTC hours during the Summer time changeover.
 
