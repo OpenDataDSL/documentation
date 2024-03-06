@@ -1,9 +1,9 @@
 ## Latest Release - Mar24
 
-#### BSP Slovenia Power Day Ahead Price and Volume [BSP](http://localhost:3000/docs/company/BSP)
-#### OKTE Slovakia Power Day Ahead Price and Volume [OKTE](http://localhost:3000/docs/company/OKTE)
-#### OPCOM Romania Power Day Ahead Price and Volume [OPCOM](http://localhost:3000/docs/company/OPCOM)
-#### JAO Power Auction Day Ahead Price and Volume [JAO](http://localhost:3000/docs/company/JAO)
+#### BSP Slovenia Power Day Ahead Price and Volume [BSP](https://doc.opendatadsl.com/docs/company/BSP)
+#### OKTE Slovakia Power Day Ahead Price and Volume [OKTE](https://doc.opendatadsl.com/docs/company/OKTE)
+#### OPCOM Romania Power Day Ahead Price and Volume [OPCOM](https://doc.opendatadsl.com/docs/company/OPCOM)
+#### JAO Power Auction Day Ahead Price and Volume [JAO](https://doc.opendatadsl.com/docs/company/JAO)
 
 Main features:
 * Added Power Day Ahead Trading Prices (EUR/MWh) and Trading Volumes (MWh) for the above datasets.
