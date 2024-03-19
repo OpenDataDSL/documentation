@@ -13,15 +13,15 @@ The OpenDataDSL command line interface or CLI allows you to
 * Create an interactive session working with ODSL
 
 ## Getting Started
-Download the installer for the CLI [using this link](https://odslinstaller.z6.web.core.windows.net/cli/odsl.application)
+The CLI is included in the java SDK, download the jar file from [Maven Central Repository](https://mvnrepository.com/artifact/com.opendatadsl/odsl-sdk)
 
 ## Interactive Mode
-To use the CLI in interactive mode, simply run the `odsl` command without any arguments.
+To use the CLI in interactive mode, simply run the odsl without any arguments.
 When you see the ODSL prompt, type in your command, pressing enter will execute your command.
 
 ### Run odsl at a command prompt
 ```
-odsl
+java -jar {path to odsl-sdk jar file}
 ```
 
 ### Options
@@ -63,5 +63,5 @@ To run a script, simply pass the script path and name as an argument to the CLI.
 For example if you have a script in the /temp directory called test.odsl, you can call:
 
 ```
-odsl /temp/test.odsl
+java -jar {path to odsl-sdk jar file} /temp/test.odsl
 ```
