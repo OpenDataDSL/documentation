@@ -13,7 +13,7 @@ Add support for sending subscribed data to an Azure Blob, this will allow for gr
 
 Amongst others, Azure Data Factory pipelines can be triggered from Azure Blob updates.
 
-#### Documentation Service
+#### Documentation service
 Added a new service ```documentation``` - this will be used for both:
 * Product documentation in multiple languages - added by us in public
 * Operational support documentation - added by the client in private
@@ -23,6 +23,14 @@ Support Documentation can be created using the VSCode extension in Markdown (fil
 Support Documentation can be added to the following entities:
 * Process - will display in the Process and Execution dashboards
 * Curve - will display in the curve dashboard
+
+#### Metric improvements
+We have added some extra fields on the metrics that are recorded.
+
+* httpstatus
+* duration (ms)
+* action
+* responseSize (bytes)
 
 ## Feb24
 
