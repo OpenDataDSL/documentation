@@ -12,7 +12,7 @@ var services = [
         pub: true,
         pri: true,
         ver: true,
-        dread: false,
+        quota: true,
         unres: false
     },
     {
@@ -23,7 +23,7 @@ var services = [
         pub: true,
         pri: true,
         ver: false,
-        dread: true,
+        quota: false,
         unres: true
     },
     {
@@ -34,7 +34,7 @@ var services = [
         pub: false,
         pri: true,
         ver: false,
-        dread: true,
+        quota: false,
         unres: true
     },
     {
@@ -44,7 +44,7 @@ var services = [
         rw: true,
         pub: true,
         pri: true,
-        dread: true,
+        quota: true,
         unres: false,
         ver: true
     },
@@ -55,7 +55,7 @@ var services = [
         rw: false,
         pub: true,
         pri: true,
-        dread: true,
+        quota: false,
         unres: false,
         ver: true
     },
@@ -66,7 +66,7 @@ var services = [
         rw: true,
         pub: false,
         pri: true,
-        dread: false,
+        quota: false,
         unres: false,
         ver: true
     },
@@ -77,7 +77,7 @@ var services = [
         rw: "Read-only, use the Object service to write Data",
         pub: true,
         pri: true,
-        dread: false,
+        quota: false,
         unres: false,
         ver: "If Object type is versioned"
     },
@@ -88,7 +88,7 @@ var services = [
         rw: true,
         pub: true,
         pri: true,
-        dread: false,
+        quota: false,
         unres: true,
         ver: true
     },
@@ -99,7 +99,7 @@ var services = [
         rw: true,
         pub: false,
         pri: true,
-        dread: false,
+        quota: true,
         unres: false,
         ver: false
     },
@@ -110,7 +110,7 @@ var services = [
         rw: true,
         pub: true,
         pri: true,
-        dread: false,
+        quota: true,
         unres: false,
         ver: true
     },
@@ -121,7 +121,7 @@ var services = [
         rw: true,
         pub: true,
         pri: true,
-        dread: false,
+        quota: true,
         unres: false,
         ver: true
     },
@@ -132,7 +132,7 @@ var services = [
         rw: true,
         pub: false,
         pri: true,
-        dread: false,
+        quota: true,
         unres: false,
         ver: false
     },
@@ -143,7 +143,7 @@ var services = [
         rw: false,
         pub: false,
         pri: true,
-        dread: false,
+        quota: false,
         unres: false,
         ver: false
     },
@@ -154,7 +154,7 @@ var services = [
         rw: true,
         pub: true,
         pri: true,
-        dread: false,
+        quota: false,
         unres: false,
         ver: "If the Object type is versioned"
     },
@@ -165,7 +165,7 @@ var services = [
         rw: true,
         pub: false,
         pri: true,
-        dread: false,
+        quota: false,
         unres: false,
         ver: false
     },
@@ -176,7 +176,7 @@ var services = [
         rw: true,
         pub: false,
         pri: true,
-        dread: false,
+        quota: true,
         unres: false,
         ver: true
     },
@@ -187,7 +187,7 @@ var services = [
         rw: false,
         pub: false,
         pri: true,
-        dread: false,
+        quota: false,
         unres: false,
         ver: false
     },
@@ -198,7 +198,7 @@ var services = [
         rw: true,
         pub: false,
         pri: true,
-        dread: false,
+        quota: true,
         unres: false,
         ver: false
     },
@@ -209,7 +209,7 @@ var services = [
         rw: true,
         pub: true,
         pri: true,
-        dread: false,
+        quota: false,
         unres: false,
         ver: true
     },
@@ -220,7 +220,7 @@ var services = [
         rw: true,
         pub: true,
         pri: true,
-        dread: false,
+        quota: false,
         unres: false,
         ver: true
     },
@@ -231,7 +231,7 @@ var services = [
         rw: true,
         pub: false,
         pri: true,
-        dread: false,
+        quota: false,
         unres: false,
         ver: true
     },
@@ -242,7 +242,7 @@ var services = [
         rw: true,
         pub: false,
         pri: true,
-        dread: true,
+        quota: false,
         unres: false,
         ver: true
     },
@@ -253,7 +253,7 @@ var services = [
         rw: false,
         pub: false,
         pri: true,
-        dread: true,
+        quota: false,
         unres: false,
         ver: false
     },
@@ -264,7 +264,7 @@ var services = [
         rw: true,
         pub: false,
         pri: true,
-        dread: false,
+        quota: "N/A",
         unres: false,
         ver: false
     },
@@ -275,7 +275,7 @@ var services = [
         rw: true,
         pub: true,
         pri: true,
-        dread: false,
+        quota: true,
         unres: false,
         ver: true
     },
@@ -286,7 +286,7 @@ var services = [
         rw: true,
         pub: false,
         pri: true,
-        dread: true,
+        quota: true,
         unres: true,
         ver: false
     },
@@ -297,7 +297,7 @@ var services = [
         rw: true,
         pub: true,
         pri: true,
-        dread: true,
+        quota: true,
         unres: false,
         ver: true
     },
@@ -308,7 +308,7 @@ var services = [
         rw: true,
         pub: false,
         pri: true,
-        dread: "For you",
+        quota: "N/A",
         unres: "For you",
         ver: false
     },
@@ -319,7 +319,7 @@ var services = [
         rw: true,
         pub: true,
         pri: true,
-        dread: false,
+        quota: true,
         unres: false,
         ver: true
     }
@@ -336,7 +336,7 @@ export function Services() {
                 <th>Public</th>
                 <th>Private</th>
                 <th>Versioned</th>
-                <th>Read by default</th>
+                <th>Quota</th>
                 <th>Unrestricted</th>
             </tr>
         </thead>
@@ -347,7 +347,7 @@ export function Services() {
     );
 }
 
-function TableRow({name, link, text, rw, pub, pri, ver, dread, unres}) {
+function TableRow({name, link, text, rw, pub, pri, ver, quota, unres}) {
   return (
     <tr>
         <td>
@@ -358,7 +358,7 @@ function TableRow({name, link, text, rw, pub, pri, ver, dread, unres}) {
         <td>{pub==true?<FontAwesomeIcon icon={faCheck} />:<sub>{pub}</sub>}</td>
         <td>{pri==true?<FontAwesomeIcon icon={faCheck} />:<sub>{pri}</sub>}</td>
         <td>{ver==true?<FontAwesomeIcon icon={faCheck} />:<sub>{ver}</sub>}</td>
-        <td>{dread==true?<FontAwesomeIcon icon={faCheck} />:<sub>{dread}</sub>}</td>
+        <td>{quota==true?<FontAwesomeIcon icon={faCheck} />:<sub>{quota}</sub>}</td>
         <td>{unres==true?<FontAwesomeIcon icon={faCheck} />:<sub>{unres}</sub>}</td>
     </tr>
   )

@@ -1,0 +1,8 @@
+{
+  "label": "Operational Support",
+  "position": 1,
+  "link": {
+    "type": "generated-index",
+    "description": "Various topics on using OpenDataDSL for operational support"
+  }
+}
