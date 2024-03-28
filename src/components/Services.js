@@ -82,6 +82,17 @@ var services = [
         ver: "If Object type is versioned"
     },
     {
+        name: "Documentation",
+        link: "/docs/api/rest/service/documentation",
+        text: "The documentation resource contains product and operational support documentation",
+        rw: true,
+        pub: true,
+        pri: true,
+        dread: false,
+        unres: true,
+        ver: true
+    },
+    {
         name: "Environment",
         link: "/docs/api/rest/service/environment",
         text: "Contains information about your data environments",
