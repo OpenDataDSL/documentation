@@ -34,15 +34,17 @@ tags:
 
 The head matter sets properties on the documentation as detailed below:
 
-* scope 
+* scope
  > The service or category of the documentation
-* entity
+ > 
+ > If scope is omitted or there is no head matter, scope will be the name of the file 
+* entity (optional)
  > The id of the documentation which will be combined with the scope
-* name
+* name (optional)
  > A descriptive name for the documentation
-* language
+* language (optional - defaults to en)
  > The [ISO 639-1](https://www.w3schools.com/tags/ref_language_codes.asp) language code that this documentation is written in
-* tags
+* tags (optional)
  > A list of tags used to find and filter documentation
  
 ### Full file example
@@ -113,8 +115,14 @@ You can link documents to most entities, but the most useful are:
 
 To add a link to an existing process, you can use ODSL code as shown below:
 
+:::note
+The id you use for the documentation link is formatted as ```scope:entity```
+
+If there is no entity defined, then the id will be ```scope```
+:::
+
 ```js
 p = ${process:"AHDB_DAIRY_DATA"}
-p.add("Support", ref("documentation", "AHDB_DAIRY_DATA"))
+p.add("Support", ref("documentation", "process:AHDB_DAIRY_DATA"))
 save p
 ```
