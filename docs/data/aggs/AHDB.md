@@ -30,7 +30,7 @@ website: https://ahdb.org.uk/
 ## Datasets
 import AhdbDrPr from './_AHDB-DR_PR.md';
 
-### AHDB_DR_PR
+### AHDB_DR_PRICE
 <details>
 <summary>Agriculture and Horticulture Development Board United Kingdom Wholesale Monthly Prices </summary>
 <AhdbDrPr />

@@ -16,7 +16,7 @@ Example data id and name
 
 |**Data Id**|**Name**|
 |-|-|
-|AHDB.BUTTER.WSPR.M|AHDB Indicative Average Prices for UK Dairy Wholesale Markets Butter Salted Monthly Price|
+|AHDB.BUTTER.WHOLESALE.PRICES|AHDB Indicative Average Prices for UK Dairy Wholesale Markets Butter Salted Monthly Price|
 
 ### Attributes
 
@@ -24,7 +24,7 @@ Example data id and name
 |-|-|
 |Source|AHDB|
 |Source Name|The Agriculture and Horticulture Development Board|
-|Dataset|AHDB_DR_PR|
+|Dataset|AHDB_DR_PRICE|
 |Dataset Name|Agriculture and Horticulture Development Board United Kingdom Wholesale Monthly Prices|
 |Frequency|Monthly|
 |Currency|GBP|
