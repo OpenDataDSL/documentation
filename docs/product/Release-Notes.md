@@ -6,7 +6,30 @@ sidebar_position: 10
 Release Notes
 =============
 
-## Latest Release - Mar24
+## Latest Release - Apr24
+
+#### Insight reports
+Added support for interactive insight reports - See public report #INSIGHT_DM_CORRECTIONS
+
+#### Subscribe buttons
+Added subscribe buttons to allow a quick method of adding a subscription to:
+* Master Data
+* Data (curves, timeseries, matrices)
+* Event Lists
+* Reports
+* Processes
+
+#### Curve management buttons
+Added manage button onto curves to allow you to manually push curves into curve management.
+Also added a delete button in curve management to allow you to remove curves from curve management.
+
+#### Holiday calendar on event curves
+Added support for attaching a holiday calendar onto an event curve which will provide the calendar for event curve tenor timeseries.
+
+#### ADded correction service
+Added a service to report on data corrections
+
+## Mar24
 
 #### Azure blob subscription target
 Add support for sending subscribed data to an Azure Blob, this will allow for greater integration with Azure middleware services.
