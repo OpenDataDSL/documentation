@@ -86,7 +86,7 @@ module.exports = {
         style: 'display: none !important;'
     },{
         rel: "stylesheet",
-        href: "https://p.visitorqueue.com/styles/c49aef6c-24b7-4b77-809d-b7e13c691cc8.css",
+        href: "https://p.visitorqueue.com/styles/fc3243b6-c174-4cce-8a2a-99b8221faa22.css",
         type: 'text/css',
         id: 'vq_flick_styles'
     },{
