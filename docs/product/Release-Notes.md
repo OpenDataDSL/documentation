@@ -6,7 +6,24 @@ sidebar_position: 10
 Release Notes
 =============
 
-## Latest Release - Apr24
+## Latest Release - May24
+
+#### Selection of environment in Portal
+Added support for switching to a data environment other than production.
+This can be done by clicking on your username at the top right of the portal and selecting the environment name to switch to
+
+#### Edit documentation in Portal
+Support documentation can be added to processes as per the documentation service.
+You can now edit the documentation directly in the portal using markdown
+
+#### Change to script ids
+Private script ids now contain the full path from the project directory to the filename
+
+For example, if you have your scripts in a folder called **ch-odsl-scripts** and you place a script called test.odsl in a sub folder called process, the _id of the script will be:
+
+**ch-odsl-scripts\process\test**
+
+## Apr24
 
 #### Insight reports
 Added support for interactive insight reports - See public report #INSIGHT_DM_CORRECTIONS
@@ -26,7 +43,7 @@ Also added a delete button in curve management to allow you to remove curves fro
 #### Holiday calendar on event curves
 Added support for attaching a holiday calendar onto an event curve which will provide the calendar for event curve tenor timeseries.
 
-#### ADded correction service
+#### Added correction service
 Added a service to report on data corrections
 
 ## Mar24
