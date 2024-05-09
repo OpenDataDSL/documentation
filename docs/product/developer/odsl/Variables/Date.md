@@ -70,6 +70,12 @@ The date variable has the following methods:
 |next(Calendar)|Returns the next day after this one using the supplied calendar|Date|
 |previous()|Returns the previous calendar day before this one|Date|
 |previous(Calendar)|Returns the previous day before this one using the calendar|Date|
+|startOfMonth()|Returns a new Date as the start of the month|Date|
+|startOfMonth(Calendar)|Returns a new Date as the start of the month using the supplied calendar|Date|
+|endOfMonth()|Returns a new Date as the end of the month|Date|
+|endOfMonth(Calendar)|Returns a new Date as the end of the month using the supplied calendar|Date|
+|dayOfMonth(day)|Returns a new Date as the specific day of the month|Date|
+|dayOfMonth(day, Calendar)|Returns a new Date as the specific day of the month using the supplied calendar|Date|
 |isHoliday(Calendar)|Returns true is this date is a holiday in the supplied calendar|Scalar(Boolean)|
 
 Example using methods:
@@ -88,8 +94,8 @@ print date4oct.isHoliday("business")
 
 // Prints out the previous date according to the business calendar
 print date5oct.previous("business")
-'''
-'
+```
+
 ## Operations
 
 Dates can be used in mathematical operations, for example subtracting one date from another produces a Duration variable. Here are a list of valid date operations:
@@ -136,4 +142,47 @@ Adding a number to a date creates a new date with that number of days added, e.g
 // Test for date and numeric addition
 datenum = Date("2020-10-08") + 5
 assertEquals("2020-10-13T00:00:00", datenum)
+```
+
+## More Examples
+### Start of the month
+
+```js
+//#region Set start of month
+d1 = Date("2023-10-15")
+d2 = d1.startOfMonth()
+print d2
+
+d1 = Date("2023-10-15")
+d2 = d1.startOfMonth("BUSINESS")
+print d2
+//#endregion
+```
+
+### End of the month
+
+```js
+//#region Set end of month
+d1 = Date("2024-03-15")
+d2 = d1.endOfMonth()
+print d2
+
+d1 = Date("2024-03-15")
+d2 = d1.endOfMonth("BUSINESS")
+print d2
+//#endregion
+```
+
+### Day of the month
+
+```js
+//#region Day of the month
+d1 = Date("2024-05-15")
+d2 = d1.dayOfMonth(11)
+print d2
+
+d1 = Date("2024-05-15")
+d2 = d1.dayOfMonth(11, "BUSINESS")
+print d2
+//#endregion
 ```

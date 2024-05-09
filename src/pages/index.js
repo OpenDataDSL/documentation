@@ -19,7 +19,7 @@ function Video() {
             </div>
             <div className={styles.h_text_minor}>
                 <div className={styles.h_text_inner}>
-                    <div className={styles.tagline}>All the tools you need to make the most of your MongoDB database</div>
+                    <div className={styles.tagline}>Go beyond the basics - more than a data feed and curve builder</div>
                     <br />
                 </div>
             </div>
