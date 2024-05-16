@@ -33,6 +33,7 @@ You then need to copy the connection string and add it to your tenant as follows
 
 ```js
 tenant = ${tenant:""}
+tenant.properties = SimpleObject()
 tenant.properties.storage = "---paste connection string---"
 save ${tenant:tenant}
 ```
