@@ -1,8 +1,0 @@
-{
-  "label": "Data Entry and Editing",
-  "position": 1,
-  "link": {
-    "type": "generated-index",
-    "description": "Defining how to create custom data entry and editing flows"
-  }
-}
