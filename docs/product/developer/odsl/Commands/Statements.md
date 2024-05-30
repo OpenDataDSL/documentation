@@ -5,6 +5,7 @@ slug: /odsl/command/statements
 General Statements
 ==================
 
+import Apikey from './all/_apikey.md';
 import Imp from './all/_import.md';
 import Log from './all/_log.md';
 import Logout from './all/_logout.md';
@@ -20,6 +21,9 @@ import Use from './all/_use.md';
 
 
 All the general OpenDataDSL statement commands
+
+## api-key
+<Apikey />
 
 ## import
 <Imp />

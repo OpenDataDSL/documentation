@@ -51,6 +51,33 @@ function Products() {
     return (
     <div className={styles.products}>
         <div className={styles.productBanner}>Dive into the documentation</div>
+
+        <div className="row padding-vert--md">
+            <div className="text-left col-xs-12 col-sm-3 col-md-3 col-lg-3"> </div>
+            <div className="col  text-left col-xs-12 col-sm-10 col-md-10 col-lg-10">
+                <div className="row">
+                    <div className="col  text-left col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                        <div className="image_container">
+                            <a href="/docs/category/proof-of-concept"><img src="/img/gallery.png"/></a>
+                        </div>
+                    </div>
+                    <div className="col  text-left col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                        <div>
+                            <a href="/docs/tutorials/qs/mongodb"><h2>Starting a POC?</h2></a>
+                        </div>
+                        <div>
+                            <h3>Make the most of your Proof of Concept</h3>
+                        </div>
+                        <div>
+                            <p>A selection of topics to help you make the most of your time getting to understand all aspects of the OpenDataDSL platform</p>
+                            <p>Includes a concepts topic that introduces you to the concepts and terminology used throughout the platform and documentation</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div className="text-left col-xs-12 col-sm-3 col-md-3 col-lg-3"> </div>
+        </div>
+
         <div className="row padding-vert--md">
             <div className="text-left col-xs-12 col-sm-3 col-md-3 col-lg-3"> </div>
             <div className="col  text-left col-xs-12 col-sm-10 col-md-10 col-lg-10">
