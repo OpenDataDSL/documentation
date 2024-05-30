@@ -67,7 +67,7 @@ save tutorial
 <TabItem value="rest" label="REST API">
 
 ```js
-POST https://api.opendatadsl.com/service/queue/v1
+POST https://api.opendatadsl.com/api/queue/v1
 Authorization: Bearer {{token}}
 
 {
@@ -117,7 +117,7 @@ save sub
 <TabItem value="rest" label="REST API">
 
 ```js
-POST https://api.opendatadsl.com/service/subscription/v1
+POST https://api.opendatadsl.com/api/subscription/v1
 Authorization: Bearer {{token}}
 
 {
@@ -165,7 +165,7 @@ trigger sub_ecb_fx for 2021-10-04
 <TabItem value="rest" label="REST API">
 
 ```js
-POST https://api.opendatadsl.com/service/subscriptionrecord/v1
+POST https://api.opendatadsl.com/api/subscriptionrecord/v1
 Authorization: Bearer {{token}}
 
 {

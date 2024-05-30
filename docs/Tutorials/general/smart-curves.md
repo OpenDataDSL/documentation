@@ -51,7 +51,7 @@ save ${object: CORN_TEST}
 <TabItem value="rest" label="REST API">
 
 ```js
-POST https://api.opendatadsl.com/service/object/v1
+POST https://api.opendatadsl.com/api/object/v1
 Authorization: Bearer {{token}}
 
 {
@@ -93,7 +93,7 @@ save ${object: CORN_TEST_TYPE}
 <TabItem value="rest" label="REST API">
 
 ```js
-POST https://api.opendatadsl.com/service/object/v1
+POST https://api.opendatadsl.com/api/object/v1
 Authorization: Bearer {{token}}
 
 {
@@ -143,7 +143,7 @@ save ${object: CORN_TEST_TYPE}
 <TabItem value="rest" label="REST API">
 
 ```js
-POST https://api.opendatadsl.com/service/object/v1
+POST https://api.opendatadsl.com/api/object/v1
 Authorization: Bearer {{token}}
 
 {
@@ -217,7 +217,7 @@ save ${object: CORN_TEST_TYPE}
 <TabItem value="rest" label="REST API">
 
 ```js
-POST https://api.opendatadsl.com/service/object/v1
+POST https://api.opendatadsl.com/api/object/v1
 Authorization: Bearer {{token}}
 
 {
@@ -262,7 +262,7 @@ save ${object: CORN_TEST_TYPE}
 <TabItem value="rest" label="REST API">
 
 ```js
-POST https://api.opendatadsl.com/service/object/v1
+POST https://api.opendatadsl.com/api/object/v1
 Authorization: Bearer {{token}}
 
 {
@@ -312,7 +312,7 @@ save ${object: CORN_TEST_TYPE}
 <TabItem value="rest" label="REST API">
 
 ```js
-POST https://api.opendatadsl.com/service/object/v1
+POST https://api.opendatadsl.com/api/object/v1
 Authorization: Bearer {{token}}
 
 {
@@ -372,7 +372,7 @@ save ${object: CORN_TEST_TYPE}
 <TabItem value="rest" label="REST API">
 
 ```js
-POST https://api.opendatadsl.com/service/object/v1
+POST https://api.opendatadsl.com/api/object/v1
 Authorization: Bearer {{token}}
 
 {
@@ -416,7 +416,7 @@ save ${object: CORN_TEST_TYPE}
 <TabItem value="rest" label="REST API">
 
 ```js
-POST https://api.opendatadsl.com/service/object/v1
+POST https://api.opendatadsl.com/api/service/object/v1
 Authorization: Bearer {{token}}
 
 {

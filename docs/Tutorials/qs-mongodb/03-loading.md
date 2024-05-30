@@ -126,7 +126,7 @@ Here are some ways you can load data into MongoDB using a commercial OpenDataDSL
 You can update the sensor data using a REST API call as follows:
 
 ```js
-POST https://api.opendatadsl.com/object/v1/private
+POST https://api.opendatadsl.com/api/object/v1/private
 Authorization: Bearer {{token}}
 
 [

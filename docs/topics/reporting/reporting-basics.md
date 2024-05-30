@@ -195,7 +195,7 @@ save USER_METRICS
 <TabItem value="rest" label="REST API">
 
 ```js
-POST https://api.opendatadsl.com/service/report/v1
+POST https://api.opendatadsl.com/api/report/v1
 Authorization: Bearer {{token}}
 
 {
@@ -246,7 +246,7 @@ print rep
 <TabItem value="rest" label="REST API">
 
 ```js
-GET https://api.opendatadsl.com/service/report/v1/private/USER_METRICS
+GET https://api.opendatadsl.com/api/report/v1/private/USER_METRICS
   ?_range=between(2023-01-01,2023-01-31)
 Authorization: Bearer {{token}}
 ```
@@ -276,7 +276,7 @@ save ${report:"USER_METRICS"}
 <TabItem value="rest" label="REST API">
 
 ```js
-POST https://api.opendatadsl.com/service/report/v1/private/USER_METRICS
+POST https://api.opendatadsl.com/api/report/v1/private/USER_METRICS
   ?_range=between(2023-01-01,2023-01-31)
 Authorization: Bearer {{token}}
 ```

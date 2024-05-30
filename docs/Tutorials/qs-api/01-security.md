@@ -180,7 +180,7 @@ This example request gets information about the Object service.
 <TabItem value="rest" label="REST" default>
 
 ```yaml
-GET https://api.opendatadsl.com/service/object
+GET https://api.opendatadsl.com/api/object
 Authorization: Bearer {{token}}
 ```
 
@@ -189,7 +189,7 @@ Authorization: Bearer {{token}}
 
 ```python
 headers = {'Authorization': 'Bearer {}'.format(token)}
-response = requests.get('https://api.opendatadsl.com/service/object', headers=headers)
+response = requests.get('https://api.opendatadsl.com/api/object', headers=headers)
 print(response.json())
 ```
 
