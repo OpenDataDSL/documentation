@@ -81,7 +81,7 @@ Authorization: Bearer {{token}}
 ## Creating Events
 Events need to be added to master data in the same way as timeseries, curves etc.
 
-### Used of a DSID
+### Use of a DSID
 If you intend to use the dataset monitoring tools, you can add a _dsid (Dataset ID) property to your events.
 A _dsid comprises of 3 sections separated by dots - ```PROVIDER.FEED.PRODUCT```
 
