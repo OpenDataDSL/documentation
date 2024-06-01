@@ -6,7 +6,45 @@ sidebar_position: 10
 Release Notes
 =============
 
-## Latest Release - May24
+## Latest Release - Jun24
+
+#### Script Management
+Added script management into the portal with the following features:
+* View all public and private scripts that you have access to
+* Visual comparison of script versions
+* Tag and delete script versions
+* Rollback to the previous version
+* Merge code chunks from previous versions into the latest version and save it
+
+#### Add Report Links
+You can now add reports as links to various resources to display the report in the portal with the selected resource
+
+For example, you can add a link to a report to an object and when viewing the object, the report will be shown as an additional tab.
+
+#### Added Support for Azure Data Lake Storage
+You can now push data to Azure Data Lake Storage using subscriptions.
+
+#### Added support for API-TOKENS
+You can now create and use API-TOKENS as an alternative way of authentication
+
+#### Added support for webhooks
+A new subscription target for webhooks which will POST the resource to the supplied webhook target URL
+
+#### Added holiday/expiry function
+A new function to return a list of holidays or expiries from a list of calendar id's and a date range
+
+#### New function - combine
+A new curve function which will combine 2 curves into 1 with the option to replace tenors in the base curve or only add new tenors.
+
+#### Added support for value transformation in Event Curves
+You can now add a **valueTransformation** property to an Event Curve as an expression to transform all input values, e.g. value * 1.1
+
+#### New period code GCY
+Added a new period code for handling of Gas Calendar Years
+
+The GCY period code delivery is for a full calendar year with a gas day offset 
+
+## May24
 
 #### Selection of environment in Portal
 Added support for switching to a data environment other than production.
