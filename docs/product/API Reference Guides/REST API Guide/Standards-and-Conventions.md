@@ -100,3 +100,64 @@ Time-series ranges can be one of:
 * last(n) - return the last n values 
 * from(date) - return all data since date 
 * between(date, date) - return all data between the 2 dates
+
+## Response Formats
+
+By default, all REST responses are in JSON format. This section shows you how to work with different response formats.
+
+### CSV
+CSV format is supported using the REST header: ```Accept: text/csv```
+
+#### Examples of retrieving data in CSV format:
+
+```json
+### Master Data in CSV
+GET https://api.opendatadsl.com/api/object/v1/public/%23ABN_FX.EURGBP
+Authorization: Bearer {{token}}
+Accept: text/csv
+
+### Timeseries in CSV
+GET https://api.opendatadsl.com/api/data/v1/public/%23ABN_FX.EURGBP:SPOT
+Authorization: Bearer {{token}}
+Accept: text/csv
+
+### Curve in CSV
+GET https://api.opendatadsl.com/api/data/v1/public/%23IPEX.EL.IT.BL.MTE.FWD.CURVE:PRICE:2023-12-12
+Authorization: Bearer {{token}}
+Accept: text/csv
+```
+
+### XML
+XML format is supported using the REST header ```Accept: application/xml```
+
+#### Examples of retrieving data in XML format:
+
+```json
+### Master Data in XML
+GET https://api.opendatadsl.com/api/object/v1/public/%23ABN_FX.EURGBP
+Authorization: Bearer {{token}}
+Accept: application/xml
+
+### Timeseries in XML
+GET https://api.opendatadsl.com/api/data/v1/public/%23ABN_FX.EURGBP:SPOT
+Authorization: Bearer {{token}}
+Accept: application/xml
+
+### Curve in XML
+GET https://api.opendatadsl.com/api/data/v1/public/%23IPEX.EL.IT.BL.MTE.FWD.CURVE:PRICE:2023-12-12
+Authorization: Bearer {{token}}
+Accept: application/xml
+```
+
+### Custom
+You can create your own output format by uploading a custom mustache template and using the REST header ```Accept: text/html``` along with the _template query parameter.
+
+#### Example of retrieving data using a custom format:
+
+```json
+### Curve in HTML using a template
+GET https://api.opendatadsl.com/api/data/v1/public/%23OTE.EL.CZ.HOURLY.DA:PRICE_VOL:2023-12-28
+	?_template=%23PriceVolumeCurveTemplate
+Authorization: Bearer {{token}}
+Accept: text/html
+```
