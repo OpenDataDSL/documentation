@@ -8,6 +8,34 @@ Release Notes
 
 ## Latest Release - Jun24
 
+#### Build a curve for a range of dates
+You can now build a curve for a range of dates
+
+ODSL Code:
+```js
+run curve "AAA:ECS" with "between(2024-06-01,2024-06-05)"
+```
+
+REST API:
+```
+GET {{url}}/curve/v1/build/AAA:ECS
+  ?_run=true
+  &_range=between(2024-06-01,2024-06-05)
+Authorization: Bearer {{token}}
+
+GET {{url}}/curve/v1/AAA:ECS
+  ?_function=build
+  &_range=between(2024-06-01,2024-06-05)
+Authorization: Bearer {{token}}
+```
+
+#### Added mytags for searching
+Added support for customer specific tags on Master Data called **mytags**.
+These properties are included in free searching and tag searching
+
+#### Support for running multiple instances of VSCode Extension
+Now 10 instances are supported for language support (intellisense/ hovering etc.) and debugging.
+
 #### Script Management
 Added script management into the portal with the following features:
 * View all public and private scripts that you have access to
@@ -43,6 +71,11 @@ You can now add a **valueTransformation** property to an Event Curve as an expre
 Added a new period code for handling of Gas Calendar Years
 
 The GCY period code delivery is for a full calendar year with a gas day offset 
+
+#### Fixes
+* Datetimes in timeseries and curveseries now always store the full datetime string
+* Fix for financial spot tenor (SP) sorting
+* Fix small issue running functions in scripts via REST API
 
 ## May24
 
