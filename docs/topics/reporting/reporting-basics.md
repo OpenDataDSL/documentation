@@ -26,10 +26,19 @@ A report is based on a user defined configuration with the following properties:
 |category|The user-defined category of the report used to organise reports|String|
 |name|The user-friendly name of the report|String|
 |description|A description of the report|String|
-|fixed|A flag indicating that this report is manually updated rather than calculated|Boolean|
+|reportType|The type of this report, one of Default, Fixed, Dynamic, Insight or Widget|String|
 |script|The name of the script used to run this report|String|
+|currency|The optional currency of this report, can be used in the function using #REPORT.currency|String|
+|units|The optional units of this report, can be used in the function using #REPORT.units|String|
+|tiemzone|The optional timezone of this report, can be used in the function using #REPORT.timezone|String|
 |expression|The expression to use to run this report, e.g. a function name|String|
 |template|The mustache template name used to format the results of the report as HTML|String|
+|defaultRange|The optional default date range for this report|String|
+|hideExcel|Hides this report from the Excel Add-in|Boolean|
+|hideList|Hides this report from the Reports list|Boolean|
+|odg|OnDate generator for dynamic reports|Object|
+|properties|Optional properties to configure and use in the report|Object|
+|cacheOptions|Set the SMART caching options for this report|Object|
 |tags|A list of tags for the report|List|
 
 Report configurations are versioned, so they also contain version information:
@@ -55,9 +64,12 @@ A report contains all the information from the configuration that built/saved it
 
 A report is also versioned, so it contains version information too.
 
-## Creating a report
+## Report Types
 
-### Script
+### Default
+This is a basic standard report which uses a script to generate date which is saved in the report.
+
+#### Script
 
 Script is an optional property that defines the name of the ODSL script used to create a report.
 
@@ -80,10 +92,11 @@ end
 ```
 
 :::note
-There are 2 variables created in the report context ```#START``` and ```#END``` representing the start and end dates of the range used when running this report.
+There are 3 variables created in the report context ```#START``` and ```#END``` representing the start and end dates of the range used when running this report.
+```#ONDATE``` which represents the date of the report.
 :::
 
-### Expression
+#### Expression
 
 Expression is the property that defines the command to run, which is usually the function call to the script, but can be a standalone expression, e.g.
 
@@ -97,9 +110,11 @@ For the example using the script above, our expression would be:
 userMetrics()
 ```
 
+
+
 ### Fixed
 
-Fixed is a boolean property to indicate that this report does not use a script or expression and is manually updated by a user.
+A fixed report is manually updated by a user.
 
 An example configuration for a fixed report:
 
@@ -107,7 +122,7 @@ An example configuration for a fixed report:
 FIXED_EXAMPLE = Report()
 FIXED_EXAMPLE.name = "Fixed Report Example"
 FIXED_EXAMPLE.description = "An example of how to use a fixed report"
-FIXED_EXAMPLE.fixed = true
+FIXED_EXAMPLE.reportType = "Fixed"
 save FIXED_EXAMPLE
 ```
 
@@ -119,6 +134,96 @@ FIXED_EXAMPLE.title = "This is my new report"
 FIXED_EXAMPLE.data = ["This", "is", "some", "data"]
 save ${report:FIXED_EXAMPLE}
 ```
+
+### Dynamic
+
+A dynamic report is a report that dynamically runs the first time it is accessed.
+
+You provide dynamic ondates using an ```DynamicOnDateGenerator```
+
+#### On Date Generators
+
+##### Aggregation
+Uses an aggregation pipeline to generate the ondates for a report, it takes 3 inputs:
+* Service
+* Source
+* Pipeline
+
+Example:
+```js
+pipe = pipeline ${event:"public"}
+	match event="#OMIE.EL.IBER.DA:AGG_CURVE"
+	group _id="$eventtime"
+	project !_id, index="$_id"
+end
+
+REPORT.withAggregationOnDateGenerator("event", "public", pipe)
+```
+
+##### Calendar
+Uses a calendar to generate the ondates, it requires 2 inputs:
+* Calendar code
+* Start Date
+
+Example:
+```js
+STATS_REPORT.withCalendarOnDateGenerator("DAILY", "2024-01-01")
+```
+
+##### Curve
+The ondates are generated using the ondates from a curve, the only input is the curve id
+
+Example:
+```js
+BALANCE_CHART.withCurveOnDateGenerator("NORDPOOL.EL.DK1.DA:PRICE")
+```
+
+##### Distinct
+Uses a distinct-find to generate ondates. It has  4 inputs:
+* Service
+* Source
+* Field name
+* An optional filter
+
+Example:
+```js
+AGGREGATED_CURVE.withDistinctOnDateGenerator("event", "public", "eventstart", "event='eventlist'")
+```
+
+##### Filter
+Uses a find statement filter to generate the ondates for a report, it requires 4 inputs:
+* Service
+* Source
+* Filter
+* Projection
+
+Example:
+```js
+REPORT.withFilterOnDateGenerator("event", "public", "event='ABC'", "eventstart")
+```
+
+##### Matrix
+Uses the ondates from a matrix, the only input is the matrix id
+
+Example:
+```js
+CORRELATION_BUBBLE_CHART.withMatrixOnDateGenerator("matrix")
+```
+
+### Insight
+
+An insight is a special type of interactive report that doesn't store any data and therefore doesn't have an OnDate.
+
+Usually an insight report will read data directly from any of the OpenDataDSL services using the Javascript Browser SDK.
+
+
+### Widget
+
+A Widget is similar to an Insight report, but can also use a real-time connection to subscribe to data updates.
+
+## Formatting a report
+
+You can provide the name of an optional template to format the output of the report.
 
 ### Template
 
@@ -201,6 +306,7 @@ Authorization: Bearer {{token}}
 {
     "_id": "USER_METRICS",
     "_type": "VarReportConfiguration",
+    "reportType": "Default",
     "category": "Tutorial",
     "name": "User Metrics Summary",
     "description": "Summarise the usage metrics by user",
@@ -283,3 +389,61 @@ Authorization: Bearer {{token}}
 
 </TabItem>
 </Tabs>
+
+### Caching Options
+You can optionally configure how the report is stored using the ```cacheOptions``` property on the report configuration.
+
+The following types of caching are supported:
+* Never - the report is never cached/stored
+* OnDemand - the report is stored the first time the report date is read
+* OnSchedule - Cache based on a cron schedule
+* External - Report is built and saved by an external app
+
+If you select OnSchedule, you also have to provide a cron expression in the property **schedule**
+
+## Adding a report to Master Data
+
+You can create reports that are attached to Master Data records, these reports will usually be related to the Master Data, e.g. as a special chart of data on the record.
+
+There are 2 ways to add a report to Master Data:
+* As an embedded report
+* As a link
+
+### Master Data embedded report
+When you embed a report in a Master Data record, the report is shown as a hyperlink in the portal which will display the report when clicked.
+
+#### Example of creating an embedded report
+```js
+AUDIT = InsightReport()
+AUDIT.category = "Insights"
+AUDIT.name = "Audit Report"
+AUDIT.template = "#insight-audit-report"
+AUDIT.hideExcel = true
+AUDIT.hideList = true
+o = ${object:"ICE.NDEX.NLB"}
+o.AUDIT = AUDIT
+save o
+```
+
+### Linked report
+When you add a report link reference to a Master Data record, the report shows as a new tab when viewing the Master Data record in the portal.
+
+#### Example of creating a linked report
+```js
+cr = InsightReport()
+cr.category = "Insights"
+cr.name = "Activity Report"
+cr.description = "This report shows all object activity"
+cr.template = "#insight-object-activity"
+cr.hideExcel = true
+cr.hideList = true
+cr.DSID = "ICE.NDEX.NLB"
+cr.OBJID = "ICE.NDEX.NLB"
+
+ref = ref("report", "ICE.NDEX.NLB:Activity")
+ref.info = cr
+
+o = ${object:"ICE.NDEX.NLB"}
+o.add("Activity", ref)
+save o
+```
