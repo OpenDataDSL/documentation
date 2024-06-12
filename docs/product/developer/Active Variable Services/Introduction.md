@@ -106,7 +106,10 @@ The object service allows you to manage, browse, search for and use stored objec
     
 ### [Process Service](./process)
 The process service allows you to manage your scheduled and event driven remote processes
-    
+
+### [Secret Service](./secret)
+The secret service allows you to securely store secrets such as passwords or security tokens
+
 ### [Script Service](./script)
 The script service allows you to store and retrieve ODSL scripts
     

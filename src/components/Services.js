@@ -225,6 +225,17 @@ var services = [
         ver: true
     },
     {
+        name: "Secret",
+        link: "/docs/api/rest/service/secret",
+        text: "The resource for storing secrets such as passwords etc.",
+        rw: true,
+        pub: false,
+        pri: true,
+        quota: true,
+        unres: true,
+        ver: false
+    },
+    {
         name: "Script",
         link: "/docs/api/rest/service/script",
         text: "The resource for storing your ODSL scripts in the cloud",

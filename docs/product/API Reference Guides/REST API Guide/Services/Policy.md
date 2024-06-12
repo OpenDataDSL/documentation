@@ -32,12 +32,12 @@ The API consists of the following calls:
 
 ### Policy Entity
 
-The action entity contains the following information:
+The policy entity contains the following information:
 
 |**Name**|**Type**|**Description**|
 |-|-|-|
 |_id|String|The unique identifier for this policy|
-|_type|String|The type of the action - always Policy|
+|_type|String|The type of the policy - always Policy|
 |category|String|An optional category used for filtering policies|
 |description|String|A description of what this policy does|
 |source|String|The source of data that this policy covers|
