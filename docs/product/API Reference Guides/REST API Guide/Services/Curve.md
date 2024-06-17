@@ -23,12 +23,12 @@ The API is broken into these sections:
 * build - curve build information
 * group - curve group information
 
-## General
+### General
 |**Method**|**Path**|**Example**|**Description**|
 |-|-|-|-|
 |GET|||Get the build information for this service|
 
-## Curve info API
+### Curve info API
 
 |**Method**|**Path**|**Example**|**Description**|
 |-|-|-|-|
@@ -38,6 +38,43 @@ The API is broken into these sections:
 |POST|{release}/info|v1/info|Create or update a curve configuration, the curve configuration is the JSON body of the POST request|
 |POST|{release}/info/{curve}|v1/info/TEST:CURVE|Manage a curve - no json body, info is generated from the real curve|
 |DELETE|{release}/info/{key}|v1/info/TEST:CURVE|Delete (unmanage) a curve configuration|
+
+### Curve build API
+
+|**Method**|**Path**|**Example**|**Description**|
+|-|-|-|-|
+|GET|{release}/build|v1/build|List all the curve build information for the current ondate|
+|GET|{release}/build/{key}|v1/build/TEST:CURVE:2024-06-12|Retrieve a single curve build information for the specified ondate|
+|GET|{release}/build/{ondate}|v1/build/2024-06-12|List all curve build information for the specified ondate|
+|POST|{release}/build|v1/build|Update build information, the curve build information is the JSON body of the POST request - used for updates from external build applications|
+|DELETE|{release}/build/{key}|v1/build/TEST:CURVE:2024-06-12|Delete the curve build information|
+
+### Group API
+
+The curve management group API contains an extra url path section called type - referring to the group type, one of:
+* build
+* quality
+* approval
+* export
+
+|**Method**|**Path**|**Example**|**Description**|
+|-|-|-|-|
+|GET|{release}/group/{type}|v1/group/build|List all the groups of the supplied type|
+|GET|{release}/group/{type}/{key}|v1/group/build/default|Retrieve a group|
+|PUT|{release}/group/{type}/{key}|v1/group/build/default|Add curves to this group, body is an array of curve ids|
+|POST|{release}/group/{type}|v1/group/build|Create/Update group information, the group information is the JSON body of the POST request|
+|DELETE|{release}/group/{type}/{key}|v1/group/build/default|Delete the named group|
+
+### Curve Approval API
+This API is used to approve/unapprove curves
+
+|**Method**|**Path**|**Example**|**Description**|
+|-|-|-|-|
+|GET|{release}/approval/{ondate}|v1/approval/2024-06-12|List all the curves I need to approve for the supplied ondate|
+|POST|{release}/approval|v1/approval|Approve curves, body is an array of either string ids or objects with {curve, message}|
+|POST|{release}/rejection|v1/rejection|Unapprove curves, body is an array of either string ids or objects with {curve, message}|
+
+## Curve management entities
 
 ### Curve management Configuration
 |**Name**|**Description**|**Type**|
@@ -52,16 +89,6 @@ The API is broken into these sections:
 |qualityGroup|The name of the quality group this curve belongs to|String|
 |approvalGroup|The name of the approval group this curve belongs to|String|
 |exportGroups|The names of the export groups this curve belongs to |List|
-
-## Curve build API
-
-|**Method**|**Path**|**Example**|**Description**|
-|-|-|-|-|
-|GET|{release}/build|v1/build|List all the curve build information for the current ondate|
-|GET|{release}/build/{key}|v1/build/TEST:CURVE:2024-06-12|Retrieve a single curve build information for the specified ondate|
-|GET|{release}/build/{ondate}|v1/build/2024-06-12|List all curve build information for the specified ondate|
-|POST|{release}/build|v1/build|Update build information, the curve build information is the JSON body of the POST request - used for updates from external build applications|
-|DELETE|{release}/build/{key}|v1/build/TEST:CURVE:2024-06-12|Delete the curve build information|
 
 ### Curve build information
 |**Name**|**Description**|**Type**|
@@ -78,22 +105,6 @@ The API is broken into these sections:
 |builds|A list of all the build attempts for this curve|Object(build)|
 |lastBuildId|The id of the last build attempt|String|
 |checks|A list of the quality checks performed|Object(check)|
-
-## Group API
-
-The curve management group API contains an extra url path section called type - referring to the group type, one of:
-* build
-* quality
-* approval
-* export
-
-|**Method**|**Path**|**Example**|**Description**|
-|-|-|-|-|
-|GET|{release}/group/{type}|v1/group/build|List all the groups of the supplied type|
-|GET|{release}/group/{type}/{key}|v1/group/build/default|Retrieve a group|
-|PUT|{release}/group/{type}/{key}|v1/group/build/default|Add curves to this group, body is an array of curve ids|
-|POST|{release}/group/{type}|v1/group/build|Create/Update group information, the group information is the JSON body of the POST request|
-|DELETE|{release}/group/{type}/{key}|v1/group/build/default|Delete the named group|
 
 ### Curve build group
 |**Name**|**Description**|**Type**|
@@ -137,15 +148,6 @@ The curve management group API contains an extra url path section called type - 
 |script|The ODSL script name to use|String|
 |expression|The expression to execute - usually a function call in the script e.g. export()|String|
 |calendar|The holiday calendar for the curves|String|
-
-## Curve Approval API
-This API is used to approve/unapprove curves
-
-|**Method**|**Path**|**Example**|**Description**|
-|-|-|-|-|
-|GET|{release}/approval/{ondate}|v1/approval/2024-06-12|List all the curves I need to approve for the supplied ondate|
-|POST|{release}/approval|v1/approval|Approve curves, body is an array of either string ids or objects with {curve, message}|
-|POST|{release}/rejection|v1/rejection|Unapprove curves, body is an array of either string ids or objects with {curve, message}|
 
 ## Functions
 |**Function**|**Example**|**Description**|
