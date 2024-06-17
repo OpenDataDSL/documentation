@@ -28,6 +28,7 @@ The API consists of the following calls:
 |**Method**|**Path**|**Example**|**Description**|
 |-|-|-|-|
 |GET|{release}/info|v1/info|Lists all the datasets you have configured for monitoring|
+|GET|{release}/allds|v1/allds|Lists all the datasets you have access to (both managed and unmanaged)|
 |GET|{release}/info/{id}|v1/info/ICE.NDEX.NLB|Gets a dataset configuration|
 |POST|{release}/info|v1/info|Update a dataset monitoring configuration|
 |DELETE|{release}/info/{id}|v1/info/ICE.NDEX.NLB|Remove a dataset monitoring configuration|
@@ -38,6 +39,7 @@ The API consists of the following calls:
 |**Method**|**Path**|**Example**|**Description**|
 |-|-|-|-|
 |GET|{release}/feed|v1/feed|Lists all the dataset feeds you have configured for monitoring|
+|GET|{release}/alldf|v1/alldf|Lists all the dataset feeds you have access to (both managed and unmanaged)|
 |GET|{release}/feed/{id}|v1/feed/ICE.NDEX|Gets a dataset feed configuration|
 |POST|{release}/feed|v1/feed|Update a dataset feed configuration|
 |DELETE|{release}/feed/{id}|v1/feed/ICE.NDEX|Remove a dataset feed monitoring configuration|
@@ -49,7 +51,7 @@ The API consists of the following calls:
 |-|-|-|-|
 |GET|{release}/delivery|v1/delivery|Lists all the dataset deliveries for the current ondate|
 |GET|{release}/delivery/{ondate}|v1/delivery/2024-06-12|Lists all the dataset deliveries for the provided ondate|
-|GET|{release}/delivery/{ondate}/{id}|v1/delivery/2024-06-12/ICE.NDEX.NLB.2024-06-12|Gets the specified dataset delivery for the provided ondate|
+|GET|{release}/delivery/{id}|v1/delivery/ICE.NDEX.NLB:2024-06-12|Gets the specified dataset delivery for the provided ondate|
 
 ## Dataset entities
 
@@ -182,6 +184,11 @@ The following functions are available on the dataset REST API:
 ### Datasets
 
 ```js
+### Get full list of datasets
+GET {{url}}/dataset/v1/allds
+  ?_project=name
+Authorization: Bearer {{token}}
+
 ### Get Dataset infos
 GET {{url}}/dataset/v1/info
 Authorization: Bearer {{token}}
@@ -229,6 +236,11 @@ Authorization: Bearer {{token}}
 ### Dataset Feed
 
 ```js
+### Get full list of datasets
+GET {{url}}/dataset/v1/alldf
+  ?_project=name
+Authorization: Bearer {{token}}
+
 ### Get Dataset Feeds
 GET {{url}}/dataset/v1/feed
 Authorization: Bearer {{token}}
@@ -291,6 +303,11 @@ Authorization: Bearer {{token}}
 
 ### Get Dataset Deliveries - projected
 GET {{url}}/dataset/v1/delivery/2024-06-12
+  ?_project=score,scoreinfo
+Authorization: Bearer {{token}}
+
+### Get Dataset Delivery
+GET {{url}}/dataset/v1/delivery/ICE.NDEX.NLB:2024-06-12
   ?_project=score,scoreinfo
 Authorization: Bearer {{token}}
 ```
