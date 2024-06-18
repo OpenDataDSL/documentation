@@ -147,6 +147,7 @@ Here are the properties of a Dataset Delivery configuration
 |actual|Actual tenors delivered, same format as expected|Object|
 |timings|An object with info about the [timings](#dataset-delivery-timings-object)|Object|
 |deliveries|Information about all the feed [deliveries](#dataset-delivery-deliveries-object) that were made|Object|
+|checks|Information about all the quality checks that were made|Object|
 |timeline|A log of everything that has happened in connection with this delivery|Array(String)|
 |timestamp|The last time this delivery information was updated|Datetime|
 
@@ -169,6 +170,15 @@ Here are the properties of a Dataset Delivery configuration
 |reason|The reason string, usually crontab information|String|
 |origin|The origin of the delivery, usually the name of the process|String|
 |tenors|The actual tenors delivered in this delivery|Object|
+
+#### Dataset delivery quality check object
+
+|**Name**|**Description**|**Type**|
+|-|-|-|
+|id|The transaction id - usually the same as the process execution id|String|
+|timestamp|The datetime for the quality checks|Datetime|
+|log|Log messages produced from the checks|List(String)|
+|{check name}|Object containing output from the quality check function|Object|
 
 ## Functions
 
