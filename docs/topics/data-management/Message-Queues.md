@@ -1,14 +1,14 @@
 ---
 slug: /odsl/dm/queues
-sidebar_position: 6
+sidebar_position: 8
+title: Message Queues
+description: Connect services with your own on-premise services and applications
 tags:
   - data_management
   - queue
   - messaging
   - topics
 ---
-Message Queues
-==============
 
 A message queue is used as the glue to connect services together including your own on-premise services and applications
 

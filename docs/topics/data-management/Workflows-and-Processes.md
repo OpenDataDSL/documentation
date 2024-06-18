@@ -1,14 +1,14 @@
 ---
 slug: /odsl/dm/workflow
-sidebar_position: 5
+sidebar_position: 7
+title: Workflows and Processes
+description: Creating and using actions, workflows, scripts and processes
 tags:
   - data_management
   - workflow
   - process
   - topics
 ---
-Workflows and Processes
-=======================
 
 This guide gives detailed instructions on creating and using actions, workflows, scripts and processes
 
