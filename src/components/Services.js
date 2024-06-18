@@ -82,6 +82,17 @@ var services = [
         ver: "If Object type is versioned"
     },
     {
+        name: "Dataset",
+        link: "/docs/api/rest/service/dataset",
+        text: "The dataset resource contains the dataset monitoring information",
+        rw: "Dataset and dataset feed, but deliveries are read-only",
+        pub: false,
+        pri: true,
+        quota: false,
+        unres: false,
+        ver: false
+    },
+    {
         name: "Documentation",
         link: "/docs/api/rest/service/documentation",
         text: "The documentation resource contains product and operational support documentation",
@@ -255,17 +266,6 @@ var services = [
         pri: true,
         quota: false,
         unres: false,
-        ver: true
-    },
-    {
-        name: "Subscription Record",
-        link: "/docs/api/rest/service/subscription-record",
-        text: "Used for getting information about fulfilled subscriptions",
-        rw: false,
-        pub: false,
-        pri: true,
-        quota: false,
-        unres: false,
         ver: false
     },
     {
@@ -348,7 +348,6 @@ export function Services() {
                 <th>Private</th>
                 <th>Versioned</th>
                 <th>Quota</th>
-                <th>Unrestricted</th>
             </tr>
         </thead>
     <tbody>
@@ -370,7 +369,6 @@ function TableRow({name, link, text, rw, pub, pri, ver, quota, unres}) {
         <td>{pri==true?<FontAwesomeIcon icon={faCheck} />:<sub>{pri}</sub>}</td>
         <td>{ver==true?<FontAwesomeIcon icon={faCheck} />:<sub>{ver}</sub>}</td>
         <td>{quota==true?<FontAwesomeIcon icon={faCheck} />:<sub>{quota}</sub>}</td>
-        <td>{unres==true?<FontAwesomeIcon icon={faCheck} />:<sub>{unres}</sub>}</td>
     </tr>
   )
 }
