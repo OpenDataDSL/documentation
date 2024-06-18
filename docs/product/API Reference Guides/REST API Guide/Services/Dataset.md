@@ -69,6 +69,7 @@ Here are the properties of a Dataset configuration
 |feed|The id of the feed|String|
 |product|The id of the product|String|
 |source|The source of the dataset private, common or public|String|
+|qualityGroup|The name of the quality group used to check the quality of the dataset (group type:quality)|String|
 |expected|An object defining the number of each tenor type we expect to receive for this dataset - only applicable for private datasets|Object|
 
 #### Example dataset
@@ -82,6 +83,7 @@ Here are the properties of a Dataset configuration
     "feed": "NDEX",
     "product": "BEP",
     "name": "ICE NDEX BEP - Belgian Power Financial Peak Futures",
+    "qualityGroup": "default",
     "expected": {
       "*": 82,
       "Month": 59,
