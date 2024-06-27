@@ -51,6 +51,14 @@ The identifier for a dataset delivery is of the following format:
 
 e.g. **ICE.IFEU.B:2024-06-12**
 
+### Quality Group
+A quality group contains the name of a script that contains the functions that will perform quality checks on the data.
+It also contains the list of checks to perform on a dataset including any parameters.
+
+A check consists of:
+* name - The free-form name you want to give to this check, e.g. ```Check for zero values```
+* expression - The expression to use to run the check. This is usually the function call, e.g. ```zeroCheck(['SETTLEMENT_PRICE'])```
+
 ### Scoring
 Every day that dataset loading occurs, a score is calculated which is a measurement used to indicate how well the process worked that day.
 
