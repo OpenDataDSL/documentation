@@ -107,6 +107,9 @@ A TimeValue represents a single observed value in a [timeseries](TimeSeries)
 ---------------------------------------
 A curve is a structure that represents a set of values with a time index sometime in the future. It can be used for commodity and financial forward curves, yield curves and forecasts (weather, prices etc.)
 
+### [EventCurve](EventCurve)
+A curve that is dynamically built from events
+
 ### [SmartCurve](SmartCurve)
 A Smart Curve is an expression that is used to build curves on demand
 
