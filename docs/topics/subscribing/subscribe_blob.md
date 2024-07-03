@@ -16,32 +16,27 @@ import TabItem from '@theme/TabItem';
 ## Configuration
 
 ### Azure Storage Configuration
-The Azure Storage Account where you want the blob to be written needs to be configured on your tenant.
+In order for our application to create and update blobs in your Azure storage container, you need to add a role assignment to the OpenDataDSL application.
 
-To do this, you need to create a **shared access signature** for your storage account with the following minimum rights:
-* Allowed services
-  * Blob
-* Allowed resource types
-  * Container
-  * Object
-* Allowed permissions
-  * Write
-  * Add
-  * Create
+### Adding an access role
+To give access, perform the following:
 
-You then need to copy the connection string and add it to your tenant as follows:
-
-```js
-tenant = ${tenant:""}
-tenant.properties = SimpleObject()
-tenant.properties.storage = "---paste connection string---"
-save ${tenant:tenant}
-```
+* In the Azure Portal, navigate to the Storage Account you want to use
+* Select Access Control (IAM)
+* Click 'Add Role Assignment' from the dropdown add button
+* Select 'Storage Blob Data Contributor' and click 'Next'
+* Click 'Select members'
+* Type 'OpenDataDSL' in the search box and select the application and click 'Select'
+* Click 'Review + assign' (twice)
 
 ### Configuring a subscription target
 The **name** of this target is ```BlobTarget```
 
 To configure the write blob action, you need to provide the following:
+* **storage**
+  > The url of the storage container
+* **adls**
+  > A boolean - true if this is an Azure Data Lake Storage GEN 2 container
 * **container**
   > The name of the container in the configured Azure Storage Account
 * **path**
@@ -58,7 +53,7 @@ To add a blob target to an existing subscription:
 * Find the subscription you want to add the target to.
 * Click the + button next to targets
 * Select BlobTarget
-* Fill out the container and path fields appropriately
+* Fill out the storage, adls, container and path fields appropriately
 * Click the save button
 
 
@@ -68,7 +63,7 @@ To add a blob target to an existing subscription:
 ```js
 // Adding a blob target to an existing subscription
 sub = ${subscription:"MySubscription"}
-sub.addBlobTarget("mycontainer", "files/test")
+sub.addBlobTarget("https://odslonline.dfs.core.windows.net", true, "mycontainer", "files/test")
 save sub
 ```
 
@@ -83,6 +78,8 @@ Authorization: Bearer {{token}}
     "name": "MySubscription",
     "targets":[{
       "name": "BlobTarget",
+      "storage": "https://odslonline.dfs.core.windows.net",
+      "adls": true,
       "container": "mycontainer",
       "path": "files/test"
     }]

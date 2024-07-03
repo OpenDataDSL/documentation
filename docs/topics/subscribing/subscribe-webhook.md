@@ -1,10 +1,10 @@
 ---
-slug: /topics/subscribe/script
-title: Target - Script
-description: A subscription target to run an ODSL script
+slug: /topics/subscribe/webhook
+title: Target - Webhook
+description: A subscription target to POST data to a webhook
 tags:
 - subscription
-- script
+- webhook
 - target
 - topics
 ---
@@ -14,15 +14,15 @@ import TabItem from '@theme/TabItem';
 
 ## Configuration
 
-The **name** of this target is ```ScriptTarget```
+The **name** of this target is ```WebhookTarget```
 
-To configure the script run action, you need to provide the following:
-* **script**
-  > The name of the ODSL script to run
+To configure the webhook, you need to provide the following:
+* **url**
+  > The URL of the webhook to post the data to
 
-### Adding a script target
+### Adding a webhook target
 
-To add a script target to an existing subscription:
+To add a webhook target to an existing subscription:
 
 <Tabs groupId="tool">
 <TabItem value="portal" label="Web Portal" default>
@@ -30,8 +30,8 @@ To add a script target to an existing subscription:
 * Select **Subscriptions**
 * Find the subscription you want to add the target to.
 * Click the + button next to targets
-* Select ScriptTarget
-* Fill out the script field appropriately
+* Select WebhookTarget
+* Fill out the url field appropriately
 * Click the save button
 
 
@@ -39,9 +39,9 @@ To add a script target to an existing subscription:
 <TabItem value="odsl" label="OpenDataDSL">
 
 ```js
-// Adding a script run target to an existing subscription
+// Adding a webhook run target to an existing subscription
 sub = ${subscription:"MySubscription"}
-sub.addScriptTarget("myscript")
+sub.addWebhookTarget("https://webhook.opendatadsl.com/data")
 save sub
 ```
 
@@ -55,8 +55,8 @@ Authorization: Bearer {{token}}
 {
     "name": "MySubscription",
     "targets":[{
-      "name": "ScriptTarget",
-      "script": "myscript"
+      "name": "WebhookTarget",
+      "url": "https://webhook.opendatadsl.com/data"
     }]
 }
 ```

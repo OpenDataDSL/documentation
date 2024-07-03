@@ -56,7 +56,7 @@ Authorization: Bearer {{token}}
     "name": "MySubscription",
     "targets":[{
       "name": "CurveTarget",
-      "process": "mycurve"
+      "curve": "mycurve"
     }]
 }
 ```

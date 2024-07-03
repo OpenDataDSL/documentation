@@ -144,6 +144,37 @@ Example:
 sub.addPublishTarget("TENANT")
 ```
 
+#### BlobTarget
+This target publishes the updated data to a blob in an Azure Blob Container.
+The additional properties required are:
+* storage - The URL of the storage container
+* adls - A boolean indicating that this is Azure Data Lake Storage Gen 2
+* container - The name of the container
+* path - An optional path within the container
+
+Example:
+```js
+// Add a blob target
+sub.addBlobTarget("https://odslonline.dfs.core.windows.net", true, "odsl", "csv_files/test")
+```
+
+:::info
+You will need to assign the role 'Storage Blob Data Contributor' to the OpenDataDSL application in your Azure Portal 
+See [here for instructions](/docs/topics/subscribe/blob#adding-an-access-role)
+:::
+
+#### WebhookTarget
+This target makes a HTTP POST to a specified URL with the updated data.
+The additional properties required are:
+* url - The webhook URL to post the data to
+
+Example:
+```js
+// Add a blob target
+sub.addWebhookTarget("https://webhook.opendatadsl.com/data")
+```
+
+
 ### Subscription
 This is the main configuration part of the subscription, the properties of this are:
 * name - The name of the subscription
