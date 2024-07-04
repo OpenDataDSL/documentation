@@ -13,9 +13,11 @@ tags:
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-## Configuration
+The Azure Blob target is used to write data to:
+* Azure Blob Storage
+* Azure Data Lake Storage Gen2
 
-### Azure Storage Configuration
+## Azure Storage Configuration
 In order for our application to create and update blobs in your Azure storage container, you need to add a role assignment to the OpenDataDSL application.
 
 ### Adding an access role
@@ -28,8 +30,9 @@ To give access, perform the following:
 * Click 'Select members'
 * Type 'OpenDataDSL' in the search box and select the application and click 'Select'
 * Click 'Review + assign' (twice)
+* You can optionally add a condition to the role to limit the container or path that the application has access to
 
-### Configuring a subscription target
+## Configuring a subscription target
 The **name** of this target is ```BlobTarget```
 
 To configure the write blob action, you need to provide the following:
@@ -42,7 +45,7 @@ To configure the write blob action, you need to provide the following:
 * **path**
   > The optional path to place the blob into
 
-### Adding a blob target
+## Examples
 
 To add a blob target to an existing subscription:
 
