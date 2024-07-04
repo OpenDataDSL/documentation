@@ -15,6 +15,7 @@ We can add some context about an observation by adding some status information. 
 *   Quality    
 *   Source    
 *   Reliability
+*   Processed
     
 
 ### Quality Status
@@ -26,6 +27,7 @@ The states of the quality status are:
 *   Unchecked (default)  
 *   Valid
 *   Failed
+*   NIC - not in calendar
     
 
 ### Source Status
@@ -40,6 +42,7 @@ The states of the source status are:
 *   Filled
 *   Converted
 *   Calculated
+*   Substituted
     
 
 ### Reliability Status
@@ -53,6 +56,21 @@ The states of the reliability status are:
 *   Observed
 *   Unobserved
     
+
+### Processed Status
+
+The processed status is used to determine various stages of evolution of a data point, these are custom and can be used as you like.
+
+The states of the process status are:
+
+*   Unprocessed (default)
+*   Stage1
+*   Stage2
+*   Waiting
+*   Failed
+*   Built
+*   Complete
+
 
 ## Examples
 
