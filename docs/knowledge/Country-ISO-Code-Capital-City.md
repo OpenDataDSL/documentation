@@ -1,5 +1,6 @@
 ---
 slug: /kb/country
+description: A list of 2 and 3 digit country ISO codes
 tags:
   - country
 ---

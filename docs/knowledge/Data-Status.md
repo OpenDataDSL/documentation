@@ -1,5 +1,6 @@
 ---
 slug: /kb/status
+description: Details on data status values
 tags:
   - status
 ---

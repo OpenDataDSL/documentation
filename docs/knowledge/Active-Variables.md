@@ -1,5 +1,6 @@
 ---
 slug: /kb/av
+description: Information about active variables
 tags:
   - av
 ---

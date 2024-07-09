@@ -1,5 +1,6 @@
 ---
 slug: /kb/missing
+description: Information about how to handle missing values in data
 tags:
   - missing
 ---

@@ -1,5 +1,6 @@
 ---
 slug: /kb/usa
+description: Information on U.S.A. states
 tags:
   - usa
 ---

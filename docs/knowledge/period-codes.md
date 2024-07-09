@@ -1,6 +1,7 @@
 ---
 slug: /kb/pc
 title: Period Codes
+description: Futures period codes used in OpenDataDSL
 tags:
   - period
 ---

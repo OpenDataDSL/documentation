@@ -1,5 +1,6 @@
 ---
 slug: /kb/precision
+description: Details on how to use data precision
 tags:
   - precision
   - rounding

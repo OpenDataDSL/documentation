@@ -1,5 +1,6 @@
 ---
 slug: /kb/naming
+description: Naming conventions used within OpenDataDSL
 tags:
   - naming
 ---

@@ -1,5 +1,6 @@
 ---
 slug: /kb/cron
+description: CRON expression specification
 tags:
   - cron
 ---
