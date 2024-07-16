@@ -10,6 +10,7 @@ import Asin from './all/asin.md';
 import Atan from './all/atan.md';
 import Atan2 from './all/atan2.md';
 import Cbrt from './all/cbrt.md';
+import Combine from './all/combine.md';
 import Cos from './all/cos.md';
 import Cosh from './all/cosh.md';
 import Exp from './all/exp.md';
@@ -24,7 +25,10 @@ import Tan from './all/tan.md';
 import Tanh from './all/tanh.md';
 import ToDegrees from './all/toDegrees.md';
 import ToRadians from './all/toRadians.md';
+import AsDays from './all/asDays.md';
+import AsHours from './all/asHours.md';
 import AsMonths from './all/asMonths.md';
+import AsStrips from './all/asStrips.md';
 import BootstrapCurve from './all/bootstrapCurve.md';
 import ExtendCurve from './all/extendCurve.md';
 import ForwardFillCurve from './all/forwardFillCurve.md';
@@ -41,8 +45,17 @@ Functions that work with forward curves
 ## asin
 <Asin  />
 
+## asDays
+<AsDays  />
+
+## asHours
+<AsHours  />
+
 ## asMonths
 <AsMonths  />
+
+## asStrips
+<AsStrips  />
 
 ## atan
 <Atan  />
@@ -55,6 +68,9 @@ Functions that work with forward curves
 
 ## cbrt
 <Cbrt  />
+
+## combine
+<Combine  />
 
 ## cos
 <Cos  />
