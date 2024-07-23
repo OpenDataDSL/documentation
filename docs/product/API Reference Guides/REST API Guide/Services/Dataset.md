@@ -218,9 +218,7 @@ Here are the properties of a Dataset Delivery configuration
   "_id": "BSP.EL_DA.SI:2024-07-18",
   "complete": true,
   "dsid": "BSP.EL_DA.SI",
-  "initialised": {
-    "$date": "2024-07-18T00:00:40.580Z"
-  },
+  "initialised": "2024-07-18T00:00:40.580Z",
   "ondate": "2024-07-18",
   "score": 1,
   "scoreinfo": "Late Data: > 4h",
@@ -247,9 +245,7 @@ Here are the properties of a Dataset Delivery configuration
         "-19:31 EU2": "loaded"
       }
     ],
-    "late_delta": {
-      "$numberLong": "88260"
-    },
+    "late_delta": 88260,
     "loaded": "-19:31 EU2"
   },
   "actual": {
@@ -259,9 +255,7 @@ Here are the properties of a Dataset Delivery configuration
   "deliveries": {
     "ee5d9f41-b32e-465a-9c78-80fbe775f4ac": {
       "id": "ee5d9f41-b32e-465a-9c78-80fbe775f4ac",
-      "timestamp": {
-        "$date": "2024-07-19T17:31:05.803Z"
-      },
+      "timestamp": "2024-07-19T17:31:05.803Z",
       "reason": "smartLoader(BSP.EL_DA/BSP_EL_DA_DATA/2024-07-19,2024-07-19T17:30:30Z)",
       "origin": "BSP_EL_DA_DATA",
       "tenors": {
@@ -274,12 +268,7 @@ Here are the properties of a Dataset Delivery configuration
     "*": 24,
     "Intraday": 24
   },
-  "loadedTimeUTC": {
-    "$numberLong": "1721410265807"
-  },
-  "timestamp": {
-    "$date": "2024-07-19T17:31:05.807Z"
-  }
+  "timestamp": "2024-07-19T17:31:05.807Z"
 }
 ```
 
