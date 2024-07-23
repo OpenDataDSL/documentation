@@ -168,7 +168,7 @@ Here are the properties of a Dataset Delivery configuration
 |_type|Always 'DatasetDelivery'|String|
 |dsid|The dataset id|String|
 |ondate|The date for the data being delivered|String|
-|completeness|An integer defining how complete this feed is 0=not complete, 1=complete|Integer|
+|complete|A boolean indicating if this dataset is complete|Boolean|
 |initialised|A datetime when this delivery was initialised|Datetime|
 |score|An integer defining the score for this delivery - 4=No issues, 3=Late<1h, 2=Late<4h, 1=Late>4h, 0=Holiday|Integer|
 |scoreinfo|Text to add context to the score value|String|
@@ -210,6 +210,78 @@ Here are the properties of a Dataset Delivery configuration
 |timestamp|The datetime for the quality checks|Datetime|
 |log|Log messages produced from the checks|List(String)|
 |{check name}|Object containing output from the quality check function|Object|
+
+#### Example Dataset Delivery
+
+```json
+{
+  "_id": "BSP.EL_DA.SI:2024-07-18",
+  "complete": true,
+  "dsid": "BSP.EL_DA.SI",
+  "initialised": {
+    "$date": "2024-07-18T00:00:40.580Z"
+  },
+  "ondate": "2024-07-18",
+  "score": 1,
+  "scoreinfo": "Late Data: > 4h",
+  "status": "loaded",
+  "statusinfo": "Loaded data matches expected",
+  "timeline": [
+    "2024-07-18T00:00:40.580263Z[UTC] info DS_PUBLIC_INIT status changed to waiting",
+    "2024-07-19T00:10:32.981082Z[UTC] warn DS_PUBLIC_LATE status changed to late",
+    "2024-07-19T00:10:32.981146Z[UTC] info DS_PUBLIC_LATE statusinfo changed to 1 days late",
+    "2024-07-19T17:31:05.803141Z[UTC] info BSP_EL_DA_DATA Got delivery ee5d9f41-b32e-465a-9c78-80fbe775f4ac with 24 tenors",
+    "2024-07-19T17:31:05.807096Z[UTC] info BSP_EL_DA_DATA Delivery ee5d9f41-b32e-465a-9c78-80fbe775f4ac had 24 new tenors",
+    "2024-07-19T17:31:05.807251Z[UTC] info BSP_EL_DA_DATA status changed to loaded",
+    "2024-07-19T17:31:05.865858Z[UTC] info BSP_EL_DA_DATA statusinfo changed to Loaded data matches expected"
+  ],
+  "timings": {
+    "expected": "19:30 EU2",
+    "late": "21:00 EU2",
+    "timezone": "Europe/Ljubljana",
+    "actual": [
+      {
+        "00:10 UTC": "late"
+      },
+      {
+        "-19:31 EU2": "loaded"
+      }
+    ],
+    "late_delta": {
+      "$numberLong": "88260"
+    },
+    "loaded": "-19:31 EU2"
+  },
+  "actual": {
+    "*": 24,
+    "Intraday": 24
+  },
+  "deliveries": {
+    "ee5d9f41-b32e-465a-9c78-80fbe775f4ac": {
+      "id": "ee5d9f41-b32e-465a-9c78-80fbe775f4ac",
+      "timestamp": {
+        "$date": "2024-07-19T17:31:05.803Z"
+      },
+      "reason": "smartLoader(BSP.EL_DA/BSP_EL_DA_DATA/2024-07-19,2024-07-19T17:30:30Z)",
+      "origin": "BSP_EL_DA_DATA",
+      "tenors": {
+        "*": 24,
+        "Intraday": 24
+      }
+    }
+  },
+  "expected": {
+    "*": 24,
+    "Intraday": 24
+  },
+  "loadedTimeUTC": {
+    "$numberLong": "1721410265807"
+  },
+  "timestamp": {
+    "$date": "2024-07-19T17:31:05.807Z"
+  }
+}
+```
 
 ## Functions
 
