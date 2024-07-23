@@ -127,6 +127,37 @@ Here are the properties of a Dataset Feed configuration
 }
 ```
 
+#### Smart feed configuration
+If this dataset feed is being loaded using the Smart Feed, the following additional configuration information can be added:
+
+|**Name**|**Description**|**Type**|
+|-|-|-|
+|smartFeed|A boolean indicating to load this dataset feed using the smart loader|Boolean|
+|loaders|An array of loader configurations|Object|
+
+##### Loader configuration
+
+|**Name**|**Description**|**Type**|
+|-|-|-|
+|type|The type of loader - standard, auto or manual|String|
+|id|The name of the loader, has to be unique within this feed|String|
+|process|The name of the process to run|String|
+|calendar|The days this loader should be run|String|
+|start|The start time for the loader to fire|String|
+
+##### Example loader configuration
+
+```json
+{
+  "calendar": "DAILY",
+  "process": "BSP_EL_DA_DATA",
+  "start": "19:30 EU2",
+  "type": "standard",
+  "id": "standard"
+}
+```
+
+
 ### Dataset Delivery configuration
 
 Here are the properties of a Dataset Delivery configuration
