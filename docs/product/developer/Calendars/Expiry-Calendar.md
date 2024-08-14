@@ -50,8 +50,23 @@ go back 1 day using calendar
 The syntax for an absolute movement is as follows:
 
 ```js
-("then") "go to the" ("beginning"|"end"|date suffix) "of the" ("previous"|"current"|"next")? TIME
+("then") "go to the" ("beginning"|"end"|number suffix|lastday|"penultimate") "of the" ("previous"|"current"|"next")? TIME
 ```
+
+#### lastday rule
+
+```js
+last ([Mm]'onday'|[Tt]'uesday'|[Ww]'ednesday'|[Tt]'hursday'|[Ff]'riday'|[Ss]'aturday'|[Ss]'unday'|trading day)
+```
+
+:::note
+'trading day' can only be used for delivery rules, e.g.
+
+```
+delivery starts on last trading day of the current month then go forward 2 days then align forwards
+```
+
+:::
 
 An example instruction to go to the end of the previous month:
 
@@ -197,7 +212,7 @@ e.g.
 You can override the logic for calculating the start and end of delivery for specific period codes using the delivery rule syntax:
 
 ```js
-delivery (starts|ends) (on)? (at)? (the)? moveperiod (align)? (for periodcode)? (timelimit)?;
+delivery (starts|ends) (on)? (at)? (the)? moveperiod (move|align)* (for periodcode)? (timelimit)?;
 
 moveperiod: ("beginning"|"end"|date suffix) "of the" ("previous"|"current"|"next")? TIME
 ```
@@ -207,9 +222,13 @@ An example for ICE Low Sulphur Gasoil Futures where the start of delivery is alw
 delivery starts on the 16th of the current month
 ```
 
+Delivery rules use the delivery calendar if provided, otherwise they use the trading calendar.
+
 ## Creating an expiry calendar
 
-To create an expiry calendar and add your specific expiry rules to it, use the ExpiryCalendar function with a [daily](/docs/odsl/calendar/daily), [business](/docs/odsl/calendar/business) or [holiday](/docs/odsl/calendar/holiday) calendar as a parameter.
+To create an expiry calendar and add your specific expiry rules to it, use the ExpiryCalendar function with a [daily](/docs/odsl/calendar/daily), [business](/docs/odsl/calendar/business) or [holiday](/docs/odsl/calendar/holiday) calendar as the trading calendar.
+
+The trading calendar is used to calculate the expiry and delivery dates for any period code.
 
 ```js
 eombus = ExpiryCalendar(BusinessCalendar())
@@ -217,6 +236,13 @@ eombus.addRule("go to the end of the previous month then align")
 ```
 
 The example above creates an expiry calendar using a business calendar where the expiries for all period codes is the last business day of the month prior to delivery.
+
+You can also specify a separate delivery calendar which will be used to calculate the delivery start and end dates.
+
+```js
+eombus = ExpiryCalendar(BusinessCalendar(), "#HENG")
+```
+
 
 ## Saving and re-using your calendar
 

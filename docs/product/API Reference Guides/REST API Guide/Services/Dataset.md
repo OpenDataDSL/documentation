@@ -144,6 +144,14 @@ If this dataset feed is being loaded using the Smart Feed, the following additio
 |process|The name of the process to run|String|
 |calendar|The days this loader should be run|String|
 |start|The start time for the loader to fire|String|
+|retryStrategy|Only applicable to standard loaders and configures how the loader handles retries|Object|
+
+###### Retry strategies
+
+|**Name**|**Description**|**Type**|
+|-|-|-|
+|strategy|The type - linear, random, eager or lazy|String|
+|retryMinutes|The number of minutes to wait for linear and a hint to the others|Integer|
 
 ##### Example loader configuration
 
@@ -153,7 +161,11 @@ If this dataset feed is being loaded using the Smart Feed, the following additio
   "process": "BSP_EL_DA_DATA",
   "start": "19:30 EU2",
   "type": "standard",
-  "id": "standard"
+  "id": "standard",
+  "retryStrategy": {
+    "strategy": "linear",
+    "retryMinutes": 10
+  }
 }
 ```
 
