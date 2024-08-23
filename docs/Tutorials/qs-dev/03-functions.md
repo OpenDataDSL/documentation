@@ -51,7 +51,7 @@ print remove(s1, " ")
 print startsWith(s1, "M")
 // >> true
 ```
-<InDepth href="/docs/odsl/function/string" />
+<InDepth href="/docs/odsl/function/strings" />
 
 ### Date functions
 Date functions help you utilise dates.
@@ -138,7 +138,7 @@ print reg.predict(Date("2020-11-06"))
 #### Full list of functions
 Follow the link below for documentation on the full list of functions:
 
-<MoreInfo href="/docs/odsl/function/functions" />
+<MoreInfo href="/docs/product/developer/odsl/Functions/all/" />
 
 ## Custom Functions
 You can create your own user defined functions and use them in your code, you can also create a library of functions in a script and import that script into other scripts to use those functions.
