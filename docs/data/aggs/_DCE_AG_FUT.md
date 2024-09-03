@@ -1,6 +1,6 @@
 ### Schedule
 
-The end of day updates are processed at 17:30 BST/GMT on DCE business days.
+The end of day updates are processed at 17:30 GMT on DCE business days.
 
 ### Sample File
 

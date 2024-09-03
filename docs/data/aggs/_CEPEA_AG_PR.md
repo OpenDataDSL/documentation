@@ -1,6 +1,6 @@
 ### Schedule
 
-The file is processed at around 21:00 BST/GMT on Brazil business days.
+The file is processed at around 21:00 GMT on Brazil business days.
 
 ### Sample File
 

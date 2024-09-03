@@ -4,7 +4,7 @@ Actual aggregated Net generation output (MW) per market time unit and per produc
 
 ### Schedule
 
-The vendor update file is collected and processed at 23:45 hours UTC on daily basis.
+The vendor update file is collected and processed at 23:45 hours GMT on daily basis.
 
 ### Type
 

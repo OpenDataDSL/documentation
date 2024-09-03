@@ -1,6 +1,6 @@
 ### Schedule
 
-Weekly update file is processed around 19:00 BST/GMT every Wednesday.
+Weekly update file is processed around 19:00 GMT every Wednesday.
 
 ### Sample File
 

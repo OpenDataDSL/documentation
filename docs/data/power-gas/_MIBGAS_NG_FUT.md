@@ -1,6 +1,6 @@
 ### Schedule
 
-End of day file is processed at around 23:00UTC a on business days.
+End of day file is processed at around 23:00 GMT a on business days.
 
 ### Sample File
 

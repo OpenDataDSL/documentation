@@ -1,5 +1,5 @@
 ### Schedule
-The DME OQD updates should be available between 23:00 BST/GMT, Monday to Friday DME business days
+The DME OQD updates should be available between 23:00 GMT, Monday to Friday DME business days
 
 ### Sample File
 

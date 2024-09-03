@@ -1,6 +1,6 @@
 ### Schedule
 
-The schedule for collecting the power generation update is 23:00 GMT everyday.
+The schedule for collecting the power generation update is 23:00 gmt everyday.
 
 ### Sample File
 

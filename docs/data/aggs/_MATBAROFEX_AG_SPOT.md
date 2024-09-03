@@ -1,6 +1,6 @@
 ### Schedule
 
-The schedule for collecting the files is between 22:00 and 23:00 BST/GMT on Argentina business days.
+The schedule for collecting the files is between 22:00 and 23:00 GMT on Argentina business days.
 
 ### Sample File
 

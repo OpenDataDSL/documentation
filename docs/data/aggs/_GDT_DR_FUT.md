@@ -1,6 +1,6 @@
 ### Schedule
 
-File is processed at 12:30 BST/GMT on every first and third Tuesdays of month.
+File is processed at 12:30 GMT on every first and third Tuesdays of month.
 
 ### Sample File
 
