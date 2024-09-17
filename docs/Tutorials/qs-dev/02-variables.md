@@ -86,7 +86,7 @@ Outputs:
 <InDepth href="/docs/odsl/variable/date" />
 
 #### Duration
-A duration variable represents an amount of time, e.g. 2 days or 15 seconds
+A duration variable represents an amount of time, e.g. 2 days or 15 seconds in the [ISO 8601 duration format](/docs/kb/duration)
 
 Example use of durations:
 ```js

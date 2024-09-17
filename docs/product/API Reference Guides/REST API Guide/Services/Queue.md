@@ -37,8 +37,8 @@ The queue configuration contains the following information:
 |-|-|-|
 |queue|Unique id for the queue|String|
 |description|A description of the process configuration|String|
-|retention|A duration string specifying the amount of time to retain messages on the queue, defaults to P14D|String|
-|timeout|A duration string specifying the amount of time a receiving client has to process a message before it is made available to other clients, defaults to PT1M|String|
+|retention|A duration string in [ISO 8601 duration format](/docs/kb/duration) specifying the amount of time to retain messages on the queue, defaults to P14D|String|
+|timeout|A duration string in [ISO 8601 duration format](/docs/kb/duration) specifying the amount of time a receiving client has to process a message before it is made available to other clients, defaults to PT1M|String|
 
 ## Examples
 

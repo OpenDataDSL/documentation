@@ -43,7 +43,7 @@ A scalar is a single value of either string, boolean (true/false) or numeric
 A date variable is a representation of a Date or a Date and Time in the UTC timezone
 
 ### [Duration](Duration)
-A duration variable represents a period of time such as 3 days or 4 and a half minutes
+A duration variable represents a period of time such as 3 days or 4 and a half minutes in [ISO 8601 duration format](/docs/kb/duration)
 
 ### [Object](Object)
 An object is a very versatile variable type that allows you to add any other variables to it including Object variable types. This creates a dynamic JSON type structure

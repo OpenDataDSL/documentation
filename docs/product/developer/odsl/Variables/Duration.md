@@ -7,7 +7,7 @@ tags:
 Duration
 ========================
 
-A duration variable represents a period of time such as 3 days or 4 and a half minutes
+A duration variable represents a period of time such as 3 days or 4 and a half minutes in [ISO 8601 duration format](/docs/kb/duration)
 
 ## Construction
 
