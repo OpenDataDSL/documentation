@@ -85,4 +85,8 @@ When a new tenant is onboarded, the following policies are automatically created
 Before removing or changing this policy, ensure you add a policy to allow someone in your tenant to manage policies
 :::
 
-For full details on policies and how to manage them, see [Policies in ODSL](/docs/odsl/variable/policy)
+## More Information on Policies
+
+* [Policies in ODSL](/docs/odsl/variable/policy)
+* [General information about security policies](/docs/odsl/topics/policies)
+
