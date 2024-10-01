@@ -6,7 +6,52 @@ sidebar_position: 10
 Release Notes
 =============
 
-## Latest Release - Jun24
+## Latest Release - Sep24
+
+#### Dataset Monitoring
+The Dataset Monitoring GUI MVP allows users to inspect dataset loading and quality checks.
+
+#### Add range support for curveseries
+Added support for using a date range with a curveseries.
+
+## Aug24
+
+#### Attachment filename
+Added support for configuring attachment file name for the subscription email target.
+
+#### Optional curve inputs
+Added support for optional curve inputs.
+
+#### Ignore precision setting
+Added new syntax to ignore precision and use all available decimals.
+
+```set precision ignore``` 
+
+#### Support for last trading day in delivery rules
+Added support for using the last trading day (expiry) in the delivery rules.
+
+#### Generate relative property
+Added support for dynamically generating relative tenors on the fly. 
+This allows run to store absolute events and dynamically generate relatives for curves based on the curve expiry calendar.
+
+#### Process execution termination
+Added support for terminating running process executions
+
+## Jul24
+
+#### Process history flag
+Added support for running history loaders which do not trigger subscriptions
+
+#### Process rescheduling
+Added support for re-scheduling failed processes
+
+#### Smart loaders
+Added support for creating loaders that use dataset information intelligently to run processes to load data
+
+#### Add support for date rules in queue subject
+Support is added to enable adding custom date rules in the subject of a message to a subscription queue target
+
+## Jun24
 
 #### Build a curve for a range of dates
 You can now build a curve for a range of dates
