@@ -38,7 +38,7 @@ module.exports = {
     },
     algolia: {
       apiKey: 'a8b0e275e6e4c02b53e5dffadd88e2c7',
-      indexName: 'website',
+      indexName: 'dev_website',
 
       // Optional: see doc section below
       contextualSearch: false,

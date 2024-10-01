@@ -27,3 +27,5 @@ yarn-error.log*
 config.json
 .idea/
 *.lock
+odsl-search/target/
+*.iml
