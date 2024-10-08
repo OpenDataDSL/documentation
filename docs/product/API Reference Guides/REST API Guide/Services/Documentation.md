@@ -59,6 +59,34 @@ The documentation entity contains the following information:
 The documentation service uniquely allows you to use either the _id (ObjectId) fields to retrieve documentation or the scope[:entity]
 :::
 
+### Adding documentation to a Master Data Record
+
+:::note
+To automatically add documentation to an existing Master Data Record:
+
+* Set the name to be what you want the tab to be called
+* Set the scope to "object"
+* Set the entity to the id of the object
+
+:::
+
+The following example will add a Docs tab to a Master Data Record with the _id AAA
+
+**NOTE: the AAA object must already exist.**
+
+```
+POST https://api.opendatadsl.com/api/documentation
+Authorization: Bearer {{token}}
+
+{
+  "_type": "VarDocumentation",
+  "name": "Docs",
+  "scope": "object",
+  "entity": "AAA",
+  "content":"## Test\n### CME Data"
+}
+```
+
 ### Getting documentation using scope
 
 ```
