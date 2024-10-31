@@ -2,7 +2,16 @@ Used to set a session option
 
 #### Syntax
 ```js
-set (precision INT|rounding ROUNDING_METHOD|missing (ignore|number)?|crs (earth|planar))
+set (precision INT|
+    rounding ROUNDING_METHOD|
+    missing (ignore|number)?|
+    crs (earth|planar)|
+    observed (default|beginning|end|averaged|summed|high|low|delta)|
+    distribution (none|constant|linear|cubic)|
+    autoscale (on|off)|
+    credentials for source as user password|
+    auto_follow_references (true|false)
+    )
 ```
 #### Description
 
@@ -12,6 +21,9 @@ The set command is used to set an option within the current script session. The 
 *   rounding method    
 *   missing value treatment    
 *   coordinate reference system
+*   timeseries scaling methods
+*   credentials for interacting with external systems
+*   options for following referenced data
     
 
 ##### Setting decimal precision
@@ -51,3 +63,48 @@ You can set the CRS to either:
 
 This affects the way [geospatial data](/docs/odsl/dm/geospatial) is handled
 
+##### Timeseries scaling methods
+
+There are 3 set commands which allow you to define how timeseries are scaled:
+
+* autoscale on|off 
+> By default, all timeseries are autoscaled once they reach a certain threshold in terms of number of observations.
+> You can turn this off using the following command:
+
+```js
+set autoscale off
+```
+
+* observed (default|beginning|end|averaged|summed|high|low|delta)
+> This defines how numbers are aggregated when a timeseries is scaled from high frequency e.g. hourly to a lower frequency e.g. daily
+
+* distribution (none|constant|linear|cubic)
+> This defines how numbers are distributed when a timeseries is scaled from low frequency e.g. daily to a higher frequency e.g. hourly
+ 
+##### Credentials
+
+If you need to define personal credentials to an external system that the OpenDataDSL platform interacts with you use the set credentials command.
+This securely stores the credentials in an Azure Vault and only uses them when needed to interact with the external system.
+
+##### Automatically follow references
+
+This command enables or disables automatically retrieving the underlying data from a referenced entity.
+
+For example, if we take the master data record ```#ABN_FX.EURAED```, it has a SPOT reference to the SPOT timeseries data.
+In the following example (the default), the information output is the actual timeseries data.
+
+```js
+set auto_follow_references true
+
+o = ${object:"#ABN_FX.EURAED"}
+print o.SPOT
+```
+
+In this example, the information output is the information about the reference link
+
+```js
+set auto_follow_references false
+
+o = ${object:"#ABN_FX.EURAED"}
+print o.SPOT
+```
