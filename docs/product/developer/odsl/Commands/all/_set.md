@@ -75,12 +75,18 @@ There are 3 set commands which allow you to define how timeseries are scaled:
 set autoscale off
 ```
 
+See [this page](/docs/odsl/calendar/scaling#auto-scaling) for more information on autoscaling.
+
 * observed (default|beginning|end|averaged|summed|high|low|delta)
 > This defines how numbers are aggregated when a timeseries is scaled from high frequency e.g. hourly to a lower frequency e.g. daily
+> 
+> See [this page](/docs/odsl/calendar/scaling#observed-setting) for more information on the observed setting.
 
 * distribution (none|constant|linear|cubic)
 > This defines how numbers are distributed when a timeseries is scaled from low frequency e.g. daily to a higher frequency e.g. hourly
- 
+> 
+> See [this page](/docs/odsl/calendar/scaling#distribution) for more information on the distribution setting.
+
 ##### Credentials
 
 If you need to define personal credentials to an external system that the OpenDataDSL platform interacts with you use the set credentials command.

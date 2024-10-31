@@ -137,3 +137,29 @@ cts = scale(mts, DailyCalendar(), "beginning", "cubic")
 print cts.values
 ```
 
+## Auto-scaling
+By default, when the number of observations requested for a timeseries exceed a threshold, the timeseries is autoscaled according to the default observed setting on the timeseries.
+
+The autoscaling thresholds depend on where the request comes from as shown in the table below:
+
+|Request Source|Observation Threshold|
+|-|-|
+|REST API and sdk's|25,000|
+|Excel Add-in|25,000|
+|ODSL in VS Code|25,000|
+|Web Portal|5,000|
+|Mobile Application|5,000|
+
+### Detection
+To determine if a timeseries has been autoscaled, there is a ```scaling``` property on the timeseries, if this is anything but the value ```0``` then it has been autoscaled.
+
+### Overriding
+In order to tell the server not to autoscale a timeseries, you need to:
+
+|Request Source|Overriding|
+|-|-|
+|REST API|Add query parameter ```_scaling=0```|
+|Excel Add-in|Uncheck the option for autoscale|
+|ODSL in VS Code|Use the command ```set autoscale off``` or add the option ```_scaling=0``` to your data request|
+|Web Portal|Check the scaling box and move the slider to the left|
+
