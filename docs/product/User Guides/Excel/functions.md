@@ -183,3 +183,32 @@ Options can be any of the following:
 ```
 =ODSL.SERIESRANGE("t-10d","t-1d","sortOrder=descending;timezone=Europe/Berlin")
 ```
+
+## ODSL.CURVESERIESRANGE
+Represents a curveseries range
+
+### Parameters
+#### ondate
+The curve date for the curve series
+
+#### start
+The start date or rule of the range of timeseries data to return, e.g. "01-11-2022"
+
+#### end
+The end date or rule of the range of timeseries data to return, e.g. "30-11-2022"
+
+#### options
+This is a key=value pair list of options separated by semi-colons(;).
+
+Options can be any of the following:
+
+|option|description|example|
+|-|-|-|
+|timezone|The timezone you want the data represented in|timezone=Australia/Perth|
+|sortOrder|The sort order of the indexes|sortOrder=descending|
+
+### Example
+
+```
+=ODSL.CURVESERIESRANGE("2024-10-28",t-10d","t-1d","sortOrder=descending;timezone=Europe/Berlin")
+```

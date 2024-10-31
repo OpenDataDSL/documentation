@@ -130,7 +130,9 @@ print reg.totalSumSquares
 print reg.XSumSquares
 
 // Predict the next value
-print reg.predict(Date("2020-11-06"))
+index = Date("2020-11-06")
+index = index.getMillis()
+print reg.predict(index)
 ```
 
 <InDepth href="/docs/odsl/function/statistics" />

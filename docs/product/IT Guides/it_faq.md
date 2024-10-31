@@ -2,7 +2,7 @@
 title: FAQ
 description: IT related frequently asked questions
 slug: /it/faq
-sidebar_position: 3
+sidebar_position: 10
 tags:
   - it
   - faq

@@ -68,6 +68,12 @@ Below is a graphic showing how proprietary data and components are used within t
 All the red shaded items are owned and only accessible to a single client.
 ![](/img/capability.png)
 
+
+## Integration Capabilities
+Below is a graphic showing some example integration capabilities.
+![](/img/integration.png)
+
+
 ## What can it do for me?
 
 
