@@ -6,7 +6,10 @@ sidebar_position: 10
 Release Notes
 =============
 
-## Latest Release - Sep24
+## Latest Release - Oct24
+
+
+## Sep24
 
 #### Dataset Monitoring
 The Dataset Monitoring GUI MVP allows users to inspect dataset loading and quality checks.
