@@ -1,11 +1,17 @@
 ---
 slug: /kb/status
-description: Details on data status values
+title: Status Values
+description: Statuses used throughout the platform
 tags:
   - status
 ---
-Data Statuses
-=============
+import PS from '/shared/process-status.md'
+
+## Process Execution Statuses
+
+<PS />
+
+## Data Statuses
 
 Data Status values allow us to add more information about an individual observation in a TimeSeries or Curve 
 

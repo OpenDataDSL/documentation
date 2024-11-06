@@ -8,6 +8,8 @@ tags:
   - process
   - execution
 ---
+import PS from '/shared/process-status.md'
+
 The resource for monitoring all your processes
 
 ## Process Execution REST API
@@ -42,11 +44,16 @@ The process execution log contains the following information:
 |start|The timestamp of when the process started|String(DateTime)|
 |end|The timestamp of when the process completed|String(DateTime)|
 |runAs|The user whose credentials the process was run as|String|
-|status|The process execution status: 'triggered' 'running' 'success' 'failed'|String|
+|status|The process execution status (see **Process status values**) |String|
 |message|The current information message|String|
 |phases|Information on the workflow phases of the execution|Phase Entity[]|
 |loaderMessage|If this was an ETL process, this is the status message of the loader portion of the process|String|
 |data|If this was an ETL process, this is the list of data items that were updated|Data Entity|
+
+#### Process status values
+
+
+<PS />
 
 ### Phase Entity
 

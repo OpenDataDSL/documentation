@@ -1,16 +1,16 @@
 ---
 sidebar_position: 10
-title: TimeSeries Scaling
+title: Timeseries Scaling
 description: In-depth information about how to rescale TimeSeries
 slug: /odsl/calendar/scaling
 tags:
   - calendar
   - scale
 ---
-This guide explains how to rescale TimeSeries to a different calendar.
+This guide explains how to rescale [timeseries](/docs/odsl/topics/timeseries) to a different calendar.
 
 ## Introduction
-Rescaling TimeSeries is the process of changing the changing the calendar of the TimeSeries and fitting the data using that new calendar.
+Rescaling timeseries is the process of changing the changing the calendar of the TimeSeries and fitting the data using that new calendar.
 
 Rescaling from a high frequency calendar to a low frequency calendar, e.g. Daily to Monthly is called `aggregation`
 
