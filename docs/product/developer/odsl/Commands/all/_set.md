@@ -10,7 +10,8 @@ set (precision INT|
     distribution (none|constant|linear|cubic)|
     autoscale (on|off)|
     credentials for source as user password|
-    auto_follow_references (true|false)
+    auto_follow_references (true|false)|
+    while_limit number
     )
 ```
 #### Description
@@ -24,6 +25,7 @@ The set command is used to set an option within the current script session. The 
 *   timeseries scaling methods
 *   credentials for interacting with external systems
 *   options for following referenced data
+*   while loop iteration limit
     
 
 ##### Setting decimal precision
@@ -113,4 +115,16 @@ set auto_follow_references false
 
 o = ${object:"#ABN_FX.EURAED"}
 print o.SPOT
+```
+
+#### While loop iteration limit
+
+While loops can iterate infinitely causing performance issues, so we have an artificial limit on while loops of ```1000``` iterations.
+
+If this limit is reached, a ```6036 While loop iteration``` exception is thrown.
+
+You can override the 1000 iterations limit using the set while_limit command, e.g.
+
+```js
+set while_limit 100
 ```
