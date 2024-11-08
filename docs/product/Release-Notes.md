@@ -7,7 +7,7 @@ Release Notes
 =============
 
 ## Latest Release Nov24
-This release contains server and Excel fixes and enhancements, final update planned for 09-11-2024.
+This release contains server and Excel fixes and enhancements
 
 ### Fixed Bugs
 * Loaders stuck at Initialising Process - add timeout handling to the LOADER
