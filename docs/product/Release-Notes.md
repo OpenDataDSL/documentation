@@ -7,7 +7,7 @@ Release Notes
 =============
 
 ## Latest Release Nov24
-This release contains server and Excel fixes and enhancements
+This release contains server and Excel fixes and enhancements.
 
 ### Fixed Bugs
 * Loaders stuck at Initialising Process - add timeout handling to the LOADER
@@ -27,7 +27,7 @@ This release contains server and Excel fixes and enhancements
 * End date in curve tenor time series
 
 
-### Enhancements (to)
+### Enhancements
 * Data Monitoring
 * Aggregated Curve Chart in web portal
 * Support Curve Series in Excel add-in
@@ -35,6 +35,8 @@ This release contains server and Excel fixes and enhancements
 * Curve ondates sorting in json
 * Expose azure metrics as time series
 * Support GET for multiple ids with expressions
+* Support running a report with date rules
+* Support progress status while loading data in Portal
 * Add Portal and Excel support for VarMetricTimeSeries
 * Performance improvements for large time series
 * Support merging history data profiles - using a SmartTimeSeries with a special function sequence([])
@@ -44,6 +46,7 @@ This release contains server and Excel fixes and enhancements
 * Support setting autoscale off|on
 * Support text based custom date formats in Excel add-in
 * Support usage of "-" in Excel sheet naming
+* Support currency and units conversion in Excel add-in
 
 
 
