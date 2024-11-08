@@ -6,7 +6,45 @@ sidebar_position: 10
 Release Notes
 =============
 
-## Latest Release - Oct24
+## Latest Release Nov24
+This release contains server and Excel fixes and enhancements, final update planned for 09-11-2024.
+
+### Fixed Bugs
+* Loaders stuck at Initialising Process - add timeout handling to the LOADER
+* Ensure numbers are not stored in scientific notation
+* JSON Service - losing null values from “stringSeriesValues“ list
+* Duplicated ondate after curve substitution
+* #ONDATE problem when running a report (retrieving values from older date)
+* Saving data aggregation type dropdown in Portal
+* Events not visible in Portal - prevent an empty array (or anything else) from removing a data reference
+* Updating a time series without a start date - add defensive code to prevent updating data VarReferences
+* Push log messages from the script in real-time so the Portal can display them
+* Fix disappearing log messages when a script fails
+* Handle scripts with no return value
+* Excel add-in (erase data from previous retrieval, timezone usage in range)
+* Support precision after autoscaling
+* Null pointer for conversions
+* End date in curve tenor time series
+
+
+### Enhancements (to)
+* Data Monitoring
+* Aggregated Curve Chart in web portal
+* Support Curve Series in Excel add-in
+* Documentation in Portal - render code blocks using css with language specific syntax highlighting
+* Curve ondates sorting in json
+* Expose azure metrics as time series
+* Support GET for multiple ids with expressions
+* Add Portal and Excel support for VarMetricTimeSeries
+* Performance improvements for large time series
+* Support merging history data profiles - using a SmartTimeSeries with a special function sequence([])
+* Add cron timezone to task information
+* Add defensive code for while loop usage - add limit for while loop (1000 iterations); allow user to overwrite the limit with set while_limit n 
+* Time is now included in the range for time series, curve series and events
+* Support setting autoscale off|on
+* Support text based custom date formats in Excel add-in
+* Support usage of "-" in Excel sheet naming
+
 
 
 ## Sep24
