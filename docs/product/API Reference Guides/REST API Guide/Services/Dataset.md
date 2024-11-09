@@ -187,12 +187,43 @@ Here are the properties of a Dataset Delivery configuration
 |status|The current status of the delivery|String|
 |statusinfo|Text to add context to the status|String|
 |expected|Expected tenors to be delivered, copied from the dataset configuration|Object|
+|expectedChecks|Information about the [quantitative checks](#dataset-delivery-expected-checks-object) performed for each delivery|Object|
 |actual|Actual tenors delivered, same format as expected|Object|
 |timings|An object with info about the [timings](#dataset-delivery-timings-object)|Object|
 |deliveries|Information about all the feed [deliveries](#dataset-delivery-deliveries-object) that were made|Object|
-|checks|Information about all the quality checks that were made|Object|
+|checks|Information about all the quality [checks](#dataset-delivery-expected-checks-object) that were made|Object|
 |timeline|A log of everything that has happened in connection with this delivery|Array(String)|
 |timestamp|The last time this delivery information was updated|Datetime|
+|issues|The current list of issues preventing this dataset from being complete|Array(String)|
+|loadedTimeUTC|The UTC timestamp that this dataset was loaded|DateTime| 
+
+#### Timeline messages
+
+Each timeline message consists of the following parts separated by spaces:
+
+* **Timestamp**
+> The UTC timestamp of the message
+* **Level**
+> The log level, can be one of:
+    * info - General information
+    * warning - A non-fatal event has occurred that you need to be aware of
+    * fatal - A fatal issue, usually missing data or failed quality check
+    * severe - A severe issue that means this data is unusable 
+* **Origin**
+> The origin of the input data that triggered this dataset event, can be a process name or a user email
+* **Phase**
+> The phase where this occurred, can be one of:
+    * initialise - Initialisation at the start of the day
+    * delivery - Details about a data lod/delivery event
+    * completeness - Completeness checks that verify that all data for this dataset has been loaded
+    * lateness - Lateness notifications
+    * quality - Qualitative check on the data content
+* **Message**
+> The rest of the timeline message is the message output from the process
+
+**Example Timeline Message:**
+
+"2024-11-08T17:22:06.029272Z[UTC] fatal ODSL_LOADER completeness Check: has tenor D00 has failed"
 
 #### Dataset delivery timings object
 
@@ -202,7 +233,6 @@ Here are the properties of a Dataset Delivery configuration
 |late|The time when this dataset is considered to be late in the format HH:mm [tz]|String|
 |loaded|The time the data was loaded completely in the format HH:mm [tz]|String|
 |late_delta|An integer indicating the number of minutes that this dataset is late|Integer|
-|actual|An array of objects with time and status used to show partial deliveries up to final full delivery|Array| 
 
 #### Dataset delivery deliveries object
 
@@ -213,6 +243,15 @@ Here are the properties of a Dataset Delivery configuration
 |reason|The reason string, usually crontab information|String|
 |origin|The origin of the delivery, usually the name of the process|String|
 |tenors|The actual tenors delivered in this delivery|Object|
+
+#### Dataset delivery expected checks object
+
+|**Name**|**Description**|**Type**|
+|-|-|-|
+|id|The transaction id - usually the same as the process execution id|String|
+|timestamp|The datetime for the quality checks|Datetime|
+|log|Log messages produced from the checks|List(String)|
+|{check name}|Object containing output from the quality check function|Object|
 
 #### Dataset delivery quality check object
 
@@ -227,60 +266,146 @@ Here are the properties of a Dataset Delivery configuration
 
 ```json
 {
-  "_id": "BSP.EL_DA.SI:2024-07-18",
+  "_id": "ODSL.DS.TEST:2024-11-04",
   "complete": true,
-  "dsid": "BSP.EL_DA.SI",
-  "initialised": "2024-07-18T00:00:40.580Z",
-  "ondate": "2024-07-18",
-  "score": 1,
-  "scoreinfo": "Late Data: > 4h",
+  "dsid": "ODSL.DS.TEST",
+  "initialised": {
+    "$date": "2024-11-08T17:22:04.290Z"
+  },
+  "ondate": "2024-11-04",
+  "qualityStatus": "valid",
+  "score": 4,
+  "scoreinfo": "No issues on this day",
   "status": "loaded",
   "statusinfo": "Loaded data matches expected",
   "timeline": [
-    "2024-07-18T00:00:40.580263Z[UTC] info DS_PUBLIC_INIT status changed to waiting",
-    "2024-07-19T00:10:32.981082Z[UTC] warn DS_PUBLIC_LATE status changed to late",
-    "2024-07-19T00:10:32.981146Z[UTC] info DS_PUBLIC_LATE statusinfo changed to 1 days late",
-    "2024-07-19T17:31:05.803141Z[UTC] info BSP_EL_DA_DATA Got delivery ee5d9f41-b32e-465a-9c78-80fbe775f4ac with 24 tenors",
-    "2024-07-19T17:31:05.807096Z[UTC] info BSP_EL_DA_DATA Delivery ee5d9f41-b32e-465a-9c78-80fbe775f4ac had 24 new tenors",
-    "2024-07-19T17:31:05.807251Z[UTC] info BSP_EL_DA_DATA status changed to loaded",
-    "2024-07-19T17:31:05.865858Z[UTC] info BSP_EL_DA_DATA statusinfo changed to Loaded data matches expected"
+    "2024-11-08T17:22:04.290137Z[UTC] info ODSL_LOADER initialise status changed to waiting",
+    "2024-11-08T17:22:04.393592Z[UTC] info ODSL_LOADER delivery Got delivery 7b33f31b-f321-4fac-beef-989fa30e5cf7 with 3 tenors",
+    "2024-11-08T17:22:04.416355Z[UTC] info ODSL_LOADER delivery Delivery 7b33f31b-f321-4fac-beef-989fa30e5cf7 had 3 new tenors",
+    "2024-11-08T17:22:06.029272Z[UTC] fatal ODSL_LOADER completeness Check: has tenor D00 has failed",
+    "2024-11-08T17:22:07.459795Z[UTC] fatal ODSL_LOADER completeness Check: has tenor M00 has failed",
+    "2024-11-08T17:22:07.460078Z[UTC] info ODSL_LOADER completeness status changed to partial",
+    "2024-11-08T17:22:26.657711Z[UTC] info ODSL_LOADER delivery Got delivery 661cc59c-be3a-42de-8f21-9527fedade13 with 5 tenors",
+    "2024-11-08T17:22:26.658153Z[UTC] info ODSL_LOADER delivery Delivery 661cc59c-be3a-42de-8f21-9527fedade13 had 2 new tenors",
+    "2024-11-08T17:22:28.081597Z[UTC] info ODSL_LOADER completeness Check: has tenor D00 valid",
+    "2024-11-08T17:22:29.399952Z[UTC] info ODSL_LOADER completeness Check: has tenor M00 valid",
+    "2024-11-08T17:22:29.400029Z[UTC] info ODSL_LOADER completeness status changed to loaded",
+    "2024-11-08T17:22:29.436052Z[UTC] info ODSL_LOADER completeness statusinfo changed to Loaded data matches expected",
+    "2024-11-08T17:23:18.905957Z[UTC] info qualityChecks quality Running quality checks from group: DS Quality",
+    "2024-11-08T17:24:25.502120Z[UTC] info qualityChecks quality Running quality checks from group: DS Quality"
   ],
   "timings": {
-    "expected": "19:30 EU2",
-    "late": "21:00 EU2",
-    "timezone": "Europe/Ljubljana",
+    "expected": "23:35 EU1",
+    "late": "+05:00 EU1",
+    "timezone": "Europe/London",
     "actual": [
       {
-        "00:10 UTC": "late"
+        "+17:22 EU1": "partial"
       },
       {
-        "-19:31 EU2": "loaded"
+        "+17:22 EU1": "loaded"
       }
     ],
-    "late_delta": 88260,
-    "loaded": "-19:31 EU2"
+    "late_delta": 5062,
+    "loaded": "+17:22 EU1"
   },
   "actual": {
-    "*": 24,
-    "Intraday": 24
+    "*": 5,
+    "CalendarDay": 3,
+    "Month": 2
   },
   "deliveries": {
-    "ee5d9f41-b32e-465a-9c78-80fbe775f4ac": {
-      "id": "ee5d9f41-b32e-465a-9c78-80fbe775f4ac",
-      "timestamp": "2024-07-19T17:31:05.803Z",
-      "reason": "smartLoader(BSP.EL_DA/BSP_EL_DA_DATA/2024-07-19,2024-07-19T17:30:30Z)",
-      "origin": "BSP_EL_DA_DATA",
+    "7b33f31b-f321-4fac-beef-989fa30e5cf7": {
+      "id": "7b33f31b-f321-4fac-beef-989fa30e5cf7",
+      "timestamp": "2024-11-08T17:22:04.393Z",
+      "reason": "Unknown",
+      "origin": "ODSL_LOADER",
       "tenors": {
-        "*": 24,
-        "Intraday": 24
+        "*": 3,
+        "CalendarDay": 2,
+        "Month": 1
+      }
+    },
+    "661cc59c-be3a-42de-8f21-9527fedade13": {
+      "id": "661cc59c-be3a-42de-8f21-9527fedade13",
+      "timestamp": "2024-11-08T17:22:26.657Z",
+      "reason": "Unknown",
+      "origin": "ODSL_LOADER",
+      "tenors": {
+        "*": 2,
+        "CalendarDay": 1,
+        "Month": 1
       }
     }
   },
   "expected": {
-    "*": 24,
-    "Intraday": 24
+    "*": 2,
+    "CalendarDay": 2,
+    "Month": 2
   },
-  "timestamp": "2024-07-19T17:31:05.807Z"
+  "expectedChecks": {
+    "7b33f31b-f321-4fac-beef-989fa30e5cf7": {
+      "timestamp": "2024-11-08T17:22:04.434Z",
+      "has tenor D00": {
+        "_id": "#LOG",
+        "ScriptReturnStatus": "failed",
+        "failures": [
+          "Missing D00 tenor"
+        ]
+      },
+      "has tenor M00": {
+        "_id": "#LOG",
+        "ScriptReturnStatus": "failed",
+        "failures": [
+          "Missing M00 tenor"
+        ]
+      }
+    },
+    "661cc59c-be3a-42de-8f21-9527fedade13": {
+      "timestamp": "2024-11-08T17:22:26.659Z",
+      "has tenor D00": {
+        "_id": "#LOG",
+        "ScriptReturnStatus": "valid",
+        "failures": []
+      },
+      "has tenor M00": {
+        "_id": "#LOG",
+        "ScriptReturnStatus": "valid",
+        "failures": []
+      },
+      "log": [
+        "2024-11-08T17:22:28.081511Z[UTC] INFO D00 found",
+        "2024-11-08T17:22:29.399916Z[UTC] INFO M00 found"
+      ]
+    }
+  },
+  "issues": [],
+  "loadedTimeUTC": "2024-11-08T17:22:29.400Z",
+  "timestamp": "2024-11-08T17:22:29.400Z",
+  "checks": {
+    "21f55cdd-700d-424e-884f-31c0489de60f": {
+      "timestamp": "2024-11-08T17:23:18.977Z",
+      "Check for zero values": {
+        "_id": "#LOG",
+        "ScriptReturnStatus": "valid",
+        "failures": []
+      },
+      "log": [
+        "2024-11-08T17:23:22.895729Z[UTC] INFO Checking 5 events for dataset: ODSL.DS.TEST for 2024-11-04"
+      ]
+    },
+    "c7b00b05-4c29-46ac-8099-4499742006b7": {
+      "timestamp": "2024-11-08T17:24:25.524Z",
+      "Check for zero values": {
+        "_id": "#LOG",
+        "ScriptReturnStatus": "valid",
+        "failures": []
+      },
+      "log": [
+        "2024-11-08T17:24:29.788058Z[UTC] INFO Checking 5 events for dataset: ODSL.DS.TEST for 2024-11-04"
+      ]
+    }
+  }
 }
 ```
 
