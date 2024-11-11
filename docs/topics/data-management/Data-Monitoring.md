@@ -90,7 +90,7 @@ When data is loaded that includes a _dsid property, the following occurs:
 * Check for corrections - if the data for this data was previously loaded, it is checked to see if any of the values have changed.
 * Calculate metrics
     * Determine the quantity of tenors by tenor type loaded during this update
-    * Determine if all the expected tenors have been loaded
+    * Determine if all the expected tenors have been loaded - completeness
 * Update the timeline and delivery information in the dataset delivery
 * Update the status
 
@@ -118,6 +118,8 @@ With private datasets, you can configure everything about the dataset and datase
   > For private datasets, it is recommended to set the provider to a short-form version of your company name, e.g. for OpenDataDSL we use ODSL
 * **Expected tenors**
   > You can either manually enter the list of expected tenors or if you have already loaded some data, you can get the system to calculate the minimum actual loaded tenors
+* **Expected checks**
+  > You can optionally add checks to determine if the dataset is complete as an addition to the simple minimum expected tenor check
 * **Calendar**
   > This the the calendar that defines the days that you expect this data to be available, any non-calendar days are marked as holidays
 * **Timings**
@@ -159,6 +161,28 @@ ds.expected.set("Month", 12)
 save ds
 ```
 
+An example of creating a private dataset with expected checks
+```js
+ds = object as Dataset
+  dsid = "ODSL.DS.TEST"
+  source = "private"
+  name = "ODSL test dataset"
+  qualityGroup = "DS Quality"
+  expected = SimpleObject()
+  expectedChecks = SimpleObject()
+end
+ds.expected.set("*", 2)
+ds.expected.set("CalendarDay", 2)
+ds.expected.set("Month", 2)
+ds.expectedChecks.script = "scripts-ds-quality"
+ds.expectedChecks.checks = []
+c1 = SimpleObject()
+c1.name = "has tenor M00"
+c1.expression = "hasTenor('M00')"
+ds.expectedChecks.checks.add(c1)
+save ${dataset:ds}
+```
+
 
 </TabItem>
 <TabItem value="rest" label="REST API">
@@ -188,6 +212,31 @@ Authorization: Bearer {{token}}
   "expected": {
     "*": 12,
     "Month": 12
+  },
+  "qualityGroup": "TraderQuality"
+}
+```
+
+An example of creating a private dataset with expected checks
+
+```js
+POST {{url}}/dataset/v1/info
+Authorization: Bearer {{token}}
+
+{
+  "_id": "ODSL.TRADER1.NBP",
+  "expected": {
+    "*": 12,
+    "Month": 12
+  },
+  "expectedChecks": {
+    "script":"scripts-ds-quality",
+    "checks": [
+      {
+        "name":"has tenor M00",
+        "expression": "hasTenor('M00')"
+      }
+    ]
   },
   "qualityGroup": "TraderQuality"
 }
@@ -391,5 +440,31 @@ function zeroCheck(properties)
 			end
 		next
     next
+end
+```
+
+## Dataset Expected Checks Scripts
+The ODSL scripts you create contain functions to perform expected checks on datasets.
+
+The functions have access to the following variables:
+
+* \#DSID - The string dataset id
+* \#ONDATE - The date for the dataset update
+* \#LOG - A log object to place all the failure information
+* \#EVENTS - A list of all the events for this dataset update
+
+### Example Functions
+
+```js
+function hasTenor(tenor)
+	hasTenor = "failed"
+	#LOG.failures = ["Missing " + tenor + " tenor"]
+	for ev in #EVENTS
+		if ev.relative == tenor
+			hasTenor = "valid"
+			#LOG.failures = []
+			log info tenor + " found"
+		end
+	next
 end
 ```
