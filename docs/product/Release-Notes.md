@@ -6,7 +6,16 @@ sidebar_position: 10
 Release Notes
 =============
 
-## Latest Release Nov24
+## Latest Release
+
+```js
+Build details:
+Excel: 1.0.20241111.1424
+Server: 1.1.20.2800
+Portal: 1.0.45574.2317
+```
+
+
 This release contains server and Excel fixes and enhancements.
 
 ### Fixed Bugs
@@ -25,6 +34,7 @@ This release contains server and Excel fixes and enhancements.
 * Support precision after autoscaling
 * Null pointer for conversions
 * End date in curve tenor time series
+* Fixing TypeError: Cannot read properties of undefined (reading 'forEach') - Refreshing a block of CurveTenorSeries in Excel
 
 
 ### Enhancements
