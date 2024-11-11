@@ -31,7 +31,7 @@ The id should include the object id and curve id in the format ```<object id>:<c
 
 Additionally, you can specify **Currency** and **Unit** fields for the curve.
 
-:::info Multiple Timeseries
+:::info Multiple Curves
 To create multiple curves, specify multiple ids separated by comma, space, or semicolon. 
 :::
 
@@ -54,7 +54,7 @@ This option will only create the curve, it does not add to the worksheet.
 You can load the newly created curve later from the Downloads section.
 :::
 
-4.	Select the display layout for the timeseries on the worksheet.
+4.	Select the display layout for the curves on the worksheet.
 
 ![](img/display-layout.png)
 

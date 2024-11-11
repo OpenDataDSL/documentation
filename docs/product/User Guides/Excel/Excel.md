@@ -101,6 +101,10 @@ Master Data Records in OpenDataDSL are the top level structures that contain inf
 
 <InDepth href="/docs/user/excel/curves" />
 
+### Working with Curve Series
+
+<InDepth href="/docs/user/excel/curveseries" />
+
 ### Working with Matrices
 
 <InDepth href="/docs/user/excel/matrices" />
