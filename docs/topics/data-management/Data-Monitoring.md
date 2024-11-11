@@ -8,6 +8,7 @@ tags:
 - monitoring
 - dsid
 - topics
+- dataset
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -424,6 +425,10 @@ The functions have access to the following variables:
 
 ### Example Functions
 
+#### Check to see if any specific properties are zero
+
+Example expression: ```zeroCheck(['value'])```
+
 ```js
 function zeroCheck(properties)
 	zeroCheck = "valid"
@@ -456,6 +461,9 @@ The functions have access to the following variables:
 ### Example Functions
 
 #### Check to ensure a specific named tenor is present
+
+Example expression: ```hasTenor('M00')```
+
 ```js
 function hasTenor(tenor)
 	hasTenor = "failed"
