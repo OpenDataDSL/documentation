@@ -455,6 +455,7 @@ The functions have access to the following variables:
 
 ### Example Functions
 
+#### Check to ensure a specific named tenor is present
 ```js
 function hasTenor(tenor)
 	hasTenor = "failed"
@@ -466,5 +467,49 @@ function hasTenor(tenor)
 			log info tenor + " found"
 		end
 	next
+end
+```
+
+#### Check for number of daily tenors dependent on the day of the week
+
+This check determines the number of expected tenors based on the day of the week.
+If the day matches the startday, the **max** tenors are expected, and it decreases as the week progresses, e.g.
+
+Using the expression: ```rollingOffDayTenors('MONDAY', 14, 'BUSINESS')```
+
+|Day of week|Expected Tenors|
+|-|-|
+|Monday|14|
+|Tuesday|13|
+|Wednesday|12|
+|Thursday|11|
+|Friday|10|
+
+
+```js
+function rollingOffDayTenors(startday, max, calendar)
+	rollingOffDayTenors = "valid"
+	test = Date(#ONDATE)
+	dow = test.dow
+	log info "Day of week = " + dow
+	cal = Calendar(calendar)
+	expected = max
+	while dow != startday
+		test = cal.previous(test)
+		dow = test.dow		
+		expected = expected - 1
+	end
+	log info "Expected number of daily tenors = " + expected
+	actual = 0
+	for ev in #EVENTS
+		if startsWith(ev.relative,"D")
+			actual = actual + 1
+		end
+	next
+	if actual < expected
+		log fatal "Actual number of daily tenors = " + actual
+		#LOG.failures = ["Expecting " + expected + " daily tenors, got " + actual]
+		rollingOffDayTenors = "failed"
+	end
 end
 ```
