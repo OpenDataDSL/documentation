@@ -57,6 +57,7 @@ This release contains server and Excel fixes and enhancements.
 * Support text based custom date formats in Excel add-in
 * Support usage of "-" in Excel sheet naming
 * Support currency and units conversion in Excel add-in
+* Update some ```attribute``` in Excel add-in functions to ```$<attribute>```
 
 
 
