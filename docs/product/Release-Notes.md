@@ -10,7 +10,7 @@ Release Notes
 
 ```js
 Build details:
-Excel: 1.0.20241111.1424
+Excel: 1.0.20241112.1803
 Server: 1.1.20.2800
 Portal: 1.0.45574.2317
 ```
