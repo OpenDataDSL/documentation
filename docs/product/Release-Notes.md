@@ -10,12 +10,24 @@ Release Notes
 
 ```js
 Build details:
-Excel: 1.0.20241112.1803
-Server: 1.1.20.2800
+Excel: 1.0.20241118.1830
+Server: 1.1.20.2830
 Portal: 1.0.45574.2317
 ```
 
+### Fixed Bugs
+* Use range end for rescaling data and fix index out of range issue
 
+### Enhancements
+* Date range improvements
+* Support properties and methods after expressions within parenthesis
+* Allow specific data id to search for (combining filtering in search field)
+* Support helpful functions to VarContract (extend Comparing/ordering forward contracts)
+* Policy reporting: Fix for tenant policies and added create and run for rights
+* Support for searching logs in process execution
+* Support for rules for quality checks on datasets
+
+## Oct/Nov
 This release contains server and Excel fixes and enhancements.
 
 ### Fixed Bugs
