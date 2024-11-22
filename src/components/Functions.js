@@ -13,6 +13,7 @@ export function FunctionTable() {
                     <th>Class</th>
                     <th>Function</th>
                     <th>Returns</th>
+                    <th>Applies To</th>
                 </thead>
                 <tbody>
                     {Data.map((props, idx) => (
@@ -36,6 +37,9 @@ function Row(props) {
         </td>
         <td>
             {props.returns}
+        </td>
+        <td>
+            {props.tags.flatMap((t) => <span className={styles.tag}>{t}</span>)}
         </td>
     </tr>
   )

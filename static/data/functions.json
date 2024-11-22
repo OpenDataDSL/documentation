@@ -5,6 +5,12 @@
     "class": "Numeric",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/abs",
     "description": "Absolute value",
+    "tags": [
+      "curve",
+      "timeseries",
+      "scalar",
+      "list"
+    ],
     "returns": "Number",
     "constructor": "abs(data)",
     "params": [
@@ -21,6 +27,12 @@
     "class": "Numeric",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/acos",
     "description": "Returns the arc cosine of a value; the returned angle is in the range 0.0 through pi",
+    "tags": [
+      "curve",
+      "timeseries",
+      "scalar",
+      "list"
+    ],
     "returns": "Number",
     "constructor": "acos(data)",
     "params": [
@@ -37,6 +49,7 @@
     "class": "Constructors",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/AnnualCalendar",
     "description": "Creates a new Annual Calendar",
+    "tags": [],
     "returns": "Calendar",
     "constructor": "AnnualCalendar()",
     "params": []
@@ -47,6 +60,7 @@
     "class": "BeanConstructors",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/ApprovalGroup",
     "description": "Creates a new curve approval group",
+    "tags": [],
     "returns": "ApprovalGroup",
     "constructor": "ApprovalGroup()",
     "params": []
@@ -57,6 +71,7 @@
     "class": "Curve",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/asDays",
     "description": "Splits a Contract into day contracts",
+    "tags": [],
     "returns": "Contracts",
     "constructor": "asDays(contract)",
     "params": [
@@ -73,6 +88,7 @@
     "class": "Curve",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/asHours",
     "description": "Splits a Contract into hourly contracts",
+    "tags": [],
     "returns": "Contracts",
     "constructor": "asHours(contract)",
     "params": [
@@ -89,6 +105,7 @@
     "class": "Curve",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/asHours",
     "description": "Splits a Contract into hourly contracts",
+    "tags": [],
     "returns": "Contracts",
     "constructor": "asHours(contract, timezone)",
     "params": [
@@ -110,6 +127,12 @@
     "class": "Numeric",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/asin",
     "description": "Returns the arc sine of a value; the returned angle is in the range -pi/2 through pi/2",
+    "tags": [
+      "curve",
+      "timeseries",
+      "scalar",
+      "list"
+    ],
     "returns": "Number",
     "constructor": "asin(data)",
     "params": [
@@ -126,6 +149,7 @@
     "class": "Curve",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/asMonths",
     "description": "Splits a Contract into month contracts - usually used with Quarters, Seasons or Cals",
+    "tags": [],
     "returns": "Contracts",
     "constructor": "asMonths(contract)",
     "params": [
@@ -142,27 +166,7 @@
     "class": "Test",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/assertEquals",
     "description": "A test to check if 2 variables or values are equal",
-    "returns": "Void",
-    "constructor": "assertEquals(expected, value)",
-    "params": [
-      {
-        "name": "expected",
-        "description": "The value you want to test against",
-        "type": "Any"
-      },
-      {
-        "name": "value",
-        "description": "The value to test",
-        "type": "Any"
-      }
-    ]
-  },
-  {
-    "name": "assertEquals",
-    "category": "Testing: Functions that help you test your scripts",
-    "class": "Test",
-    "link": "https://doc.opendatadsl.com/docs/odsl/function/assertEquals",
-    "description": "A test to check if 2 variables or values are equal",
+    "tags": [],
     "returns": "Void",
     "constructor": "assertEquals(expected, value, message)",
     "params": [
@@ -184,11 +188,51 @@
     ]
   },
   {
+    "name": "assertEquals",
+    "category": "Testing: Functions that help you test your scripts",
+    "class": "Test",
+    "link": "https://doc.opendatadsl.com/docs/odsl/function/assertEquals",
+    "description": "A test to check if 2 variables or values are equal",
+    "tags": [],
+    "returns": "Void",
+    "constructor": "assertEquals(expected, value)",
+    "params": [
+      {
+        "name": "expected",
+        "description": "The value you want to test against",
+        "type": "Any"
+      },
+      {
+        "name": "value",
+        "description": "The value to test",
+        "type": "Any"
+      }
+    ]
+  },
+  {
     "name": "assertFalse",
     "category": "Testing: Functions that help you test your scripts",
     "class": "Test",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/assertFalse",
     "description": "A test to check if an expression is false",
+    "tags": [],
+    "returns": "Void",
+    "constructor": "assertFalse(value)",
+    "params": [
+      {
+        "name": "value",
+        "description": "The value to test",
+        "type": "Boolean"
+      }
+    ]
+  },
+  {
+    "name": "assertFalse",
+    "category": "Testing: Functions that help you test your scripts",
+    "class": "Test",
+    "link": "https://doc.opendatadsl.com/docs/odsl/function/assertFalse",
+    "description": "A test to check if an expression is false",
+    "tags": [],
     "returns": "Void",
     "constructor": "assertFalse(value, message)",
     "params": [
@@ -205,27 +249,12 @@
     ]
   },
   {
-    "name": "assertFalse",
-    "category": "Testing: Functions that help you test your scripts",
-    "class": "Test",
-    "link": "https://doc.opendatadsl.com/docs/odsl/function/assertFalse",
-    "description": "A test to check if an expression is false",
-    "returns": "Void",
-    "constructor": "assertFalse(value)",
-    "params": [
-      {
-        "name": "value",
-        "description": "The value to test",
-        "type": "Boolean"
-      }
-    ]
-  },
-  {
     "name": "assertHasProperty",
     "category": "Testing: Functions that help you test your scripts",
     "class": "Test",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/assertHasProperty",
     "description": "A test to check if a variable has a specific named property",
+    "tags": [],
     "returns": "Void",
     "constructor": "assertHasProperty(var, property)",
     "params": [
@@ -247,6 +276,7 @@
     "class": "Test",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/assertNoProperty",
     "description": "A test to check if a variable doesn't have a specific named property",
+    "tags": [],
     "returns": "Void",
     "constructor": "assertNoProperty(var, property)",
     "params": [
@@ -268,6 +298,7 @@
     "class": "Test",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/assertNull",
     "description": "A test to check if object is null",
+    "tags": [],
     "returns": "Void",
     "constructor": "assertNull(object)",
     "params": [
@@ -284,22 +315,7 @@
     "class": "Test",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/assertTrue",
     "description": "A test to check if an expression is true",
-    "returns": "Void",
-    "constructor": "assertTrue(value)",
-    "params": [
-      {
-        "name": "value",
-        "description": "The value to test",
-        "type": "Boolean"
-      }
-    ]
-  },
-  {
-    "name": "assertTrue",
-    "category": "Testing: Functions that help you test your scripts",
-    "class": "Test",
-    "link": "https://doc.opendatadsl.com/docs/odsl/function/assertTrue",
-    "description": "A test to check if an expression is true",
+    "tags": [],
     "returns": "Void",
     "constructor": "assertTrue(value, message)",
     "params": [
@@ -316,11 +332,29 @@
     ]
   },
   {
+    "name": "assertTrue",
+    "category": "Testing: Functions that help you test your scripts",
+    "class": "Test",
+    "link": "https://doc.opendatadsl.com/docs/odsl/function/assertTrue",
+    "description": "A test to check if an expression is true",
+    "tags": [],
+    "returns": "Void",
+    "constructor": "assertTrue(value)",
+    "params": [
+      {
+        "name": "value",
+        "description": "The value to test",
+        "type": "Boolean"
+      }
+    ]
+  },
+  {
     "name": "assertType",
     "category": "Testing: Functions that help you test your scripts",
     "class": "Test",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/assertType",
     "description": "A test to check if a variable is of a certain type",
+    "tags": [],
     "returns": "Void",
     "constructor": "assertType(var, type)",
     "params": [
@@ -342,6 +376,9 @@
     "class": "Curve",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/asStrips",
     "description": "Creates an arbitrage free curve comprised of calendar year strips",
+    "tags": [
+      "curve"
+    ],
     "returns": "Curve",
     "constructor": "asStrips(input)",
     "params": [
@@ -358,6 +395,12 @@
     "class": "Numeric",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/atan",
     "description": "Returns the arc tangent of a value; the returned angle is in the range -pi/2 through pi/2",
+    "tags": [
+      "curve",
+      "timeseries",
+      "scalar",
+      "list"
+    ],
     "returns": "Number",
     "constructor": "atan(data)",
     "params": [
@@ -374,6 +417,12 @@
     "class": "Numeric",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/atan2",
     "description": "Returns the angle theta from the conversion of rectangular coordinates (x, y) to polar coordinates (r, theta)",
+    "tags": [
+      "curve",
+      "timeseries",
+      "scalar",
+      "list"
+    ],
     "returns": "Number",
     "constructor": "atan2(y, x)",
     "params": [
@@ -395,6 +444,7 @@
     "class": "Constructors",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/Batch",
     "description": "Creates a batch to be sent to a message queue",
+    "tags": [],
     "returns": "Batch",
     "constructor": "Batch()",
     "params": []
@@ -405,6 +455,7 @@
     "class": "Options",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/blackScholesCall",
     "description": "Calculate the (undiscounted) Black option price for a call option",
+    "tags": [],
     "returns": "Double",
     "constructor": "blackScholesCall(F, K, sigma, T)",
     "params": [
@@ -436,6 +487,7 @@
     "class": "Options",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/blackScholesPut",
     "description": "Calculate the (undiscounted) Black option price for a put option",
+    "tags": [],
     "returns": "Double",
     "constructor": "blackScholesPut(F, K, sigma, T)",
     "params": [
@@ -467,6 +519,7 @@
     "class": "Constructors",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/BlockCalendar",
     "description": "Creates a new Block Calendar",
+    "tags": [],
     "returns": "Calendar",
     "constructor": "BlockCalendar(holiday, observed, start, end, timezone)",
     "params": [
@@ -503,6 +556,7 @@
     "class": "Constructors",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/BlockCalendar",
     "description": "Creates a new Block Calendar",
+    "tags": [],
     "returns": "Calendar",
     "constructor": "BlockCalendar(holiday, observed, start, end)",
     "params": [
@@ -534,6 +588,9 @@
     "class": "Curve",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/bootstrapCurve",
     "description": "Creates an arbitrage free monthly curve from the input curve",
+    "tags": [
+      "curve"
+    ],
     "returns": "Curve",
     "constructor": "bootstrapCurve(input)",
     "params": [
@@ -550,6 +607,7 @@
     "class": "BeanConstructors",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/BuildGroup",
     "description": "Creates a new curve build group",
+    "tags": [],
     "returns": "BuildGroup",
     "constructor": "BuildGroup()",
     "params": []
@@ -560,6 +618,7 @@
     "class": "Constructors",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/BusinessCalendar",
     "description": "Creates a new Business (Monday to Friday) Calendar",
+    "tags": [],
     "returns": "Calendar",
     "constructor": "BusinessCalendar()",
     "params": []
@@ -570,6 +629,7 @@
     "class": "Constructors",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/Calendar",
     "description": "Creates a new Calendar",
+    "tags": [],
     "returns": "Calendar",
     "constructor": "Calendar(code)",
     "params": [
@@ -586,6 +646,7 @@
     "class": "String",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/capitalise",
     "description": "Returns a Capitalised string.",
+    "tags": [],
     "returns": "String",
     "constructor": "capitalise(str)",
     "params": [
@@ -602,6 +663,7 @@
     "class": "String",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/capitaliseFully",
     "description": "Returns a Capitalised string of all the words.",
+    "tags": [],
     "returns": "String",
     "constructor": "capitaliseFully(str)",
     "params": [
@@ -618,6 +680,7 @@
     "class": "TimeSeries",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/cave",
     "description": "The cumulative average of all the values in the input Timeseries or List",
+    "tags": [],
     "returns": "Number",
     "constructor": "cave(data)",
     "params": [
@@ -634,6 +697,7 @@
     "class": "TimeSeries",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/cave",
     "description": "The cumulative average of all the values in the input Timeseries",
+    "tags": [],
     "returns": "Number",
     "constructor": "cave(data, calendar)",
     "params": [
@@ -655,6 +719,12 @@
     "class": "Numeric",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/cbrt",
     "description": "Returns the cube root of a double value",
+    "tags": [
+      "curve",
+      "timeseries",
+      "scalar",
+      "list"
+    ],
     "returns": "Number",
     "constructor": "cbrt(data)",
     "params": [
@@ -671,6 +741,7 @@
     "class": "String",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/clean",
     "description": "Creates a valid variable name from the input string - spaces converted to underscores and invalid characters removed",
+    "tags": [],
     "returns": "String",
     "constructor": "clean(str)",
     "params": [
@@ -687,6 +758,7 @@
     "class": "General",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/clone",
     "description": "Creates a new copy of a variable",
+    "tags": [],
     "returns": "Same type as input",
     "constructor": "clone(var)",
     "params": [
@@ -702,28 +774,8 @@
     "category": "TimeSeries: TimeSeries Functions",
     "class": "TimeSeries",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/cmax",
-    "description": "The cumulative maximum of all the values in the input Timeseries",
-    "returns": "Number",
-    "constructor": "cmax(data, calendar)",
-    "params": [
-      {
-        "name": "data",
-        "description": "The input data to perform the calculation on",
-        "type": "TimeSeries"
-      },
-      {
-        "name": "calendar",
-        "description": "The output calendar to return the results in",
-        "type": "Calendar"
-      }
-    ]
-  },
-  {
-    "name": "cmax",
-    "category": "TimeSeries: TimeSeries Functions",
-    "class": "TimeSeries",
-    "link": "https://doc.opendatadsl.com/docs/odsl/function/cmax",
     "description": "The cumulative maximum of all the values in the input Timeseries or List",
+    "tags": [],
     "returns": "Number",
     "constructor": "cmax(data)",
     "params": [
@@ -735,13 +787,14 @@
     ]
   },
   {
-    "name": "cmin",
+    "name": "cmax",
     "category": "TimeSeries: TimeSeries Functions",
     "class": "TimeSeries",
-    "link": "https://doc.opendatadsl.com/docs/odsl/function/cmin",
-    "description": "The cumulative minimum of all the values in the input Timeseries",
+    "link": "https://doc.opendatadsl.com/docs/odsl/function/cmax",
+    "description": "The cumulative maximum of all the values in the input Timeseries",
+    "tags": [],
     "returns": "Number",
-    "constructor": "cmin(data, calendar)",
+    "constructor": "cmax(data, calendar)",
     "params": [
       {
         "name": "data",
@@ -761,6 +814,7 @@
     "class": "TimeSeries",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/cmin",
     "description": "The cumulative minimum of all the values in the input Timeseries or List",
+    "tags": [],
     "returns": "Number",
     "constructor": "cmin(data)",
     "params": [
@@ -772,11 +826,36 @@
     ]
   },
   {
+    "name": "cmin",
+    "category": "TimeSeries: TimeSeries Functions",
+    "class": "TimeSeries",
+    "link": "https://doc.opendatadsl.com/docs/odsl/function/cmin",
+    "description": "The cumulative minimum of all the values in the input Timeseries",
+    "tags": [],
+    "returns": "Number",
+    "constructor": "cmin(data, calendar)",
+    "params": [
+      {
+        "name": "data",
+        "description": "The input data to perform the calculation on",
+        "type": "TimeSeries"
+      },
+      {
+        "name": "calendar",
+        "description": "The output calendar to return the results in",
+        "type": "Calendar"
+      }
+    ]
+  },
+  {
     "name": "combine",
     "category": "Curve: Forward curve functions",
     "class": "Curve",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/combine",
     "description": "Combines 2 curves into 1 - uses the date and expiry calendar from the base",
+    "tags": [
+      "curve"
+    ],
     "returns": "Curve",
     "constructor": "combine(base, other, replace)",
     "params": [
@@ -803,6 +882,7 @@
     "class": "Constructors",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/CombinedHolidayCalendar",
     "description": "Creates a new Combined Holiday Calendar",
+    "tags": [],
     "returns": "Calendar",
     "constructor": "CombinedHolidayCalendar()",
     "params": []
@@ -813,6 +893,7 @@
     "class": "Constructors",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/CombinedHolidayCalendar",
     "description": "Creates a new Combined Holiday Calendar using the 2 passed in Holiday Calendars",
+    "tags": [],
     "returns": "Calendar",
     "constructor": "CombinedHolidayCalendar(cal1, cal2)",
     "params": [
@@ -834,6 +915,7 @@
     "class": "String",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/compare",
     "description": "Compares the contents of 2 non-null strings, returns true if they are the same",
+    "tags": [],
     "returns": "Boolean",
     "constructor": "compare(str1, str2)",
     "params": [
@@ -855,6 +937,7 @@
     "class": "String",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/concatenate",
     "description": "Joins 2 non-null strings together",
+    "tags": [],
     "returns": "String",
     "constructor": "concatenate(str1, str2)",
     "params": [
@@ -876,6 +959,7 @@
     "class": "String",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/contains",
     "description": "Returns true if a string contains another string",
+    "tags": [],
     "returns": "Boolean",
     "constructor": "contains(str1, str2)",
     "params": [
@@ -897,7 +981,8 @@
     "class": "General",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/content",
     "description": "",
-    "returns": "UNKNOWN",
+    "tags": [],
+    "returns": "",
     "constructor": "content()",
     "params": []
   },
@@ -907,6 +992,7 @@
     "class": "Constructors",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/Contract",
     "description": "Creates a new *Custom* Forward Contract",
+    "tags": [],
     "returns": "Contract",
     "constructor": "Contract(ondate, tenor, value, absolute, start, end, expiry)",
     "params": [
@@ -952,7 +1038,35 @@
     "category": "Construction: Functions that create variables",
     "class": "Constructors",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/Contract",
+    "description": "Creates a new Forward Contract",
+    "tags": [],
+    "returns": "Contract",
+    "constructor": "Contract(ondate, tenor, value)",
+    "params": [
+      {
+        "name": "ondate",
+        "description": "The curve ondate for this contract",
+        "type": "CurveDate"
+      },
+      {
+        "name": "tenor",
+        "description": "The absolute or relative tenor for this contract",
+        "type": "String"
+      },
+      {
+        "name": "value",
+        "description": "The value for this contract",
+        "type": "Number"
+      }
+    ]
+  },
+  {
+    "name": "Contract",
+    "category": "Construction: Functions that create variables",
+    "class": "Constructors",
+    "link": "https://doc.opendatadsl.com/docs/odsl/function/Contract",
     "description": "Creates a new *Hybrid* Forward Contract",
+    "tags": [],
     "returns": "Contract",
     "constructor": "Contract(ondate, tenor, value, start, end)",
     "params": [
@@ -984,37 +1098,12 @@
     ]
   },
   {
-    "name": "Contract",
-    "category": "Construction: Functions that create variables",
-    "class": "Constructors",
-    "link": "https://doc.opendatadsl.com/docs/odsl/function/Contract",
-    "description": "Creates a new Forward Contract",
-    "returns": "Contract",
-    "constructor": "Contract(ondate, tenor, value)",
-    "params": [
-      {
-        "name": "ondate",
-        "description": "The curve ondate for this contract",
-        "type": "CurveDate"
-      },
-      {
-        "name": "tenor",
-        "description": "The absolute or relative tenor for this contract",
-        "type": "String"
-      },
-      {
-        "name": "value",
-        "description": "The value for this contract",
-        "type": "Number"
-      }
-    ]
-  },
-  {
     "name": "correlation",
     "category": "Matrix: functions that create or transform matrixes",
     "class": "Matrix",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/correlation",
     "description": "Create a Pearsons correlation matrix from the columns of a matrix.\r\n\r\nPearsonsCorrelation computes correlations defined by the formula\r\n\r\n```cor(X, Y) = sum[(xi - E(X))(yi - E(Y))] / [(n - 1)s(X)s(Y)]```\r\n\r\nwhere ```E(X)``` and ```E(Y)``` are means of ```X``` and ```Y``` and ```s(X)```, ```s(Y)``` are standard deviations.",
+    "tags": [],
     "returns": "Matrix",
     "constructor": "correlation(data, shift)",
     "params": [
@@ -1036,6 +1125,7 @@
     "class": "Matrix",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/correlation",
     "description": "Create a Pearsons correlation matrix from the columns of a matrix.\r\n\r\nPearsonsCorrelation computes correlations defined by the formula\r\n\r\n```cor(X, Y) = sum[(xi - E(X))(yi - E(Y))] / [(n - 1)s(X)s(Y)]```\r\n\r\nwhere ```E(X)``` and ```E(Y)``` are means of ```X``` and ```Y``` and ```s(X)```, ```s(Y)``` are standard deviations.",
+    "tags": [],
     "returns": "Matrix",
     "constructor": "correlation(data)",
     "params": [
@@ -1052,6 +1142,7 @@
     "class": "Matrix",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/correlation",
     "description": "Create a Pearsons correlation matrix from a list of timeseries.\r\n\r\nPearsonsCorrelation computes correlations defined by the formula\r\n\r\n```cor(X, Y) = sum[(xi - E(X))(yi - E(Y))] / [(n - 1)s(X)s(Y)]```\r\n\r\nwhere ```E(X)``` and ```E(Y)``` are means of ```X``` and ```Y``` and ```s(X)```, ```s(Y)``` are standard deviations.",
+    "tags": [],
     "returns": "Matrix",
     "constructor": "correlation(data, shift)",
     "params": [
@@ -1073,6 +1164,7 @@
     "class": "Matrix",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/correlation",
     "description": "Create a Pearsons correlation matrix from a list of timeseries.\r\n\r\nPearsonsCorrelation computes correlations defined by the formula\r\n\r\n```cor(X, Y) = sum[(xi - E(X))(yi - E(Y))] / [(n - 1)s(X)s(Y)]```\r\n\r\nwhere ```E(X)``` and ```E(Y)``` are means of ```X``` and ```Y``` and ```s(X)```, ```s(Y)``` are standard deviations.",
+    "tags": [],
     "returns": "Matrix",
     "constructor": "correlation(data)",
     "params": [
@@ -1089,6 +1181,12 @@
     "class": "Numeric",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/cos",
     "description": "Returns the trigonometric cosine of an angle",
+    "tags": [
+      "curve",
+      "timeseries",
+      "scalar",
+      "list"
+    ],
     "returns": "Number",
     "constructor": "cos(data)",
     "params": [
@@ -1105,6 +1203,12 @@
     "class": "Numeric",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/cosh",
     "description": "Returns the hyperbolic cosine of a double value",
+    "tags": [
+      "curve",
+      "timeseries",
+      "scalar",
+      "list"
+    ],
     "returns": "Number",
     "constructor": "cosh(data)",
     "params": [
@@ -1121,6 +1225,7 @@
     "class": "Statistics",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/count",
     "description": "Gets the count of the values",
+    "tags": [],
     "returns": "Number",
     "constructor": "count(data)",
     "params": [
@@ -1137,6 +1242,7 @@
     "class": "Matrix",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/covariance",
     "description": "Create a convariance matrix from a list of timeseries.\r\n\r\nUnbiased covariances are given by the formula\r\n\r\n```cov(X, Y) = sum [(xi - E(X))(yi - E(Y))] / (n - 1)``` where ```E(X)``` is the mean of ```X``` and ```E(Y)``` is the mean of the ```Y``` values.\r\n Non-bias-corrected estimates use ```n``` in place of ```n - 1```.\r\n Whether or not covariances are bias-corrected is determined by the optional parameter, **biasCorrected**, which defaults to true.",
+    "tags": [],
     "returns": "Matrix",
     "constructor": "covariance(data, biasCorrected)",
     "params": [
@@ -1158,6 +1264,7 @@
     "class": "Matrix",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/covariance",
     "description": "Create a convariance matrix from a list of timeseries.\r\n\r\nUnbiased covariances are given by the formula\r\n\r\n```cov(X, Y) = sum [(xi - E(X))(yi - E(Y))] / (n - 1)``` where ```E(X)``` is the mean of ```X``` and ```E(Y)``` is the mean of the ```Y``` values.",
+    "tags": [],
     "returns": "Matrix",
     "constructor": "covariance(data)",
     "params": [
@@ -1173,23 +1280,8 @@
     "category": "TimeSeries: TimeSeries Functions",
     "class": "TimeSeries",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/csum",
-    "description": "The cumulative sum of all the values in the input Timeseries or List",
-    "returns": "Number",
-    "constructor": "csum(data)",
-    "params": [
-      {
-        "name": "data",
-        "description": "The input data to perform the calculation on",
-        "type": "TimeSeries or List"
-      }
-    ]
-  },
-  {
-    "name": "csum",
-    "category": "TimeSeries: TimeSeries Functions",
-    "class": "TimeSeries",
-    "link": "https://doc.opendatadsl.com/docs/odsl/function/csum",
     "description": "The cumulative sum of all the values in the input Timeseries",
+    "tags": [],
     "returns": "Number",
     "constructor": "csum(data, calendar)",
     "params": [
@@ -1206,11 +1298,29 @@
     ]
   },
   {
+    "name": "csum",
+    "category": "TimeSeries: TimeSeries Functions",
+    "class": "TimeSeries",
+    "link": "https://doc.opendatadsl.com/docs/odsl/function/csum",
+    "description": "The cumulative sum of all the values in the input Timeseries or List",
+    "tags": [],
+    "returns": "Number",
+    "constructor": "csum(data)",
+    "params": [
+      {
+        "name": "data",
+        "description": "The input data to perform the calculation on",
+        "type": "TimeSeries or List"
+      }
+    ]
+  },
+  {
     "name": "Curve",
     "category": "Construction: Functions that create variables",
     "class": "Constructors",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/Curve",
     "description": "Creates a new Curve",
+    "tags": [],
     "returns": "Curve",
     "constructor": "Curve(ondate)",
     "params": [
@@ -1227,6 +1337,7 @@
     "class": "Constructors",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/CurveDate",
     "description": "Creates a new Curve Date variable",
+    "tags": [],
     "returns": "CurveDate",
     "constructor": "CurveDate(date, calendar)",
     "params": [
@@ -1248,6 +1359,7 @@
     "class": "Constructors",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/CurveDate",
     "description": "Creates a new Curve Date variable",
+    "tags": [],
     "returns": "CurveDate",
     "constructor": "CurveDate(date, calendar, timezone)",
     "params": [
@@ -1274,6 +1386,7 @@
     "class": "Constructors",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/CurveSeries",
     "description": "Creates a new Curve Series",
+    "tags": [],
     "returns": "CurveSeries",
     "constructor": "CurveSeries(calendar, ondate, data)",
     "params": [
@@ -1300,6 +1413,29 @@
     "class": "Constructors",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/CurveSeries",
     "description": "Creates a new Curve Series",
+    "tags": [],
+    "returns": "CurveSeries",
+    "constructor": "CurveSeries(calendar, ondate)",
+    "params": [
+      {
+        "name": "calendar",
+        "description": "The calendar for the timeseries of this curve timeseries",
+        "type": "Calendar"
+      },
+      {
+        "name": "ondate",
+        "description": "The date index for this curve timeseries",
+        "type": "CurveDate"
+      }
+    ]
+  },
+  {
+    "name": "CurveSeries",
+    "category": "Construction: Functions that create variables",
+    "class": "Constructors",
+    "link": "https://doc.opendatadsl.com/docs/odsl/function/CurveSeries",
+    "description": "Creates a new Curve Series",
+    "tags": [],
     "returns": "CurveSeries",
     "constructor": "CurveSeries(calendar, ondate, start, data)",
     "params": [
@@ -1326,32 +1462,12 @@
     ]
   },
   {
-    "name": "CurveSeries",
-    "category": "Construction: Functions that create variables",
-    "class": "Constructors",
-    "link": "https://doc.opendatadsl.com/docs/odsl/function/CurveSeries",
-    "description": "Creates a new Curve Series",
-    "returns": "CurveSeries",
-    "constructor": "CurveSeries(calendar, ondate)",
-    "params": [
-      {
-        "name": "calendar",
-        "description": "The calendar for the timeseries of this curve timeseries",
-        "type": "Calendar"
-      },
-      {
-        "name": "ondate",
-        "description": "The date index for this curve timeseries",
-        "type": "CurveDate"
-      }
-    ]
-  },
-  {
     "name": "DailyCalendar",
     "category": "Construction: Functions that create variables",
     "class": "Constructors",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/DailyCalendar",
     "description": "Creates a new Daily Calendar",
+    "tags": [],
     "returns": "Calendar",
     "constructor": "DailyCalendar()",
     "params": []
@@ -1361,33 +1477,8 @@
     "category": "Construction: Functions that create variables",
     "class": "Constructors",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/Date",
-    "description": "Creates a new Date variable as the current date",
-    "returns": "Date",
-    "constructor": "Date()",
-    "params": []
-  },
-  {
-    "name": "Date",
-    "category": "Construction: Functions that create variables",
-    "class": "Constructors",
-    "link": "https://doc.opendatadsl.com/docs/odsl/function/Date",
     "description": "Creates a new Date variable",
-    "returns": "Date",
-    "constructor": "Date(date)",
-    "params": [
-      {
-        "name": "date",
-        "description": "The date as a string in ISO Date Time, ISO Date format or ODSL Period Code format",
-        "type": "Scalar"
-      }
-    ]
-  },
-  {
-    "name": "Date",
-    "category": "Construction: Functions that create variables",
-    "class": "Constructors",
-    "link": "https://doc.opendatadsl.com/docs/odsl/function/Date",
-    "description": "Creates a new Date variable",
+    "tags": [],
     "returns": "Date",
     "constructor": "Date(date, format)",
     "params": [
@@ -1404,11 +1495,40 @@
     ]
   },
   {
+    "name": "Date",
+    "category": "Construction: Functions that create variables",
+    "class": "Constructors",
+    "link": "https://doc.opendatadsl.com/docs/odsl/function/Date",
+    "description": "Creates a new Date variable as the current date",
+    "tags": [],
+    "returns": "Date",
+    "constructor": "Date()",
+    "params": []
+  },
+  {
+    "name": "Date",
+    "category": "Construction: Functions that create variables",
+    "class": "Constructors",
+    "link": "https://doc.opendatadsl.com/docs/odsl/function/Date",
+    "description": "Creates a new Date variable",
+    "tags": [],
+    "returns": "Date",
+    "constructor": "Date(date)",
+    "params": [
+      {
+        "name": "date",
+        "description": "The date as a string in ISO Date Time, ISO Date format or ODSL Period Code format",
+        "type": "Scalar"
+      }
+    ]
+  },
+  {
     "name": "daylightSavings",
     "category": "Dates: Functions that help you use dates",
     "class": "Date",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/daylightSavings",
     "description": "Checks a day to see if it is a daylight savings day",
+    "tags": [],
     "returns": "0 if false, -1 if it is the start day of DST, 1 if it is the end day of DST",
     "constructor": "daylightSavings(date, timezone)",
     "params": [
@@ -1430,6 +1550,7 @@
     "class": "TimeSeries",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/diff",
     "description": "Returns a TimeSeries with the absolute change values from one observation to the next",
+    "tags": [],
     "returns": "TimeSeries",
     "constructor": "diff(series)",
     "params": [
@@ -1446,6 +1567,7 @@
     "class": "Constructors",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/Documentation",
     "description": "Creates a new default documentation configuration",
+    "tags": [],
     "returns": "Documentation",
     "constructor": "Documentation()",
     "params": []
@@ -1456,6 +1578,7 @@
     "class": "Constructors",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/DocumentationLink",
     "description": "Creates a new documentation URL Link configuration",
+    "tags": [],
     "returns": "Documentation",
     "constructor": "DocumentationLink(url)",
     "params": [
@@ -1472,6 +1595,7 @@
     "class": "Constructors",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/DocumentationLink",
     "description": "Creates a new documentation URL Link configuration",
+    "tags": [],
     "returns": "Documentation",
     "constructor": "DocumentationLink(url, selector)",
     "params": [
@@ -1492,23 +1616,8 @@
     "category": "Construction: Functions that create variables",
     "class": "Constructors",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/Duration",
-    "description": "Creates a new Duration",
-    "returns": "Duration",
-    "constructor": "Duration(dur)",
-    "params": [
-      {
-        "name": "dur",
-        "description": "The code for the duration, e.g. 1D",
-        "type": "String"
-      }
-    ]
-  },
-  {
-    "name": "Duration",
-    "category": "Construction: Functions that create variables",
-    "class": "Constructors",
-    "link": "https://doc.opendatadsl.com/docs/odsl/function/Duration",
     "description": "Creates a new Duration with a calendar",
+    "tags": [],
     "returns": "Duration",
     "constructor": "Duration(dur, calendar)",
     "params": [
@@ -1525,11 +1634,29 @@
     ]
   },
   {
+    "name": "Duration",
+    "category": "Construction: Functions that create variables",
+    "class": "Constructors",
+    "link": "https://doc.opendatadsl.com/docs/odsl/function/Duration",
+    "description": "Creates a new Duration",
+    "tags": [],
+    "returns": "Duration",
+    "constructor": "Duration(dur)",
+    "params": [
+      {
+        "name": "dur",
+        "description": "The code for the duration, e.g. 1D",
+        "type": "String"
+      }
+    ]
+  },
+  {
     "name": "DynamicReport",
     "category": "Construction: Functions that create variables",
     "class": "Constructors",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/DynamicReport",
     "description": "Creates a new dynamic report configuration",
+    "tags": [],
     "returns": "Report",
     "constructor": "DynamicReport()",
     "params": []
@@ -1540,7 +1667,8 @@
     "class": "General",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/element",
     "description": "",
-    "returns": "UNKNOWN",
+    "tags": [],
+    "returns": "",
     "constructor": "element()",
     "params": []
   },
@@ -1550,7 +1678,8 @@
     "class": "General",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/elementValues",
     "description": "",
-    "returns": "UNKNOWN",
+    "tags": [],
+    "returns": "",
     "constructor": "elementValues()",
     "params": []
   },
@@ -1560,7 +1689,8 @@
     "class": "General",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/elementValuesIndexOf",
     "description": "",
-    "returns": "UNKNOWN",
+    "tags": [],
+    "returns": "",
     "constructor": "elementValuesIndexOf()",
     "params": []
   },
@@ -1570,6 +1700,7 @@
     "class": "String",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/encodeBase64",
     "description": "Encode Base64.",
+    "tags": [],
     "returns": "String",
     "constructor": "encodeBase64(content)",
     "params": [
@@ -1586,6 +1717,7 @@
     "class": "String",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/encodeURI",
     "description": "Encode URI.",
+    "tags": [],
     "returns": "String",
     "constructor": "encodeURI(uri)",
     "params": [
@@ -1602,6 +1734,7 @@
     "class": "String",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/endsWith",
     "description": "Tests to see if the first string ends with the specified suffix. If either the string or the suffix are null, it returns false",
+    "tags": [],
     "returns": "Boolean",
     "constructor": "endsWith(str, suffix)",
     "params": [
@@ -1623,6 +1756,7 @@
     "class": "String",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/equals",
     "description": "Checks to see if 2 strings are the same",
+    "tags": [],
     "returns": "Boolean",
     "constructor": "equals(str1, str2)",
     "params": [
@@ -1644,7 +1778,8 @@
     "class": "String",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/equals",
     "description": "",
-    "returns": "UNKNOWN",
+    "tags": [],
+    "returns": "",
     "constructor": "equals()",
     "params": []
   },
@@ -1654,6 +1789,7 @@
     "class": "String",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/equalsIgnoreCase",
     "description": "Checks to see if 2 strings are the same ignoring case",
+    "tags": [],
     "returns": "Boolean",
     "constructor": "equalsIgnoreCase(str1, str2)",
     "params": [
@@ -1675,6 +1811,7 @@
     "class": "General",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/evaluate",
     "description": "Evaluates a string expression and returns the result",
+    "tags": [],
     "returns": "Any",
     "constructor": "evaluate(var)",
     "params": [
@@ -1691,6 +1828,7 @@
     "class": "Constructors",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/Event",
     "description": "Creates an event that can be added to an object",
+    "tags": [],
     "returns": "Event",
     "constructor": "Event(ondate, tenor)",
     "params": [
@@ -1712,6 +1850,7 @@
     "class": "Constructors",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/Event",
     "description": "Creates an event that can be added to an object",
+    "tags": [],
     "returns": "Event",
     "constructor": "Event(time)",
     "params": [
@@ -1728,6 +1867,7 @@
     "class": "Constructors",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/EventCurve",
     "description": "Creates a new EventCurve",
+    "tags": [],
     "returns": "EventCurve",
     "constructor": "EventCurve(eventlist, calendar, property, tenor)",
     "params": [
@@ -1759,6 +1899,7 @@
     "class": "Constructors",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/EventTimeSeries",
     "description": "Creates a new Event TimeSeries using an EventList and the name of the property to use for the TimeSeries values",
+    "tags": [],
     "returns": "EventTimeSeries",
     "constructor": "EventTimeSeries(eventlist, property)",
     "params": [
@@ -1780,6 +1921,12 @@
     "class": "Numeric",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/exp",
     "description": "Returns Euler's number e raised to the power of a double value",
+    "tags": [
+      "curve",
+      "timeseries",
+      "scalar",
+      "list"
+    ],
     "returns": "Number",
     "constructor": "exp(data)",
     "params": [
@@ -1795,14 +1942,20 @@
     "category": "Construction: Functions that create variables",
     "class": "Constructors",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/ExpiryCalendar",
-    "description": "Reads an expiry Calendar",
+    "description": "Creates a new expiry Calendar",
+    "tags": [],
     "returns": "ExpiryCalendar",
-    "constructor": "ExpiryCalendar(code)",
+    "constructor": "ExpiryCalendar(holiday, delivery)",
     "params": [
       {
-        "name": "code",
-        "description": "The code for the calendar, e.g. DAILY",
-        "type": "String"
+        "name": "holiday",
+        "description": "The holiday or trading calendar to use with this expiry calendar. Can either be the name or a calendar or an actual calendar.",
+        "type": "Calendar or String"
+      },
+      {
+        "name": "delivery",
+        "description": "The delivery calendar to use with this expiry calendar. Can either be the name or a calendar or an actual calendar.",
+        "type": "Calendar or String"
       }
     ]
   },
@@ -1812,6 +1965,7 @@
     "class": "Constructors",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/ExpiryCalendar",
     "description": "Creates a new expiry Calendar",
+    "tags": [],
     "returns": "ExpiryCalendar",
     "constructor": "ExpiryCalendar(holiday)",
     "params": [
@@ -1823,11 +1977,29 @@
     ]
   },
   {
+    "name": "ExpiryCalendar",
+    "category": "Construction: Functions that create variables",
+    "class": "Constructors",
+    "link": "https://doc.opendatadsl.com/docs/odsl/function/ExpiryCalendar",
+    "description": "Reads an expiry Calendar",
+    "tags": [],
+    "returns": "ExpiryCalendar",
+    "constructor": "ExpiryCalendar(code)",
+    "params": [
+      {
+        "name": "code",
+        "description": "The code for the calendar, e.g. DAILY",
+        "type": "String"
+      }
+    ]
+  },
+  {
     "name": "ExportGroup",
     "category": "Construction: Functions that create variables",
     "class": "BeanConstructors",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/ExportGroup",
     "description": "Creates a new curve export group",
+    "tags": [],
     "returns": "ExportGroup",
     "constructor": "ExportGroup()",
     "params": []
@@ -1838,6 +2010,7 @@
     "class": "CurveInterpolation",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/extendCurve",
     "description": "Extends a curve by taking the last period and extending out the required number of years",
+    "tags": [],
     "returns": "Curve",
     "constructor": "extendCurve(input, years)",
     "params": [
@@ -1859,6 +2032,7 @@
     "class": "TimeseriesInterpolation",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/fill",
     "description": "Removes missing values by either filling them with values or removing them entirely",
+    "tags": [],
     "returns": "List or Timeseries",
     "constructor": "fill(input, method)",
     "params": [
@@ -1880,6 +2054,7 @@
     "class": "Constructors",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/FinancialExpiryCalendar",
     "description": "Creates a financial expiry Calendar",
+    "tags": [],
     "returns": "ExpiryCalendar",
     "constructor": "FinancialExpiryCalendar(code, holiday, cross, base, offset)",
     "params": [
@@ -1916,7 +2091,8 @@
     "class": "General",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/firstElement",
     "description": "",
-    "returns": "UNKNOWN",
+    "tags": [],
+    "returns": "",
     "constructor": "firstElement()",
     "params": []
   },
@@ -1926,7 +2102,8 @@
     "class": "Loader",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/firstElementOf",
     "description": "",
-    "returns": "UNKNOWN",
+    "tags": [],
+    "returns": "",
     "constructor": "firstElementOf()",
     "params": []
   },
@@ -1936,6 +2113,7 @@
     "class": "Constructors",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/FixedReport",
     "description": "Creates a new Fixed report configuration",
+    "tags": [],
     "returns": "Report",
     "constructor": "FixedReport()",
     "params": []
@@ -1946,6 +2124,7 @@
     "class": "Date",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/format",
     "description": "Converts a date into a string using the specified format",
+    "tags": [],
     "returns": "String",
     "constructor": "format(date, format)",
     "params": [
@@ -1967,7 +2146,8 @@
     "class": "Loader",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/formatDateLocale",
     "description": "",
-    "returns": "UNKNOWN",
+    "tags": [],
+    "returns": "",
     "constructor": "formatDateLocale()",
     "params": []
   },
@@ -1977,7 +2157,8 @@
     "class": "Loader",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/formatDates",
     "description": "",
-    "returns": "UNKNOWN",
+    "tags": [],
+    "returns": "",
     "constructor": "formatDates()",
     "params": []
   },
@@ -1987,7 +2168,8 @@
     "class": "Loader",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/formatDatesWithLocale",
     "description": "",
-    "returns": "UNKNOWN",
+    "tags": [],
+    "returns": "",
     "constructor": "formatDatesWithLocale()",
     "params": []
   },
@@ -1997,7 +2179,8 @@
     "class": "Loader",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/formatHarvestDates",
     "description": "",
-    "returns": "UNKNOWN",
+    "tags": [],
+    "returns": "",
     "constructor": "formatHarvestDates()",
     "params": []
   },
@@ -2007,8 +2190,20 @@
     "class": "Loader",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/formatListValues",
     "description": "",
-    "returns": "UNKNOWN",
+    "tags": [],
+    "returns": "",
     "constructor": "formatListValues()",
+    "params": []
+  },
+  {
+    "name": "formatNumericValues",
+    "category": "Loader: Functions that help with the ETL process",
+    "class": "Loader",
+    "link": "https://doc.opendatadsl.com/docs/odsl/function/formatNumericValues",
+    "description": "",
+    "tags": [],
+    "returns": "",
+    "constructor": "formatNumericValues()",
     "params": []
   },
   {
@@ -2017,6 +2212,7 @@
     "class": "String",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/formatString",
     "description": "Formats the string passed using the formatter.",
+    "tags": [],
     "returns": "String",
     "constructor": "formatString(format, str)",
     "params": [
@@ -2038,7 +2234,8 @@
     "class": "Loader",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/formatValue",
     "description": "",
-    "returns": "UNKNOWN",
+    "tags": [],
+    "returns": "",
     "constructor": "formatValue()",
     "params": []
   },
@@ -2048,7 +2245,8 @@
     "class": "Loader",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/formatValues",
     "description": "",
-    "returns": "UNKNOWN",
+    "tags": [],
+    "returns": "",
     "constructor": "formatValues()",
     "params": []
   },
@@ -2058,6 +2256,7 @@
     "class": "CurveInterpolation",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/forwardFillCurve",
     "description": "Fills any gaps by forward filling and missing periods",
+    "tags": [],
     "returns": "Curve",
     "constructor": "forwardFillCurve(input)",
     "params": [
@@ -2074,6 +2273,7 @@
     "class": "Statistics",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/geomean",
     "description": "Gets the geometric average value",
+    "tags": [],
     "returns": "Number",
     "constructor": "geomean(data)",
     "params": [
@@ -2090,6 +2290,7 @@
     "class": "GeoConstructors",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/GeometryCollection",
     "description": "Creates an empty GeometryCollection geometry object",
+    "tags": [],
     "returns": "GeometryCollection",
     "constructor": "GeometryCollection()",
     "params": []
@@ -2100,6 +2301,7 @@
     "class": "GeoConstructors",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/GeometryCollection",
     "description": "Creates a GeometryCollection geometry object",
+    "tags": [],
     "returns": "GeometryCollection",
     "constructor": "GeometryCollection()",
     "params": []
@@ -2110,6 +2312,7 @@
     "class": "DatasetMonitoring",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/getDataset",
     "description": "Gets the dataset information for the supplied dsid",
+    "tags": [],
     "returns": "Dataset",
     "constructor": "getDataset(dsid)",
     "params": [
@@ -2126,6 +2329,7 @@
     "class": "DatasetMonitoring",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/getDatasetDelivery",
     "description": "Gets the dataset delivery information for the supplied date",
+    "tags": [],
     "returns": "DatasetDelivery",
     "constructor": "getDatasetDelivery(dsid, date)",
     "params": [
@@ -2147,6 +2351,7 @@
     "class": "Statistics",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/GLSMultipleRegression",
     "description": "GLSMultipleLinearRegression provide least squares regression to fit the linear model:\n\nY=X*b+u\n\nwhere Y is an n-vector regressand, X is a [n,k] matrix whose k columns are called regressors, b is k-vector of regression parameters and u is an n-vector of error terms or residuals.\n\nGLSMultipleLinearRegression implements Generalized Least Squares.\n\nData for OLS models can be loaded in a single double[] array, consisting of concatenated rows of data, each containing the regressand (Y) value, followed by regressor values; or using a double[][] array with rows corresponding to observations. GLS models also require a double[][] array representing the covariance matrix of the error terms.",
+    "tags": [],
     "returns": "Object",
     "constructor": "GLSMultipleRegression(y, x, covariance)",
     "params": [
@@ -2173,6 +2378,7 @@
     "class": "Constructors",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/HolidayCalendar",
     "description": "Creates a new Holiday Calendar",
+    "tags": [],
     "returns": "Calendar",
     "constructor": "HolidayCalendar()",
     "params": []
@@ -2183,6 +2389,34 @@
     "class": "Constructors",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/HourlyBlockCalendar",
     "description": "Creates a new Hourly Block Calendar",
+    "tags": [],
+    "returns": "Calendar",
+    "constructor": "HourlyBlockCalendar(holiday, start, end)",
+    "params": [
+      {
+        "name": "holiday",
+        "description": "The holiday calendar which determines the days that observations are recorded (null = Daily)",
+        "type": "Calendar"
+      },
+      {
+        "name": "start",
+        "description": "The start of the start hour of the block (0 - 23)",
+        "type": "Numeric"
+      },
+      {
+        "name": "end",
+        "description": "The start of the end hour of the block (0 - 23)",
+        "type": "Numeric"
+      }
+    ]
+  },
+  {
+    "name": "HourlyBlockCalendar",
+    "category": "Construction: Functions that create variables",
+    "class": "Constructors",
+    "link": "https://doc.opendatadsl.com/docs/odsl/function/HourlyBlockCalendar",
+    "description": "Creates a new Hourly Block Calendar",
+    "tags": [],
     "returns": "Calendar",
     "constructor": "HourlyBlockCalendar(holiday, start, end, timezone)",
     "params": [
@@ -2209,37 +2443,12 @@
     ]
   },
   {
-    "name": "HourlyBlockCalendar",
-    "category": "Construction: Functions that create variables",
-    "class": "Constructors",
-    "link": "https://doc.opendatadsl.com/docs/odsl/function/HourlyBlockCalendar",
-    "description": "Creates a new Hourly Block Calendar",
-    "returns": "Calendar",
-    "constructor": "HourlyBlockCalendar(holiday, start, end)",
-    "params": [
-      {
-        "name": "holiday",
-        "description": "The holiday calendar which determines the days that observations are recorded (null = Daily)",
-        "type": "Calendar"
-      },
-      {
-        "name": "start",
-        "description": "The start of the start hour of the block (0 - 23)",
-        "type": "Numeric"
-      },
-      {
-        "name": "end",
-        "description": "The start of the end hour of the block (0 - 23)",
-        "type": "Numeric"
-      }
-    ]
-  },
-  {
     "name": "IdentityMatrix",
     "category": "Construction: Functions that create variables",
     "class": "Constructors",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/IdentityMatrix",
     "description": "Creates a new identity matrix of the given size",
+    "tags": [],
     "returns": "Matrix",
     "constructor": "IdentityMatrix(size)",
     "params": [
@@ -2256,6 +2465,7 @@
     "class": "Constructors",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/Index",
     "description": "Creates a new Database Index",
+    "tags": [],
     "returns": "Index",
     "constructor": "Index()",
     "params": []
@@ -2266,6 +2476,7 @@
     "class": "String",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/indexOf",
     "description": "Returns a int value that is a indexOf of a string.",
+    "tags": [],
     "returns": "int",
     "constructor": "indexOf(str1, str2)",
     "params": [
@@ -2287,7 +2498,8 @@
     "class": "Loader",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/initialiseList",
     "description": "",
-    "returns": "UNKNOWN",
+    "tags": [],
+    "returns": "",
     "constructor": "initialiseList()",
     "params": []
   },
@@ -2297,6 +2509,7 @@
     "class": "Constructors",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/InsightReport",
     "description": "Creates a new insight report configuration",
+    "tags": [],
     "returns": "Report",
     "constructor": "InsightReport()",
     "params": []
@@ -2307,84 +2520,7 @@
     "class": "Constructors",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/IntradayCalendar",
     "description": "Creates a new Intraday Calendar",
-    "returns": "Calendar",
-    "constructor": "IntradayCalendar(period, holiday)",
-    "params": [
-      {
-        "name": "period",
-        "description": "The periodicity of this calendar, e.g. 1h for hourly",
-        "type": "Duration"
-      },
-      {
-        "name": "holiday",
-        "description": "The holiday calendar which determines the days that observations are recorded",
-        "type": "Calendar"
-      }
-    ]
-  },
-  {
-    "name": "IntradayCalendar",
-    "category": "Construction: Functions that create variables",
-    "class": "Constructors",
-    "link": "https://doc.opendatadsl.com/docs/odsl/function/IntradayCalendar",
-    "description": "Creates a new Intraday Calendar",
-    "returns": "Calendar",
-    "constructor": "IntradayCalendar(period, holiday, withoutHours)",
-    "params": [
-      {
-        "name": "period",
-        "description": "The periodicity of this calendar, e.g. 1h for hourly",
-        "type": "Duration"
-      },
-      {
-        "name": "holiday",
-        "description": "The holiday calendar which determines the days that observations are recorded",
-        "type": "Calendar"
-      },
-      {
-        "name": "withoutHours",
-        "description": "A list of integers representing hours of the day to exclude from this calendar",
-        "type": "List"
-      }
-    ]
-  },
-  {
-    "name": "IntradayCalendar",
-    "category": "Construction: Functions that create variables",
-    "class": "Constructors",
-    "link": "https://doc.opendatadsl.com/docs/odsl/function/IntradayCalendar",
-    "description": "Creates a new Intraday Calendar",
-    "returns": "Calendar",
-    "constructor": "IntradayCalendar(period, holiday, withoutHours, timezone)",
-    "params": [
-      {
-        "name": "period",
-        "description": "The periodicity of this calendar, e.g. 1h for hourly",
-        "type": "Duration"
-      },
-      {
-        "name": "holiday",
-        "description": "The holiday calendar which determines the days that observations are recorded",
-        "type": "Calendar"
-      },
-      {
-        "name": "withoutHours",
-        "description": "A list of integers representing hours of the day to exclude from this calendar",
-        "type": "List"
-      },
-      {
-        "name": "timezone",
-        "description": "The timezone for this intraday calendar",
-        "type": "String"
-      }
-    ]
-  },
-  {
-    "name": "IntradayCalendar",
-    "category": "Construction: Functions that create variables",
-    "class": "Constructors",
-    "link": "https://doc.opendatadsl.com/docs/odsl/function/IntradayCalendar",
-    "description": "Creates a new Intraday Calendar",
+    "tags": [],
     "returns": "Calendar",
     "constructor": "IntradayCalendar(period)",
     "params": [
@@ -2401,6 +2537,7 @@
     "class": "Constructors",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/IntradayCalendar",
     "description": "Creates a new Intraday Calendar",
+    "tags": [],
     "returns": "Calendar",
     "constructor": "IntradayCalendar(period, holiday, withoutHours, timezone, useHolidays)",
     "params": [
@@ -2432,11 +2569,93 @@
     ]
   },
   {
+    "name": "IntradayCalendar",
+    "category": "Construction: Functions that create variables",
+    "class": "Constructors",
+    "link": "https://doc.opendatadsl.com/docs/odsl/function/IntradayCalendar",
+    "description": "Creates a new Intraday Calendar",
+    "tags": [],
+    "returns": "Calendar",
+    "constructor": "IntradayCalendar(period, holiday, withoutHours, timezone)",
+    "params": [
+      {
+        "name": "period",
+        "description": "The periodicity of this calendar, e.g. 1h for hourly",
+        "type": "Duration"
+      },
+      {
+        "name": "holiday",
+        "description": "The holiday calendar which determines the days that observations are recorded",
+        "type": "Calendar"
+      },
+      {
+        "name": "withoutHours",
+        "description": "A list of integers representing hours of the day to exclude from this calendar",
+        "type": "List"
+      },
+      {
+        "name": "timezone",
+        "description": "The timezone for this intraday calendar",
+        "type": "String"
+      }
+    ]
+  },
+  {
+    "name": "IntradayCalendar",
+    "category": "Construction: Functions that create variables",
+    "class": "Constructors",
+    "link": "https://doc.opendatadsl.com/docs/odsl/function/IntradayCalendar",
+    "description": "Creates a new Intraday Calendar",
+    "tags": [],
+    "returns": "Calendar",
+    "constructor": "IntradayCalendar(period, holiday, withoutHours)",
+    "params": [
+      {
+        "name": "period",
+        "description": "The periodicity of this calendar, e.g. 1h for hourly",
+        "type": "Duration"
+      },
+      {
+        "name": "holiday",
+        "description": "The holiday calendar which determines the days that observations are recorded",
+        "type": "Calendar"
+      },
+      {
+        "name": "withoutHours",
+        "description": "A list of integers representing hours of the day to exclude from this calendar",
+        "type": "List"
+      }
+    ]
+  },
+  {
+    "name": "IntradayCalendar",
+    "category": "Construction: Functions that create variables",
+    "class": "Constructors",
+    "link": "https://doc.opendatadsl.com/docs/odsl/function/IntradayCalendar",
+    "description": "Creates a new Intraday Calendar",
+    "tags": [],
+    "returns": "Calendar",
+    "constructor": "IntradayCalendar(period, holiday)",
+    "params": [
+      {
+        "name": "period",
+        "description": "The periodicity of this calendar, e.g. 1h for hourly",
+        "type": "Duration"
+      },
+      {
+        "name": "holiday",
+        "description": "The holiday calendar which determines the days that observations are recorded",
+        "type": "Calendar"
+      }
+    ]
+  },
+  {
     "name": "isDatasetComplete",
     "category": "Dataset Monitoring: Functions for interacting with the Dataset Monitoring Feature",
     "class": "DatasetMonitoring",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/isDatasetComplete",
     "description": "Checks to see if the supplied dataset is 100% complete for the supplied date",
+    "tags": [],
     "returns": "Boolean",
     "constructor": "isDatasetComplete(dsid, date)",
     "params": [
@@ -2458,6 +2677,7 @@
     "class": "String",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/isNumber",
     "description": "Returns true if a string is a  Number",
+    "tags": [],
     "returns": "Boolean",
     "constructor": "isNumber(str)",
     "params": [
@@ -2474,6 +2694,7 @@
     "class": "Constructors",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/ISODate",
     "description": "Creates a new Date variable from the supplied ISO Date formatted string",
+    "tags": [],
     "returns": "Date",
     "constructor": "ISODate(date)",
     "params": [
@@ -2490,6 +2711,7 @@
     "class": "String",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/json",
     "description": "Converts the input variable of any type to a JSON formatted string",
+    "tags": [],
     "returns": "String",
     "constructor": "json(var)",
     "params": [
@@ -2506,6 +2728,7 @@
     "class": "Statistics",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/kurtosis",
     "description": "Gets the kurtosis",
+    "tags": [],
     "returns": "Number",
     "constructor": "kurtosis(data)",
     "params": [
@@ -2522,7 +2745,8 @@
     "class": "General",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/lastElement",
     "description": "",
-    "returns": "UNKNOWN",
+    "tags": [],
+    "returns": "",
     "constructor": "lastElement()",
     "params": []
   },
@@ -2532,7 +2756,8 @@
     "class": "Loader",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/lastElementOf",
     "description": "",
-    "returns": "UNKNOWN",
+    "tags": [],
+    "returns": "",
     "constructor": "lastElementOf()",
     "params": []
   },
@@ -2542,6 +2767,7 @@
     "class": "String",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/lastIndexOf",
     "description": "Returns a int value that is a last IndexOf of a string.",
+    "tags": [],
     "returns": "int",
     "constructor": "lastIndexOf(str1, str2)",
     "params": [
@@ -2563,6 +2789,7 @@
     "class": "String",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/left",
     "description": "Creates a new string from the 'amount' leftmost characters of another string",
+    "tags": [],
     "returns": "String",
     "constructor": "left(str, amount)",
     "params": [
@@ -2584,6 +2811,7 @@
     "class": "String",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/length",
     "description": "Returns the length of the string",
+    "tags": [],
     "returns": "Int",
     "constructor": "length(str)",
     "params": [
@@ -2599,7 +2827,8 @@
     "category": "Geometry construction: Functions that create geometric variables",
     "class": "GeoConstructors",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/LineString",
-    "description": "Creates a LineString geometry object with the supplied list of coordinates",
+    "description": "Creates a LineString geometry object",
+    "tags": [],
     "returns": "GeoSpatial",
     "constructor": "LineString()",
     "params": []
@@ -2609,7 +2838,8 @@
     "category": "Geometry construction: Functions that create geometric variables",
     "class": "GeoConstructors",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/LineString",
-    "description": "Creates a LineString geometry object",
+    "description": "Creates a LineString geometry object with the supplied list of coordinates",
+    "tags": [],
     "returns": "GeoSpatial",
     "constructor": "LineString()",
     "params": []
@@ -2620,6 +2850,7 @@
     "class": "Constructors",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/Link",
     "description": "Creates a link that can be added to an item",
+    "tags": [],
     "returns": "Reference",
     "constructor": "Link()",
     "params": []
@@ -2630,6 +2861,7 @@
     "class": "Constructors",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/List",
     "description": "Creates a new List",
+    "tags": [],
     "returns": "List",
     "constructor": "List()",
     "params": []
@@ -2640,6 +2872,7 @@
     "class": "General",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/loadCalendars",
     "description": "Loads all known public and private calendars into memory",
+    "tags": [],
     "returns": "Void",
     "constructor": "loadCalendars()",
     "params": []
@@ -2650,6 +2883,7 @@
     "class": "General",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/loadTypes",
     "description": "Loads all known public and private types into memory",
+    "tags": [],
     "returns": "Void",
     "constructor": "loadTypes()",
     "params": []
@@ -2660,6 +2894,12 @@
     "class": "Numeric",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/log",
     "description": "Returns the natural logarithm (base e) of a double value",
+    "tags": [
+      "curve",
+      "timeseries",
+      "scalar",
+      "list"
+    ],
     "returns": "Number",
     "constructor": "log(data)",
     "params": [
@@ -2676,6 +2916,12 @@
     "class": "Numeric",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/log10",
     "description": "Returns the base 10 logarithm of a double value",
+    "tags": [
+      "curve",
+      "timeseries",
+      "scalar",
+      "list"
+    ],
     "returns": "Number",
     "constructor": "log10(data)",
     "params": [
@@ -2692,7 +2938,13 @@
     "class": "Numeric",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/log1p",
     "description": "Returns the natural logarithm of the sum of the argument and 1",
-    "returns": "Number, tags = {\"curve\",\"timeseries\",\"scalar\",\"list\"}",
+    "tags": [
+      "curve",
+      "timeseries",
+      "scalar",
+      "list"
+    ],
+    "returns": "Number",
     "constructor": "log1p(data)",
     "params": [
       {
@@ -2708,6 +2960,7 @@
     "class": "String",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/lower",
     "description": "Returns a copy of the passed in string with all the characters converted to lower case",
+    "tags": [],
     "returns": "String",
     "constructor": "lower(str)",
     "params": [
@@ -2724,7 +2977,8 @@
     "class": "Loader",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/matches",
     "description": "",
-    "returns": "UNKNOWN",
+    "tags": [],
+    "returns": "",
     "constructor": "matches()",
     "params": []
   },
@@ -2733,18 +2987,19 @@
     "category": "Construction: Functions that create variables",
     "class": "Constructors",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/Matrix",
-    "description": "Creates a new matrix from a list of labels",
+    "description": "Creates a new matrix",
+    "tags": [],
     "returns": "Matrix",
-    "constructor": "Matrix(labels, v)",
+    "constructor": "Matrix(x, y)",
     "params": [
       {
-        "name": "labels",
-        "description": "The labels to use",
-        "type": "List"
+        "name": "x",
+        "description": "The number of rows",
+        "type": "Number"
       },
       {
-        "name": "v",
-        "description": "The value to initialise the matrix with",
+        "name": "y",
+        "description": "The number of columns",
         "type": "Number"
       }
     ]
@@ -2755,6 +3010,7 @@
     "class": "Constructors",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/Matrix",
     "description": "Creates a new matrix, initialising all values to the provided value",
+    "tags": [],
     "returns": "Matrix",
     "constructor": "Matrix(y, x, v)",
     "params": [
@@ -2781,22 +3037,7 @@
     "class": "Constructors",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/Matrix",
     "description": "Creates a new matrix from a list of labels",
-    "returns": "Matrix",
-    "constructor": "Matrix(labels)",
-    "params": [
-      {
-        "name": "labels",
-        "description": "The labels to use",
-        "type": "List"
-      }
-    ]
-  },
-  {
-    "name": "Matrix",
-    "category": "Construction: Functions that create variables",
-    "class": "Constructors",
-    "link": "https://doc.opendatadsl.com/docs/odsl/function/Matrix",
-    "description": "Creates a new matrix from a list of labels",
+    "tags": [],
     "returns": "Matrix",
     "constructor": "Matrix(labels, v)",
     "params": [
@@ -2818,6 +3059,29 @@
     "class": "Constructors",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/Matrix",
     "description": "Creates a new matrix from a list of labels",
+    "tags": [],
+    "returns": "Matrix",
+    "constructor": "Matrix(labels, v)",
+    "params": [
+      {
+        "name": "labels",
+        "description": "The labels to use",
+        "type": "List"
+      },
+      {
+        "name": "v",
+        "description": "The value to initialise the matrix with",
+        "type": "Number"
+      }
+    ]
+  },
+  {
+    "name": "Matrix",
+    "category": "Construction: Functions that create variables",
+    "class": "Constructors",
+    "link": "https://doc.opendatadsl.com/docs/odsl/function/Matrix",
+    "description": "Creates a new matrix from a list of labels",
+    "tags": [],
     "returns": "Matrix",
     "constructor": "Matrix(labels)",
     "params": [
@@ -2833,19 +3097,15 @@
     "category": "Construction: Functions that create variables",
     "class": "Constructors",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/Matrix",
-    "description": "Creates a new matrix",
+    "description": "Creates a new matrix from a list of labels",
+    "tags": [],
     "returns": "Matrix",
-    "constructor": "Matrix(x, y)",
+    "constructor": "Matrix(labels)",
     "params": [
       {
-        "name": "x",
-        "description": "The number of rows",
-        "type": "Number"
-      },
-      {
-        "name": "y",
-        "description": "The number of columns",
-        "type": "Number"
+        "name": "labels",
+        "description": "The labels to use",
+        "type": "List"
       }
     ]
   },
@@ -2855,6 +3115,7 @@
     "class": "Statistics",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/max",
     "description": "Gets the highest value",
+    "tags": [],
     "returns": "Number",
     "constructor": "max(data)",
     "params": [
@@ -2871,6 +3132,7 @@
     "class": "Statistics",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/mean",
     "description": "Gets the arithmetic average value",
+    "tags": [],
     "returns": "Number",
     "constructor": "mean(data)",
     "params": [
@@ -2887,6 +3149,7 @@
     "class": "Constructors",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/Message",
     "description": "Creates a new coded message",
+    "tags": [],
     "returns": "Message",
     "constructor": "Message()",
     "params": []
@@ -2897,6 +3160,7 @@
     "class": "Introspection",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/methods",
     "description": "Returns the methods available for a given variable",
+    "tags": [],
     "returns": "List",
     "constructor": "methods(object)",
     "params": [
@@ -2908,11 +3172,120 @@
     ]
   },
   {
+    "name": "metric",
+    "category": "Metrics: Functions for extracting metrics from the platform",
+    "class": "Metric",
+    "link": "https://doc.opendatadsl.com/docs/odsl/function/metric",
+    "description": "Get a virtual metric timeseries",
+    "tags": [],
+    "returns": "TimeSeries",
+    "constructor": "metric(metric)",
+    "params": [
+      {
+        "name": "metric",
+        "description": "The metric id in the form provider/metric",
+        "type": "String"
+      }
+    ]
+  },
+  {
+    "name": "metric",
+    "category": "Metrics: Functions for extracting metrics from the platform",
+    "class": "Metric",
+    "link": "https://doc.opendatadsl.com/docs/odsl/function/metric",
+    "description": "Get a virtual metric timeseries",
+    "tags": [],
+    "returns": "TimeSeries",
+    "constructor": "metric(metric, calendar, observed, range)",
+    "params": [
+      {
+        "name": "metric",
+        "description": "The metric id in the form provider/metric",
+        "type": "String"
+      },
+      {
+        "name": "calendar",
+        "description": "The id of the calendar to aggregate the metrics to",
+        "type": "String"
+      },
+      {
+        "name": "observed",
+        "description": "The aggregation method to use; one of summed,averaged,high,low,beginning,end",
+        "type": "String"
+      },
+      {
+        "name": "range",
+        "description": "The date range expression",
+        "type": "String"
+      }
+    ]
+  },
+  {
+    "name": "metric",
+    "category": "Metrics: Functions for extracting metrics from the platform",
+    "class": "Metric",
+    "link": "https://doc.opendatadsl.com/docs/odsl/function/metric",
+    "description": "Get a virtual metric timeseries",
+    "tags": [],
+    "returns": "TimeSeries",
+    "constructor": "metric(metric, calendar, observed, range, filter)",
+    "params": [
+      {
+        "name": "metric",
+        "description": "The metric id in the form provider/metric",
+        "type": "String"
+      },
+      {
+        "name": "calendar",
+        "description": "The id of the calendar to aggregate the metrics to",
+        "type": "String"
+      },
+      {
+        "name": "observed",
+        "description": "The aggregation method to use; one of summed,averaged,high,low,beginning,end",
+        "type": "String"
+      },
+      {
+        "name": "range",
+        "description": "The date range expression",
+        "type": "String"
+      },
+      {
+        "name": "filter",
+        "description": "A filter expression to filter the metrics",
+        "type": "String"
+      }
+    ]
+  },
+  {
+    "name": "MetricTimeSeries",
+    "category": "Construction: Functions that create variables",
+    "class": "Constructors",
+    "link": "https://doc.opendatadsl.com/docs/odsl/function/MetricTimeSeries",
+    "description": "Creates a new Metric TimeSeries",
+    "tags": [],
+    "returns": "MetricTimeSeries",
+    "constructor": "MetricTimeSeries(provider, metric)",
+    "params": [
+      {
+        "name": "provider",
+        "description": "The metric provider",
+        "type": "String"
+      },
+      {
+        "name": "metric",
+        "description": "The name of the metric",
+        "type": "String"
+      }
+    ]
+  },
+  {
     "name": "min",
     "category": "Statistics: frameworks and implementations for basic Descriptive statistics, frequency distributions, bivariate regression, and t-, chi-square and ANOVA test statistics",
     "class": "Statistics",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/min",
     "description": "Gets the lowest value",
+    "tags": [],
     "returns": "Number",
     "constructor": "min(data)",
     "params": [
@@ -2929,6 +3302,7 @@
     "class": "Validation",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/missing",
     "description": "Checks for unexpected missing values in a TimeSeries",
+    "tags": [],
     "returns": "TimeSeries",
     "constructor": "missing(series)",
     "params": [
@@ -2945,6 +3319,7 @@
     "class": "Constructors",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/MonthlyCalendar",
     "description": "Creates a new Monthly Calendar",
+    "tags": [],
     "returns": "Calendar",
     "constructor": "MonthlyCalendar()",
     "params": []
@@ -2955,6 +3330,7 @@
     "class": "Constructors",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/MonthlyCalendar",
     "description": "Creates a new Monthly Calendar with a period specifier",
+    "tags": [],
     "returns": "Calendar",
     "constructor": "MonthlyCalendar(code, name, period)",
     "params": [
@@ -2981,6 +3357,7 @@
     "class": "GeoConstructors",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/MultiLineString",
     "description": "Creates an empty MultiLineString geometry object",
+    "tags": [],
     "returns": "GeoSpatial",
     "constructor": "MultiLineString()",
     "params": []
@@ -2991,6 +3368,7 @@
     "class": "GeoConstructors",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/MultiLineString",
     "description": "Creates an empty MultiLineString geometry object",
+    "tags": [],
     "returns": "GeoSpatial",
     "constructor": "MultiLineString()",
     "params": []
@@ -3001,6 +3379,7 @@
     "class": "GeoConstructors",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/MultiPoint",
     "description": "Creates a MultiPoint geometry object",
+    "tags": [],
     "returns": "GeoSpatial",
     "constructor": "MultiPoint()",
     "params": []
@@ -3011,6 +3390,7 @@
     "class": "GeoConstructors",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/MultiPoint",
     "description": "Creates a MultiPoint geometry object with the supplied list of coordinates",
+    "tags": [],
     "returns": "GeoSpatial",
     "constructor": "MultiPoint()",
     "params": []
@@ -3020,7 +3400,8 @@
     "category": "Geometry construction: Functions that create geometric variables",
     "class": "GeoConstructors",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/MultiPolygon",
-    "description": "Creates an empty MultiPolygon geometry object",
+    "description": "Creates a MultiPolygon geometry object with the supplied polygons",
+    "tags": [],
     "returns": "GeoSpatial",
     "constructor": "MultiPolygon()",
     "params": []
@@ -3030,7 +3411,8 @@
     "category": "Geometry construction: Functions that create geometric variables",
     "class": "GeoConstructors",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/MultiPolygon",
-    "description": "Creates a MultiPolygon geometry object with the supplied polygons",
+    "description": "Creates an empty MultiPolygon geometry object",
+    "tags": [],
     "returns": "GeoSpatial",
     "constructor": "MultiPolygon()",
     "params": []
@@ -3041,6 +3423,7 @@
     "class": "String",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/normalise",
     "description": "Returns a normalised string removing all accents of the string passed.",
+    "tags": [],
     "returns": "String",
     "constructor": "normalise(str)",
     "params": [
@@ -3057,6 +3440,9 @@
     "class": "Curve",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/normaliseCurve",
     "description": "Normalises a curve such that all the inputs average to 1",
+    "tags": [
+      "curve"
+    ],
     "returns": "Curve",
     "constructor": "normaliseCurve(input)",
     "params": [
@@ -3073,6 +3459,7 @@
     "class": "Constructors",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/Null",
     "description": "Creates a Null variable",
+    "tags": [],
     "returns": "Null",
     "constructor": "Null()",
     "params": []
@@ -3083,6 +3470,7 @@
     "class": "Constructors",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/Object",
     "description": "Creates a new Object of type #Object",
+    "tags": [],
     "returns": "Object",
     "constructor": "Object()",
     "params": []
@@ -3093,6 +3481,7 @@
     "class": "Constructors",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/Object",
     "description": "Creates a new Object of the specified type",
+    "tags": [],
     "returns": "Object",
     "constructor": "Object(type)",
     "params": [
@@ -3109,6 +3498,7 @@
     "class": "Constructors",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/ObjectId",
     "description": "Creates a unique object id",
+    "tags": [],
     "returns": "String",
     "constructor": "ObjectId()",
     "params": []
@@ -3119,6 +3509,7 @@
     "class": "Constructors",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/OffsetDailyCalendar",
     "description": "Creates a new Offset Daily Calendar",
+    "tags": [],
     "returns": "Calendar",
     "constructor": "OffsetDailyCalendar(timezone, dayOffset, hour)",
     "params": [
@@ -3145,6 +3536,7 @@
     "class": "Statistics",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/OLSMultipleRegression",
     "description": "OLSMultipleLinearRegression provide least squares regression to fit the linear model:\n\nY=X*b+u\n\nwhere Y is an n-vector regressand, X is a [n,k] matrix whose k columns are called regressors, b is k-vector of regression parameters and u is an n-vector of error terms or residuals.\n\nOLSMultipleLinearRegression provides Ordinary Least Squares Regression.\n\nData for OLS models can be loaded in a single double[] array, consisting of concatenated rows of data, each containing the regressand (Y) value, followed by regressor values; or using a double[][] array with rows corresponding to observations.",
+    "tags": [],
     "returns": "Object",
     "constructor": "OLSMultipleRegression(y, x)",
     "params": [
@@ -3166,6 +3558,7 @@
     "class": "TimeSeries",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/overlay",
     "description": "Returns a TimeSeries with all the non-missing values from other added to base",
+    "tags": [],
     "returns": "TimeSeries",
     "constructor": "overlay(base, other)",
     "params": [
@@ -3187,6 +3580,7 @@
     "class": "Date",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/parse",
     "description": "Converts a string into a date using the specified format",
+    "tags": [],
     "returns": "String",
     "constructor": "parse(date, format)",
     "params": [
@@ -3208,6 +3602,7 @@
     "class": "Date",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/parse",
     "description": "Converts a string into a date using the specified format and timezone",
+    "tags": [],
     "returns": "String",
     "constructor": "parse(date, format, tz)",
     "params": [
@@ -3234,6 +3629,7 @@
     "class": "Date",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/parseISODate",
     "description": "Converts a ISO Date format string into a date ",
+    "tags": [],
     "returns": "String",
     "constructor": "parseISODate(date)",
     "params": [
@@ -3250,6 +3646,7 @@
     "class": "TimeSeries",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/pct",
     "description": "Returns a TimeSeries with the percentage change values from one observation to the next",
+    "tags": [],
     "returns": "TimeSeries",
     "constructor": "pct(series)",
     "params": [
@@ -3266,6 +3663,7 @@
     "class": "Statistics",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/percentile",
     "description": "Gets the percentile",
+    "tags": [],
     "returns": "Number",
     "constructor": "percentile(data, percentile)",
     "params": [
@@ -3287,6 +3685,7 @@
     "class": "GeoConstructors",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/Point",
     "description": "Creates a single coordinate point",
+    "tags": [],
     "returns": "GeoSpatial",
     "constructor": "Point(longitude, latitude)",
     "params": [
@@ -3308,6 +3707,7 @@
     "class": "Constructors",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/Policy",
     "description": "Creates a new security policy",
+    "tags": [],
     "returns": "Policy",
     "constructor": "Policy()",
     "params": []
@@ -3317,7 +3717,8 @@
     "category": "Geometry construction: Functions that create geometric variables",
     "class": "GeoConstructors",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/Polygon",
-    "description": "Creates a empty Polygon geometry object",
+    "description": "Creates a Polygon geometry object with a single ring containing the supplied coordinates",
+    "tags": [],
     "returns": "GeoSpatial",
     "constructor": "Polygon()",
     "params": []
@@ -3327,7 +3728,8 @@
     "category": "Geometry construction: Functions that create geometric variables",
     "class": "GeoConstructors",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/Polygon",
-    "description": "Creates a Polygon geometry object with a single ring containing the supplied coordinates",
+    "description": "Creates a empty Polygon geometry object",
+    "tags": [],
     "returns": "GeoSpatial",
     "constructor": "Polygon()",
     "params": []
@@ -3338,6 +3740,7 @@
     "class": "GeoConstructors",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/Polygon",
     "description": "Creates a Polygon geometry object with a multiple rings containing the supplied geometries",
+    "tags": [],
     "returns": "GeoSpatial",
     "constructor": "Polygon()",
     "params": []
@@ -3348,6 +3751,7 @@
     "class": "Statistics",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/popvar",
     "description": "Gets the population variance",
+    "tags": [],
     "returns": "Number",
     "constructor": "popvar(data)",
     "params": [
@@ -3364,6 +3768,12 @@
     "class": "Numeric",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/pow",
     "description": "Returns the value of the first argument raised to the power of the second argument",
+    "tags": [
+      "curve",
+      "timeseries",
+      "scalar",
+      "list"
+    ],
     "returns": "Number",
     "constructor": "pow(data, power)",
     "params": [
@@ -3380,11 +3790,31 @@
     ]
   },
   {
+    "name": "priority",
+    "category": "Curve: Forward curve functions",
+    "class": "Curve",
+    "link": "https://doc.opendatadsl.com/docs/odsl/function/priority",
+    "description": "Adds tenors from a list of curves in order of priority",
+    "tags": [
+      "curve"
+    ],
+    "returns": "Curve",
+    "constructor": "priority(curves)",
+    "params": [
+      {
+        "name": "curves",
+        "description": "A list of curves in order of priority",
+        "type": "List of Curves"
+      }
+    ]
+  },
+  {
     "name": "Process",
     "category": "Construction: Functions that create variables",
     "class": "Constructors",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/Process",
     "description": "Creates a new Process",
+    "tags": [],
     "returns": "Process",
     "constructor": "Process()",
     "params": []
@@ -3395,6 +3825,7 @@
     "class": "Introspection",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/properties",
     "description": "Returns an array of Strings that gives information about the properties on a variable",
+    "tags": [],
     "returns": "List(String)",
     "constructor": "properties(object)",
     "params": [
@@ -3411,6 +3842,7 @@
     "class": "Statistics",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/quadmean",
     "description": "Gets the quadratic average value",
+    "tags": [],
     "returns": "Number",
     "constructor": "quadmean(data)",
     "params": [
@@ -3427,6 +3859,7 @@
     "class": "BeanConstructors",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/QualityGroup",
     "description": "Creates a new curve quality group",
+    "tags": [],
     "returns": "QualityGroup",
     "constructor": "QualityGroup()",
     "params": []
@@ -3437,6 +3870,7 @@
     "class": "Constructors",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/QuarterlyCalendar",
     "description": "Creates a new Quarterly Calendar",
+    "tags": [],
     "returns": "Calendar",
     "constructor": "QuarterlyCalendar()",
     "params": []
@@ -3447,6 +3881,7 @@
     "class": "BeanConstructors",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/Queue",
     "description": "Creates a new queue",
+    "tags": [],
     "returns": "Queue",
     "constructor": "Queue(name)",
     "params": [
@@ -3463,6 +3898,7 @@
     "class": "DataGeneration",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/random",
     "description": "Creates a random number between 0 and 1",
+    "tags": [],
     "returns": "Scalar",
     "constructor": "random()",
     "params": []
@@ -3473,6 +3909,7 @@
     "class": "DataGeneration",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/randomInteger",
     "description": "Creates a random integer between 0 and the supplied number - 1",
+    "tags": [],
     "returns": "Scalar",
     "constructor": "randomInteger(var)",
     "params": [
@@ -3489,6 +3926,7 @@
     "class": "General",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/ref",
     "description": "Creates a reference to a variable",
+    "tags": [],
     "returns": "Reference",
     "constructor": "ref(Service, Id)",
     "params": [
@@ -3510,6 +3948,7 @@
     "class": "General",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/ref",
     "description": "Creates a reference to a variable",
+    "tags": [],
     "returns": "Reference",
     "constructor": "ref(var)",
     "params": [
@@ -3526,6 +3965,7 @@
     "class": "String",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/remove",
     "description": "Removes all the characters according to the regex parameter from the passed in string",
+    "tags": [],
     "returns": "String",
     "constructor": "remove(str, regex)",
     "params": [
@@ -3547,7 +3987,8 @@
     "class": "Loader",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/removeEmpty",
     "description": "",
-    "returns": "UNKNOWN",
+    "tags": [],
+    "returns": "",
     "constructor": "removeEmpty()",
     "params": []
   },
@@ -3557,6 +3998,7 @@
     "class": "String",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/replace",
     "description": "Replaces each substring of the input string that matches the literal match string with the specified literal replacement string",
+    "tags": [],
     "returns": "String",
     "constructor": "replace(str, match, replacement)",
     "params": [
@@ -3583,6 +4025,7 @@
     "class": "String",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/replaceAll",
     "description": "Replaces all the characters according to the regex parameter from the passed in string with the passed in literal replacement string",
+    "tags": [],
     "returns": "String",
     "constructor": "replaceAll(str, regex, replacement)",
     "params": [
@@ -3609,7 +4052,8 @@
     "class": "General",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/replaceElements",
     "description": "",
-    "returns": "UNKNOWN",
+    "tags": [],
+    "returns": "",
     "constructor": "replaceElements()",
     "params": []
   },
@@ -3619,7 +4063,8 @@
     "class": "Loader",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/replaceEmptyValues",
     "description": "",
-    "returns": "UNKNOWN",
+    "tags": [],
+    "returns": "",
     "constructor": "replaceEmptyValues()",
     "params": []
   },
@@ -3629,7 +4074,8 @@
     "class": "Loader",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/replaceValues",
     "description": "",
-    "returns": "UNKNOWN",
+    "tags": [],
+    "returns": "",
     "constructor": "replaceValues()",
     "params": []
   },
@@ -3639,6 +4085,7 @@
     "class": "Constructors",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/Report",
     "description": "Creates a new report configuration",
+    "tags": [],
     "returns": "Report",
     "constructor": "Report()",
     "params": []
@@ -3649,6 +4096,7 @@
     "class": "Constructors",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/ReportCreator",
     "description": "Creates a new report creator",
+    "tags": [],
     "returns": "ReportCreator",
     "constructor": "ReportCreator()",
     "params": []
@@ -3659,7 +4107,8 @@
     "class": "Loader",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/reverseList",
     "description": "",
-    "returns": "UNKNOWN",
+    "tags": [],
+    "returns": "",
     "constructor": "reverseList()",
     "params": []
   },
@@ -3669,6 +4118,7 @@
     "class": "Constructors",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/Row",
     "description": "Creates a new Row",
+    "tags": [],
     "returns": "Row",
     "constructor": "Row()",
     "params": []
@@ -3679,6 +4129,7 @@
     "class": "TimeSeriesScaling",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/scale",
     "description": "Scales a TimeSeries to the supplied calendar using the observed setting on the TimeSeries or the global observed setting",
+    "tags": [],
     "returns": "TimeSeries",
     "constructor": "scale(input, calendar)",
     "params": [
@@ -3700,6 +4151,7 @@
     "class": "TimeSeriesScaling",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/scale",
     "description": "Scales a TimeSeries to the supplied calendar using the observed setting on the TimeSeries or the global observed setting",
+    "tags": [],
     "returns": "TimeSeries",
     "constructor": "scale(input, calendar, observed)",
     "params": [
@@ -3726,6 +4178,7 @@
     "class": "TimeSeriesScaling",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/scale",
     "description": "Scales a TimeSeries to the supplied calendar using the observed setting on the TimeSeries or the global observed setting",
+    "tags": [],
     "returns": "TimeSeries",
     "constructor": "scale(input, calendar, observed, distribution)",
     "params": [
@@ -3757,6 +4210,7 @@
     "class": "Constructors",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/Script",
     "description": "Creates a new Script",
+    "tags": [],
     "returns": "Script",
     "constructor": "Script()",
     "params": []
@@ -3767,6 +4221,7 @@
     "class": "Constructors",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/Secret",
     "description": "Creates a new Secret Value",
+    "tags": [],
     "returns": "Secret",
     "constructor": "Secret(value)",
     "params": [
@@ -3778,11 +4233,36 @@
     ]
   },
   {
+    "name": "sequence",
+    "category": "TimeSeries: TimeSeries Functions",
+    "class": "TimeSeries",
+    "link": "https://doc.opendatadsl.com/docs/odsl/function/sequence",
+    "description": "Returns a TimeSeries with all the non-missing values from other added to base",
+    "tags": [],
+    "returns": "TimeSeries",
+    "constructor": "sequence(base, other)",
+    "params": [
+      {
+        "name": "base",
+        "description": "The base TimeSeries to use as the source",
+        "type": "TimeSeries"
+      },
+      {
+        "name": "other",
+        "description": "The TimeSeries to overlay on top of the base, all non-missing values from this TimeSeries will be added to missing values in base",
+        "type": "TimeSeries"
+      }
+    ]
+  },
+  {
     "name": "shape",
     "category": "Curve: Forward curve functions",
     "class": "Curve",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/shape",
     "description": "Simple shaping algorithm used to shape a monthly curve",
+    "tags": [
+      "curve"
+    ],
     "returns": "Curve",
     "constructor": "shape(input)",
     "params": [
@@ -3799,6 +4279,7 @@
     "class": "TimeSeries",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/shift",
     "description": "Returns a TimeSeries that is shifted in time by the number of specified observations",
+    "tags": [],
     "returns": "TimeSeries",
     "constructor": "shift(series, observations)",
     "params": [
@@ -3820,6 +4301,7 @@
     "class": "Constructors",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/SimpleObject",
     "description": "Creates a new SimpleObject or JSON Document",
+    "tags": [],
     "returns": "SimpleObject",
     "constructor": "SimpleObject()",
     "params": []
@@ -3830,6 +4312,7 @@
     "class": "Statistics",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/simpleRegression",
     "description": "Provides ordinary least squares regression with one independent variable estimating the linear model:\n\ny = intercept + slope * x\n\nor\n\ny = slope * x\n\nStandard errors for intercept and slope are available as well as ANOVA, r-square and Pearson's r statistics.\n\nObservations (x,y pairs) can be added to the model one at a time or they can be provided in a 2-dimensional array. The observations are not stored in memory, so there is no limit to the number of observations that can be added to the model.",
+    "tags": [],
     "returns": "Object",
     "constructor": "simpleRegression(data)",
     "params": [
@@ -3846,6 +4329,7 @@
     "class": "Statistics",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/simpleRegression",
     "description": "Provides ordinary least squares regression with one independent variable estimating the linear model:\n\ny = intercept + slope * x\n\nor\n\ny = slope * x\n\nStandard errors for intercept and slope are available as well as ANOVA, r-square and Pearson's r statistics.\n\nObservations (x,y pairs) can be added to the model one at a time or they can be provided in a 2-dimensional array. The observations are not stored in memory, so there is no limit to the number of observations that can be added to the model.",
+    "tags": [],
     "returns": "Object",
     "constructor": "simpleRegression(data)",
     "params": [
@@ -3862,6 +4346,12 @@
     "class": "Numeric",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/sin",
     "description": "Returns the trigonometric sine of an angle",
+    "tags": [
+      "curve",
+      "timeseries",
+      "scalar",
+      "list"
+    ],
     "returns": "Number",
     "constructor": "sin(data)",
     "params": [
@@ -3878,6 +4368,12 @@
     "class": "Numeric",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/sinh",
     "description": "Returns the hyperbolic sine of a double value",
+    "tags": [
+      "curve",
+      "timeseries",
+      "scalar",
+      "list"
+    ],
     "returns": "Number",
     "constructor": "sinh(data)",
     "params": [
@@ -3894,6 +4390,7 @@
     "class": "Statistics",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/skew",
     "description": "Gets the skewness",
+    "tags": [],
     "returns": "Number",
     "constructor": "skew(data)",
     "params": [
@@ -3910,6 +4407,7 @@
     "class": "Statistics",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/sma",
     "description": "A simple moving average",
+    "tags": [],
     "returns": "TimeSeries",
     "constructor": "sma(data, window)",
     "params": [
@@ -3931,6 +4429,7 @@
     "class": "Constructors",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/SmartCurve",
     "description": "Creates a new Smart Curve",
+    "tags": [],
     "returns": "SmartCurve",
     "constructor": "SmartCurve()",
     "params": []
@@ -3941,6 +4440,7 @@
     "class": "Constructors",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/SmartCurve",
     "description": "Creates a new Smart Curve using a base curve and expression",
+    "tags": [],
     "returns": "SmartCurve",
     "constructor": "SmartCurve(base, expression)",
     "params": [
@@ -3962,6 +4462,46 @@
     "class": "Constructors",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/SmartTimeSeries",
     "description": "Creates a new Smart TimeSeries using a base TimeSeries and expression",
+    "tags": [],
+    "returns": "SmartTimeSeries",
+    "constructor": "SmartTimeSeries(base, expression)",
+    "params": [
+      {
+        "name": "base",
+        "description": "The BASE TimeSeries this curve uses for Start Date and Calendar",
+        "type": "String, TimeSeries or Ref"
+      },
+      {
+        "name": "expression",
+        "description": "The expression used to generate the TimeSeries",
+        "type": "String"
+      }
+    ]
+  },
+  {
+    "name": "SmartTimeSeries",
+    "category": "Construction: Functions that create variables",
+    "class": "Constructors",
+    "link": "https://doc.opendatadsl.com/docs/odsl/function/SmartTimeSeries",
+    "description": "Creates a new Smart TimeSeries using an expression",
+    "tags": [],
+    "returns": "SmartTimeSeries",
+    "constructor": "SmartTimeSeries(expression)",
+    "params": [
+      {
+        "name": "expression",
+        "description": "The expression used to generate the TimeSeries",
+        "type": "String"
+      }
+    ]
+  },
+  {
+    "name": "SmartTimeSeries",
+    "category": "Construction: Functions that create variables",
+    "class": "Constructors",
+    "link": "https://doc.opendatadsl.com/docs/odsl/function/SmartTimeSeries",
+    "description": "Creates a new Smart TimeSeries using a base TimeSeries and expression",
+    "tags": [],
     "returns": "SmartTimeSeries",
     "constructor": "SmartTimeSeries(start, calendar, expression)",
     "params": [
@@ -3983,48 +4523,12 @@
     ]
   },
   {
-    "name": "SmartTimeSeries",
-    "category": "Construction: Functions that create variables",
-    "class": "Constructors",
-    "link": "https://doc.opendatadsl.com/docs/odsl/function/SmartTimeSeries",
-    "description": "Creates a new Smart TimeSeries using an expression",
-    "returns": "SmartTimeSeries",
-    "constructor": "SmartTimeSeries(expression)",
-    "params": [
-      {
-        "name": "expression",
-        "description": "The expression used to generate the TimeSeries",
-        "type": "String"
-      }
-    ]
-  },
-  {
-    "name": "SmartTimeSeries",
-    "category": "Construction: Functions that create variables",
-    "class": "Constructors",
-    "link": "https://doc.opendatadsl.com/docs/odsl/function/SmartTimeSeries",
-    "description": "Creates a new Smart TimeSeries using a base TimeSeries and expression",
-    "returns": "SmartTimeSeries",
-    "constructor": "SmartTimeSeries(base, expression)",
-    "params": [
-      {
-        "name": "base",
-        "description": "The BASE TimeSeries this curve uses for Start Date and Calendar",
-        "type": "String, TimeSeries or Ref"
-      },
-      {
-        "name": "expression",
-        "description": "The expression used to generate the TimeSeries",
-        "type": "String"
-      }
-    ]
-  },
-  {
     "name": "Sphere",
     "category": "Geometry construction: Functions that create geometric variables",
     "class": "GeoConstructors",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/Sphere",
     "description": "Creates a centerSphere geometry object used in geospatial queries",
+    "tags": [],
     "returns": "GeoSpatial",
     "constructor": "Sphere()",
     "params": []
@@ -4035,6 +4539,7 @@
     "class": "GeoConstructors",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/Sphere",
     "description": "Creates a nearSphere geometry object used in geospatial queries",
+    "tags": [],
     "returns": "GeoSpatial",
     "constructor": "Sphere()",
     "params": []
@@ -4045,6 +4550,7 @@
     "class": "String",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/split",
     "description": "Splits the string passed by the separator.",
+    "tags": [],
     "returns": "List",
     "constructor": "split(str, sep)",
     "params": [
@@ -4066,6 +4572,12 @@
     "class": "Numeric",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/sqrt",
     "description": "Returns the correctly rounded positive square root of a double value",
+    "tags": [
+      "curve",
+      "timeseries",
+      "scalar",
+      "list"
+    ],
     "returns": "Number",
     "constructor": "sqrt(data)",
     "params": [
@@ -4082,6 +4594,7 @@
     "class": "String",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/startsWith",
     "description": "Tests to see if the first string starts with the specified prefix. If either the string or the prefix are null, it returns false",
+    "tags": [],
     "returns": "Boolean",
     "constructor": "startsWith(str, prefix)",
     "params": [
@@ -4103,6 +4616,7 @@
     "class": "Statistics",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/stdev",
     "description": "Gets the standard deviation",
+    "tags": [],
     "returns": "Number",
     "constructor": "stdev(data)",
     "params": [
@@ -4119,6 +4633,7 @@
     "class": "Constructors",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/String",
     "description": "Creates a new string scalar using the supplied text",
+    "tags": [],
     "returns": "String",
     "constructor": "String(text)",
     "params": [
@@ -4135,6 +4650,7 @@
     "class": "BeanConstructors",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/Subscription",
     "description": "Creates a new subscription",
+    "tags": [],
     "returns": "Subscription",
     "constructor": "Subscription()",
     "params": []
@@ -4145,6 +4661,7 @@
     "class": "String",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/substring",
     "description": "Returns a string that is a substring of another string. The substring begins with the character at the specified index (counting from 0) and extends to the character at the end index -1. If the end index is entered as -1, the substring ends as the last character in the input string.",
+    "tags": [],
     "returns": "String",
     "constructor": "substring(str, beginIndex, endIndex)",
     "params": [
@@ -4171,6 +4688,7 @@
     "class": "Statistics",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/sum",
     "description": "Gets the sum of the values",
+    "tags": [],
     "returns": "Number",
     "constructor": "sum(data)",
     "params": [
@@ -4187,6 +4705,7 @@
     "class": "Statistics",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/sumsq",
     "description": "Gets the sum of the squares",
+    "tags": [],
     "returns": "Number",
     "constructor": "sumsq(data)",
     "params": [
@@ -4203,6 +4722,7 @@
     "class": "Constructors",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/Table",
     "description": "Creates a new Table",
+    "tags": [],
     "returns": "Table",
     "constructor": "Table()",
     "params": []
@@ -4213,6 +4733,12 @@
     "class": "Numeric",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/tan",
     "description": "Returns the trigonometric tangent of an angle",
+    "tags": [
+      "curve",
+      "timeseries",
+      "scalar",
+      "list"
+    ],
     "returns": "Number",
     "constructor": "tan(data)",
     "params": [
@@ -4229,6 +4755,12 @@
     "class": "Numeric",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/tanh",
     "description": "Returns the hyperbolic tangent of a double value",
+    "tags": [
+      "curve",
+      "timeseries",
+      "scalar",
+      "list"
+    ],
     "returns": "Number",
     "constructor": "tanh(data)",
     "params": [
@@ -4245,6 +4777,7 @@
     "class": "Constructors",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/Task",
     "description": "Creates a new user task",
+    "tags": [],
     "returns": "Task",
     "constructor": "Task()",
     "params": []
@@ -4254,13 +4787,14 @@
     "category": "Construction: Functions that create variables",
     "class": "Constructors",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/TimeOfDay",
-    "description": "Creates a new TimeOfDay variable using the supplied Stirng in the format hh:mm",
+    "description": "Creates a new TimeOfDay variable using the supplied String in the format [+]hh:mm [tz]",
+    "tags": [],
     "returns": "TimeOfDay",
     "constructor": "TimeOfDay(time)",
     "params": [
       {
         "name": "time",
-        "description": "The time of day in the format hh:mm",
+        "description": "The time of day in the format [+]hh:mm [tz]",
         "type": "String"
       }
     ]
@@ -4271,6 +4805,103 @@
     "class": "Constructors",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/TimeSeries",
     "description": "Creates a new TimeSeries variable",
+    "tags": [],
+    "returns": "TimeSeries",
+    "constructor": "TimeSeries(start, Calendar, value, dataType)",
+    "params": [
+      {
+        "name": "start",
+        "description": "The start date/time for this TimeSeries",
+        "type": "Scalar"
+      },
+      {
+        "name": "Calendar",
+        "description": "The calendar to use for this TimeSeries",
+        "type": "Scalar or Calendar"
+      },
+      {
+        "name": "value",
+        "description": "The first value of this TimeSeries",
+        "type": "Scalar"
+      },
+      {
+        "name": "dataType",
+        "description": "Data type of TimeSeries",
+        "type": "Scalar"
+      }
+    ]
+  },
+  {
+    "name": "TimeSeries",
+    "category": "Construction: Functions that create variables",
+    "class": "Constructors",
+    "link": "https://doc.opendatadsl.com/docs/odsl/function/TimeSeries",
+    "description": "Creates a new TimeSeries variable",
+    "tags": [],
+    "returns": "TimeSeries",
+    "constructor": "TimeSeries(start, Calendar, value)",
+    "params": [
+      {
+        "name": "start",
+        "description": "The start date/time for this TimeSeries",
+        "type": "Scalar"
+      },
+      {
+        "name": "Calendar",
+        "description": "The calendar to use for this TimeSeries",
+        "type": "Scalar or Calendar"
+      },
+      {
+        "name": "value",
+        "description": "The first value of this TimeSeries",
+        "type": "Scalar"
+      }
+    ]
+  },
+  {
+    "name": "TimeSeries",
+    "category": "Construction: Functions that create variables",
+    "class": "Constructors",
+    "link": "https://doc.opendatadsl.com/docs/odsl/function/TimeSeries",
+    "description": "Creates a new TimeSeries variable",
+    "tags": [],
+    "returns": "TimeSeries",
+    "constructor": "TimeSeries(start, end, Calendar, value, dataType)",
+    "params": [
+      {
+        "name": "start",
+        "description": "Set of start date/time for this TimeSeries",
+        "type": "List"
+      },
+      {
+        "name": "end",
+        "description": "Set of end date/time for this TimeSeries",
+        "type": "List"
+      },
+      {
+        "name": "Calendar",
+        "description": "The calendar to use for this TimeSeries",
+        "type": "Scalar or Calendar"
+      },
+      {
+        "name": "value",
+        "description": "All the values of this TimeSeries",
+        "type": "List"
+      },
+      {
+        "name": "dataType",
+        "description": "Data type of TimeSeries",
+        "type": "Scalar"
+      }
+    ]
+  },
+  {
+    "name": "TimeSeries",
+    "category": "Construction: Functions that create variables",
+    "class": "Constructors",
+    "link": "https://doc.opendatadsl.com/docs/odsl/function/TimeSeries",
+    "description": "Creates a new TimeSeries variable",
+    "tags": [],
     "returns": "TimeSeries",
     "constructor": "TimeSeries(start, Calendar, intervalPositions, value, dataType, positionCalendar)",
     "params": [
@@ -4312,6 +4943,7 @@
     "class": "Constructors",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/TimeSeries",
     "description": "Creates a new TimeSeries variable",
+    "tags": [],
     "returns": "TimeSeries",
     "constructor": "TimeSeries(calendar)",
     "params": [
@@ -4328,6 +4960,7 @@
     "class": "Constructors",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/TimeSeries",
     "description": "Creates a new TimeSeries variable",
+    "tags": [],
     "returns": "TimeSeries",
     "constructor": "TimeSeries(calendar, dataType)",
     "params": [
@@ -4344,104 +4977,12 @@
     ]
   },
   {
-    "name": "TimeSeries",
-    "category": "Construction: Functions that create variables",
-    "class": "Constructors",
-    "link": "https://doc.opendatadsl.com/docs/odsl/function/TimeSeries",
-    "description": "Creates a new TimeSeries variable",
-    "returns": "TimeSeries",
-    "constructor": "TimeSeries(start, end, Calendar, value, dataType)",
-    "params": [
-      {
-        "name": "start",
-        "description": "Set of start date/time for this TimeSeries",
-        "type": "List"
-      },
-      {
-        "name": "end",
-        "description": "Set of end date/time for this TimeSeries",
-        "type": "List"
-      },
-      {
-        "name": "Calendar",
-        "description": "The calendar to use for this TimeSeries",
-        "type": "Scalar or Calendar"
-      },
-      {
-        "name": "value",
-        "description": "All the values of this TimeSeries",
-        "type": "List"
-      },
-      {
-        "name": "dataType",
-        "description": "Data type of TimeSeries",
-        "type": "Scalar"
-      }
-    ]
-  },
-  {
-    "name": "TimeSeries",
-    "category": "Construction: Functions that create variables",
-    "class": "Constructors",
-    "link": "https://doc.opendatadsl.com/docs/odsl/function/TimeSeries",
-    "description": "Creates a new TimeSeries variable",
-    "returns": "TimeSeries",
-    "constructor": "TimeSeries(start, Calendar, value)",
-    "params": [
-      {
-        "name": "start",
-        "description": "The start date/time for this TimeSeries",
-        "type": "Scalar"
-      },
-      {
-        "name": "Calendar",
-        "description": "The calendar to use for this TimeSeries",
-        "type": "Scalar or Calendar"
-      },
-      {
-        "name": "value",
-        "description": "The first value of this TimeSeries",
-        "type": "Scalar"
-      }
-    ]
-  },
-  {
-    "name": "TimeSeries",
-    "category": "Construction: Functions that create variables",
-    "class": "Constructors",
-    "link": "https://doc.opendatadsl.com/docs/odsl/function/TimeSeries",
-    "description": "Creates a new TimeSeries variable",
-    "returns": "TimeSeries",
-    "constructor": "TimeSeries(start, Calendar, value, dataType)",
-    "params": [
-      {
-        "name": "start",
-        "description": "The start date/time for this TimeSeries",
-        "type": "Scalar"
-      },
-      {
-        "name": "Calendar",
-        "description": "The calendar to use for this TimeSeries",
-        "type": "Scalar or Calendar"
-      },
-      {
-        "name": "value",
-        "description": "The first value of this TimeSeries",
-        "type": "Scalar"
-      },
-      {
-        "name": "dataType",
-        "description": "Data type of TimeSeries",
-        "type": "Scalar"
-      }
-    ]
-  },
-  {
     "name": "TimeStamp",
     "category": "Construction: Functions that create variables",
     "class": "Constructors",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/TimeStamp",
     "description": "Creates a new Date variable as the current date and time",
+    "tags": [],
     "returns": "Date",
     "constructor": "TimeStamp()",
     "params": []
@@ -4452,6 +4993,12 @@
     "class": "Numeric",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/toDegrees",
     "description": "Converts an angle measured in radians to an approximately equivalent angle measured in degrees",
+    "tags": [
+      "curve",
+      "timeseries",
+      "scalar",
+      "list"
+    ],
     "returns": "Number",
     "constructor": "toDegrees(data)",
     "params": [
@@ -4468,6 +5015,7 @@
     "class": "Conversion",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/toInt",
     "description": "Converts any input number to an integer",
+    "tags": [],
     "returns": "Scalar",
     "constructor": "toInt(var)",
     "params": [
@@ -4484,7 +5032,8 @@
     "class": "Loader",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/toPropertySet",
     "description": "",
-    "returns": "UNKNOWN",
+    "tags": [],
+    "returns": "",
     "constructor": "toPropertySet()",
     "params": []
   },
@@ -4494,6 +5043,12 @@
     "class": "Numeric",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/toRadians",
     "description": "Converts an angle measured in degrees to an approximately equivalent angle measured in radians",
+    "tags": [
+      "curve",
+      "timeseries",
+      "scalar",
+      "list"
+    ],
     "returns": "Number",
     "constructor": "toRadians(data)",
     "params": [
@@ -4510,6 +5065,7 @@
     "class": "String",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/trim",
     "description": "Returns a string with any space characters from the start or end of the string removed",
+    "tags": [],
     "returns": "String",
     "constructor": "trim()",
     "params": []
@@ -4520,6 +5076,7 @@
     "class": "Introspection",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/typeOf",
     "description": "Returns a String with the type name of a variable",
+    "tags": [],
     "returns": "String",
     "constructor": "typeOf(object)",
     "params": [
@@ -4536,6 +5093,7 @@
     "class": "General",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/uid",
     "description": "Generates a unique ID",
+    "tags": [],
     "returns": "String",
     "constructor": "uid()",
     "params": []
@@ -4546,6 +5104,7 @@
     "class": "String",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/upper",
     "description": "Returns a copy of the passed in string with all the characters converted to UPPER case",
+    "tags": [],
     "returns": "String",
     "constructor": "upper(str)",
     "params": [
@@ -4562,6 +5121,7 @@
     "class": "Statistics",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/var",
     "description": "Gets the variance",
+    "tags": [],
     "returns": "Number",
     "constructor": "var(data)",
     "params": [
@@ -4578,6 +5138,7 @@
     "class": "Introspection",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/variable",
     "description": "Returns the variable with the given name",
+    "tags": [],
     "returns": "Any",
     "constructor": "variable(name)",
     "params": [
@@ -4594,6 +5155,7 @@
     "class": "Introspection",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/variable",
     "description": "Returns the variable with the given name",
+    "tags": [],
     "returns": "Any",
     "constructor": "variable(var, name)",
     "params": [
@@ -4615,6 +5177,7 @@
     "class": "Introspection",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/variables",
     "description": "Returns a list of the current variables",
+    "tags": [],
     "returns": "List",
     "constructor": "variables()",
     "params": []
@@ -4625,22 +5188,7 @@
     "class": "Constructors",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/WeeklyCalendar",
     "description": "Creates a new Weekly Calendar",
-    "returns": "Calendar",
-    "constructor": "WeeklyCalendar(dow)",
-    "params": [
-      {
-        "name": "dow",
-        "description": "The day of week for this weekly calendar, e.g. Monday",
-        "type": "String"
-      }
-    ]
-  },
-  {
-    "name": "WeeklyCalendar",
-    "category": "Construction: Functions that create variables",
-    "class": "Constructors",
-    "link": "https://doc.opendatadsl.com/docs/odsl/function/WeeklyCalendar",
-    "description": "Creates a new Weekly Calendar",
+    "tags": [],
     "returns": "Calendar",
     "constructor": "WeeklyCalendar(dow, holcal, rollbackwards)",
     "params": [
@@ -4662,11 +5210,29 @@
     ]
   },
   {
+    "name": "WeeklyCalendar",
+    "category": "Construction: Functions that create variables",
+    "class": "Constructors",
+    "link": "https://doc.opendatadsl.com/docs/odsl/function/WeeklyCalendar",
+    "description": "Creates a new Weekly Calendar",
+    "tags": [],
+    "returns": "Calendar",
+    "constructor": "WeeklyCalendar(dow)",
+    "params": [
+      {
+        "name": "dow",
+        "description": "The day of week for this weekly calendar, e.g. Monday",
+        "type": "String"
+      }
+    ]
+  },
+  {
     "name": "WidgetReport",
     "category": "Construction: Functions that create variables",
     "class": "Constructors",
     "link": "https://doc.opendatadsl.com/docs/odsl/function/WidgetReport",
     "description": "Creates a new widget report configuration",
+    "tags": [],
     "returns": "Report",
     "constructor": "WidgetReport()",
     "params": []

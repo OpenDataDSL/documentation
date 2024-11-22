@@ -6,28 +6,6 @@ tags:
   - curve
   - odsl
 ---
-import AsMonths from '/docs/product/developer/odsl/Functions/all/asMonths.md';
-import BootstrapCurve from '/docs/product/developer/odsl/Functions/all/bootstrapCurve.md';
-import ExtendCurve from '/docs/product/developer/odsl/Functions/all/extendCurve.md';
-import ForwardFillCurve from '/docs/product/developer/odsl/Functions/all/forwardFillCurve.md';
-import Shape from '/docs/product/developer/odsl/Functions/all/shape.md';
-
-## Built-In Functions
-
-### asMonths
-<AsMonths  />
-
-### bootstrapCurve
-<BootstrapCurve  />
-
-### extendCurve
-<ExtendCurve  />
-
-### forwardFillCurve
-<ForwardFillCurve  />
-
-### shape
-<Shape  />
 
 ## SmartCurve Functions
 ```#CurveScript``` is the default script used for expressions in [Smart Curves](/docs/odsl/variable/smartcurve).
@@ -105,4 +83,17 @@ The function fills in any missing tenors in the input curve using the specified 
 #### Syntax
 ```js
 interpolate(BASE, 'LINEAR')
+```
+
+### offPeak
+This function creates an off peak power curve from a base and peak curve.
+It takes 4 parameters:
+* BASE - the base price curve
+* PEAK - the peak price curve
+* PKCAL - The name of the peak calendar which defines the hours relating to the peak hours
+* OPKCAL - The name of the off-peak calendar which defines the hours relating to the off-peak hours
+
+#### Syntax
+```js
+offPeak(BASE,PEAK,"#ICE_NL_PEAK_CALENDAR","#ICE_NL_OFFPEAK_CALENDAR")
 ```
