@@ -73,6 +73,24 @@ It takes 2 parameters:
 flatCurve(12, 25.2)
 ```
 
+### iif
+This is a conditional function that tests a condition.
+
+It takes 3 parameters:
+* condition - the condition to test
+* valid - the value to use if true
+* invalid - the value to use if false
+
+For each contract on the curve
+* if the condition is true, it takes the value from the valid parameter
+* if the condition is false, it takes the value from the invalid parameter
+
+#### Syntax
+```js
+iif(BASE<0, 0, BASE)
+```
+
+
 ### interpolate
 The function fills in any missing tenors in the input curve using the specified method, which can be one of:
 * FORWARD

@@ -35,8 +35,31 @@ Expressions can also reference [built-in functions](/docs/product/developer/odsl
 This is the power of Smart Data; OpenDataDSL or you can push scripts to the platform containing any curve or timeseries building logic possible without the need for us to upgrade the platform. 
 :::
 
+##### Some function examples
+
+###### Built-in curve bootstrapping function
+> Create an arbitrage-free monthly curve from a curve with monthly, quarterly, seasonal and yearly tenors.
 
 ```bootstrapCurve(BASE)```
+
+###### Public Script: conditional function
+> Test a condition, and use alternating values for each item on the curve or timeseries depending on the condition result.
+
+```iif(BASE<2300,2300,BASE)```
+
+###### Combine function
+> Uses a primary input and fills missing values from an alternate source.
+
+```combine(BASE, OTHER, true)```
+
+### Endless possiblities
+With the powerful combination of:
+* Logical expressions
+* [Built-in functions](/docs/product/developer/odsl/Functions/all)
+* [Publicly provided script functions](/docs/public/scripts/curve-building)
+* Your own custom functions
+
+You can build **any** curve or timeseries using **any** logic, the possibilities are endless!
 
 ### Saving Smart Data
 
