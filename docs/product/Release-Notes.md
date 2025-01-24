@@ -6,14 +6,74 @@ sidebar_position: 10
 Release Notes
 =============
 
-## Latest Release
+## Latest release (Jan-2025)
+
+This release mainly contains improvements and extensions to the **Dataset Monitoring**, which enhances data quality by identifying inconsistencies, ensures accurate tracking and maintains compliance with your business standards.
+
+Additionally, the release also includes some general improvements and bugfixes not related to Dataset Monitoring. For more information, check the lists further down.
+
 
 ```js
 Build details:
-Excel: 1.0.20241118.1830
-Server: 1.1.20.2830
-Portal: 1.0.45574.2317
+Excel: 
+Server: 
+Portal: 
 ```
+
+### Dataset Monitoring Enhancements
+
+* Performance improvements
+* Ability to clearly view Alerts that require attention - filtering on Datasets based on results of Completeness (based on number of expected tenors) and Quality Checks
+* Screens for adding/editing Quality and Completeness checks on Datasets
+* Include Completeness and Quality check results to General-tab overview
+* Screens for adding, editing, publishing human curated Alerts to subscribers (ODSL operations updates) with a means of capturing multiple updates in one Alert
+* Screens for easily viewing and subscribing/unsubscribing to Events and Alert records via MS Teams/email/queue channels
+* Screens for closing system generated or human curated Events with reason/message
+* Support metric based Alerts
+* Support links to specific filter setting (quick drill down) from main Dataset Monitoring page
+* Support to add/remove Datasets from monitoring
+* Support to filter for names and status in Dataset list
+* Show overriden Dataset properties
+* Support additional information (*Alerts* and *Smart Feed status*) for Datasets
+* Support different impact status (*Critical*, *High*, *Medium*, *Low*) for Datasets
+* Support additional properties/grouping options (*Category*, *Priority*, *Provider*) for Datasets
+* Support Dataset Webportal actions (*Save actual as expected*, *Mark as waiting*, *Run quality checks*, *Send alert*) in sub-tabs
+* Support additional delivery status (*Active*, *Missing*) for Datasets
+* Support Smart Loader edit/configuration screen for Datasets
+* Support Smart Loader edit/configuration in Feed-tab
+* Include Loaders log information to Feed-tab
+* Add new sub-tab Timeline for visualisation of the overall loading process including Process Log information
+* Support for documentation and report links on Datasets
+* Add new sub-tab Insights that includes individual Dataset reports (*Auditing*, *Corrections*, *Data Usage*, *Delivery Scores*, *Holiday*, *Loaded Time Analysis*, *Tenor Delivery*, *Usage*)
+* Improve Dataset monitoring queue and SignalR usage
+* Support JIRA automation target
+* Support client specific view of Dataset Monitoring
+* Collecting and storing performance metrics - for further operational and/or reporting options
+* Support additional subscription targets
+* Add feature policies to reduce portal clutter for basic users
+* Support Smart Loader to send ONDATE variable to process
+
+
+
+### General Bugfixes
+* 403 error when writing events
+* Aggregating from 1-minutely to 15-minutely seems to shift results
+
+### General Enhancements
+* Gas day representation
+* Support creating smart timeseries with Event Curve Dates as BASE
+* Adding calendar to Event Curves
+* Ensure curve substitution only works according to the configured calendar
+* Support GET method on a timeseries to handle non-aligned dates
+
+
+## Release History
+
+<details>
+<summary>2024</summary>
+
+
+## Dec-2024
 
 ### Fixed Bugs
 * Use range end for rescaling data and fix index out of range issue
@@ -27,7 +87,7 @@ Portal: 1.0.45574.2317
 * Support for searching logs in process execution
 * Support for rules for quality checks on datasets
 
-## Oct/Nov
+## Oct-2024/Nov-2024
 This release contains server and Excel fixes and enhancements.
 
 ### Fixed Bugs
@@ -73,7 +133,7 @@ This release contains server and Excel fixes and enhancements.
 
 
 
-## Sep24
+## Sep-2024
 
 #### Dataset Monitoring
 The Dataset Monitoring GUI MVP allows users to inspect dataset loading and quality checks.
@@ -81,7 +141,7 @@ The Dataset Monitoring GUI MVP allows users to inspect dataset loading and quali
 #### Add range support for curveseries
 Added support for using a date range with a curveseries.
 
-## Aug24
+## Aug-2024
 
 #### Attachment filename
 Added support for configuring attachment file name for the subscription email target.
@@ -104,7 +164,7 @@ This allows run to store absolute events and dynamically generate relatives for 
 #### Process execution termination
 Added support for terminating running process executions
 
-## Jul24
+## Jul-2024
 
 #### Process history flag
 Added support for running history loaders which do not trigger subscriptions
@@ -118,7 +178,7 @@ Added support for creating loaders that use dataset information intelligently to
 #### Add support for date rules in queue subject
 Support is added to enable adding custom date rules in the subject of a message to a subscription queue target
 
-## Jun24
+## Jun-2024
 
 #### Build a curve for a range of dates
 You can now build a curve for a range of dates
@@ -189,7 +249,7 @@ The GCY period code delivery is for a full calendar year with a gas day offset
 * Fix for financial spot tenor (SP) sorting
 * Fix small issue running functions in scripts via REST API
 
-## May24
+## May-2024
 
 #### Selection of environment in Portal
 Added support for switching to a data environment other than production.
@@ -206,7 +266,7 @@ For example, if you have your scripts in a folder called **ch-odsl-scripts** and
 
 **ch-odsl-scripts\process\test**
 
-## Apr24
+## Apr-2024
 
 #### Insight reports
 Added support for interactive insight reports - See public report #INSIGHT_DM_CORRECTIONS
@@ -229,7 +289,7 @@ Added support for attaching a holiday calendar onto an event curve which will pr
 #### Added correction service
 Added a service to report on data corrections
 
-## Mar24
+## Mar-2024
 
 #### Azure blob subscription target
 Add support for sending subscribed data to an Azure Blob, this will allow for greater integration with Azure middleware services.
@@ -255,7 +315,7 @@ We have added some extra fields on the metrics that are recorded.
 * action
 * responseSize (bytes)
 
-## Feb24
+## Feb-2024
 
 #### Custom period codes
 Added support for custom period codes, allowing you to set specific expiry and delivery dates.
@@ -274,7 +334,7 @@ A Curve Series is used for forward curves with a few thousand tenors, e.g. hourl
 #### Severe quality status for curves
 Added a quality status **severe** indicating that the curve has been built, but it is incomplete or insufficient quality and needs to be rebuilt before using for exports etc.
 
-## Jan24
+## Jan-2024
 
 #### Timeseries auto-scaling
 When retrieving timeseries with a large amount of observations, we now auto-scale the timeseries according to the following rules:
@@ -306,7 +366,9 @@ The python SDK for OpenDataDSL has the following features:
 * Retrieve any data using the ```get``` command
 * Update any data (if you have permission) using the ```update``` command
 
-## Release History
+
+
+</details>
 
 <details>
 <summary>2023</summary>
