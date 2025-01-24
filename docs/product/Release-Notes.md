@@ -12,14 +12,6 @@ This release mainly contains improvements and extensions to the **Dataset Monito
 
 Additionally, the release also includes some general improvements and bugfixes not related to Dataset Monitoring. For more information, check the lists further down.
 
-
-```js
-Build details:
-Excel: 
-Server: 
-Portal: 
-```
-
 ### Dataset Monitoring Enhancements
 
 * Performance improvements
