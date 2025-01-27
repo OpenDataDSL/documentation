@@ -12,6 +12,14 @@ This release mainly contains improvements and extensions to the **Dataset Monito
 
 Additionally, the release also includes some general improvements and bugfixes not related to Dataset Monitoring. For more information, check the lists further down.
 
+```js
+Summary of the latest build details:
+Excel: 1.0.20241118.1830
+Server: Build 3018
+Portal: 1.1.45684.513
+```
+
+
 ### Dataset Monitoring Enhancements
 
 * Performance improvements
