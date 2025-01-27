@@ -120,8 +120,16 @@ After clicking on a dataset, the right side of the screen shows information abou
 ### General tab
 This tab shows all the basic status information about this dataset for the selected date.
 
+The screenshot below shows all the status information along with detailed information about the completeness and quality checks.
+
+![](/img/portal/dm_tab_general.png)
+
 ### Feed tab
-This shows the configuration information for that feed that this dataset belongs to.
+This shows the configuration information for the feed that this dataset belongs to.
+
+The screenshot below shows typical feed information and logging information from a smart loader. 
+
+![](/img/portal/dm_tab_feed.png)
 
 ### Data tab
 This shows the data for this dataset for the selected date.
@@ -134,6 +142,10 @@ This shows any alerts that have been raised for this dataset for the selected da
 
 ### Insights tab
 This shows a list of insights (both public and private) that report on various aspects of this dataset.
+
+The screenshot below shows a set of insights for datasets, these will be added to over time, and you can add your own private insights which will be added to this screen if you save the insights with the category: ```Dataset Monitoring Insights```
+
+![](/img/portal/dm_tab_insights.png)
 
 ### Other tabs
 Other tabs may be shown which represent documentation about this dataset which are either provided by us or by your own internal teams.
