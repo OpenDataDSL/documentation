@@ -52,6 +52,8 @@ Portal: 1.1.45684.513
 * Support additional subscription targets
 * Add feature policies to reduce portal clutter for basic users
 * Support Smart Loader to send ONDATE variable to process
+* [Data Management Topic Guide update](/docs/odsl/dm/monitoring)
+* [User Guide update](/docs/user/portal/dataset)
 
 
 
