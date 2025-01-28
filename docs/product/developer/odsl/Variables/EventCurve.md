@@ -75,6 +75,19 @@ EC = EventCurve("AAA:EVENTS", "#REOMHENG", "price", "relative")
 EC.include = ["vendorId", "internalId"]
 ```
 
+## Calendars
+When dynamically retrieving the historic timeseries for absolute or relative tenors, the calendar for that timeseries is determined using the following logic:
+
+* If a property exists with the name of the tenor, e.g. *2025M01* and the value of that property is a calendar code, that will be used.
+* If a holidayCalendar is set on the event curve, that will be used.
+* The underlying trading calendar on the expiry calendar will be used.
+
+:::info
+**Functionality change since January 2025 (Jan25 release)**
+
+Previously the holidayCalendar property was used if present, otherwise the SPARSE calendar would be used
+:::
+
 
 ## See Also
 * [Curve](curve)

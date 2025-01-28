@@ -64,7 +64,7 @@ Portal: 1.1.45684.513
 ### General Enhancements
 * Gas day representation
 * Support creating smart timeseries with Event Curve Dates as BASE
-* Adding calendar to Event Curves
+* Adding calendar to [Event Curves](/docs/odsl/variable/eventcurve#calendars)
 * Ensure curve substitution only works according to the configured calendar
 * Support GET method on a timeseries to handle non-aligned dates
 
