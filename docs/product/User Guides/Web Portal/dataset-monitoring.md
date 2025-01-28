@@ -1,5 +1,5 @@
 ---
-title: Dataset Monitoring
+title: Dataset Monitoring 🆕
 description: Dataset monitoring dashboard in the web portal
 sidebar_position: 6
 slug: /user/portal/dataset
@@ -8,6 +8,7 @@ tags:
   - dashboard
   - dataset
   - monitoring
+  - new
 ---
 The dataset monitoring dashboard is used to monitor datasets for completeness and quality in real-time.
 

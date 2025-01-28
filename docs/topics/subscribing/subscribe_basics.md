@@ -56,6 +56,9 @@ The following table shows the entities that can be subscribed to by each method:
 |Expiry Calendar|yes|yes|
 |Action|-|yes|
 |Workflow|-|yes|
+|**Alert Events**|
+|DatasetAlert - alertrecord|yes|-|
+|SystemAlert - alertrecord|yes|-|
 |**Server Events**|
 |Process Execution Message|-|yes|
 |Process Run|-|yes|
@@ -118,6 +121,14 @@ In OpenDataDSL, as of today, you can perform one of the following event-driven a
   > The possibilities are endless, maybe you want to perform some derivations based on the updated data
 * [Write a blob to an Azure Storage Container](blob)
   > Writes the data to a blob in a container, this can be used to trigger other Azure Middleware Services
+* [Target Group](group)
+  > This is a group of configured targets where the data will be sent to all of them
+* [Teams Channel](teams)
+  > Send the data to a teams channel using the webhook teams plug-in
+* [Webhook](webhook)
+  > Send the data to a webhook
+* [JIRA Automation](jira)
+  > Send the data to a JIRA webhook to trigger an automation, e.g. to create a JIRA ticket
 
 ## Real-time data changes
 

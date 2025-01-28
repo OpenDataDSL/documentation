@@ -1,12 +1,13 @@
 ---
 slug: /topics/subscribe/webhook
-title: Target - Webhook
+title: Target - Webhook 🆕
 description: A subscription target to POST data to a webhook
 tags:
 - subscription
 - webhook
 - target
 - topics
+- new
 ---
 
 import Tabs from '@theme/Tabs';
@@ -19,6 +20,8 @@ The **name** of this target is ```WebhookTarget```
 To configure the webhook, you need to provide the following:
 * **url**
   > The URL of the webhook to post the data to
+* **template**
+  > The name of a mustache template to transform the input data to be displayed
 
 ### Adding a webhook target
 
@@ -32,6 +35,7 @@ To add a webhook target to an existing subscription:
 * Click the + button next to targets
 * Select WebhookTarget
 * Fill out the url field appropriately
+* Select the template you want to use to format your data
 * Click the save button
 
 
@@ -41,7 +45,7 @@ To add a webhook target to an existing subscription:
 ```js
 // Adding a webhook run target to an existing subscription
 sub = ${subscription:"MySubscription"}
-sub.addWebhookTarget("https://webhook.opendatadsl.com/data")
+sub.addWebhookTarget("https://webhook.opendatadsl.com/data", "template")
 save sub
 ```
 
@@ -56,7 +60,8 @@ Authorization: Bearer {{token}}
     "name": "MySubscription",
     "targets":[{
       "name": "WebhookTarget",
-      "url": "https://webhook.opendatadsl.com/data"
+      "url": "https://webhook.opendatadsl.com/data",
+      "template": "template"
     }]
 }
 ```

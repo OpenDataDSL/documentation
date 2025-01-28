@@ -1,7 +1,7 @@
 ---
 slug: /odsl/dm/monitoring
 sidebar_position: 6
-title: Data Monitoring
+title: Data Monitoring 🆕
 description: An explanation of how to use the data monitoring capabilities
 tags:
 - data_management
@@ -9,6 +9,7 @@ tags:
 - dsid
 - topics
 - dataset
+- new
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';

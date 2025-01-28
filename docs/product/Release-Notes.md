@@ -29,7 +29,6 @@ Portal: 1.1.45684.513
 * Screens for adding, editing, publishing human curated Alerts to subscribers (ODSL operations updates) with a means of capturing multiple updates in one Alert
 * Screens for easily viewing and subscribing/unsubscribing to Events and Alert records via MS Teams/email/queue channels
 * Screens for closing system generated or human curated Events with reason/message
-* Support metric based Alerts
 * Support links to specific filter setting (quick drill down) from main Dataset Monitoring page
 * Support to add/remove Datasets from monitoring
 * Support to filter for names and status in Dataset list
@@ -46,16 +45,11 @@ Portal: 1.1.45684.513
 * Support for documentation and report links on Datasets
 * Add new sub-tab Insights that includes individual Dataset reports (*Auditing*, *Corrections*, *Data Usage*, *Delivery Scores*, *Holiday*, *Loaded Time Analysis*, *Tenor Delivery*, *Usage*)
 * Improve Dataset monitoring queue and SignalR usage
-* Support JIRA automation target
 * Support client specific view of Dataset Monitoring
 * Collecting and storing performance metrics - for further operational and/or reporting options
-* Support additional subscription targets
-* Add feature policies to reduce portal clutter for basic users
 * Support Smart Loader to send ONDATE variable to process
 * [Data Management Topic Guide update](/docs/odsl/dm/monitoring)
 * [User Guide update](/docs/user/portal/dataset)
-
-
 
 ### General Bugfixes
 * 403 error when writing events
@@ -67,6 +61,9 @@ Portal: 1.1.45684.513
 * Adding calendar to [Event Curves](/docs/odsl/variable/eventcurve#calendars)
 * Ensure curve substitution only works according to the configured calendar
 * Support GET method on a timeseries to handle non-aligned dates
+* Add feature policies to reduce portal clutter for basic users
+* [Support additional subscription targets](/docs/category/subscriptions)
+* Support metric based Alerts
 
 
 ## Release History
