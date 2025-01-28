@@ -50,7 +50,31 @@ function SmartCurves() {
 function Products() {
     return (
     <div className={styles.products}>
-        <div className={styles.productBanner}>Dive into the documentation</div>
+        <div className="row padding-vert--md">
+            <div className="text-left col-xs-12 col-sm-3 col-md-3 col-lg-3"> </div>
+            <div className="col  text-left col-xs-12 col-sm-10 col-md-10 col-lg-10">
+                <div className="row">
+                    <div className="col  text-left col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                        <div>
+                            <h2><a href="/docs/user/portal/dataset">Dataset Monitoring</a></h2>
+                        </div>
+                        <div>
+                            <h3>Real-time operational updates and insights</h3>
+                        </div>
+                        <div>
+                            <p>Create, read and update all your data in MongoDB Atlas directly from within your own Excel spreadsheets</p>
+                            <p>Available for both desktop and web Excel</p>
+                        </div>
+                    </div>
+                    <div className="col  text-left col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                        <div className="image_container">
+                            <a href="/docs/user/excel"><img src="/img/home/excel-addin.png"/></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div className="text-left col-xs-12 col-sm-3 col-md-3 col-lg-3"> </div>
+        </div>
 
         <div className="row padding-vert--md">
             <div className="text-left col-xs-12 col-sm-3 col-md-3 col-lg-3"> </div>
@@ -193,6 +217,7 @@ export default function Home() {
             <CookieConsent location="top" overlay>We use cookies to personalise content and to analyse our traffic, if you continue we'll assume that you are happy to receive them. For more information, see our <a href="/legal/Cookie-Policy">cookie policy</a></CookieConsent>
             <Video />
             <div className={styles.smallsectionskip} />
+            <div className={styles.productBanner}>Click <a href="/docs/tags/new">here</a> for the latest updates to the documentation 🆕</div>
             <Products />
             <div className={styles.smallsectionskip} />
 
