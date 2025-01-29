@@ -61,7 +61,7 @@ Portal: 1.1.45684.513
 * Adding calendar to [Event Curves](/docs/odsl/variable/eventcurve#calendars)
 * Ensure curve substitution only works according to the configured calendar
 * Support GET method on a timeseries to handle non-aligned dates
-* Add feature policies to reduce portal clutter for basic users
+* Add [feature policies](/docs/odsl/variable/featurepolicy) to reduce portal clutter for basic users
 * [Support additional subscription targets](/docs/category/subscriptions)
 * Support metric based Alerts
 

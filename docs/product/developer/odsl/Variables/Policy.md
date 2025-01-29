@@ -85,11 +85,11 @@ save RunAllReports
 
 To find policies, you use the ODSL find command, e.g.
 ```js
-policies = find ${policy}
+policies = find ${policy} where _type="Policy"
 ```
 You can use the unique keyword to just get all the ids of your policies, e.g.
 ```js
-policynames = find unique _id from ${policy}
+policynames = find unique _id from ${policy} where _type="Policy"
 ```
 
 ### Retrieving a specific policy
