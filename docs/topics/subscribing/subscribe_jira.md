@@ -1,6 +1,6 @@
 ---
 slug: /topics/subscribe/jira
-title: Target - JIRA Automation 🆕
+title: Target - JIRA 🆕
 description: A subscription target to POST data to a JIRA Automation
 tags:
 - subscription

@@ -1,11 +1,12 @@
 ---
 slug: /odsl/os/alerts
-title: Alerts
+title: Alerts 🆕
 description: Creating and using alerts for pro-active monitoring
 tags:
 - operations
 - alerts
 - topics
+- new
 ---
 
 import Tabs from '@theme/Tabs';

@@ -1,6 +1,6 @@
 ---
 slug: /odsl/os/smartfeed
-title: Smart Feeds
+title: Smart Feeds 🆕
 description: Creating and using smart feeds for collecting data
 tags:
 - operations
@@ -9,6 +9,7 @@ tags:
 - scheduling
 - datafeed
 - topics
+- new
 ---
 
 import Tabs from '@theme/Tabs';

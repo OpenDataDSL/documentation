@@ -1,12 +1,13 @@
 ---
 slug: /odsl/os/metrics
 sidebar_position: 2
-title: Metrics
+title: Metrics 🆕
 description: Creating and using metrics to monitor the platform
 tags:
 - operations
 - metrics
 - topics
+- new
 ---
 
 import Tabs from '@theme/Tabs';
