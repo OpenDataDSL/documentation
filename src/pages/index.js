@@ -68,7 +68,7 @@ function Products() {
                     </div>
                     <div className="col  text-left col-xs-12 col-sm-12 col-md-6 col-lg-6">
                         <div className="image_container">
-                            <a href="/docs/user/excel"><img src="/img/home/dataset_monitoring.png"/></a>
+                            <a href="/docs/user/portal/dataset"><img src="/img/home/dataset_monitoring.png"/></a>
                         </div>
                     </div>
                 </div>
