@@ -20,17 +20,14 @@ import TabItem from '@theme/TabItem';
 #### Welcome to the OpenDataDSL API developer quickstart track!
 
 Here you will start with the fundamentals of using the OpenDataDSL services including security.
-We will then do a deep-dive into some of the services, following up with running processes and using the real-time services to follow their progress.
-We will end with subscribing to data updates using message queues.
+We will then do a deep-dive into some of the services, including subscribing to data updates using message queues.
 
 In each module, we will give examples in various languages and all the code for these examples are available in our GitHub repositories as shown below:
 
 |Language|GitHub Repository Link|
 |-|-|
-|Python|-|
-|Java|-|     
-|C#|-|
-|NodeJS|-|
+|Python|[odsl-python-sdk-demo](https://github.com/OpenDataDSL/odsl-python-sdk-demo)|
+|Java|[odsl-java-sdk-demo](https://github.com/OpenDataDSL/odsl-java-sdk-demo)|     
 
 ## Preparation
 This quickstart track requires some preparation in order to follow along with the content.
@@ -49,10 +46,10 @@ For submitting REST requests, it is a good idea to use one of the many great too
 </TabItem>
 <TabItem value="python" label="Python">
 
-For Python, you can use your own favourite IDE, but you will need to install some libraries as shown below:
-* [Requests](https://docs.python-requests.org/en/latest/) library for making HTTP requests
+We have an SDK for Python which you can install from [PyPI](https://pypi.org/project/odsl/)
+
 ```
-pip install requests
+pip install odsl
 ```
 
 </TabItem>
@@ -60,41 +57,20 @@ pip install requests
 
 For Java, you can use your own favourite IDE and we have used Maven as our software management tool.
 
-The maven `pom.xml` to create your java project
+Add the following dependency to your mavan ```pom```
 
 ```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
-
+<dependency>
     <groupId>com.opendatadsl</groupId>
-    <artifactId>odsl-api-developer</artifactId>
-    <version>1.0-SNAPSHOT</version>
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>8</source>
-                    <target>8</target>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
-
-    <dependencies>
-        <dependency>
-            <groupId>com.microsoft.azure</groupId>
-            <artifactId>msal4j</artifactId>
-            <version>1.11.0</version>
-        </dependency>
-    </dependencies>
-
-</project>
+    <artifactId>odsl-sdk</artifactId>
+    <version>1.1.21</version>
+</dependency>
 ```
+
+</TabItem>
+<TabItem value="javascript-browser" label="Javascript Browser">
+
+For Javascript in the browser, you can pull the latest source from [here](https://github.com/OpenDataDSL/odsl-javascript-browser-sdk)
 
 </TabItem>
 </Tabs>

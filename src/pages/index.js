@@ -50,6 +50,7 @@ function SmartCurves() {
 function Products() {
     return (
     <div className={styles.products}>
+
         <div className="row padding-vert--md">
             <div className="text-left col-xs-12 col-sm-3 col-md-3 col-lg-3"> </div>
             <div className="col  text-left col-xs-12 col-sm-10 col-md-10 col-lg-10">
@@ -62,13 +63,12 @@ function Products() {
                             <h3>Real-time operational updates and insights</h3>
                         </div>
                         <div>
-                            <p>Create, read and update all your data in MongoDB Atlas directly from within your own Excel spreadsheets</p>
-                            <p>Available for both desktop and web Excel</p>
+                            <p>With Open Data DSL Data Monitoring,  you get unprecedented transparency of your data pipeline with real-time updates and insights for data consumers. </p>
                         </div>
                     </div>
                     <div className="col  text-left col-xs-12 col-sm-12 col-md-6 col-lg-6">
                         <div className="image_container">
-                            <a href="/docs/user/excel"><img src="/img/home/excel-addin.png"/></a>
+                            <a href="/docs/user/excel"><img src="/img/home/dataset_monitoring.png"/></a>
                         </div>
                     </div>
                 </div>
