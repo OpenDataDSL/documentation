@@ -196,8 +196,8 @@ print(response.json())
 </TabItem>
 <TabItem value="java" label="Java">
 
-```java
-URL u = new URL("https://odsl.azurewebsites.net/api/object");
+```js
+URL u = new URL("https://api.opendatadsl.com/api/object");
 HttpURLConnection con = (HttpURLConnection) u.openConnection();
 con.setRequestMethod("GET");
 con.setRequestProperty("Authorization", "Bearer " + token);

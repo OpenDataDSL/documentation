@@ -30,7 +30,7 @@ A report is based on a user defined configuration with the following properties:
 |script|The name of the script used to run this report|String|
 |currency|The optional currency of this report, can be used in the function using #REPORT.currency|String|
 |units|The optional units of this report, can be used in the function using #REPORT.units|String|
-|tiemzone|The optional timezone of this report, can be used in the function using #REPORT.timezone|String|
+|timezone|The optional timezone of this report, can be used in the function using #REPORT.timezone|String|
 |expression|The expression to use to run this report, e.g. a function name|String|
 |template|The mustache template name used to format the results of the report as HTML|String|
 |defaultRange|The optional default date range for this report|String|
