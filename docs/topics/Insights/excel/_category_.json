@@ -1,0 +1,8 @@
+{
+  "label": "Excel Insights",
+  "position": 1,
+  "link": {
+    "type": "generated-index",
+    "description": "Information on creating Excel insight reports"
+  }
+}
