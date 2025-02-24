@@ -178,7 +178,7 @@ function getExcelQuery() {
 
 Yuo need to create a function that takes the query parameters passed from Excel and returns the expected data.
 
-Using the example above, we can create the following function - note it only supports yeterday and today date range.
+Using the example above, we can create the following function - note it only supports yesterday and today date range.
 
 ```js
 function alertRecordDR()
@@ -191,7 +191,7 @@ function alertRecordDR()
 	end
 	print d1
 	print d2
-	alertRecordDR = find ${alertrecord:"all"} where type=#REPORT.type timestamp >= d1 and timestamp <= d2
+	alertRecordDR = find ${alertrecord:"all"} where type=#REPORT.type and timestamp >= d1 and timestamp <= d2
 end
 ```
 
