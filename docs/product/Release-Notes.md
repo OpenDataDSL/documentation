@@ -6,19 +6,33 @@ sidebar_position: 10
 Release Notes
 =============
 
-## Latest release (Jan-2025)
+## Latest release (Feb-2025)
+
+This release mainly contains bug fixes/enhancements related to the Dataset Monitoring. 
+Additionally, the release contains an isolated new feature to the Excel-Addin: The Insight Reports. 
+This new enhancement provides the flexibility for the users to include insight reports to Excel. 
+But not just that - from a product perspective it is a major step as we keep any new insight report idea separated from new product development releases, 
+which makes us far more flexible.
+
+### Enhancements
+* Excel Insights including [Documentation update](/docs/category/excel-insights)
+* Support Audit Report on behalf of the client
+* Support for using absolute period codes for expected tenors
+* Expose event status and version information to time series and curves
+* Add support for CurveSeries for dependant builds
+
+### Bug fixes
+* Curves Management tab - Error message on Unhandled Exceptions
+* Datasets: >4h Alert not triggered
+* Error message in the Load phase
+
+
+
+## Jan-2025
 
 This release mainly contains improvements and extensions to the **Dataset Monitoring**, which enhances data quality by identifying inconsistencies, ensures accurate tracking and maintains compliance with your business standards.
 
 Additionally, the release also includes some general improvements and bugfixes not related to Dataset Monitoring. For more information, check the lists further down.
-
-```js
-Summary of the latest build details:
-Excel: 1.0.20241118.1830
-Server: Build 3018
-Portal: 1.1.45684.513
-```
-
 
 ### Dataset Monitoring Enhancements
 
@@ -64,6 +78,16 @@ Portal: 1.1.45684.513
 * Add [feature policies](/docs/odsl/variable/featurepolicy) to reduce portal clutter for basic users
 * [Support additional subscription targets](/docs/category/subscriptions)
 * Support metric based Alerts
+
+
+### Hot-fixes
+* Some curves not visible in Web-Portal because curve dates are autoscaled
+* Fixes to rounding/precision
+* Support building standard curves from curve series
+* Support adding alerts for invalid tenant activity
+* Improvement to policies for dataset management
+* Option to update DSID to existing events
+
 
 
 ## Release History
