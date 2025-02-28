@@ -26,6 +26,12 @@ which makes us far more flexible.
 * Datasets: >4h Alert not triggered
 * Error message in the Load phase
 
+### Hotfixes
+* Check for event curves to trigger building dependent smart curves
+* Simplifying Alert Monitoring by adding a key to Alerts 
+* Removing subscriptions for curves that are deleted
+* Fixing the behaviour: Closing an Alert increments the number of Alerts rather than removing the Alert 
+
 
 
 ## Jan-2025
@@ -80,7 +86,7 @@ Additionally, the release also includes some general improvements and bugfixes n
 * Support metric based Alerts
 
 
-### Hot-fixes
+### Hotfixes
 * Some curves not visible in Web-Portal because curve dates are autoscaled
 * Fixes to rounding/precision
 * Support building standard curves from curve series
