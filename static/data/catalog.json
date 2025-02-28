@@ -546,45 +546,6 @@
         "tags": ["Commodity", "Agriculture"]
     },
     {
-        "type": "BYOL",
-        "provider": "European Energy Exchange AG",
-        "providerType":"Exchange",
-        "logo": "eex.png",
-        "dataset": "Power",
-        "text": "European Energy Exchange Power Spot and Futures",
-        "region": "Europe",
-        "start": "2021",
-        "frequency": "DAILY",
-        "link":"/docs/company/EEX",
-        "tags": ["Commodity", "Power"]
-    },
-    {
-        "type": "BYOL",
-        "provider": "European Energy Exchange AG",
-        "providerType":"Exchange",
-        "logo": "eex.png",
-        "dataset": "Natural Gas",
-        "text": "European Energy Exchange Natural Gas Spot and Futures",
-        "region": "Europe",
-        "start": "2021",
-        "frequency": "DAILY",
-        "link":"/docs/company/EEX",
-        "tags": ["Commodity", "Natural Gas"]
-    },
-    {
-        "type": "BYOL",
-        "provider": "European Energy Exchange AG",
-        "providerType":"Exchange",
-        "logo": "eex.png",
-        "dataset": "Emission",
-        "text": "European Energy Exchange Emission Spot and Futures",
-        "region": "Europe",
-        "start": "2021",
-        "frequency": "DAILY",
-        "link":"/docs/company/EEX",
-        "tags": ["Commodity", "Emission"]
-    },
-    {
         "type": "FREE",
         "provider": "The International Monetary Fund",
         "providerType":"Financial Institutions",
@@ -885,19 +846,6 @@
     },
     {
         "type": "BYOL",
-        "provider": "European Power Exchange",
-        "providerType":"Exchange",
-        "logo": "epex.png",
-        "dataset": "Power Spot",
-        "text": "European Power Exchange Power Spot",
-        "region": "Europe",
-        "start": "2023",
-        "frequency": "DAILY",
-        "link":"/docs/company/EPEX",
-        "tags": ["Commodity", "Power"]
-    },
-    {
-        "type": "BYOL",
         "provider": "Intercontinental Exchange",
         "providerType":"Exchange",
         "logo": "ice.png",
@@ -907,20 +855,7 @@
         "start": "2023",
         "frequency": "BUSINESS",
         "link":"/docs/company/ICE",
-        "tags": ["Commodity", "Power"," NEW"]
-    },
-    {
-        "type": "BYOL",
-        "provider": "London Energy Brokers' Association",
-        "providerType":"Broker",
-        "logo": "leba.png",
-        "dataset": "Natural Gas",
-        "text": "Natural Gas Futures",
-        "region": "Europe",
-        "start": "2023",
-        "frequency": "DAILY",
-        "link":"/docs/company/LEBA",
-        "tags": ["Commodity", "Natural Gas"]
+        "tags": ["Commodity", "Power"]
     },
     {
         "type": "BYOL",
@@ -934,19 +869,6 @@
         "frequency": "DAILY",
         "link":"/docs/company/NORD",
         "tags": ["Commodity", "Power"]
-    },
-    {
-        "type": "BYOL",
-        "provider": "Bloomberg",
-        "providerType":"3rd Party Provider",
-        "logo": "bloomberg.png",
-        "dataset": "FX Rates,Interest Rates,Natural Gas,Power",
-        "text": "Snapshot,Forwards,Spot",
-        "region": "Global",
-        "start": "2023",
-        "frequency": "BUSINESS",
-        "link":"/docs/company/BLOOMBERG",
-        "tags": ["Commodity", "Foreign Exchange","Oil"]
     },
     {
         "type": "BYOL",
@@ -986,7 +908,7 @@
         "frequency": "HOURLY",
         "link":"/docs/company/JAO",
         "releaseDate":"2024-02",
-        "tags": ["Commodity", "Power"," NEW"]
+        "tags": ["Commodity", "Power"]
     },
     {
         "type": "FREE",
@@ -1000,7 +922,7 @@
         "frequency": "HOURLY",
         "link":"/docs/company/OKTE",
         "releaseDate":"2024-02",
-        "tags": ["Commodity", "Power"," NEW"]
+        "tags": ["Commodity", "Power"]
     },
     {
         "type": "FREE",
@@ -1014,7 +936,7 @@
         "frequency": "HOURLY",
         "link":"/docs/company/BSP",
         "releaseDate":"2024-02",
-        "tags": ["Commodity", "Power"," NEW"]
+        "tags": ["Commodity", "Power"]
     },
     {
         "type": "FREE",
@@ -1028,6 +950,136 @@
         "frequency": "HOURLY",
         "link":"/docs/company/OPCOM",
         "releaseDate":"2024-02",
+        "tags": ["Commodity", "Power"]
+    },
+    {
+        "type": "BYOL",
+        "provider": "European Power Exchange",
+        "providerType":"Exchange",
+        "logo": "epex.png",
+        "dataset": "Power Spot",
+        "text": "European Power Exchange Power Spot",
+        "region": "Europe",
+        "start": "2023",
+        "frequency": "DAILY",
+        "link":"/docs/company/EPEX",
+        "tags": ["Commodity", "Power"," NEW"]
+    },
+    {
+        "type": "BYOL",
+        "provider": "European Energy Exchange AG",
+        "providerType":"Exchange",
+        "logo": "eex.png",
+        "dataset": "Power",
+        "text": "European Energy Exchange Power Spot and Futures",
+        "region": "Europe",
+        "start": "2021",
+        "frequency": "DAILY",
+        "link":"/docs/company/EEX",
+        "tags": ["Commodity", "Power"," NEW"]
+    },
+    {
+        "type": "BYOL",
+        "provider": "European Energy Exchange AG",
+        "providerType":"Exchange",
+        "logo": "eex.png",
+        "dataset": "Natural Gas",
+        "text": "European Energy Exchange Natural Gas Spot and Futures",
+        "region": "Europe",
+        "start": "2021",
+        "frequency": "DAILY",
+        "link":"/docs/company/EEX",
+        "tags": ["Commodity", "Natural Gas"," NEW"]
+    },
+    {
+        "type": "BYOL",
+        "provider": "European Energy Exchange AG",
+        "providerType":"Exchange",
+        "logo": "eex.png",
+        "dataset": "Emissions",
+        "text": "European Energy Exchange Emissions Spot and Futures",
+        "region": "Europe",
+        "start": "2021",
+        "frequency": "DAILY",
+        "link":"/docs/company/EEX",
+        "tags": ["Commodity", "Emissions"," NEW"]
+    },
+    {
+        "type": "BYOL",
+        "provider": "London Energy Brokers' Association",
+        "providerType":"Broker",
+        "logo": "leba.png",
+        "dataset": "Natural Gas",
+        "text": "Natural Gas Futures",
+        "region": "Europe",
+        "start": "2023",
+        "frequency": "DAILY",
+        "link":"/docs/company/LEBA",
+        "tags": ["Commodity", "Natural Gas"," NEW"]
+    },
+    {
+        "type": "FREE",
+        "provider": "Netztransparenz",
+        "providerType":"Public Agency",
+        "logo": "netztransperenz.png",
+        "dataset": "Power",
+        "text": "Power Balancing Energy Price",
+        "region": "Europe",
+        "start": "2023",
+        "frequency": "Quarter Hourly",
+        "link":"/docs/company/NETZTRANSPARENZ",
+        "tags": ["Commodity", "Power"," NEW"]
+    },
+    {
+        "type": "BYOL",
+        "provider": "Bloomberg",
+        "providerType":"3rd Party Provider",
+        "logo": "bloomberg.png",
+        "dataset": "FX Rates,Interest Rates",
+        "text": "Snapshot,Forwards,Spot",
+        "region": "Global",
+        "start": "2024",
+        "frequency": "BUSINESS",
+        "link":"/docs/company/BLOOMBERG",
+        "tags": ["Commodity", "Foreign Exchange Rates","Interest Rates"," NEW"]
+    },
+    {
+        "type": "BYOL",
+        "provider": "Bloomberg",
+        "providerType":"3rd Party Provider",
+        "logo": "bloomberg.png",
+        "dataset": "Natural Gas",
+        "text": "Snapshot,Forwards",
+        "region": "Global",
+        "start": "2024",
+        "frequency": "BUSINESS",
+        "link":"/docs/company/BLOOMBERG",
+        "tags": ["Commodity","Natural Gas"," NEW"]
+    },
+    {
+        "type": "BYOL",
+        "provider": "Bloomberg",
+        "providerType":"3rd Party Provider",
+        "logo": "bloomberg.png",
+        "dataset": "Products",
+        "text": "Snapshot,Forwards",
+        "region": "Global",
+        "start": "2024",
+        "frequency": "BUSINESS",
+        "link":"/docs/company/BLOOMBERG",
+        "tags": ["Commodity","Oil"," NEW"]
+    },
+    {
+        "type": "FREE",
+        "provider": "Energinet",
+        "providerType":"Public Agency",
+        "logo": "energinet.jpg",
+        "dataset": "Power",
+        "text": "Power Day Ahead Prices",
+        "region": "Europe",
+        "start": "2023",
+        "frequency": "Hourly",
+        "link":"/docs/company/ENERGINET",
         "tags": ["Commodity", "Power"," NEW"]
     }
 ]

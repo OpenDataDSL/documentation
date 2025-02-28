@@ -1,10 +1,10 @@
 ### Schedule
 
-The schedule for collecting the file is at 17:00 GMT daily.
+The file collection schedule is between 05:00, and 10:00 GMT daily.
 
 ### Sample File
 
-[Sample file for TenneT Power Imbalance](pathname:///file-samples/Export_19-03-2022_19-03-2022.xml)
+[Sample file for TenneT Power Imbalance Price](pathname:///file-samples/Export_19-03-2022_19-03-2022.xml)
 
 ### Type
 
@@ -24,10 +24,10 @@ Example data id and name
 |-|-|
 |Source|TENNET|
 |Source Name|Tennet Netherlands Electricity System Operator|
-|Dataset|TENNET_EL_IMB|
+|Dataset|TENNET_EL_IMB_PRICE|
 |Dataset Name|TenneT Netherlands Power Imbalance Prices|
 |Frequency|QUARTERHOURLY|
-|Currency|NA|
+|Currency|EUR|
 |Unit|MW|
 |Market|Statistics|
 |Commodity|Power|

@@ -1,10 +1,10 @@
 ### Schedule
 
-The file collection schedule is between 14:00 and 20:00 GMT daily.
+The file collection schedule is between 12:00, and 16:00 GMT daily.
 
 ### Sample File
 
-[Sample file for TenneT Measurement Volume](pathname:///file-samples/metered_injections_27-01-2025_00_00_00.json)
+[Sample file for TenneT Power Imbalance Volume](pathname:///file-samples/settled_imbalance_volumes_10-02-2025_00_00_00.json)
 
 ### Type
 
@@ -16,7 +16,7 @@ Example data id and name
 
 |**Data Id**|**Name**|
 |-|-|
-|#TENNET.EL.NL.MEASURED_VOL.15MIN|TenneT Power Measurement Volume Quarter Hourly Netherlands|
+|#TENNET.EL.NL.IMB_VOL.15MIN:IMBALANCE|TenneT Power Imbalance Volume Quarter Hourly Netherlands|
 
 ### Attributes
 
@@ -24,8 +24,8 @@ Example data id and name
 |-|-|
 |Source|TENNET|
 |Source Name|Tennet Netherlands Electricity System Operator|
-|Dataset|TENNET_EL_MEASURED|
-|Dataset Name|TenneT Netherlands Power Measurement Volume|
+|Dataset|TENNET_EL_IMB_VOL|
+|Dataset Name|TenneT Netherlands Power Imbalance Volumes|
 |Frequency|QUARTERHOURLY|
 |Currency|NA|
 |Unit|MW|

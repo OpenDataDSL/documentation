@@ -24,14 +24,24 @@ To prevent such outages, they play a prominent role in developing cross-border c
 For more information, visit: https://www.tennet.eu/
 
 ## Datasets
-import TennetElImb from './_TENNET_EL_IMB.md';
+import TennetElImbPrice from './_TENNET_EL_IMB_PRICE.md';
+import TennetElImbVol from './_TENNET_EL_IMB_VOL.md';
 import TennetElMeasured from './_TENNET_EL_MEASURED.md';
 import TennetElDelta from './_TENNET_EL_DELTA.md';
+import TennetElAffrVol from './_TENNET_EL_AFFR_VOL.md';
+import TennetElBidPriceLadder from './_TENNET_EL_BID_PRICE_LADDER.md';
 
-### TENNET_EL_IMB
+
+### TENNET_EL_IMB_PRICE
 <details>
 <summary>TenneT Netherlands Power Imbalance Prices</summary>
-<TennetElImb />
+<TennetElImbPrice />
+</details>
+
+### TENNET_EL_IMB_VOL
+<details>
+<summary>TenneT Netherlands Power Imbalance Volume</summary>
+<TennetElImbVol />
 </details>
 
 ### TENNET_EL_MEASURED
@@ -44,4 +54,16 @@ import TennetElDelta from './_TENNET_EL_DELTA.md';
 <details>
 <summary>TenneT Netherlands Power Balance Delta Prices</summary>
 <TennetElDelta />
+</details>
+
+### TENNET_EL_AFFR_VOL
+<details>
+<summary>TenneT Netherlands Power Volume of Settled aFFR and Emergency Capacity for Area Netherlands</summary>
+<TennetElAffrVol />
+</details>
+
+### TENNET_EL_BID_PRICE_LADDER
+<details>
+<summary>TenneT Netherlands Power Bidding Price Ladder</summary>
+<TennetElBidPriceLadder />
 </details>
