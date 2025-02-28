@@ -14,6 +14,13 @@ This new enhancement provides the flexibility for the users to include insight r
 But not just that - from a product perspective it is a major step as we keep any new insight report idea separated from new product development releases, 
 which makes us far more flexible.
 
+```js
+Build details:
+Excel: 1.0.20250221.1037
+Server: Build 3092
+Client: 1.1.45716.1032
+```
+
 ### Enhancements
 * Excel Insights including [Documentation update](/docs/category/excel-insights)
 * Support Audit Report on behalf of the client
