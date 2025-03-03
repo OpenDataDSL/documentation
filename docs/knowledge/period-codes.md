@@ -65,8 +65,6 @@ Here is a list of the syntax for valid period codes
 |Relative year starting on month|“Y” MONTHNAME PERIOD|YJAN01|
 |Year|ABS_YEAR “Y”|2020Y|
 |Relative year|“Y” PERIOD|Y01|
-|Gas year|ABS_YEAR “GY”|2020GY|
-|Relative gas year|“GY” PERIOD|GY01|
 
 ### End of period periods
 
@@ -123,3 +121,20 @@ You can create `custom` period codes where you can specify the following:
 * Expiry/Last trade date
 
 These custom codes can be used for one-off strange periods or in the case that the required period isn't supported in the list above.
+All custom period codes start with a 'C', e.g. C2024HW
+
+### Gas Periods
+If you prefix any of the following period codes with a 'G' it turns it into a gas period which has a 6 hour offset using Central European Time.
+
+* Within Day - GWD
+* Day - GD
+* Day Ahead - GDA
+* Saturday - GSAT
+* Sunday - GSUN
+* Any of the standard period codes
+* Any of the end of period codes
+* Any of the balance of period codes
+
+For years, you can choose between the following:
+* Gas year (GYnn/yyyyGY) which covers a gas year (October to September)
+* Gas calendar year (GCYnn/yyyyGCY) which covers a calendar year (January to December)
