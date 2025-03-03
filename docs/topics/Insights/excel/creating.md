@@ -37,6 +37,7 @@ The following table shows the top-level properties in the configuration object:
 |dataCallback|Function|getData|An optional callback function that allows you to override the requesting and formatting of the data sent back to Excel|
 |rangeSelector|Object|See rangeSelector below|An optional range selector configuration to allow the user to select a range of dates|
 |ondateSelector|Object|See ondateSelector below|An optional ondate selector configations to allow the user to select an ondate|
+|fieldSelector|Object|See fieldSelector below|An optional selector to select which fields to return into Excel|
 
 ### Inputs Configuration
 
@@ -94,6 +95,12 @@ The following table lists the range names that can be used in the **ranges** arr
 |appendToPath|Boolean|true|If true, the selected ondate is appended to the URL|
 |appendToFilter|Boolean|true|If true, the selected ondate is added to the filter query parameter|
 |assQueryParam|Boolean|true|If true, the selected ondate is added as a query parameter|
+
+### fieldSelector Configuration
+
+| Property | Type | Example | Description |
+|-|-|-|-|
+|fields|Object|{"type":1,"name":1}|A complete list of fields for the user to select|
 
 ### Examples
 
