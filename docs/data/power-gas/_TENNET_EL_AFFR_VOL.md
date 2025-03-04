@@ -4,7 +4,7 @@ The file collection schedule is between 16:00 and 17:00 GMT daily.
 
 ### Sample File
 
-[Sample file for TenneT AFFR Volume](frequency_restoration_reserve_activations_26-02-2025_00_00_00.json)
+[Sample file for TenneT AFFR Volume](/file-samples/frequency_restoration_reserve_activations_26-02-2025_00_00_00.json)
 
 ### Type
 
