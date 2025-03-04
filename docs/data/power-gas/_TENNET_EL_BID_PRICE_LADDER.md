@@ -1,10 +1,10 @@
 ### Schedule
 
-The file collection schedule is between 14:00 and 20:00 GMT daily.
+The file collection schedule is every hour starting from 00:00 GMT daily.
 
 ### Sample File
 
-[Sample file for TenneT Measurement Volume](pathname:///file-samples/metered_injections_27-01-2025_00_00_00.json)
+[Sample file for TenneT Delta Prices](pathname:///file-samples/merit_order_list_28-02-2025_00_00_00.json)
 
 ### Type
 
@@ -16,7 +16,7 @@ Example data id and name
 
 |**Data Id**|**Name**|
 |-|-|
-|#TENNET.EL.NL.MEASURED_VOL.15MIN|TenneT Power Measurement Volume Quarter Hourly Netherlands|
+|#TENNET.EL.BID_PRICE_LADDER.15MIN|TenneT Power Bidding Price Ladder Netherlands|
 
 ### Attributes
 
@@ -24,17 +24,17 @@ Example data id and name
 |-|-|
 |Source|TENNET|
 |Source Name|Tennet Netherlands Electricity System Operator|
-|Dataset|TENNET_EL_MEASURED|
-|Dataset Name|TenneT Netherlands Power Measurement Volume|
+|Dataset|TENNET_EL_BID_PRICE_LADDER|
+|Dataset Name|TenneT Netherlands Power Bidding Price Ladder|
 |Frequency|QUARTERHOURLY|
 |Currency|NA|
 |Unit|MW|
 |Market|Statistics|
 |Commodity|Power|
-|Product|Power Imbalance|
+|Product|Power Bidding Price Ladder|
 |Location|Netherlands|
 |Region|Europe|
-|Quote Calendar|QUARTERHOURLY|
+|Quote Calendar|DAILY|
 |Expiry Calendar|NA|
 
 ### Validation

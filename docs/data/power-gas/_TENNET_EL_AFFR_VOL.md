@@ -1,10 +1,10 @@
 ### Schedule
 
-The file collection schedule is between 14:00 and 20:00 GMT daily.
+The file collection schedule is between 16:00 and 17:00 GMT daily.
 
 ### Sample File
 
-[Sample file for TenneT Measurement Volume](pathname:///file-samples/metered_injections_27-01-2025_00_00_00.json)
+[Sample file for TenneT AFFR Volume](frequency_restoration_reserve_activations_26-02-2025_00_00_00.json)
 
 ### Type
 
@@ -16,7 +16,7 @@ Example data id and name
 
 |**Data Id**|**Name**|
 |-|-|
-|#TENNET.EL.NL.MEASURED_VOL.15MIN|TenneT Power Measurement Volume Quarter Hourly Netherlands|
+|#TENNET.EL.NL.VOL_AFFR.EMERG_CAP.15MIN|TenneT Power Volume of Settled aFFR and Emergency Capacity Netherlands|
 
 ### Attributes
 
@@ -24,8 +24,8 @@ Example data id and name
 |-|-|
 |Source|TENNET|
 |Source Name|Tennet Netherlands Electricity System Operator|
-|Dataset|TENNET_EL_MEASURED|
-|Dataset Name|TenneT Netherlands Power Measurement Volume|
+|Dataset|TENNET_EL_AFFR_VOL|
+|Dataset Name|TenneT Netherlands Power Volume of Settled aFFR and Emergency Capacity|
 |Frequency|QUARTERHOURLY|
 |Currency|NA|
 |Unit|MW|
