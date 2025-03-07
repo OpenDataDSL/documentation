@@ -963,7 +963,7 @@
         "start": "2023",
         "frequency": "DAILY",
         "link":"/docs/company/EPEX",
-        "tags": ["Commodity", "Power"," NEW"]
+        "tags": ["Commodity", "Power"]
     },
     {
         "type": "BYOL",
@@ -976,7 +976,7 @@
         "start": "2021",
         "frequency": "DAILY",
         "link":"/docs/company/EEX",
-        "tags": ["Commodity", "Power"," NEW"]
+        "tags": ["Commodity", "Power"]
     },
     {
         "type": "BYOL",
@@ -989,7 +989,7 @@
         "start": "2021",
         "frequency": "DAILY",
         "link":"/docs/company/EEX",
-        "tags": ["Commodity", "Natural Gas"," NEW"]
+        "tags": ["Commodity", "Natural Gas"]
     },
     {
         "type": "BYOL",
@@ -1002,7 +1002,7 @@
         "start": "2021",
         "frequency": "DAILY",
         "link":"/docs/company/EEX",
-        "tags": ["Commodity", "Emissions"," NEW"]
+        "tags": ["Commodity", "Emissions"]
     },
     {
         "type": "BYOL",
@@ -1015,7 +1015,7 @@
         "start": "2023",
         "frequency": "DAILY",
         "link":"/docs/company/LEBA",
-        "tags": ["Commodity", "Natural Gas"," NEW"]
+        "tags": ["Commodity", "Natural Gas"]
     },
     {
         "type": "FREE",
@@ -1028,7 +1028,7 @@
         "start": "2023",
         "frequency": "Quarter Hourly",
         "link":"/docs/company/NETZTRANSPARENZ",
-        "tags": ["Commodity", "Power"," NEW"]
+        "tags": ["Commodity", "Power"]
     },
     {
         "type": "BYOL",
@@ -1041,7 +1041,7 @@
         "start": "2024",
         "frequency": "BUSINESS",
         "link":"/docs/company/BLOOMBERG",
-        "tags": ["Commodity", "Foreign Exchange Rates","Interest Rates"," NEW"]
+        "tags": ["Commodity", "Foreign Exchange Rates","Interest Rates"]
     },
     {
         "type": "BYOL",
@@ -1054,7 +1054,7 @@
         "start": "2024",
         "frequency": "BUSINESS",
         "link":"/docs/company/BLOOMBERG",
-        "tags": ["Commodity","Natural Gas"," NEW"]
+        "tags": ["Commodity","Natural Gas"]
     },
     {
         "type": "BYOL",
@@ -1067,7 +1067,7 @@
         "start": "2024",
         "frequency": "BUSINESS",
         "link":"/docs/company/BLOOMBERG",
-        "tags": ["Commodity","Oil"," NEW"]
+        "tags": ["Commodity","Oil"]
     },
     {
         "type": "FREE",
@@ -1080,6 +1080,72 @@
         "start": "2023",
         "frequency": "Hourly",
         "link":"/docs/company/ENERGINET",
+        "tags": ["Commodity", "Power"]
+    },
+    {
+        "type": "FREE",
+        "provider": "TenneT",
+        "providerType":"Transmission System Operators",
+        "logo": "tennet.png",
+        "dataset": "Power",
+        "text": "TenneT Netherlands Power Settled Imbalance Volume",
+        "region": "Netherlands",
+        "start": "2023",
+        "frequency": "QUARTERHOURLY",
+        "link":"/docs/company/TENNET",
+        "tags": ["Commodity", "Power"," NEW"]
+    },
+    {
+        "type": "FREE",
+        "provider": "TenneT",
+        "providerType":"Transmission System Operators",
+        "logo": "tennet.png",
+        "dataset": "Power",
+        "text": "TenneT Power Measured Volume",
+        "region": "Netherlands",
+        "start": "2023",
+        "frequency": "QUARTERHOURLY",
+        "link":"/docs/company/TENNET",
+        "tags": ["Commodity", "Power"," NEW"]
+    },
+    {
+        "type": "FREE",
+        "provider": "TenneT",
+        "providerType":"Transmission System Operators",
+        "logo": "tennet.png",
+        "dataset": "Power",
+        "text": "TenneT Power Balance Delta",
+        "region": "Netherlands",
+        "start": "2023",
+        "frequency": "QUARTERHOURLY",
+        "link":"/docs/company/TENNET",
+        "tags": ["Commodity", "Power"," NEW"]
+    },
+    {
+        "type": "FREE",
+        "provider": "TenneT",
+        "providerType":"Transmission System Operators",
+        "logo": "tennet.png",
+        "dataset": "Power",
+        "text": "TenneT Power Bidding Price Ladder",
+        "region": "Netherlands",
+        "start": "2023",
+        "frequency": "QUARTERHOURLY",
+        "link":"/docs/company/TENNET",
+        "tags": ["Commodity", "Power"," NEW"]
+    },
+    {
+        "type": "FREE",
+        "provider": "TenneT",
+        "providerType":"Transmission System Operators",
+        "logo": "tennet.png",
+        "dataset": "Power",
+        "text": "TenneT Volume of Settled aFFR and Emergency Capacity",
+        "region": "Netherlands",
+        "start": "2023",
+        "frequency": "QUARTERHOURLY",
+        "link":"/docs/company/TENNET",
         "tags": ["Commodity", "Power"," NEW"]
     }
 ]
+

@@ -40,30 +40,30 @@ import TennetElBidPriceLadder from './_TENNET_EL_BID_PRICE_LADDER.md';
 
 ### TENNET_EL_IMB_VOL
 <details>
-<summary>TenneT Netherlands Power Imbalance Volume</summary>
+<summary>TenneT Power Settled Imbalance Volume</summary>
 <TennetElImbVol />
 </details>
 
 ### TENNET_EL_MEASURED
 <details>
-<summary>TenneT Netherlands Power Measured Volume</summary>
+<summary>TenneT Measured Volume</summary>
 <TennetElMeasured />
 </details>
 
 ### TENNET_EL_DELTA
 <details>
-<summary>TenneT Netherlands Power Balance Delta Prices</summary>
+<summary>TenneT Power Balance Delta Prices</summary>
 <TennetElDelta />
 </details>
 
 ### TENNET_EL_AFFR_VOL
 <details>
-<summary>TenneT Netherlands Power Volume of Settled aFFR and Emergency Capacity for Area Netherlands</summary>
+<summary>TenneT Power Volume of Settled aFFR and Emergency Capacity</summary>
 <TennetElAffrVol />
 </details>
 
 ### TENNET_EL_BID_PRICE_LADDER
 <details>
-<summary>TenneT Netherlands Power Bidding Price Ladder</summary>
+<summary>TenneT Power Bidding Price Ladder</summary>
 <TennetElBidPriceLadder />
 </details>
