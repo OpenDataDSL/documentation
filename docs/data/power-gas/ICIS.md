@@ -25,17 +25,17 @@ For more information, visit: https://www.icis.com/explore/
 
 ## Datasets
 
-import IcisEsgmAss from './_ICIS_ESGM_ASS.md';
-import IcisEdemAss from './_ICIS_EDEM_ASS.md';
+import IcisEsgmAss from './_ICIS_ESGM_PRICE_ASS.md';
+import IcisEsgmIndices from './_ICIS_ESGM_INDICES.md';
 
-### ICIS_ESGM_ASS
+### ICIS_ESGM_PRICE_ASS
 <details>
-<summary>ICIS Heren ESGM Natural Gas Assessments</summary>
+<summary>ICIS Heren ESGM Natural Gas Price Assessments</summary>
 <IcisEsgmAss/>
 </details>
 
-### ICIS_EDEM_ASS
+### ICIS_ESGM_INDICES
 <details>
-<summary>ICIS Heren EDEM Power Assessments</summary>
-<IcisEdemAss/>
+<summary>ICIS Heren ESGM Natural Gas Indices</summary>
+<IcisEsgmIndices/>
 </details>

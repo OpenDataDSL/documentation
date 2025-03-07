@@ -8,7 +8,7 @@ This month release mainly includes data loading details of [TENNET](https://doc.
 #### TenneT Power Bidding Price Ladder
 #### TenneT Volume of Settled aFFR and Emergency Capacity
 
-## Sept-2024
+## Oct-2024
 This month release mainly includes data loading details of [ICIS](https://doc.opendatadsl.com/docs/company/ICIS)
 #### ICIS ESGM Assessments
 #### ICIS ESGM Indices
