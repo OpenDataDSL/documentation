@@ -30,9 +30,17 @@ For more information, visit: https://www.leba.org.uk/
 
 ## Datasets
 import LebaNgPrompt from './_LEBA_NG_PROMPT.md';
+import LebaNgFwd from './_LEBA_NG_FWD.md';
+
 
 ### LEBA_NG_PROMPT
 <details>
 <summary>LEBA European Gas Prompt Indices</summary>
 <LebaNgPrompt />
+</details>
+
+### LEBA_NG_FWD
+<details>
+<summary>LEBA European Gas Forwards</summary>
+<LebaNgFwd />
 </details>

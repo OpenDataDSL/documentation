@@ -27,82 +27,52 @@ The European Energy Exchange (EEX) is the leading energy exchange in Europe whic
 For more information, visit: http://www.eex.com
 
 ## Datasets
-import EexAgInd from '../aggs/_EEX_AG_IND.md';
 import EexElFut from './_EEX_EL_FUT.md';
 import EexNgFut from './_EEX_NG_FUT.md';
 import EexNgSpot from './_EEX_NG_SPOT.md';
-import EexNgSpInd from './_EEX_NG_SP_IND.md';
-import EexNgFutInd from './_EEX_NG_FUT_IND.md';
 import EexNgEgsiFut from './_EEX_NG_EGSI_FUT.md';
+import EexNgIndices from './_EEX_NG_INDICES.md';
 import EexEmFut from '../coal-emission/_EEX_EM_FUT.md';
 import EexEmSpot from '../coal-emission/_EEX_EM_SPOT.md';
-import EexEmAuc from '../coal-emission/_EEX_EM_AUC.md';
-import EexEmSpInd from '../coal-emission/_EEX_EM_SP_IND.md';
-
-
-
-### EEX_AG_IND
-<details>
-<summary>EEX European Energy Exchange Agricultural Indices</summary>
-<EexAgInd />
-</details>
 
 ### EEX_EL_FUT
 <details>
-<summary>European Energy Exchange AG Power Futures</summary>
+<summary>European Energy Exchange Power Futures</summary>
 <EexElFut />
 </details>
 
 ### EEX_NG_FUT
 <details>
-<summary>European Energy Exchange AG Natural Gas Physical Futures</summary>
+<summary>European Energy Exchange Physical Natural Gas Futures</summary>
 <EexNgFut />
 </details>
 
 ### EEX_NG_SPOT
 <details>
-<summary>European Energy Exchange AG Natural Gas Spot</summary>
+<summary>European Energy Exchange Natural Gas Spot</summary>
 <EexNgSpot />
-</details>
-
-### EEX_NG_SP_IND
-<details>
-<summary>European Energy Exchange AG Natural Gas Futures Indices</summary>
-<EexNgSpInd />
-</details>
-
-### EEX_NG_FUT_IND
-<details>
-<summary>European Energy Exchange AG Natural Gas Futures Indices</summary>
-<EexNgFutInd />
 </details>
 
 ### EEX_NG_EGSI_FUT
 <details>
-<summary>European Energy Exchange AG Natural Gas Financial Futures</summary>
+<summary>European Energy Exchange Financial Natural Gas Futures</summary>
 <EexNgEgsiFut/>
+</details>
+
+### EEX_NG_INDICES
+<details>
+<summary>European Energy Exchange Natural Gas Indices</summary>
+<EexNgIndices />
 </details>
 
 ### EEX_EM_FUT
 <details>
-<summary>European Energy Exchange AG Emission Futures</summary>
+<summary>European Energy Exchange Emission Futures</summary>
 <EexEmFut/>
 </details>
 
 ### EEX_EM_SPOT
 <details>
-<summary>European Energy Exchange AG Emission Spot Prices</summary>
-<EexEmFut/>
-</details>
-
-### EEX_EM_AUC
-<details>
-<summary>European Energy Exchange AG Emission Auction Prices</summary>
-<EexEmFut/>
-</details>
-
-### EEX_EM_SP_IND
-<details>
-<summary>European Energy Exchange AG Emission Spot Indices</summary>
+<summary>European Energy Exchange Emission Spot Prices</summary>
 <EexEmFut/>
 </details>

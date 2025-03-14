@@ -15,9 +15,10 @@ Current Data RoadMap
 |Energinet|Denmark|Power|
 |Energy Exchange Austria|Austria|Power|
 |National Grid|United Kingdom|Power|
-|Nordic Power futures|Nordic Countries|Power|
 |Netztransparenz|Germany|Power
 |Short-term electricity Market Operator|Slovakia|Power|
 |Terna|Europe|Power|
 |Trading Hub Europe|Germany|Gas|
 |Italian Power Futures|Italy|Power|
+|LEBA European Power|Europe|Power|
+
