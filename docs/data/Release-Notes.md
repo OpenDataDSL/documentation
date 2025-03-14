@@ -1,6 +1,6 @@
 
 ## Latest Release - Feb-2025
-This month release mainly includes the information about the [TENNET](https://doc.opendatadsl.com/docs/company/TENNET) feeds
+This release mainly includes the addition of the [TENNET](https://doc.opendatadsl.com/docs/company/TENNET) feeds
 #### TenneT Imbalance Prices
 #### TenneT Settled Imbalance Volume
 #### TenneT Power Measured Volume
@@ -9,16 +9,16 @@ This month release mainly includes the information about the [TENNET](https://do
 #### TenneT Volume of Settled aFFR and Emergency Capacity
 
 ## Jan-2025
-This month release mainly includes the 
+This release includes, 
 #### Corrections for ICIS  Price Assessments and Indices
 
 ## Oct-2024
-This month release mainly includes the information about the [ICIS](https://doc.opendatadsl.com/docs/company/ICIS) feeds
+This release mainly includes the addition of the [ICIS](https://doc.opendatadsl.com/docs/company/ICIS) feeds
 #### ICIS ESGM Assessments
 #### ICIS ESGM Indices
 
 ## Aug-2024
-This month release mainly includes the information about the [EEX](https://doc.opendatadsl.com/docs/company/EEX) feeds
+This month release mainly includes the addition of the [EEX](https://doc.opendatadsl.com/docs/company/EEX) feeds
 #### EEX Natural Gas Spot 
 #### EEX Natural Gas Futures
 #### EEX Natural Gas EGSI Futures
@@ -27,19 +27,19 @@ This month release mainly includes the information about the [EEX](https://doc.o
 #### EEX Emissions Futures
 
 ## Jul-2024
-This month release mainly includes the information about the [EPEX](https://doc.opendatadsl.com/docs/company/EPEX) feeds
+This release mainly includes the addition of the [EPEX](https://doc.opendatadsl.com/docs/company/EPEX) feeds
 #### EPEX Power Auction Day Ahead 
 #### EPEX Power Auction Intraday
 #### EPEX Power Auction Aggregated Curves
 #### EPEX Power Continuous Intraday
 
 ## June-2024
-This month release mainly includes the information about the [LEBA](https://doc.opendatadsl.com/docs/company/LEBA) feeds
+This release mainly includes the addition of the [LEBA](https://doc.opendatadsl.com/docs/company/LEBA) feeds
 #### LEBA Natural Gas Prompt 
 #### LEBA Natural Gas Forwards
 
 ## Apr-2024
-This month release mainly includes the information about the [ICE](https://doc.opendatadsl.com/docs/company/ICE) feeds
+This release mainly includes the addition of the [ICE](https://doc.opendatadsl.com/docs/company/ICE) feeds
 #### ICE NDEX Power Futures
 #### ICE NDEX Natural Gas Futures
 #### ICE NDEX Emissions Futures
@@ -60,7 +60,7 @@ Main features:
 * Natural gas futures contracts are structured in 'gas day'
 
 ## Mar-2024
-This month release mainly includes,
+This release includes,
 
 #### BSP Slovenia Power Day Ahead Price and Volume [BSP](https://doc.opendatadsl.com/docs/company/BSP)
 #### OKTE Slovakia Power Day Ahead Price and Volume [OKTE](https://doc.opendatadsl.com/docs/company/OKTE)
