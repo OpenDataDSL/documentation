@@ -1,71 +1,81 @@
 
 ## Latest Release - Feb-2025
-This release mainly includes the addition of the [TENNET](https://doc.opendatadsl.com/docs/company/TENNET) feeds
-#### TenneT Imbalance Prices
-#### TenneT Settled Imbalance Volume
-#### TenneT Power Measured Volume
-#### TenneT Power Balance Delta Prices
-#### TenneT Power Bidding Price Ladder
-#### TenneT Volume of Settled aFFR and Emergency Capacity
+This release mainly includes addition of the [TENNET](https://doc.opendatadsl.com/docs/company/TENNET) feeds
+* TenneT Imbalance Prices
+* TenneT Settled Imbalance Volume
+* TenneT Power Measured Volume
+* TenneT Power Balance Delta Prices
+* TenneT Power Bidding Price Ladder
+* TenneT Volume of Settled aFFR and Emergency Capacity
 
 ## Jan-2025
 This release includes, 
-#### Corrections for ICIS  Price Assessments and Indices
+* Corrections for ICIS  Price Assessments and Indices
 
 ## Oct-2024
-This release mainly includes the addition of the [ICIS](https://doc.opendatadsl.com/docs/company/ICIS) feeds
-#### ICIS ESGM Assessments
-#### ICIS ESGM Indices
-
-## Aug-2024
-This month release mainly includes the addition of the [EEX](https://doc.opendatadsl.com/docs/company/EEX) feeds
-#### EEX Natural Gas Spot 
-#### EEX Natural Gas Futures
-#### EEX Natural Gas EGSI Futures
-#### EEX Natural Gas EGSI Indices
-#### EEX Power Futures
-#### EEX Emissions Futures
-
-## Jul-2024
-This release mainly includes the addition of the [EPEX](https://doc.opendatadsl.com/docs/company/EPEX) feeds
-#### EPEX Power Auction Day Ahead 
-#### EPEX Power Auction Intraday
-#### EPEX Power Auction Aggregated Curves
-#### EPEX Power Continuous Intraday
-
-## June-2024
-This release mainly includes the addition of the [LEBA](https://doc.opendatadsl.com/docs/company/LEBA) feeds
-#### LEBA Natural Gas Prompt 
-#### LEBA Natural Gas Forwards
-
-## Apr-2024
-This release mainly includes the addition of the [ICE](https://doc.opendatadsl.com/docs/company/ICE) feeds
-#### ICE NDEX Power Futures
-#### ICE NDEX Natural Gas Futures
-#### ICE NDEX Emissions Futures
-#### ICE IFEU Power Futures
-#### ICE IFEU Natural Gas Futures
-#### ICE IFEU Coal Futures
-#### ICE IFEU Products Futures
-#### ICE IFEU Crudes Futures
-#### ICE IFEU Emissions Futures
-#### ICE IFLX Agriculture Futures
-#### ICE IFSG Crudes Futures
-#### ICE IFAD Products Futures
+This release mainly includes addition of the [ICIS](https://doc.opendatadsl.com/docs/company/ICIS) feeds
+* ICIS ESGM Assessments
+* ICIS ESGM Indices
 
 Main features:
-* Relative tenors are calculated using vendor provided absolutes and expiry dates.
+* Relative tenors are calculated using vendor provided absolutes and contract details.
+* Forward curves are built for all ICIS Indices.
+
+## Aug-2024
+This month release mainly includes addition of the [EEX](https://doc.opendatadsl.com/docs/company/EEX) feeds
+* EEX Natural Gas Spot 
+* EEX Natural Gas Futures
+* EEX Natural Gas EGSI Futures
+* EEX Natural Gas EGSI Indices
+* EEX Power Futures
+* EEX Emissions Futures
+
+Main features:
+* Relative tenors are calculated using vendor provided absolutes and contract details.
+* Forward curves are built for all EEX products.
+* Smart curves are built for power off-peak
+* Natural gas futures contracts are structured in 'gas day'
+
+## Jul-2024
+This release mainly includes addition of the [EPEX](https://doc.opendatadsl.com/docs/company/EPEX) feeds
+* EPEX Power Auction Day Ahead 
+* EPEX Power Auction Intraday
+* EPEX Power Auction Aggregated Curves
+* EPEX Power Continuous Intraday
+
+## June-2024
+This release mainly includes addition of the [LEBA](https://doc.opendatadsl.com/docs/company/LEBA) feeds
+* LEBA Natural Gas Prompt 
+* LEBA Natural Gas Forwards
+
+## Apr-2024
+This release mainly includes addition of the [ICE](https://doc.opendatadsl.com/docs/company/ICE) feeds
+* ICE NDEX Power Futures
+* ICE NDEX Natural Gas Futures
+* ICE NDEX Emissions Futures
+* ICE IFEU Power Futures
+* ICE IFEU Natural Gas Futures
+* ICE IFEU Coal Futures
+* ICE IFEU Products Futures
+* ICE IFEU Crudes Futures
+* ICE IFEU Emissions Futures
+* ICE IFLX Agriculture Futures
+* ICE IFSG Crudes Futures
+* ICE IFAD Products Futures
+
+Main features:
+* Relative tenors are calculated using vendor provided absolutes and contract details.
 * Forward curves are built for all ICE products.
 * Smart curves are built for power off-peak
 * Natural gas futures contracts are structured in 'gas day'
 
 ## Mar-2024
-This release includes,
+This release includes addition of following datafeeds:
 
-#### BSP Slovenia Power Day Ahead Price and Volume [BSP](https://doc.opendatadsl.com/docs/company/BSP)
-#### OKTE Slovakia Power Day Ahead Price and Volume [OKTE](https://doc.opendatadsl.com/docs/company/OKTE)
-#### OPCOM Romania Power Day Ahead Price and Volume [OPCOM](https://doc.opendatadsl.com/docs/company/OPCOM)
-#### JAO Power Auction Day Ahead Price and Volume [JAO](https://doc.opendatadsl.com/docs/company/JAO)
+* BSP Slovenia Power Day Ahead Price and Volume [BSP](https://doc.opendatadsl.com/docs/company/BSP)
+* OKTE Slovakia Power Day Ahead Price and Volume [OKTE](https://doc.opendatadsl.com/docs/company/OKTE)
+* OPCOM Romania Power Day Ahead Price and Volume [OPCOM](https://doc.opendatadsl.com/docs/company/OPCOM)
+* JAO Power Auction Day Ahead Price and Volume [JAO](https://doc.opendatadsl.com/docs/company/JAO)
 
 Main features:
 * Added Power Day Ahead Trading Prices (EUR/MWh) and Trading Volumes (MWh) for the above datasets.
