@@ -14,11 +14,7 @@ Current Data RoadMap
 |South East European Power Exchange|Serbia|Power|
 |Energinet|Denmark|Power|
 |Energy Exchange Austria|Austria|Power|
-|National Grid|United Kingdom|Power|
-|Netztransparenz|Germany|Power
-|Short-term electricity Market Operator|Slovakia|Power|
 |Terna|Europe|Power|
-|Trading Hub Europe|Germany|Gas|
 |Italian Power Futures|Italy|Power|
 |LEBA European Power|Europe|Power|
 
