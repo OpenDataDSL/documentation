@@ -1,6 +1,7 @@
 ---
 slug: /odsl/variable/featurepolicy
 title: Feature Policy 🆕
+description: Creating and using feature policies in ODSL code
 tags:
 - feature
 - policy

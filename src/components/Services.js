@@ -148,6 +148,17 @@ var services = [
         ver: false
     },
     {
+        name: "Group",
+        link: "/docs/api/rest/service/group",
+        text: "A group is a list of things such as favourites or export items",
+        rw: true,
+        pub: false,
+        pri: true,
+        quota: false,
+        unres: false,
+        ver: true
+    },
+    {
         name: "Metric",
         link: "/docs/api/rest/service/metric",
         text: "The metric resource contains all of your usage metrics we gather for billing purposes",
