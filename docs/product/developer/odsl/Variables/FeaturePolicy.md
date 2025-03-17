@@ -24,7 +24,7 @@ Below is a table with all the properties of a feature policy:
 |category|String|TeamUsers|An optional category used for filtering policies|
 |description|String|My test policy|A descriptive name for the policy|
 |enabled|Boolean|true|True if it is enabled, false to disable it, by default the policy is enabled|
-|deny|Boolean|true|By default, all features are available to everyone, so you need to set this to false to deny access to features|
+|deny|Boolean|true|By default, all features are available to everyone, so you need to set this to true to deny access to features|
 |members|List|user@company.com|The user emails or Azure Active Directory group id's this policy applies to|
 |features|List|\["scripts"\]|The list of features that this policy applies to|
 
