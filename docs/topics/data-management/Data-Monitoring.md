@@ -180,20 +180,39 @@ ds = object as Dataset
   dsid = "ODSL.DS.TEST"
   source = "private"
   name = "ODSL test dataset"
-  qualityGroup = "DS Quality"
-  expected = SimpleObject()
-  expectedChecks = SimpleObject()
 end
+
+// Add simple expected checks
+ds.expected = SimpleObject()
 ds.expected.set("*", 2)
 ds.expected.set("CalendarDay", 2)
 ds.expected.set("Month", 2)
-ds.expectedChecks.script = "scripts-ds-quality"
-ds.expectedChecks.checks = []
-c1 = SimpleObject()
-c1.name = "has tenor M00"
-c1.expression = "hasTenor('M00')"
-ds.expectedChecks.checks.add(c1)
-save ${dataset:ds}
+
+// Add advanced checks
+cc1 = SimpleObject()
+cc1.type = "function"
+cc1.script = "#DatasetCompletenessChecks"
+cc1.name = "Check for M01"
+cc1.expression = "hasTenor('M01')"
+
+ds.expectedChecks = [cc1]
+
+// Add quality checks
+check1 = SimpleObject()
+check1.type = "function"
+check1.script = "#QualityCheckDatasets"
+check1.name = "Check for zero values"
+check1.expression = "zeroCheck('SETTLEMENT_PRICE')"
+
+// Add a quality check group
+check2 = SimpleObject()
+check2.type = "group"
+check2.name = "My Dataset Quality Checks"
+check2.group = "MY.QUALITY"
+
+ds.checks = [check1, check2]
+
+save ds
 ```
 
 
@@ -225,8 +244,7 @@ Authorization: Bearer {{token}}
   "expected": {
     "*": 12,
     "Month": 12
-  },
-  "qualityGroup": "TraderQuality"
+  }
 }
 ```
 
@@ -242,16 +260,27 @@ Authorization: Bearer {{token}}
     "*": 12,
     "Month": 12
   },
-  "expectedChecks": {
-    "script":"scripts-ds-quality",
-    "checks": [
-      {
-        "name":"has tenor M00",
-        "expression": "hasTenor('M00')"
-      }
-    ]
-  },
-  "qualityGroup": "TraderQuality"
+  "expectedChecks": [
+    {
+      "type": "function",
+      "script":"scripts-ds-quality",
+      "name":"has tenor M00",
+      "expression": "hasTenor('M00')"
+    }
+  ],
+  "checks": [
+    {
+      "type":"function",
+      "script":"#QualityCheckDatasets",
+      "name":"Check for zero values",
+      "expression":"zeroCheck('SETTLEMENT_PRICE')"
+    },
+    {
+      "type":"group",
+      "name":"My Quality Group",
+      "group":"MY.GROUP"
+    }
+  ]
 }
 ```
 
@@ -259,7 +288,7 @@ Authorization: Bearer {{token}}
 </Tabs>
 
 #### Managing public and common datasets and dataset feeds
-If you want to add public and common datasets into you monitoring, you can create references to them in your private database. 
+If you want to add public and common datasets into your monitoring, you can create references to them in your private database. 
 
 With public and common datasets, you can only configure the following:
 * **Checks**
@@ -393,6 +422,8 @@ Any specific quality check results that you have added will also be shown in the
 ```js
 // Create a quality group
 g = QualityGroup()
+g.type = "quality"
+g.category = "dataset"
 g.name = "ICE.NDEX.QUALITY"
 g.description = "ICE Endex Dataset Quality Checks"
 g.script = "#QualityCheckDatasets"
@@ -411,6 +442,7 @@ Authorization: Bearer {{token}}
 
 {
   "type": "quality",
+  "category": "dataset",
   "name": "ICE.NDEX.QUALITY",
   "description": "ICE Endex Dataset Quality Checks",
   "script": "#QualityCheckDatasets",
@@ -450,6 +482,14 @@ The functions have access to the following variables:
 * \#LOG - A log object to place all the failure information
 * \#EVENTS - A list of all the events for this dataset update
 
+All scripts to be used for dataset quality checks need to have a category ```dataset-quality```, you can do this by adding the following to the top of your script:
+
+```js
+/**
+ * @category dataset-quality
+ */
+```
+
 ### Example Functions
 
 #### Check to see if any specific properties are zero
@@ -475,7 +515,7 @@ function zeroCheck(properties)
 end
 ```
 
-## Dataset Expected Checks Scripts
+## Dataset Completeness Check Scripts
 The ODSL scripts you create contain functions to perform expected checks on datasets.
 
 The functions have access to the following variables:
@@ -484,6 +524,14 @@ The functions have access to the following variables:
 * \#ONDATE - The date for the dataset update
 * \#LOG - A log object to place all the failure information
 * \#EVENTS - A list of all the events for this dataset update
+
+All scripts to be used for dataset completeness checks need to have a category ```dataset-completeness```, you can do this by adding the following to the top of your script:
+
+```js
+/**
+ * @category dataset-completeness
+ */
+```
 
 ### Example Functions
 
