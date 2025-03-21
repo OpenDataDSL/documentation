@@ -6,14 +6,10 @@ Bank of Canada Exchange Rates
 
 All the rates are based on the Canadian Dollar (CAD) - click [here](/docs/data/fx) for more information on the Foreign Exchange markets.
 
-
 ### Schedule
 
 Schedule to process the updates at 23:30 GMT on Canada business days.
 
-### Sample File
-
-![](/attachments/216367259/229572776.png)
 
 ### Type
 
