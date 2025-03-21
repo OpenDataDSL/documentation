@@ -6,9 +6,6 @@ Bank of Canada Exchange Rates
 
 All the rates are based on the Canadian Dollar (CAD) - click [here](/docs/data/fx) for more information on the Foreign Exchange markets.
 
-## File Collection
-
-Daily FX rates are collected from [https://www.bankofcanada.ca/rates/exchange/daily-exchange-rates/](https://www.bankofcanada.ca/rates/exchange/daily-exchange-rates/)
 
 ### Schedule
 
