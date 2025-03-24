@@ -19,19 +19,19 @@ Below is a table with all the properties of a basic group:
 |**Name**|**Type**|**Example**|**Description**|
 |-|-|-|-|
 |_id|ObjectId|67d3ee92196dab047409db1a|The unique auto-generated id for this group|
+|service|String|data|The name of the service where the items for this group exist|
 |type|String|favourite|The type of this group - can be anything, but there are some [special group types](#special-group-types)|
 |category|String|Power|A category is used to categorise groups according to similar types|
 |name|String|Netherlands Spot|The name of the group|
 |description|String|Spot Data for the Netherlands|A description of the group|
-|service|String|data|The name of the service where the items for this group exist|
 |shared|Boolean|true|True if the group is accessible to everyone, false if only you can see it|
 |items|Array|...|The list of items in this group (if it is static)|
 |dynamic|Boolean|false|True if this is a dynamic group and the items are read using the dynamicOptions|
+|dynamicOptions.service|String|object|The service used to get the list of id's, defaults to the group service|
 |dynamicOptions.source|String|public|The source of the items, defaults to private|
 |dynamicOptions.filter|String|_type='#ForeignExchange'|The filter used to dynamically find the items for this group|
 |dynamicOptions.field|String|_id|The field for the id of the item, defaults to _id|
-|dynamicOptions.objectfilter|String|_type='#ForeignExchange'|Use this instead of filter to filter data based on master data properties|
-|dynamicOptions.profile|String|SETTLE|Use in conjunction with objectfilter to specify the name of the profile to retrieve|
+|dynamicOptions.objectfilter|String|_type='#ForeignExchange'|Use this to filter data based on master data properties|
 
 ## Managing groups in ODSL code
 
@@ -71,7 +71,7 @@ bg.category = "Data Lists"
 bg.service = "data"
 bg.type = "favourite"
 bg.dynamicOptions.objectfilter = "source='ICE' and exchange='NDEX'"
-bg.dynamicOptions.profile = "SETTLE"
+bg.dynamicOptions.filter = "_type != 'VarCurve'"
 save bg
 ```
 
@@ -83,7 +83,7 @@ find ${group} project type, category, name
 
 ### Getting a group
 
-You can refer to a group either with its ```_id``` or using the format ```type:category:name```
+You can refer to a group either with its ```_id``` or using the format ```service:type:category:name```
 
 #### Getting a group using the _id
 
@@ -95,7 +95,7 @@ print g
 #### Getting a group using type, category and name
 
 ```js
-g = ${group:"favourite:Data Lists:FX Data"}
+g = ${group:"data:favourite:Data Lists:FX Data"}
 print g
 ```
 
@@ -104,7 +104,7 @@ print g
 Getting the group and adding the item to the items array
 
 ```js
-g = ${group:"favourite:Data Lists:My Items"}
+g = ${group:"object:favourite:Data Lists:My Items"}
 g.items.add("ICE.NDEX.NLP")
 save g
 ```
@@ -114,7 +114,7 @@ save g
 Getting the group, removing the item and saving the group with the replace option
 
 ```js
-g = ${group:"favourite:Data Lists:My Items"}
+g = ${group:"object:favourite:Data Lists:My Items"}
 g.items.remove("ICE.NDEX.NLP")
 save g replace
 ```
@@ -122,7 +122,7 @@ save g replace
 Directly removing an item
 
 ```js
-delete ${group:"favourite:Data Lists:My Items/items/ICE.NDEX.NLP"}
+delete ${group:"object:favourite:Data Lists:My Items/items/ICE.NDEX.NLP"}
 ```
 
 ### Rolling back changes to a group
@@ -130,20 +130,20 @@ delete ${group:"favourite:Data Lists:My Items/items/ICE.NDEX.NLP"}
 All changes to groups are tracked and versioned, you can rollback to a previous version of a group using the delete command
 
 ```js
-delete ${group:"favourite:Data Lists:My Items"}
+delete ${group:"object:favourite:Data Lists:My Items"}
 ```
 
 ### Listing versions of a group
 
 ```js
-v = ${group:"favourite:Data Lists:My Items":*}
+v = ${group:"object:favourite:Data Lists:My Items":*}
 print v
 ```
 
 ### Getting a specific version of a group
 
 ```js
-v = ${group:"favourite:Data Lists:My Items":1}
+v = ${group:"object:favourite:Data Lists:My Items":1}
 print v
 ```
 
@@ -152,13 +152,13 @@ print v
 You can tag a version of a group and directly refer to that version using the tag
 
 ```js
-tag ${group:"favourite:Data Lists:My Items":1} as "TEST"
+tag ${group:"object:favourite:Data Lists:My Items":1} as "TEST"
 ```
 
 ### Getting a version using the tag
 
 ```js
-v = ${group:"favourite:Data Lists:My Items":TEST}
+v = ${group:"object:favourite:Data Lists:My Items":TEST}
 print v
 ```
 
@@ -167,7 +167,7 @@ print v
 To fully delete a group, use the version *
 
 ```js
-delete ${group:"favourite:Data Lists:My Items":*}
+delete ${group:"object:favourite:Data Lists:My Items":*}
 ```
 
 ## Using groups in ODSL code
@@ -191,7 +191,7 @@ save bg
 We can retrieve data from the object service using the group in an ```in``` clause as follows:
 
 ```js
-find ${object:"all"} where _id in group("favourite:Data Lists:My Items") project name
+find ${object:"all"} where _id in group("object:favourite:Data Lists:My Items") project name
 ```
 
 ### Example using curves in the data service
@@ -211,13 +211,13 @@ save bg
 We can retrieve data from the object service using the group in an ```in``` clause and a specific ondate as follows:
 
 ```js
-find for ondate("2025-03-13") ${data} where _id in group("favourite:Data Lists:Settlements")
+find for ondate("2025-03-13") ${data} where _id in group("data:favourite:Data Lists:Settlements")
 ```
 
 We can also use a relative ondate as follows:
 
 ```js
-find for ondate("L-1") ${data} where _id in group("favourite:Data Lists:Settlements")
+find for ondate("L-1") ${data} where _id in group("data:favourite:Data Lists:Settlements")
 ```
 
 ## Special Group Types

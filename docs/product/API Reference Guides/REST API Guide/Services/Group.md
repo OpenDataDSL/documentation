@@ -45,19 +45,19 @@ The group entity contains the following information:
 |**Name**|**Description**|**Type**|
 |-|-|-|
 |_id|Unique id for the group|String|
+|service|String|The name of the service where the items for this group exist|
 |type|String|The type of this group|
 |category|String|A category is used to categorise groups according to similar types|
 |name|String|The name of the group|
 |description|String|A description of the group|
-|service|String|The name of the service where the items for this group exist|
 |shared|Boolean|True if the group is accessible to everyone, false if only you can see it|
 |items|Array|The list of items in this group (if it is static)|
 |dynamic|Boolean|True if this is a dynamic group and the items are read using the dynamicOptions|
+|dynamicOptions.service|String|The service used to get the list of id's, defaults to the group service|
 |dynamicOptions.source|String|The source of the items, defaults to private|
 |dynamicOptions.filter|String|The filter used to dynamically find the items for this group|
 |dynamicOptions.field|String|The field for the id of the item, defaults to _id|
 |dynamicOptions.objectfilter|String|Use this instead of filter to filter data based on master data properties|
-|dynamicOptions.profile|String|Use in conjunction with objectfilter to specify the name of the profile to retrieve|
 
 ## Examples
 
@@ -141,7 +141,7 @@ Authorization: Bearer {{token}}
 
 ```js
 GET https://api.opendatadsl.com/api/data/v1/private
-	?_filter={_id:{$in:{$group:'favourite:Data Lists:Settlements'}}}
+	?_filter={_id:{$in:{$group:'data:favourite:Data Lists:Settlements'}}}
 	&_ondate=L-1
 Authorization: Bearer {{token}}
 ```
