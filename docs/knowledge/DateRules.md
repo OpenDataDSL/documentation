@@ -23,7 +23,7 @@ T[+/-][relative][absolute]
 The relative component of the syntax is as follows:
 
 ```
-[nY]{nQ][nM][nW][nD][nh][nm][ns]
+[nY]{nQ][nM][nW][nB][nD][nh][nm][ns]
 ```
 
 #### Absolute syntax
@@ -45,10 +45,14 @@ The periods in the grammar are defined as:
 * Q - Quarter
 * M - Month
 * W - Week
+* B - Business Day
 * D - Day
 * h - Hour
 * m - Minute
 * s - Second
+
+#### Business Day
+Business days are Monday to Friday inclusive, so using T-1B on a Monday will return the previous Friday.
 
 ### Relative parts
 The relative parts always start with a number which represents the number of periods and then a period qualifier.
