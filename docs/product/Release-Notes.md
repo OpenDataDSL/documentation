@@ -6,7 +6,28 @@ sidebar_position: 10
 Release Notes
 =============
 
-## Latest release (Feb-2025)
+## Latest minor release (Apr-2025)
+
+```js
+Build details:
+Excel: 1.0.20250221.1037
+Server: Build 3154
+Client: 1.1.45768.941
+```
+### Hotfixes
+* Fix for timezone issue over DST
+* Fix for issue running processes from other processes
+
+## Mar-2025
+
+### Hotfixes
+* Fix for retrieving absolute periods from a curve affected by the timezone
+* Fix for clashing inserts - changed to upserts
+* Fix for saving quality checks on private datasets
+* Fix for feature policies
+* Fix for null pointer when saving a dataset from the portal
+
+## Feb-2025
 
 This release mainly contains bug fixes/enhancements related to the Dataset Monitoring. 
 Additionally, the release contains an isolated new feature to the Excel-Addin: The Insight Reports. 
@@ -14,12 +35,6 @@ This new enhancement provides the flexibility for the users to include insight r
 But not just that - from a product perspective it is a major step as we keep any new insight report idea separated from new product development releases, 
 which makes us far more flexible.
 
-```js
-Build details:
-Excel: 1.0.20250221.1037
-Server: Build 3092
-Client: 1.1.45716.1032
-```
 
 ### Enhancements
 * Excel Insights including [Documentation update](/docs/category/excel-insights)
