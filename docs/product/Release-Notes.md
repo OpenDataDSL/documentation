@@ -5,15 +5,77 @@ sidebar_position: 10
 
 Release Notes
 =============
+## Latest release (May-2025)
 
-## Latest minor release (Apr-2025)
+This release will support **Groups/Favourites** and enhanced **Insight Reporting** as new highlights of the OpenDataDSL platform. 
+Moreover the release contains **accumulated bugfixes** and **general enhancements**.
 
 ```js
 Build details:
 Excel: 1.0.20250221.1037
-Server: Build 3154
-Client: 1.1.45768.941
+Server: Build 3185
+Client: 1.1.45784.1109
 ```
+
+### Groups/Favourites
+
+Groups and favourites in OpenDataDSL come along with the following features:
+* **Dynamic or static groups** - a dynamic group uses a filter to find the items belonging to the groups
+* **Shared groups** - option if you want to share the group with your colleagues
+* **Managing groups** - manage the groups you are the owner of
+* **Group subscriptions**
+* **Access rights** following your **policies**
+
+There are some pre-defined special groups which control specific functionality within the OpenDataDSL platform:
+* **Curve Build Group** - has specific configuration information regarding the cut-off time for when curves need to be ready for and the rules to run if they are not ready by that time
+* **Quality Group** - a list of checks to perform on curves or datasets
+* **Export Group** - a list of items that a function is run at a set time, usually to export the data to a downstream system
+* **Approval Group** - a list of email addresses of users that can approve the list of curves
+* **Subscription Target Group** - a list of targets to send subscriptions to
+
+Additionally every OpenDataDSL user has its **frequently** and **recently used** groups. 
+
+Also check out the available documentation pages:
+* [Groups/Favourites User Guide](/docs/user/portal/favourites)
+* [Groups in general](/docs/odsl/variable/group)
+* [Group Service](/docs/api/rest/service/group)
+* [Target Groups](/docs/topics/subscribe/group)
+
+### Insight Reports extension
+
+We have extended OpenDataDSL Insight Reports  - we now support the use of Insights across the platform:
+
+* **Master Data** - Master Data Insights
+* **Data** - Data Insights
+* **Events** - Event Insights
+* **Curves** - Curve Management Insights
+* **Processes** - Process Insights
+* **Executions** - Process Insights
+* **Queues** - Queue Insights
+* **Types** - Type Insights
+* **Calendars** - Calendar Insights
+* **Scripts** - Script Insights
+* **Alerts** - Alert Insights
+* **Excel Add-in** - Excel Insights
+
+Check out the available [documentation page](/docs/category/insights)
+
+
+### Bug fixes
+
+* Out of memory versioning a report
+* Issue triggering processes from other processes
+* Fix for duplicate alerts
+
+### Enhancements
+
+* Widget Reports
+* Add _created timestamp to all entities
+* Automate dataset alert closure once waited for/late data is received
+* Smart feed improvements
+
+## Apr-2025
+
 ### Hotfixes
 * Fix for timezone issue over DST
 * Fix for issue running processes from other processes
