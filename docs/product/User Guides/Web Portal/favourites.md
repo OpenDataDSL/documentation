@@ -82,7 +82,7 @@ Clicking the **Favourites* button shows a menu of all the favourite groups that 
 
 ![](/img/portal/fav_screen1.png)
 
-Each top level name if the type of group (**Providers, Commodity, Features, Favourites**)
+Each top level name is the type of group (**Providers, Commodity, Features, Favourites**)
 
 :::note
 These may be different in your portal

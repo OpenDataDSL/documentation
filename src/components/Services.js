@@ -126,6 +126,17 @@ var services = [
         ver: true
     },
     {
+        name: "Extension",
+        link: "/docs/api/rest/service/extension",
+        text: "The extension resource contains all the application extensions available and the ability to create and publish your own extensions",
+        rw: true,
+        pub: true,
+        pri: true,
+        quota: false,
+        unres: false,
+        ver: true
+    },
+    {
         name: "Extractor",
         link: "/docs/api/rest/service/extractor",
         text: "The resource for using extractors to extract content from HTML pages",

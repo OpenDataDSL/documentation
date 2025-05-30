@@ -12,13 +12,13 @@ import Logout from './all/_logout.md';
 import Onerror from './all/_onerror.md';
 import Pause from './all/_pause.md'
 import Print from './all/_print.md';
+import Publish from './all/_publish.md'
 import Return from './all/_return.md';
 import Run from './all/_run.md';
 import Send from './all/_send.md';
 import Set from './all/_set.md';
 import Trigger from './all/_trigger.md';
 import Use from './all/_use.md';
-
 
 All the general OpenDataDSL statement commands
 
@@ -42,6 +42,9 @@ All the general OpenDataDSL statement commands
 
 ## print
 <Print />
+
+## publish
+<Publish />
 
 ## return
 <Return />

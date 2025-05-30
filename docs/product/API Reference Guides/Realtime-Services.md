@@ -59,4 +59,11 @@ This method is triggered by a running process at one of the following stages:
 
 The execution message contains the latest full execution log for a running process.
 
+### Extensions
+
+#### extensionMessage
+
+This method is triggered when installing or uninstalling an extension to an environment.
+
+
 
