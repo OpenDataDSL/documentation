@@ -1,5 +1,23 @@
+## Latest release ( May-2025)
+This release mainly includes the implementation of content monitoring for EEX feeds. The different events communicated by EEX include late uploads at the end of a trading day or updates to a historical CSV file. Our process captures these events through an RSS feed for SFTP monitoring.
 
-## Latest Release - Feb-2025
+Additionally, this release also includes setting up smart loader for EEX EGSI Futures, Power and Gas Futures
+
+## Apr-2025
+This release primarily includes adding data feeds to dataset monitoring.
+* Testing Dataset Monitoring  
+* Adding Completeness (based on the number of expected tenors) and Quality Checks for FX rates, Power and Gas Forward Curves, Intra-day updates, Gas and Power Indices
+* Testing Smart Loading Service provided in the Dataset Monitoring with EEX feeds
+
+## Mar-2025
+This release mainly includes the addition of ENTSOE datasets and loading history.
+* Load - Actual and Day Ahead Total Load are loaded for all major bidding zones
+* Balance - Imbalance Price and Total Volume, Cross Border Balancing for all major areas are covered
+* Generation - Forecast Day Ahead, Actual Generation per Unit and Production Type, Installed capacity per Production Type for all major areas
+* Transmission - Cross-Border Physical Flow, Day-ahead Prices, Forecasted Transfer Capacities - Day Ahead for major control areas
+* Outages - Unavailability in Transmission Grid, Offshore Grid, Production & Generation Unit, and Aggregated unavailability of Consumption Units
+
+## Feb-2025
 This release mainly includes addition of the [TENNET](https://doc.opendatadsl.com/docs/company/TENNET) feeds
 * TenneT Imbalance Prices
 * TenneT Settled Imbalance Volume
