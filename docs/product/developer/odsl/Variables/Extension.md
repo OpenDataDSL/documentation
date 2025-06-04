@@ -35,17 +35,21 @@ The Extension View entity is used to configure the views in the portal and excel
 
 |**Name**|**Description**|**Type**|
 |-|-|-|
-|name|The name of the view|String|
+|id|The unique identifier for this view in the extension|String|
+|section|The section in the menu to display this view, defaults to Extension|String|
+|name|The name of the view as shown in the menu|String|
+|description|A description of the view|String|
 |tabname|The name of the tab, defaults to 'Main'|String|
+|appname|The name of the view in the Apps catalogue, only used if the tabname is 'Apps'|String|
 |excel|True if this is an Excel Add-in view, defaults to false|Boolean|
 |icon|The icon shown next to the name in the GUI|String|
 |feature|The feature policy used to determine if a user can see this view|String|
-|section|The section in the menu to display this view, defaults to Extension|String|
 |script|The mustache script containing the code for this view|String|
+|insights|Set this to true if this app is a new menu item and you want to show an Insights tab|Boolean|
 
 ### Resources
 
-Extension resources and a list of entities which need to be installed with the extension.
+Extension resources are a list of entities which need to be installed with the extension.
 Resources are a SimpleObject, with each key in the document being a service name.
 The value of the service can either be key=values or an array, e.g.
 
