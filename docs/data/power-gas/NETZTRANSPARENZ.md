@@ -10,6 +10,8 @@ NETZTRANSPARENZ
 
 =========
 
+Netztransparenz
+
 ![](/img/data/netztransperenz.png)
 
 Netztransparenz is a joint information platform operated by the four German transmission system operators (TSOs). It provides a comprehensive view of the German electricity market, including information on generation, transmission, and consumption, with a focus on transparency and clarity for both professionals and the general public.
