@@ -855,6 +855,7 @@
         "start": "2023",
         "frequency": "BUSINESS",
         "link":"/docs/company/ICE",
+        "releaseDate":"2024-05",
         "tags": ["Commodity", "Power"]
     },
     {
@@ -1023,7 +1024,7 @@
         "providerType":"Public Agency",
         "logo": "netztransperenz.png",
         "dataset": "Power",
-        "text": "Power Balancing Energy Price",
+        "text": "Electricity Balancing Energy Prices",
         "region": "Europe",
         "start": "2023",
         "frequency": "Quarter Hourly",
@@ -1077,7 +1078,7 @@
         "dataset": "Power",
         "text": "Power Day Ahead Prices",
         "region": "Europe",
-        "start": "2023",
+        "start": "2025",
         "frequency": "Hourly",
         "link":"/docs/company/ENERGINET",
         "tags": ["Commodity", "Power"]
@@ -1090,7 +1091,7 @@
         "dataset": "Power",
         "text": "TenneT Netherlands Power Settled Imbalance Volume",
         "region": "Netherlands",
-        "start": "2023",
+        "start": "2025",
         "frequency": "QUARTERHOURLY",
         "link":"/docs/company/TENNET",
         "tags": ["Commodity", "Power"," NEW"]
@@ -1103,7 +1104,7 @@
         "dataset": "Power",
         "text": "TenneT Power Measured Volume",
         "region": "Netherlands",
-        "start": "2023",
+        "start": "2025",
         "frequency": "QUARTERHOURLY",
         "link":"/docs/company/TENNET",
         "tags": ["Commodity", "Power"," NEW"]
@@ -1116,7 +1117,7 @@
         "dataset": "Power",
         "text": "TenneT Power Balance Delta",
         "region": "Netherlands",
-        "start": "2023",
+        "start": "2025",
         "frequency": "QUARTERHOURLY",
         "link":"/docs/company/TENNET",
         "tags": ["Commodity", "Power"," NEW"]
@@ -1129,7 +1130,7 @@
         "dataset": "Power",
         "text": "TenneT Power Bidding Price Ladder",
         "region": "Netherlands",
-        "start": "2023",
+        "start": "2025",
         "frequency": "QUARTERHOURLY",
         "link":"/docs/company/TENNET",
         "tags": ["Commodity", "Power"," NEW"]
@@ -1142,7 +1143,7 @@
         "dataset": "Power",
         "text": "TenneT Volume of Settled aFFR and Emergency Capacity",
         "region": "Netherlands",
-        "start": "2023",
+        "start": "2025",
         "frequency": "QUARTERHOURLY",
         "link":"/docs/company/TENNET",
         "tags": ["Commodity", "Power"," NEW"]
