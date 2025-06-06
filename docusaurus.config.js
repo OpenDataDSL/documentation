@@ -22,7 +22,7 @@ module.exports = {
       },
       items: [
         {type: 'doc', docId: 'home',position: 'left',label: 'Getting Started'},
-        {href: 'https://opendatadsl.com', label: 'Web site', position: 'left'},
+        {href: 'https://www.opendatadsl.com', label: 'Web site', position: 'left'},
         {href: 'https://portal.opendatadsl.com', label: 'Portal', position: 'left'}
       ],
     },

@@ -117,6 +117,11 @@ The best way to start the mustache file is by including the #odsl-extension scri
 
 You can then proceed to add the HTML and javascript required for the desired functionality.
 
+## Insights
+You can create insights and include them in the extension manifest resources, so they will be published/installed.
+
+In order to show the insights on the **Insights** tab of the extension, set the category on the insight to be the same as the insight id, ie. {published}.{code}
+
 ## Publishing an extension
 If you want to publish your extension into the public repository so other companies that use the OpenDataDSL platform can install and use it, you need to become a publisher.
 
