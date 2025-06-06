@@ -32,6 +32,12 @@ It can also be omitted if the service is not a multi-source service.
 The fillForm method populates the form fields with the json data passed in.
 
 ## Events
+Clicking the submit button on the form pushes the input data to the configured REST service.
+
+There are 2 events that can be handled:
+* onsubmit - this is called BEFORE the data is submitted to the service, allowing you to validate or augment the data.
+* onchange - this is called AFTER the data is submitted, allowing you to refresh areas of your page.
+
 ### submit
 
 The submit event is fired when the submit button is clicked by the user.
@@ -42,7 +48,7 @@ The change event is fired after the submit event has posted the data to the serv
 
 ## Examples
 
-### An input form to add an event to an object
+### An input form to add an event timeseries to an object
 ```html
 <odsl-input-form service="object" source="private" onsubmit="insertIntoObject(event.detail)">
     <odsl-input-field name="name" class="col-6" type="text" label="Name" help="Enter the name"></odsl-input-field>
@@ -59,8 +65,11 @@ The change event is fired after the submit event has posted the data to the serv
 </odsl-input-form>
 ```
 
+#### An example of the form defined above
+![](/img/components/odsl-input-form.png)
+
 ### Javascript to manipulate data
-Below if an example function for the ```onsubmit``` event to create an object wrapper for an event object:
+Below is an example function for the ```onsubmit``` event to create an object wrapper for an event object:
 
 ```js
 function insertIntoObject(detail) {
