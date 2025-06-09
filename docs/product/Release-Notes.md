@@ -5,17 +5,49 @@ sidebar_position: 10
 
 Release Notes
 =============
-## Latest release (May-2025)
 
-This release will support **Groups/Favourites** and enhanced **Insight Reporting** as new highlights of the OpenDataDSL platform. 
-Moreover the release contains **accumulated bugfixes** and **general enhancements**.
+## Latest release (Jun-2025)
+
+This release will support **Extensions (Apps)** and enhanced **Dashboards incl. Widgets** as new highlights of the OpenDataDSL platform.
+Moreover the release contains **accumulated bugfixes** and a **group subscription enhancements**.
 
 ```js
 Build details:
 Excel: 1.0.20250221.1037
-Server: Build 3185
-Client: 1.1.45784.1109
+Server: Build 3253
+Client: 1.1.45816.1134
 ```
+
+### Extensions (Apps)
+OpenDataDSL extensions are a collection of components which form some bespoke functionality that gets added to the Web Portal.
+This will allow us, partners and customers to extend/add new functionality and features dynamically to the Web Portal.
+
+Also check out the available documentation pages: 
+* [Topic: Extension Basics](/docs/odsl/extension/extension-basics) to get a good understanding of how extensions work
+* [Topic: Extension Example](/docs/odsl/extension/odsl.example) for a simple example of creating a basic extension
+* [REST API Extension](/docs/api/rest/service/extension) for the REST API for the extension service
+* [Developer Guide: Extension Service](/docs/odsl/service/extension) for the extension service in the ODSL language
+
+
+### Dashboards incl. Widgets
+The idea behind Widget Reports is that they are custom charts and reports that fit within a regular size on a grid as either a single or multiple cells.
+Users could create their own Widgets and customise the Dashboard to create their own Home Screen. The Dashboard(s) can optionally be shared.
+
+### Group subscriptions
+This new feature is to add a special subscription on a static group, which synchronises the group items with subscription items whenever the group changes. The subscription targets will work on the items of the group.
+
+### Bug Fixes
+* Hourly prices within a month not correct
+* Intraday calendar not correctly using timezone for Event Timeseries
+* Issue saving existing group changing shared from false to true
+* Disabling a subscription asks for QueueTarget which is already there
+* View Tenor History for Absolutes Tenor is returning Relative Tenor History
+
+
+## May-2025
+
+This release will support **Groups/Favourites** and enhanced **Insight Reporting** as new highlights of the OpenDataDSL platform. 
+Moreover the release contains **accumulated bugfixes** and **general enhancements**.
 
 ### Groups/Favourites
 
