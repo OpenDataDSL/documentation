@@ -299,19 +299,6 @@
         "tags": ["Commodity", "Agriculture"]
     },
     {
-        "type": "BYOL",
-        "provider": "Central Eastern European Gas Exchange",
-        "providerType":"Exchange",
-        "logo": "ceegex.svg",
-        "dataset": "Natural Gas",
-        "text": "Hungary Natural Gas Prices",
-        "region": "Hungary",
-        "start": "2021",
-        "frequency": "DAILY",
-        "link":"/docs/company/CEEGEX",
-        "tags": ["Commodity", "Natural Gas"]
-    },
-    {
         "type": "FREE",
         "provider": "US Energy Information Administration",
         "providerType":"Public Agency",
@@ -460,7 +447,7 @@
         "providerType":"Transmission System Operators",
         "logo": "entsoe.svg",
         "dataset": "Power",
-        "text": "Electricity Generation,Transportation and Consumption Data",
+        "text": "Electricity generation, load, transmission, balancing, outages",
         "region": "Europe",
         "start": "2021",
         "frequency": "DAILY",
@@ -818,6 +805,19 @@
         "link":"/docs/company/CEGH",
         "tags": ["Commodity", "Natural Gas"]
     },
+        {
+        "type": "BYOL",
+        "provider": "Central Eastern European Gas Exchange",
+        "providerType":"Exchange",
+        "logo": "ceegex.svg",
+        "dataset": "Natural Gas",
+        "text": "Hungary Natural Gas Day Ahead Price",
+        "region": "Austria",
+        "start": "2023",
+        "frequency": "DAILY",
+        "link":"/docs/company/CEEGEX",
+        "tags": ["Commodity", "Natural Gas"]
+    },
     {
         "type": "FREE",
         "provider": "Gas Infrastructure Europe",
@@ -1074,6 +1074,7 @@
         "type": "FREE",
         "provider": "Energinet",
         "providerType":"Public Agency",
+        "logo": "energinet.png",
         "dataset": "Power",
         "text": "Power Day Ahead Prices",
         "region": "Europe",
