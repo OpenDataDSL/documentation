@@ -15,7 +15,7 @@ The listAutomations function lists all available automations for the selected se
 
 ```js
 GET https://api.opendatadsl.com/api/object/v1/private/AAA
-    ?_listAutomations
+    ?_function=listAutomations
 ```
 
 This will provide a list of all valid automations that can be created for the private object AAA, an example of one of those is shown below:
