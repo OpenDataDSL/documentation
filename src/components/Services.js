@@ -27,6 +27,39 @@ var services = [
         unres: true
     },
     {
+        name: "Automation",
+        link: "/docs/api/rest/service/automation",
+        text: "The automation resource contains all the automations that you have configured",
+        rw: true,
+        pub: false,
+        pri: true,
+        ver: false,
+        quota: true,
+        unres: false
+    },
+    {
+        name: "Automation Logs",
+        link: "/docs/api/rest/service/automationlog",
+        text: "The automation log resource contains all the automation logs",
+        rw: false,
+        pub: false,
+        pri: true,
+        ver: false,
+        quota: false,
+        unres: false
+    },
+    {
+        name: "Automation Target",
+        link: "/docs/api/rest/service/automationtarget",
+        text: "The automation target resource contains all of the standard and custom created automation targets available in the platform",
+        rw: true,
+        pub: true,
+        pri: true,
+        ver: true,
+        quota: true,
+        unres: false
+    },
+    {
         name: "Batch",
         link: "/docs/api/rest/service/batch",
         text: "Batch updates of objects",

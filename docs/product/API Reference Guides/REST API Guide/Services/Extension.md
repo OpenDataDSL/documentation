@@ -78,7 +78,7 @@ The extension entity contains the following information:
 
 |**Name**|**Description**|**Type**|
 |-|-|-|
-|_id|Unique id for the extension (must be {publisher}.{code}|String|
+|_id|Unique id for the extension (must be {publisher}.{code})|String|
 |_type|The type - always VarExtension|String|
 |publisher|The publisher of the extension|String|
 |code|The code id of the extension|String|
