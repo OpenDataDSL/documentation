@@ -3,8 +3,8 @@ slug: /company/ENERGINET
 tags:
   - energinet
   - power
-  - fundamentals
   - denmark
+  - dayahead
 
 ---
 ENERGINET
