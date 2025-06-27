@@ -2,7 +2,7 @@ Used to bulk update items in the database
 
 #### Syntax
 ```js
-update avservice (where condition)? (upsert)?
+bulk update avservice (where condition)? (upsert)?
     (log string)?
     ( (updateoperator|comment)* | (pipelineOperator|comment)* )
 end
@@ -16,12 +16,12 @@ The optional **where condition** limits the documents that are updated, if ommit
 
 The optional **upsert** option will insert a document if there is no matching document
 
-The optional **log** option allows you to specify a reason for the deletion which is added to the audit log
+The optional **log** option allows you to specify a reason for the update which is added to the audit log
 
 #### Examples
 Example using update operators
 ```js
-update ${object:"bulk"}
+bulk update ${object}
     set(name="test",type="real")
     set(description=Hello)
     inc(count=1,test=5)    
@@ -32,7 +32,7 @@ end
 
 Example using pipeline operators
 ```js
-update ${object:"bulk"}
+bulk update ${object}
     addFields status="Modified", comments=["$misc1", "$misc2"]
     project misc1, misc2
 end
@@ -40,7 +40,7 @@ end
 
 Example using upsert
 ```js
-update ${object:"bulk"} where _id=1 upsert
+bulk update ${object} where _id=1 upsert
     set(item="apple")
     setOnInsert(defaultQty=100)
 end
@@ -48,7 +48,7 @@ end
 
 Example using a log message
 ```js
-update ${object:"bulk"} where name="b4"
+bulk update ${object} where name="b4"
     log "Audit record 123456"
     set(test="Hello Again")
     inc(count=1)

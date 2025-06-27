@@ -7,7 +7,7 @@ delete activevar (log string)?
 ```
 Bulk delete form:
 ```js
-delete activevar (log string)? (where condition)?
+bulk delete avservice (log string)? (where condition)?
 ```
 
 #### Description
@@ -63,4 +63,5 @@ delete ${object:"TEST":1}
 // To delete all versions
 delete ${object:"TEST":*}
 
+bulk delete ${object} where _type="MyType" 
 ```
