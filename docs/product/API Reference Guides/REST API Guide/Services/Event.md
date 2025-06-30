@@ -20,11 +20,11 @@ https://api.opendatadsl.com/api/event
 |**Method**|**Path**|**Example**|**Description**|
 |-|-|-|-|
 |GET|||Get the build information for this service|
-|GET|{release}/{source}|v1/private|Get a list of events|
-|GET|{release}/{source}/{id}|v1/private/EXAMPLE:EVENTS|Get events for an event list|
-|PUT|{release}/{source}/{id}/{version}/{tag}|v1/private/EXAMPLE:EVENTS:ID_2024-05-30_M03/1/PROD|Tag a version with a name (which can be used instead of the version number when retrieving it)|
-|DELETE|{release}/{source}/{id}|v1/private/EXAMPLE:EVENTS:ID_2024-05-30_M03|Rollback an event to the previous version, if there are no other previous versions, the event will be deleted|
-|DELETE|{release}/{source}/{id}/{version}|v1/private/EXAMPLE:EVENTS:ID_2024-05-30_M03/*|Delete a specific version or use * to delete all versions|
+|GET|\{release\}/\{source\}|v1/private|Get a list of events|
+|GET|\{release\}/\{source\}/\{id\}|v1/private/EXAMPLE:EVENTS|Get events for an event list|
+|PUT|\{release\}/\{source\}/\{id\}/\{version\}/\{tag\}|v1/private/EXAMPLE:EVENTS:ID_2024-05-30_M03/1/PROD|Tag a version with a name (which can be used instead of the version number when retrieving it)|
+|DELETE|\{release\}/\{source\}/\{id\}|v1/private/EXAMPLE:EVENTS:ID_2024-05-30_M03|Rollback an event to the previous version, if there are no other previous versions, the event will be deleted|
+|DELETE|\{release\}/\{source\}/\{id\}/\{version\}|v1/private/EXAMPLE:EVENTS:ID_2024-05-30_M03/*|Delete a specific version or use * to delete all versions|
 
 :::info
 Note: You cannot update events directly, they must be updated attached to a master data record - see Examples
@@ -207,27 +207,27 @@ Authorization: Bearer {{token}}
 POST {{url}}/object
 Authorization: Bearer {{token}}
 
-{
+\{
   "_id": "EVENT_TEST",
   "_type": "#Object",
-  "_links": {},
-  "ASK_TS": {
+  "_links": \{\},
+  "ASK_TS": \{
     "_id": "ASK_TS",
     "_type": "VarEventTimeSeries",
     "event": "EVENT_TEST:ORDERS",
     "property": "price",
-    "filter": "{'side': 'ASK'}"
-  }
-}
+    "filter": "\{'side': 'ASK'\}"
+  \}
+\}
 
 ### Create an event curve
 POST {{url}}/object
 Authorization: Bearer {{token}}
 
-{
+\{
   "_id": "PZEM.ZTP.TEST",
   "_type": "#Object",
-  "SETTLE": {
+  "SETTLE": \{
     "_id": "SETTLE",
     "_type": "VarEventCurve",
     "event": "PZEM.ZTP.TEST:EVENTS",
@@ -235,18 +235,18 @@ Authorization: Bearer {{token}}
     "tenor": "absolute",
     "calendar": "#REOD",
     "timezone": "Europe/Amsterdam"
-  }
-}
+  \}
+\}
 
 ### Create an event curve with value transformation
 POST {{url}}/object
 Authorization: Bearer {{token}}
 
-{
+\{
   "_id": "AAA",
   "_type": "#Object",
-  "_links": {},
-  "VTEC": {
+  "_links": \{\},
+  "VTEC": \{
     "_id": "VTEC",
     "_type": "VarEventCurve",
 	"name": "test",
@@ -255,7 +255,7 @@ Authorization: Bearer {{token}}
     "valueTransformation": "value * 1.1",
     "tenor": "absolute",
     "calendar": "#REOMB"
-  }
-}
+  \}
+\}
 
 ```

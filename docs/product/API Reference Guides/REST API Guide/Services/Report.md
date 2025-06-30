@@ -19,17 +19,17 @@ The API consists of the following calls:
 |**Method**|**Path**|**Example**|**Description**|
 |-|-|-|-|
 |GET|||Get the build information for this service|
-|GET|{release}/{source}|'v1/public' 'v1/private'|List public or private reports|
-|GET|{release}/{source}/{key}|v1/private/TEST|Get a ReportDates timeseries containing the dates for which the report is available|
-|GET|{release}/{source}/{key}:{ondate}|v1/private/TEST:2024-06-12|Retrieve the latest version of the report for the supplied date|
-|GET|{release}/{source}/{key}:{ondate}/{version}|v1/private/TEST:2024-06-12/1|Retrieve a version of a report for the supplied date|
-|GET|{release}/{source}/{key}:{ondate}/*|v1/private/TEST:2024-06-12/*|Get a list of versions for a specific report for the supplied date|
-|PUT|{release}/{source}/{key}:{ondate}/{version}/{tag}|v1/private/TEST:2024-06-12/1/PROD|Tag a version with a name (which can be used instead of the version number when retrieving it)|
-|POST|{release}/{source}/{key}:{ondate}|v1|Update a manual report, the data is in the body of the POST request|
-|POST|{release}/{source}/{key}:{ondate}|v1|Run the report, the POST body must be empty|
-|DELETE|{release}/{source}/{key}:{ondate}|v1/private/TEST|Delete a report version, this has the effect of rolling back to the previous version|
-|DELETE|{release}/{source}/{key}:{ondate}/{version}|v1/private/TEST:2024-06-12/1|Delete a version of a report|
-|DELETE|{release}/{source}/{key}:{ondate}/*|v1/private/TEST:2024-06-12/*|Fully delete a report, including all versions|
+|GET|\{release\}/\{source\}|'v1/public' 'v1/private'|List public or private reports|
+|GET|\{release\}/\{source\}/\{key\}|v1/private/TEST|Get a ReportDates timeseries containing the dates for which the report is available|
+|GET|\{release\}/\{source\}/\{key\}:\{ondate\}|v1/private/TEST:2024-06-12|Retrieve the latest version of the report for the supplied date|
+|GET|\{release\}/\{source\}/\{key\}:\{ondate\}/\{version\}|v1/private/TEST:2024-06-12/1|Retrieve a version of a report for the supplied date|
+|GET|\{release\}/\{source\}/\{key\}:\{ondate\}/*|v1/private/TEST:2024-06-12/*|Get a list of versions for a specific report for the supplied date|
+|PUT|\{release\}/\{source\}/\{key\}:\{ondate\}/\{version\}/\{tag\}|v1/private/TEST:2024-06-12/1/PROD|Tag a version with a name (which can be used instead of the version number when retrieving it)|
+|POST|\{release\}/\{source\}/\{key\}:\{ondate\}|v1|Update a manual report, the data is in the body of the POST request|
+|POST|\{release\}/\{source\}/\{key\}:\{ondate\}|v1|Run the report, the POST body must be empty|
+|DELETE|\{release\}/\{source\}/\{key\}:\{ondate\}|v1/private/TEST|Delete a report version, this has the effect of rolling back to the previous version|
+|DELETE|\{release\}/\{source\}/\{key\}:\{ondate\}/\{version\}|v1/private/TEST:2024-06-12/1|Delete a version of a report|
+|DELETE|\{release\}/\{source\}/\{key\}:\{ondate\}/*|v1/private/TEST:2024-06-12/*|Fully delete a report, including all versions|
 
 ## Entities
 

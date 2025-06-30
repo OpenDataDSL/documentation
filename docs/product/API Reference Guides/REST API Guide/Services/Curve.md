@@ -32,22 +32,22 @@ The API is broken into these sections:
 
 |**Method**|**Path**|**Example**|**Description**|
 |-|-|-|-|
-|GET|{release}/info|v1/info|List all the curve management configurations|
-|GET|{release}/info/{key}|v1/info/TEST:CURVE|Retrieve a single curve configuration using it’s unique id|
-|PUT|{release}/info/tag/{tag}|v1/info/tag/PROD|Tag multiple curves with the same tag - body is a list of curve ids|
-|POST|{release}/info|v1/info|Create or update a curve configuration, the curve configuration is the JSON body of the POST request|
-|POST|{release}/info/{curve}|v1/info/TEST:CURVE|Manage a curve - no json body, info is generated from the real curve|
-|DELETE|{release}/info/{key}|v1/info/TEST:CURVE|Delete (unmanage) a curve configuration|
+|GET|\{release\}/info|v1/info|List all the curve management configurations|
+|GET|\{release\}/info/\{key\}|v1/info/TEST:CURVE|Retrieve a single curve configuration using it’s unique id|
+|PUT|\{release\}/info/tag/\{tag\}|v1/info/tag/PROD|Tag multiple curves with the same tag - body is a list of curve ids|
+|POST|\{release\}/info|v1/info|Create or update a curve configuration, the curve configuration is the JSON body of the POST request|
+|POST|\{release\}/info/\{curve\}|v1/info/TEST:CURVE|Manage a curve - no json body, info is generated from the real curve|
+|DELETE|\{release\}/info/\{key\}|v1/info/TEST:CURVE|Delete (unmanage) a curve configuration|
 
 ### Curve build API
 
 |**Method**|**Path**|**Example**|**Description**|
 |-|-|-|-|
-|GET|{release}/build|v1/build|List all the curve build information for the current ondate|
-|GET|{release}/build/{key}|v1/build/TEST:CURVE:2024-06-12|Retrieve a single curve build information for the specified ondate|
-|GET|{release}/build/{ondate}|v1/build/2024-06-12|List all curve build information for the specified ondate|
-|POST|{release}/build|v1/build|Update build information, the curve build information is the JSON body of the POST request - used for updates from external build applications|
-|DELETE|{release}/build/{key}|v1/build/TEST:CURVE:2024-06-12|Delete the curve build information|
+|GET|\{release\}/build|v1/build|List all the curve build information for the current ondate|
+|GET|\{release\}/build/\{key\}|v1/build/TEST:CURVE:2024-06-12|Retrieve a single curve build information for the specified ondate|
+|GET|\{release\}/build/\{ondate\}|v1/build/2024-06-12|List all curve build information for the specified ondate|
+|POST|\{release\}/build|v1/build|Update build information, the curve build information is the JSON body of the POST request - used for updates from external build applications|
+|DELETE|\{release\}/build/\{key\}|v1/build/TEST:CURVE:2024-06-12|Delete the curve build information|
 
 ### Group API
 
@@ -59,20 +59,20 @@ The curve management group API contains an extra url path section called type - 
 
 |**Method**|**Path**|**Example**|**Description**|
 |-|-|-|-|
-|GET|{release}/group/{type}|v1/group/build|List all the groups of the supplied type|
-|GET|{release}/group/{type}/{key}|v1/group/build/default|Retrieve a group|
-|PUT|{release}/group/{type}/{key}|v1/group/build/default|Add curves to this group, body is an array of curve ids|
-|POST|{release}/group/{type}|v1/group/build|Create/Update group information, the group information is the JSON body of the POST request|
-|DELETE|{release}/group/{type}/{key}|v1/group/build/default|Delete the named group|
+|GET|\{release\}/group/\{type\}|v1/group/build|List all the groups of the supplied type|
+|GET|\{release\}/group/\{type\}/\{key\}|v1/group/build/default|Retrieve a group|
+|PUT|\{release\}/group/\{type\}/\{key\}|v1/group/build/default|Add curves to this group, body is an array of curve ids|
+|POST|\{release\}/group/\{type\}|v1/group/build|Create/Update group information, the group information is the JSON body of the POST request|
+|DELETE|\{release\}/group/\{type\}/\{key\}|v1/group/build/default|Delete the named group|
 
 ### Curve Approval API
 This API is used to approve/unapprove curves
 
 |**Method**|**Path**|**Example**|**Description**|
 |-|-|-|-|
-|GET|{release}/approval/{ondate}|v1/approval/2024-06-12|List all the curves I need to approve for the supplied ondate|
-|POST|{release}/approval|v1/approval|Approve curves, body is an array of either string ids or objects with {curve, message}|
-|POST|{release}/rejection|v1/rejection|Unapprove curves, body is an array of either string ids or objects with {curve, message}|
+|GET|\{release\}/approval/\{ondate\}|v1/approval/2024-06-12|List all the curves I need to approve for the supplied ondate|
+|POST|\{release\}/approval|v1/approval|Approve curves, body is an array of either string ids or objects with \{curve, message\}|
+|POST|\{release\}/rejection|v1/rejection|Unapprove curves, body is an array of either string ids or objects with \{curve, message\}|
 
 ## Curve management entities
 
@@ -126,7 +126,7 @@ This API is used to approve/unapprove curves
 |name|Unique name for the curve quality group|String|
 |description|Description of this group|String|
 |script|The name of the script containing the checks to perform|String|
-|checks|A list of check functions to run - objects as {expression,name}|List(Object)|
+|checks|A list of check functions to run - objects as \{expression,name\}|List(Object)|
 
 ### Curve approval group
 |**Name**|**Description**|**Type**|
@@ -163,7 +163,7 @@ This API is used to approve/unapprove curves
 |cutoff|v1/TEST:CURVE:2024-06-12|Run the build cut-off for the named curve|
 
 ## Examples
-In the following examples {{url}} is the curve management REST URL:
+In the following examples \{\{url\}\} is the curve management REST URL:
 
 ```js
 https://api.opendatadsl.com/api/curve
@@ -234,8 +234,8 @@ Authorization: Bearer {{token}}
 
 ### Get build infos for specific ondate - filtered
 GET {{url}}/curve/v1/build/2023-10-23
-	?_filter={"$and":[{"status.build":{"$exists":true,"$in":["built"]}}]}
-	&_sort={"_timestamp":-1}
+	?_filter=\{"$and":[\{"status.build":\{"$exists":true,"$in":["built"]}}]\}
+	&_sort=\{"_timestamp":-1\}
 	&_limit=-1
 Authorization: Bearer {{token}}
 
@@ -340,7 +340,6 @@ Authorization: Bearer {{token}}
 ### Add a quality group
 POST {{url}}/curve/v1/group/quality
 Authorization: Bearer {{token}}
-
 {
 	"name":"default",
 	"script":"QualityCheckCurves",

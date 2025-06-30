@@ -32,7 +32,7 @@ The following table shows the top-level properties in the configuration object:
 |service|String|calendar|The name of the service to get the data from|
 |source|String|private|The source of the data|
 |limit|Integer|100|A limit to the number of records returned to Excel|
-|projection|Object|{type:1,name:1}|A list of the field names to return to Excel|
+|projection|Object|\{type:1,name:1\}|A list of the field names to return to Excel|
 |inputs|Array(Input)|See Inputs below|A list of optional inputs to all the user to select from|
 |dataCallback|Function|getData|An optional callback function that allows you to override the requesting and formatting of the data sent back to Excel|
 |rangeSelector|Object|See rangeSelector below|An optional range selector configuration to allow the user to select a range of dates|
@@ -55,7 +55,7 @@ For **select** type fields, there are also the following properties:
 |data|Array(String)|['test1','test2']|An optional list of items to display in the drop-down list. If not used, the system will get a distinct list of items using the field name|
 |service|String|calendar|The service to use to get the items for the drop-down list, defaults to the top-level service|
 |source|String|private|The source to use for the items in the drop-down list, defaults to the top-level source|
-|filter|Object|{category='test'}|An optional filter to use to get the items for the drop-down list|
+|filter|Object|\{category='test'\}|An optional filter to use to get the items for the drop-down list|
 |multiple|Boolean|true|If true, allows multiple selections to be made|
 |selectAll|Boolean|true|If this is a multiple selector, this adds an optional 'Select All' option|
 
@@ -100,7 +100,7 @@ The following table lists the range names that can be used in the **ranges** arr
 
 | Property | Type | Example | Description |
 |-|-|-|-|
-|fields|Object|{"type":1,"name":1}|A complete list of fields for the user to select|
+|fields|Object|\{"type":1,"name":1\}|A complete list of fields for the user to select|
 
 ### Examples
 

@@ -23,10 +23,10 @@ The API consists of the following calls:
 |**Method**|**Path**|**Example**|**Description**|
 |-|-|-|-|
 |GET|||Get the build information for this service|
-|GET|{release}|v1|List all secrets (without listing the secret values)|
-|GET|{release}/{key}|v1/TEST|Retrieve a single secret using its unique id|
-|POST|{release}|v1|Create or update a secret, the secret is the body of the POST request|
-|DELETE|{release}/{key}|v1/TEST|Delete a secret|
+|GET|\{release\}|v1|List all secrets (without listing the secret values)|
+|GET|\{release\}/\{key\}|v1/TEST|Retrieve a single secret using its unique id|
+|POST|\{release\}|v1|Create or update a secret, the secret is the body of the POST request|
+|DELETE|\{release\}/\{key\}|v1/TEST|Delete a secret|
 
 ## Entities
 

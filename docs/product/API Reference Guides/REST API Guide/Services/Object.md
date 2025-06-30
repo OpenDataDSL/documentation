@@ -20,15 +20,15 @@ The API consists of the following calls:
 |**Method**|**Path**|**Example**|**Description**|
 |-|-|-|-|
 |GET|||Get the build information for this service|
-|GET|{release}/{source}|'v1/public' 'v1/private'|List public or private objects|
-|GET|{release}/{source}/{key}|v1/private/TEST|Retrieve a single object using it’s unique id|
-|GET|{release}/{source}/{key}/{version}|v1/private/TEST/1|Retrieve a version of a single object|
-|GET|{release}/{source}/{key}/*|v1/private/TEST/*|Get a list of versions for a specific object|
-|PUT|{release}/{source}/{key}/{version}/{tag}|v1/private/TEST/1/PROD|Tag a version with a name (which can be used instead of the version number when retrieving it)|
-|POST|{release}|v1|Create or update an object, the object is the body of the POST request|
-|DELETE|{release}/{source}/{key}|v1/private/TEST|Delete an object, if it is a versioned object, this has the effect of rolling back to the previous version|
-|DELETE|{release}/{source}/{key}/{version}|v1/private/TEST/1|Delete a version of an object|
-|DELETE|{release}/{source}/{key}/*|v1/private/TEST/*|Fully delete an object, including all versions|
+|GET|\{release\}/\{source\}|'v1/public' 'v1/private'|List public or private objects|
+|GET|\{release\}/\{source\}/\{key\}|v1/private/TEST|Retrieve a single object using it’s unique id|
+|GET|\{release\}/\{source\}/\{key\}/\{version\}|v1/private/TEST/1|Retrieve a version of a single object|
+|GET|\{release\}/\{source\}/\{key\}/*|v1/private/TEST/*|Get a list of versions for a specific object|
+|PUT|\{release\}/\{source\}/\{key\}/\{version\}/\{tag\}|v1/private/TEST/1/PROD|Tag a version with a name (which can be used instead of the version number when retrieving it)|
+|POST|\{release\}|v1|Create or update an object, the object is the body of the POST request|
+|DELETE|\{release\}/\{source\}/\{key\}|v1/private/TEST|Delete an object, if it is a versioned object, this has the effect of rolling back to the previous version|
+|DELETE|\{release\}/\{source\}/\{key\}/\{version\}|v1/private/TEST/1|Delete a version of an object|
+|DELETE|\{release\}/\{source\}/\{key\}/*|v1/private/TEST/*|Fully delete an object, including all versions|
 
 ## Finding Objects
 
@@ -70,17 +70,17 @@ You can use the following query parameters when searching for objects:
 |_limit|_limit=20|Tells the service how many items to return|
 |_skip|_skip=20|Tells the service from which item to start listing|
 |_project|_project=location,category|Returns the additional named fields in the search response|
-|_project|``` _project={“location”:1,”_id”:0}```|Returns additional fields with :1 and removes fields with :0 in the search response|
-|{range}|timestamp=range(2021-01-01,2021-12-31)|Filter the search list using a date field where you can restrict the range of dates|
-|{range}|quantity=range(0,10)|Filter the search list using a numeric field where you can restrict the range of values|
-|{equal}|location=Europe|Filter the search list using a field and value|
-|{ne}|location=ne(null)|Filter the search list where a field is not equal to a value|
-|{in}|location=in(England, Germany)|Filter the results where a field is one of a list of values|
-|{gt}|value=gt(4)|Filter the results where a field value is greater than a supplied value|
-|{gte}|value=gte(4)|Filter the results where a field value is greater than or equal to a supplied value|
-|{lt}|value=lt(4)|Filter the results where a field value is less than a supplied value|
-|{lte}|value=lte(4)|Filter the results where a field value is less than or equal to a supplied value|
-|{within}|geolocation=within(sphere([-2.6, 49.45], 0.007))|Filter the search list where the geolocation is within a sphere denoted as sphere([longitude, latitude], distance) where distance is radians|
+|_project|``` _project=\{“location”:1,”_id”:0\}```|Returns additional fields with :1 and removes fields with :0 in the search response|
+|\{range\}|timestamp=range(2021-01-01,2021-12-31)|Filter the search list using a date field where you can restrict the range of dates|
+|\{range\}|quantity=range(0,10)|Filter the search list using a numeric field where you can restrict the range of values|
+|\{equal\}|location=Europe|Filter the search list using a field and value|
+|\{ne\}|location=ne(null)|Filter the search list where a field is not equal to a value|
+|\{in\}|location=in(England, Germany)|Filter the results where a field is one of a list of values|
+|\{gt\}|value=gt(4)|Filter the results where a field value is greater than a supplied value|
+|\{gte\}|value=gte(4)|Filter the results where a field value is greater than or equal to a supplied value|
+|\{lt\}|value=lt(4)|Filter the results where a field value is less than a supplied value|
+|\{lte\}|value=lte(4)|Filter the results where a field value is less than or equal to a supplied value|
+|\{within\}|geolocation=within(sphere([-2.6, 49.45], 0.007))|Filter the search list where the geolocation is within a sphere denoted as sphere([longitude, latitude], distance) where distance is radians|
 
 ### Searching autocomplete
 
@@ -91,14 +91,14 @@ https://api.opendatadsl.com/api/object/v1/public?_searchinfo=europe
 This returns an array of JSON objects containing the _id and name field of objects you may be looking for like the below:
 ```json
 [
-  {
+  \{
     "_id": "#EEX.AG.FAPP.BE.PR.IND.W",
     "name": "European Energy Exchange Belgium European Processing Potato Index"
-  },
-  {
+  \},
+  \{
     "_id": "#EEX.AG.FAPP.DE.PR.IND.W",
     "name": "European Energy Exchange Germany European Processing Potato Index"
-  }
+  \}
 ]
 ```
 :::note

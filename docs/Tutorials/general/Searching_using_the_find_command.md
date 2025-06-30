@@ -79,8 +79,8 @@ The following table describes the operators that can be used in filter condition
 |-|-|-|
 |= or ==|Checks a property for an exact match|name = “test”|
 |= [] or == []|Checks a property value matches one of a list of values|name = [“test”, “sample”]|
-|<|Checks a numeric or date property to see if it is less than some value|timestamp < ${date:”today”}|
-|<=|Checks a numeric or date property to see if it is less than or equal to some value|price <= 9.99|
+|&lt;|Checks a numeric or date property to see if it is less than some value|timestamp &lt; $\{date:”today”\}|
+|&lt;=|Checks a numeric or date property to see if it is less than or equal to some value|price &lt;= 9.99|
 |>|Checks a numeric or date property to see if it is greater than some value|length > 1|
 |>=|Checks a numeric or date property to see if it is greater than or equal to some value|timestamp >= “2020-01-01”|
 |!=|Checks a property is not equal to a value|name != “test”|

@@ -27,31 +27,31 @@ The API consists of the following calls:
 
 |**Method**|**Path**|**Example**|**Description**|
 |-|-|-|-|
-|GET|{release}/info|v1/info|Lists all the datasets you have configured for monitoring|
-|GET|{release}/allds|v1/allds|Lists all the datasets you have access to (both managed and unmanaged)|
-|GET|{release}/info/{id}|v1/info/ICE.NDEX.NLB|Gets a dataset configuration|
-|POST|{release}/info|v1/info|Update a dataset monitoring configuration|
-|DELETE|{release}/info/{id}|v1/info/ICE.NDEX.NLB|Remove a dataset monitoring configuration|
+|GET|\{release\}/info|v1/info|Lists all the datasets you have configured for monitoring|
+|GET|\{release\}/allds|v1/allds|Lists all the datasets you have access to (both managed and unmanaged)|
+|GET|\{release\}/info/\{id\}|v1/info/ICE.NDEX.NLB|Gets a dataset configuration|
+|POST|\{release\}/info|v1/info|Update a dataset monitoring configuration|
+|DELETE|\{release\}/info/\{id\}|v1/info/ICE.NDEX.NLB|Remove a dataset monitoring configuration|
 
 ### Dataset feed methods
 The API consists of the following calls:
 
 |**Method**|**Path**|**Example**|**Description**|
 |-|-|-|-|
-|GET|{release}/feed|v1/feed|Lists all the dataset feeds you have configured for monitoring|
-|GET|{release}/alldf|v1/alldf|Lists all the dataset feeds you have access to (both managed and unmanaged)|
-|GET|{release}/feed/{id}|v1/feed/ICE.NDEX|Gets a dataset feed configuration|
-|POST|{release}/feed|v1/feed|Update a dataset feed configuration|
-|DELETE|{release}/feed/{id}|v1/feed/ICE.NDEX|Remove a dataset feed monitoring configuration|
+|GET|\{release\}/feed|v1/feed|Lists all the dataset feeds you have configured for monitoring|
+|GET|\{release\}/alldf|v1/alldf|Lists all the dataset feeds you have access to (both managed and unmanaged)|
+|GET|\{release\}/feed/\{id\}|v1/feed/ICE.NDEX|Gets a dataset feed configuration|
+|POST|\{release\}/feed|v1/feed|Update a dataset feed configuration|
+|DELETE|\{release\}/feed/\{id\}|v1/feed/ICE.NDEX|Remove a dataset feed monitoring configuration|
 
 ### Dataset delivery methods
 The API consists of the following calls:
 
 |**Method**|**Path**|**Example**|**Description**|
 |-|-|-|-|
-|GET|{release}/delivery|v1/delivery|Lists all the dataset deliveries for the current ondate|
-|GET|{release}/delivery/{ondate}|v1/delivery/2024-06-12|Lists all the dataset deliveries for the provided ondate|
-|GET|{release}/delivery/{id}|v1/delivery/ICE.NDEX.NLB:2024-06-12|Gets the specified dataset delivery for the provided ondate|
+|GET|\{release\}/delivery|v1/delivery|Lists all the dataset deliveries for the current ondate|
+|GET|\{release\}/delivery/\{ondate\}|v1/delivery/2024-06-12|Lists all the dataset deliveries for the provided ondate|
+|GET|\{release\}/delivery/\{id\}|v1/delivery/ICE.NDEX.NLB:2024-06-12|Gets the specified dataset delivery for the provided ondate|
 
 ## Dataset entities
 
@@ -61,7 +61,7 @@ Here are the properties of a Dataset configuration
 
 |**Name**|**Description**|**Type**|
 |-|-|-|
-|_id|Unique id for the DataSet in the format {provider}.{feed}.{product}|String|
+|_id|Unique id for the DataSet in the format \{provider\}.\{feed\}.\{product\}|String|
 |_type|Always 'Dataset'|String|
 |dsid|Same as _id|String|
 |name|The name of the dataset|String|
@@ -100,7 +100,7 @@ Here are the properties of a Dataset Feed configuration
 
 |**Name**|**Description**|**Type**|
 |-|-|-|
-|_id|Unique id for the DataSet Feed in the format {provider}.{feed}|String|
+|_id|Unique id for the DataSet Feed in the format \{provider\}.\{feed\}|String|
 |_type|Always 'DatasetFeed'|String|
 |dsid|Same as _id|String|
 |name|The name of the dataset feed|String|
@@ -176,13 +176,13 @@ Here are the properties of a Dataset Delivery configuration
 
 |**Name**|**Description**|**Type**|
 |-|-|-|
-|_id|Unique id for the Dataset Delivery in the format {provider}.{feed}.{product}.{ondate}|String|
+|_id|Unique id for the Dataset Delivery in the format \{provider\}.\{feed\}.\{product\}.\{ondate\}|String|
 |_type|Always 'DatasetDelivery'|String|
 |dsid|The dataset id|String|
 |ondate|The date for the data being delivered|String|
 |complete|A boolean indicating if this dataset is complete|Boolean|
 |initialised|A datetime when this delivery was initialised|Datetime|
-|score|An integer defining the score for this delivery - 4=No issues, 3=Late<1h, 2=Late<4h, 1=Late>4h, 0=Holiday|Integer|
+|score|An integer defining the score for this delivery - 4=No issues, 3=Late&lt;1h, 2=Late&lt;4h, 1=Late>4h, 0=Holiday|Integer|
 |scoreinfo|Text to add context to the score value|String|
 |status|The current status of the delivery|String|
 |statusinfo|Text to add context to the status|String|
@@ -251,7 +251,7 @@ Each timeline message consists of the following parts separated by spaces:
 |id|The transaction id - usually the same as the process execution id|String|
 |timestamp|The datetime for the quality checks|Datetime|
 |log|Log messages produced from the checks|List(String)|
-|{check name}|Object containing output from the quality check function|Object|
+|\{check name\}|Object containing output from the quality check function|Object|
 
 #### Dataset delivery quality check object
 
@@ -260,7 +260,7 @@ Each timeline message consists of the following parts separated by spaces:
 |id|The transaction id - usually the same as the process execution id|String|
 |timestamp|The datetime for the quality checks|Datetime|
 |log|Log messages produced from the checks|List(String)|
-|{check name}|Object containing output from the quality check function|Object|
+|\{check name\}|Object containing output from the quality check function|Object|
 
 #### Example Dataset Delivery
 
@@ -453,21 +453,21 @@ Authorization: Bearer {{token}}
 POST {{url}}/dataset/v1/info
 Authorization: Bearer {{token}}
 
-{
+\{
   "_id": "ODSL.TRADER1.NBP",
-  "expected": {
+  "expected": \{
     "*": 1
-  }
-}
+  \}
+\}
 
 ### Add a common Dataset Info
 POST {{url}}/dataset/v1/info
 Authorization: Bearer {{token}}
 
-{
+\{
   "_id": "ICE.NDEX.NLB",
   "source":"common"
-}
+\}
 
 ### Delete a Dataset info
 DELETE {{url}}/dataset/v1/info/ICE.NDEX.DDA
@@ -514,11 +514,11 @@ Authorization: Bearer {{token}}
 POST {{url}}/dataset/v1/feed
 Authorization: Bearer {{token}}
 
-{
+\{
   "_id": "ODSL.TRADER1",
   "time": "20:00 EU1",
   "late": "23:00 EU1"
-}
+\}
 
 ### Delete a feed
 DELETE {{url}}/dataset/v1/feed/ODSL.TRADER1

@@ -307,7 +307,7 @@ Below is the full list of test assertion functions:
 |-|-|-|-|
 |assertEquals|Tests for equality|assertEquals(expected, actual)|assertEquals("test",myval)|
 |assertTrue|Tests a condition|assertTrue(condition)|assertTrue(myval == "test")|
-|assertFalse|Tests a condition|assertFalse(condition)|assertFalse(a<5)|
+|assertFalse|Tests a condition|assertFalse(condition)|assertFalse(a &lt; 5)|
 |assertType|Tests a variable is a certain type|assertType(var,"type")|assertType(myval,"Scalar")|
 |assertNull|Tests to see if a variable or property is null|assertNull(var)|assertNull(test)|
 |assertHasProperty|Tests to see if a variable has a non-null property|assertHasProperty(var,"name")|assertHasProperty(myval,"name")|

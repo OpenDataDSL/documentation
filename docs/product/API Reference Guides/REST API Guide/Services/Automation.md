@@ -23,10 +23,10 @@ The API consists of the following calls:
 |**Method**|**Path**|**Example**|**Description**|
 |-|-|-|-|
 |GET|||Get the build information for this service|
-|GET|{release}|v1|List all automations|
-|GET|{release}/{id}|v1/68527adfe438ee467f057624|Get a specific automation using its _id|
-|POST|{release}|v1|Create or update an automation, the automation is the body of the POST request|
-|DELETE|{release}/{key}|v1/id|Delete an automation|
+|GET|\{release\}|v1|List all automations|
+|GET|\{release\}/\{id\}|v1/68527adfe438ee467f057624|Get a specific automation using its _id|
+|POST|\{release\}|v1|Create or update an automation, the automation is the body of the POST request|
+|DELETE|\{release\}/\{key\}|v1/id|Delete an automation|
 
 ### Notes
 Automation ids and log ids are ObjectID types.
@@ -89,7 +89,7 @@ The properties entity is used to configure an [Automation Target](automationtarg
 ### Example with a transformer
 ```json
 {
-    "_id": "{objectid}",
+    "_id": "\{objectid\}",
     "_type": "VarAutomation",
     "target": "odsl.email_attachment",
     "active": true,
@@ -98,7 +98,7 @@ The properties entity is used to configure an [Automation Target](automationtarg
       "to": "user@company.com",
       "subject": "Data is updated",
       "attachment": true,
-      "attachmentName": "data_${date:yyyy-MM-dd}.csv",
+      "attachmentName": "data_$\{date:yyyy-MM-dd\}.csv",
       "@transformer": "#VarCurve_CSV"
     },
     "conditions": [{

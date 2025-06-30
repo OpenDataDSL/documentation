@@ -26,7 +26,7 @@ An extension has the following properties:
 
 |**Name**|**Description**|**Type**|
 |-|-|-|
-|_id|Unique id for the extension (must be {publisher}.{code}|String|
+|_id|Unique id for the extension (must be \{publisher\}.\{code\}|String|
 |publisher|The publisher of the extension|String|
 |code|The code id of the extension|String|
 |name|The name of the extension|String|
@@ -53,9 +53,9 @@ save fp
 The features array must include the feature names added to the views feature property.
 
 :::info
-For standardisation, it is good practice to name your feature policy as **extension.{publisher}.{code}**
+For standardisation, it is good practice to name your feature policy as **extension.\{publisher\}.\{code\}**
 
-Name your features as **{publisher}.{code}.{viewid}** - note you can also use a single feature code for all the views in the extension.
+Name your features as **\{publisher\}.\{code\}.\{viewid\}** - note you can also use a single feature code for all the views in the extension.
 :::
 
 ### Resources
@@ -120,7 +120,7 @@ You can then proceed to add the HTML and javascript required for the desired fun
 ## Insights
 You can create insights and include them in the extension manifest resources, so they will be published/installed.
 
-In order to show the insights on the **Insights** tab of the extension, set the category on the insight to be the same as the insight id, ie. {published}.{code}
+In order to show the insights on the **Insights** tab of the extension, set the category on the insight to be the same as the insight id, ie. \{publisher\}.\{code\}
 
 ## Publishing an extension
 If you want to publish your extension into the public repository so other companies that use the OpenDataDSL platform can install and use it, you need to become a publisher.

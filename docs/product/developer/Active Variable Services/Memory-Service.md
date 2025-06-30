@@ -12,7 +12,7 @@ Recreate the current session by saving all variables in memory, then re-loading 
 ## Saving the current session
 
 At any point in a scripting or CLI session, you can save the current state of all the variables using the following syntax:
-``js
+```js
 save ${memory:location/"name"}
 ```
 For example, to save to a local file named session.json in the /temp directory:

@@ -35,9 +35,9 @@ The method you use to generate the token is determined by how the application or
 ### Unattended Login
 For an unattended login, you will need to create an application in Azure AD and generate a secret.
 The 3 pieces of information required are:
-* You company tenant id - {{tid}}
-* The id of the application in Azure AD - {{aid}}
-* The generated secret - {{sid}}
+* You company tenant id - **tid**
+* The id of the application in Azure AD - **aid**
+* The generated secret - **sid**
 
 #### Getting the necessary id's and secret
 The 3 items above can be retrieved/generated in Azure Active Directory as follows:
@@ -102,7 +102,7 @@ token = response.json()['access_token']
 </TabItem>
 <TabItem value="java" label="Java">
 
-An example class to retrieve an Access Token - replace {{tid}}, {{aid}} and {{sid}} with the tokens you saved above.
+An example class to retrieve an Access Token - replace \{\{tid\}\}, \{\{aid\}\} and \{\{sid\}\} with the tokens you saved above.
 
 ```java
 package com.opendatadsl.security;

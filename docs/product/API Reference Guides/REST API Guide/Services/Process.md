@@ -23,15 +23,15 @@ The API consists of the following calls:
 |**Method**|**Path**|**Example**|**Description**|
 |-|-|-|-|
 |GET|||Get the build information for this service|
-|GET|{release}|v1|List all your processes|
-|GET|{release}/{key}|v1/TEST|Retrieve a single process using its unique id|
-|GET|{release}/{key}/{version}|v1/TEST/1|Retrieve a version of a single process|
-|GET|{release}/{key}/*|v1/TEST/*|Get a list of versions for a specific process|
-|PUT|{release}/{key}/{version}/{tag}|v1/TEST/1/PROD|Tag a version with a name (which can be used instead of the version number when retrieving it)|
-|POST|{release}|v1|Create or update a process, the process configuration is the body of the POST request|
-|DELETE|{release}/{key}|v1/TEST|Rollback to the previous version of a process configuration, if it is the only version then the process will be deleted|
-|DELETE|{release}/{key}/{version}|v1/TEST/1|Delete a specific version of a process configuration|
-|DELETE|{release}/{key}/*|v1/TEST/*|Fully delete a process configuration, including all versions|
+|GET|\{release\}|v1|List all your processes|
+|GET|\{release\}/\{key\}|v1/TEST|Retrieve a single process using its unique id|
+|GET|\{release\}/\{key\}/\{version\}|v1/TEST/1|Retrieve a version of a single process|
+|GET|\{release\}/\{key\}/*|v1/TEST/*|Get a list of versions for a specific process|
+|PUT|\{release\}/\{key\}/\{version\}/\{tag\}|v1/TEST/1/PROD|Tag a version with a name (which can be used instead of the version number when retrieving it)|
+|POST|\{release\}|v1|Create or update a process, the process configuration is the body of the POST request|
+|DELETE|\{release\}/\{key\}|v1/TEST|Rollback to the previous version of a process configuration, if it is the only version then the process will be deleted|
+|DELETE|\{release\}/\{key\}/\{version\}|v1/TEST/1|Delete a specific version of a process configuration|
+|DELETE|\{release\}/\{key\}/*|v1/TEST/*|Fully delete a process configuration, including all versions|
 
 ## Entities
 
@@ -79,7 +79,7 @@ Authorization: Bearer {{token}}
 POST {{url}}/process/v1
 Authorization: Bearer {{token}}
 
-{
+\{
     "_type": "VarProcess",
     "service": "ETL",
     "name": "AZURE_TEST",
@@ -88,19 +88,19 @@ Authorization: Bearer {{token}}
     "workflow": "#wf_xml_data_loader",
     "cron": "12 46 ? * * *",
     "environment": "production",
-    "input": {
+    "input": \{
         "url": "https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml",
         "tx": "#ECB_FX"
-    }
-}
+    \}
+\}
 
 ### Rename a process
 PUT {{url}}/process/v1/AZURE_TEST
 Authorization: Bearer {{token}}
 
-{
+\{
     "_id": "AZURE_TEST1"
-}
+\}
 
 ### Get a list of versions
 GET {{url}}/process/v1/AZURE_TEST/*

@@ -81,7 +81,7 @@ The following table is a list of all the standard query parameters and their usa
 
 | **Parameter** | **Examples** | **Description** |
 |-|-|-|
-| _sort | _sort={“name”:1, “timestamp”:-1} | Sorts the results of a query according to the field or fields passed in. The value must be 1 for sort ascending or -1 for sort descending |
+| _sort | _sort=\{“name”:1, “timestamp”:-1\} | Sorts the results of a query according to the field or fields passed in. The value must be 1 for sort ascending or -1 for sort descending |
 | _limit | _limit=100 | Limits the number of returned items |
 | _skip | _skip=100 | Skips the number of items specified |
 | _search | _search=london | Searches the data using the passed in search expression |

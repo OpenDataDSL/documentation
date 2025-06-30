@@ -28,15 +28,15 @@ The API consists of the following calls:
 |**Method**|**Path**|**Example**|**Description**|
 |-|-|-|-|
 |GET|||Get the build information for this service|
-|GET|{release}/{source}|v1/public  v1/private|List public or private scripts|
-|GET|{release}/{source}/{key}|v1/private/example-odsl\Reports\test_issue|Retrieve a single script using its unique id - note private scripts saved from the VSCode extension contain the project and path names in the id|
-|GET|{release}/{source}/{key}/{version}|v1/private/example-odsl\Reports\test_issue/1|Retrieve a version of a single script|
-|GET|{release}/{source}/{key}/*|v1/private/example-odsl\Reports\test_issue/*|Get a list of versions for a specific script|
-|PUT|{release}/{source}/{key}/{version}/{tag}|v1/private/example-odsl\Reports\test_issue/1/PROD|Tag a version with a name (which can be used instead of the version number when retrieving it)|
-|POST|{release}/{source}|v1|Create or update a script, the script configuration is the body of the POST request - note the actual script needs to be BASE64 encoded|
-|DELETE|{release}/{source}/{key}|v1/private/example-odsl\Reports\test_issue|Rollback to the previous version of a script, if it is the only version then the action will be deleted|
-|DELETE|{release}/{source}/{key}/{version}|v1/private/example-odsl\Reports\test_issue/1|Delete a specific version of a script|
-|DELETE|{release}/{source}/{key}/*|v1/private/example-odsl\Reports\test_issue/*|Fully delete a script, including all versions|
+|GET|\{release\}/\{source\}|v1/public  v1/private|List public or private scripts|
+|GET|\{release\}/\{source\}/\{key\}|v1/private/example-odsl\Reports\test_issue|Retrieve a single script using its unique id - note private scripts saved from the VSCode extension contain the project and path names in the id|
+|GET|\{release\}/\{source\}/\{key\}/\{version\}|v1/private/example-odsl\Reports\test_issue/1|Retrieve a version of a single script|
+|GET|\{release\}/\{source\}/\{key\}/*|v1/private/example-odsl\Reports\test_issue/*|Get a list of versions for a specific script|
+|PUT|\{release\}/\{source\}/\{key\}/\{version\}/\{tag\}|v1/private/example-odsl\Reports\test_issue/1/PROD|Tag a version with a name (which can be used instead of the version number when retrieving it)|
+|POST|\{release\}/\{source\}|v1|Create or update a script, the script configuration is the body of the POST request - note the actual script needs to be BASE64 encoded|
+|DELETE|\{release\}/\{source\}/\{key\}|v1/private/example-odsl\Reports\test_issue|Rollback to the previous version of a script, if it is the only version then the action will be deleted|
+|DELETE|\{release\}/\{source\}/\{key\}/\{version\}|v1/private/example-odsl\Reports\test_issue/1|Delete a specific version of a script|
+|DELETE|\{release\}/\{source\}/\{key\}/*|v1/private/example-odsl\Reports\test_issue/*|Fully delete a script, including all versions|
 
 ## Entities
 
@@ -55,7 +55,7 @@ The script entity contains the following information:
 ## Functions
 |**Function**|**Example**|**Description**|
 |-|-|-|
-|{function}({params}...)|netflow("IE","2023-08-01","2023-08-31")|Runs a function within a script|
+|\{function\}(\{params\}...)|netflow("IE","2023-08-01","2023-08-31")|Runs a function within a script|
 
 ## Examples
 
@@ -96,13 +96,13 @@ Authorization: Bearer {{token}}
 POST {{url}}/script/v1/private
 Authorization: Bearer {{token}}
 
-{   
+\{   
     "_id":"AAA",
     "_type":"VarScript",
     "script":"base64 encoded script",
     "category":"Examples",
     "description":"Example Description"
-}
+\}
 
 ### Get script versions
 GET {{url}}/script/v1/private/AAA/*
@@ -120,6 +120,6 @@ Authorization: Bearer {{token}}
 ### Run a function in a script
 GET {{url}}/script/v1/public/%23drs_widgets
   ?_function=netflow("IE","2023-08-01","2023-08-31")
-Authorization: Bearer {{token}}
+Authorization: Bearer {{token}}r
 
 ```

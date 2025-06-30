@@ -851,7 +851,7 @@ Added the ability to define a ‘reason’ on all save and delete methods. This 
 Added the ability to query object properties, but return data entities using the profile command, e.g.
 
 // Fetch all data for all ECB_FX currencies
-data = find profile SPOT from ${currency:public} where source == "ECB_FX"
+data = find profile SPOT from $\{currency:public\} where source == "ECB_FX"
 
 #### Process Executions in the web portal
 

@@ -20,15 +20,15 @@ The API consists of the following calls:
 |**Method**|**Path**|**Example**|**Description**|
 |-|-|-|-|
 |GET|||Get the build information for this service|
-|GET|{release}/{source}|'v1/public' 'v1/private'|List public or private report configurations|
-|GET|{release}/{source}/{key}|v1/private/TEST|Retrieve a single report configuration using it’s unique id|
-|GET|{release}/{source}/{key}/{version}|v1/private/TEST/1|Retrieve a version of a single report configuration|
-|GET|{release}/{source}/{key}/*|v1/private/TEST/*|Get a list of versions for a specific report configuration|
-|PUT|{release}/{source}/{key}/{version}/{tag}|v1/private/TEST/1/PROD|Tag a version with a name (which can be used instead of the version number when retrieving it)|
-|POST|{release}|v1|Create or update an report configuration, the report configuration is the body of the POST request|
-|DELETE|{release}/{source}/{key}|v1/private/TEST|Delete a report configuration, this has the effect of rolling back to the previous version|
-|DELETE|{release}/{source}/{key}/{version}|v1/private/TEST/1|Delete a version of a report configuration|
-|DELETE|{release}/{source}/{key}/*|v1/private/TEST/*|Fully delete a report configuration, including all versions|
+|GET|\{release\}/\{source\}|'v1/public' 'v1/private'|List public or private report configurations|
+|GET|\{release\}/\{source\}/\{key\}|v1/private/TEST|Retrieve a single report configuration using it’s unique id|
+|GET|\{release\}/\{source\}/\{key\}/\{version\}|v1/private/TEST/1|Retrieve a version of a single report configuration|
+|GET|\{release\}/\{source\}/\{key\}/*|v1/private/TEST/*|Get a list of versions for a specific report configuration|
+|PUT|\{release\}/\{source\}/\{key\}/\{version\}/\{tag\}|v1/private/TEST/1/PROD|Tag a version with a name (which can be used instead of the version number when retrieving it)|
+|POST|\{release\}|v1|Create or update an report configuration, the report configuration is the body of the POST request|
+|DELETE|\{release\}/\{source\}/\{key\}|v1/private/TEST|Delete a report configuration, this has the effect of rolling back to the previous version|
+|DELETE|\{release\}/\{source\}/\{key\}/\{version\}|v1/private/TEST/1|Delete a version of a report configuration|
+|DELETE|\{release\}/\{source\}/\{key\}/*|v1/private/TEST/*|Fully delete a report configuration, including all versions|
 
 ## Entities
 

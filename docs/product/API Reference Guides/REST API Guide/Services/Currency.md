@@ -21,8 +21,8 @@ The API consists of the following calls:
 |**Method**|**Path**|**Example**|**Description**|
 |-|-|-|-|
 |GET|||Get the build information for this service|
-|GET|{release}/{source}|'v1/public' 'v1/private'|List public or private currency pairs|
-|GET|{release}/{source}/{key}|v1/private/TEST|Retrieve a single currency pair|
+|GET|\{release\}/\{source\}|'v1/public' 'v1/private'|List public or private currency pairs|
+|GET|\{release\}/\{source\}/\{key\}|v1/private/TEST|Retrieve a single currency pair|
 
 ## Entities
 

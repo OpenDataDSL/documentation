@@ -22,8 +22,8 @@ The API consists of the following calls:
 |**Method**|**Path**|**Example**|**Description**|
 |-|-|-|-|
 |GET|||Get the build information for this service|
-|GET|{release}/{source}|'v1/public' 'v1/private'|List public or private audit entries|
-|GET|{release}/{source}/{key}|v1/private/6090915ad6a48d0b3c4f663d|Retrieve a single audit entry using it’s unique id|
+|GET|\{release\}/\{source\}|'v1/public' 'v1/private'|List public or private audit entries|
+|GET|\{release\}/\{source\}/\{key\}|v1/private/6090915ad6a48d0b3c4f663d|Retrieve a single audit entry using it’s unique id|
 
 ## Entities
 

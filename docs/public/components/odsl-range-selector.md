@@ -39,8 +39,8 @@ Range codes are supplied as a JSON array string and can be any of:
 * thisyear - Every day this year
 * lastyear - Every day in the previous year
 * nextyear - Every day in the next year
-* last{n} - The last n days, e.g. last7
-* next{n} - The next n days, e.g. next7
+* last\{n\} - The last n days, e.g. last7
+* next\{n\} - The next n days, e.g. next7
 
 ## Methods
 ### getRange()

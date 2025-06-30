@@ -29,15 +29,15 @@ The API consists of the following calls:
 |**Method**|**Path**|**Example**|**Description**|
 |-|-|-|-|
 |GET|||Get the build information for this service|
-|GET|{release}|v1|List all automation targets|
-|GET|{release}/{key}|v1/odsl.email|Retrieve a single automation target using its unique id|
-|GET|{release}/{key}/{version}|v1/odsl.email/1|Retrieve a version of a single automation target|
-|GET|{release}/{key}/*|v1/odsl.email/*|Get a list of versions for a specific automation target|
-|PUT|{release}/{key}/{version}/{tag}|v1/odsl.email/1/PROD|Tag a version with a name (which can be used instead of the version number when retrieving it)|
-|POST|{release}|v1|Create or update an automation target, the automation target is the body of the POST request|
-|DELETE|{release}/{key}|v1/odsl.email|Rollback to the previous version of an automation target, if it is the only version then the automation target will be deleted|
-|DELETE|{release}/{key}/{version}|v1/odsl.email/1|Delete a specific version of an automation target|
-|DELETE|{release}/{key}/*|v1/odsl.email/*|Fully delete an automation target, including all versions|
+|GET|\{release\}|v1|List all automation targets|
+|GET|\{release\}/\{key\}|v1/odsl.email|Retrieve a single automation target using its unique id|
+|GET|\{release\}/\{key\}/\{version\}|v1/odsl.email/1|Retrieve a version of a single automation target|
+|GET|\{release\}/\{key\}/*|v1/odsl.email/*|Get a list of versions for a specific automation target|
+|PUT|\{release\}/\{key\}/\{version\}/\{tag\}|v1/odsl.email/1/PROD|Tag a version with a name (which can be used instead of the version number when retrieving it)|
+|POST|\{release\}|v1|Create or update an automation target, the automation target is the body of the POST request|
+|DELETE|\{release\}/\{key\}|v1/odsl.email|Rollback to the previous version of an automation target, if it is the only version then the automation target will be deleted|
+|DELETE|\{release\}/\{key\}/\{version\}|v1/odsl.email/1|Delete a specific version of an automation target|
+|DELETE|\{release\}/\{key\}/*|v1/odsl.email/*|Fully delete an automation target, including all versions|
 
 ## Special REST Calls
 
@@ -55,7 +55,7 @@ The automation target entity contains the following information:
 
 |**Name**|**Description**|**Type**|
 |-|-|-|
-|_id|Unique id for the automation target (must be {publisher}.{code})|String|
+|_id|Unique id for the automation target (must be \{publisher\}.\{code\})|String|
 |_type|The type - always VarAutomationTarget|String|
 |publisher|The publisher of the automation target|String|
 |code|The code id of the automation target|String|

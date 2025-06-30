@@ -20,15 +20,14 @@ The API consists of the following calls:
 |**Method**|**Path**|**Example**|**Description**|
 |-|-|-|-|
 |GET|||Get the build information for this service|
-|GET|{release}|v1|View your tenant information|
-|POST|{release}|v1|Update your company information|
+|GET|\{release\}|v1|View your tenant information|
+|POST|\{release\}|v1|Update your company information|
 
 ## Updating your company information
 
 To update your company information you need to make a post request to the tenant service, you can use the template below to do this:
 ```js
 POST https://api.opendatadsl.com/api/tenant/v1
-Authorization: Bearer {{token}}
 
 {
   "properties": {

@@ -23,8 +23,8 @@ The API consists of the following calls:
 |**Method**|**Path**|**Example**|**Description**|
 |-|-|-|-|
 |GET|||Get the build information for this service|
-|GET|{release}|v1|List metrics|
-|GET|{release}/{key}|v1/673db77858834c6a164edfd7|Retrieve a single metric using it’s unique id|
+|GET|\{release\}|v1|List metrics|
+|GET|\{release\}/\{key\}|v1/673db77858834c6a164edfd7|Retrieve a single metric using it’s unique id|
 
 ## Functions
 |**Function**|**Description**|
@@ -94,17 +94,17 @@ Here are the properties of a Metric TimeSeries
 POST https://api.opendatadsl.com/api/object/v1
 Authorization: Bearer {{token}}
 
-{
+\{
 	"_id":"AAA",
-	"PROCESS_RUNS_HOURLY": {
+	"PROCESS_RUNS_HOURLY": \{
 		"_id": "PROCESS_RUNS_HOURLY",
 		"_type": "VarMetricTimeSeries",
 		"provider": "ODSLProcess",
 		"metric": "RunRequests",
 		"calendar": "#PT1H",
 		"observed": "summed"
-	}
-}
+	\}
+\}
 ```
 
 ## Virtual Metric Timeseries
@@ -132,7 +132,7 @@ The other query parameters that can be used with the ```_metric``` query paramet
 * _calendar - The calendar to aggregate the data to
 * _observed - The aggregation method used for the values, can be one of averaged, sum, high, low, beginning or end
 * _range - A range query to limit the range of data
-* _filter - Used to filter the metrics used in the aggregation, e.g. {"application":"api"}
+* _filter - Used to filter the metrics used in the aggregation, e.g. \{"application":"api"\}
 
 ### Examples
 
@@ -175,7 +175,7 @@ GET https://api.opendatadsl.com/api/object/v1
 	&_calendar=%23PT1H
 	&_observed=summed
 	&_range=between(T-1Dh0m0s0,T-1Dh23m59s59)
-	&_filter={"application":"api"}
+	&_filter=\{"application":"api"\}
 Authorization: Bearer {{token}}
 
 ### Virtual metrics for request durations of the object service

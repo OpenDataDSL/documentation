@@ -23,11 +23,11 @@ The API consists of the following calls:
 |**Method**|**Path**|**Example**|**Description**|
 |-|-|-|-|
 |GET|||Get build information for this service|
-|GET|{release}|v1|List all indexes on master data service|
-|GET|{release}/{service}|v1|List all indexes on the named service|
-|GET|{release}/{service}/{id}|v1/object/\_id_|Get a specific index on the specified service|
-|POST|{release}|v1|Add/update an index, the body is the index definition|
-|DELETE|{release}/{service}/{id}|v1/object/_test|Delete the named index on the specified service|
+|GET|\{release\}|v1|List all indexes on master data service|
+|GET|\{release\}/\{service\}|v1|List all indexes on the named service|
+|GET|\{release\}/\{service\}/\{id\}|v1/object/\_id_|Get a specific index on the specified service|
+|POST|\{release\}|v1|Add/update an index, the body is the index definition|
+|DELETE|\{release\}/\{service\}/\{id\}|v1/object/_test|Delete the named index on the specified service|
 
 ### Index definition
 
@@ -62,14 +62,14 @@ Authorization: Bearer {{token}}
 POST {{url}}/index/v1
 Authorization: Bearer {{token}}
 
-{
+\{
     "name": "name",
-    "key": {
+    "key": \{
         "dataset":1
-    }
-}
+    \}
+\}
 
 ### Delete an index on the master data service
 DELETE {{url}}/index/v1/object/name
-Authorization: Bearer {{token}}
+Authorization: Bearer {{token}}r
 ```

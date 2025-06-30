@@ -45,13 +45,13 @@ The profile option is only used when searching through objects. It allows you to
 
 *   Single date as a Date or a String, e.g. “2021-07-16”
     
-*   Single date using the date active variable service, e.g. ${date:”yesterday”}
+*   Single date using the date active variable service, e.g. $\{date:”yesterday”\}
     
 *   From a date, e.g. from(“2021-01-01”)
     
 *   The last number of days, e.g. last(3)
     
-*   A range of dates using between, e.g. between(“2021-01-01”,${date:”yesterday”})
+*   A range of dates using between, e.g. between(“2021-01-01”,$\{date:”yesterday”\})
     
 
 ###### condition

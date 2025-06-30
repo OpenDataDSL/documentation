@@ -19,7 +19,7 @@ An extension has the following properties:
 
 |**Name**|**Description**|**Type**|
 |-|-|-|
-|_id|Unique id for the extension (must be {publisher}.{code}|String|
+|_id|Unique id for the extension (must be \{publisher\}.\{code\}|String|
 |publisher|The publisher of the extension|String|
 |code|The code id of the extension|String|
 |name|The name of the extension|String|

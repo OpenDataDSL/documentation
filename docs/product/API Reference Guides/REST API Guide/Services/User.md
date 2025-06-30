@@ -20,10 +20,10 @@ The API consists of the following calls:
 |**Method**|**Path**|**Example**|**Description**|
 |-|-|-|-|
 |GET|||Get the build information for this service|
-|GET|{release}|v1|List all users for your tenant|
-|GET|{release}/me|v1|Get your user information|
-|GET|{release}/{email}|v1|Get another users information from your tenant|
-|POST|{release}|v1|Update your user information|
+|GET|\{release\}|v1|List all users for your tenant|
+|GET|\{release\}/me|v1|Get your user information|
+|GET|\{release\}/\{email\}|v1|Get another users information from your tenant|
+|POST|\{release\}|v1|Update your user information|
 
 ## Updating your user information
 
@@ -34,9 +34,9 @@ Authorization: Bearer {{token}}
 
 {
   "properties": {
-    "firstname": "Colin",
-    "lastname": "Hartley",
-    "nickname": "Ziggy",
+    "firstname": "Anon",
+    "lastname": "User",
+    "nickname": "anon",
     "newsletter": "true"
   }
 }

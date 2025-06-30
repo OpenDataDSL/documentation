@@ -24,8 +24,8 @@ The API consists of the following calls:
 |**Method**|**Path**|**Example**|**Description**|
 |-|-|-|-|
 |GET|||Get the build information for this service|
-|GET|{release}|v1|List all automation logs|
-|GET|{release}/{id}|v1/68527adfe438ee467f057624|Get a specific automation log using its _id|
+|GET|\{release\}|v1|List all automation logs|
+|GET|\{release\}/\{id\}|v1/68527adfe438ee467f057624|Get a specific automation log using its _id|
 
 ## Entities
 

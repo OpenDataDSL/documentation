@@ -21,15 +21,15 @@ The API consists of the following calls:
 |**Method**|**Path**|**Example**|**Description**|
 |-|-|-|-|
 |GET|||Get the build information for this service|
-|GET|{release}/{source}|'v1/public' 'v1/private'|List public or private documentation|
-|GET|{release}/{source}/{key}|v1/private/TEST|Retrieve a single document using it’s scope code|
-|GET|{release}/{source}/{key}/{version}|v1/private/TEST/1|Retrieve a version of a single document|
-|GET|{release}/{source}/{key}/*|v1/private/TEST/*|Get a list of versions for a specific document|
-|PUT|{release}/{source}/{key}/{version}/{tag}|v1/private/TEST/1/PROD|Tag a version with a name (which can be used instead of the version number when retrieving it)|
-|POST|{release}|v1|Create or update a document, the documentation is the body of the POST request|
-|DELETE|{release}/{source}/{key}|v1/private/TEST|Rollback to the previous version of a document, if it is the only version then the document will be deleted|
-|DELETE|{release}/{source}/{key}/{version}|v1/private/TEST/1|Delete a specific version of a document|
-|DELETE|{release}/{source}/{key}/*|v1/private/TEST/*|Fully delete a document, including all versions|
+|GET|\{release\}/\{source\}|'v1/public' 'v1/private'|List public or private documentation|
+|GET|\{release\}/\{source\}/\{key\}|v1/private/TEST|Retrieve a single document using it’s scope code|
+|GET|\{release\}/\{source\}/\{key\}/\{version\}|v1/private/TEST/1|Retrieve a version of a single document|
+|GET|\{release\}/\{source\}/\{key\}/*|v1/private/TEST/*|Get a list of versions for a specific document|
+|PUT|\{release\}/\{source\}/\{key\}/\{version\}/\{tag\}|v1/private/TEST/1/PROD|Tag a version with a name (which can be used instead of the version number when retrieving it)|
+|POST|\{release\}|v1|Create or update a document, the documentation is the body of the POST request|
+|DELETE|\{release\}/\{source\}/\{key\}|v1/private/TEST|Rollback to the previous version of a document, if it is the only version then the document will be deleted|
+|DELETE|\{release\}/\{source\}/\{key\}/\{version\}|v1/private/TEST/1|Delete a specific version of a document|
+|DELETE|\{release\}/\{source\}/\{key\}/*|v1/private/TEST/*|Fully delete a document, including all versions|
 
 ## Entities
 
@@ -128,7 +128,7 @@ Authorization: Bearer {{token}}
 
 ```
 GET https://api.opendatadsl.com/api/documentation/v1/public
-    ?_project={scope:1,entity:1}
+    ?_project=\{scope:1,entity:1\}
 Authorization: Bearer {{token}}
 ```
 
@@ -136,7 +136,7 @@ Authorization: Bearer {{token}}
 
 ```
 GET https://api.opendatadsl.com/api/documentation/v1/public
-    ?_aggregate=[{$group:{_id:{scope:"$scope",entity:"$entity"}}},{$project:{_id:0,scope:"$_id.scope",entity:"$_id.entity"}}]
+    ?_aggregate=[\{$group:\{_id:\{scope:"$scope",entity:"$entity"}}\},\{$project:\{_id:0,scope:"$_id.scope",entity:"$_id.entity"}}]
 Authorization: Bearer {{token}}
 ```
 

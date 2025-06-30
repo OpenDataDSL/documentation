@@ -20,10 +20,10 @@ The API consists of the following calls:
 |**Method**|**Path**|**Example**|**Description**|
 |-|-|-|-|
 |GET|||Get the build information for this service|
-|GET|{release}|v1|List all the environments|
-|GET|{release}/{key}|v1/TEST|Retrieve a single named environment using it’s unique id|
-|POST|{release}|v1|Create or update an environment. The JSON body of the POST request is a simple JSON object with at least an _id property|
-|DELETE|{release}/{key}|v1/TEST|Delete the environment - note this will completely remove the environment and all data in it - this cannot be performed on the ‘production’ environment|
+|GET|\{release\}|v1|List all the environments|
+|GET|\{release\}/\{key\}|v1/TEST|Retrieve a single named environment using it’s unique id|
+|POST|\{release\}|v1|Create or update an environment. The JSON body of the POST request is a simple JSON object with at least an _id property|
+|DELETE|\{release\}/\{key\}|v1/TEST|Delete the environment - note this will completely remove the environment and all data in it - this cannot be performed on the ‘production’ environment|
 
 ## Entities
 

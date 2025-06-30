@@ -37,5 +37,5 @@ The following variables are set into the context:
 * ```#CURVE``` - the built curve that we are checking (read only)
 * ```#INFO``` - The curve management info for this curve (read only)
 * ```#BUILD``` - The curve management build information for this ondate (read only)
-* ```#LOG``` - An object where the script can output info about the check - this will be saved in the build info<
+* ```#LOG``` - An object where the script can output info about the check - this will be saved in the build info
 

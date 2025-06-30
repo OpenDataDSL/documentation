@@ -24,14 +24,14 @@ The API consists of the following calls:
 |**Method**|**Path**|**Example**|**Description**|
 |-|-|-|-|
 |GET|||Get the build information for this service|
-|GET|{release}/public|v1/public|List public extensions that you can install privately|
-|GET|{release}/private|v1/private|List extensions that either your company has created or installed|
-|GET|{release}/{source}/{key}|v1/private/odsl.example|Retrieve a single extension using its unique id|
-|GET|{release}/{source}/{key}/{version}|v1/private/odsl.example/1|Retrieve a version of a single extension|
-|GET|{release}/{source}/{key}/*|v1/private/odsl.example/*|Get a list of versions for a specific extension|
-|PUT|{release}/{source}/{key}/{version}/{tag}|v1/private/odsl.example/1/PROD|Tag a version with a name (which can be used instead of the version number when retrieving it)|
-|POST|{release}|v1|Create or update an extension, the extension is the body of the POST request|
-|DELETE|{release}/private/{key}|v1/private/odsl.example|Uninstall an extension|
+|GET|\{release\}/public|v1/public|List public extensions that you can install privately|
+|GET|\{release\}/private|v1/private|List extensions that either your company has created or installed|
+|GET|\{release\}/\{source\}/\{key\}|v1/private/odsl.example|Retrieve a single extension using its unique id|
+|GET|\{release\}/\{source\}/\{key\}/\{version\}|v1/private/odsl.example/1|Retrieve a version of a single extension|
+|GET|\{release\}/\{source\}/\{key\}/*|v1/private/odsl.example/*|Get a list of versions for a specific extension|
+|PUT|\{release\}/\{source\}/\{key\}/\{version\}/\{tag\}|v1/private/odsl.example/1/PROD|Tag a version with a name (which can be used instead of the version number when retrieving it)|
+|POST|\{release\}|v1|Create or update an extension, the extension is the body of the POST request|
+|DELETE|\{release\}/private/\{key\}|v1/private/odsl.example|Uninstall an extension|
 
 ## Special REST Calls
 
@@ -61,12 +61,12 @@ To uninstall an extension from your private environment, you need to:
 To get/run a view for an extension, you need to make a GET request with the name of the view, also adding an Accept header for text/html 
   
 ```
-GET <https://api.opendatadsl.com/api/extension/v1/private/{{_id}}/view/{{view.name}}>
+GET <https://api.opendatadsl.com/api/extension/v1/private/{_id}/view/{view.name}>
 
 e.g. 
 
 GET https://api.opendatadsl.com/api/extension/v1/private/odsl.example/view/test
-Authorization: Bearer {{token}}
+Authorization: Bearer {token}
 Accept: text/html
 ```
 
@@ -78,7 +78,7 @@ The extension entity contains the following information:
 
 |**Name**|**Description**|**Type**|
 |-|-|-|
-|_id|Unique id for the extension (must be {publisher}.{code})|String|
+|_id|Unique id for the extension (must be \{publisher\}.\{code\})|String|
 |_type|The type - always VarExtension|String|
 |publisher|The publisher of the extension|String|
 |code|The code id of the extension|String|

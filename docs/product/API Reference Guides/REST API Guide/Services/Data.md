@@ -26,8 +26,8 @@ The API consists of the following calls:
 |**Method**|**Path**|**Example**|**Description**|
 |-|-|-|-|
 |GET|||Get the build information for this service|
-|GET|{release}/{source}|'v1/public' 'v1/private'|List public or private data items|
-|GET|{release}/{source}/{key}|v1/private/TEST:SPOT|Retrieve a single data item using its id|
+|GET|\{release\}/\{source\}|'v1/public' 'v1/private'|List public or private data items|
+|GET|\{release\}/\{source\}/\{key\}|v1/private/TEST:SPOT|Retrieve a single data item using its id|
 
 ### Query Parameters
 Below is a table of the query parameters that are usable with the data REST API
@@ -182,13 +182,13 @@ Authorization: Bearer {{token}}
 
 ### Get a time-series range for a list of data
 GET https://api.opendatadsl.com/api/data/v1/public
-    ?_filter={"_objtype":"%23ForeignExchange"}
+    ?_filter=\{"_objtype":"%23ForeignExchange"\}
     &_range=last(1)
 Authorization: Bearer {{token}}
 
 ### Get a time-series range for a list of data using object filtering
 GET https://api.opendatadsl.com/api/object/v1/public
-    ?_filter={"_type":"%23ForeignExchange"}
+    ?_filter=\{"_type":"%23ForeignExchange"\}
     &_profile=SPOT
     &_range=last(1)
 Authorization: Bearer {{token}}
@@ -203,8 +203,8 @@ Authorization: Bearer {{token}}
 
 ### Get ALL
 GET https://api.opendatadsl.com/api/data/v1/public
-    ?_project={"_type":1}
-    &_sort={"_id":1}
+    ?_project=\{"_type":1\}
+    &_sort=\{"_id":1\}
     &_limit=-1
 Authorization: Bearer {{token}}
 

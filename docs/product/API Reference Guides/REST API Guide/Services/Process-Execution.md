@@ -23,9 +23,9 @@ The API consists of the following calls:
 |**Method**|**Path**|**Example**|**Description**|
 |-|-|-|-|
 |GET|||Get the build information for this service|
-|GET|{release}|v1|List process executions|
-|GET|{release}/{key}|v1/private/6090915ad6a48d0b3c4f663d|Retrieve a single process execution log using it’s unique id|
-|POST|{release}|v1|Manually trigger a process, then JSON body of the post must have a name property which is the name of the process|
+|GET|\{release\}|v1|List process executions|
+|GET|\{release\}/\{key\}|v1/private/6090915ad6a48d0b3c4f663d|Retrieve a single process execution log using it’s unique id|
+|POST|\{release\}|v1|Manually trigger a process, then JSON body of the post must have a name property which is the name of the process|
 
 ## Entities
 

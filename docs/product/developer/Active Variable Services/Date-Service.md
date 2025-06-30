@@ -28,7 +28,7 @@ The following assignment keys are available (case-insensitive):
 |**Key**|**Description**|
 |-|-|
 |now|The current day and time|
-|today or {empty}|The current backwards aligned day using the supplied calendar|
+|today or \{empty\}|The current backwards aligned day using the supplied calendar|
 |yesterday|The day prior to today according to the supplied calendar|
 |tomorrow|The day after today according to the supplied calendar|
 |named, e.g. monday|The next or current named day|

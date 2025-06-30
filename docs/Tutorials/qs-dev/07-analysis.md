@@ -24,7 +24,7 @@ Distinct aggregation gets a unique list of values from the property of any entit
 
 The syntax for this is:
 
-list = **find** **unique** property **from** ${service:source}
+list = **find** **unique** property **from** $\{service:source\}
 
 :::note
 Source can be omitted if you are querying your private repository

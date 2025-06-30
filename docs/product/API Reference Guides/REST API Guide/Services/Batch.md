@@ -22,10 +22,10 @@ https://api.opendatadsl.com/api/batch
 |**Method**|**Path**|**Example**|**Description**|
 |-|-|-|-|
 |GET|||Get the build information for this service|
-|GET|{release}|v1|List all batch summaries|
-|GET|{release}/{id}|v1/a757b7cc-ed3b-41f5-b5dd-30330b967416|Get a specific batch summary|
-|POST|{release}|v1|Send an array of objects to be updated|
-|DELETE|{release}/{id}|v1/a757b7cc-ed3b-41f5-b5dd-30330b967416|Delete a batch summary
+|GET|\{release\}|v1|List all batch summaries|
+|GET|\{release\}/\{id\}|v1/a757b7cc-ed3b-41f5-b5dd-30330b967416|Get a specific batch summary|
+|POST|\{release\}|v1|Send an array of objects to be updated|
+|DELETE|\{release\}/\{id\}|v1/a757b7cc-ed3b-41f5-b5dd-30330b967416|Delete a batch summary
 
 ### Batch Update
 |**Name**|**Description**|**Type**|
@@ -94,7 +94,7 @@ https://api.opendatadsl.com/api/batch
 ```
 
 ## Examples
-In the following examples {{url}} is the batch REST URL:
+In the following examples \{\{url\}\} is the batch REST URL:
 
 ```js
 https://api.opendatadsl.com/api/batch

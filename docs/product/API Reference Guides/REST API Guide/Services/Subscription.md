@@ -22,10 +22,10 @@ The API consists of the following calls:
 |**Method**|**Path**|**Example**|**Description**|
 |-|-|-|-|
 |GET|||Get the build information for this service|
-|GET|{release}|v1|List all your subscriptions|
-|GET|{release}/{key}|v1/TEST|Retrieve a subscriptions using its name|
-|POST|{release}|v1|Create or update a subscription, the subscription configuration is the body of the POST request|
-|DELETE|{release}/{key}|v1/TEST|Delete a subscription|
+|GET|\{release\}|v1|List all your subscriptions|
+|GET|\{release\}/\{key\}|v1/TEST|Retrieve a subscriptions using its name|
+|POST|\{release\}|v1|Create or update a subscription, the subscription configuration is the body of the POST request|
+|DELETE|\{release\}/\{key\}|v1/TEST|Delete a subscription|
 
 ## Entities
 
@@ -171,19 +171,19 @@ Authorization: Bearer {{token}}
 POST {{url}}/subscription/v1
 Authorization: Bearer {{token}}
 
-{
+\{
     "name": "QAExample",
-    "objects": [{
+    "objects": [\{
         "key": "PRIMARY",
         "id": "NZ_FONTERRA_SALTED_25KG_NZ:CURVE",
         "optional": false,
         "action": ["create","update"]
-    }],
-    "targets":[{
+    \}],
+    "targets":[\{
       "name": "ProcessTarget",
       "process": "SimpleScript"
-    }]
-}
+    \}]
+\}
 
 ### Delete a subscription
 DELETE {{url}}/subscription/v1/QAExample

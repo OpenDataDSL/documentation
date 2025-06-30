@@ -20,15 +20,15 @@ The API consists of the following calls:
 |**Method**|**Path**|**Example**|**Description**|
 |-|-|-|-|
 |GET|||Get the build information for this service|
-|GET|{release}/{source}|'v1/public' 'v1/private'|List public or private calendars|
-|GET|{release}/{source}/{key}|v1/private/TEST|Retrieve a single calendar using it’s unique id|
-|GET|{release}/{source}/{key}/{version}|v1/private/TEST/1|Retrieve a version of a single calendar|
-|GET|{release}/{source}/{key}/*|v1/private/TEST/*|Get a list of versions for a specific calendar|
-|PUT|{release}/{source}/{key}/{version}/{tag}|v1/private/TEST/1/PROD|Tag a version with a name (which can be used instead of the version number when retrieving it)|
-|POST|{release}|v1|Create or update an calendar, the calendar is the body of the POST request|
-|DELETE|{release}/{source}/{key}|v1/private/TEST|Rollback to the previous version of a calendar, if it is the only version then the calendar will be deleted|
-|DELETE|{release}/{source}/{key}/{version}|v1/private/TEST/1|Delete a specific version of a calendar|
-|DELETE|{release}/{source}/{key}/*|v1/private/TEST/*|Fully delete a calendar, including all versions|
+|GET|\{release\}/\{source\}|'v1/public' 'v1/private'|List public or private calendars|
+|GET|\{release\}/\{source\}/\{key\}|v1/private/TEST|Retrieve a single calendar using it’s unique id|
+|GET|\{release\}/\{source\}/\{key\}/\{version\}|v1/private/TEST/1|Retrieve a version of a single calendar|
+|GET|\{release\}/\{source\}/\{key\}/*|v1/private/TEST/*|Get a list of versions for a specific calendar|
+|PUT|\{release\}/\{source\}/\{key\}/\{version\}/\{tag\}|v1/private/TEST/1/PROD|Tag a version with a name (which can be used instead of the version number when retrieving it)|
+|POST|\{release\}|v1|Create or update an calendar, the calendar is the body of the POST request|
+|DELETE|\{release\}/\{source\}/\{key\}|v1/private/TEST|Rollback to the previous version of a calendar, if it is the only version then the calendar will be deleted|
+|DELETE|\{release\}/\{source\}/\{key\}/\{version\}|v1/private/TEST/1|Delete a specific version of a calendar|
+|DELETE|\{release\}/\{source\}/\{key\}/*|v1/private/TEST/*|Fully delete a calendar, including all versions|
 
 ## Entities
 

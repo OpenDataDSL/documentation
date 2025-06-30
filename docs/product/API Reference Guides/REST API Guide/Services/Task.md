@@ -22,15 +22,15 @@ The API consists of the following calls:
 |**Method**|**Path**|**Example**|**Description**|
 |-|-|-|-|
 |GET|||Get the build information for this service|
-|GET|{release}|v1|List all the tasks|
-|GET|{release}/{key}|v1/64255eae35f43713c1afa927|Retrieve a single task using its unique id|
-|GET|{release}/{key}/{version}|v1/64255eae35f43713c1afa927/1|Retrieve a version of a single task|
-|GET|{release}/{key}/*|v1/64255eae35f43713c1afa927/*|Get a list of versions for a specific task|
-|PUT|{release}/{key}/{version}/{tag}|v1/64255eae35f43713c1afa927/1/PROD|Tag a version with a name (which can be used instead of the version number when retrieving it)|
-|POST|{release}|v1|Create or update a task, the task configuration is the body of the POST request|
-|DELETE|{release}/{key}|v1/64255eae35f43713c1afa927|Rollback to the previous version of a task, if it is the only version then the process will be deleted|
-|DELETE|{release}/{key}/{version}|v1/64255eae35f43713c1afa927/1|Delete a specific version of a task|
-|DELETE|{release}/{key}/*|v1/64255eae35f43713c1afa927/*|Fully delete a task, including all versions|
+|GET|\{release\}|v1|List all the tasks|
+|GET|\{release\}/\{key\}|v1/64255eae35f43713c1afa927|Retrieve a single task using its unique id|
+|GET|\{release\}/\{key\}/\{version\}|v1/64255eae35f43713c1afa927/1|Retrieve a version of a single task|
+|GET|\{release\}/\{key\}/*|v1/64255eae35f43713c1afa927/*|Get a list of versions for a specific task|
+|PUT|\{release\}/\{key\}/\{version\}/\{tag\}|v1/64255eae35f43713c1afa927/1/PROD|Tag a version with a name (which can be used instead of the version number when retrieving it)|
+|POST|\{release\}|v1|Create or update a task, the task configuration is the body of the POST request|
+|DELETE|\{release\}/\{key\}|v1/64255eae35f43713c1afa927|Rollback to the previous version of a task, if it is the only version then the process will be deleted|
+|DELETE|\{release\}/\{key\}/\{version\}|v1/64255eae35f43713c1afa927/1|Delete a specific version of a task|
+|DELETE|\{release\}/\{key\}/*|v1/64255eae35f43713c1afa927/*|Fully delete a task, including all versions|
 
 ## Entities
 
@@ -77,31 +77,31 @@ Authorization: Bearer {{token}}
 POST {{url}}/task/v1
 Authorization: Bearer {{token}}
 
-{
+\{
     "user":"user@example.com",
     "category": "Validation Check",
     "message": "What do you want to do about these issues?"
-}
+\}
 
 ### Update a task
 POST {{url}}/task/v1
 Authorization: Bearer {{token}}
 
-{
+\{
     "_id": "{{id}}",
     "user":"user@example.com",
     "category": "Validation Check",
     "message": "What to do?"
-}
+\}
 
 ### Complete a task
 POST {{url}}/task/v1
 Authorization: Bearer {{token}}
 
-{
+\{
     "_id": "{{id}}",
     "complete": true
-}
+\}
 
 ### Get a task
 GET {{url}}/task/v1/64255eae35f43713c1afa927

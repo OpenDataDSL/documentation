@@ -141,7 +141,7 @@ Authorization: Bearer {{token}}
 
 ```js
 GET https://api.opendatadsl.com/api/data/v1/private
-	?_filter={_id:{$in:{$group:'data:favourite:Data Lists:Settlements'}}}
+	?_filter=\{_id:\{$in:\{$group:'data:favourite:Data Lists:Settlements'}}\}
 	&_ondate=L-1
 Authorization: Bearer {{token}}
 ```

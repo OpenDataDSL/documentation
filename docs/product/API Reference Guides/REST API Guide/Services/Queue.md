@@ -22,10 +22,10 @@ The API consists of the following calls:
 |**Method**|**Path**|**Example**|**Description**|
 |-|-|-|-|
 |GET|||Get the build information for this service|
-|GET|{release}|v1|List all your queues|
-|GET|{release}/{key}|v1/TEST|Retrieve a single queue using its name|
-|POST|{release}|v1|Create or update a queue, the queue configuration is the body of the POST request|
-|DELETE|{release}/{key}|v1/TEST|Delete a queue|
+|GET|\{release\}|v1|List all your queues|
+|GET|\{release\}/\{key\}|v1/TEST|Retrieve a single queue using its name|
+|POST|\{release\}|v1|Create or update a queue, the queue configuration is the body of the POST request|
+|DELETE|\{release\}/\{key\}|v1/TEST|Delete a queue|
 
 ## Entities
 
@@ -51,12 +51,12 @@ Authorization: Bearer {{token}}
 POST {{url}}/queue/v1
 Authorization: Bearer {{token}}
 
-{
+\{
   "queue": "test2",
   "description": "Test 2 queue",
   "retention": "P7D",
   "timeout": "PT5M"
-}
+\}
 
 ### Get all queues
 GET {{url}}/queue/v1

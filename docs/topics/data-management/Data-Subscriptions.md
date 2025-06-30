@@ -96,7 +96,7 @@ This target sends an email which can be populated with information from the fulf
 * attachment - A boolean indicating if the data should be sent in an attached file, defaults to true
 
 The HTML body can include some variables which will be substituted when sent.
-Each variable is surrounded by curly braces, e.g. {var}
+Each variable is surrounded by curly braces, e.g. \{var\}
 
 Example:
 ```js

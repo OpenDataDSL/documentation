@@ -57,7 +57,7 @@ A single table report takes the following configuration object:
 |-|-|-|-|
 |service|String|calendar|The name of the service to get the data from|
 |source|String|private|The source of the data|
-|filter|Object|{'dsid': ReportProperties().DSID}|A filter to be applied to the query|
+|filter|Object|\{'dsid': ReportProperties().DSID\}|A filter to be applied to the query|
 |columnDefs|Array(Object)|See columnDefs below|An array of column definitions for the table|
 |inputs|Array(Input)|See Inputs below|A list of optional inputs to all the user to select from|
 |dataCallback|Function|getData|An optional callback function that allows you to override the requesting and formatting of the data sent back to Excel|
@@ -70,7 +70,7 @@ A single table report takes the following configuration object:
 |-|-|-|-|
 |service|String|calendar|The name of the service to get the data from|
 |source|String|private|The source of the data|
-|filter|Object|{'dsid': ReportProperties().DSID}|A filter to be applied to the query|
+|filter|Object|\{'dsid': ReportProperties().DSID\}|A filter to be applied to the query|
 |columnDefs|Array(Object)|See columnDefs below|An array of column definitions for the table|
 |detailColumnDefs|Array(Object)|See columnDefs below|An array of column definitions for the detail table|
 |inputs|Array(Input)|See Inputs below|A list of optional inputs to all the user to select from|
@@ -84,12 +84,12 @@ A single table report takes the following configuration object:
 |-|-|-|-|
 |service|String|calendar|The name of the service to get the data from|
 |source|String|private|The source of the data|
-|filter|Object|{'dsid': ReportProperties().DSID}|A filter to be applied to the query|
+|filter|Object|\{'dsid': ReportProperties().DSID\}|A filter to be applied to the query|
 |columnDefs|Array(Object)|See columnDefs below|An array of column definitions for the table|
 |inputs|Array(Input)|See Inputs below|A list of optional inputs to all the user to select from|
 |dataCallback|Function|getData|An optional callback function that allows you to override the requesting and formatting of the data sent back to Excel|
 |rangeSelector|Object|See rangeSelector below|An optional range selector configuration to allow the user to select a range of dates|
-|projection|Object|{ondate:true, score:true, scoreinfo:true}|A projection for fields to show in the chart|
+|projection|Object|\{ondate:true, score:true, scoreinfo:true\}|A projection for fields to show in the chart|
 |chartDefinition|Object|See chartDefinition below|The definition of the chart|
 
 ### Inputs Configuration
@@ -108,7 +108,7 @@ For **select** type fields, there are also the following properties:
 |data|Array(String)|['test1','test2']|An optional list of items to display in the drop-down list. If not used, the system will get a distinct list of items using the field name|
 |service|String|calendar|The service to use to get the items for the drop-down list, defaults to the top-level service|
 |source|String|private|The source to use for the items in the drop-down list, defaults to the top-level source|
-|filter|Object|{category='test'}|An optional filter to use to get the items for the drop-down list|
+|filter|Object|\{category='test'\}|An optional filter to use to get the items for the drop-down list|
 |multiple|Boolean|true|If true, allows multiple selections to be made|
 |selectAll|Boolean|true|If this is a multiple selector, this adds an optional 'Select All' option|
 

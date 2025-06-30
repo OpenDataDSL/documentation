@@ -30,7 +30,7 @@ The steps required to load data into OpenDataDSL using queues are as follows:
 * Send input data to the queue
 
 ### Creating a queue
-Queues in OpenDataDSL are created using the **Queue({name})** function.
+Queues in OpenDataDSL are created using the **Queue(\{name\})** function.
 In order for a queue to be used as a trigger to load data, you must set the **handler** property on the queue to be **trigger**.
 
 Here is an example:
