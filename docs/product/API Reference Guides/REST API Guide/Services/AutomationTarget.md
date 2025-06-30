@@ -29,15 +29,15 @@ The API consists of the following calls:
 |**Method**|**Path**|**Example**|**Description**|
 |-|-|-|-|
 |GET|||Get the build information for this service|
-|GET|{release}/{source}|v1/public  v1/private  v1/all|List public, private or all automation targets|
-|GET|{release}/{source}/{key}|v1/private/odsl.email|Retrieve a single automation target using its unique id|
-|GET|{release}/{source}/{key}/{version}|v1/private/odsl.email/1|Retrieve a version of a single automation target|
-|GET|{release}/{source}/{key}/*|v1/private/odsl.email/*|Get a list of versions for a specific automation target|
-|PUT|{release}/{source}/{key}/{version}/{tag}|v1/private/odsl.email/1/PROD|Tag a version with a name (which can be used instead of the version number when retrieving it)|
+|GET|{release}|v1|List all automation targets|
+|GET|{release}/{key}|v1/odsl.email|Retrieve a single automation target using its unique id|
+|GET|{release}/{key}/{version}|v1/odsl.email/1|Retrieve a version of a single automation target|
+|GET|{release}/{key}/*|v1/odsl.email/*|Get a list of versions for a specific automation target|
+|PUT|{release}/{key}/{version}/{tag}|v1/odsl.email/1/PROD|Tag a version with a name (which can be used instead of the version number when retrieving it)|
 |POST|{release}|v1|Create or update an automation target, the automation target is the body of the POST request|
-|DELETE|{release}/{source}/{key}|v1/private/odsl.email|Rollback to the previous version of an automation target, if it is the only version then the automation target will be deleted|
-|DELETE|{release}/{source}/{key}/{version}|v1/private/odsl.email/1|Delete a specific version of an automation target|
-|DELETE|{release}/{source}/{key}/*|v1/private/odsl.email/*|Fully delete an automation target, including all versions|
+|DELETE|{release}/{key}|v1/odsl.email|Rollback to the previous version of an automation target, if it is the only version then the automation target will be deleted|
+|DELETE|{release}/{key}/{version}|v1/odsl.email/1|Delete a specific version of an automation target|
+|DELETE|{release}/{key}/*|v1/odsl.email/*|Fully delete an automation target, including all versions|
 
 ## Special REST Calls
 
