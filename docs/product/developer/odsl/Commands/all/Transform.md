@@ -4,7 +4,7 @@ tags:
   - command
   - transform
 ---
-import Find from './_transform.md'
+import Transform from './_transform.md'
 
 transform
 =========

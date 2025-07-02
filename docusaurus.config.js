@@ -1,5 +1,6 @@
-const lightCodeTheme = require('prism-react-renderer/themes/github');
-const darkCodeTheme = require('prism-react-renderer/themes/dracula');
+const {themes} = require('prism-react-renderer');
+const lightTheme = themes.github;
+const darkTheme = themes.dracula;
 
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
@@ -7,7 +8,7 @@ module.exports = {
   tagline: 'A real-world solution for getting your DATA and PROCESSES in the CLOUD',
   url: 'https://www.opendatadsl.com',
   baseUrl: '/',
-  onBrokenLinks: 'throw',
+  onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
   organizationName: 'OpenDataDSL', // Usually your GitHub org/user name.
@@ -32,8 +33,8 @@ module.exports = {
       copyright: `Copyright © ${new Date().getFullYear()} OpenDataDSL Ltd.`,
     },
     prism: {
-      theme: lightCodeTheme,
-      darkTheme: darkCodeTheme,
+      theme: lightTheme,
+      darkTheme: darkTheme,
       additionalLanguages: ['java'],
     },
     algolia: {

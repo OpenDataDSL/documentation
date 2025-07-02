@@ -47,7 +47,7 @@ import BloombergBrent1730 from '../oil-products/_BLOOMBERG_BRENT_1730.md';
 ### BLOOMBERG_IR_FWD
 <details>
 <summary>Bloomberg Interest Rates Forwards</summary>
-<BloombergFxFwd/>
+<BloombergIrFwd/>
 </details>
 
 ### BLOOMBERG_IR_1730

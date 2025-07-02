@@ -74,5 +74,5 @@ import EexEmSpot from '../coal-emission/_EEX_EM_SPOT.md';
 ### EEX_EM_SPOT
 <details>
 <summary>European Energy Exchange Emission Spot Prices</summary>
-<EexEmFut/>
+<EexEmSpot/>
 </details>

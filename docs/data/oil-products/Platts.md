@@ -60,13 +60,13 @@ import PlattsTd from '../freight/_PLATTS_TD.md';
 ### PLATTS_AL
 <details>
 <summary>Petchems: Aromatics Latin America</summary>
-<PlattsAe />
+<PlattsAl />
 </details>
 
 ### PLATTS_AU
 <details>
 <summary>Petchems: Aromatics US</summary>
-<PlattsAe />
+<PlattsAu />
 </details>
 
 ### PLATTS_EE

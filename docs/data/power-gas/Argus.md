@@ -110,7 +110,7 @@ import ArgusDfr from '../freight/_ARGUS_DFR.md';
 ### ARGUS_DAMCOAL
 <details>
 <summary>Argus McCloskey Coal</summary>
-<ArgusDAMCOAL />
+<ArgusDamcoal />
 </details>
 
 ### ARGUS_DCI

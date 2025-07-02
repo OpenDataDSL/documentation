@@ -36,17 +36,17 @@ import TgeNgIdm from './_TGE_NG_IDM.md';
 ### TGE_EL_IDM
 <details>
 <summary>Polish Power Exchange Power Intra Day Market Price</summary>
-<TgeElDam />
+<TgeElIdm />
 </details>
 
 ### TGE_NG_DAM
 <details>
 <summary>Polish Power Exchange Natural Gas Day Ahead Market Price</summary>
-<TgeElDam />
+<TgeNgDam />
 </details>
 
 ### TGE_NG_IDM
 <details>
 <summary>Polish Power Exchange Natural Gas Intra Day Market Price</summary>
-<TgeElDam />
+<TgeNgIdm />
 </details>
