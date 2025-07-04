@@ -1,4 +1,14 @@
-## Latest release ( May-2025)
+## Latest release (June-2025)
+This release mainly includes the addition of the following feeds and loading history:
+
+* ENTSOE Prices of Activated Balancing Energy
+* ENTSOE Volumes and Prices of Contracted Reserves
+* Czech National Bank Exchange Rate Fixing
+* Reserve Bank of India Foreign Exchange Reference Rates 
+
+Additionally, this release also includes ENTSOE feeds to the dataset monitoring.
+
+## May-2025
 This release mainly includes the implementation of content monitoring for EEX feeds. The different events communicated by EEX include late uploads at the end of a trading day or updates to a historical CSV file. Our process captures these events through an RSS feed for SFTP monitoring.
 
 Additionally, this release also includes setting up smart loader for EEX EGSI Futures, Power and Gas Futures
