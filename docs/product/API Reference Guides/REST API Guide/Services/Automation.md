@@ -50,7 +50,7 @@ The automation entity contains the following information:
 |-|-|-|
 |_id|Unique id for the automation (an object id)|ObjectId|
 |_type|The type of the automation - always VarAutomation|String|
-|active|If true, this automation is live|Boolean|
+|enabled|If true, this automation is live|Boolean|
 |owner|ReadOnly: The person who created/updated the automation (uses their security policies)|String|
 |conditions|An array of objects with the conditions that will fire this automation|Condition[]|
 |target|The automation target to fire|String|
@@ -68,6 +68,7 @@ The Condition entity is used to determine if this automation should fire:
 |source|The source of the data that the condition relates to|String|
 |service|The name of the service the condition relates to|String|
 |id|The id of the data|String|
+|did|The dependent id (used if the id is an event id, but the trigger is an event curve or event timeseries)|String|
 |action|An array of actions that determines what triggers this condition|String|
 |key|An optional custom key to name this data in the target system (_id in the data will be changed to this if it is set)|String|
 
@@ -92,7 +93,7 @@ The properties entity is used to configure an [Automation Target](automationtarg
     "_id": "\{objectid\}",
     "_type": "VarAutomation",
     "target": "odsl.email_attachment",
-    "active": true,
+    "enabled": true,
     "template": "When AAA:CURVE is updated, transform the data using [@transformer], then send an email to [to] with subject [subject], add the data as an attachment named [attachmentName].",
     "properties": {
       "to": "user@company.com",
@@ -114,7 +115,7 @@ The properties entity is used to configure an [Automation Target](automationtarg
 {
   "_id": "6855145134ff6a7e14c20c10",
   "_type": "VarAutomation",
-  "active": true,
+  "enabled": true,
   "target": "odsl.email_attachment",
   "icon": "envelope-paper",
   "template": "When property [@propertyName] on AAA changes to [@propertyValue], send an email to [to] with subject [subject], add the data as an attachment named [attachmentName].",
