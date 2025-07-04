@@ -40,6 +40,8 @@ import GnFcws from './_ENTSOE_GN_FCWS.md';
 import EntsoeBlImbpr from './_ENTSOE_BL_IMBPR.md';
 import EntsoeBlImbvol from './_ENTSOE_BL_IMBVOL.md';
 import EntsoeBlCrsbrd from './_ENTSOE_BL_CRSBRD.md';
+import EntsoeBlEnergyPr from './_ENTSOE_BL_ENERGY_PR.md';
+import EntsoeBlContractReservePr from './_ENTSOE_BL_CONTRACT_RESERVES_PR.md';
 
 import EntsoeTrCapfx from './_ENTSOE_TR_CAPFC.md';
 import EntsoeTrCrsbrd from './_ENTSOE_TR_CRSBRD_FLOW.md';
@@ -112,6 +114,18 @@ import OtProd from './_ENTSOE_OT_PROD.md';
 <details>
 <summary>Balancing - Cross-Border Balancing</summary>
 <EntsoeBlCrsbrd />
+</details>
+
+### ENTSOE_EL_BL_ENERGY_PR
+<details>
+<summary>Balancing - Prices of Activated Balancing Energy</summary>
+<EntsoeBlEnergyPr/>
+</details>
+
+### ENTSOE_BL_CONTRACT_RESERVES_PR
+<details>
+<summary>Balancing - Volumes and Prices of Contracted Reserves</summary>
+<EntsoeBlContractReservePr/>
 </details>
 
 ## Outages
