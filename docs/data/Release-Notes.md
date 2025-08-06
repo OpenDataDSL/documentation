@@ -1,6 +1,14 @@
-## Latest release (June-2025)
-This release mainly includes the addition of the following feeds and loading history:
 
+## Latest release (Jul-2025)
+This release mainly includes the following tasks:
+* ENTSOE Volumes and Prices of Contracted Reserves for FR,BE and DE regions with history loading
+* The migration of EPEX Market Data from sFTP to Google Cloud Platform has been tested and moved to production
+* Investigation conducted on invalid current day tenors provided by the EEX vendor regarding Gas Spot Prices,necessary stpes taken to fix the data issue
+* Terna feeds for Totoal Load,Generation,Transmission and Imbalance Price moved to dataset monitoring
+
+## June-2025
+This release mainly includes the addition of the following feeds and loading history:
+* ENTSOE Volumes and Prices of Contracted Reserves for NL region 
 * ENTSOE Prices of Activated Balancing Energy
 * ENTSOE Volumes and Prices of Contracted Reserves
 * Czech National Bank Exchange Rate Fixing
