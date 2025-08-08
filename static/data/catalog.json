@@ -728,19 +728,6 @@
         "tags": ["Commodity", "Agriculture"]
     },
     {
-        "type": "BYOL",
-        "provider": "The Wall Street Journal",
-        "providerType":"News Agency",
-        "logo": "WSJ.png",
-        "dataset": "Agriculture",
-        "text": "Agricultural Futures",
-        "region": "United States",
-        "start": "2023",
-        "frequency": "DAILY",
-        "link":"/docs/company/WSJ",
-        "tags": ["Commodity", "Agriculture"]
-    },
-    {
         "type": "FREE",
         "provider": "Bharat Aluminium Company Limited",
         "providerType":"Private Enterprise ",
@@ -1146,7 +1133,21 @@
         "start": "2025",
         "frequency": "QUARTERHOURLY",
         "link":"/docs/company/TENNET",
+        "tags": ["Commodity", "Power"]
+    },
+    {
+        "type": "FREE",
+        "provider": "Terna",
+        "providerType":"Transmission System Operators",
+        "logo": "terna.png",
+        "dataset": "Power",
+        "text": "Terna Electricity generation, load, transmission, balancing",
+        "region": "Europe",
+        "start": "2025",
+        "frequency": "DAILY",
+        "link":"/docs/company/TERNA",
         "tags": ["Commodity", "Power"," NEW"]
     }
+
 ]
 

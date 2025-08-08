@@ -1,5 +1,5 @@
 ---
-slug: /dataset/CEEGEX
+slug: /company/CEEGEX
 tags:
   - ceegex
   - gas
