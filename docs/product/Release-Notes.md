@@ -6,17 +6,47 @@ sidebar_position: 10
 Release Notes
 =============
 
-## Latest release (Jun-2025)
+## Latest release (Aug-2025)
 
-This release will support **Extensions (Apps)** and enhanced **Dashboards incl. Widgets** as new highlights of the OpenDataDSL platform.
-Moreover the release contains **accumulated bugfixes** and a **group subscription enhancements**.
+This release  will introduce a standalone new feature: **Automation**, along with a series of **bug fixes** and **usability enhancements**.
 
 ```js
 Build details:
 Excel: 1.0.20250221.1037
-Server: Build 3253
-Client: 1.1.45816.1134
+Server: Build 3350
+Client: 1.1.45879.1253
 ```
+
+### New feature - Automation
+
+Looking ahead, **Automation** will gradually replace the current Subscriptions.
+Automations are designed to be more user-friendly, flexible, and easier to extend—both by our team and by clients.
+
+### Improvements
+* Option to switch off Alerts in dataset Monitoring
+* Improvements to tracing of queue messages
+* Smart data - showing all the inputs in the table
+* Add Forward/back arrow in Datasets and Curves
+* Header/Footer for widgets in Dashboard
+* Data properties update
+* Support input properties for any type of report
+* Extension improvements: add extension to standard sections (information, automation and manage), add refresh button and clean-up insigts
+* Empty object attributes: Added setting default_property to default new properties to null
+
+
+### Bug fixes
+* Dataset - Discontinued still create delivery records
+* Frequency slider not having all options available
+* Performance Issues when incrementing numbers in a loop
+* Portal charting error
+* Dataset - tenant copy missing with Calendar attribute
+* Avoid generating 'NaN' in the correction report if one profile among many is not updated
+
+
+## Jun-2025
+
+This release will support **Extensions (Apps)** and enhanced **Dashboards incl. Widgets** as new highlights of the OpenDataDSL platform.
+Moreover the release contains **accumulated bugfixes** and a **group subscription enhancements**.
 
 ### Extensions (Apps)
 OpenDataDSL extensions are a collection of components which form some bespoke functionality that gets added to the Web Portal.
