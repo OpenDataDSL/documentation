@@ -34,7 +34,7 @@ Automations are designed to be more user-friendly, flexible, and easier to exten
 * Empty object attributes: Added setting default_property to default new properties to null
 
 
-### Bug fixes
+### Bugfixes
 * Dataset - Discontinued still create delivery records
 * Frequency slider not having all options available
 * Performance Issues when incrementing numbers in a loop
@@ -42,6 +42,13 @@ Automations are designed to be more user-friendly, flexible, and easier to exten
 * Dataset - tenant copy missing with Calendar attribute
 * Avoid generating 'NaN' in the correction report if one profile among many is not updated
 
+### Hotfixes
+* Remove admin restriction on listAutomations
+
+## Jul-2025
+
+### Hotfixes
+* Upgrade MongoDB Java driver
 
 ## Jun-2025
 
@@ -66,13 +73,22 @@ Users could create their own Widgets and customise the Dashboard to create their
 ### Group subscriptions
 This new feature is to add a special subscription on a static group, which synchronises the group items with subscription items whenever the group changes. The subscription targets will work on the items of the group.
 
-### Bug Fixes
+### Bugfixes
 * Hourly prices within a month not correct
 * Intraday calendar not correctly using timezone for Event Timeseries
 * Issue saving existing group changing shared from false to true
 * Disabling a subscription asks for QueueTarget which is already there
 * View Tenor History for Absolutes Tenor is returning Relative Tenor History
 
+### Hotfixes
+* SFTP changes for EPEX
+* Fix for connections issue causing failure and others. Included commits:
+  - Close mongodb connections after running a process
+  - Close MongoDB connection after creating a task 
+  - Fix to ensure api keys are not removed when updating a user 
+  - Add support for curve tenor listing for event curves
+* Intraday data is being shifted by 1 period
+* Calendar alignment fix
 
 ## May-2025
 
@@ -123,7 +139,7 @@ We have extended OpenDataDSL Insight Reports  - we now support the use of Insigh
 Check out the available [documentation page](/docs/category/insights)
 
 
-### Bug fixes
+### Bugfixes
 
 * Out of memory versioning a report
 * Issue triggering processes from other processes
@@ -135,6 +151,11 @@ Check out the available [documentation page](/docs/category/insights)
 * Add _created timestamp to all entities
 * Automate dataset alert closure once waited for/late data is received
 * Smart feed improvements
+
+### Hotfixes
+* Change the implementation for the -ONDATE functionality incl. Smart Curves
+* Fix for issue where group gets duplicated when changing the shared status
+
 
 ## Apr-2025
 
@@ -167,7 +188,7 @@ which makes us far more flexible.
 * Expose event status and version information to time series and curves
 * Add support for CurveSeries for dependant builds
 
-### Bug fixes
+### Bugfixes
 * Curves Management tab - Error message on Unhandled Exceptions
 * Datasets: >4h Alert not triggered
 * Error message in the Load phase
@@ -250,7 +271,7 @@ Additionally, the release also includes some general improvements and bugfixes n
 
 ## Dec-2024
 
-### Fixed Bugs
+### Bugfixes
 * Use range end for rescaling data and fix index out of range issue
 
 ### Enhancements
@@ -265,7 +286,7 @@ Additionally, the release also includes some general improvements and bugfixes n
 ## Oct-2024/Nov-2024
 This release contains server and Excel fixes and enhancements.
 
-### Fixed Bugs
+### Bugfixes
 * Loaders stuck at Initialising Process - add timeout handling to the LOADER
 * Ensure numbers are not stored in scientific notation
 * JSON Service - losing null values from “stringSeriesValues“ list
