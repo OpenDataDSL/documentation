@@ -1,6 +1,6 @@
 ### Schedule
 
-The schedule for collecting the file is at 17:00 GMT daily.
+The D-1 day file will be collected daily at 23:45 GMT.
 
 ### Sample File
 
