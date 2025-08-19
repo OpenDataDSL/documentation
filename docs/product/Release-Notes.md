@@ -44,7 +44,7 @@ Automations are designed to be more user-friendly, flexible, and easier to exten
 
 ### Hotfixes
 * Remove admin restriction on listAutomations
-* Internal EventCurve not visible in Portal or Excel but working in ODSL code/reports
+* Internal EventCurve not visible in Portal or Excel but working in ODSL code and reports
 * Add health check service
 
 ## Jul-2025
