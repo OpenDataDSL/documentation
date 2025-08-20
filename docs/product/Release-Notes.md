@@ -13,8 +13,8 @@ This release  will introduce a standalone new feature: **Automation**, along wit
 ```js
 Build details:
 Excel: 1.0.20250221.1037
-Server: Build 3350
-Client: 1.1.45879.1253
+Server: Build 3363
+Client: 1.1.45883.513
 ```
 
 ### New feature - Automation
