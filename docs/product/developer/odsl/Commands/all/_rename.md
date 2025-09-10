@@ -16,3 +16,6 @@ rename ${object:"OBJ1"} as UK_OBJ
 // Rename a calendar id and add an audit log message
 rename ${calendar:"mycal"} as UKHOURLY log "Changed to correct id"
 ```
+
+#### See Also
+* [Renaming Reports](/docs/topics/reporting/basics#renaming-reports)

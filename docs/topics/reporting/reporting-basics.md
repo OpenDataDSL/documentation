@@ -447,3 +447,39 @@ o = ${object:"ICE.NDEX.NLB"}
 o.add("Activity", ref)
 save o
 ```
+
+## Renaming reports
+When you rename a report configuration, it also renames all the reports that have been generated.
+
+Renaming a report can also change it from a standalone to a master data embedded and vice-versa.
+
+### Renaming examples
+
+#### Renaming a standalone report
+```js
+rename ${report:"DAILY_EXPORT"} as DAILY_CURVE_EXPORT
+```
+
+#### Renaming a standalone report to an embedded report
+```js
+rename ${report:"DAILY_EXPORT"} as "HH_DATA:DAILY_CURVE_EXPORT"
+```
+
+:::note
+If the master data object does not exist, it will be automatically created
+:::
+
+#### Renaming an embedded report
+```js
+rename ${report:"HH_DATA:DAILY_CURVE_EXPORT"} as "HH_DATA:CURVE_EXPORT"
+```
+
+#### Renaming an embedded report - move to another master data object
+```js
+rename ${report:"HH_DATA:DAILY_CURVE_EXPORT"} as "HH_EXAMPLE:CURVE_EXPORT"
+```
+
+#### Renaming an embedded report to a standalone report
+```js
+rename ${report:"HH_DATA:DAILY_CURVE_EXPORT"} as CURVE_EXPORT
+```
