@@ -6,16 +6,30 @@ sidebar_position: 10
 Release Notes
 =============
 
-## Latest release (Aug-2025)
-
-This release  will introduce a standalone new feature: **Automation**, along with a series of **bug fixes** and **usability enhancements**.
+## Latest release (Sep-2025)
 
 ```js
 Build details:
-Excel: 1.0.20250221.1037
-Server: Build 3363
-Client: 1.1.45883.513
+Excel: 1.5.20250917.1215
+Server: Build 3419
+Client: 1.5.45917.1640
+
+VS Code: 0.15.20
 ```
+
+This release will include a set of important **fixes** and **enhancements**:
+
+* Support critical lists for Datasets
+* Support to view Dataset status by Delivery or by On-date
+* Support Audit Records for Curve Series
+* Fixes to Automations
+* Support the renaming of Reports to preserve history
+* Support Queue Log access via VS Code
+
+
+## Aug-2025
+
+This release  will introduce a standalone new feature: **Automation**, along with a series of **bug fixes** and **usability enhancements**.
 
 ### New feature - Automation
 
