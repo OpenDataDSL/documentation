@@ -14,7 +14,7 @@ Excel: 1.5.20250917.1215
 Server: Build 3419
 Client: 1.5.45917.1640
 
-VS Code: 0.15.20
+VS Code extension for OpenDataDSL: 0.15.20
 ```
 
 This release will include a set of important **fixes** and **enhancements**:
