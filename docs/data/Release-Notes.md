@@ -1,5 +1,19 @@
 
-## Latest release (Jul-2025)
+## Latest release (Sep-2025)
+This release mainly includes:
+* Replacing the previous EPEX Auction Day-Ahead Hourly Updates with Auction Day-Ahead 15Min Prices and Volumes
+* Addition of EPEX 60-Minute Index and Power Aggregated curves available in both 15-minute,30-minute and 60-minute intervals
+* Inclusion of EEX new gas hubs FIN,LTU,LVA_EST
+* Addition of EIA Petroleum Prices,Crude Reserves And Production and Refining And Processing 
+
+##  Aug-2025
+This release mainly includes:
+* Moving EPEX Auction Day-Ahead, Intra-Day loaders, and Continuous Indices to smart loaders
+* Addition of exchange rates from the National Bank of Poland, Swiss National Bank, and Norges Bank
+* Addition of NOAA 7 Day Weather Forecast Updates
+* More locations in Germany included to DWD Hourly Weather Forecast
+
+## Jul-2025
 This release mainly includes:
 * Addition of ENTSOE Volumes and Prices of Contracted Reserves for FR,BE and DE regions with daily and historical data
 * Addition of Terna Load,Generation,Transmission and Imbalance Price updates
