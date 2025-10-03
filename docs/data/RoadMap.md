@@ -7,14 +7,18 @@ Current Data RoadMap
 
 |**Provider**|**Country**|**Commodity**|
 |-|-|-|
-|Trading Hub Europe|Europe|Gas|
 |Elexon Power Flow |United Kingdom|Power|
-|National Oceanic and Atmospheric Administration|Global|Weather|
 |Croation Power Exchange Ltd|Croatia|Power|
 |South East European Power Exchange|Serbia|Power|
-|Energinet|Denmark|Power|
 |Energy Exchange Austria|Austria|Power|
-|Terna|Europe|Power|
 |Italian Power Futures|Italy|Power|
 |LEBA European Power|Europe|Power|
+|OECD Consumer Price Indices|Global|Fundamental|
+|Energy Netherlands|Netherlands|Power|
+|US Energy Information Administration|USA|Petroleum|
+|US Energy Information Administration|USA|Crudes|
+|US Energy Information Administration|USA|Natural Gas|
+
+
+
 
