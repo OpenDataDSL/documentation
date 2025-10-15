@@ -6,16 +6,32 @@ sidebar_position: 10
 Release Notes
 =============
 
-## Latest release (Sep-2025)
+## Latest release (Oct-2025)
 
 ```js
 Build details:
-Excel: 1.5.20250917.1215
-Server: Build 3419
-Client: 1.5.45917.1640
+Excel: 1.5.20251015.1250
+Server: Build 3447
+Client: 1.5.45945.1029
 
-VS Code extension for OpenDataDSL: 0.15.20
+VS Code extension for OpenDataDSL: 0.15.21
 ```
+
+This release will include a set of important **fixes** and **improvements**:
+
+* Performance
+  * Scale and overlay formula
+* Automation
+  * Automatic creation of series based in event updates
+  * Automation to email when data had been received
+  * Scheduled reports did not get triggered
+* User Interface
+  * Timeseries presentation in graph and table using pre-defined ranges like 1M
+  * Midnight timestamp for sub-daily timeseries
+
+
+## Sep-2025
+
 
 This release will include a set of important **fixes** and **enhancements**:
 
