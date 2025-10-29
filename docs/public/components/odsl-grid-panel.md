@@ -35,6 +35,9 @@ The optional group attribute will display the list of items from the defined gro
 ### multi
 If set, allows the user to select multiple items from the list, defaults to false.
 
+### manual
+If set, this grid panel will not read data from the service, but will expect the data to be manually set using the setData(data) method
+
 ## Methods
 ### getSelected()
 Returns the entire data for the selected rows in the select list as an array, e.g.
@@ -55,6 +58,9 @@ Returns the entire data for the selected rows in the select list as an array, e.
 
 ### refresh()
 Refreshes the data in the grid.
+
+### setData(data)
+Manually sets the data for this grid, the ```manual``` attribute must be set for this to work.
 
 ## Events
 ### change
