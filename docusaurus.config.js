@@ -39,7 +39,7 @@ module.exports = {
     },
     algolia: {
       apiKey: 'a8b0e275e6e4c02b53e5dffadd88e2c7',
-      indexName: 'dev_website',
+      indexName: 'opendatadsl_crawler_pages',
 
       // Optional: see doc section below
       contextualSearch: false,
