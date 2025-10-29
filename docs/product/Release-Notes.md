@@ -11,7 +11,7 @@ Release Notes
 ```js
 Build details:
 Excel: 1.5.20251015.1250
-Server: Build 3447
+Server: Build 3460
 Client: 1.5.45945.1029
 
 VS Code extension for OpenDataDSL: 0.15.21
@@ -28,6 +28,16 @@ This release will include a set of important **fixes** and **improvements**:
 * User Interface
   * Timeseries presentation in graph and table using pre-defined ranges like 1M
   * Midnight timestamp for sub-daily timeseries
+
+
+### Hotfixes
+* DS_LATENESS - delivery status when loader is complete
+* Unexpected tasks in process execution
+* Retry strategy in SmartLoaders file collection
+* SmartLoader - picking up discontinued dsid
+* Renaming dataset to be applied on deliveries
+* Add tryParse function for parsing dates 
+* Add option to pass report date when saving reports
 
 
 ## Sep-2025
