@@ -6,7 +6,7 @@ const darkTheme = themes.dracula;
 module.exports = {
   title: 'OpenDataDSL - Smart SAAS Data Management',
   tagline: 'A real-world solution for getting your DATA and PROCESSES in the CLOUD',
-  url: 'https://www.opendatadsl.com',
+  url: 'https://doc.opendatadsl.com',
   baseUrl: '/',
   onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
