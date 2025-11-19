@@ -6,16 +6,39 @@ sidebar_position: 10
 Release Notes
 =============
 
-## Latest release (Oct-2025)
+## Latest release (Nov-2025)
 
 ```js
 Build details:
 Excel: 1.5.20251015.1250
-Server: Build 3460
-Client: 1.5.45945.1029
+Server: Build 3481
+Client: 1.5.45980.1051
 
-VS Code extension for OpenDataDSL: 0.15.21
+VS Code extension for OpenDataDSL: 0.16.0
 ```
+
+The primary focus of this release is **Fixes and Improvements** to **Datasets**, **Monitoring**, **Loaders**.  
+
+In line with this, we concentrated on addressing items specifically related to this area, including:
+* Force choice of reason for Manual Loader run
+* Improve subscription logging in process execution logs
+* Enable/Disable option to Dataset Loader
+* Add support for completeness checks on Smart Loaders
+* Auto generated monitoring leads to Alerts
+* Smart Loader status
+* Schedule displayed in Monitoring Feed Tab for Smart Loaders
+* Mystery of vanishing Datasets due to incorrect counter
+* Handling discontinued DSIDs
+
+In addition, the release also incorporates **other enhancements and fixes**, such as:
+* Bulk delete improvements
+* Support for policies restricting installing and uninstalling extensions
+* Support  ‘half’ to write the expiry rule for half-yearly contracts
+* Geo Maps improvements
+
+
+
+## Oct-2025
 
 This release will include a set of important **fixes** and **improvements**:
 
