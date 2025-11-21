@@ -1,5 +1,11 @@
 
-## Latest release (Sep-2025)
+## Latest release (Oct-2025)
+This release mainly includes:
+* Addition of National Energy Dashboard Power Generation Forecast Solar Quarter Hourly,Wind Hourly and Windshore Quarter Hourly updates
+* Moving EEX Gas spot,futures and power futures to smart loaders
+* Addition of Energinet Denmark Power Day Ahead Quarter Hourly Prices and OTE Czech Power Day Ahead Quarter Hourly Prices 
+
+## Sep-2025
 This release mainly includes:
 * Replacing the previous EPEX Auction Day-Ahead Hourly Updates with Auction Day-Ahead 15Min Prices and Volumes
 * Addition of EPEX 60-Minute Index and Power Aggregated curves available in both 15-minute,30-minute and 60-minute intervals
@@ -19,7 +25,7 @@ This release mainly includes:
 * Addition of Terna Load,Generation,Transmission and Imbalance Price updates
 * The migration of EPEX Market Data from sFTP to Google Cloud Platform has been tested and deployed to production
 * Terna feeds moved to dataset monitoring
-* Investigation into the delivery dates shows the current day instead of the day-ahead in historical data of the EEX Gas Spot
+* Investigation into the delivery dates that show the current day instead of the day-ahead in historical data of the EEX Gas Spot
 
 ## June-2025
 This release mainly includes the addition of the following feeds and loading history:
