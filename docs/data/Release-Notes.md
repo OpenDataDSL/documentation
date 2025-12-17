@@ -1,5 +1,14 @@
+## Latest release (Dec-2025)
+This release mainly includes:
+* Addition of Arrow Energy Markets(AEM) M2M Forward Curves
+* Quote calendar extension for 2026
 
-## Latest release (Oct-2025)
+## Nov-2025
+This release mainly includes the addition of following data feeds:
+* ENTSOE Volumes and Prices of the Contracted Balancing Reserves 4-hourly Block for Reserve Type aFRR
+* Tennet Activated Balancing Energy 12 Seconds
+
+## Oct-2025
 This release mainly includes:
 * Addition of National Energy Dashboard Power Generation Forecast Solar Quarter Hourly,Wind Hourly and Windshore Quarter Hourly updates
 * Moving EEX Gas spot,futures and power futures to smart loaders
