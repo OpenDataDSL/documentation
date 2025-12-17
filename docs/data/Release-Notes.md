@@ -1,7 +1,8 @@
 ## Latest release (Dec-2025)
-This release mainly includes:
-* Addition of Arrow Energy Markets(AEM) M2M Forward Curves
-* Quote calendar extension for 2026
+This release mainly includes the addition of following data feeds:
+* Arrow Energy Markets(AEM) M2M Forward Curves
+* ICE Brent Crude Options
+* Quote calendar extension for the year 2026
 
 ## Nov-2025
 This release mainly includes the addition of following data feeds:
