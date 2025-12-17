@@ -1146,8 +1146,20 @@
         "start": "2025",
         "frequency": "DAILY",
         "link":"/docs/company/NED",
-        "tags": ["Commodity", "Power"," NEW"]
+        "tags": ["Commodity", "Power"]
+    },
+    {
+        "type": "FREE",
+        "provider": "Arrow Energy Markets(AEM)",
+        "providerType":"Broker",
+        "logo": "aem.jpg",
+        "dataset": "Crudes,Fuel Oil",
+        "text": "Arrow Energy Markets M2M Forward Curves",
+        "region": "Europe",
+        "start": "2025",
+        "frequency": "DAILY",
+        "link":"/docs/company/AEM",
+        "tags": ["Commodity", "Oil"," NEW"]
     }
-
 ]
 
