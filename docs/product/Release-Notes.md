@@ -6,16 +6,43 @@ sidebar_position: 10
 Release Notes
 =============
 
-## Latest release (Nov-2025)
-
+## Jan-2026
 ```js
 Build details:
 Excel: 1.5.20251015.1250
-Server: Build 3481
+Server: Build 3563
 Client: 1.5.45980.1051
 
-VS Code extension for OpenDataDSL: 0.16.0
+VS Code extension for OpenDataDSL: 0.16.2
 ```
+The primary focus of this release is **Fixes and Improvements** to **Datasets**, **Monitoring**, **Reports**.
+
+In line with this, the following items specifically related to this area got addressed, including:
+
+* Fix to Evaluate function - example found in the documentation
+* Support for partial loading in Smart Loaders
+* Resolution of a number format issue affecting values containing hexadecimal characters
+* Automation advice - Data Reconciliation (#ONDATE variable)
+* Enable JavaScript scripts to run within automations
+* Error while sending emails
+* Dataset monitoring – improvements to alerting support
+* Report versioning causes out of memory error
+* Quality Check Group - quality check and substituted curves
+* Emails with attached data appear encrypted (base64)
+* Error building report - JAVA related error
+
+## Dec-2025
+
+This hotfix release contains the following fixes:
+* Replacing report configuration
+* Automations - triggering a report from the result of another report
+* Crontab tasks did not fire as expected
+* Booleans in ODSL code getting name as value
+
+Additionally, a new feature - Fusion AI - is added to the portal.
+This feature will be constantly enriched over the next periods.
+
+## Nov-2025
 
 The primary focus of this release is **Fixes and Improvements** to **Datasets**, **Monitoring**, **Loaders**.  
 
