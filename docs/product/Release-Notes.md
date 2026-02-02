@@ -8,14 +8,10 @@ Release Notes
 
 ## Latest release (Jan-2026)
 
-> **Build details:**
-> 
-> **Server:** Build 3563
-> 
-> **Client:** 1.5.45980.1051
-> 
-> **Excel:** 1.5.20251015.1250
-> 
+> **Build details:**  
+> **Server:** Build 3563  
+> **Client:** 1.5.45980.1051  
+> **Excel:** 1.5.20251015.1250  
 > **Visual Studio Code extension for OpenDataDSL:** 0.16.2
 
 
