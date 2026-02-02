@@ -6,7 +6,7 @@ sidebar_position: 10
 Release Notes
 =============
 
-## Jan-2026
+## Latest release (Jan-2026)
 ```js
 Build details:
 Excel: 1.5.20251015.1250
