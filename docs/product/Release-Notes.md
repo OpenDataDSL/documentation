@@ -7,14 +7,18 @@ Release Notes
 =============
 
 ## Latest release (Jan-2026)
-```js
-Build details:
-Excel: 1.5.20251015.1250
-Server: Build 3563
-Client: 1.5.45980.1051
 
-VS Code extension for OpenDataDSL: 0.16.2
-```
+> **Build details:**
+> 
+> **Server:** Build 3563
+> 
+> **Client:** 1.5.45980.1051
+> 
+> **Excel:** 1.5.20251015.1250
+> 
+> **Visual Studio Code extension for OpenDataDSL:** 0.16.2
+
+
 The primary focus of this release is **Fixes and Improvements** to **Datasets**, **Monitoring**, **Reports**.
 
 In line with this, the following items specifically related to this area got addressed, including:
