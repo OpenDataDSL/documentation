@@ -31,6 +31,13 @@ In line with this, the following items specifically related to this area got add
 * Emails with attached data appear encrypted (base64)
 * Error building report - JAVA related error
 
+
+## Release History
+
+<details>
+<summary>2025</summary>
+
+
 ## Dec-2025
 
 This hotfix release contains the following fixes:
@@ -354,12 +361,10 @@ Additionally, the release also includes some general improvements and bugfixes n
 * Option to update DSID to existing events
 
 
-
-## Release History
+</details>
 
 <details>
 <summary>2024</summary>
-
 
 ## Dec-2024
 
