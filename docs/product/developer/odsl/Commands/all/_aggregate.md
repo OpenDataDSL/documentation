@@ -34,3 +34,6 @@ summary = aggregate ${exec}
     sort qty desc
 end
 ```
+
+#### More about aggregation
+* [More details about aggregation stages](/docs/odsl/stages)

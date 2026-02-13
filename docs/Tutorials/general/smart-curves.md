@@ -18,10 +18,6 @@ They rely on having a real Forward Curve as a BASE in order to both determine wh
 
 In this tutorial, we show how to use Smart Curves writing [ODSL code](/docs/odsl) and using the [REST API](/docs/api/rest/rest)
 
-:::info Check back later for updates
-Once Smart Curves are available in the [Web Portal](/docs/user/portal) and the [Excel Add-in](/docs/user/excel), we will update this tutorial.
-:::
-
 ## Creating Basic Smart Curves
 A Smart Curve can be created independently in ODSL code, but in order to save it to the database, you must add it to an [Object](/docs/odsl/variable/object).
 

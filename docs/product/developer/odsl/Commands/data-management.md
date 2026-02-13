@@ -14,20 +14,21 @@ import Update from './all/_update.md';
 
 These commands help you manage the resources in your data
 
-## delete
-<Delete />
-
 ## find
 <Find />
-
-## rename
-<Rename />
 
 ## save
 <Save />
 
+## update
+<Update />
+
+## rename
+<Rename />
+
 ## tag
 <Tag />
 
-## update
-<Update />
+## delete
+<Delete />
+

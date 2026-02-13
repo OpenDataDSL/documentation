@@ -47,5 +47,19 @@
         "name":"odsl.simple_portfolio",
         "description": "A simple portfolio extension",
         "link": "/docs/public/extensions/simple-portfolio"
+    },
+    {
+        "type": "Extensions",
+        "category": "AI Assistant",
+        "name":"odsl.assistant-rgo",
+        "description": "Renewable Generation Optimiser Assistant",
+        "link": "/docs/public/extensions/assistant-rgo"
+    },
+    {
+        "type": "Extensions",
+        "category": "AI Assistant",
+        "name":"odsl.assistant-remit",
+        "description": "REMIT Compliance Assistant",
+        "link": "/docs/public/extensions/assistant-remit"
     }
 ]
