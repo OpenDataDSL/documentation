@@ -5,18 +5,42 @@ sidebar_position: 10
 
 Release Notes
 =============
+## Latest release (Mar-2026)
 
-## Latest release (Jan-2026)
+This release introduces Fusion AI integration across the web portal, expands Excel Add-in capabilities, 
+and extends process execution to support generic command-line commands and non-ODSL scripts.
 
 > **Build details:**  
-> **Server:** Build 3563  
-> **Client:** 1.5.45980.1051  
-> **Excel:** 1.5.20251015.1250  
-> **Visual Studio Code extension for OpenDataDSL:** 0.16.2
+> **Server:** Build 3604 
+> **Client:** 1.6.46085.1008  
+> **Excel:** 1.6.20260304.1230  
+> **Visual Studio Code extension for OpenDataDSL:** 0.16.3
 
+### Bug Fixes
+- Fix for calendars not displaying all holidays
+- Quality Check Group: Stored information in the curve quality setup was not displayed correctly when editing
+- Smart Curve/Data configuration: 
+  - Fixed error where expression parameter could no longer be empty
+  - Fixed error when adding a time series as an expression parameter to a curve setup
+  - Changing the caching property no longer resets the selected smart curve script
+
+### Improvements
+- Remembering selected color scheme changes across sessions
+
+### New Features
+- Allow processes to execute generic command-line commands (e.g., Python scripts)
+- Support non-ODSL script processes - groundwork completed
+- Add build script version to curve properties for auditing purposes
+- Running different reports as an automation
+- Fusion AI integration across the web portal (e.g., Home, Datasets, Process Execution)
+- Excel Addin: 
+  - Allow updating object and data names without requiring a ref-ID
+  - Reverse your last action (CTRL+Z) on extracted data in an Excel sheet
+
+
+## Jan-2026
 
 The primary focus of this release is **Fixes and Improvements** to **Datasets**, **Monitoring**, **Reports**.
-
 In line with this, the following items specifically related to this area got addressed, including:
 
 * Fix to Evaluate function - example found in the documentation
