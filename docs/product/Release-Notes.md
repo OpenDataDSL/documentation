@@ -13,7 +13,7 @@ and extends process execution to support generic command-line commands and non-O
 > **Build details:**  
 > **Server:** Build 3604 
 > **Client:** 1.6.46085.1008  
-> **Excel:** 1.6.20260304.1230  
+> **Excel:** 1.6.20260304.1737  
 > **Visual Studio Code extension for OpenDataDSL:** 0.16.3
 
 ### Bug Fixes
