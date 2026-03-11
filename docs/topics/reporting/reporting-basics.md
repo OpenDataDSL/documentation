@@ -332,15 +332,6 @@ There are 2 ways to run a report:
 ### Dynamically running a report
 
 <Tabs groupId="tool">
-<TabItem value="portal" label="Web Portal" default>
-
-* Select **Reports**
-* Select Public for public reports or Private for your own reports.
-* Find the report you want to run by filtering or scrolling
-* Specify the date range you want to run the report for using the range selector
-* Click the **Run** button
-
-</TabItem>
 <TabItem value="odsl" label="OpenDataDSL">
 
 ```js
@@ -352,8 +343,9 @@ print rep
 <TabItem value="rest" label="REST API">
 
 ```js
-GET https://api.opendatadsl.com/api/report/v1/private/USER_METRICS
+GET https://api.opendatadsl.com/api/report/v1/private/USER_METRICS:2026-03-10
   ?_range=between(2023-01-01,2023-01-31)
+  &_run=true
 Authorization: Bearer {{token}}
 ```
 
@@ -363,15 +355,6 @@ Authorization: Bearer {{token}}
 ### Run and save a report
 
 <Tabs groupId="tool">
-<TabItem value="portal" label="Web Portal" default>
-
-* Select **Reports**
-* Select Public for public reports or Private for your own reports.
-* Find the report you want to run by filtering or scrolling
-* Specify the date range you want to run the report for using the range selector
-* Click the **Run** button
-
-</TabItem>
 <TabItem value="odsl" label="OpenDataDSL">
 
 ```js
@@ -382,10 +365,19 @@ save ${report:"USER_METRICS"}
 <TabItem value="rest" label="REST API">
 
 ```js
-POST https://api.opendatadsl.com/api/report/v1/private/USER_METRICS
+POST https://api.opendatadsl.com/api/report/v1/private/USER_METRICS:2026-03-10
   ?_range=between(2023-01-01,2023-01-31)
 Authorization: Bearer {{token}}
 ```
+
+</TabItem>
+<TabItem value="portal" label="Web Portal" default>
+
+* Select **Reports**
+* Select Public for public reports or Private for your own reports.
+* Find the report you want to run by filtering or scrolling
+* Specify the date range you want to run the report for using the range selector
+* Click the **Run** button
 
 </TabItem>
 </Tabs>
