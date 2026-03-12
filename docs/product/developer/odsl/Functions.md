@@ -1,9 +1,8 @@
 ---
 slug: /odsl/function/functions
-title: ODSL Functions
+title: All Functions
+sidebar_position: 7
 ---
-
-## ODSL Built-in Functions Reference
 
 This document provides a comprehensive reference for all built-in functions available in OpenDataDSL.
 
@@ -18,7 +17,7 @@ This document provides a comprehensive reference for all built-in functions avai
 
 **Returns:** Number
 
-**Works with:** `curve` `timeseries` `scalar` `list`
+**Works with:** `curve` `timeseries` `scalar` `list` 
 
 ---
 
@@ -33,7 +32,49 @@ This document provides a comprehensive reference for all built-in functions avai
 
 **Returns:** Number
 
-**Works with:** `curve` `timeseries` `scalar` `list`
+**Works with:** `curve` `timeseries` `scalar` `list` 
+
+---
+
+### AIAgent()
+
+**Category:** Construction
+
+**Description:** Creates a new AI Agent
+
+**Parameters:**
+
+**Returns:** AIAgent
+
+
+
+---
+
+### AIAssistant()
+
+**Category:** Construction
+
+**Description:** Creates a new AI Assistant
+
+**Parameters:**
+
+**Returns:** AIAssistant
+
+
+
+---
+
+### AITool()
+
+**Category:** Construction
+
+**Description:** Creates a new AI Tool
+
+**Parameters:**
+
+**Returns:** AITool
+
+
 
 ---
 
@@ -111,6 +152,21 @@ This document provides a comprehensive reference for all built-in functions avai
 
 ---
 
+### asHours(contract)
+
+**Category:** Curve
+
+**Description:** Splits a Contract into hourly contracts
+
+**Parameters:**
+* `contract` (Contract) - The input contract to split into hours
+
+**Returns:** Contracts
+
+
+
+---
+
 ### asHours(contract, timezone)
 
 **Category:** Curve
@@ -120,21 +176,6 @@ This document provides a comprehensive reference for all built-in functions avai
 **Parameters:**
 * `contract` (Contract) - The input contract to split into hours
 * `timezone` (Contract) - The timezone to use
-
-**Returns:** Contracts
-
-
-
----
-
-### asHours(contract)
-
-**Category:** Curve
-
-**Description:** Splits a Contract into hourly contracts
-
-**Parameters:**
-* `contract` (Contract) - The input contract to split into hours
 
 **Returns:** Contracts
 
@@ -153,7 +194,7 @@ This document provides a comprehensive reference for all built-in functions avai
 
 **Returns:** Number
 
-**Works with:** `curve` `timeseries` `scalar` `list`
+**Works with:** `curve` `timeseries` `scalar` `list` 
 
 ---
 
@@ -167,22 +208,6 @@ This document provides a comprehensive reference for all built-in functions avai
 * `contract` (Contract) - The input contract to split into months
 
 **Returns:** Contracts
-
-
-
----
-
-### assertEquals(expected, value)
-
-**Category:** Testing
-
-**Description:** A test to check if 2 variables or values are equal
-
-**Parameters:**
-* `expected` (Any) - The value you want to test against
-* `value` (Any) - The value to test
-
-**Returns:** Void
 
 
 
@@ -205,14 +230,15 @@ This document provides a comprehensive reference for all built-in functions avai
 
 ---
 
-### assertFalse(value)
+### assertEquals(expected, value)
 
 **Category:** Testing
 
-**Description:** A test to check if an expression is false
+**Description:** A test to check if 2 variables or values are equal
 
 **Parameters:**
-* `value` (Boolean) - The value to test
+* `expected` (Any) - The value you want to test against
+* `value` (Any) - The value to test
 
 **Returns:** Void
 
@@ -229,6 +255,21 @@ This document provides a comprehensive reference for all built-in functions avai
 **Parameters:**
 * `value` (Boolean) - The value to test
 * `message` (String) - The message to display if this test fails
+
+**Returns:** Void
+
+
+
+---
+
+### assertFalse(value)
+
+**Category:** Testing
+
+**Description:** A test to check if an expression is false
+
+**Parameters:**
+* `value` (Boolean) - The value to test
 
 **Returns:** Void
 
@@ -341,7 +382,7 @@ This document provides a comprehensive reference for all built-in functions avai
 
 **Returns:** Curve
 
-**Works with:** `curve`
+**Works with:** `curve` 
 
 ---
 
@@ -356,7 +397,7 @@ This document provides a comprehensive reference for all built-in functions avai
 
 **Returns:** Number
 
-**Works with:** `curve` `timeseries` `scalar` `list`
+**Works with:** `curve` `timeseries` `scalar` `list` 
 
 ---
 
@@ -372,7 +413,7 @@ This document provides a comprehensive reference for all built-in functions avai
 
 **Returns:** Number
 
-**Works with:** `curve` `timeseries` `scalar` `list`
+**Works with:** `curve` `timeseries` `scalar` `list` 
 
 ---
 
@@ -521,7 +562,7 @@ This document provides a comprehensive reference for all built-in functions avai
 
 **Returns:** Curve
 
-**Works with:** `curve`
+**Works with:** `curve` 
 
 ---
 
@@ -640,7 +681,7 @@ This document provides a comprehensive reference for all built-in functions avai
 
 **Returns:** Number
 
-**Works with:** `curve` `timeseries` `scalar` `list`
+**Works with:** `curve` `timeseries` `scalar` `list` 
 
 ---
 
@@ -674,22 +715,6 @@ This document provides a comprehensive reference for all built-in functions avai
 
 ---
 
-### cmax(data, calendar)
-
-**Category:** TimeSeries
-
-**Description:** The cumulative maximum of all the values in the input Timeseries
-
-**Parameters:**
-* `data` (TimeSeries) - The input data to perform the calculation on
-* `calendar` (Calendar) - The output calendar to return the results in
-
-**Returns:** Number
-
-
-
----
-
 ### cmax(data)
 
 **Category:** TimeSeries
@@ -705,14 +730,15 @@ This document provides a comprehensive reference for all built-in functions avai
 
 ---
 
-### cmin(data)
+### cmax(data, calendar)
 
 **Category:** TimeSeries
 
-**Description:** The cumulative minimum of all the values in the input Timeseries or List
+**Description:** The cumulative maximum of all the values in the input Timeseries
 
 **Parameters:**
-* `data` (TimeSeries or List) - The input data to perform the calculation on
+* `data` (TimeSeries) - The input data to perform the calculation on
+* `calendar` (Calendar) - The output calendar to return the results in
 
 **Returns:** Number
 
@@ -736,6 +762,21 @@ This document provides a comprehensive reference for all built-in functions avai
 
 ---
 
+### cmin(data)
+
+**Category:** TimeSeries
+
+**Description:** The cumulative minimum of all the values in the input Timeseries or List
+
+**Parameters:**
+* `data` (TimeSeries or List) - The input data to perform the calculation on
+
+**Returns:** Number
+
+
+
+---
+
 ### combine(base, other, replace)
 
 **Category:** Curve
@@ -749,7 +790,21 @@ This document provides a comprehensive reference for all built-in functions avai
 
 **Returns:** Curve
 
-**Works with:** `curve`
+**Works with:** `curve` 
+
+---
+
+### CombinedHolidayCalendar()
+
+**Category:** Construction
+
+**Description:** Creates a new Combined Holiday Calendar
+
+**Parameters:**
+
+**Returns:** Calendar
+
+
 
 ---
 
@@ -762,20 +817,6 @@ This document provides a comprehensive reference for all built-in functions avai
 **Parameters:**
 * `cal1` (Calendar or calendar code) - The first holiday calendar to use
 * `cal2` (Calendar or calendar code) - The second holiday calendar to use
-
-**Returns:** Calendar
-
-
-
----
-
-### CombinedHolidayCalendar()
-
-**Category:** Construction
-
-**Description:** Creates a new Combined Holiday Calendar
-
-**Parameters:**
 
 **Returns:** Calendar
 
@@ -835,32 +876,11 @@ This document provides a comprehensive reference for all built-in functions avai
 
 **Category:** General
 
-**Description:**
+**Description:** 
 
 **Parameters:**
 
-**Returns:**
-
-
-
----
-
-### Contract(ondate, tenor, value, absolute, start, end, expiry)
-
-**Category:** Construction
-
-**Description:** Creates a new *Custom* Forward Contract
-
-**Parameters:**
-* `ondate` (CurveDate) - The curve ondate for this contract
-* `tenor` (String) - The absolute or relative tenor for this contract
-* `value` (Number) - The value for this contract
-* `absolute` (String) - The absolute tenor for this contract - uses tenor if null
-* `start` (Date) - The start of delivery date for this contract
-* `end` (Date) - The end of delivery date for this contract
-* `expiry` (Date) - The last trading date for this contract
-
-**Returns:** Contract
+**Returns:** 
 
 
 
@@ -895,6 +915,27 @@ This document provides a comprehensive reference for all built-in functions avai
 * `value` (Number) - The value for this contract
 * `start` (Date) - The start of delivery date for this contract
 * `end` (Date) - The end of delivery date for this contract
+
+**Returns:** Contract
+
+
+
+---
+
+### Contract(ondate, tenor, value, absolute, start, end, expiry)
+
+**Category:** Construction
+
+**Description:** Creates a new *Custom* Forward Contract
+
+**Parameters:**
+* `ondate` (CurveDate) - The curve ondate for this contract
+* `tenor` (String) - The absolute or relative tenor for this contract
+* `value` (Number) - The value for this contract
+* `absolute` (String) - The absolute tenor for this contract - uses tenor if null
+* `start` (Date) - The start of delivery date for this contract
+* `end` (Date) - The end of delivery date for this contract
+* `expiry` (Date) - The last trading date for this contract
 
 **Returns:** Contract
 
@@ -999,7 +1040,7 @@ where ```E(X)``` and ```E(Y)``` are means of ```X``` and ```Y``` and ```s(X)```,
 
 **Returns:** Number
 
-**Works with:** `curve` `timeseries` `scalar` `list`
+**Works with:** `curve` `timeseries` `scalar` `list` 
 
 ---
 
@@ -1014,7 +1055,7 @@ where ```E(X)``` and ```E(Y)``` are means of ```X``` and ```Y``` and ```s(X)```,
 
 **Returns:** Number
 
-**Works with:** `curve` `timeseries` `scalar` `list`
+**Works with:** `curve` `timeseries` `scalar` `list` 
 
 ---
 
@@ -1042,8 +1083,8 @@ where ```E(X)``` and ```E(Y)``` are means of ```X``` and ```Y``` and ```s(X)```,
 Unbiased covariances are given by the formula
 
 ```cov(X, Y) = sum [(xi - E(X))(yi - E(Y))] / (n - 1)``` where ```E(X)``` is the mean of ```X``` and ```E(Y)``` is the mean of the ```Y``` values.
-Non-bias-corrected estimates use ```n``` in place of ```n - 1```.
-Whether or not covariances are bias-corrected is determined by the optional parameter, **biasCorrected**, which defaults to true.
+ Non-bias-corrected estimates use ```n``` in place of ```n - 1```.
+ Whether or not covariances are bias-corrected is determined by the optional parameter, **biasCorrected**, which defaults to true.
 
 **Parameters:**
 * `data` (A List of timeseries) - The input data to transform
@@ -1109,11 +1150,11 @@ Unbiased covariances are given by the formula
 
 **Category:** Loader
 
-**Description:**
+**Description:** 
 
 **Parameters:**
 
-**Returns:**
+**Returns:** 
 
 
 
@@ -1167,7 +1208,7 @@ Unbiased covariances are given by the formula
 
 ---
 
-### CurveSeries(calendar, ondate)
+### CurveSeries(calendar, ondate, start, data)
 
 **Category:** Construction
 
@@ -1176,6 +1217,8 @@ Unbiased covariances are given by the formula
 **Parameters:**
 * `calendar` (Calendar) - The calendar for the timeseries of this curve timeseries
 * `ondate` (CurveDate) - The date index for this curve timeseries
+* `start` (VarDate) - Start index for curve timeseries
+* `data` (List) - All the values of this TimeSeries
 
 **Returns:** CurveSeries
 
@@ -1200,7 +1243,7 @@ Unbiased covariances are given by the formula
 
 ---
 
-### CurveSeries(calendar, ondate, start, data)
+### CurveSeries(calendar, ondate)
 
 **Category:** Construction
 
@@ -1209,8 +1252,6 @@ Unbiased covariances are given by the formula
 **Parameters:**
 * `calendar` (Calendar) - The calendar for the timeseries of this curve timeseries
 * `ondate` (CurveDate) - The date index for this curve timeseries
-* `start` (VarDate) - Start index for curve timeseries
-* `data` (List) - All the values of this TimeSeries
 
 **Returns:** CurveSeries
 
@@ -1232,6 +1273,21 @@ Unbiased covariances are given by the formula
 
 ---
 
+### Date(date)
+
+**Category:** Construction
+
+**Description:** Creates a new Date variable
+
+**Parameters:**
+* `date` (Scalar) - The date as a string in ISO Date Time, ISO Date format or ODSL Period Code format
+
+**Returns:** Date
+
+
+
+---
+
 ### Date(date, format)
 
 **Category:** Construction
@@ -1241,21 +1297,6 @@ Unbiased covariances are given by the formula
 **Parameters:**
 * `date` (Scalar) - The date as a string
 * `format` (Scalar) - The format of the date, e.g. 'dd-MM-yyyy'
-
-**Returns:** Date
-
-
-
----
-
-### Date(date)
-
-**Category:** Construction
-
-**Description:** Creates a new Date variable
-
-**Parameters:**
-* `date` (Scalar) - The date as a string in ISO Date Time, ISO Date format or ODSL Period Code format
 
 **Returns:** Date
 
@@ -1322,6 +1363,21 @@ Unbiased covariances are given by the formula
 
 ---
 
+### DocumentationLink(url)
+
+**Category:** Construction
+
+**Description:** Creates a new documentation URL Link configuration
+
+**Parameters:**
+* `url` (String) - The HTML URL of the documentation
+
+**Returns:** Documentation
+
+
+
+---
+
 ### DocumentationLink(url, selector)
 
 **Category:** Construction
@@ -1331,21 +1387,6 @@ Unbiased covariances are given by the formula
 **Parameters:**
 * `url` (String) - The HTML URL of the documentation
 * `selector` (String) - The html selector to be used to select part of the HTML page
-
-**Returns:** Documentation
-
-
-
----
-
-### DocumentationLink(url)
-
-**Category:** Construction
-
-**Description:** Creates a new documentation URL Link configuration
-
-**Parameters:**
-* `url` (String) - The HTML URL of the documentation
 
 **Returns:** Documentation
 
@@ -1402,11 +1443,11 @@ Unbiased covariances are given by the formula
 
 **Category:** General
 
-**Description:**
+**Description:** 
 
 **Parameters:**
 
-**Returns:**
+**Returns:** 
 
 
 
@@ -1416,11 +1457,11 @@ Unbiased covariances are given by the formula
 
 **Category:** General
 
-**Description:**
+**Description:** 
 
 **Parameters:**
 
-**Returns:**
+**Returns:** 
 
 
 
@@ -1430,11 +1471,11 @@ Unbiased covariances are given by the formula
 
 **Category:** General
 
-**Description:**
+**Description:** 
 
 **Parameters:**
 
-**Returns:**
+**Returns:** 
 
 
 
@@ -1506,11 +1547,11 @@ Unbiased covariances are given by the formula
 
 **Category:** Strings
 
-**Description:**
+**Description:** 
 
 **Parameters:**
 
-**Returns:**
+**Returns:** 
 
 
 
@@ -1547,21 +1588,6 @@ Unbiased covariances are given by the formula
 
 ---
 
-### Event(time)
-
-**Category:** Construction
-
-**Description:** Creates an event that can be added to an object
-
-**Parameters:**
-* `time` (Date) - The observed time of this event
-
-**Returns:** Event
-
-
-
----
-
 ### Event(ondate, tenor)
 
 **Category:** Construction
@@ -1571,6 +1597,21 @@ Unbiased covariances are given by the formula
 **Parameters:**
 * `ondate` (CurveDate) - The ondate for this event
 * `tenor` (String) - The tenor for this event
+
+**Returns:** Event
+
+
+
+---
+
+### Event(time)
+
+**Category:** Construction
+
+**Description:** Creates an event that can be added to an object
+
+**Parameters:**
+* `time` (Date) - The observed time of this event
 
 **Returns:** Event
 
@@ -1623,7 +1664,22 @@ Unbiased covariances are given by the formula
 
 **Returns:** Number
 
-**Works with:** `curve` `timeseries` `scalar` `list`
+**Works with:** `curve` `timeseries` `scalar` `list` 
+
+---
+
+### ExpiryCalendar(holiday)
+
+**Category:** Construction
+
+**Description:** Creates a new expiry Calendar
+
+**Parameters:**
+* `holiday` (Calendar or String) - The holiday or trading calendar to use with this expiry calendar. Can either be the name or a calendar or an actual calendar.
+
+**Returns:** ExpiryCalendar
+
+
 
 ---
 
@@ -1651,21 +1707,6 @@ Unbiased covariances are given by the formula
 **Parameters:**
 * `holiday` (Calendar or String) - The holiday or trading calendar to use with this expiry calendar. Can either be the name or a calendar or an actual calendar.
 * `delivery` (Calendar or String) - The delivery calendar to use with this expiry calendar. Can either be the name or a calendar or an actual calendar.
-
-**Returns:** ExpiryCalendar
-
-
-
----
-
-### ExpiryCalendar(holiday)
-
-**Category:** Construction
-
-**Description:** Creates a new expiry Calendar
-
-**Parameters:**
-* `holiday` (Calendar or String) - The holiday or trading calendar to use with this expiry calendar. Can either be the name or a calendar or an actual calendar.
 
 **Returns:** ExpiryCalendar
 
@@ -1770,11 +1811,11 @@ Unbiased covariances are given by the formula
 
 **Category:** General
 
-**Description:**
+**Description:** 
 
 **Parameters:**
 
-**Returns:**
+**Returns:** 
 
 
 
@@ -1784,11 +1825,11 @@ Unbiased covariances are given by the formula
 
 **Category:** Loader
 
-**Description:**
+**Description:** 
 
 **Parameters:**
 
-**Returns:**
+**Returns:** 
 
 
 
@@ -1828,11 +1869,11 @@ Unbiased covariances are given by the formula
 
 **Category:** Loader
 
-**Description:**
+**Description:** 
 
 **Parameters:**
 
-**Returns:**
+**Returns:** 
 
 
 
@@ -1842,11 +1883,11 @@ Unbiased covariances are given by the formula
 
 **Category:** Loader
 
-**Description:**
+**Description:** 
 
 **Parameters:**
 
-**Returns:**
+**Returns:** 
 
 
 
@@ -1856,11 +1897,11 @@ Unbiased covariances are given by the formula
 
 **Category:** Loader
 
-**Description:**
+**Description:** 
 
 **Parameters:**
 
-**Returns:**
+**Returns:** 
 
 
 
@@ -1870,11 +1911,11 @@ Unbiased covariances are given by the formula
 
 **Category:** Loader
 
-**Description:**
+**Description:** 
 
 **Parameters:**
 
-**Returns:**
+**Returns:** 
 
 
 
@@ -1884,11 +1925,11 @@ Unbiased covariances are given by the formula
 
 **Category:** Loader
 
-**Description:**
+**Description:** 
 
 **Parameters:**
 
-**Returns:**
+**Returns:** 
 
 
 
@@ -1898,11 +1939,11 @@ Unbiased covariances are given by the formula
 
 **Category:** Loader
 
-**Description:**
+**Description:** 
 
 **Parameters:**
 
-**Returns:**
+**Returns:** 
 
 
 
@@ -1912,11 +1953,11 @@ Unbiased covariances are given by the formula
 
 **Category:** Loader
 
-**Description:**
+**Description:** 
 
 **Parameters:**
 
-**Returns:**
+**Returns:** 
 
 
 
@@ -1942,11 +1983,11 @@ Unbiased covariances are given by the formula
 
 **Category:** Loader
 
-**Description:**
+**Description:** 
 
 **Parameters:**
 
-**Returns:**
+**Returns:** 
 
 
 
@@ -1956,11 +1997,11 @@ Unbiased covariances are given by the formula
 
 **Category:** Loader
 
-**Description:**
+**Description:** 
 
 **Parameters:**
 
-**Returns:**
+**Returns:** 
 
 
 
@@ -2184,11 +2225,11 @@ Unbiased covariances are given by the formula
 
 **Category:** Loader
 
-**Description:**
+**Description:** 
 
 **Parameters:**
 
-**Returns:**
+**Returns:** 
 
 
 
@@ -2203,6 +2244,43 @@ Unbiased covariances are given by the formula
 **Parameters:**
 
 **Returns:** Report
+
+
+
+---
+
+### IntradayCalendar(period, holiday, withoutHours, timezone)
+
+**Category:** Construction
+
+**Description:** Creates a new Intraday Calendar
+
+**Parameters:**
+* `period` (Duration) - The periodicity of this calendar, e.g. 1h for hourly
+* `holiday` (Calendar) - The holiday calendar which determines the days that observations are recorded
+* `withoutHours` (List) - A list of integers representing hours of the day to exclude from this calendar
+* `timezone` (String) - The timezone for this intraday calendar
+
+**Returns:** Calendar
+
+
+
+---
+
+### IntradayCalendar(period, holiday, withoutHours, timezone, useHolidays)
+
+**Category:** Construction
+
+**Description:** Creates a new Intraday Calendar
+
+**Parameters:**
+* `period` (Duration) - The periodicity of this calendar, e.g. 1h for hourly
+* `holiday` (Calendar) - The holiday calendar which determines the days that observations are recorded
+* `withoutHours` (List) - A list of integers representing hours of the day to exclude from this calendar
+* `timezone` (String) - The timezone for this intraday calendar
+* `useHolidays` (Boolean) - True to include holiday days in the block, i.e. for off-peak calendars
+
+**Returns:** Calendar
 
 
 
@@ -2249,43 +2327,6 @@ Unbiased covariances are given by the formula
 **Parameters:**
 * `period` (Duration) - The periodicity of this calendar, e.g. 1h for hourly
 * `holiday` (Calendar) - The holiday calendar which determines the days that observations are recorded
-
-**Returns:** Calendar
-
-
-
----
-
-### IntradayCalendar(period, holiday, withoutHours, timezone)
-
-**Category:** Construction
-
-**Description:** Creates a new Intraday Calendar
-
-**Parameters:**
-* `period` (Duration) - The periodicity of this calendar, e.g. 1h for hourly
-* `holiday` (Calendar) - The holiday calendar which determines the days that observations are recorded
-* `withoutHours` (List) - A list of integers representing hours of the day to exclude from this calendar
-* `timezone` (String) - The timezone for this intraday calendar
-
-**Returns:** Calendar
-
-
-
----
-
-### IntradayCalendar(period, holiday, withoutHours, timezone, useHolidays)
-
-**Category:** Construction
-
-**Description:** Creates a new Intraday Calendar
-
-**Parameters:**
-* `period` (Duration) - The periodicity of this calendar, e.g. 1h for hourly
-* `holiday` (Calendar) - The holiday calendar which determines the days that observations are recorded
-* `withoutHours` (List) - A list of integers representing hours of the day to exclude from this calendar
-* `timezone` (String) - The timezone for this intraday calendar
-* `useHolidays` (Boolean) - True to include holiday days in the block, i.e. for off-peak calendars
 
 **Returns:** Calendar
 
@@ -2388,11 +2429,11 @@ Unbiased covariances are given by the formula
 
 **Category:** General
 
-**Description:**
+**Description:** 
 
 **Parameters:**
 
-**Returns:**
+**Returns:** 
 
 
 
@@ -2402,11 +2443,11 @@ Unbiased covariances are given by the formula
 
 **Category:** Loader
 
-**Description:**
+**Description:** 
 
 **Parameters:**
 
-**Returns:**
+**Returns:** 
 
 
 
@@ -2554,7 +2595,7 @@ Unbiased covariances are given by the formula
 
 **Returns:** Number
 
-**Works with:** `curve` `timeseries` `scalar` `list`
+**Works with:** `curve` `timeseries` `scalar` `list` 
 
 ---
 
@@ -2569,7 +2610,7 @@ Unbiased covariances are given by the formula
 
 **Returns:** Number
 
-**Works with:** `curve` `timeseries` `scalar` `list`
+**Works with:** `curve` `timeseries` `scalar` `list` 
 
 ---
 
@@ -2584,7 +2625,7 @@ Unbiased covariances are given by the formula
 
 **Returns:** Number
 
-**Works with:** `curve` `timeseries` `scalar` `list`
+**Works with:** `curve` `timeseries` `scalar` `list` 
 
 ---
 
@@ -2607,11 +2648,11 @@ Unbiased covariances are given by the formula
 
 **Category:** Loader
 
-**Description:**
+**Description:** 
 
 **Parameters:**
 
-**Returns:**
+**Returns:** 
 
 
 
@@ -2625,22 +2666,6 @@ Unbiased covariances are given by the formula
 
 **Parameters:**
 * `labels` (List) - The labels to use
-
-**Returns:** Matrix
-
-
-
----
-
-### Matrix(labels, v)
-
-**Category:** Construction
-
-**Description:** Creates a new matrix from a list of labels
-
-**Parameters:**
-* `labels` (List) - The labels to use
-* `v` (Number) - The value to initialise the matrix with
 
 **Returns:** Matrix
 
@@ -2664,23 +2689,6 @@ Unbiased covariances are given by the formula
 
 ---
 
-### Matrix(y, x, v)
-
-**Category:** Construction
-
-**Description:** Creates a new matrix, initialising all values to the provided value
-
-**Parameters:**
-* `y` (Number) - The number of rows
-* `x` (Number) - The number of columns
-* `v` (Number) - The value to initialise the matrix with
-
-**Returns:** Matrix
-
-
-
----
-
 ### Matrix(labels)
 
 **Category:** Construction
@@ -2704,6 +2712,39 @@ Unbiased covariances are given by the formula
 
 **Parameters:**
 * `labels` (List) - The labels to use
+* `v` (Number) - The value to initialise the matrix with
+
+**Returns:** Matrix
+
+
+
+---
+
+### Matrix(labels, v)
+
+**Category:** Construction
+
+**Description:** Creates a new matrix from a list of labels
+
+**Parameters:**
+* `labels` (List) - The labels to use
+* `v` (Number) - The value to initialise the matrix with
+
+**Returns:** Matrix
+
+
+
+---
+
+### Matrix(y, x, v)
+
+**Category:** Construction
+
+**Description:** Creates a new matrix, initialising all values to the provided value
+
+**Parameters:**
+* `y` (Number) - The number of rows
+* `x` (Number) - The number of columns
 * `v` (Number) - The value to initialise the matrix with
 
 **Returns:** Matrix
@@ -2889,6 +2930,21 @@ Unbiased covariances are given by the formula
 
 ---
 
+### mod(data)
+
+**Category:** Numeric
+
+**Description:** Returns the floor modulus for the given x, y numbers
+
+**Parameters:**
+* `data` (Number, List, TimeSeries or Curve) - The input data to transform
+
+**Returns:** Number
+
+**Works with:** `curve` `timeseries` `scalar` `list` 
+
+---
+
 ### MonthlyCalendar()
 
 **Category:** Construction
@@ -2952,7 +3008,7 @@ Unbiased covariances are given by the formula
 
 **Category:** Geometry construction
 
-**Description:** Creates a MultiPoint geometry object with the supplied list of coordinates
+**Description:** Creates a MultiPoint geometry object
 
 **Parameters:**
 
@@ -2966,21 +3022,7 @@ Unbiased covariances are given by the formula
 
 **Category:** Geometry construction
 
-**Description:** Creates a MultiPoint geometry object
-
-**Parameters:**
-
-**Returns:** GeoSpatial
-
-
-
----
-
-### MultiPolygon()
-
-**Category:** Geometry construction
-
-**Description:** Creates an empty MultiPolygon geometry object
+**Description:** Creates a MultiPoint geometry object with the supplied list of coordinates
 
 **Parameters:**
 
@@ -2995,6 +3037,20 @@ Unbiased covariances are given by the formula
 **Category:** Geometry construction
 
 **Description:** Creates a MultiPolygon geometry object with the supplied polygons
+
+**Parameters:**
+
+**Returns:** GeoSpatial
+
+
+
+---
+
+### MultiPolygon()
+
+**Category:** Geometry construction
+
+**Description:** Creates an empty MultiPolygon geometry object
 
 **Parameters:**
 
@@ -3030,7 +3086,7 @@ Unbiased covariances are given by the formula
 
 **Returns:** Curve
 
-**Works with:** `curve`
+**Works with:** `curve` 
 
 ---
 
@@ -3048,6 +3104,20 @@ Unbiased covariances are given by the formula
 
 ---
 
+### Object()
+
+**Category:** Construction
+
+**Description:** Creates a new Object of type #Object
+
+**Parameters:**
+
+**Returns:** Object
+
+
+
+---
+
 ### Object(type)
 
 **Category:** Construction
@@ -3056,20 +3126,6 @@ Unbiased covariances are given by the formula
 
 **Parameters:**
 * `type` (String) - The name of the type to use for this Object
-
-**Returns:** Object
-
-
-
----
-
-### Object()
-
-**Category:** Construction
-
-**Description:** Creates a new Object of type #Object
-
-**Parameters:**
 
 **Returns:** Object
 
@@ -3191,7 +3247,7 @@ Unbiased covariances are given by the formula
 
 **Category:** Dates
 
-**Description:** Converts a ISO Date format string into a date
+**Description:** Converts a ISO Date format string into a date 
 
 **Parameters:**
 * `date` (String) - The stringified date to convert to a Date
@@ -3267,20 +3323,6 @@ Unbiased covariances are given by the formula
 
 **Category:** Geometry construction
 
-**Description:** Creates a Polygon geometry object with a multiple rings containing the supplied geometries
-
-**Parameters:**
-
-**Returns:** GeoSpatial
-
-
-
----
-
-### Polygon()
-
-**Category:** Geometry construction
-
 **Description:** Creates a Polygon geometry object with a single ring containing the supplied coordinates
 
 **Parameters:**
@@ -3296,6 +3338,20 @@ Unbiased covariances are given by the formula
 **Category:** Geometry construction
 
 **Description:** Creates a empty Polygon geometry object
+
+**Parameters:**
+
+**Returns:** GeoSpatial
+
+
+
+---
+
+### Polygon()
+
+**Category:** Geometry construction
+
+**Description:** Creates a Polygon geometry object with a multiple rings containing the supplied geometries
 
 **Parameters:**
 
@@ -3332,7 +3388,7 @@ Unbiased covariances are given by the formula
 
 **Returns:** Number
 
-**Works with:** `curve` `timeseries` `scalar` `list`
+**Works with:** `curve` `timeseries` `scalar` `list` 
 
 ---
 
@@ -3347,7 +3403,7 @@ Unbiased covariances are given by the formula
 
 **Returns:** Curve
 
-**Works with:** `curve`
+**Works with:** `curve` 
 
 ---
 
@@ -3467,21 +3523,6 @@ Unbiased covariances are given by the formula
 
 ---
 
-### ref(var)
-
-**Category:** General
-
-**Description:** Creates a reference to a variable
-
-**Parameters:**
-* `var` (Any Var) - The value to create a reference to
-
-**Returns:** Reference
-
-
-
----
-
 ### ref(Service, Id)
 
 **Category:** General
@@ -3491,6 +3532,21 @@ Unbiased covariances are given by the formula
 **Parameters:**
 * `Service` (String) - The name of the service where the variable exists
 * `Id` (String) - The id of the variable to create a reference to
+
+**Returns:** Reference
+
+
+
+---
+
+### ref(var)
+
+**Category:** General
+
+**Description:** Creates a reference to a variable
+
+**Parameters:**
+* `var` (Any Var) - The value to create a reference to
 
 **Returns:** Reference
 
@@ -3518,11 +3574,11 @@ Unbiased covariances are given by the formula
 
 **Category:** Loader
 
-**Description:**
+**Description:** 
 
 **Parameters:**
 
-**Returns:**
+**Returns:** 
 
 
 
@@ -3532,11 +3588,11 @@ Unbiased covariances are given by the formula
 
 **Category:** Loader
 
-**Description:**
+**Description:** 
 
 **Parameters:**
 
-**Returns:**
+**Returns:** 
 
 
 
@@ -3580,11 +3636,11 @@ Unbiased covariances are given by the formula
 
 **Category:** General
 
-**Description:**
+**Description:** 
 
 **Parameters:**
 
-**Returns:**
+**Returns:** 
 
 
 
@@ -3594,11 +3650,11 @@ Unbiased covariances are given by the formula
 
 **Category:** Loader
 
-**Description:**
+**Description:** 
 
 **Parameters:**
 
-**Returns:**
+**Returns:** 
 
 
 
@@ -3608,11 +3664,11 @@ Unbiased covariances are given by the formula
 
 **Category:** Loader
 
-**Description:**
+**Description:** 
 
 **Parameters:**
 
-**Returns:**
+**Returns:** 
 
 
 
@@ -3650,11 +3706,11 @@ Unbiased covariances are given by the formula
 
 **Category:** Loader
 
-**Description:**
+**Description:** 
 
 **Parameters:**
 
-**Returns:**
+**Returns:** 
 
 
 
@@ -3781,7 +3837,7 @@ Unbiased covariances are given by the formula
 
 **Returns:** Curve
 
-**Works with:** `curve`
+**Works with:** `curve` 
 
 ---
 
@@ -3856,7 +3912,7 @@ Unbiased covariances are given by the formula
 
 **Returns:** Number
 
-**Works with:** `curve` `timeseries` `scalar` `list`
+**Works with:** `curve` `timeseries` `scalar` `list` 
 
 ---
 
@@ -3871,7 +3927,7 @@ Unbiased covariances are given by the formula
 
 **Returns:** Number
 
-**Works with:** `curve` `timeseries` `scalar` `list`
+**Works with:** `curve` `timeseries` `scalar` `list` 
 
 ---
 
@@ -4039,7 +4095,7 @@ Unbiased covariances are given by the formula
 
 **Returns:** Number
 
-**Works with:** `curve` `timeseries` `scalar` `list`
+**Works with:** `curve` `timeseries` `scalar` `list` 
 
 ---
 
@@ -4220,7 +4276,7 @@ Unbiased covariances are given by the formula
 
 **Returns:** Number
 
-**Works with:** `curve` `timeseries` `scalar` `list`
+**Works with:** `curve` `timeseries` `scalar` `list` 
 
 ---
 
@@ -4235,7 +4291,7 @@ Unbiased covariances are given by the formula
 
 **Returns:** Number
 
-**Works with:** `curve` `timeseries` `scalar` `list`
+**Works with:** `curve` `timeseries` `scalar` `list` 
 
 ---
 
@@ -4282,6 +4338,26 @@ Unbiased covariances are given by the formula
 
 ---
 
+### TimeSeries(start, Calendar, intervalPositions, value, dataType, positionCalendar)
+
+**Category:** Construction
+
+**Description:** Creates a new TimeSeries variable
+
+**Parameters:**
+* `start` (Scalar) - The start date/time for this TimeSeries
+* `Calendar` (Scalar or Calendar) - The calendar to use for this TimeSeries
+* `intervalPositions` (Scalar) - Interval positions to create index based on calendar
+* `value` (Scalar) - The first value of this TimeSeries
+* `dataType` (Scalar) - Data type of TimeSeries
+* `positionCalendar` (Scalar) - Calendar to calculate positions
+
+**Returns:** TimeSeries
+
+
+
+---
+
 ### TimeSeries(start, end, Calendar, value, dataType)
 
 **Category:** Construction
@@ -4293,6 +4369,22 @@ Unbiased covariances are given by the formula
 * `end` (List) - Set of end date/time for this TimeSeries
 * `Calendar` (Scalar or Calendar) - The calendar to use for this TimeSeries
 * `value` (List) - All the values of this TimeSeries
+* `dataType` (Scalar) - Data type of TimeSeries
+
+**Returns:** TimeSeries
+
+
+
+---
+
+### TimeSeries(calendar, dataType)
+
+**Category:** Construction
+
+**Description:** Creates a new TimeSeries variable
+
+**Parameters:**
+* `calendar` (Scalar) - The calendar to use for this TimeSeries
 * `dataType` (Scalar) - Data type of TimeSeries
 
 **Returns:** TimeSeries
@@ -4336,26 +4428,6 @@ Unbiased covariances are given by the formula
 
 ---
 
-### TimeSeries(start, Calendar, intervalPositions, value, dataType, positionCalendar)
-
-**Category:** Construction
-
-**Description:** Creates a new TimeSeries variable
-
-**Parameters:**
-* `start` (Scalar) - The start date/time for this TimeSeries
-* `Calendar` (Scalar or Calendar) - The calendar to use for this TimeSeries
-* `intervalPositions` (Scalar) - Interval positions to create index based on calendar
-* `value` (Scalar) - The first value of this TimeSeries
-* `dataType` (Scalar) - Data type of TimeSeries
-* `positionCalendar` (Scalar) - Calendar to calculate positions
-
-**Returns:** TimeSeries
-
-
-
----
-
 ### TimeSeries(calendar)
 
 **Category:** Construction
@@ -4364,22 +4436,6 @@ Unbiased covariances are given by the formula
 
 **Parameters:**
 * `calendar` (Scalar) - The calendar to use for this TimeSeries
-
-**Returns:** TimeSeries
-
-
-
----
-
-### TimeSeries(calendar, dataType)
-
-**Category:** Construction
-
-**Description:** Creates a new TimeSeries variable
-
-**Parameters:**
-* `calendar` (Scalar) - The calendar to use for this TimeSeries
-* `dataType` (Scalar) - Data type of TimeSeries
 
 **Returns:** TimeSeries
 
@@ -4412,7 +4468,7 @@ Unbiased covariances are given by the formula
 
 **Returns:** Number
 
-**Works with:** `curve` `timeseries` `scalar` `list`
+**Works with:** `curve` `timeseries` `scalar` `list` 
 
 ---
 
@@ -4435,11 +4491,11 @@ Unbiased covariances are given by the formula
 
 **Category:** Loader
 
-**Description:**
+**Description:** 
 
 **Parameters:**
 
-**Returns:**
+**Returns:** 
 
 
 
@@ -4456,7 +4512,7 @@ Unbiased covariances are given by the formula
 
 **Returns:** Number
 
-**Works with:** `curve` `timeseries` `scalar` `list`
+**Works with:** `curve` `timeseries` `scalar` `list` 
 
 ---
 
@@ -4464,11 +4520,11 @@ Unbiased covariances are given by the formula
 
 **Category:** Loader
 
-**Description:**
+**Description:** 
 
 **Parameters:**
 
-**Returns:**
+**Returns:** 
 
 
 
