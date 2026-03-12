@@ -152,21 +152,6 @@ This document provides a comprehensive reference for all built-in functions avai
 
 ---
 
-### asHours(contract)
-
-**Category:** Curve
-
-**Description:** Splits a Contract into hourly contracts
-
-**Parameters:**
-* `contract` (Contract) - The input contract to split into hours
-
-**Returns:** Contracts
-
-
-
----
-
 ### asHours(contract, timezone)
 
 **Category:** Curve
@@ -176,6 +161,21 @@ This document provides a comprehensive reference for all built-in functions avai
 **Parameters:**
 * `contract` (Contract) - The input contract to split into hours
 * `timezone` (Contract) - The timezone to use
+
+**Returns:** Contracts
+
+
+
+---
+
+### asHours(contract)
+
+**Category:** Curve
+
+**Description:** Splits a Contract into hourly contracts
+
+**Parameters:**
+* `contract` (Contract) - The input contract to split into hours
 
 **Returns:** Contracts
 
@@ -246,6 +246,21 @@ This document provides a comprehensive reference for all built-in functions avai
 
 ---
 
+### assertFalse(value)
+
+**Category:** Testing
+
+**Description:** A test to check if an expression is false
+
+**Parameters:**
+* `value` (Boolean) - The value to test
+
+**Returns:** Void
+
+
+
+---
+
 ### assertFalse(value, message)
 
 **Category:** Testing
@@ -255,21 +270,6 @@ This document provides a comprehensive reference for all built-in functions avai
 **Parameters:**
 * `value` (Boolean) - The value to test
 * `message` (String) - The message to display if this test fails
-
-**Returns:** Void
-
-
-
----
-
-### assertFalse(value)
-
-**Category:** Testing
-
-**Description:** A test to check if an expression is false
-
-**Parameters:**
-* `value` (Boolean) - The value to test
 
 **Returns:** Void
 
@@ -715,21 +715,6 @@ This document provides a comprehensive reference for all built-in functions avai
 
 ---
 
-### cmax(data)
-
-**Category:** TimeSeries
-
-**Description:** The cumulative maximum of all the values in the input Timeseries or List
-
-**Parameters:**
-* `data` (TimeSeries or List) - The input data to perform the calculation on
-
-**Returns:** Number
-
-
-
----
-
 ### cmax(data, calendar)
 
 **Category:** TimeSeries
@@ -746,15 +731,14 @@ This document provides a comprehensive reference for all built-in functions avai
 
 ---
 
-### cmin(data, calendar)
+### cmax(data)
 
 **Category:** TimeSeries
 
-**Description:** The cumulative minimum of all the values in the input Timeseries
+**Description:** The cumulative maximum of all the values in the input Timeseries or List
 
 **Parameters:**
-* `data` (TimeSeries) - The input data to perform the calculation on
-* `calendar` (Calendar) - The output calendar to return the results in
+* `data` (TimeSeries or List) - The input data to perform the calculation on
 
 **Returns:** Number
 
@@ -770,6 +754,22 @@ This document provides a comprehensive reference for all built-in functions avai
 
 **Parameters:**
 * `data` (TimeSeries or List) - The input data to perform the calculation on
+
+**Returns:** Number
+
+
+
+---
+
+### cmin(data, calendar)
+
+**Category:** TimeSeries
+
+**Description:** The cumulative minimum of all the values in the input Timeseries
+
+**Parameters:**
+* `data` (TimeSeries) - The input data to perform the calculation on
+* `calendar` (Calendar) - The output calendar to return the results in
 
 **Returns:** Number
 
@@ -794,20 +794,6 @@ This document provides a comprehensive reference for all built-in functions avai
 
 ---
 
-### CombinedHolidayCalendar()
-
-**Category:** Construction
-
-**Description:** Creates a new Combined Holiday Calendar
-
-**Parameters:**
-
-**Returns:** Calendar
-
-
-
----
-
 ### CombinedHolidayCalendar(cal1, cal2)
 
 **Category:** Construction
@@ -817,6 +803,20 @@ This document provides a comprehensive reference for all built-in functions avai
 **Parameters:**
 * `cal1` (Calendar or calendar code) - The first holiday calendar to use
 * `cal2` (Calendar or calendar code) - The second holiday calendar to use
+
+**Returns:** Calendar
+
+
+
+---
+
+### CombinedHolidayCalendar()
+
+**Category:** Construction
+
+**Description:** Creates a new Combined Holiday Calendar
+
+**Parameters:**
 
 **Returns:** Calendar
 
@@ -903,25 +903,6 @@ This document provides a comprehensive reference for all built-in functions avai
 
 ---
 
-### Contract(ondate, tenor, value, start, end)
-
-**Category:** Construction
-
-**Description:** Creates a new *Hybrid* Forward Contract
-
-**Parameters:**
-* `ondate` (CurveDate) - The curve ondate for this contract
-* `tenor` (String) - The absolute or relative tenor for this contract
-* `value` (Number) - The value for this contract
-* `start` (Date) - The start of delivery date for this contract
-* `end` (Date) - The end of delivery date for this contract
-
-**Returns:** Contract
-
-
-
----
-
 ### Contract(ondate, tenor, value, absolute, start, end, expiry)
 
 **Category:** Construction
@@ -936,6 +917,25 @@ This document provides a comprehensive reference for all built-in functions avai
 * `start` (Date) - The start of delivery date for this contract
 * `end` (Date) - The end of delivery date for this contract
 * `expiry` (Date) - The last trading date for this contract
+
+**Returns:** Contract
+
+
+
+---
+
+### Contract(ondate, tenor, value, start, end)
+
+**Category:** Construction
+
+**Description:** Creates a new *Hybrid* Forward Contract
+
+**Parameters:**
+* `ondate` (CurveDate) - The curve ondate for this contract
+* `tenor` (String) - The absolute or relative tenor for this contract
+* `value` (Number) - The value for this contract
+* `start` (Date) - The start of delivery date for this contract
+* `end` (Date) - The end of delivery date for this contract
 
 **Returns:** Contract
 
@@ -1074,6 +1074,25 @@ where ```E(X)``` and ```E(Y)``` are means of ```X``` and ```Y``` and ```s(X)```,
 
 ---
 
+### covariance(data)
+
+**Category:** Matrix
+
+**Description:** Create a convariance matrix from a list of timeseries.
+
+Unbiased covariances are given by the formula
+
+```cov(X, Y) = sum [(xi - E(X))(yi - E(Y))] / (n - 1)``` where ```E(X)``` is the mean of ```X``` and ```E(Y)``` is the mean of the ```Y``` values.
+
+**Parameters:**
+* `data` (A List of timeseries) - The input data to transform
+
+**Returns:** Matrix
+
+
+
+---
+
 ### covariance(data, biasCorrected)
 
 **Category:** Matrix
@@ -1089,25 +1108,6 @@ Unbiased covariances are given by the formula
 **Parameters:**
 * `data` (A List of timeseries) - The input data to transform
 * `biasCorrected` (Boolean - **optional**) - True if the covariance is bias-corrected
-
-**Returns:** Matrix
-
-
-
----
-
-### covariance(data)
-
-**Category:** Matrix
-
-**Description:** Create a convariance matrix from a list of timeseries.
-
-Unbiased covariances are given by the formula
-
-```cov(X, Y) = sum [(xi - E(X))(yi - E(Y))] / (n - 1)``` where ```E(X)``` is the mean of ```X``` and ```E(Y)``` is the mean of the ```Y``` values.
-
-**Parameters:**
-* `data` (A List of timeseries) - The input data to transform
 
 **Returns:** Matrix
 
@@ -1175,6 +1175,23 @@ Unbiased covariances are given by the formula
 
 ---
 
+### CurveDate(date, calendar, timezone)
+
+**Category:** Construction
+
+**Description:** Creates a new Curve Date variable
+
+**Parameters:**
+* `date` (Date) - The date as a string in ISO Date Time, ISO Date format or ODSL Period Code format
+* `calendar` (Calendar) - The expiry calendar
+* `timezone` (String) - The timezone for this Curve Ondate
+
+**Returns:** CurveDate
+
+
+
+---
+
 ### CurveDate(date, calendar)
 
 **Category:** Construction
@@ -1191,18 +1208,17 @@ Unbiased covariances are given by the formula
 
 ---
 
-### CurveDate(date, calendar, timezone)
+### CurveSeries(calendar, ondate)
 
 **Category:** Construction
 
-**Description:** Creates a new Curve Date variable
+**Description:** Creates a new Curve Series
 
 **Parameters:**
-* `date` (Date) - The date as a string in ISO Date Time, ISO Date format or ODSL Period Code format
-* `calendar` (Calendar) - The expiry calendar
-* `timezone` (String) - The timezone for this Curve Ondate
+* `calendar` (Calendar) - The calendar for the timeseries of this curve timeseries
+* `ondate` (CurveDate) - The date index for this curve timeseries
 
-**Returns:** CurveDate
+**Returns:** CurveSeries
 
 
 
@@ -1243,22 +1259,6 @@ Unbiased covariances are given by the formula
 
 ---
 
-### CurveSeries(calendar, ondate)
-
-**Category:** Construction
-
-**Description:** Creates a new Curve Series
-
-**Parameters:**
-* `calendar` (Calendar) - The calendar for the timeseries of this curve timeseries
-* `ondate` (CurveDate) - The date index for this curve timeseries
-
-**Returns:** CurveSeries
-
-
-
----
-
 ### DailyCalendar()
 
 **Category:** Construction
@@ -1273,21 +1273,6 @@ Unbiased covariances are given by the formula
 
 ---
 
-### Date(date)
-
-**Category:** Construction
-
-**Description:** Creates a new Date variable
-
-**Parameters:**
-* `date` (Scalar) - The date as a string in ISO Date Time, ISO Date format or ODSL Period Code format
-
-**Returns:** Date
-
-
-
----
-
 ### Date(date, format)
 
 **Category:** Construction
@@ -1297,6 +1282,21 @@ Unbiased covariances are given by the formula
 **Parameters:**
 * `date` (Scalar) - The date as a string
 * `format` (Scalar) - The format of the date, e.g. 'dd-MM-yyyy'
+
+**Returns:** Date
+
+
+
+---
+
+### Date(date)
+
+**Category:** Construction
+
+**Description:** Creates a new Date variable
+
+**Parameters:**
+* `date` (Scalar) - The date as a string in ISO Date Time, ISO Date format or ODSL Period Code format
 
 **Returns:** Date
 
@@ -1363,21 +1363,6 @@ Unbiased covariances are given by the formula
 
 ---
 
-### DocumentationLink(url)
-
-**Category:** Construction
-
-**Description:** Creates a new documentation URL Link configuration
-
-**Parameters:**
-* `url` (String) - The HTML URL of the documentation
-
-**Returns:** Documentation
-
-
-
----
-
 ### DocumentationLink(url, selector)
 
 **Category:** Construction
@@ -1394,16 +1379,16 @@ Unbiased covariances are given by the formula
 
 ---
 
-### Duration(dur)
+### DocumentationLink(url)
 
 **Category:** Construction
 
-**Description:** Creates a new Duration
+**Description:** Creates a new documentation URL Link configuration
 
 **Parameters:**
-* `dur` (String) - The code for the duration, e.g. 1D
+* `url` (String) - The HTML URL of the documentation
 
-**Returns:** Duration
+**Returns:** Documentation
 
 
 
@@ -1418,6 +1403,21 @@ Unbiased covariances are given by the formula
 **Parameters:**
 * `dur` (String) - The code for the duration, e.g. 1D
 * `calendar` (Calendar or String) - The calendar to use for this duration
+
+**Returns:** Duration
+
+
+
+---
+
+### Duration(dur)
+
+**Category:** Construction
+
+**Description:** Creates a new Duration
+
+**Parameters:**
+* `dur` (String) - The code for the duration, e.g. 1D
 
 **Returns:** Duration
 
@@ -1668,21 +1668,6 @@ Unbiased covariances are given by the formula
 
 ---
 
-### ExpiryCalendar(holiday)
-
-**Category:** Construction
-
-**Description:** Creates a new expiry Calendar
-
-**Parameters:**
-* `holiday` (Calendar or String) - The holiday or trading calendar to use with this expiry calendar. Can either be the name or a calendar or an actual calendar.
-
-**Returns:** ExpiryCalendar
-
-
-
----
-
 ### ExpiryCalendar(code)
 
 **Category:** Construction
@@ -1707,6 +1692,21 @@ Unbiased covariances are given by the formula
 **Parameters:**
 * `holiday` (Calendar or String) - The holiday or trading calendar to use with this expiry calendar. Can either be the name or a calendar or an actual calendar.
 * `delivery` (Calendar or String) - The delivery calendar to use with this expiry calendar. Can either be the name or a calendar or an actual calendar.
+
+**Returns:** ExpiryCalendar
+
+
+
+---
+
+### ExpiryCalendar(holiday)
+
+**Category:** Construction
+
+**Description:** Creates a new expiry Calendar
+
+**Parameters:**
+* `holiday` (Calendar or String) - The holiday or trading calendar to use with this expiry calendar. Can either be the name or a calendar or an actual calendar.
 
 **Returns:** ExpiryCalendar
 
@@ -2041,7 +2041,7 @@ Unbiased covariances are given by the formula
 
 **Category:** Geometry construction
 
-**Description:** Creates an empty GeometryCollection geometry object
+**Description:** Creates a GeometryCollection geometry object
 
 **Parameters:**
 
@@ -2055,7 +2055,7 @@ Unbiased covariances are given by the formula
 
 **Category:** Geometry construction
 
-**Description:** Creates a GeometryCollection geometry object
+**Description:** Creates an empty GeometryCollection geometry object
 
 **Parameters:**
 
@@ -2141,6 +2141,23 @@ Unbiased covariances are given by the formula
 
 ---
 
+### HourlyBlockCalendar(holiday, start, end)
+
+**Category:** Construction
+
+**Description:** Creates a new Hourly Block Calendar
+
+**Parameters:**
+* `holiday` (Calendar) - The holiday calendar which determines the days that observations are recorded (null = Daily)
+* `start` (Numeric) - The start of the start hour of the block (0 - 23)
+* `end` (Numeric) - The start of the end hour of the block (0 - 23)
+
+**Returns:** Calendar
+
+
+
+---
+
 ### HourlyBlockCalendar(holiday, start, end, timezone)
 
 **Category:** Construction
@@ -2152,23 +2169,6 @@ Unbiased covariances are given by the formula
 * `start` (Numeric) - The start of the start hour of the block (0 - 23)
 * `end` (Numeric) - The start of the end hour of the block (0 - 23)
 * `timezone` (String) - The timezone for this block calendar
-
-**Returns:** Calendar
-
-
-
----
-
-### HourlyBlockCalendar(holiday, start, end)
-
-**Category:** Construction
-
-**Description:** Creates a new Hourly Block Calendar
-
-**Parameters:**
-* `holiday` (Calendar) - The holiday calendar which determines the days that observations are recorded (null = Daily)
-* `start` (Numeric) - The start of the start hour of the block (0 - 23)
-* `end` (Numeric) - The start of the end hour of the block (0 - 23)
 
 **Returns:** Calendar
 
@@ -2249,24 +2249,6 @@ Unbiased covariances are given by the formula
 
 ---
 
-### IntradayCalendar(period, holiday, withoutHours, timezone)
-
-**Category:** Construction
-
-**Description:** Creates a new Intraday Calendar
-
-**Parameters:**
-* `period` (Duration) - The periodicity of this calendar, e.g. 1h for hourly
-* `holiday` (Calendar) - The holiday calendar which determines the days that observations are recorded
-* `withoutHours` (List) - A list of integers representing hours of the day to exclude from this calendar
-* `timezone` (String) - The timezone for this intraday calendar
-
-**Returns:** Calendar
-
-
-
----
-
 ### IntradayCalendar(period, holiday, withoutHours, timezone, useHolidays)
 
 **Category:** Construction
@@ -2286,7 +2268,7 @@ Unbiased covariances are given by the formula
 
 ---
 
-### IntradayCalendar(period)
+### IntradayCalendar(period, holiday, withoutHours, timezone)
 
 **Category:** Construction
 
@@ -2294,6 +2276,9 @@ Unbiased covariances are given by the formula
 
 **Parameters:**
 * `period` (Duration) - The periodicity of this calendar, e.g. 1h for hourly
+* `holiday` (Calendar) - The holiday calendar which determines the days that observations are recorded
+* `withoutHours` (List) - A list of integers representing hours of the day to exclude from this calendar
+* `timezone` (String) - The timezone for this intraday calendar
 
 **Returns:** Calendar
 
@@ -2311,6 +2296,21 @@ Unbiased covariances are given by the formula
 * `period` (Duration) - The periodicity of this calendar, e.g. 1h for hourly
 * `holiday` (Calendar) - The holiday calendar which determines the days that observations are recorded
 * `withoutHours` (List) - A list of integers representing hours of the day to exclude from this calendar
+
+**Returns:** Calendar
+
+
+
+---
+
+### IntradayCalendar(period)
+
+**Category:** Construction
+
+**Description:** Creates a new Intraday Calendar
+
+**Parameters:**
+* `period` (Duration) - The periodicity of this calendar, e.g. 1h for hourly
 
 **Returns:** Calendar
 
@@ -2658,21 +2658,6 @@ Unbiased covariances are given by the formula
 
 ---
 
-### Matrix(labels)
-
-**Category:** Construction
-
-**Description:** Creates a new matrix from a list of labels
-
-**Parameters:**
-* `labels` (List) - The labels to use
-
-**Returns:** Matrix
-
-
-
----
-
 ### Matrix(x, y)
 
 **Category:** Construction
@@ -2689,6 +2674,23 @@ Unbiased covariances are given by the formula
 
 ---
 
+### Matrix(y, x, v)
+
+**Category:** Construction
+
+**Description:** Creates a new matrix, initialising all values to the provided value
+
+**Parameters:**
+* `y` (Number) - The number of rows
+* `x` (Number) - The number of columns
+* `v` (Number) - The value to initialise the matrix with
+
+**Returns:** Matrix
+
+
+
+---
+
 ### Matrix(labels)
 
 **Category:** Construction
@@ -2720,6 +2722,21 @@ Unbiased covariances are given by the formula
 
 ---
 
+### Matrix(labels)
+
+**Category:** Construction
+
+**Description:** Creates a new matrix from a list of labels
+
+**Parameters:**
+* `labels` (List) - The labels to use
+
+**Returns:** Matrix
+
+
+
+---
+
 ### Matrix(labels, v)
 
 **Category:** Construction
@@ -2728,23 +2745,6 @@ Unbiased covariances are given by the formula
 
 **Parameters:**
 * `labels` (List) - The labels to use
-* `v` (Number) - The value to initialise the matrix with
-
-**Returns:** Matrix
-
-
-
----
-
-### Matrix(y, x, v)
-
-**Category:** Construction
-
-**Description:** Creates a new matrix, initialising all values to the provided value
-
-**Parameters:**
-* `y` (Number) - The number of rows
-* `x` (Number) - The number of columns
 * `v` (Number) - The value to initialise the matrix with
 
 **Returns:** Matrix
@@ -2812,24 +2812,6 @@ Unbiased covariances are given by the formula
 
 ---
 
-### metric(metric, calendar, observed, range)
-
-**Category:** Metrics
-
-**Description:** Get a virtual metric timeseries
-
-**Parameters:**
-* `metric` (String) - The metric id in the form provider/metric
-* `calendar` (String) - The id of the calendar to aggregate the metrics to
-* `observed` (String) - The aggregation method to use; one of summed,averaged,high,low,beginning,end
-* `range` (String) - The date range expression
-
-**Returns:** TimeSeries
-
-
-
----
-
 ### metric(metric, calendar, observed, range, filter)
 
 **Category:** Metrics
@@ -2842,6 +2824,24 @@ Unbiased covariances are given by the formula
 * `observed` (String) - The aggregation method to use; one of summed,averaged,high,low,beginning,end
 * `range` (String) - The date range expression
 * `filter` (String) - A filter expression to filter the metrics
+
+**Returns:** TimeSeries
+
+
+
+---
+
+### metric(metric, calendar, observed, range)
+
+**Category:** Metrics
+
+**Description:** Get a virtual metric timeseries
+
+**Parameters:**
+* `metric` (String) - The metric id in the form provider/metric
+* `calendar` (String) - The id of the calendar to aggregate the metrics to
+* `observed` (String) - The aggregation method to use; one of summed,averaged,high,low,beginning,end
+* `range` (String) - The date range expression
 
 **Returns:** TimeSeries
 
@@ -2945,20 +2945,6 @@ Unbiased covariances are given by the formula
 
 ---
 
-### MonthlyCalendar()
-
-**Category:** Construction
-
-**Description:** Creates a new Monthly Calendar
-
-**Parameters:**
-
-**Returns:** Calendar
-
-
-
----
-
 ### MonthlyCalendar(code, name, period)
 
 **Category:** Construction
@@ -2969,6 +2955,20 @@ Unbiased covariances are given by the formula
 * `code` (String) - The code for this calendar
 * `name` (String) - The name of this calendar
 * `period` (Int) - The number of months each observation covers, has to be one of 1,2,3,4,6,12
+
+**Returns:** Calendar
+
+
+
+---
+
+### MonthlyCalendar()
+
+**Category:** Construction
+
+**Description:** Creates a new Monthly Calendar
+
+**Parameters:**
 
 **Returns:** Calendar
 
@@ -3036,7 +3036,7 @@ Unbiased covariances are given by the formula
 
 **Category:** Geometry construction
 
-**Description:** Creates a MultiPolygon geometry object with the supplied polygons
+**Description:** Creates an empty MultiPolygon geometry object
 
 **Parameters:**
 
@@ -3050,7 +3050,7 @@ Unbiased covariances are given by the formula
 
 **Category:** Geometry construction
 
-**Description:** Creates an empty MultiPolygon geometry object
+**Description:** Creates a MultiPolygon geometry object with the supplied polygons
 
 **Parameters:**
 
@@ -3323,7 +3323,7 @@ Unbiased covariances are given by the formula
 
 **Category:** Geometry construction
 
-**Description:** Creates a Polygon geometry object with a single ring containing the supplied coordinates
+**Description:** Creates a Polygon geometry object with a multiple rings containing the supplied geometries
 
 **Parameters:**
 
@@ -3351,7 +3351,7 @@ Unbiased covariances are given by the formula
 
 **Category:** Geometry construction
 
-**Description:** Creates a Polygon geometry object with a multiple rings containing the supplied geometries
+**Description:** Creates a Polygon geometry object with a single ring containing the supplied coordinates
 
 **Parameters:**
 
@@ -3992,6 +3992,23 @@ Unbiased covariances are given by the formula
 
 ---
 
+### SmartTimeSeries(start, calendar, expression)
+
+**Category:** Construction
+
+**Description:** Creates a new Smart TimeSeries using a base TimeSeries and expression
+
+**Parameters:**
+* `start` (Date) - The Start Date
+* `calendar` (Calendar) - The TimeSeries calendar
+* `expression` (String) - The expression used to generate the TimeSeries
+
+**Returns:** SmartTimeSeries
+
+
+
+---
+
 ### SmartTimeSeries(expression)
 
 **Category:** Construction
@@ -4023,28 +4040,11 @@ Unbiased covariances are given by the formula
 
 ---
 
-### SmartTimeSeries(start, calendar, expression)
-
-**Category:** Construction
-
-**Description:** Creates a new Smart TimeSeries using a base TimeSeries and expression
-
-**Parameters:**
-* `start` (Date) - The Start Date
-* `calendar` (Calendar) - The TimeSeries calendar
-* `expression` (String) - The expression used to generate the TimeSeries
-
-**Returns:** SmartTimeSeries
-
-
-
----
-
 ### Sphere()
 
 **Category:** Geometry construction
 
-**Description:** Creates a centerSphere geometry object used in geospatial queries
+**Description:** Creates a nearSphere geometry object used in geospatial queries
 
 **Parameters:**
 
@@ -4058,7 +4058,7 @@ Unbiased covariances are given by the formula
 
 **Category:** Geometry construction
 
-**Description:** Creates a nearSphere geometry object used in geospatial queries
+**Description:** Creates a centerSphere geometry object used in geospatial queries
 
 **Parameters:**
 
@@ -4338,38 +4338,14 @@ Unbiased covariances are given by the formula
 
 ---
 
-### TimeSeries(start, Calendar, intervalPositions, value, dataType, positionCalendar)
+### TimeSeries(calendar)
 
 **Category:** Construction
 
 **Description:** Creates a new TimeSeries variable
 
 **Parameters:**
-* `start` (Scalar) - The start date/time for this TimeSeries
-* `Calendar` (Scalar or Calendar) - The calendar to use for this TimeSeries
-* `intervalPositions` (Scalar) - Interval positions to create index based on calendar
-* `value` (Scalar) - The first value of this TimeSeries
-* `dataType` (Scalar) - Data type of TimeSeries
-* `positionCalendar` (Scalar) - Calendar to calculate positions
-
-**Returns:** TimeSeries
-
-
-
----
-
-### TimeSeries(start, end, Calendar, value, dataType)
-
-**Category:** Construction
-
-**Description:** Creates a new TimeSeries variable
-
-**Parameters:**
-* `start` (List) - Set of start date/time for this TimeSeries
-* `end` (List) - Set of end date/time for this TimeSeries
-* `Calendar` (Scalar or Calendar) - The calendar to use for this TimeSeries
-* `value` (List) - All the values of this TimeSeries
-* `dataType` (Scalar) - Data type of TimeSeries
+* `calendar` (Scalar) - The calendar to use for this TimeSeries
 
 **Returns:** TimeSeries
 
@@ -4428,14 +4404,38 @@ Unbiased covariances are given by the formula
 
 ---
 
-### TimeSeries(calendar)
+### TimeSeries(start, end, Calendar, value, dataType)
 
 **Category:** Construction
 
 **Description:** Creates a new TimeSeries variable
 
 **Parameters:**
-* `calendar` (Scalar) - The calendar to use for this TimeSeries
+* `start` (List) - Set of start date/time for this TimeSeries
+* `end` (List) - Set of end date/time for this TimeSeries
+* `Calendar` (Scalar or Calendar) - The calendar to use for this TimeSeries
+* `value` (List) - All the values of this TimeSeries
+* `dataType` (Scalar) - Data type of TimeSeries
+
+**Returns:** TimeSeries
+
+
+
+---
+
+### TimeSeries(start, Calendar, intervalPositions, value, dataType, positionCalendar)
+
+**Category:** Construction
+
+**Description:** Creates a new TimeSeries variable
+
+**Parameters:**
+* `start` (Scalar) - The start date/time for this TimeSeries
+* `Calendar` (Scalar or Calendar) - The calendar to use for this TimeSeries
+* `intervalPositions` (Scalar) - Interval positions to create index based on calendar
+* `value` (Scalar) - The first value of this TimeSeries
+* `dataType` (Scalar) - Data type of TimeSeries
+* `positionCalendar` (Scalar) - Calendar to calculate positions
 
 **Returns:** TimeSeries
 
@@ -4620,14 +4620,13 @@ Unbiased covariances are given by the formula
 
 ---
 
-### variable(var, name)
+### variable(name)
 
 **Category:** Introspection
 
 **Description:** Returns the variable with the given name
 
 **Parameters:**
-* `var` (Anything) - The variable that contains the dynamic property
 * `name` (String) - The name of the variable to return
 
 **Returns:** Any
@@ -4636,13 +4635,14 @@ Unbiased covariances are given by the formula
 
 ---
 
-### variable(name)
+### variable(var, name)
 
 **Category:** Introspection
 
 **Description:** Returns the variable with the given name
 
 **Parameters:**
+* `var` (Anything) - The variable that contains the dynamic property
 * `name` (String) - The name of the variable to return
 
 **Returns:** Any

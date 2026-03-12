@@ -21,21 +21,6 @@ This document provides a reference for all built-in curve functions available in
 
 ---
 
-### asHours(contract)
-
-**Category:** Curve
-
-**Description:** Splits a Contract into hourly contracts
-
-**Parameters:**
-* `contract` (Contract) - The input contract to split into hours
-
-**Returns:** Contracts
-
-
-
----
-
 ### asHours(contract, timezone)
 
 **Category:** Curve
@@ -45,6 +30,21 @@ This document provides a reference for all built-in curve functions available in
 **Parameters:**
 * `contract` (Contract) - The input contract to split into hours
 * `timezone` (Contract) - The timezone to use
+
+**Returns:** Contracts
+
+
+
+---
+
+### asHours(contract)
+
+**Category:** Curve
+
+**Description:** Splits a Contract into hourly contracts
+
+**Parameters:**
+* `contract` (Contract) - The input contract to split into hours
 
 **Returns:** Contracts
 

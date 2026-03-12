@@ -92,6 +92,25 @@ where ```E(X)``` and ```E(Y)``` are means of ```X``` and ```Y``` and ```s(X)```,
 
 ---
 
+### covariance(data)
+
+**Category:** Matrix
+
+**Description:** Create a convariance matrix from a list of timeseries.
+
+Unbiased covariances are given by the formula
+
+```cov(X, Y) = sum [(xi - E(X))(yi - E(Y))] / (n - 1)``` where ```E(X)``` is the mean of ```X``` and ```E(Y)``` is the mean of the ```Y``` values.
+
+**Parameters:**
+* `data` (A List of timeseries) - The input data to transform
+
+**Returns:** Matrix
+
+
+
+---
+
 ### covariance(data, biasCorrected)
 
 **Category:** Matrix
@@ -107,25 +126,6 @@ Unbiased covariances are given by the formula
 **Parameters:**
 * `data` (A List of timeseries) - The input data to transform
 * `biasCorrected` (Boolean - **optional**) - True if the covariance is bias-corrected
-
-**Returns:** Matrix
-
-
-
----
-
-### covariance(data)
-
-**Category:** Matrix
-
-**Description:** Create a convariance matrix from a list of timeseries.
-
-Unbiased covariances are given by the formula
-
-```cov(X, Y) = sum [(xi - E(X))(yi - E(Y))] / (n - 1)``` where ```E(X)``` is the mean of ```X``` and ```E(Y)``` is the mean of the ```Y``` values.
-
-**Parameters:**
-* `data` (A List of timeseries) - The input data to transform
 
 **Returns:** Matrix
 

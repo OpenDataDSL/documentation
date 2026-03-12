@@ -37,21 +37,6 @@ This document provides a reference for all built-in timeseries functions availab
 
 ---
 
-### cmax(data)
-
-**Category:** TimeSeries
-
-**Description:** The cumulative maximum of all the values in the input Timeseries or List
-
-**Parameters:**
-* `data` (TimeSeries or List) - The input data to perform the calculation on
-
-**Returns:** Number
-
-
-
----
-
 ### cmax(data, calendar)
 
 **Category:** TimeSeries
@@ -68,15 +53,14 @@ This document provides a reference for all built-in timeseries functions availab
 
 ---
 
-### cmin(data, calendar)
+### cmax(data)
 
 **Category:** TimeSeries
 
-**Description:** The cumulative minimum of all the values in the input Timeseries
+**Description:** The cumulative maximum of all the values in the input Timeseries or List
 
 **Parameters:**
-* `data` (TimeSeries) - The input data to perform the calculation on
-* `calendar` (Calendar) - The output calendar to return the results in
+* `data` (TimeSeries or List) - The input data to perform the calculation on
 
 **Returns:** Number
 
@@ -92,6 +76,22 @@ This document provides a reference for all built-in timeseries functions availab
 
 **Parameters:**
 * `data` (TimeSeries or List) - The input data to perform the calculation on
+
+**Returns:** Number
+
+
+
+---
+
+### cmin(data, calendar)
+
+**Category:** TimeSeries
+
+**Description:** The cumulative minimum of all the values in the input Timeseries
+
+**Parameters:**
+* `data` (TimeSeries) - The input data to perform the calculation on
+* `calendar` (Calendar) - The output calendar to return the results in
 
 **Returns:** Number
 

@@ -267,14 +267,13 @@ This document provides a reference for all built-in general functions available 
 
 ---
 
-### variable(var, name)
+### variable(name)
 
 **Category:** Introspection
 
 **Description:** Returns the variable with the given name
 
 **Parameters:**
-* `var` (Anything) - The variable that contains the dynamic property
 * `name` (String) - The name of the variable to return
 
 **Returns:** Any
@@ -283,13 +282,14 @@ This document provides a reference for all built-in general functions available 
 
 ---
 
-### variable(name)
+### variable(var, name)
 
 **Category:** Introspection
 
 **Description:** Returns the variable with the given name
 
 **Parameters:**
+* `var` (Anything) - The variable that contains the dynamic property
 * `name` (String) - The name of the variable to return
 
 **Returns:** Any
