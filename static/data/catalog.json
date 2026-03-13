@@ -1050,7 +1050,7 @@
         "providerType":"Public Agency",
         "logo": "energinet.png",
         "dataset": "Power",
-        "text": "Power Day Ahead Prices",
+        "text": "Power Day Ahead Prices,Imbalance Prices",
         "region": "Europe",
         "start": "2025",
         "frequency": "Hourly",
@@ -1159,7 +1159,48 @@
         "start": "2025",
         "frequency": "DAILY",
         "link":"/docs/company/AEM",
-        "tags": ["Commodity", "Oil"," NEW"]
+        "tags": ["Commodity", "Oil"]
+    },
+    {
+        "type": "FREE",
+        "provider": "Elexon",
+        "providerType":"Transmission System Operators",
+        "logo": "elexon.png",
+        "dataset": "Power",
+        "text": "Power Imbalance Prices",
+        "region": "Europe",
+        "start": "2019",
+        "frequency": "Hourly",
+        "link":"/docs/company/ELEXON",
+        "tags": ["Commodity", "Power"," NEW"]
+    },
+    {
+        "type": "FREE",
+        "provider": "Denmark National Bank FX Rates(DNB)",
+        "providerType":"Financial Institutions",
+        "logo": "dnb.png",
+        "dataset": "FX Rates",
+        "text": "Denmark National Bank Exchange Rates",
+        "region": "Europe/Global",
+        "start": "2020",
+        "frequency": "DAILY",
+        "link":"/docs/data/fx#DNB_FX",
+        "tags": ["Financial", "Foreign Exchange"," NEW"]
+    },
+    {
+        "type": "FREE",
+        "provider": "National Bank of Romania FX Rates(NBR)",
+        "providerType":"Financial Institutions",
+        "logo": "nbr.png",
+        "dataset": "FX Rates",
+        "text": "National Bank of Romania Foreign Exchange Rates",
+        "region": "Europe/Global",
+        "start": "2020",
+        "frequency": "DAILY",
+        "link":"/docs/data/fx#NBR_FX",
+        "tags": ["Financial", "Foreign Exchange"," NEW"]
     }
 ]
+
+
 

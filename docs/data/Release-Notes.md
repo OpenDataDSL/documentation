@@ -1,4 +1,17 @@
-## Latest release (Dec-2025)
+## Latest release Feb-2026
+This release mainly includes the addition of following data feeds:
+* Elexon Great Britain Power Imbalance Prices
+* Energinet Denmark Power Imbalance and Day-Ahead Prices
+* Denmark National Bank FX Rates (DNB)
+* National Bank of Romania FX Rates (NBR)
+
+## Jan-2026
+This release mainly includes the addition of following data feeds:
+* OPCOM Romania Power Day-Ahead and Intraday Prices
+* HENEX Greece Power Day-Ahead and Intraday Prices
+* ENTSOE Imbalance Prices and Volumes and Contracted Reserves added with more regions
+
+## Dec-2025
 This release mainly includes the addition of following data feeds:
 * Arrow Energy Markets(AEM) M2M Forward Curves
 * ICE Brent Crude Options
