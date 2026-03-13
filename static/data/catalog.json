@@ -1199,6 +1199,46 @@
         "frequency": "DAILY",
         "link":"/docs/data/fx#NBR_FX",
         "tags": ["Financial", "Foreign Exchange"," NEW"]
+    },
+        {
+        "type": "FREE",
+        "provider": "Hellenic Energy Exchange (HENEX)",
+        "providerType":"Exchange",
+        "logo": "henex.png",
+        "dataset": "Power",
+        "text": "Power Imbalance Prices",
+        "region": "Greece",
+        "start": "2022",
+        "frequency": "DAILY",
+        "link":"/docs/company/HENEX",
+        "tags": ["Commodity", "Power"," NEW"]
+    },
+    {
+        "type": "FREE",
+        "provider": "Hellenic Energy Exchange (HENEX)",
+        "providerType":"Exchange",
+        "logo": "henex.png",
+        "dataset": "Power",
+        "text": "Power Imbalance Prices",
+        "region": "Greece",
+        "start": "2022",
+        "frequency": "DAILY",
+        "link":"/docs/company/HENEX",
+        "tags": ["Commodity", "Power"," NEW"]
+    },
+    {
+        "type": "FREE",
+        "provider": "Operatorul Pietei de Energie Electrica si Gaze Naturale (OPCOM)",
+        "providerType":"Exchange",
+        "logo": "opcom.jpg",
+        "dataset": "Power",
+        "text": "Power Imbalance Prices",
+        "region": "Romania",
+        "start": "2023",
+        "frequency": "HOURLY",
+        "link":"/docs/company/OPCOM",
+        "releaseDate":"2024-02",
+        "tags": ["Commodity", "Power"," NEW"]
     }
 ]
 

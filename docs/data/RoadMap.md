@@ -7,7 +7,11 @@ Current Data RoadMap
 
 |**Provider**|**Country**|**Commodity**|
 |-|-|-|
-|Elexon Power Flow |United Kingdom|Power|
+|National Energy System Operator|Great Britain|Power|
+|European Commission|Global|Agriculture|
+|World Bank Group Commodity Prices|Global|Agriculture|
+|EPAgri CEPA|Global|Agriculture|
+|Polskie Sieci Elektroenergetyczne|Romania|Power|
 |Croation Power Exchange Ltd|Croatia|Power|
 |South East European Power Exchange|Serbia|Power|
 |Energy Exchange Austria|Austria|Power|
