@@ -5,16 +5,29 @@ sidebar_position: 10
 
 Release Notes
 =============
-## Latest release (Mar-2026)
+## Latest release (Mar-2026-b)
+
+This minor release resolves certain issues experienced by some users and introduces a few improvements.
+
+> **Build details:**  
+> **Server:** Build 3622
+> **Client:** 1.7.46099.458
+> **Excel:** 1.7.20260312.1350  
+> **Visual Studio Code extension for OpenDataDSL:** 0.16.3
+
+### Bug fixes
+- Fix for “ArgumentNull_Generic” error affecting some users
+- Resolution of repeated yellow update pop-up notifications for some users
+- Fix for data reconciliation dashboard screens displaying panels without content
+
+### Improvements
+- Email subscription – date included in subject line
+- Support for non-ODSL script processes
+
+## Mar-2026
 
 This release introduces Fusion AI integration across the web portal, expands Excel Add-in capabilities, 
 and extends process execution to support generic command-line commands and non-ODSL scripts.
-
-> **Build details:**  
-> **Server:** Build 3604 
-> **Client:** 1.6.46085.1008  
-> **Excel:** 1.6.20260304.1737  
-> **Visual Studio Code extension for OpenDataDSL:** 0.16.3
 
 ### Bug Fixes
 - Fix for calendars not displaying all holidays
@@ -36,7 +49,6 @@ and extends process execution to support generic command-line commands and non-O
 - Excel Addin: 
   - Allow updating object and data names without requiring a ref-ID
   - Reverse your last action (CTRL+Z) on extracted data in an Excel sheet
-
 
 ## Jan-2026
 
