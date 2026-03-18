@@ -26,8 +26,8 @@ odslrun.py has the following features:
 * Creates context variables that can be used in your script:
     * PROCESS_CONFIG - contains the JSON of the process configuration
     * TASK - contains the JSON of the task configuration
-    * SDK - the javascript sdk, already connected using the process runners credentials
-    * PROCESS - the process class which allows you to communicate with the process execution log
+    * SDK - the [python sdk](/docs/sdk/python), already connected using the process runners credentials
+    * PROCESS - [the process sdk](/docs/sdk/python#process-sdk) class which allows you to communicate with the process execution log
 * Checks for the name of a private script as the input parameter
 * Pulls the script from the platform and applies to the current context
 * Starts the process and runs your script in a MAIN phase
@@ -36,4 +36,18 @@ odslrun.py has the following features:
 
 ```
 "/bin/sh -c 'cd /app;python3 odslrun.py odsl-extensions\\extensions\\python\\python_sample'"
+```
+
+This will pull the python_sample script from the platform and execute it.
+
+### python_sample
+
+```python
+async def main():
+
+	# Get the #ECB object
+	obj = SDK.get('object', 'public', '#ECB')
+
+	# Log the description
+	await PROCESS.logMessage("INFO", obj['description'])
 ```
