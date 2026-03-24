@@ -1,7 +1,7 @@
 ---
 slug: /odsl/dm/identities
 sidebar_position: 8
-title: Data Identities
+title: Data Identities 🆕
 description: Map OpenDataDSL data items to the identifiers used by downstream systems
 tags:
   - data_management
