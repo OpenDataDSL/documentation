@@ -5,15 +5,41 @@ sidebar_position: 10
 
 Release Notes
 =============
-## Latest release (Mar-2026-b)
 
-This minor release resolves certain issues experienced by some users and introduces a few improvements.
+## Latest release (Mar-2026-c)
+
+The following bug fixes and improvements are included into the release:
 
 > **Build details:**  
-> **Server:** Build 3622
-> **Client:** 1.7.46099.458
+> **Server:** Build 3651
+> **Client:** 1.7.46106.829
 > **Excel:** 1.7.20260312.1350  
-> **Visual Studio Code extension for OpenDataDSL:** 0.16.3
+> **Visual Studio Code extension for OpenDataDSL:** 0.16.4
+
+### Bug Fixes
+- Email Automations Not Received — resolved an issue where emails triggered by automations were not being delivered to recipients
+- Data Recon — fixed a bug where the model failed to run when a process was triggered via an automation
+- Discontinued DSID Picked Up by Smart Loader — the Smart Loader will no longer process discontinued DSIDs
+- Fix on scalar values in scientific notation concatenating instead of adding
+
+
+### Improvements
+- Alternate Identities - enhanced handling and management of alternate identities
+- Node.js - various performance and stability improvements
+- Curve Exports
+    - Add support for CurveSeries
+    - Add support for missing curves
+    - Fix group updates that create processes
+    - Add support for identities
+- Curve Ancestry
+    - Use automations instead of subscriptions
+    - Stop ancestry calculation from automatically adding all curves to curve management
+
+
+
+## Mar-2026-b
+
+This minor release resolves certain issues experienced by some users and introduces a few improvements.
 
 ### Bug fixes
 - Fix for “ArgumentNull_Generic” error affecting some users
