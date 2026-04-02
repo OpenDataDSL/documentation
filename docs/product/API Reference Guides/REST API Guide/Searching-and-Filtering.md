@@ -67,25 +67,38 @@ https://api.opendatadsl.com/api/object/v1/public
 
 ### Search specific named fields
 As stated above, the default search locates information in the _id, name and description fields only.
-If you want to search for text in a different field, you can explicitly name the field using the syntax ```field:term``` e.g.
+If you want to search for a value in a different field, you can explicitly name the field using the syntax ```field=term``` to use a regex wildcard search or ```field==term``` for an equality search, e.g.
 
 ```js
 https://api.opendatadsl.com/api/object/v1/public
-    ?_search=location=belgium
+    ?_search=location=be
+```
+
+```js
+https://api.opendatadsl.com/api/object/v1/public
+    ?_search=location==belgium
 ```
 
 You can combine this with standard search terms and named fields, e.g.
 
 ```js
 https://api.opendatadsl.com/api/object/v1/public
-    ?_search=potato price location=belgium market=spot
+    ?_search=potato price location==belgium market==spot
 ```
 
 You can also combine OR and NOT terms, e.g.
 
 ```js
 https://api.opendatadsl.com/api/object/v1/public
-    ?_search=(potato|price) -location=belgium market=spot
+    ?_search=(potato|price) -location==belgium market==spot
+```
+
+### Search specific fields in event lists
+You can search for data in fields within event lists the same as objects, but you need to provide the name of the event list as the KEY in the URL, e.g.
+
+```js
+GET {{url}}/event/v1/public/%23IND.AG.COMM.PRICE:DAILY
+  ?_search=district==Khargone commodity_code==4
 ```
 
 ## Filtering
