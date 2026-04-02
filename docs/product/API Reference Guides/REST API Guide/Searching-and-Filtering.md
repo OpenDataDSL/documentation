@@ -71,21 +71,21 @@ If you want to search for text in a different field, you can explicitly name the
 
 ```js
 https://api.opendatadsl.com/api/object/v1/public
-    ?_search=location:belgium
+    ?_search=location=belgium
 ```
 
 You can combine this with standard search terms and named fields, e.g.
 
 ```js
 https://api.opendatadsl.com/api/object/v1/public
-    ?_search=potato price location:belgium market:spot
+    ?_search=potato price location=belgium market=spot
 ```
 
 You can also combine OR and NOT terms, e.g.
 
 ```js
 https://api.opendatadsl.com/api/object/v1/public
-    ?_search=(potato|price) -location:belgium market:spot
+    ?_search=(potato|price) -location=belgium market=spot
 ```
 
 ## Filtering
@@ -159,7 +159,7 @@ If both the ```_search``` and ```_filter``` query parameters are passed, both ar
 e.g.
 ```js
 https://api.opendatadsl.com/api/object/v1/m121:aggregations.movies
-  ?_search=title:scene
+  ?_search=title=scene
   &_filter=imdb.rating=gt(7)
   &_project=title,imdb.rating
   ```
@@ -186,7 +186,7 @@ Specify the ```_limit``` parameter with a number defining the number of items yo
 
 ```js
 https://api.opendatadsl.com/api/object/v1/public
-    ?_search=location:netherlands
+    ?_search=location=netherlands
     &_limit=20
 ```
 
@@ -195,7 +195,7 @@ Specify the ```_skip``` parameter with a number defining the number of items you
 
 ```js
 https://api.opendatadsl.com/api/object/v1/public
-    ?_search=location:netherlands
+    ?_search=location=netherlands
     &_limit=20
     &_skip=20
 ```
@@ -218,7 +218,7 @@ An example of search, project, limit, skip and sort
 
 ```js
 https://api.opendatadsl.com/api/object/v1/public
-  ?_search=location:netherlands
+  ?_search=location=netherlands
   &_project=name,location
   &_limit=20
   &_skip=60
