@@ -4,19 +4,20 @@ sidebar_position: 8
 title: Data Identities 🆕
 description: Map OpenDataDSL data items to the identifiers used by downstream systems
 tags:
-  - data_management
-  - identity
-  - integration
-  - topics
+- data_management
+- identity
+- integration
+- topics
 ---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 # Data Identities
 
-Data Identities solve the problem of mismatched identifiers between OpenDataDSL and the downstream systems you push data into. Each data item — timeseries, curve, Smart Curve, matrix, or event — can carry a set of named identities that map it to the IDs used by other systems, so the receiving application always gets the reference it expects.
-
 ## The Problem
 
-When you push data from OpenDataDSL to a downstream system via an automation, the item's OpenDataDSL ID is unlikely to match the ID that the target system uses. For example:
+When you push data from OpenDataDSL to a downstream system via a queue, webhook, or subscription, the item's OpenDataDSL ID is unlikely to match the ID that the target system uses. For example:
 
 - OpenDataDSL ID: `ICE.NBP_M.NBP:SETTLE`
 - SAP commodity ID: `GAS-UK-NBP-01`
@@ -26,7 +27,7 @@ Without identities, downstream applications must maintain their own mapping tabl
 
 ## The Solution
 
-The `identity` property on any data item holds a simple key-value map of system names to IDs. When the data is delivered to a downstream system via an automation, the identity map travels with it, so the receiving application can look up its own identifier directly from the payload.
+The `identity` property on any data item holds a simple key-value map of system names to IDs. When the data is delivered to a downstream system, the identity map travels with it, so the receiving application can look up its own identifier directly from the payload.
 
 ```
 data item
@@ -40,9 +41,28 @@ The identity property is fully dynamic — you define the system names yourself,
 
 ---
 
+## Supported Types
+
+Identities can be added to the following data item types:
+
+| Type | Description |
+|------|-------------|
+| `TimeSeries` | Regular time series |
+| `SmartTimeSeries` | Derived / calculated time series |
+| `Curve` | Forward curve |
+| `SmartCurve` | Derived / calculated forward curve |
+| `CurveSeries` | Series of curves |
+| `EventTimeSeries` | Time series of events |
+| `EventCurve` | Curve of events |
+
+---
+
 ## Adding Identities
 
 ### Smart Curve
+
+<Tabs>
+<TabItem value="odsl" label="ODSL">
 
 ```js
 sc = SmartCurve("AAA_IDENTITY:CURVE", "BASE*1.1")
@@ -54,7 +74,34 @@ AAA_IDENTITY.SCURVE = sc
 save AAA_IDENTITY
 ```
 
+</TabItem>
+<TabItem value="rest" label="REST">
+
+```json
+POST https://api.opendatadsl.com/api/object/v1
+Authorization: Bearer {{token}}
+
+{
+  "_id": "AAA_IDENTITY",
+  "SCURVE": {
+    "_type": "VarSmartCurve",
+    "expression": "BASE*1.1",
+    "input": "AAA_IDENTITY:CURVE",
+    "_identity": {
+      "molecule": "C2",
+      "sap": "S2"
+    }
+  }
+}
+```
+
+</TabItem>
+</Tabs>
+
 ### TimeSeries
+
+<Tabs>
+<TabItem value="odsl" label="ODSL">
 
 ```js
 ts = TimeSeries("BUSINESS")
@@ -66,23 +113,83 @@ MY_OBJECT.PRICE = ts
 save MY_OBJECT
 ```
 
-### Curve
+</TabItem>
+<TabItem value="rest" label="REST">
 
-```js
-eombus = ExpiryCalendar(BusinessCalendar())
-eombus.addRule("go to the end of the previous month")
-ondate = CurveDate(Date("2024-01-15"), eombus)
+```json
+POST https://api.opendatadsl.com/api/object/v1
+Authorization: Bearer {{token}}
 
-c = Curve(ondate)
-c.identity.molecule = "FWD-MOL-01"
-c.identity.bloomberg = "NBPGBP Comdty"
-
-MY_OBJECT = Object()
-MY_OBJECT.FORWARD = c
-save MY_OBJECT
+{
+  "_id": "MY_OBJECT",
+  "PRICE": {
+    "_type": "VarTimeSeries",
+    "calendar": "BUSINESS",
+    "_identity": {
+      "molecule": "TS-MOL-01",
+      "sap": "GAS-UK-TS-01"
+    }
+  }
+}
 ```
 
+</TabItem>
+</Tabs>
+
+### Curve
+
+<Tabs>
+<TabItem value="odsl" label="ODSL">
+
+```js
+ondate = CurveDate(Date("2026-03-02"), "#REOMHENG")
+c = Curve(ondate)
+c.add("M01", 1.4)
+c.add("M02", 2.2)
+c.add("M03", 3.3)
+c.identity.molecule = "C1"
+c.identity.sap = "S1"
+
+AAA_IDENTITY = Object()
+AAA_IDENTITY.FORWARD = c
+save AAA_IDENTITY
+```
+
+</TabItem>
+<TabItem value="rest" label="REST">
+
+```json
+POST https://api.opendatadsl.com/api/object/v1
+Authorization: Bearer {{token}}
+
+{
+  "_id": "AAA_IDENTITY",
+  "FORWARD": {
+    "_type": "VarCurve",
+    "ondate": {
+      "curveDate": "2024-01-15",
+      "expiryCalendar": "#REOMHENG"
+    },
+    "contracts": [
+      {"tenor": "M01", "value": 1.4},
+      {"tenor": "M02", "value": 2.2},
+      {"tenor": "M03", "value": 3.3}
+    ],    
+    "_identity": {
+      "molecule": "FWD-MOL-01",
+      "bloomberg": "NBPGBP Comdty"
+    }
+  }
+}
+```
+
+</TabItem>
+</Tabs>
+
 ### Smart TimeSeries
+
+<Tabs>
+<TabItem value="odsl" label="ODSL">
 
 ```js
 st = SmartTimeSeries("MY_BASE_TS:PRICE", "BASE*1.05")
@@ -94,6 +201,30 @@ MY_OBJECT.DERIVED = st
 save MY_OBJECT
 ```
 
+</TabItem>
+<TabItem value="rest" label="REST">
+
+```json
+POST https://api.opendatadsl.com/api/object/v1
+Authorization: Bearer {{token}}
+
+{
+  "_id": "MY_OBJECT",
+  "DERIVED": {
+    "_type": "VarSmartTimeSeries",
+    "input": "MY_BASE_TS:PRICE",
+    "expression": "BASE*1.05",
+    "_identity": {
+      "sap": "DERIVED-SAP-ID",
+      "etrm": "ETRM-REF-99"
+    }
+  }
+}
+```
+
+</TabItem>
+</Tabs>
+
 :::note
 The system names you use as keys — `sap`, `molecule`, `bloomberg`, `etrm` — are entirely up to you. Use names that are meaningful to your team and consistent across your data objects.
 :::
@@ -102,7 +233,8 @@ The system names you use as keys — `sap`, `molecule`, `bloomberg`, `etrm` — 
 
 ## Reading Identities
 
-You can read back an identity from a saved data item using standard property access:
+<Tabs>
+<TabItem value="odsl" label="ODSL">
 
 ```js
 // Read the full identity map
@@ -113,38 +245,175 @@ print item.identity
 print item.identity.sap
 ```
 
+</TabItem>
+<TabItem value="rest" label="REST">
+
+```js
+// Read the full data item — identity is included in the response
+GET https://api.opendatadsl.com/api/data/v1/private/MY_OBJECT:SCURVE
+Authorization: Bearer {{token}}
+```
+
+</TabItem>
+</Tabs>
+
+---
+
+## Searching Using an Identity
+
+You can search for data items by matching against an identity value using the `find` command:
+
+<Tabs>
+<TabItem value="odsl" label="ODSL">
+
+```js
+ts = find ${data} where _identity.molecule="C1"
+```
+
+</TabItem>
+<TabItem value="rest" label="REST">
+
+```js
+GET https://api.opendatadsl.com/api/data/v1/private?_filter={"_identity.molecule":"C1"}
+Authorization: Bearer {{token}}
+```
+
+</TabItem>
+</Tabs>
+
+This returns all data items where the `molecule` identity key equals `"C1"`, regardless of their OpenDataDSL ID. This is particularly useful when you know the downstream system's identifier but not the native OpenDataDSL path.
+
+---
+
+## Retrieving a TimeSeries by Identity
+
+You can retrieve a time series directly using an identity value as the lookup key:
+
+<Tabs>
+<TabItem value="odsl" label="ODSL">
+
+```js
+ts1 = ${data:"private.identity.molecule"/"test"}
+```
+
+</TabItem>
+<TabItem value="rest" label="REST">
+
+```js
+GET https://api.opendatadsl.com/api/data/v1/private.identity.molecule/test
+Authorization: Bearer {{token}}
+```
+
+</TabItem>
+</Tabs>
+
+The path format is `"private.identity.<key>"/"<value>"`, where:
+- `<key>` is the identity system name (e.g. `molecule`, `sap`)
+- `<value>` is the identifier you are looking up
+
+---
+
+## Retrieving a Curve by Identity
+
+You can retrieve a curve using an identity value, with an optional `_ondate` parameter to specify the curve date:
+
+<Tabs>
+<TabItem value="odsl" label="ODSL">
+
+```js
+c1a = ${data:"private.identity.molecule"/"C1","_ondate=2026-03-02"}
+```
+
+</TabItem>
+<TabItem value="rest" label="REST">
+
+```js
+GET https://api.opendatadsl.com/api/data/v1/private.identity.molecule/C1?_ondate=2026-03-02
+Authorization: Bearer {{token}}
+```
+
+</TabItem>
+</Tabs>
+
+The same `"private.identity.<key>"/"<value>"` path format applies. Add `_ondate=<date>` to retrieve the curve as of a specific date.
+
 ---
 
 ## Updating Identities
 
-To update or add an identity on an existing data item, retrieve the object, set the new value, and save:
+
+<Tabs>
+<TabItem value="odsl" label="ODSL">
+
+To update or add an identity on an existing data item, fetch the raw data item, set the new value, and save it back:
 
 ```js
+// Fetch the data item with raw flag to preserve identity data
+obj = ${object:"AAA_IDENTITY", "_raw=true"}
+
 // Add or update a single identity
-obj = ${object:"AAA_IDENTITY"}
-SCURVE = ${data:"AAA_IDENTITY:SCURVE","_raw=true"}
-SCURVE.identity.bloomberg = "NEW-BLOOMBERG-ID"
-obj.SCURVE = SCURVE
+obj.SCURVE.identity.bloomberg = "NEW-BLOOMBERG-ID"
 save obj
 ```
 
-To remove an identity key, call the remove method:
+</TabItem>
+<TabItem value="rest" label="REST">
+
+To add/update an identity key, use the `identity` function with the `PUT` action:
+
+```json
+PUT https://api.opendatadsl.com/api/data/v1/private?_function=identity
+Authorization: Bearer {{token}}
+
+{
+  "action":"PUT",
+  "data": [
+      "_id":"AAA_IDENTITY:SCURVE",
+      "bloomberg":"NEW-BLOOMBERG-ID"  
+  ]
+}
+```
+
+</TabItem>
+</Tabs>
+
+<Tabs>
+<TabItem value="odsl" label="ODSL">
+
+To remove an identity key, use the `.remove()` method:
 
 ```js
-obj = ${object:"AAA_IDENTITY"}
-SCURVE = ${data:"AAA_IDENTITY:SCURVE","_raw=true"}
-SCURVE.identity.remove("bloomberg")
-obj.SCURVE = SCURVE
+obj = ${object:"AAA_IDENTITY", "_raw=true"}
+obj.SCURVE.identity.remove("bloomberg")
 save obj
 ```
+
+</TabItem>
+<TabItem value="rest" label="REST">
+
+To remove an identity key, use the `identity` function with the `DELETE` action:
+
+```json
+PUT https://api.opendatadsl.com/api/data/v1/private?_function=identity
+Authorization: Bearer {{token}}
+
+{
+  "action":"DELETE",
+  "_id": ["AAA_IDENTITY:SCURVE"],
+  "identity":["bloomberg"]
+}
+```
+
+</TabItem>
+</Tabs>
 
 ---
 
 ## Identities in Downstream Delivery
 
-When an automation delivers data to a queue, webhook, or email target, the `identity` map is included in the payload. The receiving system can read its own key directly, with no external mapping table required.
+When a subscription delivers data to a queue, webhook, or script target, the `_identity` map is included in the message payload. The receiving system can read its own key directly, with no external mapping table required.
 
-### Example automation payload (JSON)
+### Example queue message payload (JSON)
 
 ```json
 {
@@ -158,19 +427,20 @@ When an automation delivers data to a queue, webhook, or email target, the `iden
 }
 ```
 
-### Reading the identity in a transformer script
+### Reading the identity in a receiving script
 
-When an automation uses a transformer (via the `@transformer` property), the script can access the identity directly:
+If your subscription uses a Script target, you can access the identity directly:
 
 ```js
-// item is the delivered data item
+// input.data contains the delivered data item
+item = input.data
 sapId = item.identity.sap
 print "Delivering to SAP with ID: " + sapId
 ```
 
 ### Reading the identity in a Mustache template
 
-If your automation target uses a Mustache template to format the payload, you can reference identities using standard Mustache syntax:
+If your subscription uses an Email, Webhook, or Queue target with a Mustache template, reference identities using standard Mustache syntax:
 
 ```html
 <p>SAP ID: {{identity.sap}}</p>
@@ -181,44 +451,60 @@ If your automation target uses a Mustache template to format the payload, you ca
 
 ## Multiple Data Items on One Object
 
-A single master data object often holds several data items, each with their own identities. Each identity map is independent — different data items on the same object can map to different downstream IDs:
+A single master data object often holds several data items, each with their own identities:
+
+<Tabs>
+<TabItem value="odsl" label="ODSL">
 
 ```js
-POWER_PLANT = Object()
-POWER_PLANT.name = "Hinkley Point C"
+MY_OBJECT = Object()
 
-// The forward curve has an ETRM identity
-fwd = SmartCurve("EEX.DE_POWER_M:SETTLE", "BASE*1.0")
-fwd.identity.etrm = "HPC-FWD-001"
-fwd.identity.sap = "PWR-HPC-FWD"
-POWER_PLANT.FORWARD_CURVE = fwd
+ts = TimeSeries("BUSINESS")
+ts.identity.molecule = "TS-MOL-01"
+ts.identity.sap = "GAS-UK-TS-01"
+MY_OBJECT.PRICE = ts
 
-// The generation timeseries has a different ETRM identity
-gen = TimeSeries("DAILY")
-gen.identity.etrm = "HPC-GEN-TS"
-POWER_PLANT.GENERATION = gen
+c = Curve(ondate)
+c.identity.molecule = "FWD-MOL-01"
+c.identity.bloomberg = "NBPGBP Comdty"
+MY_OBJECT.FORWARD = c
 
-save POWER_PLANT
+save MY_OBJECT
 ```
 
----
+</TabItem>
+<TabItem value="rest" label="REST">
 
-## Supported Data Types
+```json
+PUT https://api.opendatadsl.com/api/object/v1
+Authorization: Bearer {{token}}
 
-The `identity` property is supported on all data item types that can be stored as a property on a master data object:
+{
+  "_id": "MY_OBJECT",
+  "PRICE": {
+    "_type": "VarTimeSeries",
+    "calendar": "BUSINESS",
+    "_identity": {
+      "molecule": "TS-MOL-01",
+      "sap": "GAS-UK-TS-01"
+    }
+  },
+  "FORWARD": {
+    "_type": "VarCurve",
+    "ondate": "2024-01-15",
+    "_identity": {
+      "molecule": "FWD-MOL-01",
+      "bloomberg": "NBPGBP Comdty"
+    }
+  }
+}
+```
 
-| Data Type | Supported |
-|-|-|
-| TimeSeries | ✅ |
-| SmartTimeSeries | ✅ |
-| EventTimeSeries | ✅ |
-| Curve | ✅ |
-| SmartCurve | ✅ |
-| EventCurve | ✅ |
-| CurveSeries | ✅ |
-| Matrix | ✅ |
+</TabItem>
+</Tabs>
 
----
+Each data item carries its own independent identity map, so downstream systems receiving either item can resolve their own identifier without any additional configuration.
+
 
 ## Further Reading
 

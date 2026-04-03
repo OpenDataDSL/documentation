@@ -3,6 +3,6 @@
   "position": 12,
   "link": {
     "type": "generated-index",
-    "description": "The OpenDataDSL platform has an almost endless number of possibilities, this section guides you through a series of topics aimed at helping you understand if the platform can satisfy your requirements."
+    "description": "A guided set of topics to help you evaluate whether OpenDataDSL meets your requirements — covering core concepts, onboarding, security, data discovery, loading and extracting data, auditing, dataset monitoring, Smart Data, and building custom extensions."
   }
 }

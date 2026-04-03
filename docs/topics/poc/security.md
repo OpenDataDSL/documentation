@@ -2,24 +2,30 @@
 slug: /poc/security
 title: Security
 description: Detailed instructions for setting up authentication and authorisation
-sidebar_position: 2
+sidebar_position: 3
 tags:
 - poc
 - security
 - policy
 ---
 
-## Authorization
+# Security
 
-Users are authenticated using Azure AD for SSO.
-All users logging in from the same Azure AD tenant will share the same private data.
+This page explains how authentication and authorisation work in OpenDataDSL, and how to configure access policies for your users.
 
 ## Authentication
-Access to any data in the OpenDataDSL platform is governed by security policies.
 
-### Changing the default policy
-By default, all users can read/write and delete everything in your own **private** database.
-The default **ManageAllPrivateData** policy can be edited to only include users that you want to have full access, this can be done using ODSL code as follows:
+Users are authenticated using Azure Active Directory (Azure AD) single sign-on. All users logging in from the same Azure AD tenant automatically share the same private data environment.
+
+## Authorisation
+
+Access to data in OpenDataDSL is governed by **policies**. A policy defines which users can perform which actions on which data. Policies are created and managed using ODSL code.
+
+### Default policy
+
+By default, all users in your tenant have full read, write, and delete access to everything in your private database. This is controlled by the built-in `ManageAllPrivateData` policy.
+
+To restrict full access to specific users, edit the policy and replace the wildcard membership with named email addresses:
 
 ```js
 ManageAllPrivateData = Policy()
@@ -32,10 +38,9 @@ ManageAllPrivateData.setFullAccess()
 save ManageAllPrivateData
 ```
 
-Replace the members with the actual email addresses of the users you want to allow full access.
+### Granting read-only access to all users
 
-### Adding a read all policy
-You can also add a new policy which allows all users to read all private data as follows:
+To allow all users to read private data without being able to modify it, create a new policy with read-only access and a wildcard member (`"*"`):
 
 ```js
 ReadAllPrivateData = Policy()
@@ -47,45 +52,46 @@ ReadAllPrivateData.addMember("*")
 save ReadAllPrivateData
 ```
 
-### Denying access to certain datasets
-You can add a condition on a policy that narrows the policy to only data that matches the condition, e.g.
+### Denying access to specific datasets
+
+Use a condition on a policy to restrict access to data matching specific criteria. Setting `deny = true` turns the policy into a deny rule:
 
 ```js
 DenyAccessToArgusData = Policy()
 DenyAccessToArgusData.description = "Deny all access to Argus data"
 DenyAccessToArgusData.condition = "source = 'ARGUS'"
 DenyAccessToArgusData.source = "private"
+DenyAccessToArgusData.service = "object"
 DenyAccessToArgusData.deny = true
 DenyAccessToArgusData.setFullAccess()
-DenyAccessToArgusData.service = "object"
 DenyAccessToArgusData.addMember("user1@company.com")
 save DenyAccessToArgusData
 ```
 
-Setting the **deny = true** property disallows access to the data defined by the policy - in this case **source = "ARGUS"**.
+### Restricting access to public data
 
-### Access to public data
-By default, all your users have read-only access to public data.
-You cannot create a policy that allows anything other than read access to pulbic data, but you can restrict the public data that your users are allowed to read by adding a restrictive policy, e.g.
+By default, all users have read-only access to public data. You cannot grant write access to public data, but you can restrict which public datasets your users can see using a deny policy with a condition:
 
 ```js
-ReadEntsoe = Policy()
-ReadEntsoe.description = "Restrict access to ENTSOE data"
-ReadEntsoe.source = "public"
-ReadEntsoe.service = "*"
-ReadEntsoe.addAction("read")
-ReadEntsoe.addMember("*")
-ReadEntsoe.condition = "source = 'ENTSOE'"
-ReadEntsoe.deny = true
-save ReadEntsoe
+RestrictEntsoe = Policy()
+RestrictEntsoe.description = "Restrict access to ENTSOE data"
+RestrictEntsoe.source = "public"
+RestrictEntsoe.service = "*"
+RestrictEntsoe.addAction("read")
+RestrictEntsoe.addMember("*")
+RestrictEntsoe.condition = "source = 'ENTSOE'"
+RestrictEntsoe.deny = true
+save RestrictEntsoe
 ```
 
-### Accounts data
-There is some data in the Accounts source that you might want to allow access to:
+## Accounts Data Policies
 
-#### Queues
+Some platform features — queues and metrics — are managed through a separate `_ACCOUNTS` source and require their own policies.
 
-Allow the management of message queues
+### Queues
+
+Allow specific users to manage message queues:
+
 ```js
 ManageQueues = Policy()
 ManageQueues.description = "Manage Queues"
@@ -96,30 +102,10 @@ ManageQueues.setFullAccess()
 save ManageQueues
 ```
 
-#### Subscriptions
+### Metrics
 
-Allow the management of subscriptions and subscription items
-```js
-ManageSubscriptions = Policy()
-ManageSubscriptions.description = "Manage Subscriptions"
-ManageSubscriptions.source = "_ACCOUNTS"
-ManageSubscriptions.service = "subscription"
-ManageSubscriptions.addMember("user1@company.com")
-ManageSubscriptions.setFullAccess()
-save ManageSubscriptions
+Allow all users to read metrics:
 
-ManageSubscriptionItems = Policy()
-ManageSubscriptionItems.description = "Manage Subscription Items"
-ManageSubscriptionItems.source = "_ACCOUNTS"
-ManageSubscriptionItems.service = "subscriptionitem"
-ManageSubscriptionItems.addMember("user1@company.com")
-ManageSubscriptionItems.setFullAccess()
-save ManageSubscriptionItems
-```
-
-#### Metrics
-
-Allow reading metrics
 ```js
 AllowReadMetrics = Policy()
 AllowReadMetrics.description = "Allow reading metrics"
@@ -130,8 +116,23 @@ AllowReadMetrics.addAction("read")
 save AllowReadMetrics
 ```
 
-## Further reading
+## Automations Policy
+
+Automations are stored under the standard `private` source. To restrict which users can create, update, or delete automations, add a policy on the `automation` service:
+
+```js
+ManageAutomations = Policy()
+ManageAutomations.description = "Manage Automations"
+ManageAutomations.source = "private"
+ManageAutomations.service = "automation"
+ManageAutomations.addMember("user1@company.com")
+ManageAutomations.setFullAccess()
+save ManageAutomations
+```
+
+## Further Reading
+
 * [IT Security](/docs/it/security)
-* [Policy Variable](/docs/odsl/variable/policy)
-* [Policy REST Service](/docs/api/rest/service/policy)
-* [Conditions](/docs/odsl/command/conditions)
+* [Policy variable reference](/docs/odsl/variable/policy)
+* [Policy REST service](/docs/api/rest/service/policy)
+* [Conditions reference](/docs/odsl/command/conditions)

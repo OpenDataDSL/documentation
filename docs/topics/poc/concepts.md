@@ -8,47 +8,56 @@ tags:
 ---
 import Components from './_components.md';
 
-Get a greater understanding of everything OpenDataDSL
+# Concepts
 
-This section helps you to understand the basic concepts of what OpenDataDSL is, how it works and how it can help you.
+This section introduces the core concepts of OpenDataDSL — what it is, how it works, and the key components and terminology used throughout the platform.
 
 ## What is OpenDataDSL?
-OpenDataDSL is a concatenation of the 3 fundamental aspects of what the platform is:
 
-* **Open**
-  > OpenDataDSL is an open and transparent data management platform
-* **Data**
-  > Data management is the primary focus of the platform
-* **DSL**
-  > Domain Specific Language - ODSL is our 4GL language which is used throughout the platform
+The name OpenDataDSL reflects the three fundamental aspects of the platform:
 
-### Architecture
+* **Open** — an open and transparent data management platform
+* **Data** — data management is the primary focus
+* **DSL** — Domain Specific Language: ODSL is a fourth-generation language (4GL) used throughout the platform
+
+## Architecture
 
 The diagram below shows the functional architecture of the platform.
 
 ![](/img/poc/architecture.png)
 
-#### Architecture notes
+**Architecture notes:**
 
-* All the layers that not 'ON PREM' are based in the Microsoft Azure Cloud.
+* All layers except "ON PREM" run in the Microsoft Azure Cloud
 * All access to the platform is [secured using your own Azure Active Directory](security)
-* The process layer is handled by a scalable cluster of servers using Azure Batch
+* The process layer runs on a scalable cluster of Azure Batch servers
 
-### Data Location
-All data is stored in MongoDB Atlas - a cloud based data service.
+## Data Location
 
-There are 2 (sometimes more) sources for data:
-* **Public**
-  > This is data that is freely distributable and accessible by everyone who uses the platform
-* **Private**
-  > This is your own private data which is only accessible to users on your Azure AD tenant (your company)
+All data is stored in MongoDB Atlas, a cloud-based database service. Data falls into two categories:
 
-:::info Important
-Your proprietary private data is stored in your own dedicated database.
+* **Public** — freely distributable data accessible to all platform users
+* **Private** — your own data, accessible only to users on your Azure AD tenant
+
+:::info
+Your proprietary private data is stored in its own dedicated database, completely isolated from other tenants.
 :::
 
 ## Components and Terminology
-This section gives a brief summary of all the components and related terminology within OpenDataDSL.
+
+The section below summarises the key components and terminology used within OpenDataDSL.
 
 <Components />
 
+## Next Steps
+
+* [Getting Started](/docs/poc/getting-started) — sign in, onboard your company, and install the tools
+* [Security](/docs/poc/security) — configure access policies for your users
+* [Find Data](/docs/poc/find-data) — search and filter the data catalog
+* [Smart Data](/docs/poc/smart) — build derived curves and timeseries using expressions
+* [Loading Data](/docs/poc/loading-data) — ETL workflows, events, queues, and direct API writes
+* [Extracting Data](/docs/poc/extracting-data) — portal, Excel, API, automations, and reports
+* [Auditing](/docs/poc/auditing) — automatic audit trail, versioning, and rollback
+* [Dataset Monitoring](/docs/poc/dataset-monitoring) — completeness, quality, and timeliness tracking
+* [Extensions](/docs/poc/extensions) — build custom portal and Excel views
+* [Data Identities](/docs/odsl/dm/identities) — map data items to the IDs used by downstream systems
