@@ -5,6 +5,6 @@ title: Period Codes
 tags:
   - calendar
 ---
-import PeriodCode from '/docs/knowledge/period-codes.md'
+import PeriodCode from '/docs/reference/period-codes.md'
 
 <PeriodCode />
