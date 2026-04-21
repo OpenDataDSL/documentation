@@ -1,9 +1,0 @@
-{
-  "label": "Knowledgebase",
-  "position": 10,
-  "link": {
-    "type": "generated-index",
-    "description": "This section is used to provide FAQ style knowledge above specific codes and conventions used in OpenDataDSL."
-  }
-
-}
