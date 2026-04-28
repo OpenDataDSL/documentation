@@ -116,3 +116,8 @@ To delete a policy, you issue the delete command, e.g.
 ```js
 delete ${policy:"ReadExampleReports"}
 ```
+
+## Special Condition Variables
+You can use the following variables in conditions:
+
+* ```{me}``` - this will be replaced by the current users email, e.g. ```"owner = '{me}'"```
