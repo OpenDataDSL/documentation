@@ -59,6 +59,35 @@ Here `BASE` is the primary input (`SOURCE_A`) and `VAR1` is the second input (`S
 You can define as many named variables as your expression requires. Each is added as a property on the SmartCurve using `ref("data", "OBJECT_ID:PROPERTY")`.
 :::
 
+### Dynamic Ondate for Named Variables
+
+By default, a named variable input uses the same ondate as the Smart Curve being built. You can override this with a dynamic ondate suffix on the data reference:
+
+| Syntax | Description |
+|---|---|
+| `ref("data", "OBJECT.PROP:SETTLE")` | Uses the same ondate as the Smart Curve (default) |
+| `ref("data", "OBJECT.PROP:SETTLE:-ONDATE")` | Uses the last available ondate **up to and including** the Smart Curve ondate |
+| `ref("data", "OBJECT.PROP:SETTLE:<ONDATE")` | Uses the last available ondate **up to but not including** the Smart Curve ondate |
+
+The `-ONDATE` suffix is useful when you want to ensure the most recent available version of a curve is used, even if it was built on a prior date. The `<ONDATE` suffix retrieves the **previous** available curve — i.e. strictly before the current ondate.
+
+A common use case for `<ONDATE` is computing a **daily price change per delivery tenor** — by retrieving yesterday's curve as a named variable and spreading it against today's:
+
+```js
+CHANGE_OBJECT = Object()
+
+// BASE = today's curve, VAR1 = most recent curve strictly before today
+sc = SmartCurve("ICE.NBP_M:SETTLE", "BASE-VAR1")
+sc.VAR1 = ref("data", "ICE.NBP_M:SETTLE:<ONDATE")
+
+CHANGE_OBJECT.DAILY_CHANGE = sc
+save ${object:CHANGE_OBJECT}
+```
+
+:::tip
+Using `<ONDATE` for a spread against the prior curve gives you a clean day-on-day price change curve across all forward tenors — useful for P&L explain, risk, and market commentary reporting.
+:::
+
 ---
 
 ## Bootstrapping Configuration

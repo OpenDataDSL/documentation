@@ -151,6 +151,31 @@ save ${object:SPREAD_OBJECT}
 
 `BASE` maps to the `base` parameter, `VAR1` maps to `other`, and the weight `0.75` is passed as a literal in the expression.
 
+### Using Dynamic Ondate Inputs
+
+Named variable inputs use the same ondate as the Smart Curve by default. You can append a dynamic ondate suffix to the data reference to retrieve a different version of the curve:
+
+- `:-ONDATE` — the last available ondate up to and including the Smart Curve ondate
+- `:<ONDATE` — the last available ondate strictly before the Smart Curve ondate
+
+This is particularly powerful when writing spread functions, as you can pass today's curve as `BASE` and the previous day's curve as a named variable — giving you a day-on-day price change across all tenors:
+
+```js
+CHANGE_OBJECT = Object()
+
+// BASE = today, VAR1 = previous available curve
+sc = SmartCurve("ICE.NBP_M:SETTLE", "timespread(BASE, VAR1)")
+sc.VAR1 = ref("data", "ICE.NBP_M:SETTLE:<ONDATE")
+sc.script = "mycompany\curve-scripts"
+
+CHANGE_OBJECT.DAILY_CHANGE = sc
+save ${object:CHANGE_OBJECT}
+```
+
+:::tip
+Using `<ONDATE` as the input to a spread function gives you a clean day-on-day price change curve across all forward tenors — useful for P&L explain, risk reporting, and daily market commentary.
+:::
+
 ---
 
 :::warning
