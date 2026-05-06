@@ -36,7 +36,7 @@ gb = ${object:"#LOC_GBR"}
 
 ## Built-in Variable Types
 
-### [Scalar](Scalar)
+### [Scalar](/docs/odsl/variable/Scalar)
 A scalar is a single value of either string, boolean (true/false) or numeric
 
 ### [Date](Date)

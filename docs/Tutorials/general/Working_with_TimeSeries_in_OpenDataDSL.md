@@ -575,7 +575,7 @@ Results:
 
 #### Regression
 
-Some TimeSeries functions produce an object with multiple resultant values, and example of this is the [simpleRegression](/docs/odsl/function/statistics) function.
+Some TimeSeries functions produce an object with multiple resultant values, and example of this is the [simpleRegression](/docs/odsl/function/functions-statistics#simpleregressiondata) function.
 
 ```js
 // Create a TimeSeries

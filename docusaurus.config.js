@@ -9,7 +9,6 @@ module.exports = {
   url: 'https://doc.opendatadsl.com',
   baseUrl: '/',
   onBrokenLinks: 'warn',
-  onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
   organizationName: 'OpenDataDSL', // Usually your GitHub org/user name.
   projectName: 'documentation', // Usually your repo name.

@@ -1,0 +1,8 @@
+{
+  "label": "Automation Targets",
+  "position": 1,
+  "link": {
+    "type": "generated-index",
+    "description": "Information about targets that automations can use"
+  }
+}
