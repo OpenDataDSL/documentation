@@ -5,16 +5,39 @@ sidebar_position: 10
 
 Release Notes
 =============
-
-## Latest release (Mar-2026-c)
-
-The following bug fixes and improvements are included into the release:
+## Latest release (May-2026)
 
 > **Build details:**  
-> **Server:** Build 3651
-> **Client:** 1.7.46106.829
-> **Excel:** 1.7.20260312.1350  
-> **Visual Studio Code extension for OpenDataDSL:** 0.16.4
+> **Server:** 3714 Build 
+> **Client:** 1.7.46148.907
+> **Excel:** 1.7.20260506.1200
+> **Visual Studio Code extension for OpenDataDSL:** 0.16.5
+
+The following new feature, bug fixes and improvements are included into the maintenance release:
+
+### New Features
+- Alternate identities for e.g. integrations with other systems
+
+### Bug Fixes
+- Automations are not being run when a report is run
+- Setting a calendar on a SmartTimeSeries should scale the result to that calendar
+- Page size in Master data table list
+- Fix security issue with common data on client tenant
+- Refresh object embedded reports in Excel is not working
+- On workbook reopen, the Excel Add-in does not honour previously applied filters
+
+
+### Improvements
+- Performance improvements related to events and event aggregations
+- Policy/Acess Rights/Sudo process in Dataset Monitoring
+- Add support for creating event curves from event timeseries
+- Support security policies for custom object
+- Unit conversion: Added support for heat rate
+
+
+## Mar-2026_03
+
+The following bug fixes and improvements are included into the release:
 
 ### Bug Fixes
 - Email Automations Not Received — resolved an issue where emails triggered by automations were not being delivered to recipients
@@ -37,7 +60,7 @@ The following bug fixes and improvements are included into the release:
 
 
 
-## Mar-2026-b
+## Mar-2026_02
 
 This minor release resolves certain issues experienced by some users and introduces a few improvements.
 
@@ -50,7 +73,7 @@ This minor release resolves certain issues experienced by some users and introdu
 - Email subscription – date included in subject line
 - Support for non-ODSL script processes
 
-## Mar-2026
+## Mar-2026_01
 
 This release introduces Fusion AI integration across the web portal, expands Excel Add-in capabilities, 
 and extends process execution to support generic command-line commands and non-ODSL scripts.
