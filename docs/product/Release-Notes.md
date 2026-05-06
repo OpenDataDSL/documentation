@@ -8,10 +8,10 @@ Release Notes
 ## Latest release (May-2026)
 
 > **Build details:**  
-> **Server:** 3714 Build 
-> **Client:** 1.7.46148.907
-> **Excel:** 1.7.20260506.1200
-> **Visual Studio Code extension for OpenDataDSL:** 0.16.5
+> - **Server:** 3714 Build 
+> - **Client:** 1.7.46148.907
+> - **Excel:** 1.7.20260506.1200
+> - **Visual Studio Code extension for OpenDataDSL:** 0.16.5
 
 The following new feature, bug fixes and improvements are included into the maintenance release:
 
