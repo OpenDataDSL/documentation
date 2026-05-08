@@ -338,19 +338,6 @@
         "tags": ["Commodity", "Power"]
     },
     {
-        "type": "FREE",
-        "provider": "Gestore dei Mercati Energetici (GME)",
-        "providerType":"Exchange",
-        "logo": "ipex_gme.gif",
-        "dataset": "Power",
-        "text": "Italy PowerExchange  (IPEX) Power Futures",
-        "region": "Italy",
-        "start": "2021",
-        "frequency": "DAILY",
-        "link":"/docs/company/GME",
-        "tags": ["Commodity", "Power"]
-    },
-    {
         "type": "BYOL",
         "provider": "The Iberian Energy Derivatives Exchange (OMIP)",
         "providerType":"Exchange",
@@ -408,7 +395,7 @@
         "providerType":"Exchange",
         "logo": "tge.png",
         "dataset": "Power",
-        "text": "Power Futures",
+        "text": "Power Day Ahead Prices",
         "region": "Poland",
         "start": "2021",
         "frequency": "DAILY",
@@ -416,40 +403,14 @@
         "tags": ["Commodity", "Power"]
     },
     {
-        "type": "BYOL",
-        "provider": "Polish Power Exchange (TGE)",
-        "providerType":"Exchange",
-        "logo": "tge.png",
-        "dataset": "Natural Gas",
-        "text": "Natural Gas Futures",
-        "region": "Poland",
-        "start": "2021",
-        "frequency": "DAILY",
-        "link":"/docs/company/TGE",
-        "tags": ["Commodity", "Natural Gas"]
-    },
-    {
-        "type": "FREE",
-        "provider": "Gestore dei Mercati Energetici  (GME)",
-        "providerType":"Exchange",
-        "logo": "ipex_gme.gif",
-        "dataset": "Natural Gas",
-        "text": "Natural Gas DayAhead Prices",
-        "region": "Italy",
-        "start": "2021",
-        "frequency": "DAILY",
-        "link":"/docs/company/GME",
-        "tags": ["Commodity", "Natural Gas"]
-    },
-    {
         "type": "FREE",
         "provider": "European Network of Transmission System Operators (ENTSOE)",
         "providerType":"Transmission System Operators",
         "logo": "entsoe.svg",
         "dataset": "Power",
-        "text": "Power Generation, Load, Transmission, Balancing, Outages",
+        "text": "Transperancy Data - Power Generation, Load, Transmission, Balancing, Outages",
         "region": "Europe",
-        "start": "2021",
+        "start": "2024",
         "frequency": "DAILY",
         "link":"/docs/company/ENTSOE",
         "tags": ["Commodity", "Power"]
@@ -661,20 +622,7 @@
         "frequency": "DAILY",
         "link":"/docs/company/IEX",
         "tags": ["Commodity", "Power"]
-    },
-    {
-        "type": "FREE",
-        "provider": "Hellenic Energy Exchange (HENEX)",
-        "providerType":"Exchange",
-        "logo": "henex.png",
-        "dataset": "Power",
-        "text": "Power Day Ahead Prices",
-        "region": "Greece",
-        "start": "2022",
-        "frequency": "DAILY",
-        "link":"/docs/company/HENEX",
-        "tags": ["Commodity", "Power"]
-    },    
+    }, 
     {
         "type": "FREE",
         "provider": "Deutscher Wetterdienst (DWD)",
@@ -914,7 +862,7 @@
         "tags": ["Commodity", "Power"]
     },
     {
-        "type": "FREE",
+        "type": "BYOL",
         "provider": "Operatorul Pietei de Energie Electrica si Gaze Naturale (OPCOM)",
         "providerType":"Exchange",
         "logo": "opcom.jpg",
@@ -1047,7 +995,7 @@
     {
         "type": "FREE",
         "provider": "Energinet",
-        "providerType":"Public Agency",
+        "providerType":"Transmission System Operator",
         "logo": "energinet.png",
         "dataset": "Power",
         "text": "Power Day Ahead Prices,Imbalance Prices",
@@ -1063,59 +1011,7 @@
         "providerType":"Transmission System Operators",
         "logo": "tennet.png",
         "dataset": "Power",
-        "text": "Settlement prices & Settled Imbalance Volumes",
-        "region": "Netherlands",
-        "start": "2025",
-        "frequency": "QUARTERHOURLY",
-        "link":"/docs/company/TENNET",
-        "tags": ["Commodity", "Power"]
-    },
-        {
-        "type": "FREE",
-        "provider": "TenneT",
-        "providerType":"Transmission System Operators",
-        "logo": "tennet.png",
-        "dataset": "Power",
-        "text": "Volume of Settled aFFR and Emergency Capacity",
-        "region": "Netherlands",
-        "start": "2025",
-        "frequency": "QUARTERHOURLY",
-        "link":"/docs/company/TENNET",
-        "tags": ["Commodity", "Power"]
-    },
-        {
-        "type": "FREE",
-        "provider": "TenneT",
-        "providerType":"Transmission System Operators",
-        "logo": "tennet.png",
-        "dataset": "Power",
-        "text": "Measured Volume",
-        "region": "Netherlands",
-        "start": "2025",
-        "frequency": "QUARTERHOURLY",
-        "link":"/docs/company/TENNET",
-        "tags": ["Commodity", "Power"]
-    },
-        {
-        "type": "FREE",
-        "provider": "TenneT",
-        "providerType":"Transmission System Operators",
-        "logo": "tennet.png",
-        "dataset": "Power",
-        "text": "Bidding Price Ladder",
-        "region": "Netherlands",
-        "start": "2025",
-        "frequency": "QUARTERHOURLY",
-        "link":"/docs/company/TENNET",
-        "tags": ["Commodity", "Power"]
-    },
-            {
-        "type": "FREE",
-        "provider": "TenneT",
-        "providerType":"Transmission System Operators",
-        "logo": "tennet.png",
-        "dataset": "Power",
-        "text": "Balance Delta Prices",
+        "text": "Imbalance and Balancing Market Data",
         "region": "Netherlands",
         "start": "2025",
         "frequency": "QUARTERHOURLY",
@@ -1128,7 +1024,7 @@
         "providerType":"Transmission System Operators",
         "logo": "terna.png",
         "dataset": "Power",
-        "text": "Power generation, load, transmission, balancing",
+        "text": "Transperancy Data - Power generation, Load, Transmission, Balancing",
         "region": "Europe",
         "start": "2025",
         "frequency": "DAILY",
@@ -1141,7 +1037,7 @@
         "providerType":"Transmission System Operators",
         "logo": "ned.jpg",
         "dataset": "Power",
-        "text": "Power Generation Forecast Solar,Wind and Offshore Wind",
+        "text": "Transperancy Data - Power Generation Forecast Solar,Wind and Offshore Wind",
         "region": "Europe",
         "start": "2025",
         "frequency": "DAILY",
@@ -1154,7 +1050,7 @@
         "providerType":"Broker",
         "logo": "aem.jpg",
         "dataset": "Crudes,Fuel Oil",
-        "text": "Arrow Energy Markets M2M Forward Curves",
+        "text": "M2M Forward Curves",
         "region": "Europe",
         "start": "2025",
         "frequency": "DAILY",
@@ -1172,7 +1068,7 @@
         "start": "2019",
         "frequency": "Hourly",
         "link":"/docs/company/ELEXON",
-        "tags": ["Commodity", "Power"," NEW"]
+        "tags": ["Commodity", "Power"]
     },
     {
         "type": "FREE",
@@ -1185,7 +1081,7 @@
         "start": "2020",
         "frequency": "DAILY",
         "link":"/docs/data/fx#DNB_FX",
-        "tags": ["Financial", "Foreign Exchange"," NEW"]
+        "tags": ["Financial", "Foreign Exchange"]
     },
     {
         "type": "FREE",
@@ -1198,7 +1094,7 @@
         "start": "2020",
         "frequency": "DAILY",
         "link":"/docs/data/fx#NBR_FX",
-        "tags": ["Financial", "Foreign Exchange"," NEW"]
+        "tags": ["Financial", "Foreign Exchange"]
     },
         {
         "type": "FREE",
@@ -1206,28 +1102,15 @@
         "providerType":"Exchange",
         "logo": "henex.png",
         "dataset": "Power",
-        "text": "Power Imbalance Prices",
+        "text": "Power Day Ahead,Imbalance Prices",
         "region": "Greece",
         "start": "2022",
         "frequency": "DAILY",
         "link":"/docs/company/HENEX",
-        "tags": ["Commodity", "Power"," NEW"]
+        "tags": ["Commodity", "Power"]
     },
     {
-        "type": "FREE",
-        "provider": "Hellenic Energy Exchange (HENEX)",
-        "providerType":"Exchange",
-        "logo": "henex.png",
-        "dataset": "Power",
-        "text": "Power Imbalance Prices",
-        "region": "Greece",
-        "start": "2022",
-        "frequency": "DAILY",
-        "link":"/docs/company/HENEX",
-        "tags": ["Commodity", "Power"," NEW"]
-    },
-    {
-        "type": "FREE",
+        "type": "BYOL",
         "provider": "Operatorul Pietei de Energie Electrica si Gaze Naturale (OPCOM)",
         "providerType":"Exchange",
         "logo": "opcom.jpg",
@@ -1238,6 +1121,71 @@
         "frequency": "HOURLY",
         "link":"/docs/company/OPCOM",
         "releaseDate":"2024-02",
+        "tags": ["Commodity", "Power"]
+    },
+    {
+        "type": "BYOL",
+        "provider": "Gestore dei Mercati Energetici (GME)",
+        "providerType":"Exchange",
+        "logo": "ipex_gme.gif",
+        "dataset": "Power",
+        "text": "Power Day Ahead and Imbalance Prices",
+        "region": "Italy",
+        "start": "2025",
+        "frequency": "DAILY",
+        "link":"/docs/company/GME",
+        "tags": ["Commodity", "Power"," NEW"]
+    },
+        {
+        "type": "BYOL",
+        "provider": "Polish Power Exchange (TGE)",
+        "providerType":"Exchange",
+        "logo": "tge.png",
+        "dataset": "Power",
+        "text": "Power Fixing Prices",
+        "region": "Poland",
+        "start": "2021",
+        "frequency": "DAILY",
+        "link":"/docs/company/TGE",
+        "tags": ["Commodity", "Power"," NEW"]
+    },
+    {
+        "type": "BYOL",
+        "provider": "Baringa",
+        "providerType":"3rd Party Provider",
+        "logo": "baringa.png",
+        "dataset": "Power",
+        "text": "Power Forecast Prices",
+        "region": "Global",
+        "start": "2025",
+        "frequency": "DAILY",
+        "link":"/docs/company/BARINGA",
+        "tags": ["Commodity", "Power"," NEW"]
+    },
+        {
+        "type": "BYOL",
+        "provider": "PEXAPARK",
+        "providerType":"3rd Party Provider",
+        "logo": "pexapark.jpg",
+        "dataset": "Power",
+        "text": "Power Forward Prices",
+        "region": "Global",
+        "start": "2025",
+        "frequency": "DAILY",
+        "link":"/docs/company/PEXAPARK",
+        "tags": ["Commodity", "Power"," NEW"]
+    },
+    {
+        "type": "FREE",
+        "provider": "National Energy System Operator(NESO)",
+        "providerType":"Transmission System Operator",
+        "logo": "neso.jpg",
+        "dataset": "Power",
+        "text": "Power Ancillary Prices",
+        "region": "Great Britain",
+        "start": "2025",
+        "frequency": "DAILY",
+        "link":"/docs/company/NESO",
         "tags": ["Commodity", "Power"," NEW"]
     }
 ]
