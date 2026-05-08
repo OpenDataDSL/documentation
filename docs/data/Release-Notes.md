@@ -1,4 +1,22 @@
-## Latest release Feb-2026
+## Latest release Apr-2026
+This release mainly includes the addition of following data feeds:
+
+* Baringa Energy Markets Capture Price and Discount Curve, Inflation Rates
+* Pexapark Power Price Forward Curves
+* TGE Power Day Ahead and Fixing1 and Fixing2 Prices
+* NESO Great Britain Power Ancillary Updates
+* HUPX Hungary Power Day Ahead Prices 
+* CROPEX Croatia Power Daya Ahead Prices
+
+## Mar-2026
+This release mainly includes the addition of following data feeds:
+* PSE Poland Power Balance Market Updates
+* GME Power Day Ahead ,Intraday Prices
+* Enrginet Day Ahead and Imbalance Prices
+* National Bank of Serbia FX Rates 
+* National Bank of Poland FX Rates
+
+## Feb-2026
 This release mainly includes the addition of following data feeds:
 * Elexon Great Britain Power Imbalance Prices
 * Energinet Denmark Power Imbalance and Day-Ahead Prices
@@ -9,7 +27,7 @@ This release mainly includes the addition of following data feeds:
 This release mainly includes the addition of following data feeds:
 * OPCOM Romania Power Day-Ahead and Intraday Prices
 * HENEX Greece Power Day-Ahead and Intraday Prices
-* ENTSOE Imbalance Prices and Volumes and Contracted Reserves added with more regions
+* ENTSOE Imbalance Prices and Volumes,Activated Energy, Contracted Reservesand Wind Solar added with more regions
 
 ## Dec-2025
 This release mainly includes the addition of following data feeds:
