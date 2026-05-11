@@ -8,9 +8,9 @@ Release Notes
 ## Latest release (May-2026)
 
 > **Build details:**  
-> - **Server:** 3714 Build 
+> - **Server:** 3727 Build 
 > - **Client:** 1.7.46148.907
-> - **Excel:** 1.7.20260506.1200
+> - **Excel:** 1.7.20260511.1305
 > - **Visual Studio Code extension for OpenDataDSL:** 0.16.5
 
 The following new feature, bug fixes and improvements are included into the maintenance release:
@@ -26,7 +26,6 @@ The following new feature, bug fixes and improvements are included into the main
 - Refresh object embedded reports in Excel is not working
 - On workbook reopen, the Excel Add-in does not honour previously applied filters
 
-
 ### Improvements
 - Performance improvements related to events and event aggregations
 - Policy/Acess Rights/Sudo process in Dataset Monitoring
@@ -34,6 +33,11 @@ The following new feature, bug fixes and improvements are included into the main
 - Support security policies for custom object
 - Unit conversion: Added support for heat rate
 
+### Hotfixes
+- Fix for Curve Management Export Groups and Build Groups
+- Fix to check for an error message in the report to send a failed automation
+- Added support for variable names for skip, limit, sample and bucketAuto bucket size
+- Throw exception when updating VarCurveDates if not an existing VarCurveDates
 
 ## Mar-2026_03
 
