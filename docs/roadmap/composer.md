@@ -76,6 +76,7 @@ This means you can use a composition as a design surface to build and refine der
 You can create a composition in three ways:
 
 - **Web Portal** — use the Composer UI to build your composition interactively, adding and configuring elements through a guided interface
+- **Fusion AI** — describe what you need in natural language and let the built-in AI assistant create the composition for you
 - **ODSL code** — define a composition programmatically using the OpenDataDSL scripting language, giving you full control and the ability to automate creation
 - **REST API** — integrate composition creation into external systems and workflows using the platform's REST API
 
@@ -84,6 +85,7 @@ You can create a composition in three ways:
 Once created, a composition can be viewed and consumed through several interfaces:
 
 - **Web Portal** — view and explore compositions in an interactive table format
+- **Fusion AI** — ask questions in natural language to read, analyse, and summarise composition data without writing any code
 - **Excel Add-in** — retrieve composition data directly into Excel for further analysis
 - **ODSL code** — query and work with composition data in scripts
 - **REST API** — access composition data programmatically from external applications
