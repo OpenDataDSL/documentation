@@ -10,11 +10,14 @@ tags:
 
 # Composer
 
+Build structured, multi-column tables of curve and timeseries data.
+
+Composer is a powerful OpenDataDSL feature that lets you build structured data tables — called **compositions** — by combining multiple data sources, expressions, and references into a single, unified view.
+
 :::info
 Expected date for MVP: Mid June 2026
 :::
 
-Composer is a powerful OpenDataDSL feature that lets you build structured data tables — called **compositions** — by combining multiple data sources, expressions, and references into a single, unified view.
 
 ## What Is a Composition?
 
