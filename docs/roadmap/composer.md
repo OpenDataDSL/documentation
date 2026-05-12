@@ -65,14 +65,11 @@ Elements can be individually configured to control how they appear across the pl
 
 This per-element display configuration lets you tailor the same composition for different audiences — for example, showing a full set of inputs and derived columns in the table while surfacing only the final outputs in a chart.
 
-## ComposedCurve and ComposedTimeSeries
+## ComposedCurve
 
-Any individual element within a composition can be **promoted to a standalone data object** in the platform. When you do this, the element becomes either a:
+Any individual element within a composition can be **promoted to a standalone ComposedCurve** in the platform. This turns the element into a first-class forward curve object that can be referenced, automated, and shared like any other curve in the system.
 
-- **ComposedCurve** — a standalone forward curve derived from a composition element
-- **ComposedTimeSeries** — a standalone timeseries derived from a composition element
-
-This means you can use a composition as a design surface to build and refine derived data, then publish individual elements as first-class platform objects that can be referenced, automated, and shared like any other curve or timeseries.
+This means you can use a composition as a design surface to build and refine derived curves, then publish the results as standalone platform objects that participate in automations, downstream reports, and further compositions.
 
 ## How Compositions Are Created
 
@@ -90,6 +87,7 @@ Once created, a composition can be viewed and consumed through several interface
 - **Excel Add-in** — retrieve composition data directly into Excel for further analysis
 - **ODSL code** — query and work with composition data in scripts
 - **REST API** — access composition data programmatically from external applications
+- **Cloud Connect** — expose compositions as Parquet files so that BI tools such as Databricks, Snowflake, and others can read them directly
 
 ## Why Use Composer?
 
@@ -99,7 +97,8 @@ Composer is designed for situations where you need to:
 - **Build derived analytics** — spreads, ratios, blended prices — without writing custom loaders
 - **Normalise data automatically** — bring together data in different currencies, units, or timezones and let the platform handle the conversion
 - **Centralise related data** into a single structure that is easy to share and consume across the web portal, Excel, and APIs
-- **Promote calculated outputs** to standalone platform objects that can participate in automations, reports, and downstream processes
+- **Promote calculated outputs** to standalone ComposedCurve objects that can participate in automations, reports, and downstream processes
+- **Feed BI platforms directly** — use Cloud Connect to expose compositions as Parquet files, making them immediately consumable by Databricks, Snowflake, and other analytics tools without any intermediate ETL
 
 :::tip
 Because a composition is built on the report infrastructure, it benefits from full automation and versioning out of the box. You can schedule a composition to regenerate whenever its underlying data updates, and retain a complete dated history of every snapshot.
