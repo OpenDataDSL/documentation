@@ -28,10 +28,20 @@ Each element in a composition can be one of the following:
 | Element Type | Description |
 |---|---|
 | **Raw data** | A direct reference to an existing curve or timeseries by its ID |
-| **Expression** | A calculated value derived from other elements using their unique element IDs |
+| **Expression** | A powerful calculated value derived from other elements using their unique element IDs — see below |
 | **Reference to another composition** | An element sourced from a different composition, allowing compositions to be built on top of one another |
 
-Every element has a **unique element ID** that is used to reference it within expressions. This means you can define one element as a raw data input and then use its ID in a formula-based element — for example, calculating a spread or a ratio — keeping your composition self-contained and easy to maintain.
+Every element has a **unique element ID** that is used to reference it within expressions. This means you can define one element as a raw data input and then use its ID in a formula-based element, keeping your composition self-contained and easy to maintain.
+
+### Expressions
+
+Expressions are one of the most powerful features in Composer. They can range from something as simple as a spread between two elements:
+
+```
+BRENT - WTI
+```
+
+All the way through to complex statistical calculations using any of the **hundreds of built-in functions** available in the platform — covering areas such as averaging, interpolation, regression, and curve analytics. If the built-in functions don't cover your needs, you can write **fully custom logic in ODSL code**, giving you complete flexibility to implement any calculation your use case demands.
 
 This makes Composer ideal for building analytical tables such as spread analyses, benchmarks, blended curves, or comparison views — all without duplicating underlying data.
 
