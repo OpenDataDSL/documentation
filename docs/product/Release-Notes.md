@@ -5,13 +5,30 @@ sidebar_position: 10
 
 Release Notes
 =============
-## Latest release (May-2026)
 
-> **Build details:**  
-> - **Server:** 3727 Build 
-> - **Client:** 1.7.46148.907
+## Latest release (May-2026_II)
+
+> **Build details:**
+> - **Server:** 3740 Build
+> - **Client:** 1.8.46162.1122
 > - **Excel:** 1.7.20260511.1305
-> - **Visual Studio Code extension for OpenDataDSL:** 0.16.5
+> - **Visual Studio Code extension for OpenDataDSL:** 0.16.6
+
+### New Features
+- Add support for functions asQuarterHours() and asHalfHours() to split a contract into its quarter hours and half hours
+- Add support for creating user groups for use with policies (in the Web Portal under Account Management->Organization->Security)
+
+### Bug Fixes
+- Fix for eventtime curve tenor naming
+- Fix forwardfill timezone issue
+- Fix for missing values stored in simple json objects
+- Fix for users in groups not getting deleted
+
+### Improvement
+- Ensure curves with no valid contracts don't get saved
+- Allow to create/delete api tokens in the Web Portal->Account Management->Personal
+
+## May-2026
 
 The following new feature, bug fixes and improvements are included into the maintenance release:
 
