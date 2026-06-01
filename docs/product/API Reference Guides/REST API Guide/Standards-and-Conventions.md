@@ -21,6 +21,20 @@ In order to use the REST API, you need to have a valid ID or ACCESS token and pa
 Authorization: Bearer <IDTOKEN>
 ```
 
+## API Versioning
+All OpenDataDSL REST API endpoints include a version identifier in the URL path, for example:
+
+```https://api.opendatadsl.com/api/object/v1/public```
+
+The version segment — currently `v1` — is embedded directly in the path rather than as a header or query parameter, making it explicit and easy to identify at a glance. 
+This approach ensures that any existing integrations continue to work exactly as expected, even if future versions of the API are introduced. 
+
+The platform is currently on **v1** across all services, and there are no planned breaking changes that would necessitate a new version. 
+Should a `v2` ever become necessary in the future, both versions would be supported in parallel for a transition period, giving you ample time to migrate without disruption. 
+
+For now, all documented examples and SDK calls use `v1`, and you can rely on this remaining stable.
+
+
 ## Multiple Environments
 
 By default all your requests will be routed to your **production** environment, but in order to use a different configured user environment, you need to pass an **x-odsl-environment** header, e.g.
