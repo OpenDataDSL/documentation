@@ -10,14 +10,7 @@ tags:
 
 # Composer
 
-Build structured, multi-column tables of curve and timeseries data.
-
 Composer is a powerful OpenDataDSL feature that lets you build structured data tables — called **compositions** — by combining multiple data sources, expressions, and references into a single, unified view.
-
-:::info
-Expected date for MVP: Mid June 2026
-:::
-
 
 ## What Is a Composition?
 
@@ -25,11 +18,11 @@ A **composition** is a table of data where each column is called an **element**.
 
 Each element in a composition can be one of the following:
 
-| Element Type | Description |
-|---|---|
-| **Raw data** | A direct reference to an existing curve or timeseries by its ID |
-| **Expression** | A powerful calculated value derived from other elements using their unique element IDs — see below |
-| **Reference to another composition** | An element sourced from a different composition, allowing compositions to be built on top of one another |
+| Element Type | `_type` | Description |
+|---|---|---|
+| **Data** | `CompositionDataElement` | A direct reference to an existing curve or timeseries by its ID |
+| **Expression** | `CompositionExpressionElement` | A powerful calculated value derived from other elements using their unique element IDs — see below |
+| **Link** | `CompositionLinkElement` | An element sourced from a different composition, allowing compositions to be built on top of one another |
 
 Every element has a **unique element ID** that is used to reference it within expressions. This means you can define one element as a raw data input and then use its ID in a formula-based element, keeping your composition self-contained and easy to maintain.
 
@@ -86,12 +79,110 @@ This means you can use a composition as a design surface to build and refine der
 
 ## How Compositions Are Created
 
-You can create a composition in three ways:
+You can create a composition in four ways:
 
 - **Web Portal** — use the Composer UI to build your composition interactively, adding and configuring elements through a guided interface
 - **Fusion AI** — describe what you need in natural language and let the built-in AI assistant create the composition for you
 - **ODSL code** — define a composition programmatically using the OpenDataDSL scripting language, giving you full control and the ability to automate creation
 - **REST API** — integrate composition creation into external systems and workflows using the platform's REST API
+
+The example below creates a composition with three elements: a day-ahead electricity price (data element), a derived premium (expression element), and a gas price linked from another composition (link element).
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs groupId="create-composition">
+<TabItem value="odsl" label="ODSL" default>
+
+```js
+comp = Composition()
+comp.id = "IBEX"
+comp.composition.options.index = "curve"
+comp.composition.options.calendar = "#REOD"
+
+DA = comp.composition.addDataElement()
+DA.caption = "DA"
+DA.id = "#IBEX.EL.BG.HOURLY.DA:PRICE:-ONDATE"
+
+PREMIUM = comp.composition.addExpressionElement()
+PREMIUM.caption = "Premium"
+PREMIUM.expression = "DA * 1.1"
+
+GAS = comp.composition.addLinkElement()
+GAS.caption = "GAS"
+GAS.element = "TEST_COMPOSITION/gas"
+
+save comp
+```
+
+</TabItem>
+<TabItem value="rest" label="REST API">
+
+```
+POST https://api.opendatadsl.com/api/reportconfig/v1
+```
+
+```json
+{
+  "_id": "IBEX",
+  "_type": "VarReportConfiguration",
+  "reportType": "Composition",
+  "template": "#composition-default-template",
+  "enabled": false,
+  "hideExcel": false,
+  "hideList": false,
+  "properties": {
+    "composition": {
+      "elements": [
+        {
+          "_id": "DA",
+          "_type": "CompositionDataElement",
+          "caption": "DA",
+          "id": "#IBEX.EL.BG.HOURLY.DA:PRICE",
+          "options": {
+            "conversion": { "factors": {} },
+            "display": { "chart": true, "excel": true, "grid": true },
+            "index": "curve"
+          }
+        },
+        {
+          "_id": "PREMIUM",
+          "_type": "CompositionExpressionElement",
+          "caption": "Premium",
+          "expression": "DA * 1.1",
+          "options": {
+            "conversion": { "factors": {} },
+            "display": { "chart": true, "excel": true, "grid": true },
+            "index": "curve"
+          }
+        },
+        {
+          "_id": "GAS",
+          "_type": "CompositionLinkElement",
+          "caption": "GAS",
+          "element": "TEST_COMPOSITION/gas",
+          "options": {
+            "conversion": { "factors": {} },
+            "display": { "chart": true, "excel": true, "grid": true },
+            "index": "curve"
+          }
+        }
+      ],
+      "options": {
+        "calendar": "#REOD",
+        "conversion": {},
+        "display": { "chart": true, "excel": true, "grid": true },
+        "index": "curve"
+      }
+    }
+  },
+  "tags": [],
+  "cacheOptions": { "type": "OnDemand", "store": "private" }
+}
+```
+
+</TabItem>
+</Tabs>
 
 ## How Compositions Are Accessed
 
@@ -103,6 +194,141 @@ Once created, a composition can be viewed and consumed through several interface
 - **ODSL code** — query and work with composition data in scripts
 - **REST API** — access composition data programmatically from external applications
 - **Cloud Connect** — expose compositions as Parquet files so that BI tools such as Databricks, Snowflake, and others can read them directly
+
+## Viewing a Composition
+
+When a composition is retrieved, it is returned as a `VarReport` containing both the configuration and the evaluated data. The `data` section contains two arrays:
+
+- **`data`** — the rows of the composition table, each identified by a tenor or period ID (e.g. `H01[+02]`, `GM01`) with a value per element column
+- **`elements`** — metadata for each element describing its caption, currency, units, and timezone after normalisation
+
+### Retrieving the Configuration
+
+To fetch the report configuration for a composition:
+
+<Tabs groupId="view-composition">
+<TabItem value="odsl" label="ODSL" default>
+
+```js
+rc = ${reportconfig:"IBEX"}
+```
+
+</TabItem>
+<TabItem value="rest" label="REST API">
+
+```
+GET https://api.opendatadsl.com/api/reportconfig/v1/private/IBEX
+```
+
+</TabItem>
+</Tabs>
+
+### Running a Composition
+
+To trigger a composition to run and generate a dated report:
+
+<Tabs groupId="run-composition">
+<TabItem value="odsl" label="ODSL" default>
+
+```js
+run report "IBEX:2026-06-10"
+```
+
+</TabItem>
+<TabItem value="rest" label="REST API">
+
+```
+GET https://api.opendatadsl.com/api/report/v1/private/IBEX:2026-06-10?_run=true
+```
+
+</TabItem>
+</Tabs>
+
+### Retrieving a Report
+
+To fetch an already-generated report for a specific date:
+
+<Tabs groupId="get-report">
+<TabItem value="odsl" label="ODSL" default>
+
+```js
+r = ${report:"IBEX:2026-06-10"}
+```
+
+</TabItem>
+<TabItem value="rest" label="REST API">
+
+```
+GET https://api.opendatadsl.com/api/report/v1/private/IBEX:2026-06-10
+```
+
+</TabItem>
+</Tabs>
+
+The returned report data for the `IBEX` composition on `2026-06-10` looks like the following. Notice how the three elements — `DA`, `PREMIUM`, and `GAS` — use different tenors reflecting the different index types of each element: the DA and PREMIUM elements are hourly curves (`H01[+02]` through `H24[+02]`), while the GAS link element carries forward curve tenors (`GWD`, `GM01`, `GQ01`, etc.):
+
+| Tenor | DA | PREMIUM | GAS |
+|---|---|---|---|
+| H01[+02] | 100.55 | 110.605 | |
+| H02[+02] | 95.59 | 105.149 | |
+| H03[+02] | 96.83 | 106.513 | |
+| H08[+02] | 265.96 | 292.556 | |
+| H19[+02] | 355.79 | 391.369 | |
+| H20[+02] | 367.91 | 404.701 | |
+| … | … | … | |
+| GWD | | | 48.13 |
+| GBOM | | | 49.08 |
+| GM01 | | | 49.14 |
+| GQ01 | | | 49.27 |
+| GY02 | | | 37.33 |
+| … | | | … |
+
+The element metadata in the response confirms the normalisation that was applied to each element:
+
+| Element | Caption | Currency | Units | Timezone |
+|---|---|---|---|---|
+| DA | DA | EUR | MWH | Europe/Amsterdam |
+| PREMIUM | Premium | | | UTC |
+| GAS | GAS | EUR | MWH | Europe/Madrid |
+
+:::note
+Each element only populates the columns relevant to its own tenor set. Rows where an element has no value are simply absent from that column, keeping the output clean and sparse rather than filled with nulls.
+:::
+
+### Error Handling
+
+If an element fails to load its data or evaluate its expression, the error is reported per element in the `elements` array rather than failing the entire composition. This means a partial result is always returned — any elements that did resolve successfully will still contain their data.
+
+The `error` field on an element describes what went wrong:
+
+```json
+"elements": [
+{
+"_id": "DA",
+"caption": "DA",
+"error": "[404] data Not Found:  for date: 2026-06-10",
+"input": "#IBEX.EL.BG.HOURLY.DA:PRICE"
+},
+{
+"_id": "PREMIUM",
+"caption": "Premium",
+"error": "Unable to run expression: DA * 1.1"
+},
+{
+"_id": "GAS",
+"caption": "GAS",
+"currency": "EUR",
+"timezone": "Europe/Madrid",
+"units": "MWH"
+}
+]
+```
+
+In this example, `DA` failed because no data was found for the requested date. As a consequence, `PREMIUM` also failed because its expression `DA * 1.1` depends on `DA`. The `GAS` link element resolved successfully and its metadata is returned as normal.
+
+:::tip
+When troubleshooting a composition, always check the `elements` array first — it will tell you precisely which element failed and why, making it straightforward to identify whether the issue is a missing data source, a bad expression, or a broken link to another composition.
+:::
 
 ## Why Use Composer?
 
