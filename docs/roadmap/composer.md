@@ -51,7 +51,36 @@ This infrastructure means compositions are not just static tables — they are f
 
 ## Data Normalisation
 
-Each composition and each individual element can be configured with **currency, units, timezone, precision, and rounding method**. When these settings are present, the platform performs automatic conversion so that all elements in the composition are expressed consistently.
+Each composition and each individual element can be configured with **conversion options** that control how the underlying data is normalised. When these settings are present, the platform performs automatic conversion so that all elements in the composition are expressed consistently.
+
+The available conversion options are:
+
+| Option | Description |
+|---|---|
+| `currencyProvider` | The currency provider to use, or `null` to use the default |
+| `currency` | The currency to convert to, or `null` to use the default |
+| `units` | The units to convert to, or `null` to use the default |
+| `timezone` | The timezone to convert to, or `null` to use the default |
+| `calendar` | The calendar to use, or `null` to use the default |
+| `observed` | The observed convention to use, or `null` to use the default |
+| `precision` | The number of decimal places to round to, or `null` to use the default |
+| `rounding` | The rounding method to use, or `null` to use the default |
+| `fill` | The fill method to use for missing values, or `null` to use the default |
+
+Any option left as `null` simply falls through to the next level in the precedence order, rather than forcing a value.
+
+### Conversion Factors
+
+The `factors` object within `conversion` supplies the inputs needed for certain unit conversions where a simple lookup isn't enough — for example, converting between volume and mass, or between mass and energy. The available factors are:
+
+| Factor | Description |
+|---|---|
+| `density` | The density to use when converting between volume and mass |
+| `timefactor` | The time factor to use when converting between energy and power |
+| `heatRate` | The heat rate to use when converting between mass and energy |
+| `custom` | A custom factor for conversions not covered by the standard options |
+
+As with the other conversion options, factors can be set at the element or composition level and follow the same precedence order — an element-level factor overrides a composition-level one.
 
 The configuration follows a clear precedence order:
 
@@ -59,17 +88,16 @@ The configuration follows a clear precedence order:
 Element settings  →  Composition settings  →  Inherent properties of the raw data
 ```
 
-Element-level settings take highest priority and override the composition-level defaults, which in turn override whatever currency, units, or timezone is native to the underlying raw data. This means you can define sensible defaults at the composition level and selectively override them for individual elements that need different treatment.
+Element-level settings take highest priority and override the composition-level defaults, which in turn override whatever currency, units, timezone, calendar, or precision is native to the underlying raw data. This means you can define sensible defaults at the composition level — for example, a single calendar or timezone shared by most elements — and selectively override individual options for the elements that need different treatment, such as a single element that should remain in its native currency or use a different rounding method.
 
 ## Display Configuration
 
-Elements can be individually configured to control how they appear across the platform's viewing surfaces:
+Every element always appears as a column in the tabular view. Beyond that, elements can be individually configured to control how they appear across the platform's other viewing surfaces:
 
-- **Table** — control whether an element appears as a column in the tabular view
 - **Chart** — control whether an element is plotted, along with element-specific chart configuration such as series type, colour, and axis assignment
 - **Excel Add-in** — control whether an element is included when the composition is retrieved in Excel
 
-This per-element display configuration lets you tailor the same composition for different audiences — for example, showing a full set of inputs and derived columns in the table while surfacing only the final outputs in a chart.
+This per-element display configuration lets you tailor the same composition for different audiences — for example, including a full set of inputs and derived columns in the table while surfacing only the final outputs in a chart.
 
 ## ComposedCurve
 
@@ -141,8 +169,7 @@ POST https://api.opendatadsl.com/api/reportconfig/v1
           "id": "#IBEX.EL.BG.HOURLY.DA:PRICE",
           "options": {
             "conversion": { "factors": {} },
-            "display": { "chart": true, "excel": true, "grid": true },
-            "index": "curve"
+            "display": { "chart": true, "excel": true }
           }
         },
         {
@@ -152,8 +179,7 @@ POST https://api.opendatadsl.com/api/reportconfig/v1
           "expression": "DA * 1.1",
           "options": {
             "conversion": { "factors": {} },
-            "display": { "chart": true, "excel": true, "grid": true },
-            "index": "curve"
+            "display": { "chart": true, "excel": true }
           }
         },
         {
@@ -163,15 +189,14 @@ POST https://api.opendatadsl.com/api/reportconfig/v1
           "element": "TEST_COMPOSITION/gas",
           "options": {
             "conversion": { "factors": {} },
-            "display": { "chart": true, "excel": true, "grid": true },
-            "index": "curve"
+            "display": { "chart": true, "excel": true }
           }
         }
       ],
       "options": {
         "calendar": "#REOD",
         "conversion": {},
-        "display": { "chart": true, "excel": true, "grid": true },
+        "display": { "chart": true, "excel": true },
         "index": "curve"
       }
     }
@@ -303,24 +328,24 @@ The `error` field on an element describes what went wrong:
 
 ```json
 "elements": [
-{
-"_id": "DA",
-"caption": "DA",
-"error": "[404] data Not Found:  for date: 2026-06-10",
-"input": "#IBEX.EL.BG.HOURLY.DA:PRICE"
-},
-{
-"_id": "PREMIUM",
-"caption": "Premium",
-"error": "Unable to run expression: DA * 1.1"
-},
-{
-"_id": "GAS",
-"caption": "GAS",
-"currency": "EUR",
-"timezone": "Europe/Madrid",
-"units": "MWH"
-}
+  {
+    "_id": "DA",
+    "caption": "DA",
+    "error": "[404] data Not Found:  for date: 2026-06-10",
+    "input": "#IBEX.EL.BG.HOURLY.DA:PRICE"
+  },
+  {
+    "_id": "PREMIUM",
+    "caption": "Premium",
+    "error": "Unable to run expression: DA * 1.1"
+  },
+  {
+    "_id": "GAS",
+    "caption": "GAS",
+    "currency": "EUR",
+    "timezone": "Europe/Madrid",
+    "units": "MWH"
+  }
 ]
 ```
 
