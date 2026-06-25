@@ -6,13 +6,30 @@ sidebar_position: 10
 Release Notes
 =============
 
-## Latest release (May-2026_II)
+## Latest release June-2026
 
 > **Build details:**
-> - **Server:** 3740 Build
-> - **Client:** 1.8.46162.1122
+> - **Server:** 3773 Build
+> - **Client:** 1.9.46164.1200
 > - **Excel:** 1.7.20260511.1305
-> - **Visual Studio Code extension for OpenDataDSL:** 0.16.6
+> - **VS Code Extension for OpenDataDSL:** 0.16.8
+
+A minor release covering maintenance and operational updates.
+
+### Bug Fixes
+- Fixed a null pointer exception when retrieving version info for curve groups
+- Fixed handling of asQuarterHours() for quarter-hourly input contracts
+
+
+### Improvements
+- Added support for custom monthly and fortnightly calendars
+- Added support for updating secret values
+- Added support to restrict IP address ranges for specific tenants (backend)
+- Added support for field level security policies to restrict certain metadata fields (backend)
+- Improvements to smart curve expression editing (backend)
+
+
+## May-2026_II
 
 ### New Features
 - Add support for functions asQuarterHours() and asHalfHours() to split a contract into its quarter hours and half hours
@@ -27,6 +44,20 @@ Release Notes
 ### Improvement
 - Ensure curves with no valid contracts don't get saved
 - Allow to create/delete api tokens in the Web Portal->Account Management->Personal
+
+### Hotfixes
+- Fix for Curve Management Export Groups and Build Groups
+- Fix to check for an error message in the report to send a failed automation
+- Added support for variable names for skip, limit, sample and bucketAuto bucket size
+- Throw exception when updating VarCurveDates if not an existing VarCurveDates
+- Fix for retrieving event and data using find
+- Fix to generate the token in order to connect via the API
+- Simplification to curve builds, that can be initiated and run from various places, e.g. curve target, curve task
+- Validate curve contracts when using older ondates
+- Fix search parser bug and add support for searching named identities directly
+- Revert -ONDATE functionality and create it as -ABSOLUTE (The functionality when using -ABSOLUTE: 
+  - (1) Remove expired contracts and 
+  - (2) Recreate the contracts based on the current ONDATE and the absolute contract)
 
 ## May-2026
 
