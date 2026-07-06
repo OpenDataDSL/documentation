@@ -1,4 +1,17 @@
-## Latest release Apr-2026
+## Latest release June-2026
+This release mainly includes the addition of following data feeds:
+* Migration to EEX Group DataSource File Cloud
+* ELEXON Great Britain Power Market Index Prices reported by APX
+* TGE Poland Day Ahead Fixing I Prices shift to quarter-hourly granularity
+
+## May-2026
+This release mainly includes the addition of following data feeds:
+* National Bank of Poland Core Inflation Indices
+* Euribor Interest Rates
+* ENTSOE Energy Day Ahead Prices
+* ENTSOE Actual Generation per Production Type
+
+## Apr-2026
 This release mainly includes the addition of following data feeds:
 
 * Baringa Energy Markets Capture Price and Discount Curve, Inflation Rates
