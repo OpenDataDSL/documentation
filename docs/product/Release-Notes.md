@@ -6,13 +6,52 @@ sidebar_position: 10
 Release Notes
 =============
 
-## Latest release June-2026
+## Latest release July-2026
 
-> **Build details:**
-> - **Server:** 3773 Build
-> - **Client:** 1.9.46164.1200
-> - **Excel:** 1.7.20260511.1305
-> - **VS Code Extension for OpenDataDSL:** 0.16.8
+- **Server:** 3828 Build
+- **Client:** 1.10.46218.841
+- **Excel:** 1.10.20260715.1500
+- **VS Code Extension for OpenDataDSL:** 0.17.0
+
+This release adds the ability to visualize versions of curves and data, along with building and running curves directly in the Portal, a curve export automation target, custom calendars, and field-level security. It also includes numerous fixes to curve data display and consistency, plus improvements to the Excel Add-in and VS Code integration. 
+
+Moreover, we've laid the groundwork for Composer, a new upcoming feature that will let users build structured data tables, called compositions, by combining multiple data sources, expressions, and references into a single, unified view.
+
+### New Features
+- Curve Version Visualisation in the Portal
+- Curve dependency Insight Report - Flowchart using Mermaid
+- Run/build curves in the Portal - Curves can now be built and executed directly from the Portal, without requiring a script trigger
+- Curve export automation target
+- Added support for defining custom monthly and fortnightly calendars addressing client requests for non-standard period definitions
+- Introduced field-level security policies, allowing more granular control over which fields are visible/editable per user or role
+- Added the ability to run ODSL code directly in VS Code without starting a debug session
+
+### Enhancements
+- The data frequency slider now supports an hourly view for series that are natively quarter-hourly, making it easier to inspect data
+- Curves that have been substituted are now clearly labeled as "Substituted" in the Data tab view, improving traceability of curves
+
+### Bug Fixes
+- Fixed an issue where the UI displayed input curve contracts rather than the resulting output curve series
+- Fixed handling of curve contract output when the BASE input itself is a curve series (previously not supported/handled incorrectly)
+- Fixed incorrect data being displayed in Include/Exclude input selections
+- Fixed an issue where currency and unit display would inconsistently reflect a previously selected curve rather than the currently selected one
+- Fixed the curve chart rendering blank when input data was missing for the selected curve on a given date
+- CURVE BUILD - Fixed a build failure that occurred when curve names contained spaces
+- Fixed a null pointer exception when retrieving group version information for curve groups
+- Fixed an issue causing the Excel Add-in to render blank
+- Removed the _subtype filter from the query used to locate FX data in Excel
+- Fixed an issue where certain events could not be retrieved within the VS Code integration
+- Fixed an issue where automation was not updating the curve management dashboard
+
+
+
+
+
+
+
+
+
+## June-2026
 
 A minor release covering maintenance and operational updates.
 
