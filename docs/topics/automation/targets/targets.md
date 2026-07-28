@@ -60,6 +60,8 @@ Targets come in two kinds:
 | `curve` | Build a Smart Curve | Build and store a Smart Curve | [Curve Build Targets](/docs/topics/automations/targets/curve) |
 | `ecurve` | Build an Event Curve | Build an Event Curve and fire downstream automations | [Curve Build Targets](/docs/topics/automations/targets/curve) |
 | `timeseries` | Build a Smart TimeSeries | Build a Smart TimeSeries and fire downstream automations | [Smart TimeSeries Target](/docs/topics/automations/targets/timeseries) |
+| `curve_export` | Export a curve | Run a configured export group for a single curve | [Curve Export Targets](/docs/topics/automations/targets/curve-export) |
+| `curve_export_group` | Run a curve group export | Run a configured export group for all curves in the group | [Curve Export Targets](/docs/topics/automations/targets/curve-export) |
 
 ### Dataset
 
