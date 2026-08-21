@@ -30,7 +30,7 @@ This Python SDK for OpenDataDSL has the following features:
 * Communicate with the process execution API to give real-time updates
 * Build well-formed payloads for objects, curves, time series, computed/derived data, events, and report definitions with the `odsl.types` helpers, instead of hand-writing the JSON shapes yourself -- see [Building Payloads with odsl.types](./building-payloads.md)
 
-Check out our [demo repository](https://github.com/OpenDataDSL/odsl-python-sdk-demo) and the [runnable examples](https://github.com/OpenDataDSL/odsl-python-sdk/tree/master/examples) in the SDK repository for real-world usage.
+Check out our [demo repository](https://github.com/OpenDataDSL/odsl-python-sdk-demo) for runnable examples of real-world usage.
 
 ## Platform SDK
 

@@ -27,7 +27,7 @@ report = (
 odsl.update('reportconfig', 'private', report.data)
 ```
 
-This creates the report's *definition* -- what produces it, and on what schedule -- not a generated result; see [`report-example.py`](https://github.com/OpenDataDSL/odsl-python-sdk/blob/master/examples/report-example.py) and `Report`'s docstring in [`odsl/types.py`](https://github.com/OpenDataDSL/odsl-python-sdk/blob/master/odsl/types.py) for more.
+This creates the report's *definition* -- what produces it, and on what schedule -- not a generated result; see [`report-example.py`](https://github.com/OpenDataDSL/odsl-python-sdk-demo/blob/main/report-example.py) and `Report`'s docstring in [`odsl/types.py`](https://github.com/OpenDataDSL/odsl-python-sdk/blob/master/odsl/types.py) for more.
 
 ## The cron format
 

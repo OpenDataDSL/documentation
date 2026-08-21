@@ -53,4 +53,4 @@ smart_timeseries = (
 )
 ```
 
-See [`smart-types-example.py`](https://github.com/OpenDataDSL/odsl-python-sdk/blob/master/examples/smart-types-example.py) for the full walkthrough, and each class's docstring in [`odsl/types.py`](https://github.com/OpenDataDSL/odsl-python-sdk/blob/master/odsl/types.py) for the rest of their setters.
+See [`smart-types-example.py`](https://github.com/OpenDataDSL/odsl-python-sdk-demo/blob/main/smart-types-example.py) for the full walkthrough, and each class's docstring in [`odsl/types.py`](https://github.com/OpenDataDSL/odsl-python-sdk/blob/master/odsl/types.py) for the rest of their setters.
