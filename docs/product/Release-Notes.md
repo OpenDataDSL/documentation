@@ -6,12 +6,44 @@ sidebar_position: 10
 Release Notes
 =============
 
-## Latest release July-2026
+## Latest release September-2026
 
-- **Server:** 3828 Build
-- **Client:** 1.10.46218.841
-- **Excel:** 1.10.20260715.1500
+- **Server:** 20 Build
+- **Client:** 1.11.46267.1019
+- **Excel:** 1.11.20260902.1230
 - **VS Code Extension for OpenDataDSL:** 0.17.0
+
+
+This release introduces support for adding events using pandas DataFrames, making it easier for Python users to write custom data loaders, alongside a range of versioning improvements and fixes across the Portal and Excel Add-in.
+
+### New Features
+- Added support for adding events using pandas DataFrames, making it easier to write data loaders in Python.
+- Added support for multiple versions of Event Curves built from non-managed datasets.
+- Added the ability to update substituted curve data directly from the Excel Add-in.
+- Added an hourly option to the Data Frequency slider for quarter-hourly series.
+- Added support for custom FX conversion on Smart TimeSeries.
+
+### Enhancements
+- Improved scrolling behavior in the webapp and Excel Add-in.
+- Fixed chart zoom not resetting after changing the date range.
+- Improved list loading speed across Data, Smart Data, Reports, and other sections.
+- Automation setup: Showing public and private scripts for transformation.
+- Updated the Python SDK along with the documentation for [Python](/docs/category/python)
+
+### Bug Fixes
+- Fixed incorrect financial tenor sorting when multiple ondates are considered in a graph or table.
+- Fixed the "next date" field on the Data tab of Dataset Monitoring.
+- Fixed a display issue in the dataset status message ("NO ISSUES").
+- Fixed an issue locating the "Run Curve" button for building Smart Curves in the Portal.
+- Fixed an issue where viewing CurveSeries versions was not working.
+- Fixed several issues with displaying versions in the Portal.
+- Fixed an Excel RTD issue affecting CurveSeries.
+- Fixed a display mix-up between curve type and subtype in the Excel Add-in.
+
+
+
+## July-2026
+
 
 This release adds the ability to visualize versions of curves and data, along with building and running curves directly in the Portal, a curve export automation target, custom calendars, and field-level security. It also includes numerous fixes to curve data display and consistency, plus improvements to the Excel Add-in and VS Code integration. 
 
