@@ -134,6 +134,6 @@ save ${report:"TEST", "_range=from(2023-02-01)"}
 
 ```js
 TEST = ["Hello","World"]
-save ${report:REPORT.SKU}
-print ${report:"REPORT.SKU:L"}
+save ${report:TEST}
+print ${report:"TEST:L"}
 ```
