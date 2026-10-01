@@ -110,10 +110,17 @@ print rep.data
 save ${report:"REPORT.SKU"}
 ```
 
-### Get a saved report
+### Get a specific saved report
 
 ```js
-rep = ${report:"REPORT.SKU/~LATEST"}
+rep = ${report:"REPORT.SKU:2026-09-30"}
+print rep.data
+```
+
+### Get the latest saved report
+
+```js
+rep = ${report:"REPORT.SKU:L"}
 print rep.data
 ```
 
@@ -128,5 +135,5 @@ save ${report:"TEST", "_range=from(2023-02-01)"}
 ```js
 TEST = ["Hello","World"]
 save ${report:REPORT.SKU}
-print ${report:"REPORT.SKU/~LATEST"}
+print ${report:"REPORT.SKU:L"}
 ```
