@@ -1,0 +1,8 @@
+{
+  "label": "Fusion AI Playbooks",
+  "position": 1,
+  "link": {
+    "type": "generated-index",
+    "description": "Turn your team's processes into repeatable, governed AI workflows: what playbooks are, how to write them, the playbook syntax, and how to run them as tasks"
+  }
+}

@@ -53,6 +53,10 @@ module.exports = {
       //... other Algolia params
     },
   },
+  markdown: {
+    mermaid: true,
+  },
+  themes: ['@docusaurus/theme-mermaid'],
   presets: [
     [
       '@docusaurus/preset-classic',
