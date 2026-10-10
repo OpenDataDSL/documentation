@@ -19,7 +19,24 @@ The side panel has these tabs:
 | **Inputs** | Templates only: the inputs the template asks for (see [Templates](/docs/extensions/composer/templates)) |
 | **JSON** | The configuration that is saved, and the response of the last run |
 
-Edits mark the data as out of date. Select **Run**, or close the panel, to see them. Nothing is saved until you select **Save**.
+Edits mark the data as out of date. Select **Run**, or close the panel, to see them. Nothing is saved until you select **Save**, and you can undo any change until then (see [Undo and redo](#undo-and-redo)).
+
+---
+
+## Undo and redo
+
+**Undo** and **Redo**, beside **Save** in the toolbar, step back through your changes and forward again. Every change to a composition or template can be undone: adding, removing, moving or editing a column, the properties, the layout, the inputs of a template, and a change made by Fusion AI.
+
+| Keys | |
+|-|-|
+| **Ctrl+Z** | Undo |
+| **Ctrl+Y** or **Ctrl+Shift+Z** | Redo |
+
+- Typing in a field is one step, not one step per letter. While the cursor is in a text field, Ctrl+Z undoes your typing in that field as usual; click outside the field to undo whole changes.
+- Undoing back to the version you last saved clears **Unsaved changes**, and saving keeps the history, so you can still undo past a save.
+- Making a new change after undoing drops the changes you could have redone.
+- With the side panel closed, the data is shown again after each undo or redo; with it open, select **Run**.
+- The history is kept while the composition is open, up to the last 100 changes, and starts again when you open it.
 
 ---
 

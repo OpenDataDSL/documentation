@@ -54,6 +54,7 @@ The composition opens in the workspace: a toolbar, the chart and the table.
 | **Build** | Build and store the composition for a range of ondates (see [Builds, composed curves and automation](/docs/extensions/composer/builds-and-automation)) |
 | The three layout buttons | Show a table, a table and a chart, or a chart |
 | **Columns**, **Properties** | Open the side panel |
+| **Undo** and **Redo** | Step back through your changes, and forward again (Ctrl+Z, Ctrl+Y) |
 | **Save** | Save your changes |
 | **More** | Ask Fusion AI to change it, Export CSV, Clone, Move to, Save as template, Delete |
 
