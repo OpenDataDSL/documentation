@@ -1,0 +1,8 @@
+{
+  "label": "Composer",
+  "position": 1,
+  "link": {
+    "type": "generated-index",
+    "description": "Build your own analytic worksheets of curves and timeseries, called compositions, from ready-made templates or from scratch, and use them in the portal, in Excel, as curves and in automations."
+  }
+}

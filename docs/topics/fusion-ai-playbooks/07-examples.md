@@ -249,6 +249,32 @@ flowchart TD
 
 Note the first check uses `onFail: fail`: if a curve does not exist, trying again will not help, so the run stops and says which curve is missing.
 
+### Build a SMART curve
+
+`#smart-curve-builder` creates a SMART curve from the input curves, output id and logic you give it. It looks for the simplest way to express the logic first: plain arithmetic such as `BASE - VAR1`, then a built-in curve function or one of your own curve-build functions. Only if nothing existing fits does it hand over to the Code assistant to write a new curve function. After approval it saves the function as a `curve-build` script, creates the SMART curve, and reads the new curve back to check it builds.
+
+```mermaid
+flowchart TD
+    curves["1. Check the input and output curves"] --> c1{{"Check: inputs found, output id free<br/>fail"}}
+    c1 --> match["2. Look for an existing function"]
+    match --> c2{{"Check: expression or function spec complete<br/>retry twice"}}
+    c2 -- "retry" --> match
+    c2 -- "arithmetic or existing function" --> plan
+    c2 --> code["3. Write a new curve function (Code)"]
+    code --> c3{{"Check: validates, does the whole spec<br/>retry twice"}}
+    c3 -- "retry" --> code
+    c3 --> plan["4. Confirm the curve definition"]
+    plan --> gate(["Approval: the curve and any new function"])
+    gate -- "no new function" --> create
+    gate --> save["5. Save the curve function"]
+    save --> create["6. Create the SMART curve"]
+    create --> verify["7. Check the new curve"]
+    verify --> c4{{"Check: builds with sensible values<br/>fail"}}
+    style gate fill:#fff3cd,stroke:#d39e00
+```
+
+Each step can name its own assistant: the Curve assistant checks the curves and looks for a function, and the Code assistant writes a new one only when it is needed. One approval covers both the new function and the curve, so nothing is saved until the whole definition has been reviewed.
+
 ### Dataset onboarding
 
 `#dataset-onboarding` sets up monitoring for a dataset: completeness and quality checks from rules written in plain words, applied by a setup script that is run and then verified.
@@ -337,4 +363,5 @@ flowchart TD
 | Stop when retrying cannot help | Scheduled curve report, Dataset onboarding | A check with `onFail: fail` on facts about the data |
 | Skip work that is not needed | Late dataset investigation | A forward transition past the investigation step |
 | Optional email | Late dataset investigation, Month-end market summary | A transition to `end` when there are no recipients, before the step and gate that prepare the email |
+| Reuse before you build | Build a SMART curve | A step that looks for an existing function first, and a transition that skips the Code step when one fits |
 | Numbers checked against the source | Month-end market summary | A check whose rule compares the commentary with the figures step's table |
