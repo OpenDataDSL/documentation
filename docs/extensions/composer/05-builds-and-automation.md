@@ -90,6 +90,12 @@ A saved composition is built automatically when its data changes. Under Properti
 
 When you save the composition, the platform keeps one automation for it, named "When an input is updated, build Composition ...". It builds the composition for the ondate of the update, or for today when the update has no ondate (a timeseries), and stores it, just like **Build**. The automation is removed when the composition has no inputs, is not enabled, or has automatic builds turned off.
 
+Smart curves, event curves and timeseries trigger the build once they have been rebuilt, so the composition always reads their latest values. The exception is a smart curve cached **On demand** or **Never**: it is not rebuilt when its own inputs change, so the build is triggered by those inputs instead. An On demand smart curve that has already been read for an ondate keeps that cached curve, so for curves that feed compositions, **On dependencies** caching is the better choice.
+
+:::note
+Compositions saved before automatic builds were available get their automation the next time they are saved. An administrator can create them all at once with `GET /api/data/v1/private/fix?_function=fix&entity=compositionautomations`, rerun until `remaining` is 0 (`dryrun=true` reports without changing anything).
+:::
+
 ```mermaid
 sequenceDiagram
     participant D as Input curve
