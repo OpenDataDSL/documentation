@@ -7,6 +7,7 @@ tags:
 - remit
 - compliance
 - aiassistant
+sidebar_position: 3
 ---
 
 # REMIT Compliance Monitor - Documentation

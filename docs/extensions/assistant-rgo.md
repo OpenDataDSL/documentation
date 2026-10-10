@@ -7,6 +7,7 @@ tags:
 - renewables
 - generation
 - aiassistant
+sidebar_position: 4
 ---
 
 # Renewable Generation Optimizer - Documentation

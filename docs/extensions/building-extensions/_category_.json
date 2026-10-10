@@ -1,0 +1,8 @@
+{
+  "label": "Building extensions",
+  "position": 10,
+  "link": {
+    "type": "generated-index",
+    "description": "How extensions work, and examples of creating OpenDataDSL platform extensions"
+  }
+}
