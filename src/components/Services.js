@@ -313,17 +313,6 @@ var services = [
         ver: true
     },
     {
-        name: "Subscription",
-        link: "/docs/api/rest/service/subscription",
-        text: "The reosurce for managing your data subscriptions",
-        rw: true,
-        pub: false,
-        pri: true,
-        quota: false,
-        unres: false,
-        ver: false
-    },
-    {
         name: "Tenant",
         link: "/docs/api/rest/service/tenant",
         text: "The tenant resource is a service to view and record your company information and tenancy configuration",

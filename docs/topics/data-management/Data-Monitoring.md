@@ -112,7 +112,7 @@ The quality checks are always performed on the entire dataset, not just the most
 
 ### Check for lateness
 Periodically, a process runs that determines if any datasets are late according to the dataset feed time window.
-If a dataset is determined to be late (or missing), the dataset delivery score is updated and an alert record is sent to subscriptions.
+If a dataset is determined to be late (or missing), the dataset delivery score is updated and the dataset **late** (or **missing**) event is raised, which you can act on with an [automation](/docs/topics/automations/creating).
 The lateness check also checks the ```missing``` time if it is configured, if the current time is beyond the missing time and it is a smart loader, the smart loader is halted and manual intervention is required.
 
 ## Using the Dataset Monitoring API

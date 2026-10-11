@@ -33,7 +33,6 @@ The following active variable services can be used with the save command:
 * process    
 * queue    
 * script    
-* subscription 
 * task
 * transformer    
 * type    

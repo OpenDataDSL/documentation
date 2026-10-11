@@ -44,7 +44,7 @@ Every time a Smart Curve is built, the result is stored as a versioned snapshot 
 | **Consistency** | One definition, one result — no divergence between teams |
 | **Auditability** | Full version history with timestamps and build metadata |
 | **Flexibility** | Supports a wide range of curve-building methods |
-| **Integration** | Output curves are immediately available via API or subscription |
+| **Integration** | Output curves are immediately available via API or automation |
 
 ## Typical Use Cases
 

@@ -8,7 +8,7 @@ The OpenDataDSL Web Portal is accessed from [here](https://portal.opendatadsl.co
 It is the primary access point for OpenDataDSL where you can:
 * Monitor process executions
 * Browse for data, chart and export it
-* Create data subscriptions for integrating into your infrastructure
+* Create automations for integrating data into your infrastructure
 * Check audit logs
 * Log issues, enhancements and much more
 

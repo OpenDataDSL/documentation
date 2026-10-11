@@ -67,7 +67,7 @@ The metric entity contains the following information:
 |responseSize|The size of the response sent back to the caller in bytes|Long|
 |service|The name of the REST service called|String|
 |timestamp|The UTC timestamp of when the metric was taken|DateTime|
-|type|The type of metric - usually one of api, message, process, storage or subscription|String|
+|type|The type of metric - usually one of api, message, process or storage|String|
 |user|The user id or tenant id of the instigator of the metric|String|
 |value|The value of the metric|Long|
 

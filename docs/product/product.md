@@ -77,15 +77,13 @@ Below is a graphic showing some example integration capabilities.
 ## What can it do for me?
 
 
-You can use OpenDataDSL is many different ways, from simply subscribing to a set of pre-built data feeds and loading the data into your own on-premise database, right up to building a fully-managed data management system with hundreds of workflows and data integrations.
+You can use OpenDataDSL is many different ways, from simply taking a set of pre-built data feeds and loading the data into your own on-premise database, right up to building a fully-managed data management system with hundreds of workflows and data integrations.
 
 This section will introduce some scenarios and give you links in the documentation on how it works.
 
-### Subscribe to standard data feeds
+### Use standard data feeds
 
-If you simply want to take advantage of our world-class data feeds to pull data into your own database, start by [reading about subscriptions](/docs/tutorials/gettingstarted1) and the on-premise ODSL Feed Service.
-
-[![](/attachments/8978718/8913193.png)](/docs/tutorials/gettingstarted1)
+If you simply want to take advantage of our world-class data feeds to push data into your own systems, start by [reading about automations](/docs/topics/automations/creating), which can send data to a queue, webhook, blob storage or script whenever it is updated.
 
 ### Add custom data feeds
 

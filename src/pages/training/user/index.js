@@ -33,7 +33,7 @@ const TRACKS = [
     modules: [
       { number: '06', title: 'Dataset Monitoring Dashboard', description: 'Read the dataset monitoring dashboard — completeness, quality, and delivery status.', href: '/training/user/dataset-dashboard', tags: ['Portal', 'Monitoring'], status: 'coming-soon' },
       { number: '07', title: 'Reports & Dashboards', description: 'Create and share reports from platform data using the portal report builder.', href: '/training/user/reports', tags: ['Portal', 'Reports'], status: 'coming-soon' },
-      { number: '08', title: 'Alerts & Notifications', description: 'Subscribe to alerts for data delivery failures and quality issues.', href: '/training/user/alerts', tags: ['Portal', 'Alerts'], status: 'coming-soon' },
+      { number: '08', title: 'Alerts & Notifications', description: 'Get notified about data delivery failures and quality issues.', href: '/training/user/alerts', tags: ['Portal', 'Alerts'], status: 'coming-soon' },
     ],
   },
   {

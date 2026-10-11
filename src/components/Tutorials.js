@@ -21,9 +21,6 @@ export default function Tutorials(props) {
 <a href="/docs/tutorials/searching">Searching using the find command</a>
 <p>This guide details the syntax of the find command and shows many examples of using it</p>
 
-<a href="/docs/tutorials/localsqlserver">Create a custom local SQL Server loader</a>
-<p>This tutorial takes a detailed look at subscribing to some data in OpenDataDSL which will trigger a message to be sent to a queue. We will write a client side C# application to listen for those messages and load the data into a local SQL Server</p>
-
 <a href="/docs/tutorials/workingtimeseries">Working with TimeSeries in OpenDataDSL</a>
 <p>This tutorial explores a few aspects of TimeSeries in the OpenDataDSL language</p>
 

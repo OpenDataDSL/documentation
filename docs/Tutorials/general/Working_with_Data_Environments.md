@@ -44,7 +44,6 @@ The following entities are stored in each individual environment:
 * Report configurations and reports
 * Security Policies
 * Scripts
-* Subscriptions and subscription records
 * Transformers
 * Types
 * Workflows

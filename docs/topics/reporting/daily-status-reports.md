@@ -172,7 +172,7 @@ Each contributor saves only its own part of the data. A process, script or user 
 <Tabs groupId="tool">
 <TabItem value="odsl" label="OpenDataDSL" default>
 
-Create a variable with the same name as the report, add your part of the data and save it as a report. It is saved for today's ondate.
+Create a variable with the same name as the report, add your part of the data and save it as a report. It is saved for today's ondate, unless you set an `ondate` on the variable.
 
 ```js
 // In the data loading process
@@ -192,6 +192,16 @@ curve.message = "Missing settlement price for DEC-26"
 
 DAILY_STATUS = Object()
 DAILY_STATUS.curves = [curve]
+save ${report:DAILY_STATUS}
+```
+
+To update the report for a different day, set the `ondate` property. It is used to choose which day's report to update and is not saved as part of the data.
+
+```js
+// Add a late note to yesterday's report
+DAILY_STATUS = Object()
+DAILY_STATUS.ondate = "2026-10-09"
+DAILY_STATUS.notes = ["ICE.TTF rebuilt at 19:30 after the settlement price was published"]
 save ${report:DAILY_STATUS}
 ```
 
@@ -346,5 +356,4 @@ Authorization: Bearer {{token}}
 * `mergeUpdates` only applies to **Fixed** reports, it is ignored for all other report types
 * A report with `mergeUpdates` doesn't keep versions, the update log is the history of changes for the day
 * Each ondate is a separate report, so each day starts empty and the first update of the day creates it
-* Subscriptions on the report are triggered on every update, use an automation on the **success** event if you only want to send the report once
 * If a contributor sends data that isn't an object (e.g. a single list), the update log is stored on the report itself rather than in the data

@@ -93,9 +93,6 @@ The account management tool allows you to update your own personal details, your
 Data packages are pre-configured ETL processes for data sets you may want to load into your private repository.
 These data sets generally require you have have an account with the vendor or are not freely distributable.
 
-### Subscriptions
-You can manage your subscribed data here along with the targets of these subscriptions
-
 ### Queues
 You can view or manage you message queues here
 

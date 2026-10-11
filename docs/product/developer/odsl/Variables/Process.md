@@ -13,7 +13,7 @@ A process variable contains all the information to configure and run a process
 Process variables are used to configure a process that is run in the ODSL cloud. The process is run in 1 of 3 ways:
 
 *   Time triggered using a cron expression    
-*   Event triggered usually from a subscription    
+*   Event triggered from an automation    
 *   Manually triggered using the run command in ODSL or sending a REST API request
     
 

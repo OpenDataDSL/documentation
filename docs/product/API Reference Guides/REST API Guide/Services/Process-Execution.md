@@ -39,7 +39,7 @@ The process execution log contains the following information:
 |service|The service name of the process that was executed|String|
 |name|The name of the process|String|
 |environment|The data environment that the process was executed in|String|
-|trigger|How the process was triggered: 'scheduled' 'manual' 'subscription'|String|
+|trigger|How the process was triggered: 'scheduled' 'manual' 'automation'|String|
 |reason|The reason why the process was executed|String|
 |start|The timestamp of when the process started|String(DateTime)|
 |end|The timestamp of when the process completed|String(DateTime)|

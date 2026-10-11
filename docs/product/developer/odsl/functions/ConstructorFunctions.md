@@ -1722,20 +1722,6 @@ This document provides a reference for all built-in construction functions avail
 
 ---
 
-### Subscription()
-
-**Category:** Construction
-
-**Description:** Creates a new subscription
-
-**Parameters:**
-
-**Returns:** Subscription
-
-
-
----
-
 ### SystemAlert(name)
 
 **Category:** Construction
@@ -1790,20 +1776,6 @@ This document provides a reference for all built-in construction functions avail
 **Parameters:**
 
 **Returns:** Table
-
-
-
----
-
-### TargetGroup()
-
-**Category:** Construction
-
-**Description:** Creates a new subscription target group
-
-**Parameters:**
-
-**Returns:** TargetGroup
 
 
 

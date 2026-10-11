@@ -353,32 +353,3 @@ g.approvers.add("demo@opendatadsl.com")
 g.version = "APPROVED"
 save g
 ```
-
-### Subscription Target Group
-
-A subscription target group is a list of targets to send subscriptions to.
-
-A quality group contains ```targets``` rather than items in a service.
-
-The type for the group is set to ```TargetGroup```
-The category and service for the group is set to ```subscription```
-
-A target group adds these additional fields to a group
-
-|**Name**|**Type**|**Example**|**Description**|
-|-|-|-|-|
-|targets|SubscriptionTarget||The configuration for the subscription target|
-
-#### An example subscription target group
-
-```js
-group = TargetGroup()
-group.name = "SupportAlertGroup"
-group.addTeamsChannelTarget("https://...", "#TeamsAlertMessage")
-save group
-```
-
-:::info
-For examples of other targets see [here](/docs/category/subscriptions)
-:::
-

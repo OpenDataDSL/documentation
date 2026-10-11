@@ -4145,20 +4145,6 @@ Unbiased covariances are given by the formula
 
 ---
 
-### Subscription()
-
-**Category:** Construction
-
-**Description:** Creates a new subscription
-
-**Parameters:**
-
-**Returns:** Subscription
-
-
-
----
-
 ### substring(str, beginIndex, endIndex)
 
 **Category:** Strings
@@ -4292,20 +4278,6 @@ Unbiased covariances are given by the formula
 **Returns:** Number
 
 **Works with:** `curve` `timeseries` `scalar` `list` 
-
----
-
-### TargetGroup()
-
-**Category:** Construction
-
-**Description:** Creates a new subscription target group
-
-**Parameters:**
-
-**Returns:** TargetGroup
-
-
 
 ---
 

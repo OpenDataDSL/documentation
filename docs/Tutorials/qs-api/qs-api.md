@@ -20,7 +20,7 @@ import TabItem from '@theme/TabItem';
 #### Welcome to the OpenDataDSL API developer quickstart track!
 
 Here you will start with the fundamentals of using the OpenDataDSL services including security.
-We will then do a deep-dive into some of the services, including subscribing to data updates using message queues.
+We will then do a deep-dive into some of the services, including sending data updates to message queues.
 
 In each module, we will give examples in various languages and all the code for these examples are available in our GitHub repositories as shown below:
 

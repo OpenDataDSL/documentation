@@ -72,7 +72,6 @@ The following table shows the names of the features for each portal item:
 |processTimeline|Process Timeline|
 |dataPackages|Data Packages|
 |queues|Queues|
-|subscriptions|Subscriptions|
 |types|Types|
 |calendars|Calendars|
 |scripts|Scripts|

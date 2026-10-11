@@ -46,10 +46,8 @@ const TRACKS = [
     externalNote: 'Hosted on doc.opendatadsl.com',
     modules: [
       { number: 'T1', title: 'Working with Data Environments', description: 'A detailed tutorial on creating and using data environments for isolation and promotion.', href: 'https://doc.opendatadsl.com/docs/tutorials/workingenvironments', tags: ['Environments'], status: 'coming-soon' },
-      { number: 'T2', title: 'Custom Local SQL Server Loader', description: 'Subscribe to data updates in OpenDataDSL and load them into a local SQL Server database.', href: 'https://doc.opendatadsl.com/docs/tutorials/localsqlserver', tags: ['Integration', 'SQL Server'], status: 'coming-soon' },
-      { number: 'T3', title: 'QuickStart API Developer', description: 'Security, authentication, and service deep-dives for building applications on the OpenDataDSL API.', href: 'https://doc.opendatadsl.com/docs/tutorials/qs/api', tags: ['API', 'Security'], status: 'coming-soon' },
-      { number: 'T4', title: 'QuickStart MongoDB User', description: 'Connect to MongoDB, model data, load, search, aggregate, and manage data quality.', href: 'https://doc.opendatadsl.com/docs/tutorials/qs/mongodb', tags: ['MongoDB', 'Integration'], status: 'coming-soon' },
-      { number: 'T5', title: 'Subscribing to Data', description: 'Set up subscriptions to receive notifications when data changes in the platform.', href: 'https://doc.opendatadsl.com/docs/category/subscribing', tags: ['Integration', 'Queues'], status: 'coming-soon' },
+      { number: 'T2', title: 'QuickStart API Developer', description: 'Security, authentication, and service deep-dives for building applications on the OpenDataDSL API.', href: 'https://doc.opendatadsl.com/docs/tutorials/qs/api', tags: ['API', 'Security'], status: 'coming-soon' },
+      { number: 'T3', title: 'QuickStart MongoDB User', description: 'Connect to MongoDB, model data, load, search, aggregate, and manage data quality.', href: 'https://doc.opendatadsl.com/docs/tutorials/qs/mongodb', tags: ['MongoDB', 'Integration'], status: 'coming-soon' },
     ],
   },
 ];
@@ -57,7 +55,7 @@ const TRACKS = [
 const STATS = [
   { value: '4', label: 'Learning Tracks' },
   { value: '1', label: 'Available Module' },
-  { value: '5', label: 'Official Tutorials' },
+  { value: '3', label: 'Official Tutorials' },
   { value: '~5h', label: 'Total Duration' },
 ];
 

@@ -108,8 +108,6 @@ Actions you can perform on a dataset become active when you hover over the datas
 
 * **Edit**
 > This opens a side panel allowing you to edit the dataset
-* **Subscribe**
-> This button opens a subscribe panel allowing you to subscribe to alerts about this dataset
 * **Remove**
 > This button removes the dataset from being monitored in dataset monitoring
 * **Copy**

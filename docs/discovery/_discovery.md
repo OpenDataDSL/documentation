@@ -27,17 +27,6 @@ import styles from '/src/components/StartBuilding.module.css';
             </Card.Body>
     </Card>
     <Card style={{width:"18rem"}}>
-        <Card.Header><a href="/docs/discovery/subscribing-to-data"><FontAwesomeIcon icon={faDownload} /><b> Subscribing to Data</b></a></Card.Header>
-            <Card.Body>
-              <Card.Text>A guide on how to integrate both the public data and your proprietary data into other cloud systems or your local database infrastructure.</Card.Text>
-              <ul>
-                  <li><a href="/docs/discovery/subscribing-to-data#introduction-to-queues">Introduction to Queues</a></li>
-                  <li><a href="/docs/discovery/subscribing-to-data#subscribing-to-data">Subscribing to Data</a></li>
-                  <li><a href="/docs/discovery/subscribing-to-data#integration-examples">Some integration examples</a></li>
-              </ul>
-            </Card.Body>
-    </Card>
-    <Card style={{width:"18rem"}}>
         <Card.Header><a href="/docs/discovery/personalisation"><FontAwesomeIcon icon={faUser} /><b> Personalisation</b></a></Card.Header>
             <Card.Body>
               <Card.Text>Learn how you can personalize your users' experience with a custom domain, company logo and colour scheme.</Card.Text>

@@ -87,58 +87,45 @@ A ServiceAlert has the following properties:
 |service|String|The name of the service|
 |key|String|An optional key for alerts about a specific entity within the service|
 
-## Subscribing To Alerts
-You can subscribe to alerts in the same way you can subscribe to anything in the platform.
-
-The important parts of the item that you subscribe to are:
-* service = alertrecord
-* id = alert type/alert name, e.g. DatasetAlert/ICE.NDEX.NLB
-
-### Subscription Example
+## Getting notified about alerts
+To be notified when something goes wrong, create an automation on the event that raises the alert. For example, a dataset alert is raised when a dataset is late or missing, so an automation on those dataset events sends you a notification at the same time.
 
 <Tabs groupId="tool">
 <TabItem value="odsl" label="OpenDataDSL">
 
 ```js
-a = Subscription()
-a.addItem(ref("alertrecord", "DatasetAlert/ICE.NDEX.NLB"))
-a.addEmailTarget("user@opendatadsl.com", "ALERT: ICE.NDEX.NLB", "#VarAlertRecord", false)
-a.enabled = true
-a.name = "My Dataset Alert Subscription"
-save a
+ab = AutomationBuilder("dataset", "private", "ICE.NDEX.NLB")
+ab.addCondition("late")
+ab.addCondition("missing")
+ab.setTarget("email")
+ab.setProperty("to", "user@opendatadsl.com")
+ab.setProperty("subject", "ALERT: ICE.NDEX.NLB")
+ab.enabled = true
+save ${automation:ab}
 ```
 
 </TabItem>
 <TabItem value="rest" label="REST API">
 
 ```js
-POST https://api.opendatadsl.com/api/subscription/v1
+POST https://api.opendatadsl.com/api/automation/v1
 Authorization: Bearer {{token}}
 
 {
-  "name": "My Dataset Alert Subscription",
+  "target": "email",
   "enabled": true,
-  "targets": [
-    {
-      "name": "EmailTarget",
-      "to": "user@opendatadsl.com",
-      "html": "#VarAlertRecord",
-      "subject": "ALERT: ICE.NDEX.NLB",
-      "attachment": false
-    }
+  "conditions": [
+    { "service": "dataset", "action": "late", "id": "ICE.NDEX.NLB", "source": "private" },
+    { "service": "dataset", "action": "missing", "id": "ICE.NDEX.NLB", "source": "private" }
   ],
-  "objects": [
-    {
-      "key": "DatasetAlert/ICE.NDEX.NLB",
-      "service": "alertrecord",
-      "id": "DatasetAlert/ICE.NDEX.NLB",
-      "action": [
-        "all"
-      ]
-    }
-  ]
+  "properties": {
+    "to": "user@opendatadsl.com",
+    "subject": "ALERT: ICE.NDEX.NLB"
+  }
 }
 ```
 
 </TabItem>
 </Tabs>
+
+See [Creating Automations](/docs/topics/automations/creating) for more examples, including sending notifications to Microsoft Teams.

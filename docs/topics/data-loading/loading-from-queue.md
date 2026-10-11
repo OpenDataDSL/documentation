@@ -24,7 +24,7 @@ The steps required to load data into OpenDataDSL using queues are as follows:
 
 #### Preparation - only done once
 * Create a queue with a trigger handler
-* Add a subscription to the queue to target a process or script to transform and load the data
+* Add an automation on the queue to target a process or script to transform and load the data
   
 #### Loading data
 * Send input data to the queue
@@ -41,19 +41,21 @@ tt.handler = "trigger"
 save tt
 ```
 
-### Adding a subscription
-A subscription on a queue will listen for messages and send the message to the specified targets.
+### Adding an automation
+An automation on the **message** event of a queue will listen for messages and send each message to the automation target.
 
-Here is an example:
+Here is an example that runs a script for every message:
 
 ```js
-s = Subscription()
-s.name = "queue:trigger:example"
-s.addItem(ref("queue", "tt"), "tt", "message")
-s.addScriptTarget("#hello-world")
-s.enabled = true
-save s
+ab = AutomationBuilder("queue", "private", "tt")
+ab.addCondition("message")
+ab.setTarget("script")
+ab.setProperty("script", "#hello-world")
+ab.enabled = true
+save ${automation:ab}
 ```
+
+See [Creating Automations](/docs/topics/automations/creating) for other targets, e.g. running a process.
 
 ### Send input data to the queue
 Sending data to the queue can be done using any language, what is important is to add an **origin** property to the message in order for the trigger to know the source queue for the data.

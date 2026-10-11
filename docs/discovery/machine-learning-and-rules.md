@@ -22,7 +22,7 @@ The process consists of the following stages:
 * Configure your model with information about your data, what you want the model to do and some initial algorithm choices
 * Build your model using the prepared data
 * Iteratively test, review and revise the model until your are happy with the results
-* Put your model into production, subscribe to your input data to target your ML Model
+* Put your model into production, use an automation on your input data to trigger your ML Model
 
 ## Business Rules
 The business rules engine or expert system allows you to run event-driven actions based on the rules and configuration you make.

@@ -28,7 +28,6 @@ In the standard form, it rolls back the version of an item from the database, th
 *   report
 *   script
 *   secret
-*   subscription
 *   task
 *   transformer
 *   type

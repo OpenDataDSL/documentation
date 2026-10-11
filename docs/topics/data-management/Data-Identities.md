@@ -17,7 +17,7 @@ import TabItem from '@theme/TabItem';
 
 ## The Problem
 
-When you push data from OpenDataDSL to a downstream system via a queue, webhook, or subscription, the item's OpenDataDSL ID is unlikely to match the ID that the target system uses. For example:
+When you push data from OpenDataDSL to a downstream system via a queue, webhook, or automation, the item's OpenDataDSL ID is unlikely to match the ID that the target system uses. For example:
 
 - OpenDataDSL ID: `ICE.NBP_M.NBP:SETTLE`
 - SAP commodity ID: `GAS-UK-NBP-01`
@@ -411,7 +411,7 @@ Authorization: Bearer {{token}}
 
 ## Identities in Downstream Delivery
 
-When a subscription delivers data to a queue, webhook, or script target, the `_identity` map is included in the message payload. The receiving system can read its own key directly, with no external mapping table required.
+When an automation delivers data to a queue, webhook, or script target, the `_identity` map is included in the message payload. The receiving system can read its own key directly, with no external mapping table required.
 
 ### Example queue message payload (JSON)
 
@@ -429,7 +429,7 @@ When a subscription delivers data to a queue, webhook, or script target, the `_i
 
 ### Reading the identity in a receiving script
 
-If your subscription uses a Script target, you can access the identity directly:
+If your automation uses a Script target, you can access the identity directly:
 
 ```js
 // input.data contains the delivered data item
@@ -440,7 +440,7 @@ print "Delivering to SAP with ID: " + sapId
 
 ### Reading the identity in a Mustache template
 
-If your subscription uses an Email, Webhook, or Queue target with a Mustache template, reference identities using standard Mustache syntax:
+If your automation uses an Email, Webhook, or Queue target with a Mustache template, reference identities using standard Mustache syntax:
 
 ```html
 <p>SAP ID: {{identity.sap}}</p>
