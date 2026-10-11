@@ -306,7 +306,7 @@ save USER_METRICS
 <TabItem value="rest" label="REST API">
 
 ```js
-POST https://api.opendatadsl.com/api/report/v1
+POST https://api.opendatadsl.com/api/reportconfig/v1
 Authorization: Bearer {{token}}
 
 {

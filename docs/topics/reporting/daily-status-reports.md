@@ -82,12 +82,16 @@ When a list of objects is merged, each incoming item is matched to an existing i
 If you don't set `mergeKeys`, the default is:
 
 ```js
-["_id", "id", "key", "name"]
+["id", "key", "name"]
 ```
 
 If your items use a different identifier, set your own merge keys on the report configuration, e.g. `["job"]` or `["curve", "id"]`.
 
 An item that doesn't contain any of the merge keys is added to the list, unless an identical item is already there.
+
+:::note
+When you save an ODSL `Object()`, its `_id` and `_type` are not stored in the report data, so the name of the variable you used to build a list item is never used to match items.
+:::
 
 ### Update log
 
@@ -117,7 +121,7 @@ If two contributors update the report at the same moment, both updates are kept.
 
 Create a **Fixed** report with `mergeUpdates` set to `true`.
 
-To send the complete report at the end of the day, also give it a schedule using `cron` and `enabled`. When a merge report runs on its schedule it doesn't change anything, it simply returns the merged report for that day and triggers the **success** event (see [Step 3](#step-3-send-the-report-on-a-schedule)).
+To send the complete report at the end of the day, also give it a schedule using `cron` and `enabled`. When a merge report runs on its schedule it doesn't change anything, it simply returns the merged report for that day and triggers the **success** event (see [Step 3](#step-3-act-on-the-report-events)).
 
 <Tabs groupId="tool">
 <TabItem value="odsl" label="OpenDataDSL" default>
@@ -130,7 +134,7 @@ DAILY_STATUS.description = "Status of all daily loading, curve builds and checks
 DAILY_STATUS.reportType = "Fixed"
 DAILY_STATUS.mergeUpdates = true
 DAILY_STATUS.mergeKeys = ["name"]
-DAILY_STATUS.template = "DailyStatusTemplate"
+DAILY_STATUS.template = "#StatusReportTemplate"
 DAILY_STATUS.cron = "00 17 ? * MON-FRI * EU1"
 DAILY_STATUS.enabled = true
 save DAILY_STATUS
@@ -140,7 +144,7 @@ save DAILY_STATUS
 <TabItem value="rest" label="REST API">
 
 ```js
-POST https://api.opendatadsl.com/api/report/v1
+POST https://api.opendatadsl.com/api/reportconfig/v1
 Authorization: Bearer {{token}}
 
 {
@@ -152,7 +156,7 @@ Authorization: Bearer {{token}}
     "description": "Status of all daily loading, curve builds and checks",
     "mergeUpdates": true,
     "mergeKeys": ["name"],
-    "template": "DailyStatusTemplate",
+    "template": "#StatusReportTemplate",
     "cron": "00 17 ? * MON-FRI * EU1",
     "enabled": true
 }
@@ -169,6 +173,8 @@ The `EU1` suffix on the cron expression runs the schedule on London time, so the
 
 Each contributor saves only its own part of the data. A process, script or user can contribute at any time during the day.
 
+Use the [standard status report shape](#the-standard-status-report-shape) so the report can be shown with the shared status report template: each contributor adds a **section**, and the rows in a section are **items**. Sections and items are both matched on `name`, so each contributor updates its own section and its own items.
+
 <Tabs groupId="tool">
 <TabItem value="odsl" label="OpenDataDSL" default>
 
@@ -176,10 +182,14 @@ Create a variable with the same name as the report, add your part of the data an
 
 ```js
 // In the data loading process
+section = Object()
+section.name = "Data Loading"
+section.status = "complete"
+section.summary = "All morning files received"
+section.updated = "07:45"
+
 DAILY_STATUS = Object()
-DAILY_STATUS.loading = Object()
-DAILY_STATUS.loading.status = "complete"
-DAILY_STATUS.loading.finished = "07:45"
+DAILY_STATUS.sections = [section]
 save ${report:DAILY_STATUS}
 ```
 
@@ -189,9 +199,14 @@ curve = Object()
 curve.name = "ICE.TTF"
 curve.status = "failed"
 curve.message = "Missing settlement price for DEC-26"
+curve.time = "08:06"
+
+section = Object()
+section.name = "Curve Builds"
+section.items = [curve]
 
 DAILY_STATUS = Object()
-DAILY_STATUS.curves = [curve]
+DAILY_STATUS.sections = [section]
 save ${report:DAILY_STATUS}
 ```
 
@@ -216,8 +231,13 @@ POST https://api.opendatadsl.com/api/report/v1/private/DAILY_STATUS:2026-10-10
 Authorization: Bearer {{token}}
 
 {
-    "curves": [
-        { "name": "ICE.TTF", "status": "failed", "message": "Missing settlement price for DEC-26" }
+    "sections": [
+        {
+            "name": "Curve Builds",
+            "items": [
+                { "name": "ICE.TTF", "status": "failed", "message": "Missing settlement price for DEC-26", "time": "08:06" }
+            ]
+        }
     ]
 }
 ```
@@ -225,9 +245,13 @@ Authorization: Bearer {{token}}
 </TabItem>
 </Tabs>
 
+:::tip
+When several contributors add items to the same section, let each one set only its own item's `status`. A section `status` is replaced by the latest update, so only set it from the process that knows the state of the whole section. The same applies to the overall `status` and `headline` of the report.
+:::
+
 To remove a field that was added earlier, send it with a value of `null`.
 
-### Step 3: Send the report on a schedule
+### Step 3: Act on the report events
 
 Two events are raised for a daily status report:
 
@@ -236,94 +260,52 @@ Two events are raised for a daily status report:
 |update|Every time a contributor updates the report|Act on each individual update, e.g. alert the team as soon as a curve fails|
 |success|When the report runs on its schedule|Send the complete report, e.g. an end of day email|
 
-The automation receives the complete merged report, not just the part that was updated.
-
-Create an automation on the **success** event to send the report:
-
-<Tabs groupId="tool">
-<TabItem value="odsl" label="OpenDataDSL" default>
-
-```js
-ab = AutomationBuilder("report", "private", "DAILY_STATUS")
-ab.addCondition("success")
-ab.setTarget("email")
-ab.setProperty("to", "ops-team@example.com")
-ab.setProperty("subject", "Daily Status")
-ab.icon = "envelope-at text-outlook"
-ab.enabled = true
-save ${automation:ab}
-```
-
-</TabItem>
-<TabItem value="rest" label="REST API">
-
-```json
-POST https://api.opendatadsl.com/api/automation/v1
-
-{
-  "target": "email",
-  "icon": "envelope-at text-outlook",
-  "enabled": true,
-  "conditions": [
-    {
-      "service": "report",
-      "action": "success",
-      "id": "DAILY_STATUS",
-      "source": "private"
-    }
-  ],
-  "properties": {
-    "to": "ops-team@example.com",
-    "subject": "Daily Status"
-  }
-}
-```
-
-</TabItem>
-</Tabs>
-
-You can add a second automation on the **update** event if you want to be told about updates during the day as well. See [Creating Automations](/docs/topics/automations/creating) for more examples.
+You can add automations on either event, using the `report` service and the id of the report, e.g. `DAILY_STATUS`. The automation receives the complete merged report, not just the part that was updated. See [Creating Automations](/docs/topics/automations/creating) for how to create an automation.
 
 ### Step 4: Format the report
 
-Use a mustache template to show the report as HTML. Each contributor's part of the data is a separate section, and the update log can be shown at the end.
+A shared template, `#StatusReportTemplate`, is available in the public scripts for all status reports. It is the template set in [Step 1](#step-1-create-the-report-configuration), and it shows the report in the house style, both in the portal and in emails sent by an automation:
 
-```html
-<h1>{{name}}</h1>
-<p>Report date: {{ondate}}</p>
+* A header with the report name, description and ondate
+* The overall status and headline
+* A card for each section, with its status, summary and a table of its items
+* Any notes
+* The update log
 
-<h2>Data Loading</h2>
-{{#data.loading}}
-<p>Status: <b>{{status}}</b>, started {{started}}, finished {{finished}}</p>
-{{/data.loading}}
-{{^data.loading}}
-<p>No update received</p>
-{{/data.loading}}
+### The standard status report shape
 
-<h2>Curve Builds</h2>
-<table>
-    <thead>
-        <tr><th>Curve</th><th>Status</th><th>Message</th></tr>
-    </thead>
-    <tbody>
-        {{#data.curves}}
-        <tr><td>{{name}}</td><td>{{status}}</td><td>{{message}}</td></tr>
-        {{/data.curves}}
-    </tbody>
-</table>
+The shared template expects the report data in this shape. All fields are optional.
 
-<h2>Update Log</h2>
-<table>
-    <thead>
-        <tr><th>Time</th><th>User</th><th>Updated</th></tr>
-    </thead>
-    <tbody>
-        {{#data._updates}}
-        <tr><td>{{time}}</td><td>{{user}}</td><td>{{#keys}}{{.}} {{/keys}}</td></tr>
-        {{/data._updates}}
-    </tbody>
-</table>
-```
+|Field|Description|
+|-|-|
+|status|The overall status of the report|
+|headline|A one line summary shown under the title|
+|sections|A list of sections, matched on `name` when merged|
+|sections.name|The section title|
+|sections.status|The status of the section|
+|sections.summary|Short text about the section|
+|sections.updated|When the section was last updated, any text|
+|sections.items|A list of rows in the section, matched on `name` when merged|
+|sections.items.name|The item name, e.g. a curve or dataset id|
+|sections.items.status|The status of the item|
+|sections.items.message|Detail text for the item|
+|sections.items.time|The time of the item, any text|
+|notes|A list of free text notes|
+
+Status values are shown with a colour. Use one lower case word:
+
+|Colour|Status values|
+|-|-|
+|Green|ok, success, complete, completed, done, passed, built, loaded|
+|Amber|warning, warn, late, running, pending, partial, delayed, waiting|
+|Red|failed, fail, error, missing, critical, overdue|
+|Blue|info, skipped, holiday, none|
+
+Any other value is shown in grey.
+
+:::note
+If you need a different layout, you can write your own mustache template and set it as the report `template`. The report data is available as `data`, and the update log as `data._updates`.
+:::
 
 ## Reading the report
 
