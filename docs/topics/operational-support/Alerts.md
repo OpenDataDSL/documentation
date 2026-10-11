@@ -88,44 +88,6 @@ A ServiceAlert has the following properties:
 |key|String|An optional key for alerts about a specific entity within the service|
 
 ## Getting notified about alerts
-To be notified when something goes wrong, create an automation on the event that raises the alert. For example, a dataset alert is raised when a dataset is late or missing, so an automation on those dataset events sends you a notification at the same time.
+To be notified when something goes wrong, add an automation on the event that raises the alert. For example, a dataset alert is raised when a dataset is late or missing, so an automation on the **late** and **missing** events of the `dataset` service, with the id of the dataset, notifies you at the same time, e.g. by email or Microsoft Teams.
 
-<Tabs groupId="tool">
-<TabItem value="odsl" label="OpenDataDSL">
-
-```js
-ab = AutomationBuilder("dataset", "private", "ICE.NDEX.NLB")
-ab.addCondition("late")
-ab.addCondition("missing")
-ab.setTarget("email")
-ab.setProperty("to", "user@opendatadsl.com")
-ab.setProperty("subject", "ALERT: ICE.NDEX.NLB")
-ab.enabled = true
-save ${automation:ab}
-```
-
-</TabItem>
-<TabItem value="rest" label="REST API">
-
-```js
-POST https://api.opendatadsl.com/api/automation/v1
-Authorization: Bearer {{token}}
-
-{
-  "target": "email",
-  "enabled": true,
-  "conditions": [
-    { "service": "dataset", "action": "late", "id": "ICE.NDEX.NLB", "source": "private" },
-    { "service": "dataset", "action": "missing", "id": "ICE.NDEX.NLB", "source": "private" }
-  ],
-  "properties": {
-    "to": "user@opendatadsl.com",
-    "subject": "ALERT: ICE.NDEX.NLB"
-  }
-}
-```
-
-</TabItem>
-</Tabs>
-
-See [Creating Automations](/docs/topics/automations/creating) for more examples, including sending notifications to Microsoft Teams.
+See [Creating Automations](/docs/topics/automations/creating) for how to create an automation.

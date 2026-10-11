@@ -42,20 +42,9 @@ save tt
 ```
 
 ### Adding an automation
-An automation on the **message** event of a queue will listen for messages and send each message to the automation target.
+Add an automation on the **message** event of the `queue` service, with the name of the queue as the id. The automation listens for messages and sends each message to its target, e.g. a script or a process that transforms and loads the data.
 
-Here is an example that runs a script for every message:
-
-```js
-ab = AutomationBuilder("queue", "private", "tt")
-ab.addCondition("message")
-ab.setTarget("script")
-ab.setProperty("script", "#hello-world")
-ab.enabled = true
-save ${automation:ab}
-```
-
-See [Creating Automations](/docs/topics/automations/creating) for other targets, e.g. running a process.
+See [Creating Automations](/docs/topics/automations/creating) for how to create an automation.
 
 ### Send input data to the queue
 Sending data to the queue can be done using any language, what is important is to add an **origin** property to the message in order for the trigger to know the source queue for the data.
