@@ -321,8 +321,8 @@ The **Aggregations** tab has examples to start from. Each opens unsaved, so you 
 |-|-|
 | An aggregation | Private script `aggregator\KEY`, category `aggregation`, with the function `aggregate_KEY(ondate, start, end)` |
 | A report | Private report configuration, ID `AGG_KEY` by default, running `aggregate_KEY(#ONDATE, #START, #END)` |
-| The report template | Private script `aggregator\templates\REPORT_ID` |
-| The email template | Private script `aggregator\templates\REPORT_ID_email` |
+| The report template | Private script `aggregator\templates\REPORT_ID` (script type and category `mustache`) |
+| The email template | Private script `aggregator\templates\REPORT_ID_email` (script type and category `mustache`) |
 | The email | An automation on the report: target `odsl.email`, when the report is updated, transformed by the email template |
 | Stored reports | One per date, in the report service |
 

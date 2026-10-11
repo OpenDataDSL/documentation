@@ -39,6 +39,8 @@ A report is based on a user defined configuration with the following properties:
 |odg|OnDate generator for dynamic reports|Object|
 |properties|Optional properties to configure and use in the report|Object|
 |cacheOptions|Set the SMART caching options for this report|Object|
+|mergeUpdates|Fixed reports only: merge each update for an ondate into the existing report instead of creating a new version, see [Daily Status Reports](/docs/topics/reporting/daily-status-reports)|Boolean|
+|mergeKeys|Fixed reports only: the field names used to match items in lists when merging updates|List|
 |tags|A list of tags for the report|List|
 
 Report configurations are versioned, so they also contain version information:
@@ -134,6 +136,10 @@ FIXED_EXAMPLE.title = "This is my new report"
 FIXED_EXAMPLE.data = ["This", "is", "some", "data"]
 save ${report:FIXED_EXAMPLE}
 ```
+
+:::tip
+If several processes or users each update a different part of a fixed report during the day, set `mergeUpdates` to `true` so their updates are merged into one report. See [Daily Status Reports](/docs/topics/reporting/daily-status-reports).
+:::
 
 ### Dynamic
 
