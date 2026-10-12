@@ -122,6 +122,7 @@ For example, an email automation on `failed` for `ICE.IFEU.B:SETTLE` tells you a
 | `GET /validation/v1/RECORD_ID` | Read a record |
 | `POST /validation/v1?_function=run` | Run the checks and store the records |
 | `POST /validation/v1?_function=test` | Run the checks without storing anything (at most 100 data points) |
+| `POST /validation/v1?_function=runMany` | Run the checks of several data items and store the records |
 | `POST /validation/v1?_function=override` | Override records |
 | `POST /validation/v1?_function=removeOverride` | Remove overrides |
 | `POST /validation/v1?_function=comment` | Comment on records |
@@ -134,7 +135,7 @@ For example, an email automation on `failed` for `ICE.IFEU.B:SETTLE` tells you a
 | `target` | The data id (test can send `config` instead) |
 | `config` | test only: a configuration to try, saved or not |
 | `points` | Data points: ondates, or observation dates or times. `ondate` or `point` for one |
-| `from`, `to` | A date range instead of points. With no points and no range: the latest data point |
+| `from`, `to` | A date range instead of points (for a curve: its ondates in the range, up to today). With no points and no range: the latest data point (for a curve: the newest ondate whose curve can be read) |
 | `checks` | Check ids, to run only some checks |
 | `tenors` | Curves: only check these tenors |
 | `background` | run only: run in the background (needs a range, not points) |
@@ -144,7 +145,18 @@ POST /validation/v1?_function=run
 {"target": "AHDB.AG.GB.BIG_BALE_HAY.EX_FARM:PRICE", "from": "2026-01-01", "to": "2026-10-12"}
 ```
 
-The response has `target`, `kind`, `test`, `points`, `records`, `counts` (by status), `truncated` (only the latest data points were run) and `results`: for each record its `_id`, `point`, `value`, `status`, `previous` status, `message` and `checks`, and for a curve its `tenors`, `failedTenors`, `warningTenors`, `tenorCounts` and `contracts`. A background run answers `{"background": true, "message": ...}`. If the data cannot be read, the call fails with the platform's error in the `x-odsl-error` header.
+The response has `target`, `kind`, `test`, `points`, `records`, `counts` (by status), `truncated` (only the latest data points were run), `timings` (milliseconds spent loading the scripts, reading data, running the checks and saving), `message` (when nothing could be run, why) and `results`: for each record its `_id`, `point`, `value`, `status`, `previous` status, `message` and `checks`, and for a curve its `tenors`, `failedTenors`, `warningTenors`, `tenorCounts` and `contracts`. A background run answers `{"background": true, "message": ...}`. If the data cannot be read, the call fails with the platform's error in the `x-odsl-error` header.
+
+### runMany
+
+Runs the saved checks of several data items for the same data points. `targets` is a list of data ids; `points` (or `ondate`), `from` and `to` are as for run.
+
+```json
+POST /validation/v1?_function=runMany
+{"targets": ["ICE.IFEU.B:SETTLE", "ICE.IFEU.T:SETTLE"], "ondate": "2026-10-12"}
+```
+
+The response has `targets`, `counts` (data items by status) and `results`: for each data item its `target`, `kind`, `name`, `points`, `counts`, `status` (its worst record), `message`, `ids` and `pointList` (the records made), `failedTenors` (curves), `ms`, and `error` when it could not run (no validation, disabled, or the data could not be read). Up to 25 data items with no range run straight away; more, a range, or `"background": true` run in the background and answer `{"background": true, "message": ...}`.
 
 ### override, removeOverride and comment
 

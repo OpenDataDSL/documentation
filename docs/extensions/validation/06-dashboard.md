@@ -99,6 +99,8 @@ Only failing records (failed, severe and error) can be overridden. Warnings alre
 | Switch | Enables or disables the configuration |
 | Delete | Deletes the configuration. Its records are kept |
 
+To run several at once, tick them (the box in the heading ticks every configuration shown, so search or filter first) and select **Run selected**. Pick the latest data point, one date (for example the same ondate for many curves) or a date range. The latest data point or one date runs straight away and lists each data item with its status, its failing tenors and its message; open a record from there. A date range, or more than 100 data items, runs in the background.
+
 **New validation** asks for a data id (type part of it to search) and opens the editor for a curve or a timeseries. **Bulk changes** changes many at once: see [Bulk changes](/docs/extensions/validation/bulk).
 
 ---

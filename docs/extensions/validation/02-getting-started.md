@@ -51,9 +51,9 @@ Open **Test and run**. Choose the data points:
 
 | Data points | Checks |
 |-|-|
-| **The latest observation** (the latest stored curve for a curve) | One data point |
+| **The latest observation** (the latest curve for a curve) | One data point |
 | **One observation** (one ondate) | The date you pick |
-| **A date range** | Every observation, or every stored curve, in the range |
+| **A date range** | Every observation, or every ondate of the curve, in the range |
 
 Select **Test**. Test runs the checks as they are in the editor, including changes you have not saved, and saves nothing. The results list each data point with its status and message; select a row to see the result of each check. For a curve, each row is an ondate: it shows how many tenors failed or warned, and selecting it shows every tenor.
 

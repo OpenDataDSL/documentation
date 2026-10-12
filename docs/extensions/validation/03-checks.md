@@ -89,7 +89,7 @@ Every save keeps a version of the previous configuration.
 | Updates the data's quality status, raises automations | No | Yes |
 | Most data points | 100 (the latest ones) | the **Background above** setting; more runs in the background |
 
-Both take the latest data point, one date or a date range. For a curve the data points are the stored curves of the range; a smart curve that is not stored is built for the date you pick.
+Both take the latest data point, one date or a date range. For a curve the ondates are the ones the platform has for it: the stored curves, or the ondates a smart, event or composed curve can be built for, up to today. **The latest curve** is the newest ondate whose curve can be read: if a smart curve cannot be built for today yet, the ondate before it is used (up to 5 ondates back). The previous curves that checks compare with come from the same list.
 
 ---
 
