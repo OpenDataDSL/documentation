@@ -1,0 +1,8 @@
+{
+  "label": "Validation",
+  "position": 3,
+  "link": {
+    "type": "generated-index",
+    "description": "Check your curves and timeseries with validation checks written in ODSL, keep a record of every result, review and override failures, and follow data quality on a dashboard."
+  }
+}
