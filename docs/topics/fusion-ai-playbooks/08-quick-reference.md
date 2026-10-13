@@ -64,6 +64,7 @@ to: end                         # required; <step id> | end
 after: research                 # required; one gate per step
 message: Check the table
 approvers: [ops@example.com, Data Ops]  # emails and groups; empty means anyone
+show: [steps.research.table]    # what the approver reviews; default: what the next steps use
 ```
 
 ```output
@@ -109,6 +110,7 @@ The editor checks the playbook as you type and lists problems by line. **Errors*
 | A playbook needs at least one step | Add a `step` block. |
 | Check refers to unknown step '...' / Gate refers to unknown step '...' | The `step` or `after` value must be the id of a step. |
 | Step '...' has more than one gate after it | Combine the gates into one, with a message covering both. |
+| The gate after '...' shows @&#123;...&#125;, which is not produced until later | A gate's `show` can only list values from the gated step and the steps before it. |
 | Check onFail must be retry, fail or a step id | Fix the `onFail` value. |
 | Transition to must be a step id or end | Fix the `to` value. |
 | Transition from '...': use == or != to compare, not = | Conditions use `==` for equals. |

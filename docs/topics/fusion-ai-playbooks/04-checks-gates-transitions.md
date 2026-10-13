@@ -116,6 +116,7 @@ A `gate` pauses the run after a step until a person approves or rejects it. Use 
 after: draft
 message: Review the drafted script before it is saved
 approvers: [ops@example.com, Data Ops]
+show: [steps.draft.script]
 ```
 
 | Field | Required | Description |
@@ -123,15 +124,42 @@ approvers: [ops@example.com, Data Ops]
 | `after` | Yes | The id of the step the gate follows. A step can have at most one gate. |
 | `message` | No | What the approver should look at. Shown on the run and in the approval email. |
 | `approvers` | No | Email addresses and user group names. Empty means anyone in the tenant may decide. |
+| `show` | No | The values the approver reviews, as `steps.<step>.<value>` or `input.<name>`, in the order to show them. Each must exist by the time the gate opens. Without `show`, the approver sees the longer values that the steps after the gate use. |
 
 When a run reaches a gate:
 
-1. The run's status becomes **Awaiting approval**, and the step's result is shown with the gate's message.
+1. The run's status becomes **Awaiting approval**, and the approval panel shows what the approver is deciding on (see [What the approver sees](#what-the-approver-sees)).
 2. The approvers are emailed with the step's summary and a link to the run. When there are no approvers and the run is in the background, the person who started it is emailed.
 3. An approver opens the run on the **Tasks** tab and selects **Approve** or **Reject**, with an optional comment.
 4. Approve carries on to the next step. Reject ends the run with the status **Rejected**.
 
 Each decision, with who made it, when and their comment, is recorded on the run.
+
+### What the approver sees
+
+The approval panel on the **Tasks** tab is built for reviewing, not reading raw data:
+
+- **What you are approving**: each value in the gate's `show` list, displayed for what it is:
+  - an ODSL script with line numbers and highlighting
+  - a report template as a preview, with each value shown as a placeholder, and its source
+  - an HTML email as it will look, and its source
+  - markdown such as a findings table or a summary, formatted
+  - a report, SMART curve or timeseries, process, automation, email or alert definition as a labelled card, with any schedule described in words, for example `0 7 * * MON-FRI * EU1` as "At 07:00, Monday to Friday, UK time"
+  - lists and tables as tables
+- **After you approve, Fusion will**: the steps that run next, up to the next approval, with what each one changes (such as "Saves a script" or "Creates a SMART curve") and its instructions with every reference filled in. Long values link to their viewer above.
+- **Everything else** the gated step produced, folded away.
+
+Each viewer has a **Copy** button, and the step results further down the run use the same viewers.
+
+To make the review exact, list what matters in `show`, and ask the step before the gate to produce structured values where it helps. For example, a step that designs a report can also produce `report` as an object with `id`, `name`, `reportType`, `script`, `expression`, `template` and `cron`, which the approver sees as a report definition card:
+
+````markdown
+```gate
+after: template
+message: Review the report definition, the script and the template before they are saved
+show: [steps.design.report, steps.script.script, steps.template.template]
+```
+````
 
 :::info Approving your own runs
 By default, the person who started a run cannot approve its gates, so every change is seen by a second person. A tenant administrator can allow people to approve their own runs by setting the tenant property `AI_PLAYBOOK_SELF_APPROVAL` to `true`.
