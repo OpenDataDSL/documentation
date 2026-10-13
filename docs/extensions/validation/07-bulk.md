@@ -35,9 +35,37 @@ Set up the checks and settings as you would for one item: see [Checks and settin
 
 To start from a configuration you already have, type its data id under **Start from the configuration of** and select **Copy its checks**: its checks, scripts and settings are copied into the editor.
 
+### Suggest checks from the data
+
+Instead of choosing every limit yourself, let the data suggest them. Under **Suggest checks from the data**, choose how many days to look back (30 by default; for curves, also the most curves to read, 25 by default) and select **Suggest checks**. For each selected item the platform:
+
+1. Reads its data for the period: the observations of a timeseries, or the curves of the ondates in the period (the most recent ones).
+2. Suggests checks from the [function library](/docs/extensions/validation/functions) with parameters that fit the data.
+3. Tries the suggested checks on that same data, without storing anything. A check that would have failed or warned on it is shown but not ticked, with how often and an example.
+
+| Check | Suggested when | Parameters |
+|-|-|-|
+| **Missing** | Always | |
+| **Negative** | No value was negative | |
+| **Zero** | No value was zero | |
+| **Range** | Always | The lowest and highest values, with a margin of a quarter of their spread (at least 10% of the largest value), rounded outwards; not below zero for data that was never negative |
+| **Change %** or **Change** | At least 3 moves | The largest move times 1.5. In percent when every value was positive, otherwise as an amount. For curves: the move of each tenor from one curve to the next |
+| **Outliers** | Timeseries with at least 15 values | The largest number of standard deviations from the mean of the earlier values, plus a quarter (at least 3) |
+| **Stale** | Timeseries whose value stayed the same for at most 5 observations in a row | That run length (at least 3) |
+| **Gap** | Timeseries | The longest gap in days, plus one day (at least 5 days for daily data, so weekends and holidays pass) |
+| **Gaps**, **Tenors kept**, **Curve stale**, **Arbitrage** | Curves (Arbitrage when there are months and quarters) | |
+| **Min contracts** | Curves | The fewest contracts on a curve |
+| **Tenors** | Curves | The relative tenors (M01, Q01 ...) on every curve |
+
+The suggestions show in a table with a row per item and a column per check. Tick or untick a check for one item, or for every item with the box in the column heading. Select the parameters of a check to change its expression or severity. Hover over a check to see why it was suggested.
+
+Ticked checks are added to that item, on top of the checks set up below, and replace a check below with the same name. Each item gets its own parameters. The reason is kept in the check's description. Untick **Use the ticked suggestions** to ignore them; changing the kind clears them.
+
 ---
 
 ## 3. Preview and apply
+
+The preview shows how many checks of each item were suggested from the data.
 
 Choose what happens to items that **already have validation**:
 

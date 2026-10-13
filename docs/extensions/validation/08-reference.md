@@ -180,6 +180,7 @@ An automation on the **data** service with the action **validated** gets a curve
 | `POST /validation/v1?_function=run` | Run the checks and store the records |
 | `POST /validation/v1?_function=test` | Run the checks without storing anything (at most 100 data points) |
 | `POST /validation/v1?_function=runMany` | Run the checks of several data items and store the records |
+| `POST /validation/v1?_function=suggest` | Suggest checks and parameters from the recent data of data items (nothing is stored) |
 | `POST /validation/v1?_function=override` | Override records |
 | `POST /validation/v1?_function=removeOverride` | Remove overrides |
 | `POST /validation/v1?_function=comment` | Comment on records |
@@ -214,6 +215,24 @@ POST /validation/v1?_function=runMany
 ```
 
 The response has `targets`, `counts` (data items by status) and `results`: for each data item its `target`, `kind`, `name`, `points`, `counts`, `status` (its worst record), `message`, `ids` and `pointList` (the records made), `failedTenors` (curves), `ms`, and `error` when it could not run (no validation, disabled, or the data could not be read). Up to 25 data items with no range run straight away; more, a range, or `"background": true` run in the background and answer `{"background": true, "message": ...}`.
+
+### suggest
+
+Suggests checks for curves or timeseries from their recent data, and tries them on that data in test mode (nothing is stored). This is what [Suggest checks from the data](/docs/extensions/validation/bulk#suggest-checks-from-the-data) in bulk changes uses.
+
+| Field | Meaning |
+|-|-|
+| `targets` | Up to 25 data ids, all of one kind |
+| `kind` | `timeseries` (default) or `curve` |
+| `days` | How many days back from today to read, 1 to 366 (default 30) |
+| `maxCurves` | Curves: the most curves to read, the most recent first, 2 to 60 (default 25) |
+
+```json
+POST /validation/v1?_function=suggest
+{"targets": ["AHDB.AG.GB.BIG_BALE_HAY.EX_FARM:PRICE"], "kind": "timeseries", "days": 30}
+```
+
+The response has `days`, `from`, `to` and `results`: for each data item its `target`, `kind`, `points` (observations or curves read), `stats` (values, missing, zeros, negatives, min, max, mean, stdev; for timeseries the longest gap and run of the same value, for curves the fewest and most contracts), `checks` and `ms`, and `error` or `message` when it could not be analysed. Each check has `name`, `expression`, `severity`, `scope` (curves), `reason`, `runs` and `failures` (on the period), `example` (a failure) and `suggested` (true when it passed on every data point it ran on).
 
 ### override, removeOverride and comment
 
