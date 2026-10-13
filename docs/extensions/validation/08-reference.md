@@ -135,6 +135,18 @@ It is raised when a record starts failing (failed, severe or error), fails again
 
 The record's timeline shows **Sent as failing** each time. As for validated data, only full runs raise it (not tests), and automations on **all** actions do not get it.
 
+#### Emailing failures
+
+The public script **#email-validation-failed** turns this data into an HTML email: the failing ondates or observations, the failing tenors, and a table of the check results for each failing data point. To use it, create an email automation on the curve or timeseries with:
+
+| Setting | Value |
+|-|-|
+| Service | data |
+| Action | invalid ("fails validation") |
+| `@transformer` | #email-validation-failed |
+| attachment | false |
+| subject | for example `Validation failed: AAA:TS` |
+
 ### Sending only validated data
 
 An automation on the **data** service with the action **validated** gets a curve or timeseries only once it can be used: when it passes validation (valid, or valid with warnings) or when a user overrides its failure. Use it instead of, or as well as, an automation on **update**, which gets the data as soon as it is saved, checked or not.

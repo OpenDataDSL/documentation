@@ -37,6 +37,8 @@ Below the KPIs:
 - **Checks failing most often**.
 - **Oldest open issues** and **Recent activity**: select a row to open the record.
 
+The dashboard shows when its statistics were read. Use **Refresh** to read them again, for example after a run.
+
 ---
 
 ## Issues
@@ -109,6 +111,8 @@ To run several at once, tick them (the box in the heading ticks every configurat
 
 **Functions** lists the validation scripts: the library and your private scripts. Select one to see its functions, what they do and their parameters, and its code. Private scripts can be edited, saved and deleted here; see [Writing your own checks](/docs/extensions/validation/writing-checks).
 
+Use **Refresh** to read the scripts again when they were changed somewhere else, for example uploaded from ODSL. The open script stays open; if it has unsaved changes you are asked first.
+
 ---
 
 ## Reports
@@ -121,5 +125,6 @@ The reports are insights of the extension, listed with your other insights:
 | **Validation by Check** | How often each check ran, passed, failed, warned, could not run or was skipped, and its pass rate |
 | **Validation by Day** | A chart and a table of records, open issues, warnings, overrides and pass rate per data point date |
 | **Validation Configurations** | Every configuration with its checks, expressions, scopes and severities |
+| **Validation Automations** | Every automation on the **validated** and **invalid** actions: the data item, the action, what the automation does, its target and owner, whether it is enabled, and whether the data item's validation runs (on update, manual runs only, off, or no validation, in which case the automation is never raised) |
 
-Each has KPIs at the top, filters for the period (data point dates; not for configurations), kind and group, and exports to **CSV**.
+Each has KPIs at the top, filters for the period (data point dates; not for configurations or automations), kind and group, and exports to **CSV**. Validation Automations also filters by action and by text; with a kind or group filter it only lists data items that have a validation configuration. See [Sending only validated data](/docs/extensions/validation/reference#sending-only-validated-data) and [When data fails validation](/docs/extensions/validation/reference#when-data-fails-validation).
