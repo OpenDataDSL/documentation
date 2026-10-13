@@ -113,13 +113,13 @@ To run several at once, tick them (the box in the heading ticks every configurat
 
 ## Reports
 
-**Reports** summarises the period:
+The reports are insights of the extension, listed with your other insights:
 
-| Report | Shows |
+| Insight | Shows |
 |-|-|
-| **By data item** | Records, open issues, warnings, overrides, pass rate and the last data point of each curve and timeseries (up to the 200 with the most issues) |
-| **By check** | How often each check ran, failed, warned and could not run |
-| **By day** | Records, open issues, warnings, overrides and pass rate per day |
-| **Configurations and checks** | Every configuration with its checks, expressions, scopes and severities |
+| **Validation by Data Item** | Records, open issues, warnings, overrides, pass rate, the last data point and the last run of each curve and timeseries (up to the 200 with the most issues) |
+| **Validation by Check** | How often each check ran, passed, failed, warned, could not run or was skipped, and its pass rate |
+| **Validation by Day** | A chart and a table of records, open issues, warnings, overrides and pass rate per data point date |
+| **Validation Configurations** | Every configuration with its checks, expressions, scopes and severities |
 
-Each report exports to **CSV**.
+Each has KPIs at the top, filters for the period (data point dates; not for configurations), kind and group, and exports to **CSV**.

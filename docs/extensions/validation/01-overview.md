@@ -26,6 +26,8 @@ flowchart LR
   C -->|failed| D[An issue: fix and run again, comment or override]
   C --> E[Quality status written to the data]
   C --> F[Automations: failed, warning, success]
+  C -->|passed or overridden| G[The data to validated automations]
+  C -->|failed| H[Fails validation automations]
 ```
 
 ---
@@ -45,11 +47,13 @@ A curve has two kinds of checks: **tenor checks** run on every contract (is the 
 
 | When | What is checked |
 |-|-|
-| A curve or timeseries is saved | The ondate saved, or the observations in the update |
-| A smart or event curve is built because its inputs changed (or by the queue or the cut-off) | The ondate built |
+| A curve or timeseries is saved, private or public | The ondate saved, or the observations in the update |
+| A smart curve, event curve or event timeseries is rebuilt because its inputs or events changed | The ondate built, or the observations built |
 | You run the checks in the extension, or through the REST API | The latest data point, a date or a range |
 
-Checks never run when data is only read, and not during history loads. They only run automatically for private data: public data is checked when you run its checks. You can switch automatic runs off for a configuration and only run it by hand.
+Automatic runs are automations: each validation that runs on update has an automation on its curve or timeseries, created and removed for you when you save or delete the validation. When public data, or a curve built from public or common events, is updated, the checks run in your own tenant as a background task, so every tenant that validates the same public data checks it in its own pool. The automation log shows each run and how many data points it checked.
+
+Checks never run when data is only read, and not during history loads. You can switch automatic runs off for a configuration and only run it by hand.
 
 ---
 
@@ -75,7 +79,8 @@ When a record is checked, the quality status of the data is updated too (for a c
 
 ## Where to find it
 
-- **Information > Validation**: the dashboard, issues, records, configurations, check functions, bulk changes and reports.
+- **Information > Validation**: the dashboard, issues, records, configurations, check functions and bulk changes.
+- The insights **Validation by Data Item**, **Validation by Check**, **Validation by Day** and **Validation Configurations**: reports with CSV export.
 - The **Validation** tab on the **Data** screen: the checks and records of the selected curve or timeseries.
 
 ---

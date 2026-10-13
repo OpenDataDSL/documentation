@@ -108,6 +108,51 @@ When the status of a record changes, the platform raises an automation on the **
 
 For example, an email automation on `failed` for `ICE.IFEU.B:SETTLE` tells you as soon as a Brent curve fails validation. A new record that passes does not raise `success`; only a change does.
 
+### Checks on update
+
+Each configuration that is enabled and runs on update has an automation on its data item: service **data**, action **update**, target **Run validation checks** (`odsl.validation`). It is created, updated and removed with the configuration. For public data the automation belongs to your tenant, so an update of public or common data runs your checks in your tenant's pool. If automations are missing (for example for configurations saved before they were used), select **Update automations** on the Configurations tab, or call `POST /validation/v1?_function=automations`.
+
+### When data fails validation
+
+An automation on the **data** service with the action **invalid** ("fails validation" in the automation list) tells you when a curve or timeseries fails its checks. Unlike the `failed` action on the **validation** service, it is set up on the data item itself, next to its update and validated automations.
+
+| | Curve | Timeseries |
+|-|-|-|
+| id | The curve id | The timeseries id |
+| When | Its record for an ondate starts failing | Observations start failing in a run |
+| ondate / range | The ondate | The failing observations |
+
+It is raised when a record starts failing (failed, severe or error), fails again with different data, or fails again because an override was removed or cleared. Running the checks again on the same failing data raises nothing. The data sent describes the failure:
+
+| Field | Meaning |
+|-|-|
+| `target`, `kind`, `name` | The data item |
+| `status`, `message` | The worst status and its message |
+| `points` | The failing ondates or observation times |
+| `records` | The failing validation records, with their check results (and tenors for a curve) |
+| `failedTenors` | Curves: the failing tenors |
+| `user`, `origin`, `timestamp` | Who or what ran the checks, and when |
+
+The record's timeline shows **Sent as failing** each time. As for validated data, only full runs raise it (not tests), and automations on **all** actions do not get it.
+
+### Sending only validated data
+
+An automation on the **data** service with the action **validated** gets a curve or timeseries only once it can be used: when it passes validation (valid, or valid with warnings) or when a user overrides its failure. Use it instead of, or as well as, an automation on **update**, which gets the data as soon as it is saved, checked or not.
+
+| | Curve | Timeseries |
+|-|-|-|
+| id | The curve id | The timeseries id |
+| When | Its record for an ondate passes or is overridden | Its observations pass or are overridden |
+| data | The curve for the ondate | The timeseries for the observations sent, with `range` set to them |
+
+- Each version of the data is sent once. Running the checks again on data that has not changed sends nothing; data that changes and passes again is sent again. If no validated automation exists when data passes, nothing is remembered: once you add one, the next run or override sends it.
+- For an event curve or event timeseries, the validated automation is on the curve or timeseries itself, not on the event list it is built from.
+- For a timeseries, consecutive passing observations are sent together. A failing observation is never sent, and splits the ones around it into separate sends.
+- The data sent has a `_validation` property: `status` (valid, warning or overridden), `checkedStatus`, `records` (the validation record ids), `user`, `origin`, `timestamp`, the `override` reason and user when overridden, and the `warningTenors` of a curve.
+- Only a full run sends data: tests, and runs of some checks or some tenors, do not. A failure that is not overridden is never sent, and removing an override does not take back data already sent.
+- Validated data goes only to automations on the **validated** action, not to automations on **all** actions, which already get the data when it is updated.
+- The record's timeline shows **Sent as validated** each time its data was sent.
+
 ---
 
 ## REST API
