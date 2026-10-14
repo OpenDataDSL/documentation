@@ -143,14 +143,14 @@ Select **Indicators** in the toolbar to open them in the side panel.
 
 | Indicator | How to add it |
 |-|-|
-| **Trend line** | Select **Draw trend line**, then click the chart at its start and at its end. Each click snaps to the nearest tenor or date. The line carries on to the end of the chart unless you clear **Extend to the end of the chart**. |
+| **Trend line** | Select **Draw trend line**, then drag on the chart from its start to its end, or click its start and then its end. Each click snaps to the nearest tenor or date. The line carries on to the end of the chart unless you clear **Extend to the end of the chart**. |
 | **Level** | Select **Draw level**, then click the chart at the price, for example a support or resistance level. |
 | **Moving average** | Select **Add moving average**, then choose the column and the period, the number of points averaged. |
 | **Exponential moving average** | As a moving average, weighted towards the latest values. |
 | **Bollinger bands** | A moving average with bands a number of standard deviations above and below it. |
 | **Linear regression** | The straight line that best fits a column. |
 
-Press **Esc** to stop drawing. Click an indicator in the list, or its line on the chart, to change its label, column, period, values, axis, line style or colour. **Draw again on the chart** redraws a trend line, and **Pick the level on the chart** moves a level.
+The chart does not zoom while you draw. Press **Esc** to stop drawing. Click an indicator in the list, or its line on the chart, to change its label, column, period, values, axis, line style or colour. **Draw again on the chart** redraws a trend line, and **Pick the level on the chart** moves a level.
 
 ### Indicators on later ondates
 
@@ -195,7 +195,7 @@ Values can be converted to another currency or unit. Settings cascade: a **colum
 |-|-|
 | Name and description | Shown in the list, the portal and Excel |
 | **Stored in** | The master data record it is stored on, with **Move to...**, and the template it was created from |
-| **Worksheet** | **Type** (curve or timeseries) and how it is shown in the portal. For a curve worksheet: a fixed **Ondate** (blank for the report's ondate), and the **tenor types** to show and how many of each, for example 12 months, 4 quarters and 2 years. For a timeseries worksheet: the **Calendar** (for example `#REOD` or `MONTHLY`) and the **Range**. |
+| **Worksheet** | **Type** (curve or timeseries) and how it is shown in the portal. For a curve worksheet: a fixed **Ondate** (blank for the report's ondate), and the **tenor types** to show and how many of each, for example 12 months, 4 quarters and 2 years. For a timeseries worksheet: the **Calendar** the timeseries are aligned to (**BUSINESS**, business days, when empty; or for example `DAILY`, `HOURLY` or `MONTHLY`, but not an expiry calendar such as `#REOD`) and the **Range**. |
 | **Report** | Enabled, hide in the report list, hide in Excel, Excel output |
 | **Meta data** | Owner, team, stage (dev, test, production), commodity, product and location, used to find and filter compositions |
 | **Conversion defaults** | The worksheet's conversion settings, inherited by the columns |

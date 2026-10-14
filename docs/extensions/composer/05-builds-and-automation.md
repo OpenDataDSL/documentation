@@ -92,7 +92,7 @@ Each build of a timeseries composition covers a range of dates up to its ondate 
 | `OBJECTID:DATAID?_range=last(30)` | The same, within a range |
 | `OBJECTID:DATAID?_ondate=2026-10-08` | Only the build for that ondate |
 
-Its currency, units and timezone are those of the column in the latest build. The column, and Properties, **Builds**, list the composed timeseries made from the composition.
+It is on the composition's **Calendar** (**BUSINESS** when the composition has none), and dates not on that calendar are left out. Its currency, units and timezone are those of the column in the latest build. The column, and Properties, **Builds**, list the composed timeseries made from the composition.
 
 :::caution
 A composed timeseries refers to the column by its id. Renaming the column's id breaks the composed timeseries.

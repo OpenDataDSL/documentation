@@ -54,6 +54,16 @@ Select records with the tick boxes, then:
 | **Run again** | Runs the checks again for those data points, for example after the data was corrected |
 | **Adjust checks** | Suggests new parameters for the checks that fail on those data points, and saves the ones you keep (see below) |
 
+### Edit the checks of an issue
+
+The pencil at the end of a row opens the checks of that data item in a panel above the list, so you can change them while you look at its issues. The panel shows the configuration's version and the item's records on the page:
+
+- **Test on these records** runs the edited checks on those data points and shows the results; nothing is saved.
+- **Save** saves the configuration as a new version; **Save and run again** also runs the checks again on those records, so issues that now pass leave the list.
+- **Settings and scripts** shows the rest of the configuration, and **Full editor** opens it in the editor with its history, keeping unsaved changes.
+
+The Records tab has the same pencil.
+
 ### Adjust checks
 
 When data fails only because a limit is a little too tight, for example a few curves moved slightly more than the percentage change allowed, select those records and **Adjust checks**. For each data item the checks run again on the selected data points (for a curve, on its failing tenors) without saving anything, and for each check that fails or warns:

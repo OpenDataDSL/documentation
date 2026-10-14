@@ -49,6 +49,7 @@ A curve has two kinds of checks: **tenor checks** run on every contract (is the 
 |-|-|
 | A curve or timeseries is saved, private or public | The ondate saved, or the observations in the update |
 | A smart curve, event curve or event timeseries is rebuilt because its inputs or events changed | The ondate built, or the observations built |
+| A composition is built, for its composed curves and composed timeseries | The ondate built, or the observations of that build |
 | You run the checks in the extension, or through the REST API | The latest data point, a date or a range |
 
 Automatic runs are automations: each validation that runs on update has an automation on its curve or timeseries, created and removed for you when you save or delete the validation. When public data, or a curve built from public or common events, is updated, the checks run in your own tenant as a background task, so every tenant that validates the same public data checks it in its own pool. The automation log shows each run and how many data points it checked.

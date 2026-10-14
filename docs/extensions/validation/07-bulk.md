@@ -21,7 +21,7 @@ Choose the **Kind** first: curves or timeseries. A bulk change is for one kind a
 | **Search** | Type part of the id (case sensitive), for example `ICE.IFEU.` or `:SETTLE`, and select **Search**. Tick items one at a time, **Select this page**, or **Select all matching** (up to 1000) |
 | **Paste data ids** | Paste ids, one per line or separated by commas, and select **Add these ids**. Each id is checked: ids that do not exist, or are not the chosen kind, are listed and left out |
 
-A curve search finds the curves themselves (including smart, event and composed curves), not the curves stored for each ondate.
+A curve search finds the curves themselves (including smart, event and composed curves), not the curves stored for each ondate. A timeseries search finds stored, smart, event and composed timeseries.
 
 Type in **Filter the rows below** to narrow the results on the page: a row is shown when it contains every word you type, in any column and in any case (for example `none hay` shows the hay items that have no validation yet). **Select this page** selects only the rows the filter shows; **Select all matching** uses the search, not the filter.
 

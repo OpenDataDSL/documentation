@@ -69,7 +69,7 @@ The status of a record is the worst result of its checks: Severe, then Failed an
 | **Group** | A label for filtering the dashboard and reports, for example "Power curves" | none |
 | **Tags** | Comma separated labels | none |
 | **Enabled** | When off, the checks never run, not even manually | on |
-| **Run on update** | Run when the data is updated: saved (private or public data), or a smart or event curve or timeseries rebuilt because its inputs changed. This keeps an automation on the data item that runs the checks in your tenant. When off, the checks only run when you run them | on |
+| **Run on update** | Run when the data is updated: saved (private or public data), a smart or event curve or timeseries rebuilt because its inputs changed, or a composed curve or timeseries whose composition was built. This keeps an automation on the data item that runs the checks in your tenant. When off, the checks only run when you run them | on |
 | **Write status to the data** | Set the quality status of the data. A curve for an ondate gets the worst status of its records; a timeseries the status of its latest checked observation | on |
 | **Lookback** (timeseries) | How many earlier observations a check gets in `#HISTORY` | 30 |
 | **Previous values** (curves) | How many previous stored curves are read, to give each tenor its earlier values in `#HISTORY` (1 to 30) | 1 |
