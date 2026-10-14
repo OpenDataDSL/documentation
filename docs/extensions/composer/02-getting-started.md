@@ -14,7 +14,7 @@ This walk-through creates a composition from the **Curve spread** library templa
 
 ## 1. Open Composer
 
-Open **Composer** from the Extensions section of the menu. The **Compositions** tab lists the compositions in your organisation, with counts at the top: how many match the filters, how many are yours, how many came from a template, and how many templates there are.
+Open **Composer** from the Extensions section of the menu. It opens on the **Gallery** (see [The gallery](#the-gallery)). The **Compositions** tab lists the compositions in your organisation, with counts at the top: how many match the filters, how many are yours, how many came from a template, and how many templates there are.
 
 ---
 
@@ -81,6 +81,20 @@ Select **Save**. The composition is saved where you chose in step 3, and appears
 :::tip
 Composer keeps a record of the template a composition was created from, and the values it was given, under **Properties**.
 :::
+
+---
+
+## The gallery
+
+The **Gallery** tab, the first tab in Composer, shows the compositions of one analytics area as cards. Each card shows the chart of the composition's latest build, with its indicators. A composition that has not been built yet shows a preview, calculated when you open the gallery.
+
+- Choose the **analytics area** to show.
+- Choose the **Card width**: 25%, 33%, 50% or 100% of the page. Each card also has its own width, so you can make one chart wide and keep the others small.
+- Drag a card by its grip, at the top left, to move it. Drop it on the left half of another card to put it before that card, or on the right half to put it after. **Reset order** puts the cards back in name order.
+- Select **Refresh** to show the latest builds.
+- Select a card to open the composition, on the ondate the card shows, as a chart, a table and chart, or a table, however it is set to show. **Back** returns to the gallery.
+
+Composer remembers the area, the widths and the order of the cards for you, on any computer you sign in on.
 
 ---
 
