@@ -1,0 +1,8 @@
+{
+  "label": "Policies",
+  "position": 10,
+  "link": {
+    "type": "doc",
+    "id": "topics/policies/index"
+  }
+}

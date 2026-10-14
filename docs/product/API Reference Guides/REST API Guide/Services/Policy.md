@@ -37,13 +37,13 @@ The policy entity contains the following information:
 |**Name**|**Type**|**Description**|
 |-|-|-|
 |_id|String|The unique identifier for this policy|
-|_type|String|The type of the policy - always Policy|
+|_type|String|The type of the policy: Policy for a security policy, FeaturePolicy for a [feature policy](/docs/odsl/variable/featurepolicy) or RedactionPolicy for a [redaction policy](/docs/odsl/variable/redactionpolicy)|
 |category|String|An optional category used for filtering policies|
 |description|String|A description of what this policy does|
 |source|String|The source of data that this policy covers|
 |service|String|The name of the service providing the data for this policy (can be * for all services)|
 |condition|String|An optional condition defining the subset of data that this policy covers|
-|actions|Array|A list of actions this policy covers (create, read, update, delete, run)|
+|actions|Array|A list of actions this policy covers (create, read, update, delete, run, editPublicTypeProperties, editPrivateTypeProperties)|
 |members|Array|A list of user emails or security group id's that this policy is attributed to (can be * for all members)|
 |deny|Boolean|True if this is a denial policy, false for an allow policy|
 |enabled|Boolean|A flag indicating if this policy is to be used or not|
@@ -62,8 +62,10 @@ The policy entity contains the following information:
   > * Read - the members are allowed to read resources
   > * Delete - the members are allowed to delete resources
   > * run - this is applicable only to report and process services where the members are allowed to run the resource
+  > * editPublicTypeProperties - the members are allowed to change master data properties declared on a public type (object service, denied unless granted)
+  > * editPrivateTypeProperties - the members are allowed to change master data properties declared on a private type (object service, denied unless granted)
 * **Members**
-  > This is a list of user email addresses or AAD security group id's that users are assigned to
+  > This is a list of user email addresses, policy user groups (`user:security:policy:<name>`) or AAD security group id's that users are assigned to
 * **Deny**
   > Setting deny to true explicitly denies access to the resources secured by this policy
 * **Enabled**
@@ -119,4 +121,4 @@ Below are some examples of security policies:
 
 ## Further Information
 
-For full details on policies and how to manage them, see [Policies in ODSL](/docs/odsl/variable/policy)
+For full details on policies and how to manage them, see [Policies in ODSL](/docs/odsl/variable/policy) and [Policies](/docs/topics/policies)

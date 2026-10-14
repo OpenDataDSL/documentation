@@ -88,5 +88,6 @@ Before removing or changing this policy, ensure you add a policy to allow someon
 ## More Information on Policies
 
 * [Policies in ODSL](/docs/odsl/variable/policy)
+* [Policies overview: security, feature and redaction policies](/docs/topics/policies)
 * [General information about security policies](/docs/odsl/topics/policies)
 

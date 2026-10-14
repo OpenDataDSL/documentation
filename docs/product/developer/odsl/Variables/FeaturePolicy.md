@@ -14,6 +14,12 @@ A feature policy variable contains information about which features in the Web P
 
 Feature Policy variables are used to restrict access to certain features within the platform, thereby focussing users on the tasks they need to perform.
 
+:::caution
+Feature policies only change what the Web Portal shows, they are not a security control. To restrict access to data, use [security policies](/docs/odsl/variable/policy).
+:::
+
+For how feature policies are combined and more examples, see [Feature Policies](/docs/topics/policies/feature).
+
 ## Defining a Feature Policy
 
 Below is a table with all the properties of a feature policy:
@@ -25,7 +31,7 @@ Below is a table with all the properties of a feature policy:
 |description|String|My test policy|A descriptive name for the policy|
 |enabled|Boolean|true|True if it is enabled, false to disable it, by default the policy is enabled|
 |deny|Boolean|true|By default, all features are available to everyone, so you need to set this to true to deny access to features|
-|members|List|user@company.com|The user emails or Azure Active Directory group id's this policy applies to|
+|members|List|user@company.com|The user emails or [policy user groups](/docs/topics/policies#policy-user-groups) this policy applies to, or * for everyone (Azure Active Directory group id's are not used by feature policies)|
 |features|List|\["scripts"\]|The list of features that this policy applies to|
 
 ## Methods
@@ -77,6 +83,17 @@ The following table shows the names of the features for each portal item:
 |scripts|Scripts|
 |dashboards|Dashboards|
 |alerts|Alerts|
+|groups|Groups|
+
+Extensions can also add tabs and views with their own feature names, e.g. `odsl.aggregator.report` for the Aggregator tab on the Reports screen. Use these names in a feature policy in the same way.
+
+## How Feature Policies are Combined
+
+1. Start from the features switched on for your company.
+2. Every enabled allow feature policy the user is a member of switches its features on.
+3. Every enabled deny feature policy the user is a member of switches its features off.
+
+Deny always wins. When your company is onboarded, a feature policy called `EnergyUserFeatures` gives everyone the standard menu items.
 
 
 ## Updating, Finding and Deleting Feature Policies
@@ -88,7 +105,7 @@ To save a feature policy in OpenDataDSL code, use the save command as follows:
 HideScripts = FeaturePolicy()
 HideScripts.description = "Hide Scripts menu item from users"
 HideScripts.features = ["scripts"]
-HideScripts.addMember("39c6cccd-d6ea-4ac1-b564-8e4d1e28d75d")
+HideScripts.addMember("user:security:policy:BusinessUsers")
 HideScripts.deny = true
 HideScripts.enabled = true
 save HideScripts
