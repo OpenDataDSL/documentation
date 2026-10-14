@@ -163,7 +163,7 @@ Values can be converted to another currency or unit. Settings cascade: a **colum
 | **Conversion defaults** | The worksheet's conversion settings, inherited by the columns |
 | **Scripts** | Scripts whose functions the expressions use. Composer lists your platform's build scripts for the worksheet type (category `curve-build` or `timeseries-build`, private and public), each with the functions it defines, and you can add any other script by id. |
 | **Automation** | Whether it is built automatically when its inputs change, and what triggers it (see [Builds, composed curves and automation](/docs/extensions/composer/builds-and-automation)) |
-| **Builds** | How many ondates it has been built for, the first and the latest, the composed curves made from it, and **Build for a range of ondates** |
+| **Builds** | How many ondates it has been built for, the first and the latest, the composed curves or timeseries made from it, and **Build for a range of ondates** |
 
 The **Range** of a timeseries worksheet is relative to the ondate:
 

@@ -17,6 +17,7 @@ tags: [extension, composer, reference, api]
 | Composition | Report configuration (`reportType: Composition`) held on a private master data record | `OBJECTID:KEY` |
 | Build of a composition | Report output | `OBJECTID:KEY:ONDATE` |
 | Composed curve | `VarComposedCurve` data item on a private master data record | `OBJECTID:DATAID` |
+| Composed timeseries | `VarComposedTimeSeries` data item on a private master data record | `OBJECTID:DATAID` |
 | Analytics area | Master data record of type `analytics_area` | for example `GAS_ANALYTICS` |
 
 ---
@@ -99,6 +100,7 @@ A template has the same `properties.composition`, with input placeholders such a
 | `GET report/v1/private/OBJECTID:KEY` | The ondates the composition has been built for |
 | `GET report/v1/private/OBJECTID:KEY:2026-10-08?_element=SPREAD` | One column of a build, as a curve or a timeseries |
 | `GET data/v1/private/OBJECTID:DATAID:2026-10-08` | A composed curve for an ondate |
+| `GET data/v1/private/OBJECTID:DATAID` | A composed timeseries from all the builds (`_range` limits the dates, `_ondate` reads one build) |
 
 ---
 
@@ -109,4 +111,4 @@ A template has the same `properties.composition`, with input placeholders such a
 | Build automation | One per composition, kept by the platform when it is saved: target `odsl.composition`, `properties.report` = `OBJECTID:KEY` |
 | Triggers | An update of each data item its columns read (`OBJECTID:DATAID`), and a build of each composition it links to |
 | What it does | Builds the composition for the ondate of the update, or today when the update has none |
-| Composed curves | Their automations run each time a build of their composition is stored |
+| Composed curves and timeseries | Their automations run each time a build of their composition is stored |

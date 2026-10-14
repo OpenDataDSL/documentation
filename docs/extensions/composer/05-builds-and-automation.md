@@ -11,7 +11,7 @@ tags: [extension, composer, automation, curves]
 **Running** a composition calculates it on the fly and shows the result. **Building** it calculates it for an ondate and **stores** the result, a build. Builds are what make a composition useful beyond the screen:
 
 - A stored build opens straight away, without calculating it again.
-- A **composed curve** is a curve made from a column of the builds.
+- A **composed curve** is a curve made from a column of the builds of a curve composition, and a **composed timeseries** a timeseries made from a column of the builds of a timeseries composition.
 - A **linked column** in another composition reads the builds.
 - **Automation** builds the composition when its data changes.
 
@@ -22,7 +22,7 @@ flowchart LR
     btn["Build button"] --> build
     auto --> build["Build for the ondate"]
     build --> store[("Stored build")]
-    store --> cc["Composed curves<br/>and their automations"]
+    store --> cc["Composed curves and timeseries<br/>and their automations"]
     store --> lc["Linked columns<br/>in other compositions"]
     store --> open["Opening the composition"]
 ```
@@ -42,7 +42,7 @@ Save the composition, then select **Build** in the toolbar (or **Build for a ran
 Composer builds three ondates at a time and shows its progress; **Cancel** stops it after the ondates in progress. The summary lists:
 
 - the ondates that failed, and why,
-- the ondates that were built without all their data: no rows, or a column that failed, usually because an input curve did not exist for that ondate. These builds are stored, but composed curves and linked columns get no values from them until they are built again.
+- the ondates that were built without all their data: no rows, or a column that failed, usually because an input curve did not exist for that ondate. These builds are stored, but composed curves, composed timeseries and linked columns get no values from them until they are built again.
 
 Properties, **Builds** shows how many ondates are built, the first and the latest.
 
@@ -70,6 +70,35 @@ A composed curve refers to the column by its id. Renaming the column's id breaks
 :::
 
 If a composed curve has no values for an ondate, reading it explains why: the composition has not been built for that ondate, the build has no rows, or the column failed in that build.
+
+---
+
+## Composed timeseries
+
+A **composed timeseries** publishes one column of a timeseries composition as a timeseries on a master data record. It is read like any other timeseries, for example `POWER_ANALYTICS:SPARK_SPREAD`, and can be used in the portal, Excel, scripts and other compositions.
+
+To create one:
+
+1. Save the timeseries composition.
+2. Open the column in the **Columns** panel.
+3. Under **Composed timeseries**, select **Create composed timeseries...**.
+4. Choose the master data record (by default the one the composition is stored on), the timeseries id, its name and description.
+
+Each build of a timeseries composition covers a range of dates up to its ondate (by default the 31 days up to the ondate). The composed timeseries joins all the builds: each date takes its value from the latest build that has a value for it, so a later build revises the dates it shares with earlier ones. Build the composition for the ondates you need to fill in the history.
+
+| Read | Gives |
+|-|-|
+| `OBJECTID:DATAID` | Every date in every build, the latest build winning for each date |
+| `OBJECTID:DATAID?_range=last(30)` | The same, within a range |
+| `OBJECTID:DATAID?_ondate=2026-10-08` | Only the build for that ondate |
+
+Its currency, units and timezone are those of the column in the latest build. The column, and Properties, **Builds**, list the composed timeseries made from the composition.
+
+:::caution
+A composed timeseries refers to the column by its id. Renaming the column's id breaks the composed timeseries.
+:::
+
+If a composed timeseries has no values, reading it explains why: the composition has never been built, the latest build has no rows, or the column failed or has no values in it.
 
 ---
 
@@ -110,9 +139,11 @@ sequenceDiagram
     C->>L: its build automation builds it for 2026-10-08
 ```
 
-### Automations on composed curves
+### Automations on composed curves and timeseries
 
 You can add automations to a composed curve like any other curve, for example to email the curve or send it to a queue whenever it changes. A composed curve changes whenever its composition is built, so its automations run each time a build is stored (by **Build**, by the build automation, or by a schedule), with the curve for that ondate.
+
+Automations on a composed timeseries run the same way, each time a build of its composition is stored, with the values from that build.
 
 :::tip
 Combine the two: the composition builds when its inputs settle, and an automation on its composed curve sends the result on.

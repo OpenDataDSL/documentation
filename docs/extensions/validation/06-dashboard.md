@@ -12,7 +12,7 @@ tags: [extension, validation, dashboard, overrides, reports]
 
 | Filter | Meaning |
 |-|-|
-| **Period** | The dates of the data points: the last 7, 30, 90 or 365 days, all dates, or a custom range |
+| **Period** | The dates of the data points: today, yesterday, the last 7, 30, 90 or 365 days, all dates, or a custom range |
 | **Kind** | Curves, timeseries or both |
 | **Group** | The group set on the configurations |
 
@@ -52,6 +52,16 @@ Select records with the tick boxes, then:
 | **Override** | Lets the selected records pass, with a reason (see below) |
 | **Comment** | Adds a comment to their timelines |
 | **Run again** | Runs the checks again for those data points, for example after the data was corrected |
+| **Adjust checks** | Suggests new parameters for the checks that fail on those data points, and saves the ones you keep (see below) |
+
+### Adjust checks
+
+When data fails only because a limit is a little too tight, for example a few curves moved slightly more than the percentage change allowed, select those records and **Adjust checks**. For each data item the checks run again on the selected data points (for a curve, on its failing tenors) without saving anything, and for each check that fails or warns:
+
+- If it is a library function with a limit (**checkRange**, **checkChange**, **checkChangePct**, **checkZScore**, **checkBand**, **checkStale**, **checkGap**, **checkCurveMinContracts** or **checkCurveArbitrage**), the limit is moved to the smallest change that lets those data points pass, plus a small margin, and rounded. For checkRange only the side that failed moves.
+- Otherwise (another function, or a longer expression) it is listed so you can change it by hand.
+
+**Last 30 days** shows how many data points of the item fail with the check now, and how many would fail with the new expression, so you can see whether the change hides other problems. Edit any expression or severity, untick what you do not want, and select **Save changes**. Each changed configuration is saved as a new version, and by default the selected records run again with the new checks.
 
 ---
 
@@ -91,7 +101,7 @@ Only failing records (failed, severe and error) can be overridden. Warnings alre
 
 ## Configurations
 
-**Configurations** lists every validation configuration, with its checks (hover over one to see its expression), whether it is enabled and runs on update, and when it was last changed. For each one:
+**Configurations** lists every validation configuration, with its checks (hover over one to see its expression), whether it is enabled and runs on update, its version and when it was last changed. Select the version number to open its history. For each one:
 
 | Button | Does |
 |-|-|
@@ -102,6 +112,13 @@ Only failing records (failed, severe and error) can be overridden. Warnings alre
 | Delete | Deletes the configuration. Its records are kept |
 
 To run several at once, tick them (the box in the heading ticks every configuration shown, so search or filter first) and select **Run selected**. Pick the latest data point, one date (for example the same ondate for many curves) or a date range. The latest data point or one date runs straight away and lists each data item with its status, its failing tenors and its message; open a record from there. A date range, or more than 100 data items, runs in the background.
+
+### Versions and history
+
+Every save of a configuration keeps a version. The editor shows the version number, and **History**, below the settings, lists the versions newest first with when and by whom each was saved and what changed from the version before: checks added or removed, and changes to an expression, severity, scope or setting (old value struck through, new value after it). Up to the 20 newest versions are shown.
+
+- **Compare** shows the differences between a version and what is in the editor, saved or not.
+- **Restore** loads a version into the editor as unsaved changes. Save to make it the current version (a new version), or go back to leave it.
 
 **New validation** asks for a data id (type part of it to search) and opens the editor for a curve or a timeseries. **Bulk changes** changes many at once: see [Bulk changes](/docs/extensions/validation/bulk).
 

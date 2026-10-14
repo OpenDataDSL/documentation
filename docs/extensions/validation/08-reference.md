@@ -181,6 +181,9 @@ An automation on the **data** service with the action **validated** gets a curve
 | `POST /validation/v1?_function=test` | Run the checks without storing anything (at most 100 data points) |
 | `POST /validation/v1?_function=runMany` | Run the checks of several data items and store the records |
 | `POST /validation/v1?_function=suggest` | Suggest checks and parameters from the recent data of data items (nothing is stored) |
+| `POST /validation/v1?_function=tune` | Suggest new parameters for the checks that fail on some data points (nothing is stored) |
+| `GET /validationconfig/v1/DATA_ID/*` | List the versions of a configuration |
+| `GET /validationconfig/v1/DATA_ID/VERSION` | Read one version of a configuration |
 | `POST /validation/v1?_function=override` | Override records |
 | `POST /validation/v1?_function=removeOverride` | Remove overrides |
 | `POST /validation/v1?_function=comment` | Comment on records |
@@ -233,6 +236,23 @@ POST /validation/v1?_function=suggest
 ```
 
 The response has `days`, `from`, `to` and `results`: for each data item its `target`, `kind`, `points` (observations or curves read), `stats` (values, missing, zeros, negatives, min, max, mean, stdev; for timeseries the longest gap and run of the same value, for curves the fewest and most contracts), `checks` and `ms`, and `error` or `message` when it could not be analysed. Each check has `name`, `expression`, `severity`, `scope` (curves), `reason`, `runs` and `failures` (on the period), `example` (a failure) and `suggested` (true when it passed on every data point it ran on).
+
+### tune
+
+Suggests new parameters for the checks that fail or warn on some data points. This is what [Adjust checks](/docs/extensions/validation/dashboard#adjust-checks) on the Issues tab uses.
+
+| Field | Meaning |
+|-|-|
+| `items` | Up to 25 objects: `target` (the data id), `points` (the failing data points) and, for curves, `tenors` (only check these tenors) |
+| `days` | How many days back to compare failures before and after, 1 to 366 (default 30) |
+| `maxCurves` | Curves: the most recent curves to use for that comparison, 2 to 60 (default 25) |
+
+```json
+POST /validation/v1?_function=tune
+{"items": [{"target": "ICE.IFEU.B:SETTLE", "points": ["2026-10-12", "2026-10-13"], "tenors": ["M01", "M02"]}], "days": 30}
+```
+
+The response has `days`, `from`, `to` and `results`: for each item its `target`, `kind`, `points`, `checks`, `ms`, and `error` or `message` (nothing fails any more). Each check that fails on the points has `id`, `name`, `expression`, `severity`, `scope`, `failing` and `runs` (on the points), `suggested` (the new expression, when one could be found), `reason`, and `window` (`runs`, `before` and `after`: the data points of the period that fail with the current and the new expression).
 
 ### override, removeOverride and comment
 
