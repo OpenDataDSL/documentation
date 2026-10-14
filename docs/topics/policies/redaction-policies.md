@@ -19,12 +19,25 @@ For the full list of properties, see [Redaction Policies in ODSL](/docs/odsl/var
 ## How redaction works
 * A redaction policy lists the fields to remove, in `redactions`. Use dot notation for a field inside a property, e.g. `contract.price`.
 * It applies to every enabled redaction policy the user is a member of. Members can be `*`, user email addresses or [policy user groups](/docs/topics/policies#policy-user-groups). Azure Active Directory group ids are not used by redaction policies.
-* It applies to master data (the `object` service), when records are read or listed.
+* It applies to master data (the `object` service): the fields are removed from records that are read, listed or searched, including older versions of a record.
 * There is no allow or deny: a redaction policy always removes its fields for its members. To hide a field from everyone except a few people, make the policy's members a group of the people who should not see it.
 
-:::caution
-Redaction hides the value in the records returned, it does not stop a user filtering on the field. A user could still find records with a query such as `contract.price > 50`. If the records themselves must be hidden, use a [security policy](/docs/odsl/topics/policies).
+### Redacted fields cannot be used to find values
+So that a redacted value cannot be worked out another way, a member of a redaction policy gets a `403 Forbidden` error if they use a redacted field in:
+
+* a filter or condition, e.g. `contract.price > 50`, including filters on master data from other services (`_objfilter`)
+* a search, sort, distinct or field information request
+* a projection that copies the field into another field, e.g. `{"p": "$contract.price"}` (simply including the field is allowed, it is removed from the results)
+
+This covers the field itself, the fields inside it and the property that holds it: with `contract.price` redacted, filtering on `contract` is also denied.
+
+In aggregations on master data, redacted fields are removed before your own stages run, so they cannot be grouped, matched or calculated on. Aggregations on any service cannot join master data (`$lookup`, `$graphLookup` or `$unionWith` from the master data collection) when you have redacted fields.
+
+:::note
+A plain-word search also matches `name`, `description` and `tags`. If one of these is redacted, its members cannot use plain-word search.
 :::
+
+If the records themselves must be hidden, use a [security policy](/docs/odsl/topics/policies).
 
 ### Saving records with redacted fields
 A normal save merges the changes into the stored record, so fields the user could not see are kept. Saving with `_replace=true` replaces the whole record, so redacted fields would be lost: users who have fields redacted should not save with replace.

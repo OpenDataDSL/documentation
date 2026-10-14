@@ -218,7 +218,8 @@ See [FeaturePolicy](/docs/odsl/variable/featurepolicy) for the properties and fe
 
 A redaction policy removes fields from the master data records its members read. It has `redactions` (a list of field names, with dot notation for nested fields) instead of service, source, condition and actions.
 
-* It applies to the `object` service when records are read or listed.
+* It applies to the `object` service when records are read, listed or searched.
+* Members cannot use redacted fields in filters, searches, sorts or aggregations.
 * There is no allow or deny: the fields are always removed for the policy's members.
 
 ```js

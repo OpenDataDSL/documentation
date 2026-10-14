@@ -14,7 +14,7 @@ A redaction policy variable contains a list of master data fields that are hidde
 
 Redaction Policy variables are used to remove sensitive fields, such as prices or internal notes, from master data records before they are returned to the policy's members. The rest of the record is still returned.
 
-Redaction applies to master data (the `object` service) when records are read or listed. For how redaction works and more examples, see [Redaction Policies](/docs/topics/policies/redaction).
+Redaction applies to master data (the `object` service) when records are read, listed or searched. Members cannot filter, search, sort, group or aggregate on redacted fields. For how redaction works and more examples, see [Redaction Policies](/docs/topics/policies/redaction).
 
 ## Defining a Redaction Policy
 
