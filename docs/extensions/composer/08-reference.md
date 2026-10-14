@@ -72,6 +72,34 @@ A template has the same `properties.composition`, with input placeholders such a
 
 ---
 
+## Chart indicators
+
+`properties.composition.indicators` is a list of indicators, each with an `id`, a `type`, an optional `label`, `colour` and `style`, and these settings:
+
+| `type` | Settings |
+|-|-|
+| `trend` | `points`: two `{x, y}`, where `x` is a tenor or date of the index; `extend` (default true); `axis` (1 or 2) |
+| `level` | `value`; `axis` |
+| `sma`, `ema` | `column` (a column id); `period` |
+| `bollinger` | `column`; `period`; `deviations` |
+| `regression` | `column` |
+
+| Field | Meaning |
+|-|-|
+| `from` | The ondate it was added on. Not shown on earlier ondates. Empty: every ondate. |
+| `carry` | `true` (default): also shown on every later ondate. `false`: only on `from`. |
+| `removedFrom` | Not shown on this ondate or later. |
+
+```json
+"indicators": [
+  {"id": "ind1", "type": "trend", "from": "2026-10-13", "carry": true, "axis": 1,
+   "points": [{"x": "M02", "y": 73.52}, {"x": "M06", "y": 76}], "extend": true},
+  {"id": "ind2", "type": "sma", "from": "2026-10-13", "carry": true, "column": "SPREAD", "period": 3}
+]
+```
+
+---
+
 ## Settings
 
 | Setting | Field |

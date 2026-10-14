@@ -8,7 +8,7 @@ tags: [extension, composer, composition, expressions]
 
 # The workspace
 
-Opening a composition shows its data: the toolbar, the chart and the table. Everything else is edited in the **side panel**, which slides out from the right when you select **Columns** or **Properties**, or a column heading or chart series. On a wide screen the data moves left so you can see it while you edit.
+Opening a composition shows its data: the toolbar, the chart and the table. Everything else is edited in the **side panel**, which slides out from the right when you select **Columns**, **Properties** or **Indicators**, or a column heading or chart series. On a wide screen the data moves left so you can see it while you edit.
 
 The side panel has these tabs:
 
@@ -16,6 +16,7 @@ The side panel has these tabs:
 |-|-|
 | **Columns** | The list of columns, then one column at a time |
 | **Properties** | The name, where it is stored, the worksheet settings, report settings, meta data, conversion defaults, scripts, automation and builds |
+| **Indicators** | Trend lines, levels and averages drawn on the chart (see [Chart indicators](#chart-indicators)) |
 | **Inputs** | Templates only: the inputs the template asks for (see [Templates](/docs/extensions/composer/templates)) |
 | **JSON** | The configuration that is saved, and the response of the last run |
 
@@ -131,6 +132,43 @@ Each column has display settings:
 | **Line style** | Solid, Dash, Dot and others |
 | **Axis** | 1 (left) or 2 (right), for example a spread on axis 2 under two prices on axis 1 |
 | **Colour** | The series colour |
+
+---
+
+## Chart indicators
+
+Indicators are lines drawn on the chart: a trend line or a level you draw yourself, or an average calculated from a column. They are saved with the composition and shown in the portal too. They only add to the chart: the data, the table and Excel are unchanged.
+
+Select **Indicators** in the toolbar to open them in the side panel.
+
+| Indicator | How to add it |
+|-|-|
+| **Trend line** | Select **Draw trend line**, then click the chart at its start and at its end. Each click snaps to the nearest tenor or date. The line carries on to the end of the chart unless you clear **Extend to the end of the chart**. |
+| **Level** | Select **Draw level**, then click the chart at the price, for example a support or resistance level. |
+| **Moving average** | Select **Add moving average**, then choose the column and the period, the number of points averaged. |
+| **Exponential moving average** | As a moving average, weighted towards the latest values. |
+| **Bollinger bands** | A moving average with bands a number of standard deviations above and below it. |
+| **Linear regression** | The straight line that best fits a column. |
+
+Press **Esc** to stop drawing. Click an indicator in the list, or its line on the chart, to change its label, column, period, values, axis, line style or colour. **Draw again on the chart** redraws a trend line, and **Pick the level on the chart** moves a level.
+
+### Indicators on later ondates
+
+An indicator is added on the ondate you are looking at. With **Keep on later ondates** ticked, which is the default, it is shown on every later ondate too. So a trend line you draw on yesterday's composition is also on today's, and on every build made from now on. Clear it for an indicator that belongs to one ondate only.
+
+| Ondate shown | Indicator added on 13 October, kept on later ondates | Indicator added on 13 October, this ondate only |
+|-|-|-|
+| 12 October | Not shown | Not shown |
+| 13 October | Shown | Shown |
+| 14 October and later | Shown | Not shown |
+
+To remove an indicator inherited from an earlier ondate, choose whether to remove it **from this ondate onwards**, so the earlier builds keep it, or **from every ondate**. The **Ondates** section of an indicator shows when it was **Added on** and, if it was, **Removed from**; you can change both. Indicators not shown on the ondate you are looking at are listed under **Not on this ondate**.
+
+On a curve composition the trend line is anchored to tenors, such as M02 to M06, so on a later ondate it is drawn between the same tenors of that day's curve.
+
+:::note
+Save the composition to keep its indicators. Saving indicators does not make its stored builds out of date, and changing them does not need a **Run**. A template keeps the indicators shown when it is saved, and compositions made from it show them on every ondate.
+:::
 
 ---
 
