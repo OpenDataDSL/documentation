@@ -68,7 +68,23 @@ Removing a column that an expression uses asks first.
 
 ## Data columns
 
-A data column shows a curve or a timeseries from the platform. Start typing part of its id to search.
+A data column shows a curve or a timeseries from the platform. Start typing part of its id for suggestions, or select **Find** to look it up by its dimensions.
+
+### Finding data
+
+**Find** opens the data finder, which works the same way as finding data in the portal:
+
+1. Choose **Public** or **Private** data, and, on a timeseries worksheet, whether to look for curves, timeseries or both.
+2. Select **Filter by...** and choose a dimension, such as **source**. Its values are listed, for example `ICE` and `EEX`. Pick one or more.
+3. Add another dimension, such as **location**, and pick `Germany`. Each dimension only lists the values that are left after the filters before it, and the list shows the data that matches all of them.
+4. Narrow it further by typing part of the id in **Id contains**.
+5. Click a row to use it.
+
+The dimensions are the ones defined on the types of the master data, such as source, commodity, product and location. Remove a value with the cross on its chip, or select **Clear filters** to start again. Composer remembers your filters for the next time you open the finder.
+
+Curve and timeseries inputs, when you use a template, have a **Find** button too.
+
+### Data column settings
 
 | Setting | |
 |-|-|
@@ -84,6 +100,10 @@ On a **timeseries** worksheet, the search lists both timeseries and curves:
 - Choose a **curve** and Composer switches **Source** to **Curve tenor** and asks for the **Tenor**, such as `M01` or `GM01`. The column shows that tenor of the curve as a timeseries, for example the front month each day. The tenor list is filled with the tenors of the curve's latest contracts.
 
 You can also type a curve tenor in full, for example `ICIS.ESGM.NL.TTF.ASS.FUT:MID:GM01`; Composer splits it into the curve and its tenor.
+
+:::note
+On a curve worksheet the rows are lined up by tenor. Gas curves often use tenors that start with **G**, such as `GM01` for gas month 01, and these line up with the same tenor of other curves: `GM01` with `M01`, `GD01` with `D01`, `GQ01` with `Q01`, and so on for weeks, seasons, years and balance of month. A power curve and a gas curve therefore share the rows `M01`, `M02`, and so on.
+:::
 
 On a timeseries worksheet, **Observed** says how the values are combined or spread out to the worksheet's calendar: `beginning`, `end`, `averaged`, `summed`, `high`, `low` or `delta`. Leave it empty to use the worksheet's setting, or the timeseries' own.
 
