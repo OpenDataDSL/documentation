@@ -15,7 +15,7 @@ tags: [extension, composer, composition, report]
 - The daily average, high and low of an hourly price
 - A gas hub converted to EUR per MWh, against TTF
 
-A composition is shown as a table and a chart. It is saved as a report, so it can be opened in the portal and in the Excel Add-in, built every day, published as a curve, and run automatically when its data changes.
+A composition is shown as a table and a chart. It is saved as a report, so it can be opened in the portal and in the Excel Add-in (as a table of the columns you choose), built every day, published as a curve, and run automatically when its data changes.
 
 ![Composer: template, columns, convert, build and share](/img/extensions/composer/composer-overview.png)
 

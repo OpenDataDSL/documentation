@@ -14,7 +14,7 @@ A template is a composition with some of its settings left open as **inputs**, s
 
 ## The library
 
-The **Library** tab shows the OpenDataDSL templates as cards, grouped by category, with the featured ones first. Search by name, category or tag, or choose a category.
+The **Library** tab shows the 50 OpenDataDSL templates as cards, grouped by category, with the featured ones first. Search by name, category or tag, or choose a category.
 
 Open a template to see what it does, its columns and its inputs, and to:
 

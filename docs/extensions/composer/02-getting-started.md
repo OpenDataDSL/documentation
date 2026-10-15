@@ -20,7 +20,7 @@ Open **Composer** from the Extensions section of the menu. It opens on the **Gal
 
 ## 2. Choose a template
 
-Open the **Library** tab. The templates are grouped by category (Curves, Power, Gas, Oil, Carbon, Timeseries and so on), with the featured ones first. Select **Curve spread** to see:
+Open the **Library** tab. The templates are grouped by category (Curves, Power, Gas, Oil, Carbon, Coal, FX, Timeseries and so on), with the featured ones first. Select **Curve spread** to see:
 
 - What it does
 - Its columns
@@ -37,7 +37,7 @@ The **Use template** dialog asks for:
 | Field | What to enter |
 |-|-|
 | **Name** | A name for your composition, for example "Brent WTI" |
-| **Store in** | An analytics area to keep it in, or **A new analytics area** (give it a name, such as "Oil Analytics"), or **An existing master data record** |
+| **Store in** | An analytics area to keep it in, or **A new analytics area** (give it an id, such as `OIL_ANALYTICS`, and optionally a name, such as "Oil Analytics"), or **An existing master data record** |
 | The template's inputs | For Curve spread: the first curve, the second curve, and names for them. Start typing part of an id in a curve field to search. |
 
 Select **Create composition**. Composer saves the composition and opens it.

@@ -80,6 +80,8 @@ A data column shows a curve or a timeseries from the platform. Start typing part
 4. Narrow it further by typing part of the id in **Id contains**.
 5. Click a row to use it.
 
+When there are too many matches to count, the finder says **More than** the number shown so far; select the next page to see more, or add a filter to narrow it down.
+
 The dimensions are the ones defined on the types of the master data, such as source, commodity, product and location. Remove a value with the cross on its chip, or select **Clear filters** to start again. Composer remembers your filters for the next time you open the finder.
 
 Curve and timeseries inputs, when you use a template, have a **Find** button too.
@@ -149,7 +151,7 @@ Each column has display settings:
 
 | Setting | |
 |-|-|
-| **Table and Excel grid**, **Chart**, **Excel** | Where the column appears. Hide a working column that only feeds an expression. |
+| **Table and Excel grid**, **Chart**, **Excel** | Where the column appears: the table, the chart, and the Excel Add-in (see [Compositions in Excel](#compositions-in-excel)). Hide a working column that only feeds an expression. |
 | **Chart type** | line, spline, area, areaspline, column, scatter or step |
 | **Line style** | Solid, Dash, Dot and others |
 | **Axis** | 1 (left) or 2 (right), for example a spread on axis 2 under two prices on axis 1 |
@@ -239,6 +241,21 @@ The **Range** of a timeseries worksheet is relative to the ondate:
 
 ---
 
+## Compositions in Excel
+
+Every saved composition is a report, so it can be opened in the OpenDataDSL **Excel Add-in** alongside your other reports. Tick **Hide in Excel** under **Properties**, **Report** to leave it out of the Excel list.
+
+In Excel, a composition is a table for the ondate you choose:
+
+- A heading row: **Index**, then the caption of each column.
+- A row for each tenor of a curve worksheet, or each date of a timeseries worksheet.
+- Only the columns with **Excel** ticked under **Display**. Untick it for working columns, such as the inputs of a spread, to keep just the results.
+- Numbers as plain values that Excel can calculate with, dates as `yyyy-mm-dd` (with the time when it is not midnight), and empty cells where a column has no value.
+
+Excel reads the stored builds, so build the ondates you need first (see [Builds, composed curves and automation](/docs/extensions/composer/builds-and-automation)). A composition that is built automatically is ready in Excel as soon as its inputs update.
+
+---
+
 ## Other actions
 
 From **More** in the toolbar:
@@ -248,6 +265,6 @@ From **More** in the toolbar:
 | **Ask Fusion AI to change it** | Describe a change; Fusion shows it as a difference for you to apply (see [Designing with Fusion AI](/docs/extensions/composer/fusion-ai)) |
 | **Export CSV** | Download the table |
 | **Clone** | Save a copy under a new name |
-| **Move to...** | Store it on another analytics area or record |
+| **Move to...** | Store it on another analytics area or record. Its builds, report dates and build automation move with it; links to the old id, composed curves made from it and compositions that link to it need updating |
 | **Save as template** | Make a template from it in My templates |
 | **Delete** | Remove it from the record it is stored on |
