@@ -88,6 +88,8 @@ Composer keeps a record of the template a composition was created from, and the 
 
 The **Gallery** tab, the first tab in Composer, shows the compositions of one analytics area as cards. Each card shows the chart of the composition's latest build, with its indicators. A composition that has not been built yet shows a preview, calculated when you open the gallery.
 
+![The gallery of an analytics area](/img/extensions/composer/composer-gallery.png)
+
 - Choose the **analytics area** to show.
 - Choose the **Card width**: 25%, 33%, 50% or 100% of the page. Each card also has its own width, so you can make one chart wide and keep the others small.
 - Drag a card by its grip, at the top left, to move it. Drop it on the left half of another card to put it before that card, or on the right half to put it after. **Reset order** puts the cards back in name order.
@@ -116,6 +118,7 @@ On the **Master Data** screen, the **Composer** tab of a record does the same, a
 
 ## Next steps
 
+- [Example: clean spark spread](/docs/extensions/composer/example-clean-spark-spread): a worked example, from a template and by hand
 - [The workspace](/docs/extensions/composer/workspace): every column and worksheet setting
 - [Templates](/docs/extensions/composer/templates): make your own templates with inputs
 - [Builds, composed curves and automation](/docs/extensions/composer/builds-and-automation)

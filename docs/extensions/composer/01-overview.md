@@ -17,6 +17,10 @@ tags: [extension, composer, composition, report]
 
 A composition is shown as a table and a chart. It is saved as a report, so it can be opened in the portal and in the Excel Add-in, built every day, published as a curve, and run automatically when its data changes.
 
+![Composer: template, columns, convert, build and share](/img/extensions/composer/composer-overview.png)
+
+For a complete worked example, see [Example: clean spark spread](/docs/extensions/composer/example-clean-spark-spread).
+
 ---
 
 ## Templates and compositions

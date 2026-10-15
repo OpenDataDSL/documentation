@@ -10,6 +10,8 @@ tags: [extension, composer, composition, expressions]
 
 Opening a composition shows its data: the toolbar, the chart and the table. Everything else is edited in the **side panel**, which slides out from the right when you select **Columns**, **Properties** or **Indicators**, or a column heading or chart series. On a wide screen the data moves left so you can see it while you edit.
 
+![The workspace, with a column open in the side panel](/img/extensions/composer/composer-workspace.png)
+
 The side panel has these tabs:
 
 | Tab | What it edits |
@@ -140,6 +142,8 @@ Each column has display settings:
 Indicators are lines drawn on the chart: a trend line or a level you draw yourself, or an average calculated from a column. They are saved with the composition and shown in the portal too. They only add to the chart: the data, the table and Excel are unchanged.
 
 Select **Indicators** in the toolbar to open them in the side panel.
+
+![A 20-day moving average, a trend line and a resistance level on a timeseries composition](/img/extensions/composer/composer-indicators.png)
 
 | Indicator | How to add it |
 |-|-|
