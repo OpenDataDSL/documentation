@@ -154,7 +154,7 @@ Each column has display settings:
 | **Table and Excel grid**, **Chart**, **Excel** | Where the column appears: the table, the chart, and the Excel Add-in (see [Compositions in Excel](#compositions-in-excel)). Hide a working column that only feeds an expression. |
 | **Chart type** | line, spline, area, areaspline, column, scatter or step |
 | **Line style** | Solid, Dash, Dot and others |
-| **Axis** | 1 (left) or 2 (right), for example a spread on axis 2 under two prices on axis 1 |
+| **Axis** | 1 (left) or 2 (right), for example a spread on axis 2 under two prices on axis 1. Each axis is labelled with the currency and units of the columns on it, such as EUR/MWh |
 | **Colour** | The series colour |
 
 ---

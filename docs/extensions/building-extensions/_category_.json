@@ -1,8 +1,8 @@
 {
   "label": "Building extensions",
-  "position": 10,
+  "position": 0,
   "link": {
     "type": "generated-index",
-    "description": "How extensions work, and examples of creating OpenDataDSL platform extensions"
+    "description": "How extensions work and how to build your own: with the Fusion AI Build an extension playbook, or by hand with a manifest, pages, insights and policies, and how to publish and install them."
   }
 }

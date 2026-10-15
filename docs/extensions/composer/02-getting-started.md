@@ -91,12 +91,13 @@ The **Gallery** tab, the first tab in Composer, shows the compositions of one an
 ![The gallery of an analytics area](/img/extensions/composer/composer-gallery.png)
 
 - Choose the **analytics area** to show.
+- Choose **Everyone's** compositions, or **Mine** for only the ones you own (the owner in the composition's meta data).
 - Choose the **Card width**: 25%, 33%, 50% or 100% of the page. Each card also has its own width, so you can make one chart wide and keep the others small.
 - Drag a card by its grip, at the top left, to move it. Drop it on the left half of another card to put it before that card, or on the right half to put it after. **Reset order** puts the cards back in name order.
 - Select **Refresh** to show the latest builds.
 - Select a card to open the composition, on the ondate the card shows, as a chart, a table and chart, or a table, however it is set to show. **Back** returns to the gallery.
 
-Composer remembers the area, the widths and the order of the cards for you, on any computer you sign in on.
+Composer remembers the area, everyone's or mine, the widths and the order of the cards for you, on any computer you sign in on.
 
 ---
 

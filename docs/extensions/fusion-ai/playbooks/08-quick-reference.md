@@ -1,7 +1,7 @@
 ---
 title: Quick reference and troubleshooting
 description: A one-page summary of the playbook format, and what the editor's error and warning messages mean
-slug: /topics/fusion-ai-playbooks/reference
+slug: /extensions/fusion-ai/playbooks/reference
 sidebar_position: 8
 tags: [fusion-ai, playbooks, reference]
 ---
@@ -102,7 +102,7 @@ The editor checks the playbook as you type and lists problems by line. **Errors*
 | The front matter is not valid YAML: mapping values are not allowed here | A value contains `: ` (a colon and a space). Reword it, or put the whole value in quotes. The same message can appear for any marker block. |
 | The id '...' may only use letters, numbers, '.', '-' and '_' | Remove spaces and other characters from the id. Only library playbooks start with `#`. |
 | The code block starting on line N is not closed | A fenced block has no closing fence. If the block contains a code block of its own, open it with four backticks. |
-| Input '...' has unknown type '...' | Use one of the [input types](/docs/topics/fusion-ai-playbooks/syntax#input-types). |
+| Input '...' has unknown type '...' | Use one of the [input types](/docs/extensions/fusion-ai/playbooks/syntax#input-types). |
 | Input '...' is a choice so it needs options | Add `options: [...]` to `choice` and `multichoice` inputs. |
 | Input '...' has an invalid validate pattern | The regular expression does not compile. Quote it, and escape backslashes as `\\` inside double quotes. |
 | Step '...' needs instructions | Every step needs `instructions`. |
@@ -122,7 +122,7 @@ The editor checks the playbook as you type and lists problems by line. **Errors*
 
 | Message | Meaning |
 |-|-|
-| Step '...' can change the platform (...) but no gate comes before it | The step can save, create, run, raise or send something without anyone approving it. Add a [gate](/docs/topics/fusion-ai-playbooks/flow#gate) unless that is intended. |
+| Step '...' can change the platform (...) but no gate comes before it | The step can save, create, run, raise or send something without anyone approving it. Add a [gate](/docs/extensions/fusion-ai/playbooks/flow#gate) unless that is intended. |
 | Step '...' uses tool '...', which is not a known tool | Check the spelling of the tool name against [Available tools](/docs/product/mcp/tools). Fusion cannot use a tool that does not exist. |
 | Reference @&#123;steps.s.v&#125;: step 's' does not list 'v' in produces | Add the value to the step's `produces`, or Fusion will not be asked to record it. |
 

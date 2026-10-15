@@ -1,7 +1,7 @@
 ---
 title: Running playbook tasks
 description: Filling in and running playbook tasks, background runs, schedules, approvals, resuming runs and monitoring
-slug: /topics/fusion-ai-playbooks/running
+slug: /extensions/fusion-ai/playbooks/running
 sidebar_position: 5
 tags: [fusion-ai, playbooks, automation, scheduling]
 ---
@@ -29,7 +29,7 @@ You can create a task in four places:
 - **Tasks** tab: choose a playbook from the list, which shows your own playbooks and the library, then select **New task**
 - **Playbooks** tab: open a playbook and select **New task**
 - **Library**: open a library playbook and select **New task**, to run it without copying it
-- **Fusion chat**: ask Fusion to run a playbook (see [Library and chat](/docs/topics/fusion-ai-playbooks/library-and-chat))
+- **Fusion chat**: ask Fusion to run a playbook (see [Library and chat](/docs/extensions/fusion-ai/playbooks/library-and-chat))
 
 The task shows:
 
@@ -38,9 +38,13 @@ The task shows:
 - The **plan**: the steps, with their checks, approvals and the tools they use, and what the playbook delivers
 - **Show diagram**: the playbook as a flow diagram
 
+![A draft task with its form and plan](/img/extensions/fusion-ai/tasks-form.png)
+
 ### Suggest values
 
 **Suggest values** asks Fusion to fill in the form for you. You can add a hint such as "use the EU power curves". Fusion looks up real names on the platform, such as curve ids and dataset ids, so the values it suggests exist. Values you have already entered are kept, unless they are invalid.
+
+![Suggest values, with a hint for Fusion](/img/extensions/fusion-ai/tasks-suggest.png)
 
 ---
 
@@ -74,6 +78,12 @@ stateDiagram-v2
 
 As each step finishes, the run view shows its summary, the values it produced and the result of each check with its reason. Steps that a transition passed over are shown as skipped. The diagram is coloured by the state of each step.
 
+![The steps of a run, with check results, tokens and values](/img/extensions/fusion-ai/tasks-run-steps.png)
+
+**Show diagram** draws the run as a flow chart, coloured by the state of each step: green for done, amber for the approval it is waiting at, grey for steps still to come.
+
+![The diagram of a run waiting for approval](/img/extensions/fusion-ai/tasks-run-diagram.png)
+
 **Cancel run** stops a run that is in progress.
 
 ### Run statuses
@@ -94,7 +104,9 @@ As each step finishes, the run view shows its summary, the values it produced an
 
 ## Approvals
 
-When a run reaches a [gate](/docs/topics/fusion-ai-playbooks/flow#gate), it pauses with the status **Awaiting approval**. The gate's message and the step's result are shown, so the approver can see what they are approving.
+When a run reaches a [gate](/docs/extensions/fusion-ai/playbooks/flow#gate), it pauses with the status **Awaiting approval**. The approval panel shows the gate's message, each value being approved in a viewer (a script with line numbers, a report template preview, an email, a definition card for a report or SMART curve), and what Fusion will do after approval. See [What the approver sees](/docs/extensions/fusion-ai/playbooks/flow#what-the-approver-sees).
+
+![The approval panel: the script and the template being approved, and what Fusion will do next](/img/extensions/fusion-ai/tasks-approval.png)
 
 - The gate's approvers, named people and members of named user groups, are emailed with a link to the run.
 - An approver opens the run on the **Tasks** tab and selects **Approve** or **Reject**, adding a comment if they wish.
@@ -135,7 +147,7 @@ How scheduled tasks work:
 Running a scheduled task by hand runs a copy now and leaves the schedule as it is.
 
 :::tip
-Playbooks that run on a schedule should end early when there is nothing to do, using a [transition to end](/docs/topics/fusion-ai-playbooks/flow#ending-early). The [Curve quality check](/docs/topics/fusion-ai-playbooks/examples) runs every morning but only raises alerts when it finds a problem.
+Playbooks that run on a schedule should end early when there is nothing to do, using a [transition to end](/docs/extensions/fusion-ai/playbooks/flow#ending-early). The [Curve quality check](/docs/extensions/fusion-ai/playbooks/examples) runs every morning but only raises alerts when it finds a problem.
 :::
 
 ---
@@ -160,7 +172,7 @@ Each run is bounded by:
 | Limit | Set by | When reached |
 |-|-|-|
 | Token cap | The playbook's `maxTokens`, default 1,000,000 | The run stops and can be resumed |
-| Fusion AI limit | Your tenant's Fusion AI budget settings | The run stops until the limit allows more |
+| Fusion AI limit | Your tenant's [Fusion AI limit](/docs/extensions/fusion-ai/billing) | The run stops until the limit allows more |
 | Step safety limit | Five times the number of steps | The run stops; usually a sign of a loop |
 
 Each run records the tokens used by each step. Tokens used by playbook runs count towards your Fusion AI usage in the same way as chats.
@@ -169,11 +181,11 @@ Each run records the tokens used by each step. Tokens used by playbook runs coun
 
 ## Monitoring runs
 
-The **Fusion AI Playbook Runs** insight shows playbook use across your tenant:
+The [**Fusion AI Playbook Runs**](/docs/extensions/fusion-ai/insights#playbook-runs) insight shows playbook use across your tenant:
 
 - Runs by playbook and by user, with success rates
 - Failed and stopped runs, with their reasons
 - Tokens per run
 - Each run's steps, check results and approvals
 
-The **Fusion AI Token Usage** and **Fusion AI Billing** insights show the tokens playbook runs use, alongside your other Fusion AI use.
+The [**Fusion AI Token Usage**](/docs/extensions/fusion-ai/insights#token-usage) and [**Fusion AI Billing**](/docs/extensions/fusion-ai/billing) insights show the tokens playbook runs use, alongside your other Fusion AI use.

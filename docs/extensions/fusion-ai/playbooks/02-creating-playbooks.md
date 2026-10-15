@@ -1,7 +1,7 @@
 ---
 title: Creating playbooks
 description: How to create a Fusion AI playbook, from a description, from the library, from an example or by hand
-slug: /topics/fusion-ai-playbooks/creating
+slug: /extensions/fusion-ai/playbooks/creating
 sidebar_position: 2
 tags: [fusion-ai, playbooks, automation]
 ---
@@ -46,6 +46,8 @@ Fusion drafts are a starting point. The instructions in each step are what Fusio
 
 The **Library** tab shows the OpenDataDSL playbooks, grouped by category with featured playbooks first. Open a playbook to see what it does, its plan as a flow diagram, the values you will be asked for, the tools it uses and its versions.
 
+![The playbook library](/img/extensions/fusion-ai/playbooks-library.png)
+
 - **New task** runs the library playbook as it is. You do not need a copy to use it.
 - **Copy to my playbooks** creates your own copy to customise.
 
@@ -59,7 +61,7 @@ A copy remembers which library version it came from. When OpenDataDSL improves t
 
 **New playbook** opens an empty editor with the front matter in place. **Upload** loads a `.md` file, and **Download** saves the current playbook as one, so you can keep playbooks in source control and share them between tenants.
 
-The full format is described in [Playbook syntax](/docs/topics/fusion-ai-playbooks/syntax).
+The full format is described in [Playbook syntax](/docs/extensions/fusion-ai/playbooks/syntax).
 
 ---
 
@@ -74,10 +76,16 @@ The editor has these tabs:
 | **Diagram** | The playbook as a flow diagram: steps, checks, approval gates and transitions. **Copy Mermaid** copies the diagram source. |
 | **Versions** | Every saved version, with a line-by-line comparison between any two |
 
+![The playbook editor with a copy of a library playbook, its check results and what it contains](/img/extensions/fusion-ai/playbooks-editor.png)
+
 As you type, the playbook is checked and any problems are listed with their line numbers:
 
 - **Errors** stop a playbook from being saved or run, for example a step with no instructions, an input with an unknown type, or a reference to a step that does not exist.
 - **Warnings** are allowed but worth reading, for example a step that can change the platform with no approval gate before it, or a reference to a value the step does not list in `produces`.
+
+The **Diagram** tab follows the editor as you type:
+
+![The Diagram tab](/img/extensions/fusion-ai/playbooks-diagram.png)
 
 Every save creates a new version. A task records the version it was created from, so editing a playbook never changes a task that has already been filled in or run.
 
@@ -179,7 +187,7 @@ flowchart TD
     style gate fill:#fff3cd,stroke:#d39e00
 ```
 
-When you save it, select **New task** to fill in the form and run it. See [Running playbook tasks](/docs/topics/fusion-ai-playbooks/running).
+When you save it, select **New task** to fill in the form and run it. See [Running playbook tasks](/docs/extensions/fusion-ai/playbooks/running).
 
 ---
 

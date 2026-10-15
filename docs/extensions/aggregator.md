@@ -2,7 +2,6 @@
 title: Aggregator
 description: Build aggregation pipelines on any platform service, save them as ODSL scripts, schedule them as stored, house-style reports with emails, and run them from ODSL, curl, Python or JavaScript
 slug: /extensions/aggregator
-sidebar_position: 2
 tags: [extension, aggregator, aggregation, report, automation, email]
 ---
 

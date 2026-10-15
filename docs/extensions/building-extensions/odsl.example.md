@@ -1,7 +1,8 @@
 ---
+title: "Example: an HTML components extension"
 slug: /odsl/extension/odsl.example
-description: A simple example of creating a basic extension
-sidebar_position: 1
+description: A simple example extension built from the platform HTML components
+sidebar_position: 7
 tags:
 - extension
 - example

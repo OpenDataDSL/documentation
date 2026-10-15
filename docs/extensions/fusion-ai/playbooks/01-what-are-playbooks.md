@@ -1,7 +1,7 @@
 ---
 title: What are AI Playbooks?
 description: An introduction to Fusion AI Playbooks, repeatable AI workflows that run the same way every time
-slug: /topics/fusion-ai-playbooks/overview
+slug: /extensions/fusion-ai/playbooks/overview
 sidebar_position: 1
 tags: [fusion-ai, playbooks, automation, ai-assistant]
 ---
@@ -64,7 +64,7 @@ flowchart LR
 
 ## Where you find playbooks
 
-Playbooks live in the **Fusion AI** extension in the portal:
+Playbooks live in the [Fusion AI](/docs/extensions/fusion-ai/overview) extension in the portal:
 
 | Where | What you do there |
 |-|-|
@@ -72,7 +72,7 @@ Playbooks live in the **Fusion AI** extension in the portal:
 | **Playbooks** tab, **My playbooks** | Write and edit your tenant's own playbooks, including any added by an extension. Draft a playbook from a description with Fusion. |
 | **Tasks** tab | Fill in a task from a playbook and run it, in the page or in the background, or give it a schedule. Approve or reject runs waiting at a gate. |
 | **Studio** (the chat) | Ask Fusion to run a playbook. It fills in a task from the conversation and shows it as a card you can run. |
-| **Fusion AI Playbook Runs** insight | See runs by playbook and user, success rates, failures and their reasons, and tokens per run. |
+| [**Fusion AI Playbook Runs**](/docs/extensions/fusion-ai/insights#playbook-runs) insight | See runs by playbook and user, success rates, failures and their reasons, and tokens per run. |
 
 ---
 
@@ -93,6 +93,6 @@ Playbooks live in the **Fusion AI** extension in the portal:
 
 ## Next steps
 
-- [Creating playbooks](/docs/topics/fusion-ai-playbooks/creating): the ways to write a playbook and the editor
-- [Playbook syntax](/docs/topics/fusion-ai-playbooks/syntax): the full reference for the playbook format
-- [Running playbook tasks](/docs/topics/fusion-ai-playbooks/running): forms, background runs, schedules and approvals
+- [Creating playbooks](/docs/extensions/fusion-ai/playbooks/creating): the ways to write a playbook and the editor
+- [Playbook syntax](/docs/extensions/fusion-ai/playbooks/syntax): the full reference for the playbook format
+- [Running playbook tasks](/docs/extensions/fusion-ai/playbooks/running): forms, background runs, schedules and approvals

@@ -1,7 +1,7 @@
 ---
 title: Example playbooks
 description: A complete annotated playbook, and the flow of each playbook in the OpenDataDSL library
-slug: /topics/fusion-ai-playbooks/examples
+slug: /extensions/fusion-ai/playbooks/examples
 sidebar_position: 7
 tags: [fusion-ai, playbooks, examples, curves, datasets]
 ---
@@ -349,6 +349,29 @@ flowchart TD
     email --> gate(["Approval: check the email"])
     gate --> send["4. Email the summary"]
     send --> done
+    style gate fill:#fff3cd,stroke:#d39e00
+```
+
+### Build an extension
+
+`#extension-builder` builds a portal extension from a description of its tabs: it plans the files, writes the pages and any insight reports in the house style, writes the extension manifest, and after approval saves the scripts, insight reports, policies and the extension, then reads everything back to check it. See [Build an extension with Fusion AI](/docs/extensions/building/fusion-ai).
+
+```mermaid
+flowchart TD
+    plan["1. Plan the extension"] --> c1{{"Check: every tab planned, id free<br/>retry twice"}}
+    c1 -- "retry" --> plan
+    c1 --> pages["2. Write the pages"]
+    pages --> c2{{"Check: pages validate and follow the conventions<br/>retry twice"}}
+    c2 -- "retry" --> pages
+    c2 -- "no insights asked for" --> manifest
+    c2 --> insights["3. Write the insights"]
+    insights --> manifest["4. Write the manifest"]
+    manifest --> gate(["Approval: the pages, insights and manifest"])
+    gate --> save["5. Save the pages and insights"]
+    save --> register["6. Create the policies and the extension"]
+    register --> verify["7. Check the extension"]
+    verify --> c4{{"Check: everything exists<br/>back to step 6"}}
+    c4 -- "fail" --> register
     style gate fill:#fff3cd,stroke:#d39e00
 ```
 

@@ -25,7 +25,7 @@ For a complete worked example, see [Example: clean spark spread](/docs/extension
 
 ## Templates and compositions
 
-Composer works like [Fusion AI playbooks and tasks](/docs/topics/fusion-ai-playbooks/overview):
+Composer works like [Fusion AI playbooks and tasks](/docs/extensions/fusion-ai/playbooks/overview):
 
 | Composer | What it is |
 |-|-|

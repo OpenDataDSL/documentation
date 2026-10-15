@@ -1,7 +1,7 @@
 ---
 title: The library, extensions and chat
 description: The OpenDataDSL playbook library, copying and customising playbooks, sharing playbooks in extensions, and running playbooks from a Fusion chat
-slug: /topics/fusion-ai-playbooks/library-and-chat
+slug: /extensions/fusion-ai/playbooks/library-and-chat
 sidebar_position: 6
 tags: [fusion-ai, playbooks, extensions]
 ---
@@ -35,6 +35,8 @@ flowchart LR
 
 The **Library** tab on the **Playbooks** view shows the OpenDataDSL playbooks as cards, grouped by category, with featured playbooks first. Search by name, description or tag, or filter by category.
 
+![The library](/img/extensions/fusion-ai/playbooks-library.png)
+
 Open a playbook to see:
 
 - **What it does**: its description and guidance
@@ -42,6 +44,8 @@ Open a playbook to see:
 - **You will be asked for**: the inputs, with their help
 - **Tools it uses**, and whether it **saves to the platform**
 - **Versions**: its history, and what changed between versions
+
+![A library playbook: what it does, the plan, the inputs, the tools and the versions](/img/extensions/fusion-ai/playbooks-library-detail.png)
 
 From there:
 
@@ -85,6 +89,8 @@ Fusion:
 1. Finds the playbook that matches, from the library or your own playbooks.
 2. Reads its inputs and fills in a draft task from the conversation, using the values you gave and the playbook's defaults. It does not guess values it was not given.
 3. Shows the task in the chat as a card with the values, anything still needed, and the playbook's steps and approvals.
+
+![A playbook task prepared in the chat](/img/extensions/fusion-ai/studio-playbook-card.png)
 
 > **Fusion AI:** I've prepared a **Curve quality check** task for the NBP and TTF settlement curves, checking for big moves above 10%, missing tenors, stale curves and bad prices, and raising alerts for any problems it finds. It's ready to run from the card below.
 

@@ -1,7 +1,7 @@
 ---
 title: Playbook syntax
 description: The Fusion AI playbook format in detail, covering front matter, prose, inputs, steps, outputs and references
-slug: /topics/fusion-ai-playbooks/syntax
+slug: /extensions/fusion-ai/playbooks/syntax
 sidebar_position: 3
 tags: [fusion-ai, playbooks, reference]
 ---
@@ -30,7 +30,7 @@ flowchart TB
 
 Blocks can appear in any order and can be mixed with the prose. Steps run in the order they appear in the document unless a transition says otherwise, so it reads best to put each check, gate and transition just after the step it belongs to.
 
-This page covers the front matter, prose, inputs, steps, outputs and references. Checks, gates, transitions and conditions are covered in [Checks, gates and transitions](/docs/topics/fusion-ai-playbooks/flow).
+This page covers the front matter, prose, inputs, steps, outputs and references. Checks, gates, transitions and conditions are covered in [Checks, gates and transitions](/docs/extensions/fusion-ai/playbooks/flow).
 
 ---
 
@@ -272,7 +272,7 @@ Any other tool that Fusion AI offers can be listed, for example `find_curves`, `
 
 `create_automation`, `create_extension`, `create_policy`, `create_process_for_script`, `create_process_for_workflow`, `create_report`, `create_smart_curve`, `create_smart_timeseries`, `raise_alert`, `run_process`, `save_events`, `save_object`, `save_response_as_report`, `save_script`, `send_email`
 
-A step that uses one of them should come after a [gate](/docs/topics/fusion-ai-playbooks/flow#gate), so a person approves before anything changes. The editor warns you when it does not, and playbooks that use them are marked **Saves to the platform** in the library.
+A step that uses one of them should come after a [gate](/docs/extensions/fusion-ai/playbooks/flow#gate), so a person approves before anything changes. The editor warns you when it does not, and playbooks that use them are marked **Saves to the platform** in the library.
 
 ### Instructions
 
@@ -284,7 +284,7 @@ The instructions are what Fusion follows when it runs the step. For each step Fu
 4. The step's instructions, with every reference replaced by its value.
 5. The values it must record (`produces`).
 
-Fusion finishes a step by recording its values and a short summary. If it cannot do the step, for example because the data it needs is not there, it reports the step as failed with the reason, and the run stops at that step so a person can look. A stopped or failed run can be [resumed](/docs/topics/fusion-ai-playbooks/running#resuming-a-run).
+Fusion finishes a step by recording its values and a short summary. If it cannot do the step, for example because the data it needs is not there, it reports the step as failed with the reason, and the run stops at that step so a person can look. A stopped or failed run can be [resumed](/docs/extensions/fusion-ai/playbooks/running#resuming-a-run).
 
 Write instructions as you would for a capable colleague who has never done the job:
 
@@ -360,4 +360,4 @@ When a reference has no value, for example because the step that produces it was
 
 ## Next
 
-[Checks, gates and transitions](/docs/topics/fusion-ai-playbooks/flow): verifying each step, approvals, and choosing the next step with conditions.
+[Checks, gates and transitions](/docs/extensions/fusion-ai/playbooks/flow): verifying each step, approvals, and choosing the next step with conditions.

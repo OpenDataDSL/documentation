@@ -1,7 +1,7 @@
 ---
 title: Checks, gates and transitions
 description: Verifying each step with checks, approvals with gates, and choosing the next step with transitions and conditions
-slug: /topics/fusion-ai-playbooks/flow
+slug: /extensions/fusion-ai/playbooks/flow
 sidebar_position: 4
 tags: [fusion-ai, playbooks, reference]
 ---
@@ -328,7 +328,7 @@ The editor checks every condition when the playbook is saved. A condition that c
 
 ## Putting it together
 
-This part of the [Curve quality check](/docs/topics/fusion-ai-playbooks/examples) playbook uses all three blocks. The `inspect` step is checked, then two transitions end the run early when there is nothing to report, or when alerts are switched off:
+This part of the [Curve quality check](/docs/extensions/fusion-ai/playbooks/examples) playbook uses all three blocks. The `inspect` step is checked, then two transitions end the run early when there is nothing to report, or when alerts are switched off:
 
 ````markdown
 ```check
