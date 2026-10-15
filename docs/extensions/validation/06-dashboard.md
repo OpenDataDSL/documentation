@@ -20,6 +20,8 @@ tags: [extension, validation, dashboard, overrides, reports]
 
 ## Dashboard
 
+![The Validation dashboard](/img/extensions/validation/dashboard.png)
+
 | KPI | Meaning |
 |-|-|
 | **Data items validated** | Curves and timeseries with records in the period, and how many configurations and checks are enabled |
@@ -43,6 +45,8 @@ The dashboard shows when its statistics were read. Use **Refresh** to read them 
 
 ## Issues
 
+![Open issues](/img/extensions/validation/issues.png)
+
 **Issues** lists the open issues (failed, severe and error), oldest first, whatever their date. Tick **Only data points in the period** to apply the period filter. Filter by the start of the data id or by status.
 
 Select records with the tick boxes, then:
@@ -56,6 +60,8 @@ Select records with the tick boxes, then:
 
 ### Edit the checks of an issue
 
+![The checks of a data item, opened from its issue](/img/extensions/validation/issue-edit.png)
+
 The pencil at the end of a row opens the checks of that data item in a panel above the list, so you can change them while you look at its issues. The panel shows the configuration's version and the item's records on the page:
 
 - **Test on these records** runs the edited checks on those data points and shows the results; nothing is saved.
@@ -65,6 +71,8 @@ The pencil at the end of a row opens the checks of that data item in a panel abo
 The Records tab has the same pencil.
 
 ### Adjust checks
+
+![Adjust checks: new limits for the failing checks, with failures before and after](/img/extensions/validation/adjust.png)
 
 When data fails only because a limit is a little too tight, for example a few curves moved slightly more than the percentage change allowed, select those records and **Adjust checks**. For each data item the checks run again on the selected data points (for a curve, on its failing tenors) without saving anything, and for each check that fails or warns:
 
@@ -80,6 +88,8 @@ When data fails only because a limit is a little too tight, for example a few cu
 **Records** lists every record in the period. Filter by the start of the data id, status, and **Failing tenor** (curves that failed for that tenor), export to **CSV**, and use the same actions as on Issues, plus **Remove override**. For a curve, the status column shows how many tenors failed or warned, and which.
 
 ### A record
+
+![A validation record, with an override in its timeline](/img/extensions/validation/record.png)
 
 Select a record to open it:
 
@@ -111,6 +121,8 @@ Only failing records (failed, severe and error) can be overridden. Warnings alre
 
 ## Configurations
 
+![Validation configurations](/img/extensions/validation/configurations.png)
+
 **Configurations** lists every validation configuration, with its checks (hover over one to see its expression), whether it is enabled and runs on update, its version and when it was last changed. Select the version number to open its history. For each one:
 
 | Button | Does |
@@ -124,6 +136,8 @@ Only failing records (failed, severe and error) can be overridden. Warnings alre
 To run several at once, tick them (the box in the heading ticks every configuration shown, so search or filter first) and select **Run selected**. Pick the latest data point, one date (for example the same ondate for many curves) or a date range. The latest data point or one date runs straight away and lists each data item with its status, its failing tenors and its message; open a record from there. A date range, or more than 100 data items, runs in the background.
 
 ### Versions and history
+
+![The history of a configuration](/img/extensions/validation/history.png)
 
 Every save of a configuration keeps a version. The editor shows the version number, and **History**, below the settings, lists the versions newest first with when and by whom each was saved and what changed from the version before: checks added or removed, and changes to an expression, severity, scope or setting (old value struck through, new value after it). Up to the 20 newest versions are shown.
 
@@ -143,6 +157,8 @@ Use **Refresh** to read the scripts again when they were changed somewhere else,
 ---
 
 ## Reports
+
+![The Validation by Data Item insight](/img/extensions/validation/insight.png)
 
 The reports are insights of the extension, listed with your other insights:
 

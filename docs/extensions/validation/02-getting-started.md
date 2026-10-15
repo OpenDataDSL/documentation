@@ -43,6 +43,8 @@ To add a check, select **Add check from a function**, pick a function and fill i
 
 Select **Save**. From now on the checks run every time the timeseries is saved.
 
+![The Validation tab of a curve on the Data screen](/img/extensions/validation/data-tab.png)
+
 ---
 
 ## 3. Test the checks
@@ -70,6 +72,8 @@ Select **Run and save** to run the saved checks and store the results as validat
 ---
 
 ## 5. Look at the records
+
+![A validation record: its checks, its tenors and its timeline](/img/extensions/validation/record.png)
 
 Open the **Records** tab. It shows counts at the top (records, open issues, warnings, overridden and the pass rate) and the records of this timeseries, newest first. Filter by status or date, export to CSV, or select a record to see its checks and its timeline.
 

@@ -24,6 +24,8 @@ Each curve or timeseries you validate has one **validation configuration**. It h
 
 Checks run in the order they are listed. Use the arrows to move them.
 
+![The checks of a curve in the editor](/img/extensions/validation/editor.png)
+
 ### Scope
 
 | Data | Scope | Runs |

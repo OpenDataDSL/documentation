@@ -37,6 +37,8 @@ To start from a configuration you already have, type its data id under **Start f
 
 ### Suggest checks from the data
 
+![Checks suggested from 30 days of data for four gas curves](/img/extensions/validation/suggest.png)
+
 Instead of choosing every limit yourself, let the data suggest them. Under **Suggest checks from the data**, choose how many days to look back (30 by default; for curves, also the most curves to read, 25 by default) and select **Suggest checks**. For each selected item the platform:
 
 1. Reads its data for the period: the observations of a timeseries, or the curves of the ondates in the period (the most recent ones).

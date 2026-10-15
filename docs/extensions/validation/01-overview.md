@@ -18,6 +18,8 @@ tags: [extension, validation, data quality, curves, timeseries]
 
 Each curve or timeseries you validate has a **validation configuration** holding its checks. Every data point that is checked gets a **validation record**: the result of each check, the status that applies, and a timeline of everything that happened to it. When a check fails, you can fix the data and run it again, comment on it, or **override** it so the data can be used.
 
+![Validation: checks, on update, records, review and send](/img/extensions/validation/overview.png)
+
 ```mermaid
 flowchart LR
   A[Curve or timeseries saved or built] --> B[Checks run]
@@ -81,7 +83,7 @@ When a record is checked, the quality status of the data is updated too (for a c
 ## Where to find it
 
 - **Information > Validation**: the dashboard, issues, records, configurations, check functions and bulk changes.
-- The insights **Validation by Data Item**, **Validation by Check**, **Validation by Day** and **Validation Configurations**: reports with CSV export.
+- The insights **Validation by Data Item**, **Validation by Check**, **Validation by Day**, **Validation Configurations** and **Validation Automations**: reports with CSV export.
 - The **Validation** tab on the **Data** screen: the checks and records of the selected curve or timeseries.
 
 ---
@@ -91,6 +93,7 @@ When a record is checked, the quality status of the data is updated too (for a c
 | Page | What it covers |
 |-|-|
 | [Getting started](/docs/extensions/validation/getting-started) | Set up, test and run the checks of a timeseries, and look at the results |
+| [Example: a gas forward curve](/docs/extensions/validation/example-gas-curve) | A worked example: checks set from the data, a failing day, adjusting limits, and sending on only validated curves |
 | [Checks and settings](/docs/extensions/validation/checks) | Validation configurations: checks, scopes, severity, settings |
 | [Check functions](/docs/extensions/validation/functions) | The functions in the validation library |
 | [Writing your own checks](/docs/extensions/validation/writing-checks) | Private check functions in ODSL |
