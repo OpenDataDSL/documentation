@@ -98,6 +98,17 @@ The trade is saved straight away. The P&L, open interest and open volume are rec
 
 ---
 
+## Recalculating
+
+The P&L is recalculated by itself when trades are added and when the market data of an instrument is updated. To bring the figures up to date straight away, for example after adding an instrument or correcting market data, click **Recalculate** and choose:
+
+- **This portfolio**: recalculates the P&L of the selected portfolio and its instruments.
+- **All portfolios**: recalculates every portfolio, then the open interest and open volume of all trades. This takes longer.
+
+The view waits for the recalculation to finish, then reloads and says how long it took. If it fails, the message from the run is shown; the run is also in the platform's automation log, as a test run of the extension's automation.
+
+---
+
 ## Trades
 
 ![Trades tab](/img/extensions/simple-portfolio/trades.png)

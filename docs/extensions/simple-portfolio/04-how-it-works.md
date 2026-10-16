@@ -64,7 +64,10 @@ The automations are kept up to date for you:
 - the install creates the trades automation and an automation for each existing portfolio
 - recalculating all portfolios (after every trade) creates or updates the automation of each portfolio
 - the Simple Portfolio view updates a portfolio's automation as soon as you create the portfolio or add or remove an instrument
+- the **Recalculate** button updates the automation it is about to run (and creates the trades automation if it is missing)
 - the uninstall deletes them
+
+The **Recalculate** button runs one of these automations straight away with `GET /api/automation/v1/ID?_run=true`: the portfolio's automation for **This portfolio**, the trades automation for **All portfolios**. The platform runs it while the request waits and returns the automation log entry, whose `status` and `message` the view shows.
 
 You can see them in the portal's automations list: they are named, for example, *recalculate Simple Portfolio 'Portfolio1'*.
 
