@@ -1,0 +1,7 @@
+{
+  "label": "Simple Portfolio",
+  "link": {
+    "type": "generated-index",
+    "description": "Group the instruments you trade into portfolios, record trades against them and follow each portfolio's profit and loss and open positions, kept up to date by automations."
+  }
+}
