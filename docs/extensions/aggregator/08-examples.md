@@ -8,7 +8,7 @@ tags: [extension, aggregator, aggregation, examples]
 
 # Aggregator examples
 
-The **Aggregations** tab has examples under **Start from an example**. Each opens unsaved in the workspace, so you can run it, change it and save it under your own name. They are also a quick way to learn a stage: each one uses a different mix.
+The **Aggregations** tab has examples under **Start from an example**. Each opens unsaved in the workspace, so you can run it, change it and save it under your own name. They are also a quick way to learn a stage: each one uses a different mix. The **Report properties** group shows aggregations that one report or another can fill in differently.
 
 ---
 
@@ -32,6 +32,29 @@ The **Aggregations** tab has examples under **Start from an example**. Each open
 | Platform | Scripts by category | Scripts | A count and the latest change per category |
 | Platform | Recently changed scripts | Scripts | `$sort`, `$limit` and renaming fields |
 | Platform | Reports by type and schedule | Report configurations | `$cond` and `$ifNull` |
+| Report properties | Fusion AI usage for one user | Fusion AI usage | `@{user}` in a `$match`, with a date range |
+| Report properties | Conversations over a token threshold | Fusion AI usage | `@{minTokens}` in a `$match` after the `$group`, read as a number |
+| Report properties | Runs of one playbook | Fusion AI playbook runs | `@{playbook}` in a `$match` |
+| Report properties | Failures of one automation target | Automation logs | `@{target}` in a `$match`, `$sort` and `$limit` for the latest 100 |
+| Report properties | Deliveries of a group of datasets | Dataset deliveries (common) | `@{datasets}` as a `$regex` on the dataset ID |
+
+---
+
+## Examples with report properties
+
+The examples in the **Report properties** group each use a [report property](/docs/extensions/aggregator/how-it-works#report-properties). Save one once, then make a report for each value you need: the aggregation stays the same and each report sets its own value under **Report properties**.
+
+| Example | Property | Test value | Reports you could make |
+|-|-|-|-|
+| Fusion AI usage for one user | `user` | Your own email address | One monthly report for each person, emailed to them |
+| Conversations over a token threshold | `minTokens` | `100000` | A weekly check at `500000` for the finance team, and a daily one at `100000` for the platform team |
+| Runs of one playbook | `playbook` | `#process-failure-triage` | One report for each playbook you run on a schedule |
+| Failures of one automation target | `target` | `odsl.email` | One report for each target its owner looks after, such as `odsl.email` and `odsl.curve` |
+| Deliveries of a group of datasets | `datasets` | `.*` (every dataset) | `^ICE_` for the ICE desk, `^EEX_` for the power desk, as in [One aggregation, several reports](/docs/extensions/aggregator/reports#one-aggregation-several-reports) |
+
+:::tip
+A threshold such as `minTokens` is written in the stage as a string, `"@{minTokens}"`. The platform reads a string that looks like a number as a number, so the comparison works. See [How values are read](/docs/extensions/aggregator/how-it-works#how-values-are-read).
+:::
 
 ---
 
