@@ -38,7 +38,9 @@ A trade event has these fields:
 
 **Instrument P&L** (`calculatePNL`, run as a smart timeseries on the instrument's market data): the market data is filled forward to today on a business-day calendar. For each trade, from the trade date onwards, it adds (market price - trade price) x volume. So a purchase of 1,000 at 61.12 shows a P&L of 1,000 x (price - 61.12) every day after it, and a later sale of 2,000 at 65.00 adds -2,000 x (price - 65.00).
 
-**Portfolio P&L** (`calculatePortfolio`): the sum of the P&L of the portfolio's instruments. The instrument smart timeseries are created the first time a portfolio is recalculated.
+**Portfolio P&L** (`calculatePortfolio`): the sum of the P&L of the portfolio's instruments. The instrument smart timeseries are saved each time a portfolio is recalculated, so they always use the current P&L script.
+
+The instrument P&L is calculated when it is read, from the instrument's market data in the requested range only, so asking for a shorter range (for example the view's **P&L range**) is quicker.
 
 **Open interest** (`calculateOpenInterest`): for each instrument, the running total of `VOLUME` in trade order.
 
@@ -84,6 +86,7 @@ All scripts are in `odsl-extensions\extensions\simple_portfolio\`.
 | Script | Purpose |
 |-|-|
 | `simple_portfolio_functions` | The calculation and automation functions, imported by the other scripts |
+| `simple_portfolio_pnl` | `calculatePNL`, the script of every instrument's P&L smart timeseries. It is kept separate and small because the platform parses it each time one of those timeseries is read |
 | `simple_portfolio_recalc` | The automation target script: recalculates one portfolio, or all of them when `#PROPERTIES.portfolio` is `*` (or when run by hand) |
 | `simple_portfolio_recalc_all` | Recalculates every portfolio, their automations, and the open interest and open volume |
 | `simple_portfolio_install` | Creates the `SIMPLE_PORTFOLIO` object and the automations, and removes old subscriptions |
