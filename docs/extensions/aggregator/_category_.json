@@ -1,0 +1,7 @@
+{
+  "label": "Aggregator",
+  "link": {
+    "type": "generated-index",
+    "description": "Summarise the data in any platform service with an aggregation pipeline, save it as an ODSL script, and run it as a scheduled, house-style report that is emailed each time it is stored."
+  }
+}
