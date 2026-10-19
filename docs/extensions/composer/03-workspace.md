@@ -78,7 +78,10 @@ A data column shows a curve or a timeseries from the platform. Start typing part
 2. Select **Filter by...** and choose a dimension, such as **source**. Its values are listed, for example `ICE` and `EEX`. Pick one or more.
 3. Add another dimension, such as **location**, and pick `Germany`. Each dimension only lists the values that are left after the filters before it, and the list shows the data that matches all of them.
 4. Narrow it further by typing part of the id in **Id contains**.
-5. Click a row to use it.
+5. To check the data before you use it, select the eye at the end of a row. For a curve it shows the latest curve, on today or the most recent date before it, with each tenor and its value. For a timeseries it shows the last 10 values. Select it again to close it.
+6. Click a row, or **Use this** in the preview, to use it.
+
+The list shows the currency and units of each curve and timeseries next to its name and kind.
 
 When there are too many matches to count, the finder says **More than** the number shown so far; select the next page to see more, or add a filter to narrow it down.
 

@@ -15,7 +15,7 @@ tags: [extension, simple portfolio, portfolio, trades, profit and loss]
 - the **open interest** (running net position) after each trade
 - the **open volume** of each trade: what is still open after later trades in the other direction closed it, oldest first
 
-It is also an example extension: everything it does is built from standard platform features (groups, events, smart timeseries, automations, insights), so it is a good place to see how an extension fits together.
+It is also an example extension: everything it does is built from standard platform features (groups, events, timeseries, automations, insights), so it is a good place to see how an extension fits together.
 
 ![The Simple Portfolio view](/img/extensions/simple-portfolio/overview.png)
 

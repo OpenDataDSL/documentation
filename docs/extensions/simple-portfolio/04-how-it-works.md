@@ -3,7 +3,7 @@ title: How it works
 description: The data, calculations, automations and scripts behind the Simple Portfolio extension, with ODSL examples
 slug: /extensions/simple-portfolio/how-it-works
 sidebar_position: 4
-tags: [extension, simple portfolio, automations, odsl, events, smart timeseries]
+tags: [extension, simple portfolio, automations, odsl, events, timeseries]
 ---
 
 # How it works
@@ -18,8 +18,8 @@ Simple Portfolio uses standard platform features only. This page describes where
 |-|-|-|
 | Portfolios | Groups (service `data`, type `Portfolio`, category `Simple Portfolio`) | `data:Portfolio:Simple Portfolio:` followed by the name |
 | Trades | Events of type `simple_portfolio_event` in the private master data object `SIMPLE_PORTFOLIO` | Event list `SIMPLE_PORTFOLIO:TRADES` |
-| Instrument P&L | A smart timeseries on `SIMPLE_PORTFOLIO` | `SIMPLE_PORTFOLIO:` followed by the instrument id with `.` and `:` replaced by `_`, e.g. `SIMPLE_PORTFOLIO:ICE_IFEU_B_SETTLE_M01` |
-| Portfolio P&L | A timeseries on `SIMPLE_PORTFOLIO` | `SIMPLE_PORTFOLIO:` followed by the portfolio name, e.g. `SIMPLE_PORTFOLIO:Portfolio1` |
+| Instrument P&L | A timeseries on `SIMPLE_PORTFOLIO`, stored by the recalculation | `SIMPLE_PORTFOLIO:PNL_` followed by the instrument id with `.` and `:` replaced by `_`, e.g. `SIMPLE_PORTFOLIO:PNL_ICE_IFEU_B_SETTLE_M01` |
+| Portfolio P&L | A timeseries on `SIMPLE_PORTFOLIO`, stored by the recalculation | `SIMPLE_PORTFOLIO:` followed by the portfolio name, e.g. `SIMPLE_PORTFOLIO:Portfolio1` |
 
 A trade event has these fields:
 
@@ -36,11 +36,11 @@ A trade event has these fields:
 
 ## The calculations
 
-**Instrument P&L** (`calculatePNL`, run as a smart timeseries on the instrument's market data): the market data is filled forward to today on a business-day calendar. For each trade, from the trade date onwards, it adds (market price - trade price) x volume. So a purchase of 1,000 at 61.12 shows a P&L of 1,000 x (price - 61.12) every day after it, and a later sale of 2,000 at 65.00 adds -2,000 x (price - 65.00).
+**Instrument P&L** (`calculateInstrumentPNL`): the instrument's market data is read from its first trade date only, and filled forward to today on a business-day calendar. For each trade, from the trade date onwards, it adds (market price - trade price) x volume. So a purchase of 1,000 at 61.12 shows a P&L of 1,000 x (price - 61.12) every day after it, and a later sale of 2,000 at 65.00 adds -2,000 x (price - 65.00).
 
-**Portfolio P&L** (`calculatePortfolio`): the sum of the P&L of the portfolio's instruments. The instrument smart timeseries are saved each time a portfolio is recalculated, so they always use the current P&L script.
+**Portfolio P&L** (`calculatePortfolio`): the sum of the P&L of the portfolio's instruments.
 
-The instrument P&L is calculated when it is read, from the instrument's market data in the requested range only, so asking for a shorter range (for example the view's **P&L range**) is quicker.
+Both are calculated when a portfolio is recalculated and stored as plain timeseries, so the view, the widget and any other reader only read stored values. An instrument with no trades has no P&L timeseries.
 
 **Open interest** (`calculateOpenInterest`): for each instrument, the running total of `VOLUME` in trade order.
 
@@ -75,6 +75,8 @@ You can see them in the portal's automations list: they are named, for example, 
 
 :::note Upgrading from an earlier version
 Earlier versions used subscriptions, which are being replaced by automations. Running the install script again removes the old subscriptions and creates the automations.
+
+Earlier versions also kept each instrument's P&L as a smart timeseries, `SIMPLE_PORTFOLIO:` followed by the instrument id, calculated every time it was read. Recalculating all portfolios deletes those and stores the P&L under the new `PNL_` ids instead.
 :::
 
 ---
@@ -86,7 +88,7 @@ All scripts are in `odsl-extensions\extensions\simple_portfolio\`.
 | Script | Purpose |
 |-|-|
 | `simple_portfolio_functions` | The calculation and automation functions, imported by the other scripts |
-| `simple_portfolio_pnl` | `calculatePNL`, the script of every instrument's P&L smart timeseries. It is kept separate and small because the platform parses it each time one of those timeseries is read |
+| `simple_portfolio_pnl` | The P&L of one instrument (`calculateInstrumentPNL`), imported by `simple_portfolio_functions` |
 | `simple_portfolio_recalc` | The automation target script: recalculates one portfolio, or all of them when `#PROPERTIES.portfolio` is `*` (or when run by hand) |
 | `simple_portfolio_recalc_all` | Recalculates every portfolio, their automations, and the open interest and open volume |
 | `simple_portfolio_install` | Creates the `SIMPLE_PORTFOLIO` object and the automations, and removes old subscriptions |
