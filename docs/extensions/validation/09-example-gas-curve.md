@@ -36,7 +36,7 @@ Tenor checks run on each of the 12 contracts; curve checks run once on the whole
 What should the range be, and how big a daily move is normal for TTF? Rather than guess, let the data tell you:
 
 1. Open **Information > Validation** and select **Bulk changes**.
-2. Choose **Curves**, and add `ICE.ENDEX.TTF:SETTLE`, along with any other gas curves that should get checks too: here the German THE, French PEG, Belgian ZTP and Italian PSV curves.
+2. Choose **Curves** and select **Find curves**. Filter by commodity **Gas** (or type `SETTLE` in **Id contains**), tick `ICE.ENDEX.TTF:SETTLE` along with any other gas curves that should get checks too, here the German THE, French PEG, Belgian ZTP and Italian PSV curves, and select **Add**.
 3. Under **Suggest checks from the data**, leave **Last 30 days** and select **Suggest checks**.
 
 For each curve, the checks are suggested from its last 30 days of curves and then tried on those same curves. The picture shows the suggestions for THE, PEG, ZTP and PSV; TTF gets its own in the same way:

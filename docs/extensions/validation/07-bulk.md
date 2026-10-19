@@ -18,14 +18,24 @@ Choose the **Kind** first: curves or timeseries. A bulk change is for one kind a
 
 | Way | How |
 |-|-|
-| **Search** | Type part of the id (case sensitive), for example `ICE.IFEU.` or `:SETTLE`, and select **Search**. Tick items one at a time, **Select this page**, or **Select all matching** (up to 1000) |
+| **Find curves** or **Find timeseries** | Opens the data finder, the same one Composer uses. Filter the data, tick as many items as you like, and select **Add** |
 | **Paste data ids** | Paste ids, one per line or separated by commas, and select **Add these ids**. Each id is checked: ids that do not exist, or are not the chosen kind, are listed and left out |
 
-A curve search finds the curves themselves (including smart, event and composed curves), not the curves stored for each ondate. A timeseries search finds stored, smart, event and composed timeseries.
+### The data finder
 
-Type in **Filter the rows below** to narrow the results on the page: a row is shown when it contains every word you type, in any column and in any case (for example `none hay` shows the hay items that have no validation yet). **Select this page** selects only the rows the filter shows; **Select all matching** uses the search, not the filter.
+![The data finder with four gas curves ticked and the latest TTF curve shown](/img/extensions/validation/finder.png)
 
-The search results show which items already have validation. **Selected** lists what you picked; remove items with their **x**, or **Clear** them all.
+- **Source**: your private data or public data. Public data ids start with `#`.
+- **Id contains**: part of the id, in any case, for example `ttf` or `:SETTLE`.
+- **Filter by**: choose a dimension, such as Type, Tag, Commodity or Location, then one or more of its values. Several values of one dimension match any of them; different dimensions must all match. Each list only offers the values left by the filters before it.
+- **Tick** items one at a time (clicking a row ticks it), tick the box in the heading to tick the whole page, or select **Select all matching** to tick everything the filters find (up to 1000). Ticks are kept when you change the filters or the page, so you can gather items from several searches before adding them.
+- The **eye** shows the latest curve, or the last 10 values of a timeseries, with **Select** to tick it from there.
+- The **Validation** column shows which items already have validation, and how many checks.
+- **Add** adds the ticked items to the selection. Items already selected are shown ticked and greyed out.
+
+The finder only lists the kind you chose: for curves, the curves themselves (including smart, event and composed curves), not the curves stored for each ondate; for timeseries, stored, smart, event and composed timeseries. The source and filters are remembered for next time.
+
+**Selected** lists what you picked; remove items with their **x**, or **Clear** them all.
 
 ---
 
@@ -103,7 +113,7 @@ Applying bulk changes does not run the checks. They run the next time each item 
 
 | You want to | Do this |
 |-|-|
-| Check every ICE settlement curve for missing values and gaps | Kind **Curves**, search `ICE.` and **Select all matching**, add Missing (tenor) and Gaps (curve), choose **Add the checks**, apply |
+| Check every ICE settlement curve for missing values and gaps | Kind **Curves**, **Find curves**, filter by the exchange (or type `ICE.`) and **Select all matching**, add Missing (tenor) and Gaps (curve), choose **Add the checks**, apply |
 | Make the same change to all your power curves as you made to one | Select the curves, **Copy its checks** from the one you changed, choose **Replace all the checks**, tick **Also apply the settings**, apply |
 | Stop the Stale check everywhere | Select the items, add a check named **Stale** (any expression), choose **Remove the checks with these names**, apply |
 | Set up new timeseries without touching the ones already set up | Select them all, choose **Only set up data items that have no validation yet**, apply |

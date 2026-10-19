@@ -144,7 +144,7 @@ Every save of a configuration keeps a version. The editor shows the version numb
 - **Compare** shows the differences between a version and what is in the editor, saved or not.
 - **Restore** loads a version into the editor as unsaved changes. Save to make it the current version (a new version), or go back to leave it.
 
-**New validation** asks for a data id (type part of it to search) and opens the editor for a curve or a timeseries. **Bulk changes** changes many at once: see [Bulk changes](/docs/extensions/validation/bulk).
+**New validation** opens the data finder: filter by source, part of the id, and dimensions such as Type, Commodity or Location, look at the latest data with the eye, and select a row to open the editor for that curve or timeseries. The **Validation** column shows which items already have validation; selecting one of those opens its configuration instead. See [The data finder](/docs/extensions/validation/bulk#the-data-finder). **Bulk changes** changes many at once: see [Bulk changes](/docs/extensions/validation/bulk).
 
 ---
 
