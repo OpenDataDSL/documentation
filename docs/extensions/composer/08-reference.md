@@ -83,6 +83,15 @@ A template has the same `properties.composition`, with input placeholders such a
 | `sma`, `ema` | `column` (a column id); `period` |
 | `bollinger` | `column`; `period`; `deviations` |
 | `regression` | `column` |
+| `donchian` | `column`; `period` (20) |
+| `psar` | `column`; `step` (0.02); `max` (0.2) |
+| `var` | `column`; `confidence` (95, a percentage); `period` (20, the window); `horizon` (1) |
+| `rsi` | `column`; `period` (14) |
+| `macd` | `column`; `fast` (12); `slow` (26); `signal` (9) |
+| `stochastic` | `column`; `period` (14, %K); `smooth` (3, %D) |
+| `momentum` | `column`; `period` (10) |
+
+A setting that is left out takes its default, shown in brackets. `rsi`, `macd`, `stochastic` and `momentum` are drawn in a pane of their own below the chart.
 
 | Field | Meaning |
 |-|-|

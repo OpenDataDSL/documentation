@@ -164,7 +164,7 @@ Each column has display settings:
 
 ## Chart indicators
 
-Indicators are lines drawn on the chart: a trend line or a level you draw yourself, or an average calculated from a column. They are saved with the composition and shown in the portal too. They only add to the chart: the data, the table and Excel are unchanged.
+Indicators are lines drawn on the chart: a trend line or a level you draw yourself, or an indicator calculated from a column, such as a moving average, Bollinger bands, a VaR envelope or an oscillator like RSI or MACD. They are saved with the composition and shown in the portal too. They only add to the chart: the data, the table and Excel are unchanged.
 
 Select **Indicators** in the toolbar to open them in the side panel.
 
@@ -174,12 +174,27 @@ Select **Indicators** in the toolbar to open them in the side panel.
 |-|-|
 | **Trend line** | Select **Draw trend line**, then drag on the chart from its start to its end, or click its start and then its end. Each click snaps to the nearest tenor or date. The line carries on to the end of the chart unless you clear **Extend to the end of the chart**. |
 | **Level** | Select **Draw level**, then click the chart at the price, for example a support or resistance level. |
-| **Moving average** | Select **Add moving average**, then choose the column and the period, the number of points averaged. |
-| **Exponential moving average** | As a moving average, weighted towards the latest values. |
-| **Bollinger bands** | A moving average with bands a number of standard deviations above and below it. |
-| **Linear regression** | The straight line that best fits a column. |
+| **Calculated indicators** | Choose one from **Add an indicator...**, then choose the column and its settings, such as the period, the number of points. |
 
-The chart does not zoom while you draw. Press **Esc** to stop drawing. Click an indicator in the list, or its line on the chart, to change its label, column, period, values, axis, line style or colour. **Draw again on the chart** redraws a trend line, and **Pick the level on the chart** moves a level.
+The calculated indicators are drawn on the chart, on the axis of their column, or in a pane of their own below it:
+
+| Indicator | Where | What it shows |
+|-|-|-|
+| **Moving average** | On the chart | The average of the last points of a column. |
+| **Exponential moving average** | On the chart | As a moving average, weighted towards the latest values. |
+| **Bollinger bands** | On the chart | A moving average with bands a number of standard deviations above and below it. |
+| **Donchian channel** | On the chart | The highest and lowest value over the period, and the middle of the two. |
+| **Parabolic SAR** | On the chart | Dots that trail the trend and change side when it reverses. |
+| **VaR envelope** | On the chart | The range each value was expected to stay within at a confidence level, such as 95%, from the value a horizon earlier and the volatility of the changes over the window before it. Red dots mark the values outside it. |
+| **Linear regression** | On the chart | The straight line that best fits a column. |
+| **Relative strength index (RSI)** | Below the chart | Momentum from 0 to 100. Above 70 is often read as overbought, below 30 as oversold. |
+| **MACD** | Below the chart | The fast exponential moving average less the slow one, its signal line, and a histogram of the difference. |
+| **Stochastic oscillator** | Below the chart | Where the value sits in its range over the period, from 0 to 100, and its average. |
+| **Momentum** | Below the chart | The change in the column over the period. |
+
+Each indicator below the chart gets a pane of its own, and the chart grows to make room. A composition holds one value per tenor or date, with no high, low or open, so the Parabolic SAR, the Donchian channel and the stochastic oscillator use the highest and lowest values of the column itself. The VaR envelope works in the units of the column, so it also suits spreads that go negative.
+
+The chart does not zoom while you draw. Press **Esc** to stop drawing. Click an indicator in the list, or its line on the chart, to change its label, column, settings, values, axis, line style or colour. **Draw again on the chart** redraws a trend line, and **Pick the level on the chart** moves a level.
 
 ### Indicators on later ondates
 
