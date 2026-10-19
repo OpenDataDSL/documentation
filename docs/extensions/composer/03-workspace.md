@@ -192,6 +192,8 @@ The calculated indicators are drawn on the chart, on the axis of their column, o
 | **Stochastic oscillator** | Below the chart | Where the value sits in its range over the period, from 0 to 100, and its average. |
 | **Momentum** | Below the chart | The change in the column over the period. |
 
+![Parabolic SAR and a 95% VaR envelope on the chart, with RSI and MACD in panes below it](/img/extensions/composer/composer-oscillators.png)
+
 Each indicator below the chart gets a pane of its own, and the chart grows to make room. A composition holds one value per tenor or date, with no high, low or open, so the Parabolic SAR, the Donchian channel and the stochastic oscillator use the highest and lowest values of the column itself. The VaR envelope works in the units of the column, so it also suits spreads that go negative.
 
 The chart does not zoom while you draw. Press **Esc** to stop drawing. Click an indicator in the list, or its line on the chart, to change its label, column, settings, values, axis, line style or colour. **Draw again on the chart** redraws a trend line, and **Pick the level on the chart** moves a level.
