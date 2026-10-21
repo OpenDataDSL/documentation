@@ -6,7 +6,52 @@ sidebar_position: 10
 Release Notes
 =============
 
-## Latest release September-2026
+## Latest release October 2026
+
+> - **Server:** 29 Build
+> - **Client:** 1.12.46316.823
+> - **Excel:** 1.11.20261021.1050
+> - **VS Code Extension:** 1.1.0
+
+This release introduces new AI-related features, including an MCP Server Connector and Fusion AI Playbooks, and lets us deliver new Portal extensions outside the regular release cycles. It also brings several enhancements to automations and curves, plus a number of bugfixes.
+
+### New AI-related features
+- MCP Server Connector: You can use Fusion tools and skills in Claude or ChatGPT (<https://doc.opendatadsl.com/docs/product/mcp/overview>)
+- Fusion AI Playbooks (<https://doc.opendatadsl.com/docs/category/fusion-ai-playbooks>)
+- Server-related improvements
+- Fusion AI Token Budgeting
+
+This new capability enables us to add extensions to the Portal outside the release cycles.
+- New Extension: Composer (<https://doc.opendatadsl.com/docs/category/composer>)
+- New Extension: Validation of Timeseries and Curves (<https://doc.opendatadsl.com/docs/category/validation>)
+- New Extension: Aggregator (<https://doc.opendatadsl.com/docs/extensions/aggregator>)
+
+### Enhancements
+- Add scheduling support for automations
+- Allow multi-property changes to trigger automations
+- Add timezone to Curve Definition
+- Add modified date to Event Timeseries and Event Curve
+- Allow creating automations for Event Curves via script
+- Add support for Daily Status Reports
+- Add the ability to specify a default FX Provider
+- Add support for VarComposedTimeSeries and VarComposedCurve in Excel Addin
+- Add support to select preview environment in Excel Addin
+
+### Bug Fixes
+- Add jobs to process execution view
+- ODSL code issue when paging events
+- Dataset Quality Group not working in Portal
+- isNumber function not working
+- Extensions need to add/remove automations
+- Clicking other items with an insight report open does not refresh the report
+- Automations not found: EEX German Base Futures, IDA1 has arrived
+- Queues not visible on tenant account
+- Late and missing datasets are not pushed to automations
+- When the AVG checkbox is enabled, changing the scaling setting from quarterhourly to hourly incorrectly changes the timezone to UTC
+
+
+
+## September-2026
 
 - **Server:** 20 Build
 - **Client:** 1.11.46267.1019
