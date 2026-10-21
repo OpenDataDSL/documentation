@@ -15,7 +15,7 @@ Validation keeps its data in two private services:
 | `validationconfig` | One validation configuration per curve or timeseries, id = the data id. Every change keeps a version | You: the extension, the REST API or ODSL |
 | `validation` | One validation record per data point: per observation of a timeseries, per ondate of a curve | The platform only: runs, overrides and comments go through the service functions below |
 
-Both can be read from ODSL, for example `${validationconfig:"ICE.IFEU.B:SETTLE"}`, and listed with `find`.
+Both can be used from ODSL, for example `${validationconfig:"ICE.IFEU.B:SETTLE"}`, `find ${validation} where status == "failed"` and `run validation "ICE.IFEU.B:SETTLE"`: see [ODSL](#odsl).
 
 ---
 
@@ -164,6 +164,82 @@ An automation on the **data** service with the action **validated** gets a curve
 - Only a full run sends data: tests, and runs of some checks or some tenors, do not. A failure that is not overridden is never sent, and removing an override does not take back data already sent.
 - Validated data goes only to automations on the **validated** action, not to automations on **all** actions, which already get the data when it is updated.
 - The record's timeline shows **Sent as validated** each time its data was sent.
+
+---
+
+## ODSL
+
+Both services have ODSL clients, so scripts can read and change validation like the extension does.
+
+### Configurations
+
+```js
+// The current configuration of a curve, a version, and every version
+c = ${validationconfig:"ICE.IFEU.B:SETTLE"}
+v2 = ${validationconfig:"ICE.IFEU.B:SETTLE":2}
+versions = ${validationconfig:"ICE.IFEU.B:SETTLE":*}
+
+// Every curve configuration
+configs = find ${validationconfig} where kind == "curve"
+
+// Change a limit and save a new version
+c.checks[1].expression = "checkRange(20, 66)"
+save ${validationconfig:c}
+```
+
+Save with `save ${validationconfig:c}`: a plain `save c` sends the object to the object service. Versions can also be tagged and deleted, for example `tag ${validationconfig:"ICE.IFEU.B:SETTLE":2} as "approved"`.
+
+### Records
+
+```js
+rec = ${validation:"ICE.IFEU.B:SETTLE:2026-10-19"}
+failed = find ${validation} where status == "failed"
+```
+
+Records are read only: they change through the functions below.
+
+### Running checks and the other functions
+
+`run validation` calls the service functions. With a data id it runs that item's stored checks; with the name of a function it calls that function, and the `with` object is the request (the same fields as in the REST API below). The result is the response as an object.
+
+```js
+// The latest data point, or one ondate (curve) or observation (timeseries)
+r = run validation "ICE.IFEU.B:SETTLE"
+r = run validation "ICE.IFEU.B:SETTLE" with "2026-10-19"
+
+// A range, or some of the checks
+opts = Object()
+opts.from = "2026-10-01"
+opts.to = "2026-10-19"
+opts.checks = ["range", "missing"]
+r = run validation "ICE.IFEU.B:SETTLE" with opts
+
+// Suggest checks for some curves
+req = Object()
+req.targets = ["ICE.ENDEX.TTF:SETTLE", "EEX.THE:SETTLE"]
+req.kind = "curve"
+req.days = 30
+r = run validation suggest with req
+
+// Override, with the log text as the reason
+req = Object()
+req.ids = ["ICE.IFEU.B:SETTLE:2026-10-19"]
+r = run validation override with req log "Confirmed with ICE: OPEC+ announcement"
+```
+
+| Function | `with` |
+|-|-|
+| a data id | nothing (the latest data point), a date, or an object with `ondate`, `point`, `points`, `from`, `to`, `checks`, `tenors`, `background` |
+| `test` | as `run`, plus `target` or `config` |
+| `runMany` | `targets` and the data points |
+| `suggest` | `targets`, `kind`, `days`, `maxCurves` |
+| `tune` | `items`, `days` |
+| `override`, `removeOverride` | `ids`; the `log` text is the `reason` |
+| `comment` | `ids`; the `log` text is the `message` |
+| `stats` | `from`, `to`, `kind`, `target`, `group` |
+| `automations` | nothing |
+
+Dates in the request can be ODSL dates or text. `with` takes a variable or a text, so build lists in a variable first. `run validation ... in 1 hour` is not supported.
 
 ---
 

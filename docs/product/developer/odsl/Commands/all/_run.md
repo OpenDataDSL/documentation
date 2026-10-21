@@ -24,6 +24,15 @@ run CURVE_TEST with ondate
 
 You can optionally give a reason for manually triggering a process, this will be logged in the audit log
 
+##### Run on another service
+
+Some services run their own functions with run: give the service name before the id, e.g.
+```js
+// Run the validation checks of a curve
+result = run validation "ICE.IFEU.B:SETTLE" with "2026-10-19"
+```
+See [Validation: ODSL](/docs/extensions/validation/reference#odsl) for the validation functions.
+
 ##### In delay
 
 You can optionally delay the starting of the process, e.g.
