@@ -20,6 +20,8 @@ Data arrives late. A broker file is delayed, an exchange publishes after the cut
 | Curve, with **The curve for the export date** | No curve for the export date |
 | Curve, with **The latest curve on or before the export date** | No curve at all on or before the export date |
 | Curve, with **Every curve in the timeseries range** | No curve in the range |
+| Curve, with **Tenors** set | None of its curves has a contract in the tenors. The report says so, for example `No contracts in the tenors Q05`. |
+| Event list | No events in the range that meet its conditions, unless **No events is normal for this list** is ticked in its [filter](/docs/extensions/export/exporting#filter-the-events) |
 | Curve saved for one ondate, master data | The item cannot be read |
 | Any item | The platform returns an error, for example the item was deleted or you have no access to it. The report shows the reason. |
 
@@ -33,7 +35,7 @@ Gaps inside a timeseries range are a separate setting: the item has values, but 
 |-|-|-|
 | **Leave the item out** | Exports the other items. The report lists the item with the reason. | `missing` or `error` |
 | **Write a blank row for it** | Writes one row for the item with an empty value: for a timeseries at the end of its range, for a curve at the export date with no tenor | `missing` |
-| **Use the latest earlier data** | For a timeseries, the latest value before the end of its range. For a curve, the latest curve before the export date. Only data from the **Look back up to** days before is used. The rows keep the export date and say where the data came from in `from`. Master data and curves saved for one ondate have no earlier data, so they are left out. | `previous`, with `from` |
+| **Use the latest earlier data** | For a timeseries, the latest value before the end of its range. For a curve, the latest curve before the export date, cut to the tenors. Only data from the **Look back up to** days before is used. The rows keep the export date and say where the data came from in `from`. Master data and curves saved for one ondate have no earlier data, so they are left out. | `previous`, with `from` |
 | **Stop the export** | Stores nothing and sends nothing, and the run of the process fails with the list of items without data | The process run is `failed` |
 
 Northgate Energy's ETRM must have a price for every item every day, so the team uses **Use the latest earlier data** with a look back of 10 days. On 19 October the German power base price and the TTF futures curve were late, so the report used their values of 16 October, the Friday before:
@@ -44,6 +46,10 @@ Northgate Energy's ETRM must have a price for every item every day, so the team 
 | `ICE_TTF_FUT:SETTLE` | `2026-10-19` | `M01` | `32.011` | `previous` | `2026-10-16` |
 
 The ETRM can see from `status` and `from` which prices are rolled forward.
+
+:::note
+An event list is never filled from earlier events: yesterday's trades are not today's. With **Write a blank row for it** or **Use the latest earlier data**, an event list with no events is left out and listed as `missing`. With **Try again later** the run waits for its events like any other item, and with **Stop the export** a missing event list stops the run. For a list where a quiet day is normal, such as broker confirmations on a day with no broker trades, tick **No events is normal for this list** in its filter.
+:::
 
 :::caution
 **Use the latest earlier data** sends yesterday's numbers as today's. Only use it when the receiving system can handle that, or when it reads `status`. Otherwise prefer **Leave the item out**, or **Stop the export** with an automation on the process failing so someone is told.

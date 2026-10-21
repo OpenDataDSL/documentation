@@ -44,6 +44,8 @@ Open the export you want to schedule, as on [Exporting data](/docs/extensions/ex
 
 Northgate Energy exports every item in the group, so a new curve only has to be added to the group.
 
+An event list in a fixed list keeps the [filter](/docs/extensions/export/exporting#filter-the-events) it had on the **Items** tab: its conditions, the fields to export and whether no events is normal. The list shows its conditions. To change them, change the filter on the **Items** tab and choose **The items ticked on the Items tab now**. An event list in a group is exported with every event and field.
+
 ---
 
 ## 4. Choose the dates
@@ -52,8 +54,9 @@ Northgate Energy exports every item in the group, so a new curve only has to be 
 |-|-|-|
 | **Export date** | **The day it runs** | The date each run exports: the day it runs, the business day before, or two business days before. A run early on Tuesday morning with **The business day before** exports Monday. |
 | **Calendar** | `BUSINESS` | The calendar for business days, and for gaps in a timeseries range. `BUSINESS` is weekdays. |
-| **Timeseries values** | **The export date only** | Or the last days up to the export date, month to date, the previous month, or fixed dates |
+| **Timeseries values** | **The export date only** | Or the last days up to the export date, month to date, the previous month, or fixed dates. Event lists export the events whose event time is in the same days (UTC). |
 | **Curves** | **The curve for the export date** | Or the latest curve on or before the export date, or every curve in the timeseries range |
+| **Tenors** | Empty | Only these contracts of every curve, such as `M01-M03, Q01`, written as on the [Export tab](/docs/extensions/export/exporting#tenors). A curve with none of them counts as missing. |
 | **Layout in the report** | **One row per value** | Choose **One row per value, plus a column per item table** if a delivery needs the column per item CSV |
 
 ---

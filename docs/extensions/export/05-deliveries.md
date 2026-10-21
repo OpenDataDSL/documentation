@@ -50,13 +50,16 @@ Select **Add the delivery**. **Edit** changes a delivery and the bin button dele
 | **CSV with id, ondate, index and value** | The four columns most systems need, as the platform's generic timeseries CSV template |
 | **CSV with a column per item** | Timeseries rows by `time`, then curve rows by `ondate` and `tenor`, with a column per item. Needs the schedule layout **One row per value, plus a column per item table**. |
 | **CSV of the master data** | `id` and a column per property |
+| **CSV of the events** | `event`, `eventid`, `eventtime` and a column per field of the event lists, a row per event. Event times are in UTC. |
 | **Tab separated, one row per value** | As the first CSV, with tabs |
-| **JSON** | The export details, `complete`, the `items` with their status and message, the `rows` and the master data `objects` |
+| **JSON** | The export details, `complete`, the `items` with their status and message, the `rows`, the `events` (a field per column, numbers as numbers) and the master data `objects` |
 | **JSON Lines** | One row per line |
-| **XML** | An `export` element with `item`, `value` and `object` elements |
-| **HTML page with the summary and tables** | The summary, items and values with inline styles, ready to be an email body |
+| **XML** | An `export` element with `item`, `value`, `event` (with a `field` element per field) and `object` elements |
+| **HTML page with the summary and tables** | The summary, items, values and events with inline styles, ready to be an email body |
 
-In every format `status` is `ok`, `previous` (with the date used in `from`) or `missing`, as set by your [missing data rules](/docs/extensions/export/missing-data). A missing value is empty in CSV and XML and `null` in JSON. Text values have double quotes replaced by single quotes, so CSV columns never break.
+The CSV, tab separated and JSON Lines formats other than **CSV of the events** write the timeseries and curve values only. For a schedule that exports event lists, send **CSV of the events**, or JSON, XML or HTML, which have everything. A schedule that only exports event lists offers **CSV of the events** first.
+
+In every format `status` is `ok`, `previous` (with the date used in `from`) or `missing`, as set by your [missing data rules](/docs/extensions/export/missing-data). A missing value is empty in CSV and XML and `null` in JSON. In text values, double quotes become single quotes, backslashes become slashes and line breaks become spaces, so CSV and JSON never break.
 
 For example, the JSON delivery for 19 October starts:
 

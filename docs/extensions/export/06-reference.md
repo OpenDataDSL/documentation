@@ -33,12 +33,17 @@ The process `input` is the schedule. You can change it in the portal's process e
 | `key`, `name`, `report` | `gas_and_power_to_the_etrm`, `Gas and power to the ETRM`, `EXPORT_GAS_AND_POWER_TO_THE_ETRM` | The schedule's key, name, and the report the runs are stored in |
 | `group` | `6710c2...` | A group to export, read on each run. When it is set, `items` is ignored. |
 | `items` | `[{"id": "ICE_TTF:SETTLE", "service": "data", "type": "VarTimeSeries"}]` | The items to export. `service` is `data` or `object`. `type` may be empty, and is then found when it runs. `name`, `currency` and `units` are optional. |
+| `items[].conditions` | `[{"field": "volume", "op": "gte", "value": "15"}]` | An event list's conditions, as set in its filter. `op` is `eq`, `ne`, `in`, `nin`, `contains`, `gt`, `gte`, `lt`, `lte`, `set` or `unset`. |
+| `items[].filterText` | `"product" in ["TTF", "DE Power Base"] and "volume" >= 15` | The conditions as an ODSL condition, written by the extension. This is what the run uses. |
+| `items[].fields` | `["product", "contract", "volume", "price"]` | An event list's fields to export; empty for all |
+| `items[].emptyOk` | `false` | `true` when no events is normal for the event list |
 | `ondate` | `""` or `2026-10-16` | Empty for a scheduled run. A date exports that date, with no retries. |
 | `offset` | `0` | Business days from the run date to the export date: `0`, `-1` or `-2` |
 | `calendar` | `BUSINESS` | Calendar for business days and timeseries gaps |
 | `range` | `{"type": "days", "days": 7}` | Timeseries values: `type` is `ondate`, `days` (with `days`), `mtd`, `previousMonth` or `fixed` (with `start` and `end`) |
 | `curves` | `ondate` | `ondate`, `latest` or `range` |
 | `maxOndates` | `31` | With `range` curves, the latest this many curves |
+| `tenors` | `M01-M03, Q01` | The curve contracts to keep; empty for all |
 | `layout` | `long` | `wide` also stores the column per item table |
 | `missing.action` | `previous` | `skip`, `blank`, `previous` or `fail` |
 | `missing.lookback` | `10` | Days to look back for earlier data |
@@ -54,15 +59,16 @@ The data of a stored report, which the report template and the output templates 
 
 | Field | What it holds |
 |-|-|
-| `export` | `key`, `name`, `ondate` (the export date), `start` and `end` (the timeseries range), `range`, `curves`, `layout`, `missingAction`, `generated` (UTC) |
-| `summary` | Counts as text: `items`, `exported`, `partial`, `previous`, `missing`, `errors`, `rows`. `complete` is true when every item was exported from its own data, and `hasMissing`, `hasErrors`, `hasPrevious` and `hasPartial` say whether each count is above zero. |
+| `export` | `key`, `name`, `ondate` (the export date), `start` and `end` (the timeseries range), `range`, `curves`, `tenors`, `layout`, `missingAction`, `generated` (UTC) |
+| `summary` | Counts as text: `items`, `exported`, `partial`, `previous`, `missing`, `errors`, `rows`, `events`. `hasEvents` says whether any event list was exported. `complete` is true when every item was exported from its own data, and `hasMissing`, `hasErrors`, `hasPrevious` and `hasPartial` say whether each count is above zero. |
 | `items` | One per item: `id`, `type`, `name`, `status` (`ok`, `partial`, `previous`, `missing`, `error`), `rows`, `from`, `message`, and the flags `isOk`, `isPartial`, `isPrevious`, `isMissing`, `isError` |
 | `rows` | The values: `id`, `type`, `ondate` (curves), `index` (time or tenor), `value` (as stored), `text` (the value as text, without trailing zeros), `numeric`, `status`, `from`, `name`, `currency`, `units`, and the flags `isPrevious` and `isMissing` |
+| `events`, `eventColumns` | Events: each event's `cells` (a `text` per column) and `props` (`name`, `text` and `numeric`, for the fields that have a value), and the column names: `event`, `eventid`, `eventtime`, then `eventstart` and `eventend` when they differ from the event time, `timezone` and `eventtype` when set, then the fields |
 | `objects`, `objectColumns` | Master data: each object's `id`, `cells` (a `text` per column) and `props` (`name` and `text`), and the column names |
 | `wide` | With the `wide` layout: `columns`, `series` (rows by `key`) and `curves` (rows by `ondate` and `tenor`), each with `cells` |
-| `hasRows`, `hasObjects` | Whether there are rows and master data |
+| `hasRows`, `hasEvents`, `hasObjects` | Whether there are rows, events and master data |
 
-Every row has every field, blank when there is nothing, so your own Mustache templates can use them safely. Array elements have a `comma` field, `,` on all but the last, for writing JSON.
+Every row has every field, blank when there is nothing, so your own Mustache templates can use them safely. Array elements, and the columns, cells and props of the events, have a `comma` field, `,` on all but the last, for writing JSON and CSV.
 
 ---
 
@@ -76,6 +82,7 @@ The output templates are Mustache scripts of the extension, used as the `@transf
 | `odsl-extensions\extensions\export\odsl.export.output.csv_values` | CSV with id, ondate, index and value |
 | `odsl-extensions\extensions\export\odsl.export.output.csv_wide` | CSV with a column per item |
 | `odsl-extensions\extensions\export\odsl.export.output.csv_objects` | CSV of the master data |
+| `odsl-extensions\extensions\export\odsl.export.output.csv_events` | CSV of the events |
 | `odsl-extensions\extensions\export\odsl.export.output.tsv` | Tab separated |
 | `odsl-extensions\extensions\export\odsl.export.output.json` | JSON |
 | `odsl-extensions\extensions\export\odsl.export.output.jsonl` | JSON Lines |
@@ -92,7 +99,7 @@ To send another format, copy one into your own Mustache script and use it as the
 |-|-|-|
 | Extension | `odsl.export` | Export data |
 | View | Groups, Apps, **Export** | Export the selected group (feature `odsl.export.manage`) |
-| View | Information, **Export data** | Export anything (feature `odsl.export.data`) |
+| View | Operations, **Export data** | Export anything (feature `odsl.export.data`) |
 | Feature policy | `extension.odsl.export` | Both features, for everyone |
 | Scripts | `odsl.export.common`, `odsl.export.workspace`, `odsl.export.schedules` | The screens |
 | Script | `odsl.export.runner` | The ODSL script every schedule's process runs |
@@ -108,7 +115,9 @@ To send another format, copy one into your own Mustache script and use it as the
 |-|-|
 | The **Export** app is not on the **Apps** tab of a group | The extension and the portal must both be up to date: the Groups screen lists Apps views with the section `Manage`. |
 | An item shows **Error** | The message is the platform's reason, for example the item does not exist or you have no access to it |
-| A curve exports nothing | With **Curve for one ondate**, check there is a curve on that date. With every ondate in the range, check the range contains curve dates. |
+| A curve exports nothing | With **Curve for one ondate**, check there is a curve on that date. With every ondate in the range, check the range contains curve dates. With **Tenors** set, the **Items** tab says how many contracts are in the tenors: check the tenors are the curve's (`M01`) or its contract codes (`2026M11`). |
+| An event list exports no events | Check the date range: events count by their event time, in whole days in UTC. Then check the conditions of its filter, for example a number written with text around it. The **API** tab shows the filter sent. |
+| A delivery of an event list is empty | The CSV, tab separated and JSON Lines formats write timeseries and curve values only. Choose **CSV of the events**, JSON, XML or HTML. |
 | A scheduled run is still waiting | **Recent runs** shows `reschedule` while it waits for late data. It decides at the retry time. |
 | A run failed with the message that data is missing | **When an item has no data** is **Stop the export**. The process log lists the items. |
 | The **Template** format is greyed out | It needs a group with every item ticked |

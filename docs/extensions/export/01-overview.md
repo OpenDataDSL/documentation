@@ -1,9 +1,9 @@
 ---
 title: What is the Export extension?
-description: An introduction to the Export extension, which exports timeseries, curves and master data in the format other systems need, on demand or on a schedule
+description: An introduction to the Export extension, which exports timeseries, curves, events and master data in the format other systems need, on demand or on a schedule
 slug: /extensions/export/overview
 sidebar_position: 1
-tags: [extension, export, csv, excel, schedule, automation]
+tags: [extension, export, csv, excel, schedule, automation, events, tenors]
 ---
 
 # What is the Export extension?
@@ -11,11 +11,12 @@ tags: [extension, export, csv, excel, schedule, automation]
 Prices and curves rarely stay in one place. A trading system, a risk engine, a spreadsheet or a partner needs them in its own format, usually every day, and usually before someone notices they are missing. **The Export extension** gets your data out of the platform in the shape the other side expects, and keeps doing it on a schedule. It answers questions like:
 
 - Can I get the settlement prices for these ten timeseries as a CSV for last week?
-- Can I send this evening's forward curves to our ETRM as JSON, every weekday?
+- Can I send this evening's forward curves to our ETRM as JSON, every weekday, with only the first three months?
+- Can I send today's TTF and German power trades of 15 MW or more to the risk system, with just the fields it reads?
 - What happens to the export when one curve is late, and does the receiving system know?
 - Can the market data team get the same export as an Excel file, with real dates and numbers?
 
-Throughout these pages we follow Northgate Energy, a fictional gas and power trader. Every weekday evening its market data team sends six items from its group **Gas and power daily** to the ETRM: front month settlement prices for TTF and NBP, the German power base day-ahead price, the EUR/GBP reference rate, the TTF futures curve and the NBP mid curve.
+Throughout these pages we follow Northgate Energy, a fictional gas and power trader. Every weekday evening its market data team sends six items from its group **Gas and power daily** to the ETRM: front month settlement prices for TTF and NBP, the German power base day-ahead price, the EUR/GBP reference rate, the TTF futures curve and the NBP mid curve. Its risk team also exports the day's trades from the event list `NGE_TRADES:ETRM`, where the ETRM's trades are loaded.
 
 ![The Export app on the Groups screen, with the group's six items read and previewed](/img/extensions/export/preview.png)
 
@@ -25,7 +26,9 @@ Throughout these pages we follow Northgate Energy, a fictional gas and power tra
 
 | Idea | What it means |
 |-|-|
-| **Items** | What you export: timeseries, curves (including smart, event and composed curves), curves saved for one ondate, and master data objects. They come from a group, a search or a list of ids. |
+| **Items** | What you export: timeseries, curves (including smart, event and composed curves), curves saved for one ondate, event lists and master data objects. They come from a group, a search or a list of ids. |
+| **Tenor filter** | Keeps only some contracts of every curve, such as `M01-M03, Q01`. |
+| **Event filter** | The events of an event list whose event time is in the date range, with conditions on any other field, such as product is TTF and volume is at least 15, and the fields to export. |
 | **Format** | CSV, TSV, Excel, JSON, JSON Lines, XML or HTML, or a server export template for a whole group. |
 | **Layout** | One row per value, a column per item, or a column per ondate for curves. |
 | **Schedule** | A process on the platform that runs the export at set times and stores the result as a report for each export date. |
@@ -39,7 +42,7 @@ Throughout these pages we follow Northgate Energy, a fictional gas and power tra
 | Screen | Where | What it does |
 |-|-|-|
 | **Export** app | **Groups**, then a group, then **Apps** | Exports the selected group |
-| **Export data** | **Information** menu | Exports anything you add: groups, data found by id, master data and pasted ids |
+| **Export data** | **Operations** menu | Exports anything you add: groups, data and event lists found by id, master data and pasted ids |
 | **Schedules** tab | Both screens | Lists the scheduled exports and creates, runs and changes them, with their deliveries |
 | Export reports | **Reports** | One report per scheduled export, stored for each export date |
 
@@ -47,7 +50,7 @@ Throughout these pages we follow Northgate Energy, a fictional gas and power tra
 
 ## Where next
 
-- [Exporting data](/docs/extensions/export/exporting): choose items, a format and a layout, preview and download.
+- [Exporting data](/docs/extensions/export/exporting): choose items, a format and a layout, filter curve tenors and events, preview and download.
 - [Scheduling an export](/docs/extensions/export/scheduling): run the export on the platform every day.
 - [Handling missing data](/docs/extensions/export/missing-data): what a scheduled export does when data is late or missing.
 - [Delivering exports](/docs/extensions/export/deliveries): send each export by email or to any automation target, in the format you need.
