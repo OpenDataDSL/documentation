@@ -35,7 +35,31 @@ Untick the box to stop the schedule. The report and its stored dates are kept, a
 
 ### Default range
 
-The **Default range** sets the start and end dates, `#START` and `#END`, that the `@{start}` and `@{end}` placeholders take, for example `from(2026-01-01)` or `last(7)`. Leave it empty for all dates. Northgate Energy's aggregation only uses `@{ondate}`, the date the report runs for, so its range is empty.
+The **Default range** sets the start and end dates, `#START` and `#END`, that the `@{start}` and `@{end}` placeholders take each time the report runs. It is a date range, written relative to the date the report runs for, which is `T`:
+
+| Default range | `@{start}` | `@{end}` | For a report on 15 October 2026 |
+|-|-|-|-|
+| `within(T)` | The ondate | The ondate | 2026-10-15 to 2026-10-15 |
+| `within(T-1D)` | The day before | The day before | 2026-10-14 to 2026-10-14 |
+| `between(T-1B,T)` | The business day before | The ondate | 2026-10-14 to 2026-10-15 |
+| `between(T-7D,T)` | 7 days before | The ondate | 2026-10-08 to 2026-10-15 |
+| `between(T-0MD1,T)` | The first of the month | The ondate | 2026-10-01 to 2026-10-15 |
+| `from(2026-01-01)` | 1 January 2026 | Today | 2026-01-01 to the day it runs |
+| Empty | 1 January 1900 | 31 December 2999 | Every date |
+
+`@{start}` and `@{end}` are dates, written as `yyyy-mm-dd`, so a stage that compares them with a timestamp adds the time of day. This keeps everything from the start of the first day to the end of the last:
+
+```json
+{"timestamp": {"$gte": "@{start}T00:00:00", "$lte": "@{end}T23:59:59"}}
+```
+
+With `within(T)`, that is the whole of the day the report runs for.
+
+:::caution
+The default range is not a stage, so placeholders and `#ONDATE` cannot be used in it: `@{ondate}` or `#ONDATE` there stops the report with **Cannot parse ... as a date**. Write `T` for the ondate. Do not use `last(7)` either: for a report it starts in 1970 and ends today. The report editor refuses both.
+:::
+
+Northgate Energy's aggregation only uses `@{ondate}`, the date the report runs for, so its range is empty. **Preview** runs the report with the default range for the **Ondate** test date in the toolbar, so you can check a range before you save it.
 
 ---
 

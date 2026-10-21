@@ -37,7 +37,7 @@ The fields the Aggregator sets on a report:
 | `expression` | `aggregate_dataset_deliveries(#ONDATE, #START, #END, #REPORT)` | What the report runs. Reports saved before report properties have `(#ONDATE, #START, #END)`, which still works and is updated the next time the report is saved. |
 | `template` | `aggregator\templates\AGG_DATASET_DELIVERIES` | How a stored date is shown |
 | `cron`, `enabled` | `0 18 * * MON-FRI * EU1`, `true` | The schedule, and whether it is on |
-| `defaultRange` | Empty | Sets `#START` and `#END` |
+| `defaultRange` | Empty, or `within(T)` | Sets `#START` and `#END`, relative to the ondate `T`. See [Default range](/docs/extensions/aggregator/schedule-and-email#default-range). |
 | `cacheOptions` | `OnDemand`, private | Each run is stored for its date |
 | `properties.aggregator` | | The aggregation key, the template mode, the columns, and the email settings and automation |
 | `properties.NAME` | `properties.datasets`: `^ICE_` | The value of a report property placeholder, `@{NAME}`. `currency`, `units` and `timezone` are set on the report itself instead. |
@@ -70,4 +70,5 @@ The fields the Aggregator sets on a report:
 | **@&#123;name&#125; is a report setting, not a report property** | The placeholder's name is one of the report's own settings. Choose another name. |
 | **... cannot contain double quotes, backslashes or line breaks** | A report property's value, or its test value, is put into the stage as text. Leave those characters out. |
 | A report ignores a report property | Check the report sets it, under **Report properties** in the report editor or on the Reports screen tab, and that the name matches the placeholder exactly, including upper and lower case. |
+| **Cannot parse ... as a date** when a report runs | The report's default range is not a date range the platform can read, often `@{ondate}` or `#ONDATE`. Use `within(T)` for the ondate. See [Default range](/docs/extensions/aggregator/schedule-and-email#default-range). |
 | A template shows nothing for a field | The field name has characters a template cannot read, such as spaces. Rename it with `$project`. |

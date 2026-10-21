@@ -90,7 +90,7 @@ Three placeholders can be used inside any string value of a stage:
 | Placeholder | In the workspace | In a report |
 |-|-|-|
 | `@{ondate}` | The **Ondate** test date in the toolbar | The date the report runs for |
-| `@{start}` | The **Start** test date | The start of the report's default range |
+| `@{start}` | The **Start** test date | The start of the report's [default range](/docs/extensions/aggregator/schedule-and-email#default-range), such as `within(T)` for the ondate itself |
 | `@{end}` | The **End** test date | The end of the report's default range |
 
 Each is replaced with the date written as `yyyy-mm-dd`. Northgate Energy's `$match` uses `@{ondate}`, so the same aggregation lists the deliveries of whichever day it runs for:
