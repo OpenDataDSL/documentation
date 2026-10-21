@@ -32,11 +32,37 @@ The **Aggregations** tab has examples under **Start from an example**. Each open
 | Platform | Scripts by category | Scripts | A count and the latest change per category |
 | Platform | Recently changed scripts | Scripts | `$sort`, `$limit` and renaming fields |
 | Platform | Reports by type and schedule | Report configurations | `$cond` and `$ifNull` |
+| Logs and metrics | Changes by user and action | Audit log | Grouping by two fields, `$max` for the latest change |
+| Logs and metrics | Changes by service | Audit log | `$addToSet` and `$size` to count the users |
+| Logs and metrics | Failed changes | Audit log | `$match` on the status (400 and above), the latest 100 with the reason |
+| Logs and metrics | API requests by service | Request metrics | `$avg`, `$max` and `$sum` on the duration and size, rounded with `$round` |
+| Logs and metrics | Slowest API requests | Request metrics | `$sort` on the duration and `$limit` for a top 50 |
+| Logs and metrics | API errors by status | Request metrics | `$match` on the HTTP status, grouped by status and service |
+| Logs and metrics | Scheduled runs by schedule | Schedule logs | `$min` and `$max` for the first and last trigger time |
 | Report properties | Fusion AI usage for one user | Fusion AI usage | `@{user}` in a `$match`, with a date range |
 | Report properties | Conversations over a token threshold | Fusion AI usage | `@{minTokens}` in a `$match` after the `$group`, read as a number |
 | Report properties | Runs of one playbook | Fusion AI playbook runs | `@{playbook}` in a `$match` |
 | Report properties | Failures of one automation target | Automation logs | `@{target}` in a `$match`, `$sort` and `$limit` for the latest 100 |
+| Report properties | Change history of one item | Audit log | `@{key}` in a `$match`, the latest 50 changes |
 | Report properties | Deliveries of a group of datasets | Dataset deliveries (common) | `@{datasets}` as a `$regex` on the dataset ID |
+
+---
+
+## Logs and metrics
+
+The platform keeps a record of what happens in it. The examples in the **Logs and metrics** group summarise three of these records:
+
+| Service | One record for | Fields the examples use |
+|-|-|-|
+| **Audit log** (`audit`, private) | Each change made through the platform: a create, update or delete | `timestamp`, `user`, `action`, `service`, `key` (the item's ID), `status` (the HTTP status, 400 and above when the change was refused), `description` |
+| **Request metrics** (`metric`) | Each API request made by a user | `timestamp`, `user`, `method` (get, post, put, delete), `service`, `key`, `duration` (milliseconds), `responseSize` (bytes), `httpstatus` |
+| **Schedule logs** (`crontablog`) | Each time a schedule fired | `timestamp`, `trigger` (the time it was due), `name` (the schedule) |
+
+Request metrics and schedule logs are kept for the whole platform, and the platform only lets you see your organisation's records. These services are also why some stages, such as `$documents`, cannot run first on them: the platform puts its own filter first. See [Where a stage can run](/docs/extensions/aggregator/how-it-works#stages).
+
+:::tip
+These make good scheduled reports. For example, **API errors by status** as a daily report emailed to whoever looks after your integrations, or **Failed changes** each morning for the data team.
+:::
 
 ---
 
@@ -50,6 +76,7 @@ The examples in the **Report properties** group each use a [report property](/do
 | Conversations over a token threshold | `minTokens` | `100000` | A weekly check at `500000` for the finance team, and a daily one at `100000` for the platform team |
 | Runs of one playbook | `playbook` | `#process-failure-triage` | One report for each playbook you run on a schedule |
 | Failures of one automation target | `target` | `odsl.email` | One report for each target its owner looks after, such as `odsl.email` and `odsl.curve` |
+| Change history of one item | `key` | `ECB_FX` | A weekly report of the changes to each important item, such as a key curve or a master data record |
 | Deliveries of a group of datasets | `datasets` | `.*` (every dataset) | `^ICE_` for the ICE desk, `^EEX_` for the power desk, as in [One aggregation, several reports](/docs/extensions/aggregator/reports#one-aggregation-several-reports) |
 
 :::tip
