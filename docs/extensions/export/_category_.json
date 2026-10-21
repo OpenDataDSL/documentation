@@ -1,0 +1,7 @@
+{
+  "label": "Export",
+  "link": {
+    "type": "generated-index",
+    "description": "Export timeseries, curves and master data in the format another system needs, straight away or on a schedule that handles missing data and delivers each export by email, queue, webhook or any other automation target."
+  }
+}
