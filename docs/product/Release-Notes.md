@@ -16,15 +16,15 @@ Release Notes
 This release introduces new AI-related features, including an MCP Server Connector and Fusion AI Playbooks, and lets us deliver new Portal extensions outside the regular release cycles. It also brings several enhancements to automations and curves, plus a number of bugfixes.
 
 ### New AI-related features
-- MCP Server Connector: You can use Fusion tools and skills in [Claude or ChatGPT] (/docs/product/mcp/overview)
-- Fusion AI [Playbooks] (/docs/category/fusion-ai-playbooks)
+- MCP Server Connector: You can use Fusion tools and skills in [Claude or ChatGPT](/docs/product/mcp/overview)
+- Fusion AI [Playbooks](/docs/category/fusion-ai-playbooks)
 - Server-related improvements
 - Fusion AI Token Budgeting
 
 This new capability enables us to add extensions to the Portal outside the release cycles.
-- New Extension: [Composer] (/docs/category/composer)
+- New Extension: [Composer](/docs/category/composer)
 - New Extension: [Validation of Timeseries and Curves] (/docs/category/validation)
-- New Extension: [Aggregator] (/docs/extensions/aggregator)
+- New Extension: [Aggregator](/docs/extensions/aggregator)
 
 ### Enhancements
 - Add scheduling support for automations
