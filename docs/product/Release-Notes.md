@@ -23,7 +23,7 @@ This release introduces new AI-related features, including an MCP Server Connect
 
 This new capability enables us to add extensions to the Portal outside the release cycles.
 - New Extension: [Composer](/docs/category/composer)
-- New Extension: [Validation of Timeseries and Curves] (/docs/category/validation)
+- New Extension: [Validation of Timeseries and Curves](/docs/category/validation)
 - New Extension: [Aggregator](/docs/extensions/aggregator)
 
 ### Enhancements
