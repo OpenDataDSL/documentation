@@ -48,6 +48,9 @@ For example, to let only your data team write playbooks while everyone can run t
 | Policy | Service | Access |
 |-|-|-|
 | `FusionAI` | `aistudio`, the Fusion conversations | Full |
+| `FusionAIAgents` | `aiagent`, agents | Full |
+| `FusionAIUsage` | `aiusage`, token usage, for the Token Usage and Billing insights | Read only. Without it the insights show nothing. |
+| `FusionAIFeedback` | `feedback`, feedback on answers | Read and delete |
 | `FusionAIPlaybooks` | `aiplaybook`, your tenant's own playbooks | Full |
 | `FusionAITasks` | `aitask`, playbook tasks | Full |
 | `FusionAIRuns` | `airun`, playbook runs | Read only. Runs are written by Fusion. |
