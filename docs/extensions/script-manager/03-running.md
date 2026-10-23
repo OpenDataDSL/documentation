@@ -80,7 +80,7 @@ Priya's script reads the ondate from `input.ondate`, so she sets the input to bu
 
 ![The input of the run](/img/extensions/script-manager/run-input.png)
 
-The input is kept in your browser for each script. The download button saves the run as a JSON file. A failed run shows the platform's error message in red.
+The input is kept in your browser for each script. The eraser button clears the result and the log (the input is kept), and the download button saves the run as a JSON file. A failed run shows the platform's error message in red.
 
 ---
 

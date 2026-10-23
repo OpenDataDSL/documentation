@@ -46,6 +46,7 @@ Throughout these pages we follow Northgate Energy, a fictional gas and power tra
 | **Code** tab | Same screen, with a script open | The editor with intellisense, syntax checking, Run, the output panel and the Fusion AI panel |
 | **Script log** tab | Same screen | Every run of the script and its log |
 | **Schedules** tab | Same screen | The processes that run the script on a schedule, their runs, and Run now |
+| **Used by** tab | Same screen | The processes, smart curves and timeseries, reports, aggregations, compositions and validations that use the script |
 | **Compare versions** tab | Same screen | Any two versions side by side, and Restore |
 | **Audit trail** tab | Same screen | Who created and changed the script, when and why |
 
@@ -63,5 +64,5 @@ What you can do with a script depends on your security policies: you need the **
 - [Running scripts](/docs/extensions/script-manager/running): running a script, a function or a region, the output panel and the script log.
 - [Writing scripts with Fusion AI](/docs/extensions/script-manager/fusion-ai): asking Fusion to write, change, explain or fix a script.
 - [Scheduling a script](/docs/extensions/script-manager/scheduling): running a script on a cron with a process.
-- [Versions and the audit trail](/docs/extensions/script-manager/history): comparing versions, restoring one and seeing who changed what.
+- [Versions and the audit trail](/docs/extensions/script-manager/history): comparing versions, restoring or rolling back, deleting, where the script is used and who changed what.
 - [Script Manager reference](/docs/extensions/script-manager/reference): permissions, the REST functions and what the extension contains.

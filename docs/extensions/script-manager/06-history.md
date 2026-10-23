@@ -1,6 +1,6 @@
 ---
 title: Versions and the audit trail
-description: Compare any two versions of a script, restore an earlier version, and see who created and changed the script, when and why
+description: Compare any two versions of a script, restore or roll back a version, delete a script, see where it is used and who created and changed it, when and why
 slug: /extensions/script-manager/history
 sidebar_position: 6
 tags: [extension, script manager, scripts, versions, audit, compare]
@@ -39,6 +39,56 @@ Select **Restore** on an earlier version to make it the current one again. The S
 
 :::note
 Restoring replaces the text in the editor, including any unsaved changes. The Script Manager warns you first.
+:::
+
+---
+
+## Rolling back and deleting
+
+The bin button next to **Schedule** rolls the script back or deletes it, as in the Smart Data extension. It needs the **delete** action on the script.
+
+![Rolling back version 4 of the spark spread script](/img/extensions/script-manager/rollback.png)
+
+| Choice | What happens |
+|-|-|
+| **Roll back** | Deletes the current version: the version before it becomes the current one again. The dialog shows what a roll back undoes. |
+| **Delete it completely** | Deletes every version of the script |
+
+A script with one version can only be deleted. Each roll back or delete asks for a reason, kept in the audit trail.
+
+| | Roll back | Restore |
+|-|-|-|
+| What it does | Deletes the current version | Saves an earlier version's text as a new version |
+| The versions in between | The current one is gone | All kept |
+| Use it for | A save that should never have happened | Going back to earlier code while keeping the history |
+
+Before deleting a script completely, the Script Manager checks [where it is used](#where-the-script-is-used). While anything uses it, it is not deleted: the dialog lists what uses it, so you can change or delete those first. Then it asks once more, because a delete cannot be undone.
+
+:::caution
+A roll back or delete cannot be undone, and your unsaved changes are lost. Restore keeps the history, so prefer it when you are not sure.
+:::
+
+---
+
+## Where the script is used
+
+The **Used by** tab lists everything on the platform that uses the script, so you know what a change affects before you save it.
+
+![Where the spark spread script is used](/img/extensions/script-manager/usage.png)
+
+| Kind | Uses the script when |
+|-|-|
+| **Processes** | The process runs it (its schedules are also on the **Schedules** tab) |
+| **Smart curves** and **Smart timeseries** | Their expression functions come from the script |
+| **Report configurations** | The report runs the script or uses it as its template |
+| **Aggregations** | An Aggregator aggregation is built on the script |
+| **Compositions** | A Composer composition or template loads functions from the script |
+| **Validations** | A validation configuration's checks use functions from the script |
+
+The tab shows how many places use the script, and **Refresh** looks again. Only your company's (private) items are searched.
+
+:::note
+Scripts that import this script, with `import ${script:"id"}` or a Mustache partial, are not listed: finding them needs the text of every script.
 :::
 
 ---

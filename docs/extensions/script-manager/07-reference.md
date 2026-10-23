@@ -18,6 +18,7 @@ tags: [extension, script manager, scripts, reference, rest api]
 | Create a script | **create** |
 | Change and save a script, edit its details, restore a version | **update** on that script |
 | Run a script, a function or a region | **run** on that script |
+| Roll back or delete a script | **delete** on that script |
 | Use the Script Manager screen | The feature `odsl.script_manager.manage`, in the feature policy `extension.odsl.script_manager` |
 | Create, change, run and delete schedules | **create**, **update**, **run** and **delete** on the process service |
 
@@ -35,8 +36,9 @@ The Script Manager asks the platform which actions you have on the script you op
 | Runs | The `scriptlog` service, one record per run with `script`, `status`, `message`, `trigger`, `scriptVersion` (0 for unsaved text) and `log`. Results are not kept. |
 | Schedules | Processes in the `process` service whose `script` is the script's id, with the service `Scripts`. Their runs are `process-exec` records. |
 | Fusion AI conversations | The Fusion AI chat history, category `scripts` |
+| Where a script is used | Searched in `process` (`script`), `data` (smart curves and timeseries, `script`), `reportconfig` (`script`, `template`, `properties.aggregator.script`, `properties.composition.scripts`), `object` (compositions on analytics areas) and `validationconfig` (`scripts`) |
 
-The reason of a save is sent as the `_reason` query parameter, which you can also use when you save a script through the API.
+The reason of a save is sent as the `_reason` query parameter, which you can also use when you save a script through the API. A roll back is `DELETE script/v1/{source}/{id}/{current version}` and a complete delete `DELETE script/v1/{source}/{id}/*`, both with `_reason`.
 
 ---
 
@@ -102,7 +104,7 @@ With `_id`, `_type` and `script` as above, the response is `{"errors": [{"line":
 | Extension | `odsl.script_manager` | The Script Manager |
 | View | **Scripts**, in **Information** | The screen described in this guide |
 | Feature policy | `extension.odsl.script_manager` | Gives the feature `odsl.script_manager.manage` |
-| Scripts | `odsl-extensions\extensions\script_manager\odsl.script_manager.manage`, `.common`, `.fusion` and `.schedules` | The screen and its parts |
+| Scripts | `odsl-extensions\extensions\script_manager\odsl.script_manager.manage`, `.common`, `.fusion`, `.schedules` and `.usage` | The screen and its parts |
 
 The editor is loaded from a public content network the first time the screen opens, so the screen needs internet access to `unpkg.com`.
 
@@ -119,3 +121,5 @@ The editor is loaded from a public content network the first time the screen ope
 | The description or category goes back after a save | The platform reads them from the script's header: use **Edit details**, which updates the header |
 | No syntax errors are underlined | Syntax checking is for ODSL scripts, on platforms that support it |
 | A schedule does not run your latest change | Schedules run the saved script: save it |
+| The bin button is greyed out | Your policies do not give you **delete** on this script, or it is a public script |
+| A script cannot be deleted | Something still uses it: see the **Used by** tab |
