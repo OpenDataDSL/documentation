@@ -1,0 +1,7 @@
+{
+  "label": "Script Manager",
+  "link": {
+    "type": "generated-index",
+    "description": "Browse your ODSL scripts and templates by folder, edit them with intellisense, run them, schedule them, write them with Fusion AI, compare versions and see who changed what and why."
+  }
+}
