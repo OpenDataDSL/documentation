@@ -8,7 +8,7 @@ tags: [extension, script manager, scripts, odsl, run, script log]
 
 # Running scripts
 
-You can run an ODSL or JavaScript script from the editor and see what it returns, without leaving the screen and without saving first. Running needs the **run** action on the script in your security policies.
+You can run an ODSL or JavaScript script from the editor and see what it returns, without leaving the screen and without saving first. Running needs the **run** action on the script in your security policies. To stop an ODSL script at a line and look at its values, [debug it](/docs/extensions/script-manager/debugging) instead.
 
 ---
 
@@ -109,4 +109,4 @@ Runs from the editor are recorded in the script log but do not trigger the scrip
 
 ## Next
 
-[Writing scripts with Fusion AI](/docs/extensions/script-manager/fusion-ai): ask Fusion to write, change, explain or fix the script.
+[Debugging scripts](/docs/extensions/script-manager/debugging): stop the script at a line, step through it and see its variables.

@@ -107,6 +107,8 @@ The **Audit trail** tab lists everything done to the script, newest first.
 | **Details** | The reason given when it was saved, and what changed: **Script text changed**, or other fields such as the description |
 | **Compare** | Opens the version before and the version this change made on the **Compare versions** tab |
 
+When a script is [renamed or moved](/docs/extensions/script-manager/editing#copying-renaming-and-moving-scripts), the audit trail records **Renamed** under both ids: "Renamed to" under the old id and "Renamed from" under the new one. The changes made before the rename stay under the old id.
+
 Filter by action to see only the changes, for example. The reasons are what each person typed when they saved, so a good reason, such as *Efficiency is now 50% for the new CCGT fleet*, saves the next person from reading the code.
 
 ---

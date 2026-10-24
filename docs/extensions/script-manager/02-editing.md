@@ -49,6 +49,38 @@ An ODSL script starts with a header comment that holds its description and categ
 
 ---
 
+## Copying, renaming and moving scripts
+
+Select the **...** button next to **Run** and **Debug**, or right-click a script in the tree. Either way you get these choices:
+
+![The ... menu of the spark spread script](/img/extensions/script-manager/organise-menu.png)
+
+| Choice | What it does |
+|-|-|
+| **Copy** | Saves the script as a new private script, with the same type, category and description. The copy starts at version 1, and the original is unchanged. If you have unsaved changes, you choose whether they go to the copy. A public script can be copied too: the copy is private, so you can change it. |
+| **Rename** | Changes the script's id. The script keeps its versions. The audit trail records the rename under both the old and the new id. |
+| **Move to a folder** | Changes the folder part of the id, and keeps the name. Pick a folder or type a new one, or leave it empty for the top level. |
+
+You can also drag a script onto a folder in the tree to move it there.
+
+Here Priya moves her script into a new folder for the spread builds, `northgate\spreads`:
+
+![Moving build-spark-spreads to the folder northgate\spreads](/img/extensions/script-manager/move.png)
+
+Before a rename or a move, the Script Manager checks [where the script is used](/docs/extensions/script-manager/history#where-the-script-is-used) and lists what still refers to the old id. Those processes, smart curves, reports and other items do not change by themselves: change them to the new id afterwards. Scripts that import the script, or include it as a partial, are not checked, so change them too.
+
+![The move asks first: six items still refer to the old id](/img/extensions/script-manager/move-confirm.png)
+
+The spark spread script is used by its schedule, two smart curves, a report, a composition and a validation, so Priya decides to keep it where it is. Instead she copies it to start the peak load version:
+
+![Copying build-spark-spreads to build-spark-spreads-peak](/img/extensions/script-manager/copy.png)
+
+:::note
+Save or revert your changes before you rename or move the open script. Your breakpoints, watches and run input move with it.
+:::
+
+---
+
 ## The editor
 
 The **Code** tab shows the script in a code editor with colours for the language, line numbers, a map of the script on the right and folding for functions and `//#region` blocks. Above the editor you see the language, the number of lines and the cursor position.
@@ -58,12 +90,14 @@ The **Code** tab shows the script in a code editor with colours for the language
 | `Ctrl+S` | Save |
 | `Ctrl+Enter` | Run the script |
 | `Ctrl+Shift+Enter` | Run the region at the cursor |
+| `F5` | Debug the script |
+| `F9` | Add or remove a breakpoint on the line |
 | `Ctrl+Space` | Show the suggestions |
 | `Ctrl+F`, `Ctrl+H` | Find, and find and replace |
 | `Ctrl+Shift+O` | Go to a function or region |
 | `F11` | Full screen |
 
-Next to the script's name you see its type, **Can edit** or **Read only**, and **Unsaved changes** while you have changes that are not saved. The header also has buttons to copy the script's id and to download the text in the editor.
+Next to the script's name you see its type, **Can edit** or **Read only**, and **Unsaved changes** while you have changes that are not saved. The header also has buttons to copy the script's id, to download the text in the editor, and the **...** button to copy, rename or move the script.
 
 ---
 
@@ -157,9 +191,14 @@ Before it saves, the Script Manager reads the script again. If someone saved a n
 
 ## Full screen
 
-Select the full screen button at the right of the bar above the editor, or press **F11** in the editor, to give the editor the whole screen. The bar keeps **Run**, **Save** and **Fusion AI**. Press **Esc** or the button again to go back.
+There are two ways to give the editor more room, with the two buttons at the right of the bar above the editor:
 
-![The editor in full screen](/img/extensions/script-manager/full-screen.png)
+- **Fill the view** (two diagonal arrows): the editor and the output panel cover the whole Script Manager view. Your browser window does not change.
+- **Full screen**, or **F11** in the editor: the same, on the whole screen, where your browser allows it. You can go to it from Fill the view. Leaving full screen takes you back to filling the view.
+
+The bar keeps **Run**, **Debug**, **Save** and **Fusion AI**. Press **Esc**, or the button again, to go back.
+
+![The editor filling the view](/img/extensions/script-manager/fill-view.png)
 
 ---
 
@@ -170,7 +209,9 @@ Select the full screen button at the right of the bar above the editor, or press
 | Read a script | The **read** action on the script service |
 | Change and save it | The **update** action on that script. Otherwise the editor is read only and says why when you type. |
 | Create a script | The **create** action on the script service |
-| Run it | The **run** action on that script |
+| Run or debug it | The **run** action on that script |
+| Copy it | The **create** action on the script service, for the copy |
+| Rename or move it | Rights to change scripts in that source. The platform refuses the rename when it is not allowed. |
 
 Public scripts are maintained by OpenDataDSL: you can read them, and run them where your policies allow, but not change them.
 
