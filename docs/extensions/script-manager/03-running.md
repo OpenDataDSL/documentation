@@ -14,7 +14,7 @@ You can run an ODSL or JavaScript script from the editor and see what it returns
 
 ## Running a script
 
-Select **Run** or press **Ctrl+Enter**. The script runs on the platform as you, and the output panel opens under the editor.
+Select **Run** or press **Ctrl+Enter**. The script runs as you, and the output panel opens under the editor. An ODSL script runs in the [script service](/docs/extensions/script-manager/reference#the-debug-service), the same service as the debugger, so a long or heavy run never slows down the rest of the platform. A JavaScript script runs on the platform itself.
 
 ![The spark spread script run, with the curve it returned](/img/extensions/script-manager/run-result.png)
 
@@ -31,7 +31,11 @@ A script runs with your access, so it reads and writes what you can. Running a s
 
 An ODSL script with syntax errors is not run: the output lists the errors, and you can select one to go to it. The platform would otherwise run only the part of the script it could read.
 
-**Stop** stops waiting for the result. The run carries on on the platform, and shows in the [script log](#the-script-log-tab) when it ends.
+**Stop** stops an ODSL run where it is, and the output says **Stopped**. For a JavaScript script, **Stop** only stops waiting for the result: the run carries on on the platform, and shows in the [script log](#the-script-log-tab) when it ends.
+
+:::note
+If the script service cannot be reached, an ODSL script runs on the platform instead, and the result says so.
+:::
 
 ---
 
@@ -94,7 +98,7 @@ The **Script log** tab lists every run of the script, newest first: from the edi
 |-|-|
 | **When** | When the run started |
 | **Status** | **Succeeded**, **Warnings** (the script logged a warning) or **Failed** |
-| **Run by** | `Editor(...)` for a run from the Script Manager, `Direct(...)` for a run through the API, `Automation(...)` for a run by an automation |
+| **Run by** | `Editor(...)` for a run of a JavaScript script from the Script Manager (or of an ODSL script when the script service could not be reached), `Direct(...)` for a run through the API, `Automation(...)` for a run by an automation |
 | **Version** | The saved version that ran, or **unsaved** for text run from the editor |
 | **Message** | The platform's message, such as the error of a failed run |
 | **Log** | How many lines the run logged. Select the run to see them. |
@@ -102,7 +106,7 @@ The **Script log** tab lists every run of the script, newest first: from the edi
 Filter by status to find the failed runs. The script log keeps the status and log of each run, not its result.
 
 :::note
-Runs from the editor are recorded in the script log but do not trigger the script's automations. Runs of a [schedule](/docs/extensions/script-manager/scheduling) are listed on the **Schedules** tab, as runs of its process.
+ODSL runs from the editor run in the script service and are not recorded in the script log, so they do not show here or under **Recent runs**; their result and log are in the output panel. Runs from the editor do not trigger the script's automations. Runs of a [schedule](/docs/extensions/script-manager/scheduling) are listed on the **Schedules** tab, as runs of its process.
 :::
 
 ---

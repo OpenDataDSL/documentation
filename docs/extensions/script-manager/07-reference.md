@@ -103,7 +103,7 @@ With `_id`, `_type` and `script` as above, the response is `{"errors": [{"line":
 
 ## The debug service
 
-The debugger runs your script in the script debug service, a separate service of the platform, so that a script waiting at a breakpoint never slows down anything else.
+The debugger, and **Run** for ODSL scripts, run your script in the script debug service, a separate service of the platform, so that a script waiting at a breakpoint, or a long run, never slows down anything else.
 
 | | |
 |-|-|
@@ -111,6 +111,7 @@ The debugger runs your script in the script debug service, a separate service of
 | Connection | One secure WebSocket for each debug session, carrying [Debug Adapter Protocol](https://microsoft.github.io/debug-adapter-protocol/) messages |
 | Sign-in | Your own sign-in. Nothing runs until the platform has confirmed you may run the script. |
 | Data | The script reads and writes data through the platform's REST API, as you, so your security policies apply as they do to everything else you do |
+| Runs | A run is a session without breakpoints. Runs are not limited to one at a time, do not end a debug session, and end after an hour. They are not recorded in the script log. |
 | Limits | One session for each person (a new one ends the previous one), 15 minutes without activity, an hour in all |
 
 The browser must be able to reach the address: if your company's network blocks WebSockets to it, the debugger says it could not reach the debug service.
@@ -144,6 +145,7 @@ The editor is loaded from a public content network the first time the screen ope
 | The bin button is greyed out | Your policies do not give you **delete** on this script, or it is a public script |
 | A script cannot be deleted | Something still uses it: see the **Used by** tab |
 | **Debug** is greyed out | The script is not ODSL, your policies do not give you **run** on it, or a run or debug session is already going |
+| A run says the script service could not be reached, so it ran on the platform | The script service is not available, or your network blocks it. The run still worked; the debugger needs the service. |
 | The debugger could not reach the debug service | The debug service is not available, or your network blocks it. Try again, or ask your administrator. |
 | "Your security policies do not let you run ..." when debugging | Your policies do not give you **run** on the script |
 | A breakpoint is a hollow grey circle | There is no statement on that line (a comment, a blank line or an `end`), so the script never stops there |

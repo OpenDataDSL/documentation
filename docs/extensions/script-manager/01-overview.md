@@ -33,7 +33,7 @@ Throughout these pages we follow Northgate Energy, a fictional gas and power tra
 | **Folder** | A part of a script's id before a backslash. `northgate\curves\build-spark-spreads` is the script `build-spark-spreads` in the folder `northgate\curves`. Folders are not created separately: they come from the ids. |
 | **Private and public scripts** | Private scripts belong to your company. Public scripts, whose ids start with `#`, are published by OpenDataDSL and can be read but not changed. |
 | **Version** | Each save makes a new version of the script, with who saved it, when and the reason they gave. |
-| **Run** | Running a script on the platform from the editor, with the result and the log shown under the code. You can run the whole script, one function or one region. |
+| **Run** | Running a script from the editor, with the result and the log shown under the code. You can run the whole script, one function or one region. |
 | **Debugging** | Running a script so that it stops at the lines you mark (breakpoints), shows its variables and goes on a line at a time when you say so |
 | **Schedule** | A process that runs the saved script on a cron, such as every weekday at 18:00 UK time. |
 | **Script log** | One entry for every run of a script, from the editor, a process, an automation or the API. |
