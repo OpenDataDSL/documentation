@@ -1,0 +1,7 @@
+{
+  "label": "Notebooks",
+  "link": {
+    "type": "generated-index",
+    "description": "Work with ODSL the way you would in a Python notebook: text and code cells that you run one at a time, with the values shown as tables and charts, and example notebooks to start from."
+  }
+}
