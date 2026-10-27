@@ -42,6 +42,7 @@ The secret entity contains the following information:
 |enabled|Boolean|A boolean to enable or disable this secret, defaults to true|
 |notBefore|String|An optional date string indicating when this secret is valid from|
 |expires|String|An optional date string indicating when this secret is valid to|
+|vault|String|`client` when the value is kept in your company's own Azure Key Vault (see [Keeping your secrets in your own Azure Key Vault](/docs/it/key-vault)), otherwise not present|
 
 ### Examples
 Below are some examples of secrets:

@@ -74,6 +74,10 @@ Example of using a secret for storing your ENTSOE security token:
 url = "https://web-api.tp.entsoe.eu/api?securityToken=" + ${secret:"ENTSOE_TOKEN"}
 ```
 
+## Secrets in your own Azure Key Vault
+
+Your company can keep its secret values in its own Azure Key Vault instead of the OpenDataDSL one. Scripts use secrets in the same way, and a secret created directly in your vault can be used by its name (a `_` in the name is read as `-`, as vault names cannot contain `_`). See [Keeping your secrets in your own Azure Key Vault](/docs/it/key-vault).
+
 ## Deleting Secrets
 
 To delete a secret from the database, you use the delete command.
