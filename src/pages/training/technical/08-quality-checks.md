@@ -1,13 +1,13 @@
 ---
 slug: /training/technical/quality-checks
-title: "Module 07: Quality Checks in ODSL"
-sidebar_position: 8
+title: "Module 08: Quality Checks in ODSL"
+sidebar_position: 9
 tags: [training, quality-checks, odsl, dataset]
 ---
 
-# Module 07: Quality Checks in ODSL
+# Module 08: Quality Checks in ODSL
 
-In this module you will write quality check scripts in ODSL, upload them to the platform, and attach them to the dataset you configured in Module 06.
+In this module you will write quality check scripts in ODSL, upload them to the platform, and attach them to the dataset you configured in Module 07.
 
 ## What is a Quality Check Script?
 
@@ -254,14 +254,13 @@ To test a failing check, temporarily modify a settlement event to have an out-of
 
 Once both scripts are uploaded, open the dataset in the portal and attach the checks via the dropdown selectors:
 
-1. Go to **Data Management → Datasets → TRAINING.MYGASHUB.SETTLEMENTS**
-2. Click **Edit**
-3. In the **Quality Checks** section, add two checks:
+1. Open the **Dataset Monitoring** dashboard, hover over `TRAINING.MYGASHUB.SETTLEMENTS` and select **Edit** to open the side panel
+2. In the **Quality Checks** section, add two checks:
    - Script: `my_gas_hub_quality_checks` / Function: `checkSettlementPrice`
    - Script: `my_gas_hub_quality_checks` / Function: `checkPriceMovement`
-4. In the **Critical Checks** section, add:
+3. In the **Critical Checks** section, add:
    - Script: `my_gas_hub_critical_checks` / Function: `criticalPriceCheck`
-5. Click **Save**
+4. Click **Save**
 
 ### Option B: Using ODSL Code
 
@@ -305,13 +304,10 @@ print "Quality checks attached to dataset"
 
 ## Step 5: Trigger and Review Checks in the Portal
 
-1. Go to **Data Management → Dataset Monitoring → TRAINING.MYGASHUB.SETTLEMENTS**
-2. Click on a date cell for which you have settlement data
-3. Click **Re-run Quality Checks**
-4. The panel will refresh and show:
-   - A green tick ✅ for each passing check
-   - A yellow warning ⚠️ for failing quality checks
-   - A red cross ❌ for failing critical checks
+1. Open the **Dataset Monitoring** dashboard and select `TRAINING.MYGASHUB.SETTLEMENTS`
+2. Select a date for which you have settlement data
+3. Use the dataset actions to run the quality checks again
+4. The **General** tab will show the result of each check, and the **Quality Status** icon will show the overall result: unchecked, valid, warning, failed or severe
 
 ---
 
@@ -348,14 +344,13 @@ You have now completed the full training path:
 | 03 | Created and updated events using Excel |
 | 04 | Built EventTimeSeries from event data |
 | 05 | Created SmartTimeSeries for currency and unit conversion |
-| 06 | Configured dataset monitoring in the portal |
-| 07 | Wrote quality check functions and attached them to the dataset |
+| 06 | Built forward curves from events and Smart Curve expressions |
+| 07 | Configured dataset monitoring in the portal |
+| 08 | Wrote quality check functions and attached them to the dataset |
 
 ## Next Steps
 
-- Explore **automations** to trigger event loading and quality checks automatically on a schedule
-- Investigate the public reference data available in OpenDataDSL (FX rates, commodity benchmarks, holiday calendars)
-- Review the ODSL language reference for advanced scripting patterns
+In [Module 09](/training/technical/alerts) you will raise alerts for late or missing deliveries and quality check violations, and be notified when they happen.
 
 :::tip Getting Help
 You can ask the **Fusion AI** assistant in the portal for help writing ODSL scripts, explaining platform concepts, or diagnosing quality check failures.

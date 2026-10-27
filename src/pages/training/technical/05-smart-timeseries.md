@@ -191,5 +191,5 @@ Use `.convert()` when you want a one-time conversion in a script. Use **SmartTim
 3. Create an additional SmartTimeSeries `SELL_GROSS_VALUE` following the same pattern for `SELL_VOLUME`
 
 :::note Next Step
-In [Module 06](/training/technical/dataset-monitoring) you will configure dataset monitoring in the portal to track daily delivery of the settlement price.
+In [Module 06](/training/technical/forward-curves) you will build forward curves from event data and Smart Curve expressions.
 :::

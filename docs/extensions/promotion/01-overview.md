@@ -46,7 +46,7 @@ Throughout these pages we follow Northgate Energy, a fictional gas and power tra
 | **Review and push** | The basket compared with the target, a side by side comparison, the items the basket needs, warnings, and the **Push** button. |
 | **Deployments** | Every deployment made from this environment: its items and versions, its log, the audit trail in the target, downloads, and **Undo**. |
 
-You open it from the **Manage** menu: **Promote to another environment**.
+You open it from the **Manage** menu: **Promote**.
 
 ---
 
@@ -54,7 +54,7 @@ You open it from the **Manage** menu: **Promote to another environment**.
 
 Promotion works in both directions. Install it in production too, and you can copy items from production to a test environment, change them there safely, and push them back:
 
-1. In production, open **Promote to another environment**, pick `test` as the target and push the items you want to work on.
+1. In production, open **Promote**, pick `test` as the target and push the items you want to work on.
 2. In `test`, change them and check the results.
 3. In `test`, promote them back to production. The review shows exactly what you changed, and the deployment can be undone if it goes wrong.
 

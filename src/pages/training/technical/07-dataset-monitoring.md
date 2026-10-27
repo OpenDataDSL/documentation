@@ -1,11 +1,11 @@
 ---
 slug: /training/technical/dataset-monitoring
-title: "Module 06: Dataset Monitoring in the Portal"
-sidebar_position: 7
+title: "Module 07: Dataset Monitoring in the Portal"
+sidebar_position: 8
 tags: [training, dataset, monitoring, portal]
 ---
 
-# Module 06: Dataset Monitoring in the Portal
+# Module 07: Dataset Monitoring in the Portal
 
 A **Dataset** is automatically created by the platform when events carrying a `_dsid` property are saved. The `_dsid` value — in the format `provider.feed.product` — uniquely identifies the dataset. The platform tracks delivery of those events each business day and provides a monitoring dashboard showing completeness and quality.
 
@@ -34,8 +34,9 @@ The events you saved in Modules 02 and 03 all carried `_dsid = "TRAINING.MYGASHU
 To verify:
 
 1. Open the **OpenDataDSL Portal**
-2. In the left navigation, go to **Data Management → Datasets**
-3. Search for `TRAINING.MYGASHUB` — you should see both datasets listed
+2. Open the **Dataset Monitoring** dashboard
+3. Select the **Monitored** button to list every dataset you are entitled to see, then search for `TRAINING.MYGASHUB`. You should see both datasets listed
+4. Select the **add** button on each one so they appear in your monitored list
 
 ---
 
@@ -74,8 +75,8 @@ This tells the monitoring dashboard that events should arrive by 18:00 London ti
 
 In the **Quality Checks** section you can attach check functions once the script has been uploaded.
 
-:::note Complete Module 07 First
-The script selector is a dropdown — the script must already exist on the platform before it can be selected here. Save the dataset configuration now without any quality checks, then return to this step after completing Module 07 and uploading the script.
+:::note Complete Module 08 First
+The script selector is a dropdown — the script must already exist on the platform before it can be selected here. Save the dataset configuration now without any quality checks, then return to this step after completing Module 08 and uploading the script.
 :::
 
 ---
@@ -101,39 +102,35 @@ Click **Save**. The platform will begin tracking delivery against the updated co
 
 ## Step 7: View the Monitoring Dashboard
 
-1. In the left navigation, go to **Data Management → Dataset Monitoring**
-2. Search for `TRAINING.MYGASHUB.SETTLEMENTS`
-3. The dashboard will show a calendar view of delivery status by date
+1. Open the **Dataset Monitoring** dashboard
+2. Find `TRAINING.MYGASHUB.SETTLEMENTS` in your monitored list
+3. Read its row of status icons for the selected date:
 
-Each cell in the calendar represents one delivery date:
-
-| Colour | Meaning |
-|--------|---------| 
-| 🟢 Green | Events delivered and passed quality checks |
-| 🟡 Yellow | Events delivered but quality checks failed |
-| 🔴 Red | Events not delivered or critical check failed |
-| ⚫ Grey | Date not expected (e.g. weekend for a business calendar) |
+| Icon | Values | What it tells you |
+|-|-|-|
+| **Delivery Status** | waiting, active, partial, holiday, loaded, late, missing | Where the delivery is in its lifecycle |
+| **Delivery Score** | 0 to 4 | How promptly the data arrived (4 is on time, 0 means no data expected) |
+| **Quality Status** | unchecked, valid, warning, failed, severe | The overall result of the quality checks |
+| **Alerts** | A number | How many alerts were raised for this dataset |
 
 ---
 
 ## Step 8: View Delivery Details
 
-Click on any date cell to see the delivery detail panel:
+Select the dataset to open its tabs for the selected date:
 
-- **Completeness** — number of events received vs expected
-- **Quality check results** — pass/fail for each check with error messages
-- **Version history** — which version of the events was used
+- **General**: the status information and the result of each completeness check (expected against actual) and quality check
+- **Data**: the events delivered for this dataset on that date
+- **Timeline**: everything that happened to the dataset on that date
+- **Alerts**: alerts raised for the dataset on that date
+
+The [Dataset Monitoring](/training/user/dataset-dashboard) module in the User track explains every icon and tab in more detail.
 
 ---
 
-## Manual Delivery Trigger (optional)
+## Re-running the Checks (optional)
 
-If you want to test monitoring against data you have already loaded:
-
-1. Go to **Dataset Monitoring → TRAINING.MYGASHUB.SETTLEMENTS**
-2. Click on a date cell for which you saved settlement events in Modules 02 or 03
-3. Click **Mark as Delivered**
-4. The platform will run any configured quality checks against the events for that date
+If you want to test monitoring against data you have already loaded, select a date for which you saved settlement events in Modules 02 or 03 and use the dataset actions to run the quality checks again. The actions available depend on your access rights.
 
 ---
 
@@ -141,8 +138,8 @@ If you want to test monitoring against data you have already loaded:
 
 1. Confirm both `TRAINING.MYGASHUB.NOMINATIONS` and `TRAINING.MYGASHUB.SETTLEMENTS` appear in the Datasets list
 2. Update the `TRAINING.MYGASHUB.SETTLEMENTS` configuration with a Business calendar and 18:00 delivery time
-3. Use **Mark as Delivered** on one date that has settlement events and review the delivery detail panel
+3. Select a date that has settlement events and review the General and Timeline tabs
 
 :::note Next Step
-In [Module 07](/training/technical/quality-checks) you will write the quality check functions in an ODSL script and attach them to this dataset.
+In [Module 08](/training/technical/quality-checks) you will write the quality check functions in an ODSL script and attach them to this dataset.
 :::

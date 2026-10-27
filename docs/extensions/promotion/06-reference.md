@@ -18,7 +18,7 @@ The extension installs:
 
 | Item | Id | What it is |
 |-|-|-|
-| View | **Promote to another environment** (Manage menu) | The Select, Review and push, and Deployments tabs. Feature `odsl.promotion.manage`. |
+| View | **Promote** (Manage menu) | The Select, Review and push, and Deployments tabs. Feature `odsl.promotion.manage`. |
 | Feature policy | `extension.odsl.promotion` | Who sees the view. |
 | Security policy | `PromotionDeployments` | Read, create and update the deployment records (`object/promotion_deployment`). |
 | Security policy | `PromotionItems` | Read, create and update the item records (`object/promotion_item`). |

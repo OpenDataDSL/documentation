@@ -53,7 +53,13 @@ To send a script to the platform, right-click it in the editor or in the Explore
 
 To send several at once, select them in the Explorer (`Ctrl`+click or `Shift`+click), or right-click a folder, and select **Upload scripts to the platform**. A folder sends every script in it and in its subfolders: `.odsl`, `.html`, `.mustache`, `.css`, `.py`, `.js`, `.mjs` and `.cjs` files, leaving out `node_modules` and folders whose names start with a dot. The extension lists the scripts and asks you to confirm before sending them, shows its progress (you can cancel it), and tells you how many went up. If some fail, it says why for the first one, and **Show the details** lists them all in the **ODSL** output.
 
-The extension asks which data environment of the stage to upload to, with the one you use first. The script is saved as a private script whose id is its path in the folder you have open, without the extension: `eon\load-prices.odsl` in your folder is the script `eon\load-prices`. A script you opened from the **Platform** panel is saved in your folder at that path, so uploading it updates the same script.
+The extension asks which data environment of the stage to upload to, with the one you use first. The script is saved as a private script. Its id depends on where it came from:
+
+| The script | Its id |
+|-|-|
+| Opened from the **Platform** panel, or started there with **New script** | Its id on the platform, so uploading it always updates the same script |
+| Written in VS Code | The name of the folder you have open, then its path in that folder, without the extension: `eon\load-prices.odsl` in the folder `odsl-demo` is the script `odsl-demo\eon\load-prices` |
+| A file whose name starts with `#` | Its name, without the extension: `#odsl-portal.mustache` is the script `#odsl-portal` |
 
 ## The Platform panel
 

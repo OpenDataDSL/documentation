@@ -10,8 +10,8 @@ const TRACKS = [
     color: '#4a9eff',
     description: 'Log in, navigate the portal, and find the data you need.',
     modules: [
-      { number: '01', title: 'Portal Overview', description: 'Navigate the OpenDataDSL portal — menus, search, master data, and your workspace.', href: '/training/user/portal-overview', tags: ['Portal'], status: 'coming-soon' },
-      { number: '02', title: 'Finding & Viewing Data', description: 'Search for objects, browse timeseries, and view forward curves in the portal.', href: '/training/user/viewing-data', tags: ['Portal', 'Data'], status: 'coming-soon' },
+      { number: '01', title: 'Portal Overview', description: 'Navigate the OpenDataDSL portal — menus, search, master data, and your workspace.', href: '/training/user/portal-overview', tags: ['Portal'], status: 'available' },
+      { number: '02', title: 'Finding & Viewing Data', description: 'Search for objects, browse timeseries, and view forward curves in the portal.', href: '/training/user/viewing-data', tags: ['Portal', 'Data'], status: 'available' },
     ],
   },
   {
@@ -22,7 +22,7 @@ const TRACKS = [
     modules: [
       { number: '03', title: 'Excel Add-in Setup', description: 'Install, authenticate, and configure the OpenDataDSL Excel Add-in.', href: '/training/user/excel-setup', tags: ['Excel'], status: 'available' },
       { number: '04', title: 'Working with Events in Excel', description: 'Download event lists, make changes, add new events, and upload back to the platform.', href: '/training/technical/events-excel', tags: ['Excel', 'Events'], status: 'available' },
-      { number: '05', title: 'TimeSeries in Excel', description: 'Load timeseries data into Excel, analyse it, and upload revised values.', href: '/training/user/timeseries-excel', tags: ['Excel', 'TimeSeries'], status: 'coming-soon' },
+      { number: '05', title: 'TimeSeries in Excel', description: 'Load timeseries data into Excel, analyse it, and upload revised values.', href: '/training/user/timeseries-excel', tags: ['Excel', 'TimeSeries'], status: 'available' },
     ],
   },
   {
@@ -31,29 +31,28 @@ const TRACKS = [
     color: '#f59e0b',
     description: 'Track data delivery, review quality results, and work with reports.',
     modules: [
-      { number: '06', title: 'Dataset Monitoring Dashboard', description: 'Read the dataset monitoring dashboard — completeness, quality, and delivery status.', href: '/training/user/dataset-dashboard', tags: ['Portal', 'Monitoring'], status: 'coming-soon' },
-      { number: '07', title: 'Reports & Dashboards', description: 'Create and share reports from platform data using the portal report builder.', href: '/training/user/reports', tags: ['Portal', 'Reports'], status: 'coming-soon' },
-      { number: '08', title: 'Alerts & Notifications', description: 'Get notified about data delivery failures and quality issues.', href: '/training/user/alerts', tags: ['Portal', 'Alerts'], status: 'coming-soon' },
+      { number: '06', title: 'Dataset Monitoring Dashboard', description: 'Read the dataset monitoring dashboard — completeness, quality, and delivery status.', href: '/training/user/dataset-dashboard', tags: ['Portal', 'Monitoring'], status: 'available' },
+      { number: '07', title: 'Reports & Dashboards', description: 'Run reports and insights in the portal and Excel, save dashboards, and schedule reports by email.', href: '/training/user/reports', tags: ['Portal', 'Reports'], status: 'available' },
+      { number: '08', title: 'Alerts & Notifications', description: 'Get notified about data delivery failures and quality issues.', href: '/training/user/alerts', tags: ['Portal', 'Alerts'], status: 'available' },
     ],
   },
   {
     id: 'tutorials',
     label: 'Official Tutorials',
     color: '#fb923c',
-    description: 'Topic-specific tutorials from the OpenDataDSL documentation site covering reports, searching, and reference tools.',
-    externalNote: 'Hosted on doc.opendatadsl.com',
+    description: 'Topic-specific tutorials from the documentation covering reports, searching, and reference tools.',
     modules: [
-      { number: 'T1', title: 'Getting Started with Reports', description: 'Build and share reports from platform data in the portal.', href: 'https://doc.opendatadsl.com/docs/tutorials/reports-getting-started', tags: ['Portal', 'Reports'], status: 'coming-soon' },
-      { number: 'T2', title: 'Searching using the find Command', description: 'Understand how to find and filter data across all platform services.', href: 'https://doc.opendatadsl.com/docs/tutorials/searching', tags: ['Portal', 'Search'], status: 'coming-soon' },
-      { number: 'T3', title: 'SQL Cheatsheet', description: 'A quick-reference guide for SQL users mapping familiar concepts to OpenDataDSL.', href: 'https://doc.opendatadsl.com/docs/tutorials/sql_cheatsheet', tags: ['Reference', 'SQL'], status: 'coming-soon' },
-      { number: 'T4', title: 'Working with TimeSeries', description: 'Explore timeseries data in the OpenDataDSL language and portal.', href: 'https://doc.opendatadsl.com/docs/tutorials/workingtimeseries', tags: ['TimeSeries'], status: 'coming-soon' },
+      { number: 'T1', title: 'Getting Started with Reports', description: 'Build and share reports from platform data in the portal.', href: '/docs/tutorials/reports-getting-started', tags: ['Portal', 'Reports'], status: 'available' },
+      { number: 'T2', title: 'Searching using the find Command', description: 'Understand how to find and filter data across all platform services.', href: '/docs/tutorials/searching', tags: ['Portal', 'Search'], status: 'available' },
+      { number: 'T3', title: 'SQL Cheatsheet', description: 'A quick-reference guide for SQL users mapping familiar concepts to OpenDataDSL.', href: '/docs/tutorials/sql_cheatsheet', tags: ['Reference', 'SQL'], status: 'available' },
+      { number: 'T4', title: 'Working with TimeSeries', description: 'Explore timeseries data in the OpenDataDSL language and portal.', href: '/docs/tutorials/workingtimeseries', tags: ['TimeSeries'], status: 'available' },
     ],
   },
 ];
 
 const STATS = [
   { value: '4', label: 'Learning Tracks' },
-  { value: '2', label: 'Available Modules' },
+  { value: '8', label: 'Modules' },
   { value: '4', label: 'Official Tutorials' },
   { value: '~4h', label: 'Total Duration' },
 ];

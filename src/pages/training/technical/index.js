@@ -23,7 +23,7 @@ const TRACKS = [
     modules: [
       { number: '04', title: 'Creating EventTimeSeries', description: 'Build EventTimeSeries from event lists with filters and custom index fields.', href: '/training/technical/event-timeseries', tags: ['ODSL', 'TimeSeries'], status: 'available' },
       { number: '05', title: 'Smart TimeSeries', description: 'Apply currency and unit conversions using expression-based SmartTimeSeries.', href: '/training/technical/smart-timeseries', tags: ['ODSL', 'SmartTimeSeries'], status: 'available' },
-      { number: '06', title: 'Forward Curves', description: 'Construct and manage forward curves from event data and Smart Curve expressions.', href: '/training/technical/forward-curves', tags: ['ODSL', 'Curves'], status: 'coming-soon' },
+      { number: '06', title: 'Forward Curves', description: 'Construct and manage forward curves from event data and Smart Curve expressions.', href: '/training/technical/forward-curves', tags: ['ODSL', 'Curves'], status: 'available' },
     ],
   },
   {
@@ -34,7 +34,7 @@ const TRACKS = [
     modules: [
       { number: '07', title: 'Dataset Monitoring', description: 'Configure datasets in the portal to track expected daily delivery and completeness.', href: '/training/technical/dataset-monitoring', tags: ['Portal', 'Monitoring'], status: 'available' },
       { number: '08', title: 'Quality Checks in ODSL', description: 'Write quality and critical check functions and attach them to a dataset.', href: '/training/technical/quality-checks', tags: ['ODSL', 'Quality'], status: 'available' },
-      { number: '09', title: 'Alerts & Notifications', description: 'Configure alerts for delivery failures and quality check violations.', href: '/training/technical/alerts', tags: ['Portal', 'Alerts'], status: 'coming-soon' },
+      { number: '09', title: 'Alerts & Notifications', description: 'Configure alerts for delivery failures and quality check violations.', href: '/training/technical/alerts', tags: ['Portal', 'Alerts'], status: 'available' },
     ],
   },
   {
@@ -43,9 +43,9 @@ const TRACKS = [
     color: '#a78bfa',
     description: 'Schedule data loads, automate curve builds, and integrate with external systems.',
     modules: [
-      { number: '10', title: 'Introduction to Automations', description: 'Create and schedule automations to trigger scripts and data workflows.', href: '/training/technical/automations', tags: ['Portal', 'Automations'], status: 'coming-soon' },
-      { number: '11', title: 'Loading External Data', description: 'Use extractors and transformers to load data from FTP, HTTP, and cloud storage.', href: '/training/technical/loading-data', tags: ['ODSL', 'ETL'], status: 'coming-soon' },
-      { number: '12', title: 'ETRM Integration', description: 'Map data identities to downstream ETRM systems using data identities.', href: '/training/technical/etrm-integration', tags: ['Integration', 'ETRM'], status: 'coming-soon' },
+      { number: '10', title: 'Introduction to Automations', description: 'Create and schedule automations to trigger scripts and data workflows.', href: '/training/technical/automations', tags: ['Portal', 'Automations'], status: 'available' },
+      { number: '11', title: 'Loading External Data', description: 'Use extractors and transformers to load data from FTP, HTTP, and cloud storage.', href: '/training/technical/loading-data', tags: ['ODSL', 'ETL'], status: 'available' },
+      { number: '12', title: 'ETRM Integration', description: 'Map data identities to downstream ETRM systems using data identities.', href: '/training/technical/etrm-integration', tags: ['Integration', 'ETRM'], status: 'available' },
     ],
   },
   {
@@ -82,7 +82,7 @@ const TRACKS = [
 
 const STATS = [
   { value: '6', label: 'Learning Tracks' },
-  { value: '8', label: 'Core Modules' },
+  { value: '12', label: 'Core Modules' },
   { value: '9', label: 'QuickStart Modules' },
   { value: '5', label: 'General Tutorials' },
 ];

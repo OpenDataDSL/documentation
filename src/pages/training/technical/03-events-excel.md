@@ -19,8 +19,8 @@ In this module you will use the **OpenDataDSL Excel Add-in** to view, add, and u
 ## Step 1: Open the Add-in and Select the Training Environment
 
 1. Open Microsoft Excel
-2. Go to the **OpenDataDSL** tab in the ribbon
-3. Click **Sign In** if you are not already authenticated
+2. On the **Home** tab of the ribbon, select **Show Dashboard** in the **OpenDataDSL** group
+3. Sign in if you are not already authenticated (see [Excel Add-in Setup](/training/user/excel-setup))
 4. The OpenDataDSL task pane will open on the right-hand side
 5. Click the **Settings** (gear icon) in the task pane
 6. Select **training** from the environment list to switch to your training environment

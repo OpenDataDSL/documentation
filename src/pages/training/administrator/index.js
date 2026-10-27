@@ -11,8 +11,8 @@ const TRACKS = [
     description: 'Create and manage environments, configure tenant settings, and onboard users.',
     modules: [
       { number: '01', title: 'Tenant Overview', description: 'Understand the tenant model — environments, users, roles, and resource isolation.', href: '/training/administrator/tenant-overview', tags: ['Concepts'], status: 'available' },
-      { number: '02', title: 'Managing Environments', description: 'Create test and production environments, manage access, and promote configurations.', href: '/training/administrator/environments', tags: ['Portal', 'Environments'], status: 'coming-soon' },
-      { number: '03', title: 'Users & Groups', description: 'Invite users, assign roles, and manage group-based access control.', href: '/training/administrator/users', tags: ['Portal', 'Security'], status: 'coming-soon' },
+      { number: '02', title: 'Managing Environments', description: 'Create test and production environments, manage access, and promote configurations.', href: '/training/administrator/environments', tags: ['Portal', 'Environments'], status: 'available' },
+      { number: '03', title: 'Users & Groups', description: 'Invite users, assign roles, and manage group-based access control.', href: '/training/administrator/users', tags: ['Portal', 'Security'], status: 'available' },
     ],
   },
   {
@@ -21,9 +21,9 @@ const TRACKS = [
     color: '#f43f5e',
     description: 'Define access policies, manage secrets, and enforce data governance.',
     modules: [
-      { number: '04', title: 'Policies & Permissions', description: 'Create fine-grained access policies for data services and platform features.', href: '/training/administrator/policies', tags: ['Security', 'Policies'], status: 'coming-soon' },
-      { number: '05', title: 'Secrets Management', description: 'Store API keys, credentials, and connection strings securely in the secrets service.', href: '/training/administrator/secrets', tags: ['Security', 'Secrets'], status: 'coming-soon' },
-      { number: '06', title: 'Audit & Compliance', description: 'Review the audit log, track changes to data and configuration, and export records.', href: '/training/administrator/audit', tags: ['Portal', 'Compliance'], status: 'coming-soon' },
+      { number: '04', title: 'Policies & Permissions', description: 'Create fine-grained access policies for data services and platform features.', href: '/training/administrator/policies', tags: ['Security', 'Policies'], status: 'available' },
+      { number: '05', title: 'Secrets Management', description: 'Store API keys, credentials, and connection strings securely in the secrets service.', href: '/training/administrator/secrets', tags: ['Security', 'Secrets'], status: 'available' },
+      { number: '06', title: 'Audit & Compliance', description: 'Review the audit log, track changes to data and configuration, and export records.', href: '/training/administrator/audit', tags: ['Portal', 'Compliance'], status: 'available' },
     ],
   },
   {
@@ -32,10 +32,10 @@ const TRACKS = [
     color: '#fb923c',
     description: 'Connect external systems, manage queues, and keep the platform healthy.',
     modules: [
-      { number: '07', title: 'Connections & Extractors', description: 'Configure FTP, HTTP, Azure, and S3 connections for automated data ingestion.', href: '/training/administrator/connections', tags: ['Integration', 'ETL'], status: 'coming-soon' },
-      { number: '08', title: 'Queue Management', description: 'Monitor message queues, replay failed messages, and configure dead-letter handling.', href: '/training/administrator/queues', tags: ['Operations', 'Queues'], status: 'coming-soon' },
-      { number: '09', title: 'Process Monitoring', description: 'Review execution logs, diagnose automation failures, and manage scheduled processes.', href: '/training/administrator/processes', tags: ['Portal', 'Operations'], status: 'coming-soon' },
-      { number: '10', title: 'Metrics & Health', description: 'Track platform metrics, API usage, and tenant resource consumption.', href: '/training/administrator/metrics', tags: ['Portal', 'Metrics'], status: 'coming-soon' },
+      { number: '07', title: 'Connections & Extractors', description: 'Read data from web, Azure Blob, FTP, S3, mail and Kafka sources with active variable services, keep credentials in secrets, and manage extractors.', href: '/training/administrator/connections', tags: ['Integration', 'ETL'], status: 'available' },
+      { number: '08', title: 'Queue Management', description: 'Create and configure message queues, connect handlers and automations, and monitor queue logs, backlogs and dead-lettered messages.', href: '/training/administrator/queues', tags: ['Operations', 'Queues'], status: 'available' },
+      { number: '09', title: 'Process Monitoring', description: 'Review execution logs, diagnose automation failures, and manage scheduled processes.', href: '/training/administrator/processes', tags: ['Portal', 'Operations'], status: 'available' },
+      { number: '10', title: 'Metrics & Health', description: 'Track platform metrics, API usage, quotas and billed resource usage.', href: '/training/administrator/metrics', tags: ['Portal', 'Metrics'], status: 'available' },
     ],
   },
   {
@@ -43,18 +43,17 @@ const TRACKS = [
     label: 'Official Tutorials',
     color: '#34d399',
     description: 'Integration, environments, API, and MongoDB tutorials from the OpenDataDSL documentation site.',
-    externalNote: 'Hosted on doc.opendatadsl.com',
     modules: [
-      { number: 'T1', title: 'Working with Data Environments', description: 'A detailed tutorial on creating and using data environments for isolation and promotion.', href: 'https://doc.opendatadsl.com/docs/tutorials/workingenvironments', tags: ['Environments'], status: 'coming-soon' },
-      { number: 'T2', title: 'QuickStart API Developer', description: 'Security, authentication, and service deep-dives for building applications on the OpenDataDSL API.', href: 'https://doc.opendatadsl.com/docs/tutorials/qs/api', tags: ['API', 'Security'], status: 'coming-soon' },
-      { number: 'T3', title: 'QuickStart MongoDB User', description: 'Connect to MongoDB, model data, load, search, aggregate, and manage data quality.', href: 'https://doc.opendatadsl.com/docs/tutorials/qs/mongodb', tags: ['MongoDB', 'Integration'], status: 'coming-soon' },
+      { number: 'T1', title: 'Working with Data Environments', description: 'A detailed tutorial on creating and using data environments for isolation and promotion.', href: '/docs/tutorials/workingenvironments', tags: ['Environments'], status: 'available' },
+      { number: 'T2', title: 'QuickStart API Developer', description: 'Security, authentication, and service deep-dives for building applications on the OpenDataDSL API.', href: '/docs/tutorials/qs/api', tags: ['API', 'Security'], status: 'available' },
+      { number: 'T3', title: 'QuickStart MongoDB User', description: 'Connect to MongoDB, model data, load, search, aggregate, and manage data quality.', href: '/docs/tutorials/qs/mongodb', tags: ['MongoDB', 'Integration'], status: 'available' },
     ],
   },
 ];
 
 const STATS = [
   { value: '4', label: 'Learning Tracks' },
-  { value: '1', label: 'Available Module' },
+  { value: '10', label: 'Modules' },
   { value: '3', label: 'Official Tutorials' },
   { value: '~5h', label: 'Total Duration' },
 ];
