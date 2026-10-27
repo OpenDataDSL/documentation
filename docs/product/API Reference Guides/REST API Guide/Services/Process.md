@@ -55,6 +55,20 @@ The process configuration contains the following information:
 |settings|Settings used to configure the process|Object|
 |tags|A list of tags used to search for the process|List(String)|
 
+### Process settings
+
+The `settings` object controls how and where the process runs in Azure Batch. All settings are optional.
+
+|**Name**|**Description**|**Type**|**Default**|
+|-|-|-|-|
+|job|The Azure Batch job to run the process in (`jobName` is also accepted)|String|The standard job for your tenant|
+|batchAccount|The name of a client batch account registered for your tenant to run the process on, see [Running Processes on Your Own Azure Batch Account](/docs/it/batch-accounts). Requires `image`|String|The OpenDataDSL batch account|
+|image|A container image to run instead of the standard ODSL runtime|String||
+|commandline|The command line to run, `${taskid}` is replaced with the process execution id|String|Runs the ODSL process runner|
+|maxTime|The maximum time the process can run for, as an ISO 8601 duration|String|PT1H|
+|retention|How long the task files and logs are kept on the batch node after it completes, as an ISO 8601 duration|String|PT10M|
+|retries|The number of times a failed task is retried|Integer|0|
+
 ## Examples
 
 ```js

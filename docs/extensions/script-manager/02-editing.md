@@ -143,6 +143,8 @@ A script with syntax errors is not run: see [Running scripts](/docs/extensions/s
 
 Select **Edit details** under the script's name to change its type, category and description.
 
+Under the script's name, a long description shows on one line, so it does not push the editor down. Hold the mouse over it to read it all, or select it to open it, and select it again to close it.
+
 ![The Details dialog](/img/extensions/script-manager/details.png)
 
 The platform reads the description and category from the script itself each time it is saved:
