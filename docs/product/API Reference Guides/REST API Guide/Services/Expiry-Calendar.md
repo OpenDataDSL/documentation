@@ -22,7 +22,7 @@ The API consists of the following calls:
 |-|-|-|-|
 |GET|||Get the build information for this service|
 |GET|\{release\}/\{source\}|'v1/public' 'v1/private'|List public or private expiry calendars|
-|GET|\{release\}/\{source\}/\{key\}|v1/private/TEST|Retrieve a single expiry calendar using it’s unique id
+|GET|\{release\}/\{source\}/\{key\}|v1/private/TEST|Retrieve a single expiry calendar using its unique id|
 |GET|\{release\}/\{source\}/\{key\}/\{version\}|v1/private/TEST/1|Retrieve a version of a single expiry calendar|
 |GET|\{release\}/\{source\}/\{key\}/*|v1/private/TEST/*|Get a list of versions for a specific expiry calendar|
 |PUT|\{release\}/\{source\}/\{key\}/\{version\}/\{tag\}|v1/private/TEST/1/PROD|Tag a version with a name (which can be used instead of the version number when retrieving it)|
@@ -30,6 +30,12 @@ The API consists of the following calls:
 |DELETE|\{release\}/\{source\}/\{key\}|v1/private/TEST|Rollback to the previous version of an expiry calendar, if it is the only version then the expiry calendar will be deleted|
 |DELETE|\{release\}/\{source\}/\{key\}/\{version\}|v1/private/TEST/1|Delete a specific version of an expiry calendar|
 |DELETE|\{release\}/\{source\}/\{key\}/*|v1/private/TEST/*|Fully delete an expiry calendar, including all versions|
+
+## Functions
+
+|**Function**|**Example**|**Description**|
+|-|-|-|
+|expiry-report|v1/public?_function=expiry-report&_id=TEST,TEST2&start=2026-01-01&end=2026-12-31&tenor=Month,Quarter|The expiry dates between start and end (both default to today) of each calendar in `_id` (comma separated), for the tenor types in `tenor` (comma separated, default Month). `ondate` sets the date the relative tenors are worked out from (default today). The result is a `data` list of `_id`, `date`, `absolute` and `relative` tenor codes|
 
 ## Entities
 
@@ -54,7 +60,7 @@ The expiry calendar entity contains the following information:
 |-|-|-|
 |_id|Unique id for the expiry calendar|String|
 |_type|Entity Type - always ExpiryCalendar|String|
-|tradingCalendarCode|The code for the [calendar](Calendar) that represents the tradable days|String|
+|tradingCalendarCode|The code for the [calendar](./calendar) that represents the tradable days|String|
 |rules|An object representing expiry rules that map to either ALL contract types or a specific type|Limited Expiry Rule Map|
 
 ### Limited Expiry Rule Entity

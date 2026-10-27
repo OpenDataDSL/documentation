@@ -11,8 +11,10 @@ set (precision INT|
     autoscale (on|off)|
     credentials for source as user password|
     auto_follow_references (true|false)|
-    while_limit number
-    )
+    while_limit number|
+    minimal interval number TIMEUNIT|
+    default_property (object)?
+    )?
 ```
 #### Description
 
@@ -128,3 +130,19 @@ You can override the 1000 iterations limit using the set while_limit command, e.
 ```js
 set while_limit 100
 ```
+
+##### minimal interval
+
+Sets the shortest period an intraday calendar can have (1 minute by default), so you can work with data at a finer granularity, e.g.
+
+```js
+set minimal interval 15 minutes
+```
+
+##### default_property
+
+By default, reading a property that doesn't exist on an object gives null. Use `set default_property object` to create a new empty object for a missing property instead, so you can set nested properties directly, e.g. `obj.settings.colour = "blue"`. Use `set default_property` to go back to the default.
+
+##### set on its own
+
+`set` with no option prints the current settings: the stage, environment, runtime, precision, observed, distribution and coordinate reference system.

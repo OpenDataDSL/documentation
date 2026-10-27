@@ -61,4 +61,5 @@ The following is a list of properties on a duration variable:
 |hours|The number of defined hours in this duration|Scalar(Integer)|
 |minutes|The number of defined minutes in this duration|Scalar(Integer)|
 |seconds|The number of defined seconds in this duration|Scalar(Integer)|
+|durationCalendar|Get a calendar representing this duration|Calendar|
 

@@ -90,7 +90,7 @@ The properties entity is used to configure an [Automation Target](automationtarg
 ### Example with a transformer
 ```json
 {
-    "_id": "\{objectid\}",
+    "_id": "{objectid}",
     "_type": "VarAutomation",
     "target": "odsl.email_attachment",
     "enabled": true,
@@ -99,7 +99,7 @@ The properties entity is used to configure an [Automation Target](automationtarg
       "to": "user@company.com",
       "subject": "Data is updated",
       "attachment": true,
-      "attachmentName": "data_$\{date:yyyy-MM-dd\}.csv",
+      "attachmentName": "data_${date:yyyy-MM-dd}.csv",
       "@transformer": "#VarCurve_CSV"
     },
     "conditions": [{

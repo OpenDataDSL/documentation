@@ -48,6 +48,14 @@ expression within expression
 ? condition
 ```
 
+### Single line if
+
+You can choose between two values with a condition in an assignment:
+
+```js
+label = price > 100 ? "high" : "normal"
+```
+
 ## Use within the language
 
 Expressions are used in various places within the ODSL language as shown in the following table:

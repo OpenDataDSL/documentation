@@ -104,6 +104,7 @@ Run it in VS Code with the OpenDataDSL extension. `save e` saves the extension t
 | `documentation` | A link to the extension's documentation |
 | `icon` | A [Bootstrap icon](https://icons.getbootstrap.com/) name, optionally followed by a colour class such as `text-primary` |
 | `tags` | Tags for the extension catalogue |
+| `preview` | `true` if the extension uses features from the next platform release, so it can only be installed in the **preview** environment. Defaults to `false`. |
 | `views` | The views, added with `e.addView(id)` |
 | `resources` | Everything installed with the extension (see below) |
 

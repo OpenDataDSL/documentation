@@ -28,6 +28,7 @@ A task has the following properties:
 |complete|The completion state of this task|Boolean|
 |completed|The timestamp the task was completed|Date|
 |notify|A flag to indicate that the user should be notified by email - defaults to true|Boolean|
+|access|Get the name of the access data role for this object|String|
 
 ## Methods
 

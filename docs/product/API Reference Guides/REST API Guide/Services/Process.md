@@ -79,7 +79,7 @@ Authorization: Bearer {{token}}
 POST {{url}}/process/v1
 Authorization: Bearer {{token}}
 
-\{
+{
     "_type": "VarProcess",
     "service": "ETL",
     "name": "AZURE_TEST",
@@ -88,19 +88,19 @@ Authorization: Bearer {{token}}
     "workflow": "#wf_xml_data_loader",
     "cron": "12 46 ? * * *",
     "environment": "production",
-    "input": \{
+    "input": {
         "url": "https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml",
         "tx": "#ECB_FX"
-    \}
-\}
+    }
+}
 
 ### Rename a process
 PUT {{url}}/process/v1/AZURE_TEST
 Authorization: Bearer {{token}}
 
-\{
+{
     "_id": "AZURE_TEST1"
-\}
+}
 
 ### Get a list of versions
 GET {{url}}/process/v1/AZURE_TEST/*

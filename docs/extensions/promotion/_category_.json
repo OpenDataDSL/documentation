@@ -1,0 +1,7 @@
+{
+  "label": "Promotion",
+  "link": {
+    "type": "generated-index",
+    "description": "Promote master data, smart data, types, calendars, scripts, reports, processes and other items from a test environment to production, see what changes before you push, and undo a deployment to put production back as it was."
+  }
+}

@@ -62,12 +62,12 @@ Authorization: Bearer {{token}}
 POST {{url}}/index/v1
 Authorization: Bearer {{token}}
 
-\{
+{
     "name": "name",
-    "key": \{
+    "key": {
         "dataset":1
-    \}
-\}
+    }
+}
 
 ### Delete an index on the master data service
 DELETE {{url}}/index/v1/object/name

@@ -94,17 +94,17 @@ Here are the properties of a Metric TimeSeries
 POST https://api.opendatadsl.com/api/object/v1
 Authorization: Bearer {{token}}
 
-\{
+{
 	"_id":"AAA",
-	"PROCESS_RUNS_HOURLY": \{
+	"PROCESS_RUNS_HOURLY": {
 		"_id": "PROCESS_RUNS_HOURLY",
 		"_type": "VarMetricTimeSeries",
 		"provider": "ODSLProcess",
 		"metric": "RunRequests",
 		"calendar": "#PT1H",
 		"observed": "summed"
-	\}
-\}
+	}
+}
 ```
 
 ## Virtual Metric Timeseries
@@ -175,7 +175,7 @@ GET https://api.opendatadsl.com/api/object/v1
 	&_calendar=%23PT1H
 	&_observed=summed
 	&_range=between(T-1Dh0m0s0,T-1Dh23m59s59)
-	&_filter=\{"application":"api"\}
+	&_filter={"application":"api"}
 Authorization: Bearer {{token}}
 
 ### Virtual metrics for request durations of the object service

@@ -6,6 +6,7 @@ sidebar_position: 9
 
 This document provides a reference for all built-in string functions available in OpenDataDSL.
 
+
 ### capitalise(str)
 
 **Category:** Strings
@@ -156,20 +157,6 @@ This document provides a reference for all built-in string functions available i
 * `str2` (String) - The string to compare to
 
 **Returns:** Boolean
-
-
-
----
-
-### equals()
-
-**Category:** Strings
-
-**Description:** 
-
-**Parameters:**
-
-**Returns:** 
 
 
 
@@ -429,13 +416,14 @@ This document provides a reference for all built-in string functions available i
 
 ---
 
-### trim()
+### trim(str)
 
 **Category:** Strings
 
 **Description:** Returns a string with any space characters from the start or end of the string removed
 
 **Parameters:**
+* `str` (String) - The string to trim
 
 **Returns:** String
 
@@ -457,5 +445,4 @@ This document provides a reference for all built-in string functions available i
 
 
 ---
-
 

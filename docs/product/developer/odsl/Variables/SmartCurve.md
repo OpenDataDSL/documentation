@@ -63,6 +63,17 @@ A SmartCurve has the following properties:
 |script|Optional custom script name used with the expression|String|
 |currency|Optional currency of the curves, defaults to base curve currency|String|
 |units|Optional units of the curves, defaults to base curve units|String|
+|cacheOptions|The options used to cache this smart curve|SmartCurveCacheOptions|
+|category|The category to place this curve in|String|
+|commodity|The commodity for this curve|String|
+|description|A description of the curve|String|
+|identity|The configured identity for this curve|Object|
+|market|The market to place this curve in|String|
+|name|The name of the curve|String|
+|precision|The precision configuration for this curve|Precision|
+|priority|The build priority, 1=high, 2=medium, 3=low|Integer|
+|product|The product category for this curve|String|
+|timezone|The timezone for this curve|String|
 
 :::info
 If a currency and/or units are set, the base curve and any other curves added to this Smart Curve will be converted to the specified currency and units

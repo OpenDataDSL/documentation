@@ -20,24 +20,7 @@ The optional log reason is to give a human-readable reason why this item is bein
 The optional replace statement is used with the object service to signify that you want to replace the stored object with the passed in object. This overrides the default action which is to merge the contents of the supplied object with the stored object.
 
 ##### Services
-The following active variable services can be used with the save command:
-
-* action    
-* calendar    
-* curve    
-* environment    
-* expiry    
-* extractor    
-* index    
-* object    
-* process    
-* queue    
-* script    
-* task
-* transformer    
-* type    
-* workflow
-    
+You can save to any [active variable service](/docs/odsl/service/services) that stores items, for example action, aiagent, aiassistant, aiplaybook, aitask, aitool, alert, alertrecord, automation, automationtarget, batch, calendar, curve, dataset, documentation, environment, event, expiry, extractor, group, index, object, policy, process, queue, report, reportconfig, reportcreator, script, secret, task, transformer, type, user, validationconfig and workflow. The Azure File (azfile) and Azure Blob (azblob) services can also write files, and the memory service saves your variables.
 
 #### Example
 ```js

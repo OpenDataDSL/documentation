@@ -170,6 +170,9 @@ A workflow variable has the following properties:
 |outputs|The output variable [args](./Arg)|List(Arg)|
 |script|The actual code used to create this workflow|Scalar(String)|
 |version|The version of this workflow|Object|
+|filename|The filename of this script|String|
+|outputFormat|An optional output format, e.g. application/xml, text/html, text/csv|String|
+|scriptType|The type of this script, e.g. one of [odsl, mustache, py, css, html, js, mjs, cjs]|String|
 
 ## Methods
 A workflow variable has the following methods:
@@ -177,6 +180,7 @@ A workflow variable has the following methods:
 |**Name**|**Description**|**Return Type**|
 |-|-|-|
 |run(in, out)|Runs this workflow and returns the name of the exit transition|Scalar(String)|
+|loadFrom(file)|Load the script from a local file|Void|
 
 ### Example Usage
 You can run a workflow in ODSL code by creating an input object and an output object.

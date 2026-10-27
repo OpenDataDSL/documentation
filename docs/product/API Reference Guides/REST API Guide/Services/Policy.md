@@ -28,6 +28,14 @@ The API consists of the following calls:
 |POST|\{release\}|v1|Create or update a policy, the policy is the body of the POST request|
 |DELETE|\{release\}/\{key\}|v1/TEST|Delete a policy|
 
+## Functions
+
+|**Function**|**Example**|**Description**|
+|-|-|-|
+|members|v1?_function=members|The distinct members of all your policies (users and groups)|
+|user|v1?_function=user&email=priya.shah@northgate-energy.com|The policies that apply to a user, yourself if `email` is not given|
+|rights|v1?_function=rights&service=object&source=private&key=NGE.POWER.DE|The rights you (or the user in `email`) have on one item: a list of create, update, delete, read and run, plus editPublicTypeProperties and editPrivateTypeProperties for master data. `service` and `key` are required, `source` defaults to private. A curve date at the end of the key is ignored|
+
 ## Entities
 
 ### Policy Entity

@@ -175,3 +175,50 @@ A report is a configuration containing an expression that can be run to produce 
 ---------------------------------------
 
 A policy variable allows you to restrict access to data within any service
+
+### [TimeOfDay](timeofday)
+A time of the day, optionally in a timezone
+
+### [Message](message)
+A string with a numeric code
+
+### [EventTimeSeries](eventtimeseries)
+A timeseries built from the events in an event list
+
+### [CurveSeries](curveseries)
+A curve held as a timeseries of its delivery periods
+
+### [ComposedCurve and ComposedTimeSeries](composedcurve)
+A curve or timeseries that takes its values from one element of a composition
+
+### [ReportCreator](reportcreator)
+A report configuration with parameters that people fill in to create their own reports
+
+### [Documentation](documentation)
+Documentation for an item or a service
+
+### [Automation](automation)
+An action that runs when something happens to an item, created with an automation builder
+
+### [Alert and AlertRecord](alert)
+Alert definitions and the alerts that have been raised
+
+### [Index](index)
+A database index on a service
+
+### [GeoSpatial](geospatial)
+Points, lines and polygons for geospatial data and queries
+
+### [AI Agent, AI Assistant and AI Tool](ai)
+Fusion AI agents, custom assistants and custom tools
+
+## Common properties and methods
+
+Every variable has these, so they are not repeated on each variable's page:
+
+|**Name**|**Description**|**Type**|
+|-|-|-|
+|links|The items linked to this variable|List|
+|add(link)|Adds a linked item, see [Link](link)|Void|
+
+Variables that are versioned when saved, such as objects, scripts, calendars and curves, also have a `version` property with the version information.

@@ -66,6 +66,16 @@ publish e to "private"
 
 Or keep the `create-extension.odsl` script and the pages in source control, and run the script in each environment.
 
+### Preview extensions
+
+An extension that uses features from the next platform release sets `e.preview = true`. A preview extension can only be installed in the **preview** environment: installing it anywhere else, including production, fails with error 6402. Once the release reaches production, set `e.preview = false` and publish the extension again so it can be installed everywhere.
+
+```js
+use preview
+e = ${extension:public/"acme.positions"}
+publish e to "private"
+```
+
 ---
 
 ## Uninstalling

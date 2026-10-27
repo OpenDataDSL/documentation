@@ -44,6 +44,9 @@ An event has the following properties:
 |event|The identifier for this group of events|String|
 |eventid|The unique identifier for this specific event|String|
 |*|Any other properties|Any|
+|eventlist|The non-object specific name of this group of events|String|
+|source|The source of this event, usually null|String|
+|status|The status of this event|Status|
 
 ## Methods
 An event has the following methods:

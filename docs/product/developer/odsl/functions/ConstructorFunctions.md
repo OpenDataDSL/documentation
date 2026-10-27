@@ -6,6 +6,7 @@ sidebar_position: 8
 
 This document provides a reference for all built-in construction functions available in OpenDataDSL.
 
+
 ### AIAgent()
 
 **Category:** Construction
@@ -107,6 +108,22 @@ This document provides a reference for all built-in construction functions avail
 
 ---
 
+### AutomationBuilder(service, source)
+
+**Category:** Construction
+
+**Description:** Creates a new OpenDataDSL automation using a builder
+
+**Parameters:**
+* `service` (String) - The name of the service you want to use for this automation
+* `source` (String) - The source of the item or null for no source
+
+**Returns:** Automation
+
+
+
+---
+
 ### AutomationBuilder(service, source, key)
 
 **Category:** Construction
@@ -117,22 +134,6 @@ This document provides a reference for all built-in construction functions avail
 * `service` (String) - The name of the service you want to use for this automation
 * `source` (String) - The source of the item or null for no source
 * `key` (String) - The key of the item to use for this automation
-
-**Returns:** Automation
-
-
-
----
-
-### AutomationBuilder(service, source)
-
-**Category:** Construction
-
-**Description:** Creates a new OpenDataDSL automation using a builder
-
-**Parameters:**
-* `service` (String) - The name of the service you want to use for this automation
-* `source` (String) - The source of the item or null for no source
 
 **Returns:** Automation
 
@@ -248,6 +249,20 @@ This document provides a reference for all built-in construction functions avail
 
 ---
 
+### CombinedHolidayCalendar()
+
+**Category:** Construction
+
+**Description:** Creates a new Combined Holiday Calendar
+
+**Parameters:**
+
+**Returns:** Calendar
+
+
+
+---
+
 ### CombinedHolidayCalendar(cal1, cal2)
 
 **Category:** Construction
@@ -264,15 +279,47 @@ This document provides a reference for all built-in construction functions avail
 
 ---
 
-### CombinedHolidayCalendar()
+### ComposedCurve(composition, element)
 
 **Category:** Construction
 
-**Description:** Creates a new Combined Holiday Calendar
+**Description:** Creates a new Composed Curve using a composition and element
+
+**Parameters:**
+* `composition` (String) - The composition that this curve belongs to
+* `element` (String) - The element id within the composition
+
+**Returns:** ComposedCurve
+
+
+
+---
+
+### ComposedTimeSeries(composition, element)
+
+**Category:** Construction
+
+**Description:** Creates a new Composed TimeSeries using a timeseries composition and element
+
+**Parameters:**
+* `composition` (String) - The timeseries composition that this timeseries belongs to
+* `element` (String) - The element id within the composition
+
+**Returns:** ComposedTimeSeries
+
+
+
+---
+
+### Composition()
+
+**Category:** Construction
+
+**Description:** Creates a new composition configuration
 
 **Parameters:**
 
-**Returns:** Calendar
+**Returns:** Report
 
 
 
@@ -288,6 +335,25 @@ This document provides a reference for all built-in construction functions avail
 * `ondate` (CurveDate) - The curve ondate for this contract
 * `tenor` (String) - The absolute or relative tenor for this contract
 * `value` (Number) - The value for this contract
+
+**Returns:** Contract
+
+
+
+---
+
+### Contract(ondate, tenor, value, start, end)
+
+**Category:** Construction
+
+**Description:** Creates a new *Hybrid* Forward Contract
+
+**Parameters:**
+* `ondate` (CurveDate) - The curve ondate for this contract
+* `tenor` (String) - The absolute or relative tenor for this contract
+* `value` (Number) - The value for this contract
+* `start` (Date) - The start of delivery date for this contract
+* `end` (Date) - The end of delivery date for this contract
 
 **Returns:** Contract
 
@@ -316,25 +382,6 @@ This document provides a reference for all built-in construction functions avail
 
 ---
 
-### Contract(ondate, tenor, value, start, end)
-
-**Category:** Construction
-
-**Description:** Creates a new *Hybrid* Forward Contract
-
-**Parameters:**
-* `ondate` (CurveDate) - The curve ondate for this contract
-* `tenor` (String) - The absolute or relative tenor for this contract
-* `value` (Number) - The value for this contract
-* `start` (Date) - The start of delivery date for this contract
-* `end` (Date) - The end of delivery date for this contract
-
-**Returns:** Contract
-
-
-
----
-
 ### Curve(ondate)
 
 **Category:** Construction
@@ -345,6 +392,22 @@ This document provides a reference for all built-in construction functions avail
 * `ondate` (CurveDate) - The date index for this curve
 
 **Returns:** Curve
+
+
+
+---
+
+### CurveDate(date, calendar)
+
+**Category:** Construction
+
+**Description:** Creates a new Curve Date variable
+
+**Parameters:**
+* `date` (Date) - The date as a string in ISO Date Time, ISO Date format or ODSL Period Code format
+* `calendar` (Calendar) - The expiry calendar
+
+**Returns:** CurveDate
 
 
 
@@ -367,22 +430,6 @@ This document provides a reference for all built-in construction functions avail
 
 ---
 
-### CurveDate(date, calendar)
-
-**Category:** Construction
-
-**Description:** Creates a new Curve Date variable
-
-**Parameters:**
-* `date` (Date) - The date as a string in ISO Date Time, ISO Date format or ODSL Period Code format
-* `calendar` (Calendar) - The expiry calendar
-
-**Returns:** CurveDate
-
-
-
----
-
 ### CurveSeries(calendar, ondate)
 
 **Category:** Construction
@@ -392,6 +439,23 @@ This document provides a reference for all built-in construction functions avail
 **Parameters:**
 * `calendar` (Calendar) - The calendar for the timeseries of this curve timeseries
 * `ondate` (CurveDate) - The date index for this curve timeseries
+
+**Returns:** CurveSeries
+
+
+
+---
+
+### CurveSeries(calendar, ondate, data)
+
+**Category:** Construction
+
+**Description:** Creates a new Curve Series
+
+**Parameters:**
+* `calendar` (Calendar) - The calendar for the timeseries of this curve timeseries
+* `ondate` (CurveDate) - The date index for this curve timeseries
+* `data` (List) - All the values of this TimeSeries
 
 **Returns:** CurveSeries
 
@@ -417,23 +481,6 @@ This document provides a reference for all built-in construction functions avail
 
 ---
 
-### CurveSeries(calendar, ondate, data)
-
-**Category:** Construction
-
-**Description:** Creates a new Curve Series
-
-**Parameters:**
-* `calendar` (Calendar) - The calendar for the timeseries of this curve timeseries
-* `ondate` (CurveDate) - The date index for this curve timeseries
-* `data` (List) - All the values of this TimeSeries
-
-**Returns:** CurveSeries
-
-
-
----
-
 ### DailyCalendar()
 
 **Category:** Construction
@@ -448,15 +495,13 @@ This document provides a reference for all built-in construction functions avail
 
 ---
 
-### Date(date, format)
+### Date()
 
 **Category:** Construction
 
-**Description:** Creates a new Date variable
+**Description:** Creates a new Date variable as the current date
 
 **Parameters:**
-* `date` (Scalar) - The date as a string
-* `format` (Scalar) - The format of the date, e.g. 'dd-MM-yyyy'
 
 **Returns:** Date
 
@@ -479,13 +524,15 @@ This document provides a reference for all built-in construction functions avail
 
 ---
 
-### Date()
+### Date(date, format)
 
 **Category:** Construction
 
-**Description:** Creates a new Date variable as the current date
+**Description:** Creates a new Date variable
 
 **Parameters:**
+* `date` (Scalar) - The date as a string
+* `format` (Scalar) - The format of the date, e.g. 'dd-MM-yyyy'
 
 **Returns:** Date
 
@@ -500,6 +547,21 @@ This document provides a reference for all built-in construction functions avail
 **Description:** Creates a new default documentation configuration
 
 **Parameters:**
+
+**Returns:** Documentation
+
+
+
+---
+
+### DocumentationLink(url)
+
+**Category:** Construction
+
+**Description:** Creates a new documentation URL Link configuration
+
+**Parameters:**
+* `url` (String) - The HTML URL of the documentation
 
 **Returns:** Documentation
 
@@ -523,16 +585,16 @@ This document provides a reference for all built-in construction functions avail
 
 ---
 
-### DocumentationLink(url)
+### Duration(dur)
 
 **Category:** Construction
 
-**Description:** Creates a new documentation URL Link configuration
+**Description:** Creates a new Duration
 
 **Parameters:**
-* `url` (String) - The HTML URL of the documentation
+* `dur` (String) - The code for the duration, e.g. 1D
 
-**Returns:** Documentation
+**Returns:** Duration
 
 
 
@@ -554,21 +616,6 @@ This document provides a reference for all built-in construction functions avail
 
 ---
 
-### Duration(dur)
-
-**Category:** Construction
-
-**Description:** Creates a new Duration
-
-**Parameters:**
-* `dur` (String) - The code for the duration, e.g. 1D
-
-**Returns:** Duration
-
-
-
----
-
 ### DynamicReport()
 
 **Category:** Construction
@@ -583,6 +630,21 @@ This document provides a reference for all built-in construction functions avail
 
 ---
 
+### Event(time)
+
+**Category:** Construction
+
+**Description:** Creates an event that can be added to an object
+
+**Parameters:**
+* `time` (Date) - The observed time of this event
+
+**Returns:** Event
+
+
+
+---
+
 ### Event(ondate, tenor)
 
 **Category:** Construction
@@ -592,21 +654,6 @@ This document provides a reference for all built-in construction functions avail
 **Parameters:**
 * `ondate` (CurveDate) - The ondate for this event
 * `tenor` (String) - The tenor for this event
-
-**Returns:** Event
-
-
-
----
-
-### Event(time)
-
-**Category:** Construction
-
-**Description:** Creates an event that can be added to an object
-
-**Parameters:**
-* `time` (Date) - The observed time of this event
 
 **Returns:** Event
 
@@ -663,6 +710,21 @@ This document provides a reference for all built-in construction functions avail
 
 ---
 
+### ExpiryCalendar(holiday)
+
+**Category:** Construction
+
+**Description:** Creates a new expiry Calendar
+
+**Parameters:**
+* `holiday` (Calendar or String) - The holiday or trading calendar to use with this expiry calendar. Can either be the name or a calendar or an actual calendar.
+
+**Returns:** ExpiryCalendar
+
+
+
+---
+
 ### ExpiryCalendar(holiday, delivery)
 
 **Category:** Construction
@@ -672,21 +734,6 @@ This document provides a reference for all built-in construction functions avail
 **Parameters:**
 * `holiday` (Calendar or String) - The holiday or trading calendar to use with this expiry calendar. Can either be the name or a calendar or an actual calendar.
 * `delivery` (Calendar or String) - The delivery calendar to use with this expiry calendar. Can either be the name or a calendar or an actual calendar.
-
-**Returns:** ExpiryCalendar
-
-
-
----
-
-### ExpiryCalendar(holiday)
-
-**Category:** Construction
-
-**Description:** Creates a new expiry Calendar
-
-**Parameters:**
-* `holiday` (Calendar or String) - The holiday or trading calendar to use with this expiry calendar. Can either be the name or a calendar or an actual calendar.
 
 **Returns:** ExpiryCalendar
 
@@ -903,7 +950,38 @@ This document provides a reference for all built-in construction functions avail
 
 ---
 
-### IntradayCalendar(period, holiday, withoutHours, timezone, useHolidays)
+### IntradayCalendar(period)
+
+**Category:** Construction
+
+**Description:** Creates a new Intraday Calendar
+
+**Parameters:**
+* `period` (Duration) - The periodicity of this calendar, e.g. 1h for hourly
+
+**Returns:** Calendar
+
+
+
+---
+
+### IntradayCalendar(period, holiday)
+
+**Category:** Construction
+
+**Description:** Creates a new Intraday Calendar
+
+**Parameters:**
+* `period` (Duration) - The periodicity of this calendar, e.g. 1h for hourly
+* `holiday` (Calendar) - The holiday calendar which determines the days that observations are recorded
+
+**Returns:** Calendar
+
+
+
+---
+
+### IntradayCalendar(period, holiday, withoutHours)
 
 **Category:** Construction
 
@@ -913,8 +991,6 @@ This document provides a reference for all built-in construction functions avail
 * `period` (Duration) - The periodicity of this calendar, e.g. 1h for hourly
 * `holiday` (Calendar) - The holiday calendar which determines the days that observations are recorded
 * `withoutHours` (List) - A list of integers representing hours of the day to exclude from this calendar
-* `timezone` (String) - The timezone for this intraday calendar
-* `useHolidays` (Boolean) - True to include holiday days in the block, i.e. for off-peak calendars
 
 **Returns:** Calendar
 
@@ -940,7 +1016,7 @@ This document provides a reference for all built-in construction functions avail
 
 ---
 
-### IntradayCalendar(period, holiday, withoutHours)
+### IntradayCalendar(period, holiday, withoutHours, timezone, useHolidays)
 
 **Category:** Construction
 
@@ -950,37 +1026,8 @@ This document provides a reference for all built-in construction functions avail
 * `period` (Duration) - The periodicity of this calendar, e.g. 1h for hourly
 * `holiday` (Calendar) - The holiday calendar which determines the days that observations are recorded
 * `withoutHours` (List) - A list of integers representing hours of the day to exclude from this calendar
-
-**Returns:** Calendar
-
-
-
----
-
-### IntradayCalendar(period)
-
-**Category:** Construction
-
-**Description:** Creates a new Intraday Calendar
-
-**Parameters:**
-* `period` (Duration) - The periodicity of this calendar, e.g. 1h for hourly
-
-**Returns:** Calendar
-
-
-
----
-
-### IntradayCalendar(period, holiday)
-
-**Category:** Construction
-
-**Description:** Creates a new Intraday Calendar
-
-**Parameters:**
-* `period` (Duration) - The periodicity of this calendar, e.g. 1h for hourly
-* `holiday` (Calendar) - The holiday calendar which determines the days that observations are recorded
+* `timezone` (String) - The timezone for this intraday calendar
+* `useHolidays` (Boolean) - True to include holiday days in the block, i.e. for off-peak calendars
 
 **Returns:** Calendar
 
@@ -1017,13 +1064,14 @@ This document provides a reference for all built-in construction functions avail
 
 ---
 
-### LineString()
+### LineString(coordinates)
 
 **Category:** Geometry construction
 
 **Description:** Creates a LineString geometry object with the supplied list of coordinates
 
 **Parameters:**
+* `coordinates` (List of [longitude, latitude]) - The points of the line
 
 **Returns:** GeoSpatial
 
@@ -1031,13 +1079,15 @@ This document provides a reference for all built-in construction functions avail
 
 ---
 
-### Link()
+### Link(name, item)
 
 **Category:** Construction
 
 **Description:** Creates a link that can be added to an item
 
 **Parameters:**
+* `name` (String) - The name of the link
+* `item` (Reference) - A reference to the linked item, for example an object active variable
 
 **Returns:** Reference
 
@@ -1059,15 +1109,30 @@ This document provides a reference for all built-in construction functions avail
 
 ---
 
-### Matrix(x, y)
+### Matrix(y, x)
 
 **Category:** Construction
 
 **Description:** Creates a new matrix
 
 **Parameters:**
-* `x` (Number) - The number of rows
-* `y` (Number) - The number of columns
+* `y` (Number) - The number of rows
+* `x` (Number) - The number of columns
+
+**Returns:** Matrix
+
+
+
+---
+
+### Matrix(labels)
+
+**Category:** Construction
+
+**Description:** Creates a new matrix from a list of labels
+
+**Parameters:**
+* `labels` (List) - The labels to use
 
 **Returns:** Matrix
 
@@ -1092,21 +1157,6 @@ This document provides a reference for all built-in construction functions avail
 
 ---
 
-### Matrix(labels)
-
-**Category:** Construction
-
-**Description:** Creates a new matrix from a list of labels
-
-**Parameters:**
-* `labels` (List) - The labels to use
-
-**Returns:** Matrix
-
-
-
----
-
 ### Matrix(labels, v)
 
 **Category:** Construction
@@ -1123,14 +1173,15 @@ This document provides a reference for all built-in construction functions avail
 
 ---
 
-### Matrix(labels)
+### Matrix(ylabels, xlabels)
 
 **Category:** Construction
 
 **Description:** Creates a new matrix from a list of labels
 
 **Parameters:**
-* `labels` (List) - The labels to use
+* `ylabels` (List) - The row labels
+* `xlabels` (List) - The column labels
 
 **Returns:** Matrix
 
@@ -1138,15 +1189,16 @@ This document provides a reference for all built-in construction functions avail
 
 ---
 
-### Matrix(labels, v)
+### Matrix(ylabels, xlabels, v)
 
 **Category:** Construction
 
 **Description:** Creates a new matrix from a list of labels
 
 **Parameters:**
-* `labels` (List) - The labels to use
-* `v` (Number) - The value to initialise the matrix with
+* `ylabels` (List) - The row labels
+* `xlabels` (List) - The column labels
+* `v` (Number) - The value to initialise all the cells to
 
 **Returns:** Matrix
 
@@ -1154,13 +1206,15 @@ This document provides a reference for all built-in construction functions avail
 
 ---
 
-### Message()
+### Message(code, message)
 
 **Category:** Construction
 
 **Description:** Creates a new coded message
 
 **Parameters:**
+* `code` (Integer) - The message code
+* `message` (String) - The message text
 
 **Returns:** Message
 
@@ -1184,6 +1238,20 @@ This document provides a reference for all built-in construction functions avail
 
 ---
 
+### MonthlyCalendar()
+
+**Category:** Construction
+
+**Description:** Creates a new Monthly Calendar
+
+**Parameters:**
+
+**Returns:** Calendar
+
+
+
+---
+
 ### MonthlyCalendar(code, name, period)
 
 **Category:** Construction
@@ -1201,13 +1269,17 @@ This document provides a reference for all built-in construction functions avail
 
 ---
 
-### MonthlyCalendar()
+### MonthlyCalendar(period, dom, holcal, rollbackwards)
 
 **Category:** Construction
 
 **Description:** Creates a new Monthly Calendar
 
 **Parameters:**
+* `period` (Integer) - The number of periods per year (1,2,3,4,6,12)
+* `dom` (Integer) - The day of month, (1 to 31) 31 for last day of the month
+* `holcal` (String) - The id of the holiday calendar to use
+* `rollbackwards` (Boolean) - True if holiday days roll backwards
 
 **Returns:** Calendar
 
@@ -1229,13 +1301,14 @@ This document provides a reference for all built-in construction functions avail
 
 ---
 
-### MultiLineString()
+### MultiLineString(lines)
 
 **Category:** Geometry construction
 
 **Description:** Creates an empty MultiLineString geometry object
 
 **Parameters:**
+* `lines` (List of LineStrings) - The lines
 
 **Returns:** GeoSpatial
 
@@ -1257,13 +1330,14 @@ This document provides a reference for all built-in construction functions avail
 
 ---
 
-### MultiPoint()
+### MultiPoint(coordinates)
 
 **Category:** Geometry construction
 
 **Description:** Creates a MultiPoint geometry object with the supplied list of coordinates
 
 **Parameters:**
+* `coordinates` (List of [longitude, latitude]) - The points
 
 **Returns:** GeoSpatial
 
@@ -1285,13 +1359,14 @@ This document provides a reference for all built-in construction functions avail
 
 ---
 
-### MultiPolygon()
+### MultiPolygon(polygons)
 
 **Category:** Geometry construction
 
 **Description:** Creates a MultiPolygon geometry object with the supplied polygons
 
 **Parameters:**
+* `polygons` (List of Polygons) - The polygons
 
 **Returns:** GeoSpatial
 
@@ -1356,13 +1431,14 @@ This document provides a reference for all built-in construction functions avail
 
 ---
 
-### ObjectWrapper()
+### ObjectWrapper(class)
 
 **Category:** Construction
 
 **Description:** Creates a new OpenDataDSL object wrapper
 
 **Parameters:**
+* `class` (String) - The Java class to wrap
 
 **Returns:** ObjectWrapper
 
@@ -1387,15 +1463,14 @@ This document provides a reference for all built-in construction functions avail
 
 ---
 
-### Point(longitude, latitude)
+### Point(coordinate)
 
 **Category:** Geometry construction
 
 **Description:** Creates a single coordinate point
 
 **Parameters:**
-* `longitude` (Scalar) - The longitude geographic coordinate as a decimal fraction between -180 and 180
-* `latitude` (Scalar) - The latitude geographic coordinate as a decimal fraction between -90 and 90
+* `coordinate` (List) - The point as [longitude, latitude]
 
 **Returns:** GeoSpatial
 
@@ -1421,20 +1496,6 @@ This document provides a reference for all built-in construction functions avail
 
 **Category:** Geometry construction
 
-**Description:** Creates a Polygon geometry object with a multiple rings containing the supplied geometries
-
-**Parameters:**
-
-**Returns:** GeoSpatial
-
-
-
----
-
-### Polygon()
-
-**Category:** Geometry construction
-
 **Description:** Creates a empty Polygon geometry object
 
 **Parameters:**
@@ -1445,13 +1506,29 @@ This document provides a reference for all built-in construction functions avail
 
 ---
 
-### Polygon()
+### Polygon(rings)
+
+**Category:** Geometry construction
+
+**Description:** Creates a Polygon geometry object with a multiple rings containing the supplied geometries
+
+**Parameters:**
+* `rings` (List of geometries) - The rings of the polygon
+
+**Returns:** GeoSpatial
+
+
+
+---
+
+### Polygon(coordinates)
 
 **Category:** Geometry construction
 
 **Description:** Creates a Polygon geometry object with a single ring containing the supplied coordinates
 
 **Parameters:**
+* `coordinates` (List of [longitude, latitude]) - The points of the ring
 
 **Returns:** GeoSpatial
 
@@ -1511,6 +1588,20 @@ This document provides a reference for all built-in construction functions avail
 * `name` (String) - The name of the queue
 
 **Returns:** Queue
+
+
+
+---
+
+### RedactionPolicy()
+
+**Category:** Construction
+
+**Description:** Creates a new security redaction policy
+
+**Parameters:**
+
+**Returns:** RedactionPolicy
 
 
 
@@ -1631,23 +1722,6 @@ This document provides a reference for all built-in construction functions avail
 
 ---
 
-### SmartTimeSeries(start, calendar, expression)
-
-**Category:** Construction
-
-**Description:** Creates a new Smart TimeSeries using a base TimeSeries and expression
-
-**Parameters:**
-* `start` (Date) - The Start Date
-* `calendar` (Calendar) - The TimeSeries calendar
-* `expression` (String) - The expression used to generate the TimeSeries
-
-**Returns:** SmartTimeSeries
-
-
-
----
-
 ### SmartTimeSeries(expression)
 
 **Category:** Construction
@@ -1679,13 +1753,32 @@ This document provides a reference for all built-in construction functions avail
 
 ---
 
-### Sphere()
+### SmartTimeSeries(start, calendar, expression)
+
+**Category:** Construction
+
+**Description:** Creates a new Smart TimeSeries using a base TimeSeries and expression
+
+**Parameters:**
+* `start` (Date) - The Start Date
+* `calendar` (Calendar) - The TimeSeries calendar
+* `expression` (String) - The expression used to generate the TimeSeries
+
+**Returns:** SmartTimeSeries
+
+
+
+---
+
+### Sphere(centre, radius)
 
 **Category:** Geometry construction
 
-**Description:** Creates a nearSphere geometry object used in geospatial queries
+**Description:** Creates a centerSphere geometry object used in geospatial queries
 
 **Parameters:**
+* `centre` (List) - The centre as [longitude, latitude]
+* `radius` (Number) - The radius in radians
 
 **Returns:** GeoSpatial
 
@@ -1693,13 +1786,16 @@ This document provides a reference for all built-in construction functions avail
 
 ---
 
-### Sphere()
+### Sphere(centre, min, max)
 
 **Category:** Geometry construction
 
-**Description:** Creates a centerSphere geometry object used in geospatial queries
+**Description:** Creates a nearSphere geometry object used in geospatial queries
 
 **Parameters:**
+* `centre` (List) - The centre as [longitude, latitude]
+* `min` (Number) - The minimum distance in metres
+* `max` (Number) - The maximum distance in metres
 
 **Returns:** GeoSpatial
 
@@ -1717,6 +1813,20 @@ This document provides a reference for all built-in construction functions avail
 * `text` (String) - The text of the string
 
 **Returns:** String
+
+
+
+---
+
+### Subscription()
+
+**Category:** Construction
+
+**Description:** Creates a new subscription
+
+**Parameters:**
+
+**Returns:** Subscription
 
 
 
@@ -1781,6 +1891,20 @@ This document provides a reference for all built-in construction functions avail
 
 ---
 
+### TargetGroup()
+
+**Category:** Construction
+
+**Description:** Creates a new subscription target group
+
+**Parameters:**
+
+**Returns:** TargetGroup
+
+
+
+---
+
 ### Task()
 
 **Category:** Construction
@@ -1799,7 +1923,7 @@ This document provides a reference for all built-in construction functions avail
 
 **Category:** Construction
 
-**Description:** Creates a new TimeOfDay variable using the supplied String in the format [+]hh
+**Description:** Creates a new TimeOfDay variable using the supplied String in the format [+]hh:mm [tz]
 
 **Parameters:**
 * `time` (String) - The time of day in the format [+]hh:mm [tz]
@@ -1929,6 +2053,20 @@ This document provides a reference for all built-in construction functions avail
 
 ---
 
+### UserGroup()
+
+**Category:** Construction
+
+**Description:** Creates a new user group
+
+**Parameters:**
+
+**Returns:** UserGroup
+
+
+
+---
+
 ### WeeklyCalendar(dow)
 
 **Category:** Construction
@@ -1961,6 +2099,25 @@ This document provides a reference for all built-in construction functions avail
 
 ---
 
+### WeeklyCalendar(dow, holcal, rollbackwards, periods, referenceDate)
+
+**Category:** Construction
+
+**Description:** Creates a new Weekly Calendar
+
+**Parameters:**
+* `dow` (String) - The day of week for this weekly calendar, e.g. Monday
+* `holcal` (String) - The id of the holiday calendar to use
+* `rollbackwards` (Boolean) - True if holiday days roll backwards
+* `periods` (String) - The number of weeks
+* `referenceDate` (String) - The reference date to use for calculating the week starting point for multiple periods
+
+**Returns:** Calendar
+
+
+
+---
+
 ### WidgetReport()
 
 **Category:** Construction
@@ -1974,5 +2131,4 @@ This document provides a reference for all built-in construction functions avail
 
 
 ---
-
 

@@ -15,7 +15,10 @@ transformUnique: unique var=value
 transformIgnore: ignore condition (, condition)*
 transformClear: clear varname (, varname)*
 
-transform: (assign|method|transformIf|print|comment|NL)*
+transform: (assign|method|transformIf|transformFor|print|comment|NL)*
+transformFor: for varname in expression
+  transform
+next
 transformIf: if condition
   transform (elseif condition transform)* 
   (else transform)?

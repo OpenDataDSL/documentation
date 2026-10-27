@@ -33,6 +33,8 @@ A list has the following properties:
 |**Name**|**Description**|**Type**|
 |-|-|-|
 |size|Returns the number of elements in the list|Scalar(Integer)|
+|description|The description of this list|String|
+|name|The name of this list|String|
 
 ## Methods
 
@@ -44,6 +46,9 @@ A list has the following methods:
 |add(position, element)|Adds a variable to the list in the supplied position (0 being first)|The current list|
 |addAll(list)|Adds all the elements from the supplied list into this list|The current list|
 |subList(start, end)|Gets a sublist from the elements in the list from the start to the end|New List|
+|remove(index)|Removes an element from the list at the specified position (0 being first)|Void|
+|remove(item)|Removes an element from the list|Void|
+|set(index, element)|Replaces the element at the specified position in this list with the specified element|Void|
 
 ## Using Lists
 

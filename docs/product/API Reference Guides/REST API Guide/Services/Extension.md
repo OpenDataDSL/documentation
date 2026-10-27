@@ -85,6 +85,11 @@ The extension entity contains the following information:
 |name|The name of the extension|String|
 |description|The long description of the extension to be shown in the extension catalog|String|
 |icon|The icon (bootstrap icons) to be shown next the extension name in the catalog|String|
+|documentation|A link to the documentation for the extension|String|
+|tags|A list of tags used to categorise the extension in the catalog|String[]|
+|currency|The currency of the price of the extension|String|
+|price|The price of the extension, 0 for free|String|
+|preview|True if the extension uses features from the next platform release, so it can only be installed in the preview environment|Boolean|
 |views|An array of views to be shown in the portal or excel add-in|ExtensionView[]|
 |resources|A set of resources used by this extension that will be published/installed|Object (See Below)|
 
@@ -94,6 +99,7 @@ The Extension View entity is used to configure the views in the portal and excel
 
 |**Name**|**Description**|**Type**|
 |-|-|-|
+|id|The id of the view, unique within the extension|String|
 |section|The section in the menu to display this view, defaults to Extension|String|
 |name|The name of the view|String|
 |description|Description of the view|String|

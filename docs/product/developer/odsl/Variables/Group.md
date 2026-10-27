@@ -13,6 +13,20 @@ A group is a list of things such as favourites or export items.
 ## Introduction
 A basic group contains a list of either static or dynamic things which can be used throughout the platform.
 
+## Construction
+
+### Constructor functions
+
+|**Function**|**Description**|
+|-|-|
+|ApprovalGroup()|Creates a new curve approval group|
+|BuildGroup()|Creates a new curve build group|
+|ExportGroup()|Creates a new curve export group|
+|Group()|Creates a new group|
+|QualityGroup()|Creates a new curve quality group|
+|TargetGroup()|Creates a new subscription target group|
+|UserGroup()|Creates a new user group|
+
 ## Defining a Group
 Below is a table with all the properties of a basic group:
 
@@ -169,6 +183,21 @@ To fully delete a group, use the version *
 ```js
 delete ${group:"object:favourite:Data Lists:My Items":*}
 ```
+
+## Methods
+
+|**Name**|**Description**|**Return Type**|
+|-|-|-|
+|containsKey(key)|True if this object contains the provided key|Boolean|
+|isEmpty()|A check to see if there are any properties on this object|Boolean|
+|isPlain()|A check to see if this is a plain SimpleObject, i.e. standard JSON|Boolean|
+|keys()|Get a list of keys for this object|List|
+|keys(prefix)|Get a list of keys for this object|List|
+|newLevel(name)|Adds a new SimpleObject level to this object|SimpleObject|
+|remove(key)|Remove a property from this object|Object|
+|set(key, value)|Adds a property to this object|Object|
+|setPlain(plain)|Sets/unsets this object as plain, i.e. standard JSON|Object|
+
 
 ## Using groups in ODSL code
 

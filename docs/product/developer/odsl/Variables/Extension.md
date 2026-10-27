@@ -28,6 +28,9 @@ An extension has the following properties:
 |icon|The icon (bootstrap icons) to be shown next the extension name in the catalog|String|
 |views|An array of views to be shown in the portal or excel add-in|ExtensionView[]|
 |resources|A set of resources used by this extension that will be published/installed|Object (See Below)|
+|currency|The currency for the price of this extension|String|
+|price|The price of this extension (0 for free)|String|
+|tags|A list of tags that are used to categorise this extension|List|
 
 ### Extension View
 

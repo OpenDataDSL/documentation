@@ -59,6 +59,10 @@ The group entity contains the following information:
 |dynamicOptions.field|String|The field for the id of the item, defaults to _id|
 |dynamicOptions.objectfilter|String|Use this instead of filter to filter data based on master data properties|
 
+:::note
+Saving a curve group of type `build` or `export` also creates or updates a process for it: `CURVEBUILD_<name>`, which runs the build cut-off, or `CURVEEXPORT_<name>`, which exports the group's curves, both on the group's `cron` schedule. These groups are normally managed through the [Curve service](./curve#group-api).
+:::
+
 ## Examples
 
 ### Creating a static group
@@ -141,7 +145,7 @@ Authorization: Bearer {{token}}
 
 ```js
 GET https://api.opendatadsl.com/api/data/v1/private
-	?_filter=\{_id:\{$in:\{$group:'data:favourite:Data Lists:Settlements'}}\}
+	?_filter={_id:{$in:{$group:'data:favourite:Data Lists:Settlements'}}}
 	&_ondate=L-1
 Authorization: Bearer {{token}}
 ```

@@ -25,7 +25,8 @@ https://api.opendatadsl.com/api/batch
 |GET|\{release\}|v1|List all batch summaries|
 |GET|\{release\}/\{id\}|v1/a757b7cc-ed3b-41f5-b5dd-30330b967416|Get a specific batch summary|
 |POST|\{release\}|v1|Send an array of objects to be updated|
-|DELETE|\{release\}/\{id\}|v1/a757b7cc-ed3b-41f5-b5dd-30330b967416|Delete a batch summary
+|DELETE|\{release\}/\{id\}|v1/a757b7cc-ed3b-41f5-b5dd-30330b967416|Delete a batch summary|
+|DELETE|\{release\}?_bulk=true&_filter=...|v1?_bulk=true&_filter=\{"status":"success"\}|Delete the batch summaries that match the filter|
 
 ### Batch Update
 |**Name**|**Description**|**Type**|

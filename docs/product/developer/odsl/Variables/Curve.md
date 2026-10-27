@@ -52,6 +52,10 @@ A curve has the following properties:
 |size|The number of contracts on this curve|Scalar(int)|
 |precision|The data value [precision](/docs/kb/precision#data-precision-settings) configuration|String|
 |*|Any other dynamic properties added|Any|
+|description|A description of the curve|String|
+|identity|The configured identity for this curve|Object|
+|name|The name of the curve|String|
+|timezone|The timezone for this curve|String|
 
 Examples of curve properties:
 ```js
@@ -75,6 +79,10 @@ A curve has the following methods:
 |**Name**|**Description**|**Return Type**|
 |-|-|-|
 |add([Contract](Contract))|Adds a contract to a curve|This curve|
+|addNew(contract)|Adds the supplied contract to this curve only if the tenor doesn't already exist on this curve|Curve|
+|addNew(contracts)|Adds the supplied contracts to this curve only if the tenor doesn't already exist on this curve|Curve|
+|contains(tenor)|Checks to see if this curve contains the supplied relative tenor|Boolean|
+|convert(currency, units)|Convert this curve using currency and units|Curve|
 
 Full example using properties and methods:
 

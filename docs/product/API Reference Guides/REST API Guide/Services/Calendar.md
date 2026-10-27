@@ -30,6 +30,23 @@ The API consists of the following calls:
 |DELETE|\{release\}/\{source\}/\{key\}/\{version\}|v1/private/TEST/1|Delete a specific version of a calendar|
 |DELETE|\{release\}/\{source\}/\{key\}/*|v1/private/TEST/*|Fully delete a calendar, including all versions|
 
+## Functions
+
+Functions are run with the `_function` query parameter on a GET request:
+
+|**Function**|**Example**|**Description**|
+|-|-|-|
+|holidays|v1/private/TEST?_function=holidays&year=2026,2027|The holidays of a holiday calendar for the years given (comma separated, default this year): a list of date and name|
+|indexes|v1/private/TEST?_function=indexes&start=2026-01-01&end=2026-12-31|The dates of a calendar between start and end (default this calendar year)|
+|holiday-report|v1/private?_function=holiday-report&_id=TEST,TEST2&start=2026-01-01&end=2026-12-31|The holidays of several holiday calendars between start and end (default today), sorted by date: a `data` list of `_id`, `date` and `name`|
+|index-report|v1/private?_function=index-report&_id=TEST,TEST2&start=2026-01-01&end=2026-01-31|The dates of several calendars between start and end (default today), sorted by date: a `data` list of `_id` and `date`|
+
+Calendars are read from public when the id starts with `#`, otherwise from private.
+
+:::tip
+When you create a holiday calendar (`_type` HolidayCalendar), you can give its `rules` as a list of rule strings in ODSL syntax, and they are parsed into the calendar for you.
+:::
+
 ## Entities
 
 ### Calendar Entity

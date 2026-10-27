@@ -44,10 +44,9 @@ The API is broken into these sections:
 |**Method**|**Path**|**Example**|**Description**|
 |-|-|-|-|
 |GET|\{release\}/build|v1/build|List all the curve build information for the current ondate|
-|GET|\{release\}/build/\{key\}|v1/build/TEST:CURVE:2024-06-12|Retrieve a single curve build information for the specified ondate|
+|GET|\{release\}/build/\{key\}|v1/build/TEST:CURVE:2024-06-12|Retrieve a single curve build information for the specified ondate. If none has been stored yet for a managed curve, a new one is generated for that date|
 |GET|\{release\}/build/\{ondate\}|v1/build/2024-06-12|List all curve build information for the specified ondate|
 |POST|\{release\}/build|v1/build|Update build information, the curve build information is the JSON body of the POST request - used for updates from external build applications|
-|DELETE|\{release\}/build/\{key\}|v1/build/TEST:CURVE:2024-06-12|Delete the curve build information|
 
 ### Group API
 
@@ -152,6 +151,7 @@ This API is used to approve/unapprove curves
 ## Functions
 |**Function**|**Example**|**Description**|
 |-|-|-|
+|refresh|v1|Refresh the curve management configurations from the curves themselves (curve type, and the name and description when they are not set)|
 |initialise|v1/2024-06-12|Initialise curves for the specified ondate, ignores any curves already initialised|
 |initialise|v1/2024-06-12/TEST:CURVE|Initialise specified curve for the specified ondate|
 |build|v1/TEST:CURVE:2024-06-12|Build a curve|
@@ -161,6 +161,17 @@ This API is used to approve/unapprove curves
 |export|v1/ETRM/2024-06-12|Export all curves in the named export group|
 |cutoff|v1/Oil/2024-06-12|Run the build cut-off - substitute missing curves|
 |cutoff|v1/TEST:CURVE:2024-06-12|Run the build cut-off for the named curve|
+|substitute|v1/TEST:CURVE:2024-06-12|Substitute a missing curve for the ondate, using its substitution rules|
+|approve|v1/Oil/2024-06-12|Approve all the curves in the named group for the ondate (today if not given). `_reason` sets the approval message|
+|audit|v1/TEST:CURVE:2024-06-12|For a smart curve: the changes made since its last successful build to the curve definition, its script and its expiry calendar, which explain why a build may differ|
+|allaudit|v1/TEST:CURVE:2024-06-12|For a smart curve: every change made to the curve definition, its script and its expiry calendar|
+|export|v1/ETRM/TEST:CURVE:2024-06-12|Export one curve of the named export group|
+
+Functions are run with the `_function` query parameter, for example ```POST https://api.opendatadsl.com/api/curve/v1/TEST:CURVE:2024-06-12?_function=build```. When no date is given, the current ondate is used.
+
+:::note
+There is no call to delete the build information of a curve; it is kept as the record of each build. Delete or unmanage the curve configuration instead.
+:::
 
 ## Examples
 In the following examples \{\{url\}\} is the curve management REST URL:
@@ -234,8 +245,8 @@ Authorization: Bearer {{token}}
 
 ### Get build infos for specific ondate - filtered
 GET {{url}}/curve/v1/build/2023-10-23
-	?_filter=\{"$and":[\{"status.build":\{"$exists":true,"$in":["built"]}}]\}
-	&_sort=\{"_timestamp":-1\}
+	?_filter={"$and":[{"status.build":{"$exists":true,"$in":["built"]}}]}
+	&_sort={"_timestamp":-1}
 	&_limit=-1
 Authorization: Bearer {{token}}
 

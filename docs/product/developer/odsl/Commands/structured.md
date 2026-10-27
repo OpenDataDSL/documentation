@@ -12,6 +12,10 @@ import Function from './all/_function.md';
 import Transform from './all/_transform.md';
 import Type from './all/_type.md';
 import Workflow from './all/_workflow.md';
+import Check from './all/_check.md';
+import Index from './all/_index.md';
+import Report from './all/_report.md';
+import Extract from './all/_extract.md';
 
 A list of commands that create structures or perform more complex tasks.
 
@@ -46,3 +50,15 @@ end
 
 ## workflow
 <Workflow />
+
+## check
+<Check />
+
+## extract
+<Extract />
+
+## index
+<Index />
+
+## report
+<Report />

@@ -6,21 +6,6 @@ sidebar_position: 12
 
 This document provides a reference for all built-in timeseries functions available in OpenDataDSL.
 
-### cave(data, calendar)
-
-**Category:** TimeSeries
-
-**Description:** The cumulative average of all the values in the input Timeseries
-
-**Parameters:**
-* `data` (TimeSeries) - The input data to perform the calculation on
-* `calendar` (Calendar) - The output calendar to return the results in
-
-**Returns:** Number
-
-
-
----
 
 ### cave(data)
 
@@ -37,11 +22,11 @@ This document provides a reference for all built-in timeseries functions availab
 
 ---
 
-### cmax(data, calendar)
+### cave(data, calendar)
 
 **Category:** TimeSeries
 
-**Description:** The cumulative maximum of all the values in the input Timeseries
+**Description:** The cumulative average of all the values in the input Timeseries
 
 **Parameters:**
 * `data` (TimeSeries) - The input data to perform the calculation on
@@ -61,6 +46,22 @@ This document provides a reference for all built-in timeseries functions availab
 
 **Parameters:**
 * `data` (TimeSeries or List) - The input data to perform the calculation on
+
+**Returns:** Number
+
+
+
+---
+
+### cmax(data, calendar)
+
+**Category:** TimeSeries
+
+**Description:** The cumulative maximum of all the values in the input Timeseries
+
+**Parameters:**
+* `data` (TimeSeries) - The input data to perform the calculation on
+* `calendar` (Calendar) - The output calendar to return the results in
 
 **Returns:** Number
 
@@ -243,15 +244,14 @@ This document provides a reference for all built-in timeseries functions availab
 
 ---
 
-### sequence(base, other)
+### sequence(timeseries)
 
 **Category:** TimeSeries
 
 **Description:** Returns a TimeSeries with all the non-missing values from other added to base
 
 **Parameters:**
-* `base` (TimeSeries) - The base TimeSeries to use as the source
-* `other` (TimeSeries) - The TimeSeries to overlay on top of the base, all non-missing values from this TimeSeries will be added to missing values in base
+* `timeseries` (List of TimeSeries) - The timeseries to combine, in order
 
 **Returns:** TimeSeries
 
@@ -289,5 +289,4 @@ This document provides a reference for all built-in timeseries functions availab
 
 
 ---
-
 

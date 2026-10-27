@@ -12,11 +12,19 @@ The usage of conditions in the OpenDataDSL Language
 The syntax for a condition:
 ```JS
 variable
-    | 'not' variable
-    | expression ('<'|'<='|'>'|'>='|'='|'=='|'!='|'like'|'intersects'|'within') expression
+    | '!' variable
+    | functioncall
+    | expression ('<'|'<='|'>'|'>='|'='|'=='|'!='|'in'|'nin'|'like'|'matches'|'intersects'|'within') expression
     | condition ('and'|'or') condition
     | '(' condition ')'
 ```
+
+|**Operator**|**Meaning**|
+|-|-|
+|in, nin|The value is (or is not) in a list|
+|like|The value matches a regular expression, ignoring case|
+|matches|The value matches a regular expression, with case|
+|intersects, within|Geospatial: the shape intersects, or is within, another shape|
 
 ## Use within the language
 

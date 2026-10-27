@@ -91,14 +91,14 @@ https://api.opendatadsl.com/api/object/v1/public?_searchinfo=europe
 This returns an array of JSON objects containing the _id and name field of objects you may be looking for like the below:
 ```json
 [
-  \{
+  {
     "_id": "#EEX.AG.FAPP.BE.PR.IND.W",
     "name": "European Energy Exchange Belgium European Processing Potato Index"
-  \},
-  \{
+  },
+  {
     "_id": "#EEX.AG.FAPP.DE.PR.IND.W",
     "name": "European Energy Exchange Germany European Processing Potato Index"
-  \}
+  }
 ]
 ```
 :::note

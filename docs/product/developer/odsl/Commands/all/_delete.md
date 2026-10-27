@@ -6,33 +6,9 @@ delete activevar (log string)?
 ```
 
 #### Description
-In the standard form, it rolls back the version of an item from the database, the activevar item can be one of:
+In the standard form, it rolls back the version of an item from the database: the previous version becomes the current one, or the item is deleted if it has only one version. Services that do not keep versions delete the item.
 
-*   action    
-*   calendar
-*   critical (future use)
-*   curve
-*   dashboard
-*   data (curve, timeseries, matrix)
-*   dataset (dataset, dataset_feed, dataset_delivery)
-*   environment
-*   event
-*   expiry
-*   extractor
-*   index
-*   object
-*   policy
-*   process
-*   queue
-*   reportconfig
-*   report
-*   script
-*   secret
-*   task
-*   transformer
-*   type
-*   user
-*   workflow
+You can use any [active variable service](/docs/odsl/service/services) that stores items, for example action, aiplaybook, alert, automation, calendar, curve, data, dataset, documentation, environment, event, expiry, extractor, group, index, object, policy, process, queue, report, reportconfig, script, secret, task, transformer, type, validationconfig and workflow. Your access policies decide what you can delete. To stop a running process, delete its execution with the [exec service](/docs/odsl/service/exec).
 
 You can specify the version number to delete with the activevar syntax: ```${service:"resource":version}```
 
@@ -78,8 +54,10 @@ The following services can be used to bulk delete only - no restore
 * batch
 * dataset_delivery
 * exec
+* metric
 * queuelog
 * scriptlog
+* validation
 
 ## bulk restore
 Bulk restore is used to ```undo``` a [bulk delete](#bulk-delete)

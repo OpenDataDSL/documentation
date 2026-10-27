@@ -6,6 +6,7 @@ sidebar_position: 11
 
 This document provides a reference for all built-in date functions available in OpenDataDSL.
 
+
 ### daylightSavings(date, timezone)
 
 **Category:** Dates
@@ -38,6 +39,22 @@ This document provides a reference for all built-in date functions available in 
 
 ---
 
+### parse(date, format)
+
+**Category:** Dates
+
+**Description:** Converts a string into a date using the specified format
+
+**Parameters:**
+* `date` (String) - The stringified date to convert to a Date
+* `format` (String) - The date format to use - see documentation
+
+**Returns:** String
+
+
+
+---
+
 ### parse(date, format, tz)
 
 **Category:** Dates
@@ -48,22 +65,6 @@ This document provides a reference for all built-in date functions available in 
 * `date` (String) - The stringified date to convert to a Date
 * `format` (String) - The date format to use - see documentation
 * `tz` (String) - The timezone to use - see documentation
-
-**Returns:** String
-
-
-
----
-
-### parse(date, format)
-
-**Category:** Dates
-
-**Description:** Converts a string into a date using the specified format
-
-**Parameters:**
-* `date` (String) - The stringified date to convert to a Date
-* `format` (String) - The date format to use - see documentation
 
 **Returns:** String
 
@@ -102,5 +103,4 @@ This document provides a reference for all built-in date functions available in 
 
 
 ---
-
 

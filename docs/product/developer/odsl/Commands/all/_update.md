@@ -11,6 +11,7 @@ end
 #### Description
 Only the following services are supported:
 *   object
+*   event
 
 The optional **where condition** limits the documents that are updated, if ommitted, all documents are updated
 

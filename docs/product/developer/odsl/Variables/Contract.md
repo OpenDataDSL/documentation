@@ -77,4 +77,22 @@ A contract has the following properties:
 |start|The start date of delivery of this contract|Date|
 |end|The end date of delivery of this contract|Date|
 |*|Any other dynamic property you want to add|Any|
+|scalarValue|Get the value of this contract including the configured precision|String|
+|status|The status information for this contract|Status|
+
+## Methods
+
+|**Name**|**Description**|**Return Type**|
+|-|-|-|
+|generateNext()|Generate a contract with the same type that is after this one|Contract|
+|immediatelyAfter()|Get the contract with the same type that is immediately after this one or null if there isn't one|Contract|
+|immediatelyBefore()|Get the contract with the same type that is immediately before this one or null if there isn't one|Contract|
+|isImmediatelyAfter(other)|A test to see if the supplied contract is immediately after this one|Boolean|
+|isImmediatelyBefore(other)|A test to see if the supplied contract is immediately before this one|Boolean|
+|isOverlapping(other)|A test to see if the this contract is overlapping the supplied contract|Boolean|
+|isWithin(other)|A test to see if the this contract is entirely within the supplied contract|Boolean|
+|next()|Get the contract with the same type that is after this one or null if there isn't one|Contract|
+|overlaps()|Gets a list of contracts that are overlapping with this contract|Contracts|
+|previous()|Get the contract with the same type that is before this one or null if there isn't one|Contract|
+|within()|Gets a list of contracts that are within this contract|Contracts|
 

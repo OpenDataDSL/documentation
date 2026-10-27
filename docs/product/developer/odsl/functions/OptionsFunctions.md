@@ -6,6 +6,7 @@ sidebar_position: 16
 
 This document provides a reference for all built-in options functions available in OpenDataDSL.
 
+
 ### blackScholesCall(F, K, sigma, T)
 
 **Category:** Options
@@ -41,5 +42,4 @@ This document provides a reference for all built-in options functions available 
 
 
 ---
-
 

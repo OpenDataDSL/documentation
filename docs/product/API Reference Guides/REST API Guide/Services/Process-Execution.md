@@ -14,7 +14,7 @@ The resource for monitoring all your processes
 
 ## Process Execution REST API
 
-The Process Execution REST API is a read-only API allowing you to search and filter the process execution logs and accessed through the following URL:
+The Process Execution REST API lets you search and filter the process execution logs, run a process and stop a running one. It is accessed through the following URL:
 ```js
 https://api.opendatadsl.com/api/process-exec
 ```
@@ -24,8 +24,11 @@ The API consists of the following calls:
 |-|-|-|-|
 |GET|||Get the build information for this service|
 |GET|\{release\}|v1|List process executions|
-|GET|\{release\}/\{key\}|v1/private/6090915ad6a48d0b3c4f663d|Retrieve a single process execution log using it’s unique id|
-|POST|\{release\}|v1|Manually trigger a process, then JSON body of the post must have a name property which is the name of the process|
+|GET|\{release\}/\{key\}|v1/6090915ad6a48d0b3c4f663d|Retrieve a single process execution log using its unique id|
+|GET|\{release\}?_search=...|v1?_search=timeout|Search the process names and the phase logs|
+|POST|\{release\}|v1|Manually trigger a process, the JSON body of the post must have a name property which is the name of the process|
+|DELETE|\{release\}/\{key\}|v1/6090915ad6a48d0b3c4f663d|Terminate a running process execution: the execution is stopped, its status set to warning and any running phases set to failed|
+|DELETE|\{release\}?_bulk=true&_filter=...|v1?_bulk=true&_filter=\{"name":"ECB_FX"\}|Delete the execution logs that match the filter, see [Bulk updates and deletes](../standards#bulk-updates-and-deletes)|
 
 ## Entities
 
@@ -210,7 +213,7 @@ Authorization: Bearer {{token}}
 }
 ```
 
-To pass parameters to the process, simply add these as properties under a ‘body’ property on the JSON in the body of the request, e.g.
+To pass parameters to the process, add them as properties under a `body` (or `input`) property on the JSON in the body of the request, e.g.
 ```JS
 POST https://api.opendatadsl.com/api/process-exec/v1
 Authorization: Bearer {{token}}
@@ -221,4 +224,28 @@ Authorization: Bearer {{token}}
       "property1": "value"
     }
 }
+```
+
+The response holds the process name in `_id` and the new execution id in `id`. Add a `_reason` query parameter to record why the process was run.
+
+### Running a process later
+
+Add a `_delay` query parameter with a number of milliseconds to schedule the run for later instead of running it now. With `_retries` (the maximum number of retries) and `_retry` (this attempt), a run whose `_retry` is more than `_retries` is not scheduled, which lets a process reschedule itself a limited number of times:
+
+```js
+POST https://api.opendatadsl.com/api/process-exec/v1?_delay=600000&_retries=3&_retry=1
+Authorization: Bearer {{token}}
+
+{
+    "name": "ECB_FX"
+}
+```
+
+The response has the time the run was rescheduled for in `rescheduled`.
+
+### Stopping a running process
+
+```js
+DELETE https://api.opendatadsl.com/api/process-exec/v1/6090915ad6a48d0b3c4f663d
+Authorization: Bearer {{token}}
 ```

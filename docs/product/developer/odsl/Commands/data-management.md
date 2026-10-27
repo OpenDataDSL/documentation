@@ -11,6 +11,7 @@ import Rename from './all/_rename.md';
 import Save from './all/_save.md';
 import Tag from './all/_tag.md';
 import Update from './all/_update.md';
+import Link from './all/_link.md';
 
 These commands help you manage the resources in your data
 
@@ -20,8 +21,11 @@ These commands help you manage the resources in your data
 ## save
 <Save />
 
-## update
+## bulk update
 <Update />
+
+## link
+<Link />
 
 ## rename
 <Rename />

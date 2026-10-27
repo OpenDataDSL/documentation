@@ -73,6 +73,21 @@ A service to read XLS spreadsheet files as a [spreadsheet](/docs/odsl/variable/s
 A service to read XML format files as an [object](/docs/odsl/variable/object) or [list](/docs/odsl/variable/list) variable
     
 
+### [Archive](./archive)
+A service to keep a copy of a source file in your file archive
+
+### [Azure Blob Service (azblob)](./azblob)
+A service to read and write files in Azure Blob Storage
+
+### [CURL](./curl)
+A service to download files with the curl tool
+
+### [Kafka](./kafka)
+A service to read JSON messages from Apache Kafka topics
+
+### [Mail](./mail)
+A service to read emails and their attachments from a mailbox
+
 ## OpenDataDSL Remote Services
 
 This is a list of active variable services that interact with the OpenDataDSL remote services
@@ -129,6 +144,102 @@ A service to view and record your user information
 The workflow services allows you to store and manage [workflows](/docs/odsl/dm/workflow)
     
     
+
+### [AI Agent Service](./aiagent)
+Your Fusion AI agents
+
+### [AI Assistant Service](./aiassistant)
+The Fusion AI assistants, built-in and custom
+
+### [AI Playbook Service](./aiplaybook)
+Fusion AI playbooks
+
+### [AI Run Service](./airun)
+The records of Fusion AI playbook runs
+
+### [AI Task Service](./aitask)
+Fusion AI playbook tasks
+
+### [AI Tool Service](./aitool)
+Your Fusion AI custom tools
+
+### [AI Usage Service](./aiusage)
+Fusion AI token usage
+
+### [Alert Service](./alert)
+Alert definitions
+
+### [Alert Record Service](./alertrecord)
+The alerts that have been raised
+
+### [Automation Service](./automation)
+Your automations
+
+### [Automation Target Service](./automationtarget)
+Automation targets
+
+### [Automation Log Service](./automationlog)
+The log of each automation run
+
+### [Batch Service](./batch)
+The summaries of batch updates
+
+### [Correction Service](./correction)
+Corrections to dataset data
+
+### [Data Service](./data)
+Timeseries, curves and other data
+
+### [Dataset Service](./dataset)
+Dataset monitoring
+
+### [Dataset Delivery Service](./dataset_delivery)
+Dataset deliveries
+
+### [Documentation Service](./documentation)
+Documentation for items and services
+
+### [Group Service](./group)
+Groups of items
+
+### [Index Service](./index)
+Database indexes
+
+### [Metric Service](./metric)
+Usage metrics
+
+### [Policy Service](./policy)
+Security policies
+
+### [Process Execution Service](./exec)
+Process execution logs
+
+### [Queue Service](./queue)
+Message queues
+
+### [Queue Log Service](./queuelog)
+The log of queue messages
+
+### [Report Service](./report)
+Stored reports
+
+### [Report Configuration Service](./reportconfig)
+Report configurations
+
+### [Report Creator Service](./reportcreator)
+Report creators
+
+### [Script Log Service](./scriptlog)
+The log of each script run
+
+### [Task Service](./task)
+Tasks assigned to users
+
+### [Validation Service](./validation)
+Validation records
+
+### [Validation Config Service](./validationconfig)
+Validation configurations
 
 ## Variable Services
 

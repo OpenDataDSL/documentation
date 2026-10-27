@@ -59,6 +59,20 @@ A SmartTimeSeries has the following properties:
 |script|Optional custom script name used with the expression|String|
 |currency|Optional currency of the TimeSeries, defaults to base TimeSeries currency|String|
 |units|Optional units of the TimeSeries, defaults to base TimeSeries units|String|
+|calendar|The calendar that this timeseries uses|Calendar|
+|description|The description of this timeseries|String|
+|identity|The configured identities|Object|
+|localValues|The list of time observations for this timeseries, returned as a list of TimeValues in the local timezone of this TimeSeries|List|
+|name|The name of the timeseries|String|
+|observations|The list of values for this timeseries, returned as a list of Vars|List|
+|observed|The observed setting of the timeseries used for aggregating|TimeSeriesObserved|
+|precision|The precision configuration for this timeseries|Precision|
+|source|The source of this timeseries|String|
+|start|The starting date/time of the timeseries|Date|
+|tenor|The tenor of this timeseries|String|
+|timezone|The timezone of this timeseries, defaults to UTC|String|
+|valueType|The value type of the timeseries (TRACKED or BASIC)|TimeValueType|
+|values|The list of time observations for this timeseries, returned as a list of TimeValues|List|
 
 :::info
 If a currency and/or units are set, the base TimeSeries and any other TimeSeries added to this Smart TimeSeries will be converted to the specified currency and units
@@ -91,6 +105,16 @@ A SmartTimeSeries has the following methods:
 |**Name**|**Description**|**Return Type**|
 |-|-|-|
 |build()|Builds a TimeSeries|TimeSeries|
+|addCheck(check)|Add a quality check directly to this Timeseries|TimeSeries|
+|addValue(value)|Adds a new value to the end of the timeseries using the calendar|TimeSeries|
+|applyPrecision()|Apply the precision defined to all the observations of this timeseries|Void|
+|convert(currency, units)|Convert this timeseries using currency and units|TimeSeries|
+|from(start)|Creates a new TimeSeries from a specified start date|TimeSeries|
+|getLast(date)|Get the value at the supplied date or the latest value before that date|Var|
+|getLastNValues(n)|Returns a list of the last N values from this TimeSeries|List|
+|last(n)|Creates a new TimeSeries using the last n values from this TimeSeries|TimeSeries|
+|range(start, end)|Creates a new TimeSeries from a range of values from this TimeSeries|TimeSeries|
+|withRange(start, end)|Changes this timeseries to match the provided date range|Void|
 
 Below is an example of creating a Smart TimeSeries and building a TimeSeries using it:
 

@@ -2,16 +2,20 @@ Create an aggregation pipeline to group and summarise data
 
 #### Syntax
 ```js
-varname = aggregate service 
+varname = (aggregate|pipeline) service (save)? (allowDiskUse)?
   (pipelineItem)* 
 end
 
-pipelineItem: (pipelineMatch|pipelineGroup|pipelineSort|NL|comment);
+pipelineItem: (addFields|bucket|bucketAuto|count|documents|facet|geoNear|graphLookup
+    |group|limit|lookup|match|merge|out|project|redact|replaceRoot|replaceWith
+    |sample|skip|sort|sortByCount|unwind|jsonObject|comment|NL);
 pipelineMatch: match (condition)+;
 pipelineGroup: group assign (, assign)*;
 pipelineSort: sort sortItem (, sortItem)*;
 sortItem: (assign|varname (asc|desc)?);
 ```
+
+Each stage is described in [Aggregation Stages](/docs/odsl/stages). You can also write a stage as a MongoDB JSON stage, e.g. `{"$count": "total"}`. **pipeline** is another name for **aggregate**. **allowDiskUse** lets large aggregations use disk space on the database server, and **save** also saves the pipeline as a database view named after the output variable.
 #### Description
 
 The aggregate command creates an aggregation pipeline to group and summarise data from any service.

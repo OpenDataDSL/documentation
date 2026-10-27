@@ -20,7 +20,8 @@ The API consists of the following calls:
 |**Method**|**Path**|**Example**|**Description**|
 |-|-|-|-|
 |GET|||Get the build information for this service|
-|GET|\{release\}|v1|View your tenant information|
+|GET|\{release\}|v1|View your tenant information, including its quotas, features and properties|
+|GET|\{release\}?_function=quota|v1?_function=quota|Your quota for each limited service, with how much of it you have used: a list of `service`, `quota` and `used`|
 |POST|\{release\}|v1|Update your company information|
 
 ## Updating your company information
@@ -42,3 +43,9 @@ POST https://api.opendatadsl.com/api/tenant/v1
   }
 }
 ```
+
+You can update these parts of the tenant: `name`, `properties`, `accountContacts`, `preferences`, and the MongoDB connection strings in `mongodb` and `connections` (which must start with `mongodb`). Tenant settings can only be changed by OpenDataDSL.
+
+:::caution
+The `properties` you send replace all the existing properties: they are not merged. To change one property, read the tenant first, change the property, and send all the properties back.
+:::

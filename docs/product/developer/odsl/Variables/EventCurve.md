@@ -42,6 +42,24 @@ An EventCurve has the following properties:
 |properties|Any other properties you want to add onto the curve|Object|
 |precision|The [precision](/docs/kb/precision#data-precision-settings) configuration for this curve|Precision|
 |include|Additional properties from an event to add as columns in the curve contracts|String or Array| 
+|contracts|Get the forward contracts on this curve|Contracts|
+|description|A description of the curve|String|
+|identity|The configured identity for this curve|Object|
+|name|The name of the curve|String|
+|ondate|The date for which this curve corresponds to|CurveDate|
+|timezone|The timezone for this curve|String|
+
+## Methods
+
+|**Name**|**Description**|**Return Type**|
+|-|-|-|
+|addNew(contract)|Adds the supplied contract to this curve only if the tenor doesn't already exist on this curve|Curve|
+|addNew(contracts)|Adds the supplied contracts to this curve only if the tenor doesn't already exist on this curve|Curve|
+|build()|Builds this Event Curve|Curve|
+|contains(tenor)|Checks to see if this curve contains the supplied relative tenor|Boolean|
+|convert(currency, units)|Convert this curve using currency and units|Curve|
+|size()|The number of contracts on this curve|String|
+
 
 ## Examples
 

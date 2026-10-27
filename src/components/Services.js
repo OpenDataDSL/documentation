@@ -107,7 +107,7 @@ var services = [
         name: "Data",
         link: "/docs/api/rest/service/data",
         text: "The data resource contains all the complex data types like TimeSeries and Curve",
-        rw: "Read-only, use the Object service to write Data",
+        rw: "Read and delete, use the Object service to write Data",
         pub: true,
         pri: true,
         quota: false,
@@ -250,7 +250,7 @@ var services = [
         name: "Process Execution",
         link: "/docs/api/rest/service/process-execution",
         text: "The resource for monitoring all your processes",
-        rw: false,
+        rw: "Run and stop processes, the logs are read-only",
         pub: false,
         pri: true,
         quota: false,
@@ -266,7 +266,7 @@ var services = [
         pri: true,
         quota: true,
         unres: false,
-        ver: false
+        ver: true
     },
     {
         name: "Report",
@@ -306,7 +306,7 @@ var services = [
         link: "/docs/api/rest/service/script",
         text: "The resource for storing your ODSL scripts in the cloud",
         rw: true,
-        pub: false,
+        pub: true,
         pri: true,
         quota: false,
         unres: false,
@@ -343,7 +343,7 @@ var services = [
         pri: true,
         quota: true,
         unres: true,
-        ver: false
+        ver: true
     },
     {
         name: "Type",
@@ -377,8 +377,304 @@ var services = [
         quota: true,
         unres: false,
         ver: true
+    },
+    {
+        name: "AI Agent",
+        link: "/docs/api/rest/service/aiagent",
+        text: "Fusion AI agents: saved questions that Fusion answers on demand or on a schedule",
+        rw: true,
+        pub: false,
+        pri: true,
+        quota: false,
+        unres: false,
+        ver: false
+    },
+    {
+        name: "AI Assistant",
+        link: "/docs/api/rest/service/aiassistant",
+        text: "Fusion AI assistants, the built-in ones and your own custom assistants",
+        rw: true,
+        pub: true,
+        pri: true,
+        quota: false,
+        unres: false,
+        ver: false
+    },
+    {
+        name: "AI Playbook",
+        link: "/docs/api/rest/service/aiplaybook",
+        text: "Fusion AI playbooks, your own and the library",
+        rw: true,
+        pub: true,
+        pri: true,
+        quota: false,
+        unres: false,
+        ver: true
+    },
+    {
+        name: "AI Run",
+        link: "/docs/api/rest/service/airun",
+        text: "The records of Fusion AI playbook runs",
+        rw: false,
+        pub: false,
+        pri: true,
+        quota: false,
+        unres: false,
+        ver: false
+    },
+    {
+        name: "AI Studio",
+        link: "/docs/api/rest/service/aistudio",
+        text: "Your Fusion AI conversations",
+        rw: true,
+        pub: false,
+        pri: true,
+        quota: false,
+        unres: false,
+        ver: false
+    },
+    {
+        name: "AI Task",
+        link: "/docs/api/rest/service/aitask",
+        text: "Fusion AI playbook tasks, run once or on a schedule",
+        rw: true,
+        pub: false,
+        pri: true,
+        quota: false,
+        unres: false,
+        ver: false
+    },
+    {
+        name: "AI Tool",
+        link: "/docs/api/rest/service/aitool",
+        text: "Your Fusion AI custom tools",
+        rw: true,
+        pub: false,
+        pri: true,
+        quota: false,
+        unres: false,
+        ver: false
+    },
+    {
+        name: "AI Usage",
+        link: "/docs/api/rest/service/aiusage",
+        text: "Fusion AI token usage, one record per conversation per day",
+        rw: false,
+        pub: false,
+        pri: true,
+        quota: false,
+        unres: false,
+        ver: false
+    },
+    {
+        name: "Alert",
+        link: "/docs/api/rest/service/alert",
+        text: "Alert definitions: the conditions that raise alerts",
+        rw: true,
+        pub: true,
+        pri: true,
+        quota: false,
+        unres: false,
+        ver: false
+    },
+    {
+        name: "Alert Record",
+        link: "/docs/api/rest/service/alertrecord",
+        text: "The alerts that have been raised, with their timeline",
+        rw: true,
+        pub: true,
+        pri: true,
+        quota: false,
+        unres: false,
+        ver: false
+    },
+    {
+        name: "Billing",
+        link: "/docs/api/rest/service/billing",
+        text: "Your invoices, pricing plan and billed usage",
+        rw: false,
+        pub: false,
+        pri: true,
+        quota: false,
+        unres: false,
+        ver: false
+    },
+    {
+        name: "Correction",
+        link: "/docs/api/rest/service/correction",
+        text: "Corrections made to dataset data after it was delivered",
+        rw: false,
+        pub: false,
+        pri: true,
+        quota: false,
+        unres: false,
+        ver: false
+    },
+    {
+        name: "Crontab",
+        link: "/docs/api/rest/service/crontab",
+        text: "The schedules that run in your data environment",
+        rw: false,
+        pub: false,
+        pri: true,
+        quota: false,
+        unres: false,
+        ver: false
+    },
+    {
+        name: "Crontab Log",
+        link: "/docs/api/rest/service/crontablog",
+        text: "A log of each time a schedule fired",
+        rw: false,
+        pub: false,
+        pri: true,
+        quota: false,
+        unres: false,
+        ver: false
+    },
+    {
+        name: "Dashboard",
+        link: "/docs/api/rest/service/dashboard",
+        text: "The dashboards people build in the portal",
+        rw: true,
+        pub: false,
+        pri: true,
+        quota: false,
+        unres: false,
+        ver: true
+    },
+    {
+        name: "Dataset Delivery",
+        link: "/docs/api/rest/service/dataset_delivery",
+        text: "The delivery record of each monitored dataset for each date",
+        rw: "Read and bulk delete",
+        pub: false,
+        pri: true,
+        quota: false,
+        unres: false,
+        ver: false
+    },
+    {
+        name: "Feedback",
+        link: "/docs/api/rest/service/feedback",
+        text: "Ratings and comments on Fusion AI answers",
+        rw: true,
+        pub: false,
+        pri: true,
+        quota: false,
+        unres: false,
+        ver: false
+    },
+    {
+        name: "Function",
+        link: "/docs/api/rest/service/function",
+        text: "The list of built-in ODSL functions",
+        rw: false,
+        pub: true,
+        pri: false,
+        quota: false,
+        unres: false,
+        ver: false
+    },
+    {
+        name: "List",
+        link: "/docs/api/rest/service/list",
+        text: "Lists of master data, private or shared",
+        rw: true,
+        pub: false,
+        pri: true,
+        quota: false,
+        unres: false,
+        ver: false
+    },
+    {
+        name: "Queue Log",
+        link: "/docs/api/rest/service/queuelog",
+        text: "A log of the messages sent to your queues",
+        rw: false,
+        pub: false,
+        pri: true,
+        quota: false,
+        unres: false,
+        ver: false
+    },
+    {
+        name: "Report Creator",
+        link: "/docs/api/rest/service/reportcreator",
+        text: "Report configurations with parameters that people fill in to create their own reports",
+        rw: true,
+        pub: true,
+        pri: true,
+        quota: false,
+        unres: false,
+        ver: true
+    },
+    {
+        name: "Script Log",
+        link: "/docs/api/rest/service/scriptlog",
+        text: "A log of each script run",
+        rw: false,
+        pub: false,
+        pri: true,
+        quota: false,
+        unres: false,
+        ver: false
+    },
+    {
+        name: "Setting",
+        link: "/docs/api/rest/service/setting",
+        text: "Your personal settings",
+        rw: true,
+        pub: false,
+        pri: true,
+        quota: false,
+        unres: false,
+        ver: false
+    },
+    {
+        name: "Unit",
+        link: "/docs/api/rest/service/unit",
+        text: "Units of measure by dimension, with their conversions",
+        rw: false,
+        pub: true,
+        pri: false,
+        quota: false,
+        unres: false,
+        ver: false
+    },
+    {
+        name: "User Event",
+        link: "/docs/api/rest/service/user-event",
+        text: "Users added to, removed from and invited to your tenant",
+        rw: false,
+        pub: false,
+        pri: true,
+        quota: false,
+        unres: false,
+        ver: false
+    },
+    {
+        name: "Validation",
+        link: "/docs/api/rest/service/validation",
+        text: "Validation records: the result of each check on your curves and timeseries",
+        rw: "Through functions",
+        pub: false,
+        pri: true,
+        quota: false,
+        unres: false,
+        ver: false
+    },
+    {
+        name: "Validation Config",
+        link: "/docs/api/rest/service/validationconfig",
+        text: "The validation checks configured for each curve and timeseries",
+        rw: true,
+        pub: false,
+        pri: true,
+        quota: false,
+        unres: false,
+        ver: true
     }
-
 ];
 
 export function Services() {
@@ -395,7 +691,7 @@ export function Services() {
             </tr>
         </thead>
     <tbody>
-        {services.map((props, idx) => (<TableRow key={idx} {...props} />))}
+        {[...services].sort((a, b) => a.name.localeCompare(b.name)).map((props, idx) => (<TableRow key={idx} {...props} />))}
     </tbody>
     </table>
     );

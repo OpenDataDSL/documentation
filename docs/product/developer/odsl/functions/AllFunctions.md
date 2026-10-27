@@ -6,6 +6,7 @@ sidebar_position: 7
 
 This document provides a comprehensive reference for all built-in functions available in OpenDataDSL.
 
+
 ### abs(data)
 
 **Category:** Numeric
@@ -152,7 +153,22 @@ This document provides a comprehensive reference for all built-in functions avai
 
 ---
 
-### asHours(contract, timezone)
+### asHalfHours(contract)
+
+**Category:** Curve
+
+**Description:** Splits a Contract into hourly contracts
+
+**Parameters:**
+* `contract` (Contract) - The input contract to split into hours
+
+**Returns:** Contracts
+
+
+
+---
+
+### asHalfHours(contract, timezone)
 
 **Category:** Curve
 
@@ -176,6 +192,22 @@ This document provides a comprehensive reference for all built-in functions avai
 
 **Parameters:**
 * `contract` (Contract) - The input contract to split into hours
+
+**Returns:** Contracts
+
+
+
+---
+
+### asHours(contract, timezone)
+
+**Category:** Curve
+
+**Description:** Splits a Contract into hourly contracts
+
+**Parameters:**
+* `contract` (Contract) - The input contract to split into hours
+* `timezone` (Contract) - The timezone to use
 
 **Returns:** Contracts
 
@@ -213,18 +245,32 @@ This document provides a comprehensive reference for all built-in functions avai
 
 ---
 
-### assertEquals(expected, value, message)
+### asQuarterHours(contract)
 
-**Category:** Testing
+**Category:** Curve
 
-**Description:** A test to check if 2 variables or values are equal
+**Description:** Splits a Contract into hourly contracts
 
 **Parameters:**
-* `expected` (Any) - The value you want to test against
-* `value` (Any) - The value to test
-* `message` (String) - The message to display if this test fails
+* `contract` (Contract) - The input contract to split into hours
 
-**Returns:** Void
+**Returns:** Contracts
+
+
+
+---
+
+### asQuarterHours(contract, timezone)
+
+**Category:** Curve
+
+**Description:** Splits a Contract into hourly contracts
+
+**Parameters:**
+* `contract` (Contract) - The input contract to split into hours
+* `timezone` (Contract) - The timezone to use
+
+**Returns:** Contracts
 
 
 
@@ -239,6 +285,23 @@ This document provides a comprehensive reference for all built-in functions avai
 **Parameters:**
 * `expected` (Any) - The value you want to test against
 * `value` (Any) - The value to test
+
+**Returns:** Void
+
+
+
+---
+
+### assertEquals(expected, value, message)
+
+**Category:** Testing
+
+**Description:** A test to check if 2 variables or values are equal
+
+**Parameters:**
+* `expected` (Any) - The value you want to test against
+* `value` (Any) - The value to test
+* `message` (String) - The message to display if this test fails
 
 **Returns:** Void
 
@@ -417,6 +480,22 @@ This document provides a comprehensive reference for all built-in functions avai
 
 ---
 
+### AutomationBuilder(service, source)
+
+**Category:** Construction
+
+**Description:** Creates a new OpenDataDSL automation using a builder
+
+**Parameters:**
+* `service` (String) - The name of the service you want to use for this automation
+* `source` (String) - The source of the item or null for no source
+
+**Returns:** Automation
+
+
+
+---
+
 ### AutomationBuilder(service, source, key)
 
 **Category:** Construction
@@ -427,22 +506,6 @@ This document provides a comprehensive reference for all built-in functions avai
 * `service` (String) - The name of the service you want to use for this automation
 * `source` (String) - The source of the item or null for no source
 * `key` (String) - The key of the item to use for this automation
-
-**Returns:** Automation
-
-
-
----
-
-### AutomationBuilder(service, source)
-
-**Category:** Construction
-
-**Description:** Creates a new OpenDataDSL automation using a builder
-
-**Parameters:**
-* `service` (String) - The name of the service you want to use for this automation
-* `source` (String) - The source of the item or null for no source
 
 **Returns:** Automation
 
@@ -639,6 +702,21 @@ This document provides a comprehensive reference for all built-in functions avai
 
 ---
 
+### cave(data)
+
+**Category:** TimeSeries
+
+**Description:** The cumulative average of all the values in the input Timeseries or List
+
+**Parameters:**
+* `data` (TimeSeries or List) - The input data to perform the calculation on
+
+**Returns:** Number
+
+
+
+---
+
 ### cave(data, calendar)
 
 **Category:** TimeSeries
@@ -648,21 +726,6 @@ This document provides a comprehensive reference for all built-in functions avai
 **Parameters:**
 * `data` (TimeSeries) - The input data to perform the calculation on
 * `calendar` (Calendar) - The output calendar to return the results in
-
-**Returns:** Number
-
-
-
----
-
-### cave(data)
-
-**Category:** TimeSeries
-
-**Description:** The cumulative average of all the values in the input Timeseries or List
-
-**Parameters:**
-* `data` (TimeSeries or List) - The input data to perform the calculation on
 
 **Returns:** Number
 
@@ -715,6 +778,21 @@ This document provides a comprehensive reference for all built-in functions avai
 
 ---
 
+### cmax(data)
+
+**Category:** TimeSeries
+
+**Description:** The cumulative maximum of all the values in the input Timeseries or List
+
+**Parameters:**
+* `data` (TimeSeries or List) - The input data to perform the calculation on
+
+**Returns:** Number
+
+
+
+---
+
 ### cmax(data, calendar)
 
 **Category:** TimeSeries
@@ -724,21 +802,6 @@ This document provides a comprehensive reference for all built-in functions avai
 **Parameters:**
 * `data` (TimeSeries) - The input data to perform the calculation on
 * `calendar` (Calendar) - The output calendar to return the results in
-
-**Returns:** Number
-
-
-
----
-
-### cmax(data)
-
-**Category:** TimeSeries
-
-**Description:** The cumulative maximum of all the values in the input Timeseries or List
-
-**Parameters:**
-* `data` (TimeSeries or List) - The input data to perform the calculation on
 
 **Returns:** Number
 
@@ -794,6 +857,20 @@ This document provides a comprehensive reference for all built-in functions avai
 
 ---
 
+### CombinedHolidayCalendar()
+
+**Category:** Construction
+
+**Description:** Creates a new Combined Holiday Calendar
+
+**Parameters:**
+
+**Returns:** Calendar
+
+
+
+---
+
 ### CombinedHolidayCalendar(cal1, cal2)
 
 **Category:** Construction
@@ -803,20 +880,6 @@ This document provides a comprehensive reference for all built-in functions avai
 **Parameters:**
 * `cal1` (Calendar or calendar code) - The first holiday calendar to use
 * `cal2` (Calendar or calendar code) - The second holiday calendar to use
-
-**Returns:** Calendar
-
-
-
----
-
-### CombinedHolidayCalendar()
-
-**Category:** Construction
-
-**Description:** Creates a new Combined Holiday Calendar
-
-**Parameters:**
 
 **Returns:** Calendar
 
@@ -835,6 +898,52 @@ This document provides a comprehensive reference for all built-in functions avai
 * `str2` (String) - The string to compare to
 
 **Returns:** Boolean
+
+
+
+---
+
+### ComposedCurve(composition, element)
+
+**Category:** Construction
+
+**Description:** Creates a new Composed Curve using a composition and element
+
+**Parameters:**
+* `composition` (String) - The composition that this curve belongs to
+* `element` (String) - The element id within the composition
+
+**Returns:** ComposedCurve
+
+
+
+---
+
+### ComposedTimeSeries(composition, element)
+
+**Category:** Construction
+
+**Description:** Creates a new Composed TimeSeries using a timeseries composition and element
+
+**Parameters:**
+* `composition` (String) - The timeseries composition that this timeseries belongs to
+* `element` (String) - The element id within the composition
+
+**Returns:** ComposedTimeSeries
+
+
+
+---
+
+### Composition()
+
+**Category:** Construction
+
+**Description:** Creates a new composition configuration
+
+**Parameters:**
+
+**Returns:** Report
 
 
 
@@ -872,15 +981,16 @@ This document provides a comprehensive reference for all built-in functions avai
 
 ---
 
-### content()
+### content(items)
 
 **Category:** General
 
-**Description:** 
+**Description:** The content of each extracted item in a list (the content property of each object), with dates converted to Date values
 
 **Parameters:**
+* `items` (List) - A list of extracted items
 
-**Returns:** 
+**Returns:** List
 
 
 
@@ -896,6 +1006,25 @@ This document provides a comprehensive reference for all built-in functions avai
 * `ondate` (CurveDate) - The curve ondate for this contract
 * `tenor` (String) - The absolute or relative tenor for this contract
 * `value` (Number) - The value for this contract
+
+**Returns:** Contract
+
+
+
+---
+
+### Contract(ondate, tenor, value, start, end)
+
+**Category:** Construction
+
+**Description:** Creates a new *Hybrid* Forward Contract
+
+**Parameters:**
+* `ondate` (CurveDate) - The curve ondate for this contract
+* `tenor` (String) - The absolute or relative tenor for this contract
+* `value` (Number) - The value for this contract
+* `start` (Date) - The start of delivery date for this contract
+* `end` (Date) - The end of delivery date for this contract
 
 **Returns:** Contract
 
@@ -924,25 +1053,6 @@ This document provides a comprehensive reference for all built-in functions avai
 
 ---
 
-### Contract(ondate, tenor, value, start, end)
-
-**Category:** Construction
-
-**Description:** Creates a new *Hybrid* Forward Contract
-
-**Parameters:**
-* `ondate` (CurveDate) - The curve ondate for this contract
-* `tenor` (String) - The absolute or relative tenor for this contract
-* `value` (Number) - The value for this contract
-* `start` (Date) - The start of delivery date for this contract
-* `end` (Date) - The end of delivery date for this contract
-
-**Returns:** Contract
-
-
-
----
-
 ### correlation(data)
 
 **Category:** Matrix
@@ -957,6 +1067,27 @@ where ```E(X)``` and ```E(Y)``` are means of ```X``` and ```Y``` and ```s(X)```,
 
 **Parameters:**
 * `data` (Matrix) - The input data to transform
+
+**Returns:** Matrix
+
+
+
+---
+
+### correlation(data)
+
+**Category:** Matrix
+
+**Description:** Create a Pearsons correlation matrix from a list of timeseries.
+
+PearsonsCorrelation computes correlations defined by the formula
+
+```cor(X, Y) = sum[(xi - E(X))(yi - E(Y))] / [(n - 1)s(X)s(Y)]```
+
+where ```E(X)``` and ```E(Y)``` are means of ```X``` and ```Y``` and ```s(X)```, ```s(Y)``` are standard deviations.
+
+**Parameters:**
+* `data` (A List of timeseries) - The input data to transform
 
 **Returns:** Matrix
 
@@ -979,27 +1110,6 @@ where ```E(X)``` and ```E(Y)``` are means of ```X``` and ```Y``` and ```s(X)```,
 **Parameters:**
 * `data` (Matrix) - The input data to transform
 * `shift` (Integer) - The number of days to shift the y-axis
-
-**Returns:** Matrix
-
-
-
----
-
-### correlation(data)
-
-**Category:** Matrix
-
-**Description:** Create a Pearsons correlation matrix from a list of timeseries.
-
-PearsonsCorrelation computes correlations defined by the formula
-
-```cor(X, Y) = sum[(xi - E(X))(yi - E(Y))] / [(n - 1)s(X)s(Y)]```
-
-where ```E(X)``` and ```E(Y)``` are means of ```X``` and ```Y``` and ```s(X)```, ```s(Y)``` are standard deviations.
-
-**Parameters:**
-* `data` (A List of timeseries) - The input data to transform
 
 **Returns:** Matrix
 
@@ -1150,11 +1260,11 @@ Unbiased covariances are given by the formula
 
 **Category:** Loader
 
-**Description:** 
+**Description:** The platform environment the script is running against, with its name and api URL
 
 **Parameters:**
 
-**Returns:** 
+**Returns:** Object
 
 
 
@@ -1170,6 +1280,22 @@ Unbiased covariances are given by the formula
 * `ondate` (CurveDate) - The date index for this curve
 
 **Returns:** Curve
+
+
+
+---
+
+### CurveDate(date, calendar)
+
+**Category:** Construction
+
+**Description:** Creates a new Curve Date variable
+
+**Parameters:**
+* `date` (Date) - The date as a string in ISO Date Time, ISO Date format or ODSL Period Code format
+* `calendar` (Calendar) - The expiry calendar
+
+**Returns:** CurveDate
 
 
 
@@ -1192,22 +1318,6 @@ Unbiased covariances are given by the formula
 
 ---
 
-### CurveDate(date, calendar)
-
-**Category:** Construction
-
-**Description:** Creates a new Curve Date variable
-
-**Parameters:**
-* `date` (Date) - The date as a string in ISO Date Time, ISO Date format or ODSL Period Code format
-* `calendar` (Calendar) - The expiry calendar
-
-**Returns:** CurveDate
-
-
-
----
-
 ### CurveSeries(calendar, ondate)
 
 **Category:** Construction
@@ -1217,6 +1327,23 @@ Unbiased covariances are given by the formula
 **Parameters:**
 * `calendar` (Calendar) - The calendar for the timeseries of this curve timeseries
 * `ondate` (CurveDate) - The date index for this curve timeseries
+
+**Returns:** CurveSeries
+
+
+
+---
+
+### CurveSeries(calendar, ondate, data)
+
+**Category:** Construction
+
+**Description:** Creates a new Curve Series
+
+**Parameters:**
+* `calendar` (Calendar) - The calendar for the timeseries of this curve timeseries
+* `ondate` (CurveDate) - The date index for this curve timeseries
+* `data` (List) - All the values of this TimeSeries
 
 **Returns:** CurveSeries
 
@@ -1242,23 +1369,6 @@ Unbiased covariances are given by the formula
 
 ---
 
-### CurveSeries(calendar, ondate, data)
-
-**Category:** Construction
-
-**Description:** Creates a new Curve Series
-
-**Parameters:**
-* `calendar` (Calendar) - The calendar for the timeseries of this curve timeseries
-* `ondate` (CurveDate) - The date index for this curve timeseries
-* `data` (List) - All the values of this TimeSeries
-
-**Returns:** CurveSeries
-
-
-
----
-
 ### DailyCalendar()
 
 **Category:** Construction
@@ -1273,15 +1383,13 @@ Unbiased covariances are given by the formula
 
 ---
 
-### Date(date, format)
+### Date()
 
 **Category:** Construction
 
-**Description:** Creates a new Date variable
+**Description:** Creates a new Date variable as the current date
 
 **Parameters:**
-* `date` (Scalar) - The date as a string
-* `format` (Scalar) - The format of the date, e.g. 'dd-MM-yyyy'
 
 **Returns:** Date
 
@@ -1304,13 +1412,15 @@ Unbiased covariances are given by the formula
 
 ---
 
-### Date()
+### Date(date, format)
 
 **Category:** Construction
 
-**Description:** Creates a new Date variable as the current date
+**Description:** Creates a new Date variable
 
 **Parameters:**
+* `date` (Scalar) - The date as a string
+* `format` (Scalar) - The format of the date, e.g. 'dd-MM-yyyy'
 
 **Returns:** Date
 
@@ -1363,6 +1473,21 @@ Unbiased covariances are given by the formula
 
 ---
 
+### DocumentationLink(url)
+
+**Category:** Construction
+
+**Description:** Creates a new documentation URL Link configuration
+
+**Parameters:**
+* `url` (String) - The HTML URL of the documentation
+
+**Returns:** Documentation
+
+
+
+---
+
 ### DocumentationLink(url, selector)
 
 **Category:** Construction
@@ -1379,16 +1504,16 @@ Unbiased covariances are given by the formula
 
 ---
 
-### DocumentationLink(url)
+### Duration(dur)
 
 **Category:** Construction
 
-**Description:** Creates a new documentation URL Link configuration
+**Description:** Creates a new Duration
 
 **Parameters:**
-* `url` (String) - The HTML URL of the documentation
+* `dur` (String) - The code for the duration, e.g. 1D
 
-**Returns:** Documentation
+**Returns:** Duration
 
 
 
@@ -1410,21 +1535,6 @@ Unbiased covariances are given by the formula
 
 ---
 
-### Duration(dur)
-
-**Category:** Construction
-
-**Description:** Creates a new Duration
-
-**Parameters:**
-* `dur` (String) - The code for the duration, e.g. 1D
-
-**Returns:** Duration
-
-
-
----
-
 ### DynamicReport()
 
 **Category:** Construction
@@ -1439,43 +1549,49 @@ Unbiased covariances are given by the formula
 
 ---
 
-### element()
+### element(items, index)
 
 **Category:** General
 
-**Description:** 
+**Description:** The item at a position in a list, counting from 0
 
 **Parameters:**
+* `items` (List) - The list
+* `index` (Integer) - The position of the item
 
-**Returns:** 
+**Returns:** Any
 
 
 
 ---
 
-### elementValues()
+### elementValues(items, property)
 
 **Category:** General
 
-**Description:** 
+**Description:** The value of one property of each object in a list
 
 **Parameters:**
+* `items` (List) - A list of objects
+* `property` (String) - The name of the property
 
-**Returns:** 
+**Returns:** List
 
 
 
 ---
 
-### elementValuesIndexOf()
+### elementValuesIndexOf(items, index)
 
 **Category:** General
 
-**Description:** 
+**Description:** The item at a position in each list of a list of lists, for example one column of a list of rows
 
 **Parameters:**
+* `items` (List) - A list of lists
+* `index` (Integer) - The position, counting from 0
 
-**Returns:** 
+**Returns:** List
 
 
 
@@ -1543,20 +1659,6 @@ Unbiased covariances are given by the formula
 
 ---
 
-### equals()
-
-**Category:** Strings
-
-**Description:** 
-
-**Parameters:**
-
-**Returns:** 
-
-
-
----
-
 ### equalsIgnoreCase(str1, str2)
 
 **Category:** Strings
@@ -1588,6 +1690,21 @@ Unbiased covariances are given by the formula
 
 ---
 
+### Event(time)
+
+**Category:** Construction
+
+**Description:** Creates an event that can be added to an object
+
+**Parameters:**
+* `time` (Date) - The observed time of this event
+
+**Returns:** Event
+
+
+
+---
+
 ### Event(ondate, tenor)
 
 **Category:** Construction
@@ -1597,21 +1714,6 @@ Unbiased covariances are given by the formula
 **Parameters:**
 * `ondate` (CurveDate) - The ondate for this event
 * `tenor` (String) - The tenor for this event
-
-**Returns:** Event
-
-
-
----
-
-### Event(time)
-
-**Category:** Construction
-
-**Description:** Creates an event that can be added to an object
-
-**Parameters:**
-* `time` (Date) - The observed time of this event
 
 **Returns:** Event
 
@@ -1683,6 +1785,21 @@ Unbiased covariances are given by the formula
 
 ---
 
+### ExpiryCalendar(holiday)
+
+**Category:** Construction
+
+**Description:** Creates a new expiry Calendar
+
+**Parameters:**
+* `holiday` (Calendar or String) - The holiday or trading calendar to use with this expiry calendar. Can either be the name or a calendar or an actual calendar.
+
+**Returns:** ExpiryCalendar
+
+
+
+---
+
 ### ExpiryCalendar(holiday, delivery)
 
 **Category:** Construction
@@ -1692,21 +1809,6 @@ Unbiased covariances are given by the formula
 **Parameters:**
 * `holiday` (Calendar or String) - The holiday or trading calendar to use with this expiry calendar. Can either be the name or a calendar or an actual calendar.
 * `delivery` (Calendar or String) - The delivery calendar to use with this expiry calendar. Can either be the name or a calendar or an actual calendar.
-
-**Returns:** ExpiryCalendar
-
-
-
----
-
-### ExpiryCalendar(holiday)
-
-**Category:** Construction
-
-**Description:** Creates a new expiry Calendar
-
-**Parameters:**
-* `holiday` (Calendar or String) - The holiday or trading calendar to use with this expiry calendar. Can either be the name or a calendar or an actual calendar.
 
 **Returns:** ExpiryCalendar
 
@@ -1753,6 +1855,21 @@ Unbiased covariances are given by the formula
 **Parameters:**
 
 **Returns:** Extension
+
+
+
+---
+
+### extractDates(text)
+
+**Category:** Loader
+
+**Description:** Finds the dates written in a line of text, such as 19 July 2025 or 14, 15 and 16 July 2025. Returns an object with the list of dates and the kind of text: single, list or range
+
+**Parameters:**
+* `text` (String) - The text to read
+
+**Returns:** Object
 
 
 
@@ -1807,29 +1924,32 @@ Unbiased covariances are given by the formula
 
 ---
 
-### firstElement()
+### firstElement(items)
 
 **Category:** General
 
-**Description:** 
+**Description:** The first item of a list. For an extracted item, its content
 
 **Parameters:**
+* `items` (List) - The list
 
-**Returns:** 
+**Returns:** Any
 
 
 
 ---
 
-### firstElementOf()
+### firstElementOf(items, value)
 
 **Category:** Loader
 
-**Description:** 
+**Description:** The position of the first item of a list that equals a value, ignoring case, or -1
 
 **Parameters:**
+* `items` (List) - The list
+* `value` (String) - The value to find
 
-**Returns:** 
+**Returns:** Integer
 
 
 
@@ -1865,99 +1985,117 @@ Unbiased covariances are given by the formula
 
 ---
 
-### formatDateLocale()
+### formatDateLocale(date, format, locale)
 
 **Category:** Loader
 
-**Description:** 
+**Description:** Converts a string to a Date using a date format and a locale for the month and day names
 
 **Parameters:**
+* `date` (String) - The date text
+* `format` (String) - The date format
+* `locale` (String) - The locale, e.g. es
 
-**Returns:** 
+**Returns:** Date
 
 
 
 ---
 
-### formatDates()
+### formatDates(items, suffix, format)
 
 **Category:** Loader
 
-**Description:** 
+**Description:** Converts each item of a list to a Date using a date format. The optional suffix is added to each value before it is parsed
 
 **Parameters:**
+* `items` (List) - The list of values
+* `suffix` (String) - Text to add to each value, or an empty string
+* `format` (String) - The date format, e.g. dd/MM/yyyy
 
-**Returns:** 
+**Returns:** List
 
 
 
 ---
 
-### formatDatesWithLocale()
+### formatDatesWithLocale(items, suffix, format, locale)
 
 **Category:** Loader
 
-**Description:** 
+**Description:** Converts each item of a list to a Date using a date format and a locale for the month and day names
 
 **Parameters:**
+* `items` (List) - The list of values
+* `suffix` (String) - Text to add to each value, or an empty string
+* `format` (String) - The date format, e.g. dd MMMM yyyy
+* `locale` (String) - The locale, e.g. fr
 
-**Returns:** 
+**Returns:** List
 
 
 
 ---
 
-### formatHarvestDates()
+### formatHarvestDates(items, years, format)
 
 **Category:** Loader
 
-**Description:** 
+**Description:** Converts a list of day and month values in a harvest (crop) year to Dates, moving to the second year when the dates wrap round
 
 **Parameters:**
+* `items` (List) - The list of values
+* `years` (String) - The harvest years, e.g. 2025/2026
+* `format` (String) - The date format of the values with the year added
 
-**Returns:** 
+**Returns:** List
 
 
 
 ---
 
-### formatInteger()
+### formatInteger(value, format)
 
 **Category:** Loader
 
-**Description:** 
+**Description:** Formats a whole number with leading zeros or a format string
 
 **Parameters:**
+* `value` (Integer) - The number
+* `format` (String) - The number of digits, e.g. 3 for 007, or a format such as %05d
 
-**Returns:** 
+**Returns:** String
 
 
 
 ---
 
-### formatListValues()
+### formatListValues(items, locale)
 
 **Category:** Loader
 
-**Description:** 
+**Description:** Converts each number written in a locale in a list to a plain number
 
 **Parameters:**
+* `items` (List) - The list of values
+* `locale` (String) - The locale of the numbers
 
-**Returns:** 
+**Returns:** List
 
 
 
 ---
 
-### formatNumericValues()
+### formatNumericValues(items)
 
 **Category:** Loader
 
-**Description:** 
+**Description:** Converts each numeric string in a list to a plain number, including values in scientific notation
 
 **Parameters:**
+* `items` (List) - The list of values
 
-**Returns:** 
+**Returns:** List
 
 
 
@@ -1979,29 +2117,35 @@ Unbiased covariances are given by the formula
 
 ---
 
-### formatValue()
+### formatValue(value, locale)
 
 **Category:** Loader
 
-**Description:** 
+**Description:** Converts a number written in a locale, e.g. 1.234,5 in German, to a plain number
 
 **Parameters:**
+* `value` (String) - The number text
+* `locale` (String) - The locale of the number
 
-**Returns:** 
+**Returns:** String
 
 
 
 ---
 
-### formatValues()
+### formatValues(items, separator, index, locale)
 
 **Category:** Loader
 
-**Description:** 
+**Description:** Takes one part of each item of a list, split by a separator, and converts it to a plain number using a locale
 
 **Parameters:**
+* `items` (List) - The list of values
+* `separator` (String) - The regular expression to split each value by
+* `index` (Integer) - The part to use, counting from 0
+* `locale` (String) - The locale of the numbers
 
-**Returns:** 
+**Returns:** List
 
 
 
@@ -2100,7 +2244,15 @@ Unbiased covariances are given by the formula
 
 **Category:** Statistics
 
-**Description:** GLSMultipleLinearRegression provide least squares regression to fit the linear model
+**Description:** GLSMultipleLinearRegression provide least squares regression to fit the linear model:
+
+Y=X*b+u
+
+where Y is an n-vector regressand, X is a [n,k] matrix whose k columns are called regressors, b is k-vector of regression parameters and u is an n-vector of error terms or residuals.
+
+GLSMultipleLinearRegression implements Generalized Least Squares.
+
+Data for OLS models can be loaded in a single double[] array, consisting of concatenated rows of data, each containing the regressand (Y) value, followed by regressor values; or using a double[][] array with rows corresponding to observations. GLS models also require a double[][] array representing the covariance matrix of the error terms.
 
 **Parameters:**
 * `y` (Matrix) - An [n,1] array representing the y sample
@@ -2122,6 +2274,21 @@ Unbiased covariances are given by the formula
 **Parameters:**
 
 **Returns:** Group
+
+
+
+---
+
+### hashsha256(value)
+
+**Category:** Loader
+
+**Description:** The SHA-256 hash of a string, as a hexadecimal string
+
+**Parameters:**
+* `value` (String) - The string to hash
+
+**Returns:** String
 
 
 
@@ -2221,15 +2388,17 @@ Unbiased covariances are given by the formula
 
 ---
 
-### initialiseList()
+### initialiseList(size, value)
 
 **Category:** Loader
 
-**Description:** 
+**Description:** Creates a list of a given size with every item set to a value
 
 **Parameters:**
+* `size` (Integer) - The number of items
+* `value` (String) - The value of each item
 
-**Returns:** 
+**Returns:** List
 
 
 
@@ -2244,60 +2413,6 @@ Unbiased covariances are given by the formula
 **Parameters:**
 
 **Returns:** Report
-
-
-
----
-
-### IntradayCalendar(period, holiday, withoutHours, timezone, useHolidays)
-
-**Category:** Construction
-
-**Description:** Creates a new Intraday Calendar
-
-**Parameters:**
-* `period` (Duration) - The periodicity of this calendar, e.g. 1h for hourly
-* `holiday` (Calendar) - The holiday calendar which determines the days that observations are recorded
-* `withoutHours` (List) - A list of integers representing hours of the day to exclude from this calendar
-* `timezone` (String) - The timezone for this intraday calendar
-* `useHolidays` (Boolean) - True to include holiday days in the block, i.e. for off-peak calendars
-
-**Returns:** Calendar
-
-
-
----
-
-### IntradayCalendar(period, holiday, withoutHours, timezone)
-
-**Category:** Construction
-
-**Description:** Creates a new Intraday Calendar
-
-**Parameters:**
-* `period` (Duration) - The periodicity of this calendar, e.g. 1h for hourly
-* `holiday` (Calendar) - The holiday calendar which determines the days that observations are recorded
-* `withoutHours` (List) - A list of integers representing hours of the day to exclude from this calendar
-* `timezone` (String) - The timezone for this intraday calendar
-
-**Returns:** Calendar
-
-
-
----
-
-### IntradayCalendar(period, holiday, withoutHours)
-
-**Category:** Construction
-
-**Description:** Creates a new Intraday Calendar
-
-**Parameters:**
-* `period` (Duration) - The periodicity of this calendar, e.g. 1h for hourly
-* `holiday` (Calendar) - The holiday calendar which determines the days that observations are recorded
-* `withoutHours` (List) - A list of integers representing hours of the day to exclude from this calendar
-
-**Returns:** Calendar
 
 
 
@@ -2327,6 +2442,60 @@ Unbiased covariances are given by the formula
 **Parameters:**
 * `period` (Duration) - The periodicity of this calendar, e.g. 1h for hourly
 * `holiday` (Calendar) - The holiday calendar which determines the days that observations are recorded
+
+**Returns:** Calendar
+
+
+
+---
+
+### IntradayCalendar(period, holiday, withoutHours)
+
+**Category:** Construction
+
+**Description:** Creates a new Intraday Calendar
+
+**Parameters:**
+* `period` (Duration) - The periodicity of this calendar, e.g. 1h for hourly
+* `holiday` (Calendar) - The holiday calendar which determines the days that observations are recorded
+* `withoutHours` (List) - A list of integers representing hours of the day to exclude from this calendar
+
+**Returns:** Calendar
+
+
+
+---
+
+### IntradayCalendar(period, holiday, withoutHours, timezone)
+
+**Category:** Construction
+
+**Description:** Creates a new Intraday Calendar
+
+**Parameters:**
+* `period` (Duration) - The periodicity of this calendar, e.g. 1h for hourly
+* `holiday` (Calendar) - The holiday calendar which determines the days that observations are recorded
+* `withoutHours` (List) - A list of integers representing hours of the day to exclude from this calendar
+* `timezone` (String) - The timezone for this intraday calendar
+
+**Returns:** Calendar
+
+
+
+---
+
+### IntradayCalendar(period, holiday, withoutHours, timezone, useHolidays)
+
+**Category:** Construction
+
+**Description:** Creates a new Intraday Calendar
+
+**Parameters:**
+* `period` (Duration) - The periodicity of this calendar, e.g. 1h for hourly
+* `holiday` (Calendar) - The holiday calendar which determines the days that observations are recorded
+* `withoutHours` (List) - A list of integers representing hours of the day to exclude from this calendar
+* `timezone` (String) - The timezone for this intraday calendar
+* `useHolidays` (Boolean) - True to include holiday days in the block, i.e. for off-peak calendars
 
 **Returns:** Calendar
 
@@ -2425,29 +2594,32 @@ Unbiased covariances are given by the formula
 
 ---
 
-### lastElement()
+### lastElement(items)
 
 **Category:** General
 
-**Description:** 
+**Description:** The last item of a list. For an extracted item, its content
 
 **Parameters:**
+* `items` (List) - The list
 
-**Returns:** 
+**Returns:** Any
 
 
 
 ---
 
-### lastElementOf()
+### lastElementOf(items, value)
 
 **Category:** Loader
 
-**Description:** 
+**Description:** The position of the last item of a list that equals a value, ignoring case, or -1
 
 **Parameters:**
+* `items` (List) - The list
+* `value` (String) - The value to find
 
-**Returns:** 
+**Returns:** Integer
 
 
 
@@ -2514,13 +2686,14 @@ Unbiased covariances are given by the formula
 
 ---
 
-### LineString()
+### LineString(coordinates)
 
 **Category:** Geometry construction
 
 **Description:** Creates a LineString geometry object with the supplied list of coordinates
 
 **Parameters:**
+* `coordinates` (List of [longitude, latitude]) - The points of the line
 
 **Returns:** GeoSpatial
 
@@ -2528,13 +2701,15 @@ Unbiased covariances are given by the formula
 
 ---
 
-### Link()
+### Link(name, item)
 
 **Category:** Construction
 
 **Description:** Creates a link that can be added to an item
 
 **Parameters:**
+* `name` (String) - The name of the link
+* `item` (Reference) - A reference to the linked item, for example an object active variable
 
 **Returns:** Reference
 
@@ -2644,29 +2819,46 @@ Unbiased covariances are given by the formula
 
 ---
 
-### matches()
+### matches(regex, value)
 
 **Category:** Loader
 
-**Description:** 
+**Description:** True if the value, or any item of a list, matches a regular expression
 
 **Parameters:**
+* `regex` (String) - The regular expression
+* `value` (String or List) - The value or list to test
 
-**Returns:** 
+**Returns:** Boolean
 
 
 
 ---
 
-### Matrix(x, y)
+### Matrix(y, x)
 
 **Category:** Construction
 
 **Description:** Creates a new matrix
 
 **Parameters:**
-* `x` (Number) - The number of rows
-* `y` (Number) - The number of columns
+* `y` (Number) - The number of rows
+* `x` (Number) - The number of columns
+
+**Returns:** Matrix
+
+
+
+---
+
+### Matrix(labels)
+
+**Category:** Construction
+
+**Description:** Creates a new matrix from a list of labels
+
+**Parameters:**
+* `labels` (List) - The labels to use
 
 **Returns:** Matrix
 
@@ -2691,21 +2883,6 @@ Unbiased covariances are given by the formula
 
 ---
 
-### Matrix(labels)
-
-**Category:** Construction
-
-**Description:** Creates a new matrix from a list of labels
-
-**Parameters:**
-* `labels` (List) - The labels to use
-
-**Returns:** Matrix
-
-
-
----
-
 ### Matrix(labels, v)
 
 **Category:** Construction
@@ -2722,14 +2899,15 @@ Unbiased covariances are given by the formula
 
 ---
 
-### Matrix(labels)
+### Matrix(ylabels, xlabels)
 
 **Category:** Construction
 
 **Description:** Creates a new matrix from a list of labels
 
 **Parameters:**
-* `labels` (List) - The labels to use
+* `ylabels` (List) - The row labels
+* `xlabels` (List) - The column labels
 
 **Returns:** Matrix
 
@@ -2737,15 +2915,16 @@ Unbiased covariances are given by the formula
 
 ---
 
-### Matrix(labels, v)
+### Matrix(ylabels, xlabels, v)
 
 **Category:** Construction
 
 **Description:** Creates a new matrix from a list of labels
 
 **Parameters:**
-* `labels` (List) - The labels to use
-* `v` (Number) - The value to initialise the matrix with
+* `ylabels` (List) - The row labels
+* `xlabels` (List) - The column labels
+* `v` (Number) - The value to initialise all the cells to
 
 **Returns:** Matrix
 
@@ -2783,13 +2962,15 @@ Unbiased covariances are given by the formula
 
 ---
 
-### Message()
+### Message(code, message)
 
 **Category:** Construction
 
 **Description:** Creates a new coded message
 
 **Parameters:**
+* `code` (Integer) - The message code
+* `message` (String) - The message text
 
 **Returns:** Message
 
@@ -2812,7 +2993,7 @@ Unbiased covariances are given by the formula
 
 ---
 
-### metric(metric, calendar, observed, range, filter)
+### metric(metric)
 
 **Category:** Metrics
 
@@ -2820,10 +3001,6 @@ Unbiased covariances are given by the formula
 
 **Parameters:**
 * `metric` (String) - The metric id in the form provider/metric
-* `calendar` (String) - The id of the calendar to aggregate the metrics to
-* `observed` (String) - The aggregation method to use; one of summed,averaged,high,low,beginning,end
-* `range` (String) - The date range expression
-* `filter` (String) - A filter expression to filter the metrics
 
 **Returns:** TimeSeries
 
@@ -2849,6 +3026,25 @@ Unbiased covariances are given by the formula
 
 ---
 
+### metric(metric, calendar, observed, range, filter)
+
+**Category:** Metrics
+
+**Description:** Get a virtual metric timeseries
+
+**Parameters:**
+* `metric` (String) - The metric id in the form provider/metric
+* `calendar` (String) - The id of the calendar to aggregate the metrics to
+* `observed` (String) - The aggregation method to use; one of summed,averaged,high,low,beginning,end
+* `range` (String) - The date range expression
+* `filter` (String) - A filter expression to filter the metrics
+
+**Returns:** TimeSeries
+
+
+
+---
+
 ### metric(metric, properties, calendar, observed, range, filter)
 
 **Category:** Metrics
@@ -2862,21 +3058,6 @@ Unbiased covariances are given by the formula
 * `observed` (String) - The aggregation method to use; one of summed,averaged,high,low,beginning,end
 * `range` (String) - The date range expression
 * `filter` (String) - A filter expression to filter the metrics
-
-**Returns:** TimeSeries
-
-
-
----
-
-### metric(metric)
-
-**Category:** Metrics
-
-**Description:** Get a virtual metric timeseries
-
-**Parameters:**
-* `metric` (String) - The metric id in the form provider/metric
 
 **Returns:** TimeSeries
 
@@ -2930,18 +3111,33 @@ Unbiased covariances are given by the formula
 
 ---
 
-### mod(data)
+### mod(x, y)
 
 **Category:** Numeric
 
 **Description:** Returns the floor modulus for the given x, y numbers
 
 **Parameters:**
-* `data` (Number, List, TimeSeries or Curve) - The input data to transform
+* `x` (Number, List, TimeSeries or Curve) - The value to divide
+* `y` (Number) - The divisor
 
 **Returns:** Number
 
 **Works with:** `curve` `timeseries` `scalar` `list` 
+
+---
+
+### MonthlyCalendar()
+
+**Category:** Construction
+
+**Description:** Creates a new Monthly Calendar
+
+**Parameters:**
+
+**Returns:** Calendar
+
+
 
 ---
 
@@ -2962,13 +3158,17 @@ Unbiased covariances are given by the formula
 
 ---
 
-### MonthlyCalendar()
+### MonthlyCalendar(period, dom, holcal, rollbackwards)
 
 **Category:** Construction
 
 **Description:** Creates a new Monthly Calendar
 
 **Parameters:**
+* `period` (Integer) - The number of periods per year (1,2,3,4,6,12)
+* `dom` (Integer) - The day of month, (1 to 31) 31 for last day of the month
+* `holcal` (String) - The id of the holiday calendar to use
+* `rollbackwards` (Boolean) - True if holiday days roll backwards
 
 **Returns:** Calendar
 
@@ -2990,13 +3190,14 @@ Unbiased covariances are given by the formula
 
 ---
 
-### MultiLineString()
+### MultiLineString(lines)
 
 **Category:** Geometry construction
 
 **Description:** Creates an empty MultiLineString geometry object
 
 **Parameters:**
+* `lines` (List of LineStrings) - The lines
 
 **Returns:** GeoSpatial
 
@@ -3018,13 +3219,14 @@ Unbiased covariances are given by the formula
 
 ---
 
-### MultiPoint()
+### MultiPoint(coordinates)
 
 **Category:** Geometry construction
 
 **Description:** Creates a MultiPoint geometry object with the supplied list of coordinates
 
 **Parameters:**
+* `coordinates` (List of [longitude, latitude]) - The points
 
 **Returns:** GeoSpatial
 
@@ -3046,13 +3248,14 @@ Unbiased covariances are given by the formula
 
 ---
 
-### MultiPolygon()
+### MultiPolygon(polygons)
 
 **Category:** Geometry construction
 
 **Description:** Creates a MultiPolygon geometry object with the supplied polygons
 
 **Parameters:**
+* `polygons` (List of Polygons) - The polygons
 
 **Returns:** GeoSpatial
 
@@ -3147,13 +3350,14 @@ Unbiased covariances are given by the formula
 
 ---
 
-### ObjectWrapper()
+### ObjectWrapper(class)
 
 **Category:** Construction
 
 **Description:** Creates a new OpenDataDSL object wrapper
 
 **Parameters:**
+* `class` (String) - The Java class to wrap
 
 **Returns:** ObjectWrapper
 
@@ -3182,7 +3386,15 @@ Unbiased covariances are given by the formula
 
 **Category:** Statistics
 
-**Description:** OLSMultipleLinearRegression provide least squares regression to fit the linear model
+**Description:** OLSMultipleLinearRegression provide least squares regression to fit the linear model:
+
+Y=X*b+u
+
+where Y is an n-vector regressand, X is a [n,k] matrix whose k columns are called regressors, b is k-vector of regression parameters and u is an n-vector of error terms or residuals.
+
+OLSMultipleLinearRegression provides Ordinary Least Squares Regression.
+
+Data for OLS models can be loaded in a single double[] array, consisting of concatenated rows of data, each containing the regressand (Y) value, followed by regressor values; or using a double[][] array with rows corresponding to observations.
 
 **Parameters:**
 * `y` (Matrix) - An [n,1] array representing the y sample
@@ -3210,6 +3422,22 @@ Unbiased covariances are given by the formula
 
 ---
 
+### parse(date, format)
+
+**Category:** Dates
+
+**Description:** Converts a string into a date using the specified format
+
+**Parameters:**
+* `date` (String) - The stringified date to convert to a Date
+* `format` (String) - The date format to use - see documentation
+
+**Returns:** String
+
+
+
+---
+
 ### parse(date, format, tz)
 
 **Category:** Dates
@@ -3220,22 +3448,6 @@ Unbiased covariances are given by the formula
 * `date` (String) - The stringified date to convert to a Date
 * `format` (String) - The date format to use - see documentation
 * `tz` (String) - The timezone to use - see documentation
-
-**Returns:** String
-
-
-
----
-
-### parse(date, format)
-
-**Category:** Dates
-
-**Description:** Converts a string into a date using the specified format
-
-**Parameters:**
-* `date` (String) - The stringified date to convert to a Date
-* `format` (String) - The date format to use - see documentation
 
 **Returns:** String
 
@@ -3289,15 +3501,14 @@ Unbiased covariances are given by the formula
 
 ---
 
-### Point(longitude, latitude)
+### Point(coordinate)
 
 **Category:** Geometry construction
 
 **Description:** Creates a single coordinate point
 
 **Parameters:**
-* `longitude` (Scalar) - The longitude geographic coordinate as a decimal fraction between -180 and 180
-* `latitude` (Scalar) - The latitude geographic coordinate as a decimal fraction between -90 and 90
+* `coordinate` (List) - The point as [longitude, latitude]
 
 **Returns:** GeoSpatial
 
@@ -3323,20 +3534,6 @@ Unbiased covariances are given by the formula
 
 **Category:** Geometry construction
 
-**Description:** Creates a Polygon geometry object with a multiple rings containing the supplied geometries
-
-**Parameters:**
-
-**Returns:** GeoSpatial
-
-
-
----
-
-### Polygon()
-
-**Category:** Geometry construction
-
 **Description:** Creates a empty Polygon geometry object
 
 **Parameters:**
@@ -3347,13 +3544,29 @@ Unbiased covariances are given by the formula
 
 ---
 
-### Polygon()
+### Polygon(rings)
+
+**Category:** Geometry construction
+
+**Description:** Creates a Polygon geometry object with a multiple rings containing the supplied geometries
+
+**Parameters:**
+* `rings` (List of geometries) - The rings of the polygon
+
+**Returns:** GeoSpatial
+
+
+
+---
+
+### Polygon(coordinates)
 
 **Category:** Geometry construction
 
 **Description:** Creates a Polygon geometry object with a single ring containing the supplied coordinates
 
 **Parameters:**
+* `coordinates` (List of [longitude, latitude]) - The points of the ring
 
 **Returns:** GeoSpatial
 
@@ -3479,6 +3692,21 @@ Unbiased covariances are given by the formula
 
 ---
 
+### queryParams(url)
+
+**Category:** Loader
+
+**Description:** The query parameters of a URL as an object, decoded
+
+**Parameters:**
+* `url` (String) - The URL, or just its query string
+
+**Returns:** Object
+
+
+
+---
+
 ### Queue(name)
 
 **Category:** Construction
@@ -3523,17 +3751,15 @@ Unbiased covariances are given by the formula
 
 ---
 
-### ref(Service, Id)
+### RedactionPolicy()
 
-**Category:** General
+**Category:** Construction
 
-**Description:** Creates a reference to a variable
+**Description:** Creates a new security redaction policy
 
 **Parameters:**
-* `Service` (String) - The name of the service where the variable exists
-* `Id` (String) - The id of the variable to create a reference to
 
-**Returns:** Reference
+**Returns:** RedactionPolicy
 
 
 
@@ -3547,6 +3773,22 @@ Unbiased covariances are given by the formula
 
 **Parameters:**
 * `var` (Any Var) - The value to create a reference to
+
+**Returns:** Reference
+
+
+
+---
+
+### ref(Service, Id)
+
+**Category:** General
+
+**Description:** Creates a reference to a variable
+
+**Parameters:**
+* `Service` (String) - The name of the service where the variable exists
+* `Id` (String) - The id of the variable to create a reference to
 
 **Returns:** Reference
 
@@ -3570,29 +3812,32 @@ Unbiased covariances are given by the formula
 
 ---
 
-### removeDuplicates()
+### removeDuplicates(from, remove)
 
 **Category:** Loader
 
-**Description:** 
+**Description:** The items of the first list that are not in the second list
 
 **Parameters:**
+* `from` (List) - The list to take items from
+* `remove` (List) - The items to leave out
 
-**Returns:** 
+**Returns:** List
 
 
 
 ---
 
-### removeEmpty()
+### removeEmpty(items)
 
 **Category:** Loader
 
-**Description:** 
+**Description:** Removes the empty items from a list
 
 **Parameters:**
+* `items` (List) - The list of values
 
-**Returns:** 
+**Returns:** List
 
 
 
@@ -3632,43 +3877,67 @@ Unbiased covariances are given by the formula
 
 ---
 
-### replaceElements()
+### replaceElements(items, value)
 
 **Category:** General
 
-**Description:** 
+**Description:** A list of the same length with every item replaced by a value
 
 **Parameters:**
+* `items` (List) - The list
+* `value` (String) - The value to use
 
-**Returns:** 
+**Returns:** List
 
 
 
 ---
 
-### replaceEmptyValues()
+### replaceEmptyValues(items, value)
 
 **Category:** Loader
 
-**Description:** 
+**Description:** Replaces the empty items of a list with a value
 
 **Parameters:**
+* `items` (List) - The list of values
+* `value` (String) - The value to use
 
-**Returns:** 
+**Returns:** List
 
 
 
 ---
 
-### replaceValues()
+### replaceQueryParam(url, name, value)
 
 **Category:** Loader
 
-**Description:** 
+**Description:** A URL with the value of one query parameter replaced
 
 **Parameters:**
+* `url` (String) - The URL
+* `name` (String) - The name of the parameter
+* `value` (String) - The new value, which is URL encoded
 
-**Returns:** 
+**Returns:** String
+
+
+
+---
+
+### replaceValues(items, regex, replacement)
+
+**Category:** Loader
+
+**Description:** Replaces every match of a regular expression in each item of a list
+
+**Parameters:**
+* `items` (List) - The list of values
+* `regex` (String) - The regular expression to find
+* `replacement` (String) - The replacement text
+
+**Returns:** List
 
 
 
@@ -3702,15 +3971,16 @@ Unbiased covariances are given by the formula
 
 ---
 
-### reverseList()
+### reverseList(items)
 
 **Category:** Loader
 
-**Description:** 
+**Description:** Reverses the order of a list
 
 **Parameters:**
+* `items` (List) - The list
 
-**Returns:** 
+**Returns:** List
 
 
 
@@ -3810,15 +4080,14 @@ Unbiased covariances are given by the formula
 
 ---
 
-### sequence(base, other)
+### sequence(timeseries)
 
 **Category:** TimeSeries
 
 **Description:** Returns a TimeSeries with all the non-missing values from other added to base
 
 **Parameters:**
-* `base` (TimeSeries) - The base TimeSeries to use as the source
-* `other` (TimeSeries) - The TimeSeries to overlay on top of the base, all non-missing values from this TimeSeries will be added to missing values in base
+* `timeseries` (List of TimeSeries) - The timeseries to combine, in order
 
 **Returns:** TimeSeries
 
@@ -3875,10 +4144,20 @@ Unbiased covariances are given by the formula
 
 **Category:** Statistics
 
-**Description:** Provides ordinary least squares regression with one independent variable estimating the linear model
+**Description:** Provides ordinary least squares regression with one independent variable estimating the linear model:
+
+y = intercept + slope * x
+
+or
+
+y = slope * x
+
+Standard errors for intercept and slope are available as well as ANOVA, r-square and Pearson's r statistics.
+
+Observations (x,y pairs) can be added to the model one at a time or they can be provided in a 2-dimensional array. The observations are not stored in memory, so there is no limit to the number of observations that can be added to the model.
 
 **Parameters:**
-* `data` (TimeSeries) - The input data to perform the calculation on
+* `data` (Matrix) - The input data to perform the calculation on
 
 **Returns:** Object
 
@@ -3890,10 +4169,20 @@ Unbiased covariances are given by the formula
 
 **Category:** Statistics
 
-**Description:** Provides ordinary least squares regression with one independent variable estimating the linear model
+**Description:** Provides ordinary least squares regression with one independent variable estimating the linear model:
+
+y = intercept + slope * x
+
+or
+
+y = slope * x
+
+Standard errors for intercept and slope are available as well as ANOVA, r-square and Pearson's r statistics.
+
+Observations (x,y pairs) can be added to the model one at a time or they can be provided in a 2-dimensional array. The observations are not stored in memory, so there is no limit to the number of observations that can be added to the model.
 
 **Parameters:**
-* `data` (Matrix) - The input data to perform the calculation on
+* `data` (TimeSeries) - The input data to perform the calculation on
 
 **Returns:** Object
 
@@ -3992,23 +4281,6 @@ Unbiased covariances are given by the formula
 
 ---
 
-### SmartTimeSeries(start, calendar, expression)
-
-**Category:** Construction
-
-**Description:** Creates a new Smart TimeSeries using a base TimeSeries and expression
-
-**Parameters:**
-* `start` (Date) - The Start Date
-* `calendar` (Calendar) - The TimeSeries calendar
-* `expression` (String) - The expression used to generate the TimeSeries
-
-**Returns:** SmartTimeSeries
-
-
-
----
-
 ### SmartTimeSeries(expression)
 
 **Category:** Construction
@@ -4040,13 +4312,32 @@ Unbiased covariances are given by the formula
 
 ---
 
-### Sphere()
+### SmartTimeSeries(start, calendar, expression)
+
+**Category:** Construction
+
+**Description:** Creates a new Smart TimeSeries using a base TimeSeries and expression
+
+**Parameters:**
+* `start` (Date) - The Start Date
+* `calendar` (Calendar) - The TimeSeries calendar
+* `expression` (String) - The expression used to generate the TimeSeries
+
+**Returns:** SmartTimeSeries
+
+
+
+---
+
+### Sphere(centre, radius)
 
 **Category:** Geometry construction
 
-**Description:** Creates a nearSphere geometry object used in geospatial queries
+**Description:** Creates a centerSphere geometry object used in geospatial queries
 
 **Parameters:**
+* `centre` (List) - The centre as [longitude, latitude]
+* `radius` (Number) - The radius in radians
 
 **Returns:** GeoSpatial
 
@@ -4054,13 +4345,16 @@ Unbiased covariances are given by the formula
 
 ---
 
-### Sphere()
+### Sphere(centre, min, max)
 
 **Category:** Geometry construction
 
-**Description:** Creates a centerSphere geometry object used in geospatial queries
+**Description:** Creates a nearSphere geometry object used in geospatial queries
 
 **Parameters:**
+* `centre` (List) - The centre as [longitude, latitude]
+* `min` (Number) - The minimum distance in metres
+* `max` (Number) - The maximum distance in metres
 
 **Returns:** GeoSpatial
 
@@ -4140,6 +4434,20 @@ Unbiased covariances are given by the formula
 * `text` (String) - The text of the string
 
 **Returns:** String
+
+
+
+---
+
+### Subscription()
+
+**Category:** Construction
+
+**Description:** Creates a new subscription
+
+**Parameters:**
+
+**Returns:** Subscription
 
 
 
@@ -4281,6 +4589,20 @@ Unbiased covariances are given by the formula
 
 ---
 
+### TargetGroup()
+
+**Category:** Construction
+
+**Description:** Creates a new subscription target group
+
+**Parameters:**
+
+**Returns:** TargetGroup
+
+
+
+---
+
 ### Task()
 
 **Category:** Construction
@@ -4299,7 +4621,7 @@ Unbiased covariances are given by the formula
 
 **Category:** Construction
 
-**Description:** Creates a new TimeOfDay variable using the supplied String in the format [+]hh
+**Description:** Creates a new TimeOfDay variable using the supplied String in the format [+]hh:mm [tz]
 
 **Parameters:**
 * `time` (String) - The time of day in the format [+]hh:mm [tz]
@@ -4429,6 +4751,22 @@ Unbiased covariances are given by the formula
 
 ---
 
+### timeTravel(input, ondate)
+
+**Category:** Curve
+
+**Description:** Creates a new curve projected to the supplied ondate, any expired contracts and removed and relatives are recalculated
+
+**Parameters:**
+* `input` (Curve) - The input curve to time travel
+* `ondate` (Date) - The ondate to travel to
+
+**Returns:** Curve
+
+**Works with:** `curve` 
+
+---
+
 ### toDegrees(data)
 
 **Category:** Numeric
@@ -4459,15 +4797,16 @@ Unbiased covariances are given by the formula
 
 ---
 
-### toPropertySet()
+### toPropertySet(properties)
 
 **Category:** Loader
 
-**Description:** 
+**Description:** Converts a string of name=value pairs separated by commas into an object
 
 **Parameters:**
+* `properties` (String) - The pairs, e.g. region=NW,type=gas
 
-**Returns:** 
+**Returns:** Object
 
 
 
@@ -4488,27 +4827,29 @@ Unbiased covariances are given by the formula
 
 ---
 
-### toUTCDate()
+### toUTCDate(date)
 
 **Category:** Loader
 
-**Description:** 
+**Description:** Converts a date to the UTC timezone
 
 **Parameters:**
+* `date` (Date) - The date
 
-**Returns:** 
+**Returns:** Date
 
 
 
 ---
 
-### trim()
+### trim(str)
 
 **Category:** Strings
 
 **Description:** Returns a string with any space characters from the start or end of the string removed
 
 **Parameters:**
+* `str` (String) - The string to trim
 
 **Returns:** String
 
@@ -4572,6 +4913,20 @@ Unbiased covariances are given by the formula
 * `str` (String) - The string to convert to UPPER case
 
 **Returns:** String
+
+
+
+---
+
+### UserGroup()
+
+**Category:** Construction
+
+**Description:** Creates a new user group
+
+**Parameters:**
+
+**Returns:** UserGroup
 
 
 
@@ -4669,6 +5024,25 @@ Unbiased covariances are given by the formula
 
 ---
 
+### WeeklyCalendar(dow, holcal, rollbackwards, periods, referenceDate)
+
+**Category:** Construction
+
+**Description:** Creates a new Weekly Calendar
+
+**Parameters:**
+* `dow` (String) - The day of week for this weekly calendar, e.g. Monday
+* `holcal` (String) - The id of the holiday calendar to use
+* `rollbackwards` (Boolean) - True if holiday days roll backwards
+* `periods` (String) - The number of weeks
+* `referenceDate` (String) - The reference date to use for calculating the week starting point for multiple periods
+
+**Returns:** Calendar
+
+
+
+---
+
 ### WidgetReport()
 
 **Category:** Construction
@@ -4682,5 +5056,4 @@ Unbiased covariances are given by the formula
 
 
 ---
-
 

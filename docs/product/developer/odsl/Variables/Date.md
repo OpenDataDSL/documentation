@@ -36,6 +36,16 @@ You can also use the [date active variable](https://opendatadsl.atlassian.net/wi
 dav = ${date:"monday"}
 ```
 
+### Constructor functions
+
+|**Function**|**Description**|
+|-|-|
+|Date()|Creates a new Date variable as the current date|
+|Date(date)|Creates a new Date variable|
+|Date(date, format)|Creates a new Date variable|
+|ISODate(date)|Creates a new Date variable from the supplied ISO Date formatted string|
+|TimeStamp()|Creates a new Date variable as the current date and time|
+
 ## Properties
 
 A date has the following properties:
@@ -50,6 +60,15 @@ A date has the following properties:
 |hour|The hour of the day (0-23)|Scalar(Integer)|
 |minute|The minute of the hour (0-59)|Scalar(Integer)|
 |second|The second of the minute (0-59)|Scalar(Integer)|
+|ISOYear|Get the ISO week based year|String|
+|halfHourlyTenor|Get the absolute half hourly tenor from this date|String|
+|hourlyTenor|Get the absolute hourly tenor from this date|String|
+|millis|in millis|String|
+|quarter|Get the quarter|String|
+|quarterHourlyTenor|Get the absolute quarter hourly tenor from this date|String|
+|timezone|The timezone of this date|String|
+|week|Get the week of the year|String|
+|weekOfMonth|Get the week of the year|String|
 
 Example usage of properties:
 ```js
@@ -77,6 +96,11 @@ The date variable has the following methods:
 |dayOfMonth(day)|Returns a new Date as the specific day of the month|Date|
 |dayOfMonth(day, Calendar)|Returns a new Date as the specific day of the month using the supplied calendar|Date|
 |isHoliday(Calendar)|Returns true is this date is a holiday in the supplied calendar|Scalar(Boolean)|
+|endOfDay()|Returns a new Date as the end of the day|Date|
+|inTimezone(timezone)|Returns this date/time in the supplied timezone|Date|
+|isAfter(other)|Returns true if this date is after the supplied date|String|
+|isBefore(other)|Returns true if this date is before the supplied date|String|
+|startOfDay()|Returns a new Date as the start of the day|Date|
 
 Example using methods:
 ```js

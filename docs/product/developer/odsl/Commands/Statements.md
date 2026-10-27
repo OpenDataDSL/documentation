@@ -10,7 +10,7 @@ import Imp from './all/_import.md';
 import Log from './all/_log.md';
 import Logout from './all/_logout.md';
 import Onerror from './all/_onerror.md';
-import Pause from './all/_pause.md'
+import Wait from './all/_wait.md'
 import Print from './all/_print.md';
 import Publish from './all/_publish.md'
 import Return from './all/_return.md';
@@ -36,8 +36,8 @@ All the general OpenDataDSL statement commands
 ## onerror
 <Onerror />
 
-## pause
-<Pause />
+## wait
+<Wait />
 
 ## print
 <Print />

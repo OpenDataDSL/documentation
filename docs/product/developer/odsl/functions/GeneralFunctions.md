@@ -6,6 +6,7 @@ sidebar_position: 19
 
 This document provides a reference for all built-in general functions available in OpenDataDSL.
 
+
 ### clone(var)
 
 **Category:** General
@@ -21,57 +22,64 @@ This document provides a reference for all built-in general functions available 
 
 ---
 
-### content()
+### content(items)
 
 **Category:** General
 
-**Description:** 
+**Description:** The content of each extracted item in a list (the content property of each object), with dates converted to Date values
 
 **Parameters:**
+* `items` (List) - A list of extracted items
 
-**Returns:** 
+**Returns:** List
 
 
 
 ---
 
-### element()
+### element(items, index)
 
 **Category:** General
 
-**Description:** 
+**Description:** The item at a position in a list, counting from 0
 
 **Parameters:**
+* `items` (List) - The list
+* `index` (Integer) - The position of the item
 
-**Returns:** 
+**Returns:** Any
 
 
 
 ---
 
-### elementValues()
+### elementValues(items, property)
 
 **Category:** General
 
-**Description:** 
+**Description:** The value of one property of each object in a list
 
 **Parameters:**
+* `items` (List) - A list of objects
+* `property` (String) - The name of the property
 
-**Returns:** 
+**Returns:** List
 
 
 
 ---
 
-### elementValuesIndexOf()
+### elementValuesIndexOf(items, index)
 
 **Category:** General
 
-**Description:** 
+**Description:** The item at a position in each list of a list of lists, for example one column of a list of rows
 
 **Parameters:**
+* `items` (List) - A list of lists
+* `index` (Integer) - The position, counting from 0
 
-**Returns:** 
+**Returns:** List
 
 
 
@@ -92,15 +100,16 @@ This document provides a reference for all built-in general functions available 
 
 ---
 
-### firstElement()
+### firstElement(items)
 
 **Category:** General
 
-**Description:** 
+**Description:** The first item of a list. For an extracted item, its content
 
 **Parameters:**
+* `items` (List) - The list
 
-**Returns:** 
+**Returns:** Any
 
 
 
@@ -121,15 +130,16 @@ This document provides a reference for all built-in general functions available 
 
 ---
 
-### lastElement()
+### lastElement(items)
 
 **Category:** General
 
-**Description:** 
+**Description:** The last item of a list. For an extracted item, its content
 
 **Parameters:**
+* `items` (List) - The list
 
-**Returns:** 
+**Returns:** Any
 
 
 
@@ -193,6 +203,21 @@ This document provides a reference for all built-in general functions available 
 
 ---
 
+### ref(var)
+
+**Category:** General
+
+**Description:** Creates a reference to a variable
+
+**Parameters:**
+* `var` (Any Var) - The value to create a reference to
+
+**Returns:** Reference
+
+
+
+---
+
 ### ref(Service, Id)
 
 **Category:** General
@@ -209,30 +234,17 @@ This document provides a reference for all built-in general functions available 
 
 ---
 
-### ref(var)
+### replaceElements(items, value)
 
 **Category:** General
 
-**Description:** Creates a reference to a variable
+**Description:** A list of the same length with every item replaced by a value
 
 **Parameters:**
-* `var` (Any Var) - The value to create a reference to
+* `items` (List) - The list
+* `value` (String) - The value to use
 
-**Returns:** Reference
-
-
-
----
-
-### replaceElements()
-
-**Category:** General
-
-**Description:** 
-
-**Parameters:**
-
-**Returns:** 
+**Returns:** List
 
 
 
@@ -311,5 +323,4 @@ This document provides a reference for all built-in general functions available 
 
 
 ---
-
 

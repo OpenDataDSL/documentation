@@ -23,7 +23,11 @@ The API consists of the following calls:
 |GET|\{release\}|v1|List all the environments|
 |GET|\{release\}/\{key\}|v1/TEST|Retrieve a single named environment using it’s unique id|
 |POST|\{release\}|v1|Create or update an environment. The JSON body of the POST request is a simple JSON object with at least an _id property|
-|DELETE|\{release\}/\{key\}|v1/TEST|Delete the environment - note this will completely remove the environment and all data in it - this cannot be performed on the ‘production’ environment|
+|DELETE|\{release\}/\{key\}|v1/TEST|Delete the environment. This completely removes the environment and all the data in it, with its automations. It cannot be done on the production or preview environments|
+
+:::note
+The production and preview environments always exist: they are created for you when you list your environments. The number of environments you can create is limited by your tenant's environment quota (see the tenant service's `quota` function).
+:::
 
 ## Entities
 
@@ -34,9 +38,9 @@ The environment entity contains the following properties
 |**Name**|**Description**|**Type**|
 |-|-|-|
 |_id|Unique id for the data environment|String|
-|description|The name/description of the data environment|String|
-|_createdby|The user id (email) of the user that created the environment|String|
+|name|The name of the data environment|String|
+|description|A description of the data environment|String|
+|_createdBy|The user id (email) of the user that created the environment|String|
 |_timestamp|The timestamp of when the environment was created|String(DateTime)|
 |_size|The size of the stored data in the environment|int|
-|*|Any other properties added when the environment was created or updated|Any|
 

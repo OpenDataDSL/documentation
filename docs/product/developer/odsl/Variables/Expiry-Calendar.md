@@ -28,6 +28,15 @@ eombus.addRule("go to the end of the previous month")
 eomeng = ${expiry:"#EOMENG"}
 ```
 
+### Constructor functions
+
+|**Function**|**Description**|
+|-|-|
+|ExpiryCalendar(code)|Reads an expiry Calendar|
+|ExpiryCalendar(holiday)|Creates a new expiry Calendar|
+|ExpiryCalendar(holiday, delivery)|Creates a new expiry Calendar|
+|FinancialExpiryCalendar(code, holiday, cross, base, offset)|Creates a financial expiry Calendar|
+
 ## Methods
 
 An expiry calendar variable has the following methods:
@@ -37,4 +46,10 @@ An expiry calendar variable has the following methods:
 |addRule(String)|Adds the supplied expiry rule string to this expiry calendar|Void|
 
 See [Expiry Calendar](/docs/odsl/calendar/expiry) for full details about the rules that can be added to an expiry calendar
+
+## Properties
+
+|**Name**|**Description**|**Type**|
+|-|-|-|
+|name|Get the name of the underlying ODSL Calendar|String|
 

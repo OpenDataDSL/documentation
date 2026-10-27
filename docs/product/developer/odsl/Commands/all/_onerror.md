@@ -2,14 +2,15 @@ Determines how errors are handled
 
 #### Syntax
 ```js
-on error (exit|ignore)
+on error (exit|ignore|return "transition")
 ```
 #### Description
 
-The on error statement instructs OpenDataDSL on how you want to handle errors. You have 2 options:
+The on error statement instructs OpenDataDSL on how you want to handle errors. You have 3 options:
 
 *   exit - this is the default action which stops the currently running script and outputs the error message    
 *   ignore - this option doesn’t stop the script running, but it places the error message into a scalar variable called **error**
+*   return "transition" - only in a workflow action: when an error happens, the workflow follows the named transition instead of failing
     
 
 #### Examples

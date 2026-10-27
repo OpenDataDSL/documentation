@@ -43,6 +43,15 @@ A CurveDate has the following properties:
 |minute|The minute of the hour (0-59)|Scalar(Integer)|
 |second|The second of the minute (0-59)|Scalar(Integer)|
 |calendar|The [expiry calendar](ExpiryCalendar) associated with this curve date (readonly)|ExpiryCalendar|
+|ISOYear|Get the ISO week based year|String|
+|halfHourlyTenor|Get the absolute half hourly tenor from this date|String|
+|hourlyTenor|Get the absolute hourly tenor from this date|String|
+|millis|in millis|String|
+|quarter|Get the quarter|String|
+|quarterHourlyTenor|Get the absolute quarter hourly tenor from this date|String|
+|timezone|The timezone of this date|String|
+|week|Get the week of the year|String|
+|weekOfMonth|Get the week of the year|String|
 
 Example usage of properties:
 ```js
@@ -68,6 +77,19 @@ The date variable has the following methods:
 |previous(Calendar)|Returns the previous day before this one using the calendar|Date|
 |isHoliday(Calendar)|Returns true is this date is a holiday in the supplied calendar|Scalar(Boolean)|
 |getExpiry(Period)|Gets the expiry date for the supplied period code|Date|
+|dayOfMonth(day)|Returns a new Date as the specific day of the month|Date|
+|dayOfMonth(day, Calendar)|Returns a new Date as the specific day of the month using the supplied calendar|Date|
+|endOfDay()|Returns a new Date as the end of the day|Date|
+|endOfMonth()|Returns a new Date as the end of the month|Date|
+|endOfMonth(Calendar)|Returns a new Date as the end of the month using the supplied calendar|Date|
+|getEnd(period)|Returns the end date for the supplied period code|Date|
+|getStart(period)|Returns the start date for the supplied period code|Date|
+|inTimezone(timezone)|Returns this date/time in the supplied timezone|Date|
+|isAfter(other)|Returns true if this date is after the supplied date|String|
+|isBefore(other)|Returns true if this date is before the supplied date|String|
+|startOfDay()|Returns a new Date as the start of the day|Date|
+|startOfMonth()|Returns a new Date as the start of the month|Date|
+|startOfMonth(Calendar)|Returns a new Date as the start of the month using the supplied calendar|Date|
 
 Example using methods:
 ```js

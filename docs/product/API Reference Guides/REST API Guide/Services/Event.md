@@ -20,15 +20,53 @@ https://api.opendatadsl.com/api/event
 |**Method**|**Path**|**Example**|**Description**|
 |-|-|-|-|
 |GET|||Get the build information for this service|
-|GET|\{release\}/\{source\}|v1/private|Get a list of events|
-|GET|\{release\}/\{source\}/\{id\}|v1/private/EXAMPLE:EVENTS|Get events for an event list|
+|GET|\{release\}|v1|List the sources you can read|
+|GET|\{release\}/\{source\}|v1/private|Get a list of the event lists, or of events when you pass a _filter or _aggregate|
+|GET|\{release\}/\{source\}/\{id\}|v1/private/EXAMPLE:EVENTS|Get events for an event list (an id of objectid:eventlist), or a single event|
+|POST|\{release\}/\{source\}/\{id\}|v1/private/EXAMPLE:EVENTS|Add or update events in an event list from a DataFrame, see [Updating events with a DataFrame](#updating-events-with-a-dataframe)|
+|POST|\{release\}/\{source\}|v1/private|Add or update events from a DataFrame with an event column holding objectid:eventlist for each row|
 |PUT|\{release\}/\{source\}/\{id\}/\{version\}/\{tag\}|v1/private/EXAMPLE:EVENTS:ID_2024-05-30_M03/1/PROD|Tag a version with a name (which can be used instead of the version number when retrieving it)|
 |DELETE|\{release\}/\{source\}/\{id\}|v1/private/EXAMPLE:EVENTS:ID_2024-05-30_M03|Rollback an event to the previous version, if there are no other previous versions, the event will be deleted|
 |DELETE|\{release\}/\{source\}/\{id\}/\{version\}|v1/private/EXAMPLE:EVENTS:ID_2024-05-30_M03/*|Delete a specific version or use * to delete all versions|
 
 :::info
-Note: You cannot update events directly, they must be updated attached to a master data record - see Examples
+Events are stored on master data, so you can add and update them by saving the master data record with the events in an event list property (see Examples), or by posting a DataFrame to the event service, which does the same for you.
 :::
+
+### Query parameters
+
+|**Parameter**|**Example**|**Description**|
+|-|-|-|
+|_objfilter|_objfilter=\{"region":"NW"\}|Only returns events whose master data matches the filter|
+|_search|_search=TTF|Searches the events of an event list|
+|_count|_count=true|Event lists are not counted by default, which keeps paging fast on large lists: the response has **x-odsl-moredata** set to true while there are more pages. Pass `_count=true` to get the exact total|
+|_history|_history=true|With a DataFrame POST, writes the events as a history load: faster, and no automations are triggered|
+|_fast|_fast=true|With a DataFrame POST, writes the events in fast mode|
+
+### Updating events with a DataFrame
+
+The body is a DataFrame: a list of `columns`, and `data` with one list of values per row. Each row becomes an event with a property for each column. Post it to the event list id, or to the source with an `event` column holding the objectid:eventlist of each row. The master data must already exist.
+
+```js
+POST https://api.opendatadsl.com/api/event/v1/private/NGE.TRADES:FILLS
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "columns": ["_id", "eventtime", "price", "volume"],
+  "data": [
+    ["T1001", "2026-10-23T09:15:00", 42.15, 10],
+    ["T1002", "2026-10-23T09:32:00", 42.40, 5]
+  ]
+}
+```
+
+### Functions
+
+|**Function**|**Example**|**Description**|
+|-|-|-|
+|timeseries|v1/private/EXAMPLE:EVENTS?_function=timeseries&_tsprop=price|Builds a timeseries from the events, using the `_tsprop` property as the value. Optional: `_calendar` for the timeseries calendar, `_range` and a `_filter` on the events|
+|curve|v1/private/EXAMPLE:EVENTS:2026-10-23?_function=curve&_vprop=price&_tprop=relative&_calendar=%23ICE.NBP|Builds a curve for the ondate in the id from the events, using `_vprop` as the value, `_tprop` as the tenor and `_calendar` as the expiry calendar (all required). An optional `_filter` selects the events|
 
 
 ### Event Object
@@ -207,27 +245,27 @@ Authorization: Bearer {{token}}
 POST {{url}}/object
 Authorization: Bearer {{token}}
 
-\{
+{
   "_id": "EVENT_TEST",
   "_type": "#Object",
-  "_links": \{\},
-  "ASK_TS": \{
+  "_links": {},
+  "ASK_TS": {
     "_id": "ASK_TS",
     "_type": "VarEventTimeSeries",
     "event": "EVENT_TEST:ORDERS",
     "property": "price",
-    "filter": "\{'side': 'ASK'\}"
-  \}
-\}
+    "filter": "{'side': 'ASK'}"
+  }
+}
 
 ### Create an event curve
 POST {{url}}/object
 Authorization: Bearer {{token}}
 
-\{
+{
   "_id": "PZEM.ZTP.TEST",
   "_type": "#Object",
-  "SETTLE": \{
+  "SETTLE": {
     "_id": "SETTLE",
     "_type": "VarEventCurve",
     "event": "PZEM.ZTP.TEST:EVENTS",
@@ -235,18 +273,18 @@ Authorization: Bearer {{token}}
     "tenor": "absolute",
     "calendar": "#REOD",
     "timezone": "Europe/Amsterdam"
-  \}
-\}
+  }
+}
 
 ### Create an event curve with value transformation
 POST {{url}}/object
 Authorization: Bearer {{token}}
 
-\{
+{
   "_id": "AAA",
   "_type": "#Object",
-  "_links": \{\},
-  "VTEC": \{
+  "_links": {},
+  "VTEC": {
     "_id": "VTEC",
     "_type": "VarEventCurve",
 	"name": "test",
@@ -255,7 +293,7 @@ Authorization: Bearer {{token}}
     "valueTransformation": "value * 1.1",
     "tenor": "absolute",
     "calendar": "#REOMB"
-  \}
-\}
+  }
+}
 
 ```

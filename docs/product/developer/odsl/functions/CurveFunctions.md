@@ -6,6 +6,7 @@ sidebar_position: 13
 
 This document provides a reference for all built-in curve functions available in OpenDataDSL.
 
+
 ### asDays(contract)
 
 **Category:** Curve
@@ -21,7 +22,22 @@ This document provides a reference for all built-in curve functions available in
 
 ---
 
-### asHours(contract, timezone)
+### asHalfHours(contract)
+
+**Category:** Curve
+
+**Description:** Splits a Contract into hourly contracts
+
+**Parameters:**
+* `contract` (Contract) - The input contract to split into hours
+
+**Returns:** Contracts
+
+
+
+---
+
+### asHalfHours(contract, timezone)
 
 **Category:** Curve
 
@@ -52,6 +68,22 @@ This document provides a reference for all built-in curve functions available in
 
 ---
 
+### asHours(contract, timezone)
+
+**Category:** Curve
+
+**Description:** Splits a Contract into hourly contracts
+
+**Parameters:**
+* `contract` (Contract) - The input contract to split into hours
+* `timezone` (Contract) - The timezone to use
+
+**Returns:** Contracts
+
+
+
+---
+
 ### asMonths(contract)
 
 **Category:** Curve
@@ -60,6 +92,37 @@ This document provides a reference for all built-in curve functions available in
 
 **Parameters:**
 * `contract` (Contract) - The input contract to split into months
+
+**Returns:** Contracts
+
+
+
+---
+
+### asQuarterHours(contract)
+
+**Category:** Curve
+
+**Description:** Splits a Contract into hourly contracts
+
+**Parameters:**
+* `contract` (Contract) - The input contract to split into hours
+
+**Returns:** Contracts
+
+
+
+---
+
+### asQuarterHours(contract, timezone)
+
+**Category:** Curve
+
+**Description:** Splits a Contract into hourly contracts
+
+**Parameters:**
+* `contract` (Contract) - The input contract to split into hours
+* `timezone` (Contract) - The timezone to use
 
 **Returns:** Contracts
 
@@ -190,4 +253,19 @@ This document provides a reference for all built-in curve functions available in
 
 ---
 
+### timeTravel(input, ondate)
+
+**Category:** Curve
+
+**Description:** Creates a new curve projected to the supplied ondate, any expired contracts and removed and relatives are recalculated
+
+**Parameters:**
+* `input` (Curve) - The input curve to time travel
+* `ondate` (Date) - The ondate to travel to
+
+**Returns:** Curve
+
+**Works with:** `curve` 
+
+---
 

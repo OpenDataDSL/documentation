@@ -23,7 +23,8 @@ The API consists of the following calls:
 |-|-|-|-|
 |GET|||Get the build information for this service|
 |GET|\{release\}/\{source\}|'v1/public' 'v1/private'|List public or private audit entries|
-|GET|\{release\}/\{source\}/\{key\}|v1/private/6090915ad6a48d0b3c4f663d|Retrieve a single audit entry using it’s unique id|
+|GET|\{release\}/\{source\}/\{key\}|v1/private/6090915ad6a48d0b3c4f663d|Retrieve a single audit entry using its unique id|
+|DELETE|\{release\}/\{source\}?_bulk=true&_filter=...|v1/private?_bulk=true&_filter=\{"service":"object"\}|Delete all the audit entries that match the filter, see [Bulk updates and deletes](../standards#bulk-updates-and-deletes)|
 
 ## Entities
 
@@ -34,7 +35,7 @@ The audit entry contains the following information:
 |**Name**|**Description**|**Type**|
 |-|-|-|
 |_id|Unique objectId for the audit entry|ObjectId|
-|timestamp|The UTC timestamp of when the event occurred|DateTime
+|timestamp|The UTC timestamp of when the event occurred|DateTime|
 |user|The user id/email of the user performing the event|String|
 |service|The name of the service that performed the event|String|
 |id|The id of the affected item|String|

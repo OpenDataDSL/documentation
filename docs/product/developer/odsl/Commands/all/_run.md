@@ -2,7 +2,7 @@ Runs a process remotely
 
 #### Syntax
 ```js
-run processname (with input)? (log reason)? (in delay TIMEUNIT)?
+run (service)? processname (:version)? (with input)? (log reason)? (in delay TIMEUNIT)?
 ```
 #### Description
 

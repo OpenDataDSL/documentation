@@ -65,6 +65,7 @@ A timeseries has the following properties:
 |valueType|The value type either TRACKED or BASIC|String|
 |observed|The observed setting of the timeseries used for aggregating, can be beginning, end, summed, averaged, high or low|String|
 |precision|The data value [precision](/docs/kb/precision#data-precision-settings) configuration|String|
+|identity|The configured identities|Object|
 
 A timeseries also supports adding dynamic properties, e.g.
 
@@ -95,6 +96,10 @@ A timeseries has the following methods:
 |from(start)|Returns a subset of this timeseries from the specified start date|timeseries|
 |getLastNValues(n)|Returns the last n values of this timeseries|List(TimeValue)|
 |addCheck(check)|Adds a quality check to this timeseries|timeseries|
+|applyPrecision()|Apply the precision defined to all the observations of this timeseries|Void|
+|convert(currency, units)|Convert this timeseries using currency and units|TimeSeries|
+|getLast(date)|Get the value at the supplied date or the latest value before that date|Var|
+|withRange(start, end)|Changes this timeseries to match the provided date range|Void|
 
 ## Accessing Observations
 

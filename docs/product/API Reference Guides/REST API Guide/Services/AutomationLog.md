@@ -26,6 +26,7 @@ The API consists of the following calls:
 |GET|||Get the build information for this service|
 |GET|\{release\}|v1|List all automation logs|
 |GET|\{release\}/\{id\}|v1/68527adfe438ee467f057624|Get a specific automation log using its _id|
+|DELETE|\{release\}?_bulk=true&_filter=...|v1?_bulk=true&_filter=\{"status":"success"\}|Delete all the automation logs that match the filter, see [Bulk updates and deletes](../standards#bulk-updates-and-deletes)|
 
 ## Entities
 

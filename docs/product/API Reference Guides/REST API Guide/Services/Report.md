@@ -25,11 +25,43 @@ The API consists of the following calls:
 |GET|\{release\}/\{source\}/\{key\}:\{ondate\}/\{version\}|v1/private/TEST:2024-06-12/1|Retrieve a version of a report for the supplied date|
 |GET|\{release\}/\{source\}/\{key\}:\{ondate\}/*|v1/private/TEST:2024-06-12/*|Get a list of versions for a specific report for the supplied date|
 |PUT|\{release\}/\{source\}/\{key\}:\{ondate\}/\{version\}/\{tag\}|v1/private/TEST:2024-06-12/1/PROD|Tag a version with a name (which can be used instead of the version number when retrieving it)|
-|POST|\{release\}/\{source\}/\{key\}:\{ondate\}|v1|Update a manual report, the data is in the body of the POST request|
-|POST|\{release\}/\{source\}/\{key\}:\{ondate\}|v1|Run the report, the POST body must be empty|
-|DELETE|\{release\}/\{source\}/\{key\}:\{ondate\}|v1/private/TEST|Delete a report version, this has the effect of rolling back to the previous version|
+|POST|\{release\}/\{source\}/\{key\}:\{ondate\}|v1/private/TEST:2024-06-12|Update a manual report, the data is in the body of the POST request|
+|POST|\{release\}/\{source\}/\{key\}:\{ondate\}|v1/private/TEST:2024-06-12|Run the report, the POST body must be empty|
+|POST|\{release\}/\{source\}?_test=true&_ondate=\{ondate\}|v1/private?_test=true&_ondate=2024-06-12|Run an unsaved report configuration (the body, with `_type` VarReportConfiguration) for a date and return the report without saving it|
+|DELETE|\{release\}/\{source\}/\{key\}:\{ondate\}|v1/private/TEST:2024-06-12|Delete a report version, this has the effect of rolling back to the previous version|
 |DELETE|\{release\}/\{source\}/\{key\}:\{ondate\}/\{version\}|v1/private/TEST:2024-06-12/1|Delete a version of a report|
 |DELETE|\{release\}/\{source\}/\{key\}:\{ondate\}/*|v1/private/TEST:2024-06-12/*|Fully delete a report, including all versions|
+
+### Report dates
+
+Instead of a date, the last part of the id can be a relative date:
+
+|**Id**|**Example**|**Report**|
+|-|-|-|
+|key:L|TEST:L|The latest report|
+|key:L-n|TEST:L-1|The report n dates before the latest one|
+|key:-date|TEST:-2024-06-12|The report for the date, or the latest one before it|
+|key:&lt;date|TEST:&lt;2024-06-12|The latest report before the date|
+
+### Query parameters
+
+|**Parameter**|**Example**|**Description**|
+|-|-|-|
+|_run|_run=true|Runs the report now for its default range (or `_range`) and returns it without saving it|
+|_range|_range=between(2024-06-01,2024-06-12)|The date range used when running a report|
+|_ondate|_ondate=2024-06-12|The report date used with `_test`|
+|_properties|_properties=\{"region":"NW"\}|Properties added to the report's properties, so its template can use them|
+|_template|_template=%23MyReportTemplate|The mustache template used when you ask for `Accept: text/html`. Without it, the report configuration's own template is used|
+|_report_format|_report_format=text/csv|Formats the report data as CSV, TSV, XML or HTML and returns it as a string in the `data` property of the JSON response|
+|_element|_element=spread|For a composition report: returns one element (column) of the composition as a curve or timeseries|
+|_indexes_only|_indexes_only=true|With the report dates (key without a date), returns just the dates, with the first and last date|
+|_raw|_raw=true|With a key without a date: returns the report configuration instead of the report dates|
+
+When the Excel add-in lists reports (the `x-odsl-app` header is `exceladdin`), reports with the `hideExcel` property are left out.
+
+:::note
+A fixed report with `mergeUpdates` set to true merges each update for a date into the stored report instead of creating a new version. See [Daily status reports](/docs/topics/reporting/daily-status-reports).
+:::
 
 ## Entities
 

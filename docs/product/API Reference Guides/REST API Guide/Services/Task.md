@@ -77,31 +77,31 @@ Authorization: Bearer {{token}}
 POST {{url}}/task/v1
 Authorization: Bearer {{token}}
 
-\{
+{
     "user":"user@example.com",
     "category": "Validation Check",
     "message": "What do you want to do about these issues?"
-\}
+}
 
 ### Update a task
 POST {{url}}/task/v1
 Authorization: Bearer {{token}}
 
-\{
+{
     "_id": "{{id}}",
     "user":"user@example.com",
     "category": "Validation Check",
     "message": "What to do?"
-\}
+}
 
 ### Complete a task
 POST {{url}}/task/v1
 Authorization: Bearer {{token}}
 
-\{
+{
     "_id": "{{id}}",
     "complete": true
-\}
+}
 
 ### Get a task
 GET {{url}}/task/v1/64255eae35f43713c1afa927

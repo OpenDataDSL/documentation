@@ -6,6 +6,7 @@ sidebar_position: 14
 
 This document provides a reference for all built-in matrix functions available in OpenDataDSL.
 
+
 ### correlation(data)
 
 **Category:** Matrix
@@ -20,6 +21,27 @@ where ```E(X)``` and ```E(Y)``` are means of ```X``` and ```Y``` and ```s(X)```,
 
 **Parameters:**
 * `data` (Matrix) - The input data to transform
+
+**Returns:** Matrix
+
+
+
+---
+
+### correlation(data)
+
+**Category:** Matrix
+
+**Description:** Create a Pearsons correlation matrix from a list of timeseries.
+
+PearsonsCorrelation computes correlations defined by the formula
+
+```cor(X, Y) = sum[(xi - E(X))(yi - E(Y))] / [(n - 1)s(X)s(Y)]```
+
+where ```E(X)``` and ```E(Y)``` are means of ```X``` and ```Y``` and ```s(X)```, ```s(Y)``` are standard deviations.
+
+**Parameters:**
+* `data` (A List of timeseries) - The input data to transform
 
 **Returns:** Matrix
 
@@ -42,27 +64,6 @@ where ```E(X)``` and ```E(Y)``` are means of ```X``` and ```Y``` and ```s(X)```,
 **Parameters:**
 * `data` (Matrix) - The input data to transform
 * `shift` (Integer) - The number of days to shift the y-axis
-
-**Returns:** Matrix
-
-
-
----
-
-### correlation(data)
-
-**Category:** Matrix
-
-**Description:** Create a Pearsons correlation matrix from a list of timeseries.
-
-PearsonsCorrelation computes correlations defined by the formula
-
-```cor(X, Y) = sum[(xi - E(X))(yi - E(Y))] / [(n - 1)s(X)s(Y)]```
-
-where ```E(X)``` and ```E(Y)``` are means of ```X``` and ```Y``` and ```s(X)```, ```s(Y)``` are standard deviations.
-
-**Parameters:**
-* `data` (A List of timeseries) - The input data to transform
 
 **Returns:** Matrix
 
@@ -132,5 +133,4 @@ Unbiased covariances are given by the formula
 
 
 ---
-
 

@@ -19,6 +19,16 @@ m1 = Matrix(4, 5)
 m2 = Matrix(["A","B","C"])
 ```
 
+### Constructor functions
+
+|**Function**|**Description**|
+|-|-|
+|IdentityMatrix(size)|Creates a new identity matrix of the given size|
+|Matrix(labels)|Creates a new matrix from a list of labels|
+|Matrix(labels, v)|Creates a new matrix from a list of labels|
+|Matrix(x, y)|Creates a new matrix|
+|Matrix(y, x, v)|Creates a new matrix, initialising all values to the provided value|
+
 ## Properties
 
 A matrix has the following properties:
@@ -36,6 +46,7 @@ A matrix has the following properties:
 |units|The units of the values in this matrix|String|
 |timezone|The timezone for the values in this matrix|String|
 |precision|The data value [precision](/docs/kb/precision#data-precision-settings) configuration|String|
+|identity|The configured identity for this curve|Object|
 
 ## Methods
 
@@ -55,6 +66,16 @@ A matrix has the following methods:
 |getRowForLabel(row)|Gets the row index for a specified row label|Integer|
 |isSameDimensions(matrix)|Tests to see if the passed in matrix is the same dimensions as this matrix|Boolean|
 |transpose()|Returns a 90 degree transposed version of this matrix|Matrix|
+|forwardFill()|Fills null values with the previous value, operates row by row|Void|
+|getColumn(col)|Gets the data for a column|List|
+|getGroupForColumn(col)|Gets the group name for the column number of this matrix (0-based)|String|
+|getGroupForRow(row)|Gets the group name for the row number of this matrix (0-based)|String|
+|getLabelForColumn(col)|Gets the column label for the column number of this matrix (0-based)|String|
+|getLabelForRow(row)|Gets the row label for the row number of this matrix (0-based)|String|
+|getRow(col)|Gets the data for a row|List|
+|getValueAt(y, x)|Gets the value at the specified column and row|Number|
+|subMatrix(rc1, rc2)|Creates a new matrix as a subset of this matrix|Matrix|
+|subMatrix(y1, x1, y2, x2)|Creates a new matrix as a subset of this matrix|Matrix|
 
 ## Using Matrices
 

@@ -184,7 +184,7 @@ Here are the properties of a Dataset Delivery configuration
 |initialised|A datetime when this delivery was initialised|Datetime|
 |score|An integer defining the score for this delivery - 4=No issues, 3=Late&lt;1h, 2=Late&lt;4h, 1=Late>4h, 0=Holiday|Integer|
 |scoreinfo|Text to add context to the score value|String|
-|status|The current status of the delivery|String|
+|status|The current status of the delivery: waiting, active, partial, loaded, late, missing or holiday|String|
 |statusinfo|Text to add context to the status|String|
 |expected|Expected tenors to be delivered, copied from the dataset configuration|Object|
 |expectedChecks|Information about the [quantitative checks](#dataset-delivery-expected-checks-object) performed for each delivery|Object|
@@ -419,6 +419,14 @@ The following functions are available on the dataset REST API:
 |expected|/dataset/v1/ODSL?_function=expected|Calculate the expected tenors for all datasets starting with ODSL based on historic data loads|
 |initialise|/dataset/v1/2024-04-30?_function=initialise|Initialise a dataset for a specified ondate|
 |lateness|/dataset/v1/2024-03-11?_function=lateness|Check the lateness of all datasets for the specified ondate|
+|refresh|/dataset/v1/2024-03-11?_function=refresh|Recalculate the delivery metrics of every dataset delivery for the ondate|
+|markComplete|/dataset/v1/ICE.NDEX.NLB:2024-03-11?_function=markComplete|Mark a dataset delivery as complete (status loaded)|
+|markWaiting|/dataset/v1/ICE.NDEX.NLB:2024-03-11?_function=markWaiting|Set a dataset delivery back to waiting|
+|check|/dataset/v1/ICE.NDEX.NLB:2024-03-11?_function=check|Run the quality checks for a dataset delivery|
+|criticalCheck|/dataset/v1/ICE.NDEX.NLB:2024-03-11?_function=criticalCheck|Run the critical checks for a dataset delivery|
+|runLoader|/dataset/v1/ICE.NDEX/LOADER_PROCESS/2024-03-11?_function=runLoader|Run a smart feed loader process again for a feed and ondate|
+
+These functions work on your private datasets unless you pass a `source` query parameter. With no date, the current ondate is used.
 
 ## Examples
 
@@ -453,21 +461,21 @@ Authorization: Bearer {{token}}
 POST {{url}}/dataset/v1/info
 Authorization: Bearer {{token}}
 
-\{
+{
   "_id": "ODSL.TRADER1.NBP",
-  "expected": \{
+  "expected": {
     "*": 1
-  \}
-\}
+  }
+}
 
 ### Add a common Dataset Info
 POST {{url}}/dataset/v1/info
 Authorization: Bearer {{token}}
 
-\{
+{
   "_id": "ICE.NDEX.NLB",
   "source":"common"
-\}
+}
 
 ### Delete a Dataset info
 DELETE {{url}}/dataset/v1/info/ICE.NDEX.DDA
@@ -514,11 +522,11 @@ Authorization: Bearer {{token}}
 POST {{url}}/dataset/v1/feed
 Authorization: Bearer {{token}}
 
-\{
+{
   "_id": "ODSL.TRADER1",
   "time": "20:00 EU1",
   "late": "23:00 EU1"
-\}
+}
 
 ### Delete a feed
 DELETE {{url}}/dataset/v1/feed/ODSL.TRADER1

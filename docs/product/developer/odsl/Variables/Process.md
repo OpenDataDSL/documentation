@@ -52,6 +52,20 @@ process.settings.factor = 1.2
 save ${process:process}
 ```
 
+## Properties
+
+|**Name**|**Description**|**Type**|
+|-|-|-|
+|dataPackage|Sets this to be a deployable data packages|Boolean|
+
+
+## Methods
+
+|**Name**|**Description**|**Return Type**|
+|-|-|-|
+|run()|Run this process|Any|
+
+
 ## Updating, Finding and Deleting Processes
 
 ### Saving a process

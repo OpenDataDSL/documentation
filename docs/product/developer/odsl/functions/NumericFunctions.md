@@ -6,6 +6,7 @@ sidebar_position: 10
 
 This document provides a reference for all built-in numeric functions available in OpenDataDSL.
 
+
 ### abs(data)
 
 **Category:** Numeric
@@ -187,14 +188,15 @@ This document provides a reference for all built-in numeric functions available 
 
 ---
 
-### mod(data)
+### mod(x, y)
 
 **Category:** Numeric
 
 **Description:** Returns the floor modulus for the given x, y numbers
 
 **Parameters:**
-* `data` (Number, List, TimeSeries or Curve) - The input data to transform
+* `x` (Number, List, TimeSeries or Curve) - The value to divide
+* `y` (Number) - The divisor
 
 **Returns:** Number
 
@@ -322,5 +324,4 @@ This document provides a reference for all built-in numeric functions available 
 **Works with:** `curve` `timeseries` `scalar` `list` 
 
 ---
-
 

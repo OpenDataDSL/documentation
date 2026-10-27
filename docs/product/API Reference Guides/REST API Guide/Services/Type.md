@@ -29,6 +29,7 @@ The API consists of the following calls:
 |DELETE|\{release\}/\{source\}/\{key\}|v1/private/TEST|Rollback to the previous version of a type, if it is the only version then the type will be deleted|
 |DELETE|\{release\}/\{source\}/\{key\}/\{version\}|v1/private/TEST/1|Delete a specific version of a type|
 |DELETE|\{release\}/\{source\}/\{key\}/*|v1/private/TEST/*|Fully delete a type, including all versions|
+|GET|\{release\}/\{source\}/\{key\}?_function=hierarchy|v1/private/TEST?_function=hierarchy|Get the type with its super types, each nested in the `superType` property of the type that extends it|
 
 ## Entities
 
@@ -121,17 +122,17 @@ GET {{url}}/type/v1/private/Switch
 ### Update a private type
 POST {{url}}/type/v1
 
-\{
+{
   "_id": "Test",
   "_type": "Type",
   "_name": "Test",
   "_versioned": false,
-  "name": \{
+  "name": {
     "name": "name",
     "type": "String",
     "_ptype": "Property"
-  \}
-\}
+  }
+}
 
 ### Get a list of versions of private type
 GET {{url}}/type/v1/private/Test/*

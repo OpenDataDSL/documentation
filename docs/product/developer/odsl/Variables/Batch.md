@@ -35,6 +35,9 @@ A batch has the following properties:
 |name|The name of the batch or process that runs this batch|Scalar(String)|
 |service|The service name of the batch or process that runs this batch|Scalar(String)|
 |size|The number of objects in the batch|Scalar(Int)|
+|description|The description of this list|String|
+|fast|Indicates that this batch is loading events using the fast method, no versioning or corrections|Boolean|
+|history|Indicates that this batch is loading history|Boolean|
 
 ## Methods
 A batch variable has the following methods:
@@ -44,4 +47,7 @@ A batch variable has the following methods:
 |add(Object)|Adds an object to the batch|this|
 |addAll(List(Object))|Adds all the objects from the supplied list to this batch|this|
 |subList(int,int)|Gets a list with the elements in the supplied range|List|
+|remove(index)|Removes an element from the list at the specified position (0 being first)|Void|
+|remove(item)|Removes an element from the list|Void|
+|set(index, element)|Replaces the element at the specified position in this list with the specified element|Void|
 

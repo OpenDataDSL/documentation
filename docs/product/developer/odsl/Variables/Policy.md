@@ -140,6 +140,13 @@ Example policy definition:
 }
 ```
 
+## Properties
+
+|**Name**|**Description**|**Type**|
+|-|-|-|
+|tags|Tags to help filter and find policies|List|
+
+
 ## Updating, Finding and Deleting Policies
 
 ### Saving a policy

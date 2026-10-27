@@ -16,6 +16,14 @@ You can construct an object using a constructor function.
 obj = Object()
 ```
 
+### Constructor functions
+
+|**Function**|**Description**|
+|-|-|
+|Object()|Creates a new Object of type #Object|
+|Object(type)|Creates a new Object of the specified type|
+|SimpleObject()|Creates a new SimpleObject or JSON Document|
+
 ## Properties
 
 All properties on an object are dynamic, which means you can add any properties you like, e.g.
@@ -56,3 +64,8 @@ This produces the following JSON output:
   "weight": "264.5"
 }
 ```
+
+|**Name**|**Description**|**Type**|
+|-|-|-|
+|access|Get the name of the access data role for this object|String|
+

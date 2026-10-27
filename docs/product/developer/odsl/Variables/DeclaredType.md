@@ -115,3 +115,16 @@ constraint zip_valid check mark (zip matches "^\d{5}(-\d{4})?$")
 constraint hl_valid check mark (hl in ["high","low"])
 constraint zip_index unique (zip,hl)
 ```
+
+## Properties
+
+|**Name**|**Description**|**Type**|
+|-|-|-|
+|allowLinks|If true, we are allowed to add links to the objects of this type|Boolean|
+|event|True if this type is used to create events|Boolean|
+|mergeEvent|True if you want to merge events rather than replace them|Boolean|
+|showId|Adds the id to the stored entity, defaults to true|Boolean|
+|showStatus|Adds status to the stored entity, defaults to true|Boolean|
+|showType|Adds the type to the stored entity, defaults to true|Boolean|
+|system|True if this is a system managed type|Boolean|
+

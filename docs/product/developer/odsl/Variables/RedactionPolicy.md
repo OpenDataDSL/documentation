@@ -59,6 +59,14 @@ Example redaction policy definition:
 }
 ```
 
+## Properties
+
+|**Name**|**Description**|**Type**|
+|-|-|-|
+|deny|Determines if this policy is an explicit allow or deny policy|Boolean|
+|tags|Tags to help filter and find policies|List|
+
+
 ## Updating, Finding and Deleting Redaction Policies
 
 ### Saving a redaction policy

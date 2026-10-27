@@ -6,22 +6,6 @@ sidebar_position: 20
 
 This document provides a reference for all built-in testing functions available in OpenDataDSL.
 
-### assertEquals(expected, value, message)
-
-**Category:** Testing
-
-**Description:** A test to check if 2 variables or values are equal
-
-**Parameters:**
-* `expected` (Any) - The value you want to test against
-* `value` (Any) - The value to test
-* `message` (String) - The message to display if this test fails
-
-**Returns:** Void
-
-
-
----
 
 ### assertEquals(expected, value)
 
@@ -32,6 +16,23 @@ This document provides a reference for all built-in testing functions available 
 **Parameters:**
 * `expected` (Any) - The value you want to test against
 * `value` (Any) - The value to test
+
+**Returns:** Void
+
+
+
+---
+
+### assertEquals(expected, value, message)
+
+**Category:** Testing
+
+**Description:** A test to check if 2 variables or values are equal
+
+**Parameters:**
+* `expected` (Any) - The value you want to test against
+* `value` (Any) - The value to test
+* `message` (String) - The message to display if this test fails
 
 **Returns:** Void
 
@@ -163,5 +164,4 @@ This document provides a reference for all built-in testing functions available 
 
 
 ---
-
 

@@ -96,6 +96,13 @@ Extensions can also add tabs and views with their own feature names, e.g. `odsl.
 Deny always wins. When your company is onboarded, a feature policy called `EnergyUserFeatures` gives everyone the standard menu items.
 
 
+## Properties
+
+|**Name**|**Description**|**Type**|
+|-|-|-|
+|tags|Tags to help filter and find policies|List|
+
+
 ## Updating, Finding and Deleting Feature Policies
 
 ### Saving a feature policy

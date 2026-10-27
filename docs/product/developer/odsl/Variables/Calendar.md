@@ -38,6 +38,35 @@ hourly = IntradayCalendar(1h)
 peak = IntradayCalendar(1h, holiday, [0,1,2,3,4,5,6,20,21,22,23])
 ```
 
+### Constructor functions
+
+|**Function**|**Description**|
+|-|-|
+|AnnualCalendar()|Creates a new Annual Calendar|
+|BlockCalendar(holiday, observed, start, end)|Creates a new Block Calendar|
+|BlockCalendar(holiday, observed, start, end, timezone)|Creates a new Block Calendar|
+|BusinessCalendar()|Creates a new Business (Monday to Friday) Calendar|
+|Calendar(code)|Creates a new Calendar|
+|CombinedHolidayCalendar()|Creates a new Combined Holiday Calendar|
+|CombinedHolidayCalendar(cal1, cal2)|Creates a new Combined Holiday Calendar using the 2 passed in Holiday Calendars|
+|DailyCalendar()|Creates a new Daily Calendar|
+|HolidayCalendar()|Creates a new Holiday Calendar|
+|HourlyBlockCalendar(holiday, start, end)|Creates a new Hourly Block Calendar|
+|HourlyBlockCalendar(holiday, start, end, timezone)|Creates a new Hourly Block Calendar|
+|IntradayCalendar(period)|Creates a new Intraday Calendar|
+|IntradayCalendar(period, holiday)|Creates a new Intraday Calendar|
+|IntradayCalendar(period, holiday, withoutHours)|Creates a new Intraday Calendar|
+|IntradayCalendar(period, holiday, withoutHours, timezone)|Creates a new Intraday Calendar|
+|IntradayCalendar(period, holiday, withoutHours, timezone, useHolidays)|Creates a new Intraday Calendar|
+|MonthlyCalendar()|Creates a new Monthly Calendar|
+|MonthlyCalendar(code, name, period)|Creates a new Monthly Calendar with a period specifier|
+|MonthlyCalendar(period, dom, holcal, rollbackwards)|Creates a new Monthly Calendar|
+|OffsetDailyCalendar(timezone, dayOffset, hour)|Creates a new Offset Daily Calendar|
+|QuarterlyCalendar()|Creates a new Quarterly Calendar|
+|WeeklyCalendar(dow)|Creates a new Weekly Calendar|
+|WeeklyCalendar(dow, holcal, rollbackwards)|Creates a new Weekly Calendar|
+|WeeklyCalendar(dow, holcal, rollbackwards, periods, referenceDate)|Creates a new Weekly Calendar|
+
 ## Properties
 
 A calendar has the following properties:

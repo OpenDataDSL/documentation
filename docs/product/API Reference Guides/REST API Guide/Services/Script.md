@@ -55,7 +55,15 @@ The script entity contains the following information:
 ## Functions
 |**Function**|**Example**|**Description**|
 |-|-|-|
-|\{function\}(\{params\}...)|netflow("IE","2023-08-01","2023-08-31")|Runs a function within a script|
+|run|v1/private/\{id\}?_function=run|Runs a script, a function in it, or an unsaved script in the request body, and returns the result and the log. See [Running a script through the API](/docs/extensions/script-manager/reference#running-a-script-through-the-api)|
+|check|v1/private?_function=check|Checks the syntax of the ODSL script in the request body without running it. See [Running a script through the API](/docs/extensions/script-manager/reference#running-a-script-through-the-api)|
+|functions|v1/private/\{id\}?_function=functions|Lists the functions in a script, with their parameters and descriptions. Without an id, lists the functions of every script that matches the `_filter`|
+|completion|v1/public/\{id\}?_function=completion&_tag=curve|The functions in a script as editor completion items. `_tag` limits them to functions with that tag|
+|\{function\}(\{params\}...)|netflow("IE","2023-08-01","2023-08-31")|Runs a function within a script and returns its result|
+
+:::note
+Private script ids often contain backslashes, for example `northgate\curves\build-spark-spreads`. When you read a private script, you can also give the id with forward slashes, as `v1/private/northgate/curves/build-spark-spreads`, and a version number can follow as the last part.
+:::
 
 ## Examples
 
@@ -96,13 +104,13 @@ Authorization: Bearer {{token}}
 POST {{url}}/script/v1/private
 Authorization: Bearer {{token}}
 
-\{   
+{   
     "_id":"AAA",
     "_type":"VarScript",
     "script":"base64 encoded script",
     "category":"Examples",
     "description":"Example Description"
-\}
+}
 
 ### Get script versions
 GET {{url}}/script/v1/private/AAA/*
@@ -120,6 +128,6 @@ Authorization: Bearer {{token}}
 ### Run a function in a script
 GET {{url}}/script/v1/public/%23drs_widgets
   ?_function=netflow("IE","2023-08-01","2023-08-31")
-Authorization: Bearer {{token}}r
+Authorization: Bearer {{token}}
 
 ```

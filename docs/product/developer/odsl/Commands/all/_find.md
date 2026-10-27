@@ -3,10 +3,12 @@ Used to search the database
 #### Syntax
 ```js
 varname = find 
-  (top n)?
-  (unique field from | profile profilename (for range)? from)?
+  (top n | unique field | profile profilename (for range)? | for range | info field)?
+  (from)?
   (activevar|avservice)
   (where (condition)+)?
+  (order by field (asc|desc)? (, field (asc|desc)?)*)?
+  (project (!)?field (, (!)?field)*)?
   (end)?
 ```
 
@@ -115,4 +117,28 @@ data = ${data:"#ECB_FX.EURZAR:SPOT"} for between("2021-05-01",yesterday)
 // Define a polygon and search for objects within it
 london = Polygon([[51.5386, -0.4956],[51.6445, -0.0753],[51.5205, 0.1753],[51.3479, -0.1163],[51.5386, -0.4956]])
 items = find ${object:"TestGeometry"} where location within london
+```
+
+###### order by
+
+Sorts the results, e.g.
+
+```js
+recent = find ${audit} where service == "object" order by timestamp desc
+```
+
+###### project
+
+Returns only the named fields. Put `!` before a field to leave it out instead, e.g.
+
+```js
+names = find ${object} where dataset == "ARGUS_DEL" project name, description
+```
+
+###### info
+
+Counts the items by the values of a field instead of returning them, like the `_fieldinfo` REST parameter, e.g.
+
+```js
+bytype = find info _type from ${object}
 ```

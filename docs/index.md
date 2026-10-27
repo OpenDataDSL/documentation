@@ -13,6 +13,7 @@ import { faPlug, faUpload, faDownload, faUser, faGlobe, faLock, faWrench, faBrai
 import styles from '/src/components/DataCatalog.module.css';
 import StartBuilding from '/src/components/StartBuilding.js';
 import Tutorials from '/src/components/Tutorials.js';
+import ExtensionsBanner from '/src/components/ExtensionsBanner.js';
 import DiscoveryPages from '/docs/discovery/_discovery.md';
 import {Introduction} from '/src/components/Discovery.js';
 
@@ -29,6 +30,12 @@ on any data you own or subscribe to using the same tools and user experience.
 :::info NEW - Proof of Concept Topics!
 If you are running a Proof of Concept - Check out our guides to get you started [HERE](/docs/category/proof-of-concept) 
 :::
+
+### Extensions
+
+Ready-made apps in the portal and Excel add-in for building compositions, checking data quality, exporting data, managing scripts and more.
+
+<ExtensionsBanner />
 
 ### Tutorials
 
