@@ -1,93 +1,48 @@
 ---
 slug: /odsl/os/alerts
-title: Alerts 🆕
-description: Creating and using alerts for pro-active monitoring
+title: Alerts
+description: How the platform raises alerts about your data, and how you and OpenDataDSL work on them
 tags:
 - operations
 - alerts
 - topics
-- new
 ---
-
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
 
 ## Introduction
 
-Alerts are issues that happen outside the scope of user interaction.
+An alert is a problem with your data that someone needs to look at. Alerts work like small support tickets: an alert stays **open** until it is **closed** with a resolution, it is always **with** someone (your team, OpenDataDSL or a data vendor), and its **timeline** keeps everything that happened to it, including comments.
 
-The following alert types are defined in the platform:
+## Where alerts come from
 
-|Type|Description|
+|Raised by|Examples|
 |-|-|
-|MetricAlert|User definable metrics that alert you when a threshold has been breached|
-|DatasetAlert|Both system generated alerts about late or bad quality data and manually curated messages about datasets|
-|SystemAlert|Issues raised by the platform about incorrect configuration or general issues|
-|ServiceAlert|Service specific alerts that are raised by the system|
+|Dataset monitoring|A delivery is late or missing, incomplete, or fails its quality or critical checks|
+|Curves|A curve build fails, quality checks fail, an export does not run|
+|The platform|A configuration problem, such as a calendar that does not exist|
+|Your team|Anything you want OpenDataDSL's help with, or want to track yourselves|
+|OpenDataDSL|Shared alerts about common and public data, such as an exchange publishing a file late|
 
-## Alerts and Alert Records
-An alert is the configuration information for an alert type whereas an alert record is an actual alert that been raised against an alert type.
+The platform gives each problem a **key** (for a dataset delivery, the dataset id, the date and the issue). While an alert with that key is open, the same problem happening again counts another occurrence rather than raising a new alert. Some alerts close themselves when the problem goes away, for example when missing data arrives.
 
-### Alert Configuration
-The configuration of an alert is alert type specific as defined in this section.
+## Your alerts and shared alerts
 
-#### MetricAlert
-A MetricAlert has the following properties:
+|Kind|Ids|Who sees it|Who changes it|
+|-|-|-|-|
+|Your alerts|ALR-|Your company and OpenDataDSL|Your company and OpenDataDSL|
+|Shared alerts about common data|ALC-|Everyone|OpenDataDSL. You can add comments that only your company and OpenDataDSL see|
+|Shared alerts about public data|ALP-|Everyone|As common|
 
-|Name|Type|Description|
-|-|-|-|
-|id|uid|Unique id for this alert|
-|type|String|Always MetricAlert|
-|name|String|The unique name of this MetricAlert|
-|description|String|A description of this alert|
-|impact|String|The default impact of this alert|
-|checkFrequency|String|How often to test the metric to see if it has breached the threshold, e.g. 15m|
-|metric|String|The name of the [metric](/docs/odsl/os/metrics) in the format provider/metric|
-|lookback|String|The duration to look back to aggregate the metrics, e.g. 5m|
-|observed|String|The aggregation method, e.g. summed|
-|operator|String|The operator to use to check the threshold, one of gt, gte, lt, lte|
-|absoluteThreshold|Double|The absolute threshold to validate against|
-|dynamicThresholdFunction|String|The threshold function to use if calculating a dynamic threshold, one of min, max, mean, median|
-|dynamicThresholdRange|String|The range to calculate the dynamic threshold, usually a between function|
-|filter|String (json)|An optional filter used to filter the metrics|
+Your alerts belong to a data environment (production, test1 and so on).
 
-#### DatasetAlert
-A DatasetAlert has the following properties:
+## Working with alerts
 
-|Name|Type|Description|
-|-|-|-|
-|id|uid|Unique id for this alert|
-|type|String|Always MetricAlert|
-|name|String|The unique name of this MetricAlert|
-|description|String|A description of this alert|
-|impact|String|The default impact of this alert|
-|dsid|String|The dataset id|
-
-#### SystemAlert
-A SystemAlert has the following properties:
-
-|Name|Type|Description|
-|-|-|-|
-|id|uid|Unique id for this alert|
-|type|String|Always MetricAlert|
-|name|String|The unique name of this MetricAlert|
-|description|String|A description of this alert|
-|impact|String|The default impact of this alert|
-
-#### ServiceAlert
-A ServiceAlert has the following properties:
-
-|Name|Type|Description|
-|-|-|-|
-|id|uid|Unique id for this alert|
-|type|String|Always MetricAlert|
-|name|String|The unique name of this MetricAlert|
-|description|String|A description of this alert|
-|impact|String|The default impact of this alert|
-|service|String|The name of the service|
-|key|String|An optional key for alerts about a specific entity within the service|
+|How|Where|
+|-|-|
+|The portal|[The Alerts extension](/docs/extensions/alerts/overview)|
+|ODSL|[Alerts in ODSL](/docs/extensions/alerts/odsl)|
+|Python|[Alerts in Python](/docs/extensions/alerts/python)|
+|REST API|[Alerts REST API](/docs/extensions/alerts/rest-api)|
 
 ## Getting notified about alerts
-To be notified when something goes wrong, add an automation on the event that raises the alert. For example, a dataset alert is raised when a dataset is late or missing, so an automation on the **late** and **missing** events of the `dataset` service, with the id of the dataset, notifies you at the same time, e.g. by email or Microsoft Teams.
 
-See [Creating Automations](/docs/topics/automations/creating) for how to create an automation.
+To be notified when an alert is raised, closed, handed over, changes priority or gets a comment, add an automation on the `alert` service. See [Notifications and automations](/docs/extensions/alerts/automations).

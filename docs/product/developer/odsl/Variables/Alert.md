@@ -1,43 +1,55 @@
 ---
 slug: /odsl/variable/alert
-title: Alert and AlertRecord
+title: Alert
 tags:
 - alert
 ---
 
-# Alert and AlertRecord
+# Alert
 
-An **Alert** defines the conditions that raise an alert, and an **AlertRecord** is an alert that has been raised. Both are flexible objects: set any properties the alert type needs. See the [Alert](/docs/api/rest/service/alert) and [Alert Record](/docs/api/rest/service/alertrecord) services for the fields of each alert type.
-
-## Construction
-
-|**Function**|**Description**|
-|-|-|
-|Alert(name)|Creates a new Alert|
-|AlertRecord(name, type)|Creates a new Alert Record|
-|SystemAlert(name)|Creates a new System Alert|
-|SystemAlertMessage(message)|Creates a new System Alert Record sent to the #SYSTEM.MESSAGE alert with the provided message|
-|SystemAlertRecord(name)|Creates a new System Alert Record|
+An **alert** is a problem with your data, such as a late dataset delivery or a failed quality check. In ODSL an alert is an object read from the [alert service](/docs/odsl/service/alert): change its fields and save it to change the alert. To raise an alert, save a `SimpleObject` with at least a `title`.
 
 ## Properties
 
 |**Name**|**Description**|**Type**|
 |-|-|-|
-|name|The name of the alert|String|
-|type|The alert type: DatasetAlert, MetricAlert, ServiceAlert or SystemAlert|String|
-|issue|What the problem is (alert records)|String|
-|message|The message for the alert (alert records)|String|
-|impact|critical, high, medium or low (alert records)|String|
-|status|open or closed (alert records)|String|
+|_id|The alert id, such as ALR-2026-000401 (ALC- common, ALP- public)|String|
+|title|Short description|String|
+|message|What is wrong|String|
+|description|More detail|String|
+|category|A grouping, such as dataset or curve|String|
+|issue|The type, such as delivery, completeness, quality, build or export|String|
+|severity|critical, high, medium or low|String|
+|status|open or closed|String|
+|agent|Who it is with: client (your team), opendatadsl or a data vendor's name|String|
+|subject|What it is about: service, id and ondate|Object|
+|key|The id of the problem, used to count repeats|String|
+|occurrences|How many times it was raised while open|Int|
+|resolution|What was wrong and what was done|String|
+|comment|Set to add a comment when saving|String|
+|tags|Your own labels|List|
+|timeline|Everything that happened to the alert|List|
+|_version|The version read, checked when saving|Int|
+
+See the [Alerts reference](/docs/extensions/alerts/reference) for every field.
 
 ## Example
 
 ```js
-// Raise an alert record about a late dataset
-rec = AlertRecord("ICE.NDEX.NLB", "DatasetAlert")
-rec.ondate = "2026-10-23"
-rec.issue = "late"
-rec.message = "The settlement prices have not arrived"
-rec.impact = "high"
-save ${alertrecord:rec}
+// Raise an alert about a stale broker feed
+n = SimpleObject()
+n.title = "NGE.BROKER.NBP prices look stale since Monday"
+n.severity = "high"
+n.issue = "quality"
+n.subject = SimpleObject()
+n.subject.service = "dataset"
+n.subject.id = "NGE.BROKER.NBP"
+n.key = "northgate/stale/NGE.BROKER.NBP"
+save ${alert:n}
+
+// Close an alert
+a = ${alert:"ALR-2026-000402"}
+a.status = "closed"
+a.resolution = "Loader fixed; file reloaded at 10:15"
+save ${alert:a}
 ```

@@ -48,7 +48,6 @@ Both the current and archived versions of the items are deleted/restored.
 :::
 
 The following services can be used to bulk delete only - no restore
-* alertrecord
 * audit
 * automationlog
 * batch

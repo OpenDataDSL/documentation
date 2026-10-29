@@ -7,7 +7,7 @@ tags:
   - service
   - alert
 ---
-The alert resource holds alert definitions: the conditions that raise an alert, for example a metric crossing a threshold or a dataset arriving late. Each time an alert is raised or closed, an [alert record](./alertrecord) is written.
+The alert resource holds alerts: problems with your data, raised by the platform (a late or incomplete dataset delivery, a failed quality check, a curve that did not build) or by people. An alert stays open until it is closed with a resolution, is always with someone (your team, OpenDataDSL or a data vendor), and keeps a timeline of everything that happened to it. See the [Alerts extension](/docs/extensions/alerts/overview) for the screen and how alerts work.
 
 ## Alert REST API
 
@@ -19,35 +19,30 @@ https://api.opendatadsl.com/api/alert
 |**Method**|**Path**|**Example**|**Description**|
 |-|-|-|-|
 |GET|||Get the build information for this service|
-|GET|\{release\}/\{source\}|v1/private|List alert definitions|
-|GET|\{release\}/\{source\}/\{key\}|v1/private/6721f0c2a4b9e85d3c0f1a77|Retrieve an alert definition|
-|POST|\{release\}/\{source\}|v1/private|Create or update an alert definition. An existing alert with the same type and name is updated|
-|DELETE|\{release\}/\{source\}/\{key\}|v1/private/6721f0c2a4b9e85d3c0f1a77|Delete an alert definition|
+|GET|\{release\}/\{source\}|v1/private|List alerts. Lists do not include the timeline|
+|GET|\{release\}/\{source\}/\{id\}|v1/private/ALR-2026-000401|Retrieve an alert with its timeline|
+|POST|\{release\}/\{source\}|v1/private|Raise an alert. An open alert with the same key counts another occurrence instead|
+|POST|\{release\}/\{source\}|v1/private|With the alert's `_id` in the body: change that alert, as PATCH does|
+|PATCH|\{release\}/\{source\}/\{id\}|v1/private/ALR-2026-000401|Change the status, resolution, agent, severity, title, description, assignee or tags, optionally with a comment|
+|POST|\{release\}/\{source\}/\{id\}/comment|v1/private/ALR-2026-000401/comment|Add a comment|
+|PATCH|\{release\}/\{source\}/\{id\}/comment/\{entry\}|v1/private/ALR-2026-000401/comment/2|Edit a comment|
+|DELETE|\{release\}/\{source\}/\{id\}/comment/\{entry\}|v1/private/ALR-2026-000401/comment/2|Delete a comment|
+|DELETE|\{release\}/\{source\}/\{id\}|v1/private/ALR-2026-000401|Delete an alert (administrators only)|
 
-Automations can be set on alerts with the actions raised and closed.
+Sources:
+
+|**Source**|**Alerts**|
+|-|-|
+|private|Your company's alerts, in the data environment of the request (send `x-odsl-environment` for an environment other than production). Ids start `ALR-`|
+|common|Shared alerts about common data, ids start `ALC-`|
+|public|Shared alerts about public data, ids start `ALP-`|
+
+Only OpenDataDSL can raise and change shared alerts. You can comment on them: your comments are only seen by your company and OpenDataDSL.
+
+Changes take the `_version` you read: if the alert has changed since, the request is refused with HTTP 409.
+
+Automations can be set on alerts with the actions raised, closed, reopened, agent, severity and comment. See [Notifications and automations](/docs/extensions/alerts/automations).
 
 ## Entities
 
-### Alert
-
-Every alert has a `type` and a `name`. The other fields depend on the type:
-
-|**Type**|**Required fields**|**Description**|
-|-|-|-|
-|MetricAlert|name, metric, observed, operator, checkFrequency, lookback, and either absoluteThreshold or dynamicThresholdFunction with dynamicThresholdRange|Checks a platform metric on a schedule|
-|DatasetAlert|name, dsid|An alert about a dataset|
-|ServiceAlert|name, service|An alert about a platform service|
-|SystemAlert|name|An alert raised by OpenDataDSL that you can follow|
-
-For a MetricAlert:
-
-|**Name**|**Description**|
-|-|-|
-|metric|The metric to check|
-|observed|How the metric is observed over the lookback: summed, averaged, beginning, end, high or low|
-|operator|How it is compared with the threshold: gt, gte, lt or lte|
-|checkFrequency|How often to check: 1m, 5m, 10m, 15m, 30m, 1h, 4h, 8h, 12h, 1D or 1M. The platform sets the `cron` from it|
-|lookback|The period to look back over, as a duration|
-|absoluteThreshold|A fixed threshold|
-|dynamicThresholdFunction|min, max, mean, median or stdev of the metric over the dynamicThresholdRange, used as the threshold|
-|impact|critical, high, medium (the default) or low|
+See the [Alerts reference](/docs/extensions/alerts/reference#alert-fields) for the fields of an alert and its timeline entries, and the [Alerts REST API](/docs/extensions/alerts/rest-api) for examples.

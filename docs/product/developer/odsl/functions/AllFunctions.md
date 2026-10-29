@@ -79,37 +79,6 @@ This document provides a comprehensive reference for all built-in functions avai
 
 ---
 
-### Alert(name)
-
-**Category:** Construction
-
-**Description:** Creates a new Alert
-
-**Parameters:**
-* `name` (String) - The alert name
-
-**Returns:** Alert
-
-
-
----
-
-### AlertRecord(name, type)
-
-**Category:** Construction
-
-**Description:** Creates a new Alert Record
-
-**Parameters:**
-* `name` (String) - The alert name
-* `type` (String) - The alert type
-
-**Returns:** AlertRecord
-
-
-
----
-
 ### AnnualCalendar()
 
 **Category:** Construction
@@ -4495,51 +4464,6 @@ Observations (x,y pairs) can be added to the model one at a time or they can be 
 * `data` (Timeseries, List of Scalars or List of Timeseries) - The input data to perform the calculation on
 
 **Returns:** Number
-
-
-
----
-
-### SystemAlert(name)
-
-**Category:** Construction
-
-**Description:** Creates a new System Alert
-
-**Parameters:**
-* `name` (String) - The alert name
-
-**Returns:** Alert
-
-
-
----
-
-### SystemAlertMessage(message)
-
-**Category:** Construction
-
-**Description:** Creates a new System Alert Record sent to the #SYSTEM.MESSAGE alert with the provided message
-
-**Parameters:**
-* `message` (String) - The message to send
-
-**Returns:** AlertRecord
-
-
-
----
-
-### SystemAlertRecord(name)
-
-**Category:** Construction
-
-**Description:** Creates a new System Alert Record
-
-**Parameters:**
-* `name` (String) - The alert name
-
-**Returns:** AlertRecord
 
 
 

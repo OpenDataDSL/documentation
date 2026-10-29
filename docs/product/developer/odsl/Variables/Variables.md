@@ -200,8 +200,8 @@ Documentation for an item or a service
 ### [Automation](automation)
 An action that runs when something happens to an item, created with an automation builder
 
-### [Alert and AlertRecord](alert)
-Alert definitions and the alerts that have been raised
+### [Alert](alert)
+An alert about your data: read, raise, comment on and close it with the alert service
 
 ### [Index](index)
 A database index on a service

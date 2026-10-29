@@ -203,7 +203,9 @@ Authorization: Bearer {{token}}
 
 ## Alerts
 
-When a dataset is late, missing, or fails a quality check, the platform raises a `DatasetAlert`. You can create an automation to have notifications sent to email, Teams, or any other target when an alert fires.
+When a dataset is late, incomplete or fails a quality check, the platform raises an **alert** for it, with the dataset id and the delivery date. An alert stays open until the problem is solved; some close themselves, for example when the missing data arrives. Your team sees them, with the delivery behind each one, in the [Alerts extension](/docs/extensions/alerts/overview), and can comment on them or hand them to OpenDataDSL.
+
+To be told when an alert is raised for a dataset, create an automation on the alert service, with the dataset id:
 
 ```json
 POST https://api.opendatadsl.com/api/automation/v1
@@ -211,7 +213,7 @@ Authorization: Bearer {{token}}
 
 {
   "_type": "VarAutomation",
-  "target": "odsl.email",
+  "target": "email",
   "enabled": true,
   "properties": {
     "to": "ops@company.com",
@@ -219,9 +221,9 @@ Authorization: Bearer {{token}}
   },
   "conditions": [{
     "source": "private",
-    "service": "alertrecord",
-    "id": "DatasetAlert/ICE.NDEX.NLB",
-    "action": "update"
+    "service": "alert",
+    "id": "ICE.NDEX.NLB",
+    "action": "raised"
   }]
 }
 ```
@@ -230,4 +232,5 @@ Authorization: Bearer {{token}}
 
 * [Data Monitoring reference](/docs/odsl/dm/monitoring)
 * [Alerts reference](/docs/odsl/os/alerts)
+* [Alerts extension](/docs/extensions/alerts/overview)
 * [Dataset REST service](/docs/api/rest/service/dataset)

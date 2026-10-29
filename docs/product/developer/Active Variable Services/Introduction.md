@@ -167,10 +167,7 @@ Your Fusion AI custom tools
 Fusion AI token usage
 
 ### [Alert Service](./alert)
-Alert definitions
-
-### [Alert Record Service](./alertrecord)
-The alerts that have been raised
+Alerts about your data and the shared data you use
 
 ### [Automation Service](./automation)
 Your automations

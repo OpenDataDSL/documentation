@@ -94,7 +94,7 @@ The properties entity is used to configure an [Automation Target](automationtarg
     "_type": "VarAutomation",
     "target": "odsl.email_attachment",
     "enabled": true,
-    "template": "When AAA:CURVE is updated, transform the data using [@transformer], then send an email to [to] with subject [subject], add the data as an attachment named [attachmentName].",
+    "template": "When 'AAA:CURVE' is updated, transform the data using [@transformer], then send an email to [to] with subject [subject], add the data as an attachment named [attachmentName]",
     "properties": {
       "to": "user@company.com",
       "subject": "Data is updated",
@@ -117,8 +117,8 @@ The properties entity is used to configure an [Automation Target](automationtarg
   "_type": "VarAutomation",
   "enabled": true,
   "target": "odsl.email_attachment",
-  "icon": "envelope-paper",
-  "template": "When property [@propertyName] on AAA changes to [@propertyValue], send an email to [to] with subject [subject], add the data as an attachment named [attachmentName].",
+  "icon": "envelope-paper text-outlook",
+  "template": "When property [@propertyName] on 'AAA' is set to [@propertyValue], send an email to [to] with subject [subject], add the data as an attachment named [attachmentName]",
   "properties": {
     "to": "user@company.com",
     "subject": "Property Change Test",

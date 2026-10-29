@@ -469,18 +469,7 @@ var services = [
     {
         name: "Alert",
         link: "/docs/api/rest/service/alert",
-        text: "Alert definitions: the conditions that raise alerts",
-        rw: true,
-        pub: true,
-        pri: true,
-        quota: false,
-        unres: false,
-        ver: false
-    },
-    {
-        name: "Alert Record",
-        link: "/docs/api/rest/service/alertrecord",
-        text: "The alerts that have been raised, with their timeline",
+        text: "Alerts about your data and the shared data you use: raise, comment on, hand over and close them",
         rw: true,
         pub: true,
         pri: true,

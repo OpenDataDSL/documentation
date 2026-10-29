@@ -135,14 +135,21 @@ Then add an automation that publishes the EUR curve to the queue each time it bu
 //#region
 use training
 
-ab = AutomationBuilder("curve", "private", "MY.GAS.HUB:FORWARD_CURVE_EUR")
-ab.addCondition("success")
-ab.setTarget("queue")
-ab.setProperty("queue", "MY_GAS_HUB_ETRM")
-ab.icon = "send text-info"
-ab.enabled = true
-
-save ${automation:ab}
+a = AutomationBuilder("curve", "private", "MY.GAS.HUB:FORWARD_CURVE_EUR").build()
+c = SimpleObject()
+c.service = "curve"
+c.source = "private"
+c.id = "MY.GAS.HUB:FORWARD_CURVE_EUR"
+c.action = "success"
+conds = []
+conds.add(c)
+a.conditions = conds
+a.target = "odsl.queue"
+a.template = "When 'MY.GAS.HUB:FORWARD_CURVE_EUR' is successful, send a message to [queue]"
+a.icon = "send text-red"
+a.properties.queue = "MY_GAS_HUB_ETRM"
+a.properties.subject = ""
+save ${automation:a}
 print "ETRM queue automation saved"
 //#endregion
 ```

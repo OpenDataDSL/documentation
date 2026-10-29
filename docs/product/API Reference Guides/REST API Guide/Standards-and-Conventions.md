@@ -205,7 +205,7 @@ Some services let you change or delete every item that matches a filter in one c
 * **DELETE** with ```_bulk=true``` and a ```_filter```: deletes every matching item and all its versions. The response is the list of ids deleted.
 * **DELETE** with ```_bulk=true```, ```_restore=true``` and a ```_filter```: restores items deleted by a bulk delete (services that keep bulk deleted items only).
 
-Bulk updates and restores are available on the object and event services. Bulk deletes are also available on alertrecord, audit, automationlog, batch, crontablog, dataset_delivery, dataset-feed-log, exception, health, metric, process-exec, queuelog, scriptlog and validation. Each change is recorded in the audit trail with the reason ```Bulk Updated```, ```Bulk Deleted``` or ```Bulk Restored``` unless you pass a ```_reason```.
+Bulk updates and restores are available on the object and event services. Bulk deletes are also available on audit, automationlog, batch, crontablog, dataset_delivery, dataset-feed-log, exception, health, metric, process-exec, queuelog, scriptlog and validation. Each change is recorded in the audit trail with the reason ```Bulk Updated```, ```Bulk Deleted``` or ```Bulk Restored``` unless you pass a ```_reason```.
 
 ```js
 ### Set the category of every private gas object

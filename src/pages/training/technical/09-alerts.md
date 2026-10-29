@@ -124,16 +124,25 @@ To be told when something goes wrong, add an **automation** on the event that ra
 //#region
 use training
 
-ab = AutomationBuilder("dataset", "private", "TRAINING.MYGASHUB.SETTLEMENTS")
-ab.addCondition("late")
-ab.addCondition("missing")
-ab.setTarget("email")
-ab.setProperty("to", "your.name@example.com")
-ab.setProperty("subject", "Settlements late or missing: TRAINING.MYGASHUB.SETTLEMENTS")
-ab.icon = "bell-fill text-warning"
-ab.enabled = true
-
-save ${automation:ab}
+a = AutomationBuilder("dataset", "private", "TRAINING.MYGASHUB.SETTLEMENTS").build()
+conds = []
+actions = ["late", "missing"]
+for act in actions
+    c = SimpleObject()
+    c.service = "dataset"
+    c.source = "private"
+    c.id = "TRAINING.MYGASHUB.SETTLEMENTS"
+    c.action = act
+    conds.add(c)
+next
+a.conditions = conds
+a.target = "odsl.email"
+a.template = "When 'TRAINING.MYGASHUB.SETTLEMENTS' is late, send an email to [to] with subject [subject]"
+a.icon = "envelope-at text-outlook"
+a.properties.to = "your.name@example.com"
+a.properties.subject = "Settlements late or missing: TRAINING.MYGASHUB.SETTLEMENTS"
+a.properties.attachment = false
+save ${automation:a}
 print "Delivery failure automation saved"
 //#endregion
 ```
@@ -142,32 +151,41 @@ Replace the `to` address with your own. An automation fires when **any** of its 
 
 ---
 
-## Step 6: Get Notified About Quality Check Violations
+## Step 6: Get Notified When an Alert Is Raised
 
-Quality and critical check failures are recorded as dataset alert records. To be notified whenever an alert record for the settlements dataset is raised or updated, watch the `alertrecord` service using the id `DatasetAlert/` followed by the dataset id.
+When a dataset is late or missing, or fails its checks, the platform raises an alert about it. To be notified whenever an alert about the settlements dataset is raised or reopened, watch the `alert` service with the dataset id.
 
 ```js
 //#region
 use training
 
-ab = AutomationBuilder("alertrecord", "private", "DatasetAlert/TRAINING.MYGASHUB.SETTLEMENTS")
-ab.addCondition("create")
-ab.addCondition("update")
-ab.setTarget("email")
-ab.setProperty("to", "your.name@example.com")
-ab.setProperty("subject", "ALERT: TRAINING.MYGASHUB.SETTLEMENTS")
-ab.icon = "bell-fill text-danger"
-ab.enabled = true
-
-save ${automation:ab}
-print "Alert record automation saved"
+a = AutomationBuilder("alert", "private", "TRAINING.MYGASHUB.SETTLEMENTS").build()
+conds = []
+actions = ["raised", "reopened"]
+for act in actions
+    c = SimpleObject()
+    c.service = "alert"
+    c.source = "private"
+    c.id = "TRAINING.MYGASHUB.SETTLEMENTS"
+    c.action = act
+    conds.add(c)
+next
+a.conditions = conds
+a.target = "odsl.email"
+a.template = "When an alert is raised for 'TRAINING.MYGASHUB.SETTLEMENTS', send an email to [to] with subject [subject]"
+a.icon = "envelope-at text-outlook"
+a.properties.to = "your.name@example.com"
+a.properties.subject = "ALERT: TRAINING.MYGASHUB.SETTLEMENTS"
+a.properties.attachment = false
+save ${automation:a}
+print "Alert automation saved"
 //#endregion
 ```
 
-To test it, re-run the alert record script from Step 4 with a new message and check your inbox.
+See [Alert notifications and automations](/docs/extensions/alerts/automations) for the other alert actions.
 
 :::tip Sending to Microsoft Teams
-To post to a Teams channel instead of sending an email, use the `teams` target. It needs a `url` (the incoming webhook URL for the channel) and a `template` (the id of a mustache script that formats the message).
+To post to a Teams channel instead of sending an email, use the `odsl.teams` target. It needs a `url` (the incoming webhook URL for the channel) and a `template` (the id of a mustache script that formats the message).
 :::
 
 ---
@@ -207,7 +225,7 @@ A `MetricAlert` checks a platform metric on a schedule and raises an alert when 
 | Defined a dataset alert | `Alert(name)` with `type = "DatasetAlert"` and `dsid`, saved to `${alert}` |
 | Raised and updated an alert record | `AlertRecord(name, "DatasetAlert")`, saved to `${alertrecord}` |
 | Notified on delivery failures | Automation on the `dataset` service, `late` and `missing` actions |
-| Notified on quality violations | Automation on the `alertrecord` service for the dataset |
+| Notified when an alert is raised | Automation on the `alert` service for the dataset |
 | Closed an alert | Set `status = "closed"` and save |
 
 ## Exercise
@@ -216,7 +234,7 @@ A `MetricAlert` checks a platform metric on a schedule and raises an alert when 
 2. Raise an alert record for `TRAINING.MYGASHUB.NOMINATIONS` with an impact of `low`, then run the script again with a new message and confirm only one open record exists
 3. Close the record and confirm it no longer appears in the open alerts query
 
-For more detail, see [Alerts](/docs/odsl/os/alerts), the [Alert and AlertRecord](/docs/odsl/variable/alert) variable reference and the [Alert Record service](/docs/api/rest/service/alertrecord).
+For more detail, see [Alerts](/docs/odsl/os/alerts), the [Alert and AlertRecord](/docs/odsl/variable/alert) variable reference and the [Alert service](/docs/api/rest/service/alert).
 
 :::note Next Step
 In [Module 10](/training/technical/automations) you will look at automations in more depth and use them, together with scheduled processes, to run scripts and data workflows.

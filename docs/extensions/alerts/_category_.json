@@ -1,0 +1,7 @@
+{
+  "label": "Alerts",
+  "link": {
+    "type": "generated-index",
+    "description": "See the alerts your team is concerned about, from your own data and the shared data you follow, and comment on, raise, hand over, close and reopen them in the portal, ODSL, Python or the REST API."
+  }
+}

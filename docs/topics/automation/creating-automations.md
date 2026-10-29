@@ -1,7 +1,7 @@
 ---
 slug: /topics/automations/creating
 title: Creating Automations
-description: How to create automations in OpenDataDSL using ODSL or the REST API
+description: How to create, change, test and delete automations in OpenDataDSL using ODSL or the REST API
 sidebar_position: 2
 tags:
 - topics
@@ -12,32 +12,88 @@ tags:
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-Automations can be created using ODSL scripts or directly via the REST API. This guide walks through common scenarios with worked examples for both approaches.
+You can create automations in the portal, in ODSL scripts, or with the REST API. This guide shows common scenarios with worked examples in ODSL and the REST API. To create automations in the portal, see the [Automations extension](/docs/extensions/automations/creating).
 
 ## Before you start
 
-You will need to know:
-- The **service** and **action** that should trigger the automation — see the [trigger reference](/docs/topics/automations/basics#triggering-events)
-- The **ID** of the entity to watch (e.g. a dataset ID, object ID, or process name)
-- The **target** to send the event to — see [Automation Targets](/docs/topics/automations/targets)
+You need to know:
+
+- The **service**, **source** and **id** of the item to watch, and the **action** that should trigger the automation: see the [trigger reference](/docs/topics/automations/basics#triggering-events)
+- The **target** to send the data to, and the properties it needs: see [Automation Targets](/docs/topics/automations/targets)
+- The **template** text for the automation: see [Templates](/docs/topics/automations/basics#templates)
+
+The automation runs with the security policies of the user who saved it, so that user needs access to the item and to whatever the target does.
+
+## Two ways to create an automation in ODSL
+
+**1. Set every field yourself.** Build an empty automation, then set its target, template, conditions and properties. This always works and is the way used in the rest of this guide.
+
+```js
+//#region Set every field
+a = AutomationBuilder("dataset", "private", "ICE.NDEX.NLB").build()
+
+c = SimpleObject()
+c.service = "dataset"
+c.source = "private"
+c.id = "ICE.NDEX.NLB"
+c.action = "late"
+conds = []
+conds.add(c)
+
+a.conditions = conds
+a.target = "odsl.email"
+a.template = "When 'ICE.NDEX.NLB' is late, send an email to [to] with subject [subject]"
+a.icon = "envelope-at text-outlook"
+a.properties.to = "ops-team@mycompany.com"
+a.properties.subject = "ICE Endex NLB settlement prices are late"
+a.properties.attachment = false
+a.enabled = true
+save ${automation:a}
+//#endregion
+```
+
+**2. Start from one of the item's offers.** `withAutomationTemplate` looks up the automations the item offers (the same list the portal shows) and copies the target, icon, conditions and default properties of the offer whose template matches the text exactly. You then only set the properties.
+
+```js
+//#region Start from an offer
+ab = AutomationBuilder("dataset", "private", "ICE.NDEX.NLB")
+ab.withAutomationTemplate("When 'ICE.NDEX.NLB' is late, send an email to [to] with subject [subject]")
+ab.set("to", "ops-team@mycompany.com")
+ab.set("subject", "ICE Endex NLB settlement prices are late")
+a = ab.build()
+save ${automation:a}
+//#endregion
+```
+
+:::warning
+If the text does not match an offer exactly, `withAutomationTemplate` does nothing and the save fails because the automation has no target. Use the `listAutomations` [special function](/docs/api/rest/special_functions) to see the exact texts.
+:::
 
 ## Creating a basic automation
 
-The example below creates an automation that sends an email notification whenever a specific dataset becomes late.
+This automation emails the operations team when a dataset is late. The `attachment` property must be `false` for a plain email; without it the data is sent as an attachment.
 
 <Tabs>
 <TabItem value="odsl" label="ODSL">
 
 ```js
-//#region Create a dataset late notification automation
-ab = AutomationBuilder("dataset", "private", "MY_PROVIDER.FEED.PRODUCT")
-ab.addCondition("late")
-ab.setTarget("email")
-ab.setProperty("to", "ops-team@example.com")
-ab.setProperty("subject", "Dataset late: MY_PROVIDER.FEED.PRODUCT")
-ab.icon = "bell-fill text-warning"
-ab.enabled = true
-save ${automation:ab}
+//#region Email when a dataset is late
+a = AutomationBuilder("dataset", "private", "ICE.NDEX.NLB").build()
+c = SimpleObject()
+c.service = "dataset"
+c.source = "private"
+c.id = "ICE.NDEX.NLB"
+c.action = "late"
+conds = []
+conds.add(c)
+a.conditions = conds
+a.target = "odsl.email"
+a.template = "When 'ICE.NDEX.NLB' is late, send an email to [to] with subject [subject]"
+a.icon = "envelope-at text-outlook"
+a.properties.to = "ops-team@mycompany.com"
+a.properties.subject = "ICE Endex NLB settlement prices are late"
+a.properties.attachment = false
+save ${automation:a}
 //#endregion
 ```
 
@@ -48,47 +104,59 @@ save ${automation:ab}
 POST https://api.opendatadsl.com/api/automation/v1
 
 {
-  "target": "email",
-  "icon": "bell-fill text-warning",
+  "target": "odsl.email",
+  "template": "When 'ICE.NDEX.NLB' is late, send an email to [to] with subject [subject]",
+  "icon": "envelope-at text-outlook",
   "enabled": true,
   "conditions": [
     {
       "service": "dataset",
       "action": "late",
-      "id": "MY_PROVIDER.FEED.PRODUCT",
+      "id": "ICE.NDEX.NLB",
       "source": "private"
     }
   ],
   "properties": {
-    "to": "ops-team@example.com",
-    "subject": "Dataset late: MY_PROVIDER.FEED.PRODUCT"
+    "to": "ops-team@mycompany.com",
+    "subject": "ICE Endex NLB settlement prices are late",
+    "attachment": false
   }
 }
 ```
 
 </TabItem>
 </Tabs>
+
+If a request fails, the reason is in the `x-odsl-error` response header.
 
 ## Multiple conditions on one automation
 
-A single automation can watch multiple entities or actions. The automation fires when **any** condition is matched.
-
-The example below notifies the team when a curve build either succeeds or fails.
+An automation runs when **any** of its conditions matches, so one automation can watch several items or actions. This one emails the curves team when a curve build succeeds or fails.
 
 <Tabs>
 <TabItem value="odsl" label="ODSL">
 
 ```js
-//#region Create a curve build result automation
-ab = AutomationBuilder("curve", "private", "MY_CURVE_OBJECT:CLOSE")
-ab.addCondition("success")
-ab.addCondition("failed")
-ab.setTarget("email")
-ab.setProperty("to", "curves-team@example.com")
-ab.setProperty("subject", "Curve build update: MY_CURVE_OBJECT:CLOSE")
-ab.icon = "graph-up text-primary"
-ab.enabled = true
-save ${automation:ab}
+//#region Email on curve build success or failure
+a = AutomationBuilder("curve", "private", "MY.GAS.HUB:FORWARD_CURVE").build()
+conds = []
+actions = ["success", "failed"]
+for act in actions
+    c = SimpleObject()
+    c.service = "curve"
+    c.source = "private"
+    c.id = "MY.GAS.HUB:FORWARD_CURVE"
+    c.action = act
+    conds.add(c)
+next
+a.conditions = conds
+a.target = "odsl.email"
+a.template = "When 'MY.GAS.HUB:FORWARD_CURVE' is successful, send an email to [to] with subject [subject]"
+a.icon = "envelope-at text-outlook"
+a.properties.to = "curves-team@mycompany.com"
+a.properties.subject = "Forward curve build finished"
+a.properties.attachment = false
+save ${automation:a}
 //#endregion
 ```
 
@@ -99,26 +167,18 @@ save ${automation:ab}
 POST https://api.opendatadsl.com/api/automation/v1
 
 {
-  "target": "email",
-  "icon": "graph-up text-primary",
+  "target": "odsl.email",
+  "template": "When 'MY.GAS.HUB:FORWARD_CURVE' is successful, send an email to [to] with subject [subject]",
+  "icon": "envelope-at text-outlook",
   "enabled": true,
   "conditions": [
-    {
-      "service": "curve",
-      "action": "success",
-      "id": "MY_CURVE_OBJECT:CLOSE",
-      "source": "private"
-    },
-    {
-      "service": "curve",
-      "action": "failed",
-      "id": "MY_CURVE_OBJECT:CLOSE",
-      "source": "private"
-    }
+    { "service": "curve", "action": "success", "id": "MY.GAS.HUB:FORWARD_CURVE", "source": "private" },
+    { "service": "curve", "action": "failed", "id": "MY.GAS.HUB:FORWARD_CURVE", "source": "private" }
   ],
   "properties": {
-    "to": "curves-team@example.com",
-    "subject": "Curve build update: MY_CURVE_OBJECT:CLOSE"
+    "to": "curves-team@mycompany.com",
+    "subject": "Forward curve build finished",
+    "attachment": false
   }
 }
 ```
@@ -126,22 +186,33 @@ POST https://api.opendatadsl.com/api/automation/v1
 </TabItem>
 </Tabs>
 
+:::note
+The template can only describe one action, so the item's Automations panel shows this automation as the "is successful" offer. If you want each case to show separately in the portal, create one automation per action.
+:::
+
 ## Triggering a process from an automation
 
-You can chain automations with processes — for example, running a downstream enrichment process whenever a dataset completes.
+Run a process when a dataset's delivery is complete. The process receives the dataset delivery as its input data.
 
 <Tabs>
 <TabItem value="odsl" label="ODSL">
 
 ```js
-//#region Trigger a process when a dataset completes
-ab = AutomationBuilder("dataset", "private", "MY_PROVIDER.FEED.PRODUCT")
-ab.addCondition("complete")
-ab.setTarget("process")
-ab.setProperty("process", "MY_ENRICHMENT_PROCESS")
-ab.icon = "arrow-right-circle text-success"
-ab.enabled = true
-save ${automation:ab}
+//#region Run a process when a dataset is complete
+a = AutomationBuilder("dataset", "private", "ICE.NDEX.NLB").build()
+c = SimpleObject()
+c.service = "dataset"
+c.source = "private"
+c.id = "ICE.NDEX.NLB"
+c.action = "complete"
+conds = []
+conds.add(c)
+a.conditions = conds
+a.target = "odsl.process"
+a.template = "When 'ICE.NDEX.NLB' is complete, run [process]"
+a.icon = "play-fill text-success"
+a.properties.process = "MY_ENRICHMENT_PROCESS"
+save ${automation:a}
 //#endregion
 ```
 
@@ -152,16 +223,12 @@ save ${automation:ab}
 POST https://api.opendatadsl.com/api/automation/v1
 
 {
-  "target": "process",
-  "icon": "arrow-right-circle text-success",
+  "target": "odsl.process",
+  "template": "When 'ICE.NDEX.NLB' is complete, run [process]",
+  "icon": "play-fill text-success",
   "enabled": true,
   "conditions": [
-    {
-      "service": "dataset",
-      "action": "complete",
-      "id": "MY_PROVIDER.FEED.PRODUCT",
-      "source": "private"
-    }
+    { "service": "dataset", "action": "complete", "id": "ICE.NDEX.NLB", "source": "private" }
   ],
   "properties": {
     "process": "MY_ENRICHMENT_PROCESS"
@@ -174,20 +241,28 @@ POST https://api.opendatadsl.com/api/automation/v1
 
 ## Sending data to a queue
 
-You can publish event payloads to a message queue for downstream consumers to process.
+Send a curve to a downstream system's queue each time it is updated. Curves and timeseries are in the `data` service, with ids of the form `OBJECT:DATA`.
 
 <Tabs>
 <TabItem value="odsl" label="ODSL">
 
 ```js
-//#region Publish object updates to a queue
-ab = AutomationBuilder("object", "private", "MY_MASTER_DATA_OBJECT")
-ab.addCondition("update")
-ab.setTarget("queue")
-ab.setProperty("queue", "MY_DOWNSTREAM_QUEUE")
-ab.icon = "send text-info"
-ab.enabled = true
-save ${automation:ab}
+//#region Send a curve to a queue on update
+a = AutomationBuilder("data", "private", "MY.GAS.HUB:FORWARD_CURVE").build()
+c = SimpleObject()
+c.service = "data"
+c.source = "private"
+c.id = "MY.GAS.HUB:FORWARD_CURVE"
+c.action = "update"
+conds = []
+conds.add(c)
+a.conditions = conds
+a.target = "odsl.queue"
+a.template = "When 'MY.GAS.HUB:FORWARD_CURVE' is updated, send a message to [queue]"
+a.icon = "send text-red"
+a.properties.queue = "etrm-curves"
+a.properties.subject = ""
+save ${automation:a}
 //#endregion
 ```
 
@@ -198,182 +273,132 @@ save ${automation:ab}
 POST https://api.opendatadsl.com/api/automation/v1
 
 {
-  "target": "queue",
-  "icon": "send text-info",
+  "target": "odsl.queue",
+  "template": "When 'MY.GAS.HUB:FORWARD_CURVE' is updated, send a message to [queue]",
+  "icon": "send text-red",
   "enabled": true,
   "conditions": [
+    { "service": "data", "action": "update", "id": "MY.GAS.HUB:FORWARD_CURVE", "source": "private" }
+  ],
+  "properties": {
+    "queue": "etrm-curves",
+    "subject": ""
+  }
+}
+```
+
+</TabItem>
+</Tabs>
+
+## Automations on events
+
+An event list is a data item with the id `OBJECT:EVENTLIST`, so an automation on events watches the `data` service. Updating events in the list raises an `update` on the event list.
+
+```js
+//#region Email the trades when the trade events are updated
+a = AutomationBuilder("data", "private", "MY.PORTFOLIO:TRADES").build()
+c = SimpleObject()
+c.service = "data"
+c.source = "private"
+c.id = "MY.PORTFOLIO:TRADES"
+c.action = "update"
+conds = []
+conds.add(c)
+a.conditions = conds
+a.target = "odsl.email_attachment"
+a.template = "When 'MY.PORTFOLIO:TRADES' is updated, send an email to [to] with subject [subject], add the data as an attachment named [attachmentName]"
+a.icon = "envelope-paper text-outlook"
+a.properties.to = "risk-team@mycompany.com"
+a.properties.subject = "New trades"
+a.properties.attachmentName = "trades.json"
+a.properties.attachment = true
+save ${automation:a}
+//#endregion
+```
+
+### Dependent ids
+
+A condition can have a dependent id, `did`. When it is set, the target is sent the dependent item rather than the item that triggered the automation. The platform uses this for the build automations of event curves and event timeseries: the condition watches the event list, and `did` is the curve to build.
+
+```json
+{
+  "target": "odsl.ecurve",
+  "template": "When 'MY.GAS.HUB:FORWARD_EVENTS' is updated, build Event Curve [curve]",
+  "conditions": [
     {
-      "service": "object",
+      "service": "data",
       "action": "update",
-      "id": "MY_MASTER_DATA_OBJECT",
+      "id": "MY.GAS.HUB:FORWARD_EVENTS",
+      "did": "MY.GAS.HUB:FORWARD_CURVE",
       "source": "private"
     }
   ],
   "properties": {
-    "queue": "MY_DOWNSTREAM_QUEUE"
+    "curve": "MY.GAS.HUB:FORWARD_CURVE"
   }
 }
 ```
 
-</TabItem>
-</Tabs>
+You don't need to create build automations yourself: the platform creates them when you save an event curve, smart curve, event timeseries or smart timeseries, and removes them when you delete it.
 
-## Using a dependent ID
+## Finding automations
 
-Some automations need to watch an entity that depends on another. For example, an event that triggers a downstream event curve build can be tracked using the optional `did` (dependent ID) field on the condition.
+```js
+//#region Find automations
+// All automations that send email
+emails = find ${automation} where target = "odsl.email"
+for a in emails
+    print a.name
+next
+//#endregion
+```
+
+The list has one entry per condition, so an automation with two conditions is listed twice. Reading one automation by its id returns the whole automation:
+
+```js
+a = ${automation:"6718d2c4e5f1a20b3c4d5e6f"}
+```
+
+In the REST API, list with `GET https://api.opendatadsl.com/api/automation/v1` (with `_filter` as usual) and read one with `GET https://api.opendatadsl.com/api/automation/v1/{id}`.
+
+## Changing or disabling an automation
+
+Read the automation, change it and save it again. Set `enabled` to `false` to pause it without deleting it.
 
 <Tabs>
 <TabItem value="odsl" label="ODSL">
 
 ```js
-//#region Watch an event that drives a curve build
-ab = AutomationBuilder("event", "private", "MY_OBJECT:TRADES")
-ab.addConditionWithDid("create", "MY_OBJECT:CURVE")
-ab.setTarget("email")
-ab.setProperty("to", "data-team@example.com")
-ab.setProperty("subject", "Trade event received for MY_OBJECT")
-ab.icon = "calendar-event text-primary"
-ab.enabled = true
-save ${automation:ab}
+//#region Disable an automation
+a = ${automation:"6718d2c4e5f1a20b3c4d5e6f"}
+a.enabled = false
+save ${automation:a}
 //#endregion
 ```
 
 </TabItem>
 <TabItem value="rest" label="REST API">
 
+Read the automation, change `enabled`, and post the whole document back with its `_id`:
+
 ```json
+GET https://api.opendatadsl.com/api/automation/v1/6718d2c4e5f1a20b3c4d5e6f
+
 POST https://api.opendatadsl.com/api/automation/v1
 
 {
-  "target": "email",
-  "icon": "calendar-event text-primary",
-  "enabled": true,
+  "_id": "6718d2c4e5f1a20b3c4d5e6f",
+  "target": "odsl.email",
+  "template": "When 'ICE.NDEX.NLB' is late, send an email to [to] with subject [subject]",
+  "icon": "envelope-at text-outlook",
+  "enabled": false,
   "conditions": [
-    {
-      "service": "event",
-      "action": "create",
-      "id": "MY_OBJECT:TRADES",
-      "source": "private",
-      "did": "MY_OBJECT:CURVE"
-    }
+    { "service": "dataset", "action": "late", "id": "ICE.NDEX.NLB", "source": "private" }
   ],
   "properties": {
-    "to": "data-team@example.com",
-    "subject": "Trade event received for MY_OBJECT"
-  }
-}
-```
-
-</TabItem>
-</Tabs>
-
-## Disabling an automation
-
-Set `enabled` to `false` to pause an automation without deleting it. You can re-enable it at any time.
-
-<Tabs>
-<TabItem value="odsl" label="ODSL">
-
-```js
-//#region Disable an existing automation
-auto = ${automation:"MY_AUTOMATION_ID"}
-auto.enabled = false
-save ${automation:auto}
-//#endregion
-```
-
-</TabItem>
-<TabItem value="rest" label="REST API">
-
-```json
-PUT https://api.opendatadsl.com/api/automation/v1/MY_AUTOMATION_ID
-
-{
-  "enabled": false
-}
-```
-
-</TabItem>
-</Tabs>
-
-## Deleting an automation
-
-<Tabs>
-<TabItem value="odsl" label="ODSL">
-
-```js
-//#region Delete an automation
-delete ${automation:"MY_AUTOMATION_ID"}
-//#endregion
-```
-
-</TabItem>
-<TabItem value="rest" label="REST API">
-
-```
-DELETE https://api.opendatadsl.com/api/automation/v1/MY_AUTOMATION_ID
-```
-
-</TabItem>
-</Tabs>
-
-:::tip Finding your automation ID
-After saving an automation, the platform assigns it a unique `_id`. You can retrieve it by listing your automations in the portal or querying the `automation` service.
-:::
-
----
-
-## Advanced features
-
-Automations support a set of special properties that begin with `@`. These give you fine-grained control over when an automation fires and how the data is shaped before it is delivered.
-
-### Transforming data with a mustache template
-
-By default, the automation sends the raw triggered entity to the target. You can reshape the data before delivery by setting the `@transformer` property to the ID of a mustache script stored in the platform.
-
-This is useful when a target expects a specific format — for example, a CSV layout for an email attachment.
-
-<Tabs>
-<TabItem value="odsl" label="ODSL">
-
-```js
-//#region Send a transformed CSV when an object is created
-ab = AutomationBuilder("object", "private", "*")
-ab.addCondition("create")
-ab.setTarget("email_attachment")
-ab.setProperty("to", "analyst@example.com")
-ab.setProperty("subject", "New object created")
-ab.setProperty("attachmentName", "created.csv")
-ab.setProperty("@transformer", "example-odsl\\0.DEMO\\DefaultTemplates\\AutomationObject_CSV")
-ab.icon = "envelope-paper text-outlook"
-ab.enabled = true
-save ${automation:ab}
-//#endregion
-```
-
-</TabItem>
-<TabItem value="rest" label="REST API">
-
-```json
-POST https://api.opendatadsl.com/api/automation/v1
-
-{
-  "target": "email_attachment",
-  "icon": "envelope-paper text-outlook",
-  "enabled": true,
-  "conditions": [
-    {
-      "service": "object",
-      "action": "create",
-      "id": "*",
-      "source": "private"
-    }
-  ],
-  "properties": {
-    "to": "analyst@example.com",
-    "subject": "New object created",
-    "attachmentName": "created.csv",
-    "@transformer": "example-odsl\\0.DEMO\\DefaultTemplates\\AutomationObject_CSV"
+    "to": "ops-team@mycompany.com",
+    "subject": "ICE Endex NLB settlement prices are late",
+    "attachment": false
   }
 }
 ```
@@ -382,90 +407,83 @@ POST https://api.opendatadsl.com/api/automation/v1
 </Tabs>
 
 :::note
-The mustache script must already exist in the platform as a script of type `mustache` before the automation runs. See [Scripts](/docs/topics/scripts) for how to upload scripts.
+Saving an automation makes you its owner, so it then runs with your security policies.
 :::
 
----
+## Testing an automation
 
-### Filtering update triggers by property name
+A test run runs the automation once, now, for the item in its first condition as it is at the moment, whether the automation is enabled or not. It is logged with the reason `Test Run`.
 
-When triggering on an `update` action, you may only want to react when a specific property on the entity has changed — not every update. Set `@propertyName` to the name of the property to watch.
+```
+GET https://api.opendatadsl.com/api/automation/v1/6718d2c4e5f1a20b3c4d5e6f?_run=true
+```
 
-The example below fires only when the `status` property of an object is updated:
+Add `&_ondate=2026-10-28` to run it for a curve date or delivery date. An automation whose condition id is `*` cannot be test run.
+
+Every run, test or real, is recorded in the `automationlog` service with its status and message:
+
+```js
+logs = find ${automationlog} where status = "failed"
+```
+
+## Deleting an automation
 
 <Tabs>
 <TabItem value="odsl" label="ODSL">
 
 ```js
-//#region Notify when the status property of an object changes
-ab = AutomationBuilder("object", "private", "MY_MASTER_DATA_OBJECT")
-ab.addCondition("update")
-ab.setTarget("email")
-ab.setProperty("to", "ops-team@example.com")
-ab.setProperty("subject", "Status changed: MY_MASTER_DATA_OBJECT")
-ab.setProperty("@propertyName", "status")
-ab.icon = "envelope-at text-outlook"
-ab.enabled = true
-save ${automation:ab}
+//#region Delete an automation
+delete ${automation:"6718d2c4e5f1a20b3c4d5e6f"}
 //#endregion
 ```
 
 </TabItem>
 <TabItem value="rest" label="REST API">
 
-```json
-POST https://api.opendatadsl.com/api/automation/v1
-
-{
-  "target": "email",
-  "icon": "envelope-at text-outlook",
-  "enabled": true,
-  "conditions": [
-    {
-      "service": "object",
-      "action": "update",
-      "id": "MY_MASTER_DATA_OBJECT",
-      "source": "private"
-    }
-  ],
-  "properties": {
-    "to": "ops-team@example.com",
-    "subject": "Status changed: MY_MASTER_DATA_OBJECT",
-    "@propertyName": "status"
-  }
-}
+```
+DELETE https://api.opendatadsl.com/api/automation/v1/6718d2c4e5f1a20b3c4d5e6f
 ```
 
 </TabItem>
 </Tabs>
 
+:::tip Finding your automation id
+The platform gives each automation an id when it is first saved. Find it with `find ${automation}`, in the item's Automations panel, or in the Automations extension.
+:::
+
 ---
 
-### Filtering create triggers by property value
+## Advanced features
 
-When triggering on a `create` action, you can narrow the automation to only fire when a newly created entity has a specific property set to a specific value. Use `@propertyName` and `@propertyValue` together.
+Properties that start with `@` change when an automation runs and what data the target receives.
 
-This is particularly powerful with a wildcard `id` of `*` — the automation watches all new entities of a service type, but only fires when the property filter matches.
+### Transforming data with a mustache template
 
-The example below fires whenever any object is created whose `_type` is `#Object`:
+Targets that allow transformation (email, queue and storage targets) accept an `@transformer` property: the name of a mustache script, or inline mustache text. The data is transformed with it before it is sent to the target. This example sends a curve as a CSV attachment using a mustache script `mycompany\templates\curve_csv` that you have saved in the script service.
 
 <Tabs>
 <TabItem value="odsl" label="ODSL">
 
 ```js
-//#region Notify when any object of type #Object is created
-ab = AutomationBuilder("object", "private", "*")
-ab.addCondition("create")
-ab.setTarget("email_attachment")
-ab.setProperty("to", "data-team@example.com")
-ab.setProperty("subject", "New #Object created")
-ab.setProperty("attachmentName", "created.csv")
-ab.setProperty("@transformer", "example-odsl\\0.DEMO\\DefaultTemplates\\AutomationObject_CSV")
-ab.setProperty("@propertyName", "_type")
-ab.setProperty("@propertyValue", "#Object")
-ab.icon = "envelope-paper text-outlook"
-ab.enabled = true
-save ${automation:ab}
+//#region Email a curve as CSV
+a = AutomationBuilder("data", "private", "MY.GAS.HUB:FORWARD_CURVE").build()
+c = SimpleObject()
+c.service = "data"
+c.source = "private"
+c.id = "MY.GAS.HUB:FORWARD_CURVE"
+c.action = "update"
+conds = []
+conds.add(c)
+a.conditions = conds
+a.target = "odsl.email_attachment"
+a.template = "When 'MY.GAS.HUB:FORWARD_CURVE' is updated, transform the data using [@transformer], then send an email to [to] with subject [subject], add the data as an attachment named [attachmentName]"
+a.icon = "envelope-paper text-outlook"
+a.properties.to = "analysts@mycompany.com"
+a.properties.subject = "Forward curve"
+a.properties.attachmentName = "forward_curve.csv"
+a.properties.attachment = true
+a.properties.add("@transformer", "mycompany\templates\curve_csv")
+save ${automation:a}
 //#endregion
 ```
 
@@ -476,24 +494,19 @@ save ${automation:ab}
 POST https://api.opendatadsl.com/api/automation/v1
 
 {
-  "target": "email_attachment",
+  "target": "odsl.email_attachment",
+  "template": "When 'MY.GAS.HUB:FORWARD_CURVE' is updated, transform the data using [@transformer], then send an email to [to] with subject [subject], add the data as an attachment named [attachmentName]",
   "icon": "envelope-paper text-outlook",
   "enabled": true,
   "conditions": [
-    {
-      "service": "object",
-      "action": "create",
-      "id": "*",
-      "source": "private"
-    }
+    { "service": "data", "action": "update", "id": "MY.GAS.HUB:FORWARD_CURVE", "source": "private" }
   ],
   "properties": {
-    "to": "data-team@example.com",
-    "subject": "New #Object created",
-    "attachmentName": "created.csv",
-    "@transformer": "example-odsl\\0.DEMO\\DefaultTemplates\\AutomationObject_CSV",
-    "@propertyName": "_type",
-    "@propertyValue": "#Object"
+    "to": "analysts@mycompany.com",
+    "subject": "Forward curve",
+    "attachmentName": "forward_curve.csv",
+    "attachment": true,
+    "@transformer": "mycompany\\templates\\curve_csv"
   }
 }
 ```
@@ -501,25 +514,134 @@ POST https://api.opendatadsl.com/api/automation/v1
 </TabItem>
 </Tabs>
 
----
+### Running only when a property changes
+
+For `update`, set both `@propertyName` and `@propertyValue` to run the automation only when that property of the item changes to that value. Use `*` as the value to run on any change of the property. This example emails the data team when a master data record's `status` changes to `retired`.
+
+<Tabs>
+<TabItem value="odsl" label="ODSL">
+
+```js
+//#region Email when status changes to retired
+a = AutomationBuilder("object", "private", "MY.GAS.HUB").build()
+c = SimpleObject()
+c.service = "object"
+c.source = "private"
+c.id = "MY.GAS.HUB"
+c.action = "update"
+conds = []
+conds.add(c)
+a.conditions = conds
+a.target = "odsl.email"
+a.template = "When property [@propertyName] on 'MY.GAS.HUB' is set to [@propertyValue], send an email to [to] with subject [subject]"
+a.icon = "envelope-at text-outlook"
+a.properties.to = "data-team@mycompany.com"
+a.properties.subject = "MY.GAS.HUB has been retired"
+a.properties.attachment = false
+a.properties.add("@propertyName", "status")
+a.properties.add("@propertyValue", "retired")
+save ${automation:a}
+//#endregion
+```
+
+</TabItem>
+<TabItem value="rest" label="REST API">
+
+```json
+POST https://api.opendatadsl.com/api/automation/v1
+
+{
+  "target": "odsl.email",
+  "template": "When property [@propertyName] on 'MY.GAS.HUB' is set to [@propertyValue], send an email to [to] with subject [subject]",
+  "icon": "envelope-at text-outlook",
+  "enabled": true,
+  "conditions": [
+    { "service": "object", "action": "update", "id": "MY.GAS.HUB", "source": "private" }
+  ],
+  "properties": {
+    "to": "data-team@mycompany.com",
+    "subject": "MY.GAS.HUB has been retired",
+    "attachment": false,
+    "@propertyName": "status",
+    "@propertyValue": "retired"
+  }
+}
+```
+
+</TabItem>
+</Tabs>
+
+### Running only for items with a property value
+
+For `create` and `delete`, `@propertyName` and `@propertyValue` run the automation only when the created or deleted item has that property value. Combined with the id `*`, this lets you react to a kind of item. This example emails the data team whenever a master data record of type `#Commodity` is created.
+
+<Tabs>
+<TabItem value="odsl" label="ODSL">
+
+```js
+//#region Email when a commodity is created
+a = AutomationBuilder("object", "private").build()
+c = SimpleObject()
+c.service = "object"
+c.source = "private"
+c.id = "*"
+c.action = "create"
+conds = []
+conds.add(c)
+a.conditions = conds
+a.target = "odsl.email"
+a.template = "When 'anything' is created with property [@propertyName] set to [@propertyValue], send an email to [to] with subject [subject]"
+a.icon = "envelope-at text-outlook"
+a.properties.to = "data-team@mycompany.com"
+a.properties.subject = "New commodity created"
+a.properties.attachment = false
+a.properties.add("@propertyName", "_type")
+a.properties.add("@propertyValue", "#Commodity")
+save ${automation:a}
+//#endregion
+```
+
+</TabItem>
+<TabItem value="rest" label="REST API">
+
+```json
+POST https://api.opendatadsl.com/api/automation/v1
+
+{
+  "target": "odsl.email",
+  "template": "When 'anything' is created with property [@propertyName] set to [@propertyValue], send an email to [to] with subject [subject]",
+  "icon": "envelope-at text-outlook",
+  "enabled": true,
+  "conditions": [
+    { "service": "object", "action": "create", "id": "*", "source": "private" }
+  ],
+  "properties": {
+    "to": "data-team@mycompany.com",
+    "subject": "New commodity created",
+    "attachment": false,
+    "@propertyName": "_type",
+    "@propertyValue": "#Commodity"
+  }
+}
+```
+
+</TabItem>
+</Tabs>
 
 ### Summary of `@` properties
 
-| Property | Applies to action | Description |
+| Property | Applies to | Description |
 |---|---|---|
-| `@transformer` | Any | ID of a mustache script used to transform the data before delivery |
-| `@propertyName` | `update` | Only fire when this named property has changed |
-| `@propertyName` | `create` | Combined with `@propertyValue` — only fire when this property equals the given value |
-| `@propertyValue` | `create` | The value that `@propertyName` must equal for the automation to fire |
+| `@transformer` | Targets that allow transformation | The name of a mustache script, or inline mustache text, used to transform the data before the target receives it |
+| `@propertyName` and `@propertyValue` | `update` | Run only when the named property changes to the value, or changes at all with `*` |
+| `@propertyName` and `@propertyValue` | `create`, `delete` | Run only when the created or deleted item's property equals the value |
 
-:::tip Using wildcards
-Set the condition `id` to `*` to watch all entities in a service. Combined with `@propertyName` and `@propertyValue`, this lets you build broad automations that react selectively to meaningful changes across your entire dataset.
-:::
+Both `@propertyName` and `@propertyValue` must be set for either to have an effect.
 
 ---
 
 ## Next steps
 
-- [Automation Targets](/docs/topics/automations/targets) — explore the full list of available targets and their configuration properties
-- [Automation Logs](/docs/topics/automations/logs) — monitor and troubleshoot your automation executions
-- [Automation Basics](/docs/topics/automations/basics) — revisit the core concepts and trigger reference
+- [Automation Targets](/docs/topics/automations/targets): all the targets and the properties each one needs
+- [Automations extension](/docs/extensions/automations/monitoring): monitor automation runs and failures in the portal
+- [Automation Basics](/docs/topics/automations/basics): the trigger reference and how templates are made

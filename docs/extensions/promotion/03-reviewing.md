@@ -71,6 +71,17 @@ Select **Add to the basket** (or **Add all**) to include them. They are pushed f
 
 Items the target lacks but your environment does not have either (public items, data loaded by a process) are not listed.
 
+### Automations on the items
+
+Promotion also looks for automations in your environment that act on items in the basket: an email when a smart curve is updated, an alert when a script fails, a report run when a process succeeds. They are listed in a blue panel, **Automations on items in the basket**, with the item each one acts on and its automation target:
+
+| Shown as | Meaning |
+|-|-|
+| **Add to the basket** | The target has no automation doing the same thing. Add it (or **Add all**) to push it with the items. |
+| **Already in production** | The target already has an automation with the same target, conditions and settings. Nothing to do. |
+
+Automations are never pushed unless you add them, because an enabled automation starts acting in the target as soon as it is there.
+
 ---
 
 ## Notes and warnings

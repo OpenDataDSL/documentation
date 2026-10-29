@@ -149,15 +149,19 @@ Add `batchAccount` and `image` to the process settings:
 
 ### What the task receives
 
-The task runs with only these environment variables. No OpenDataDSL platform credentials are passed to your batch account.
+The task runs with the same environment variables as a container process in the OpenDataDSL batch account. The OpenDataDSL SDKs use them to read the run's details and report its progress back to OpenDataDSL.
 
 |**Variable**|**Description**|
 |-|-|
 |ODSL_TASKID|The process execution id|
 |ODSL_STAGE|The OpenDataDSL environment stage|
+|ODSL_SB_CPM|The connection the SDK uses to send the process status back to OpenDataDSL|
+|ODSL_STORAGE_URL, ODSL_STORAGE_CONTAINER, ODSL_LOG_CONTAINER|OpenDataDSL storage used by processes|
 |ODSL_TOKEN|An OpenDataDSL API access token: for a manual run, the token of the user who ran it; for a scheduled run, a 30 minute token for the process's run-as user|
 |ODSL_TASK|JSON description of the run: process name, trigger, reason, input and job|
 |ODSL_PROCESS|JSON of the process configuration|
+
+Task environment variables can be read by anyone with read access to the batch account. Limit read access to the account to the people who run it.
 
 ### Logs
 

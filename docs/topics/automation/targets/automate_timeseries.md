@@ -1,7 +1,7 @@
 ---
 slug: /topics/automations/targets/timeseries
-title: Smart TimeSeries Target
-description: Trigger a Smart TimeSeries build automatically in response to data changes
+title: TimeSeries Build Targets
+description: How Smart TimeSeries and Event TimeSeries builds are triggered by automations
 sidebar_position: 5
 tags:
 - topics
@@ -13,43 +13,83 @@ tags:
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-The Smart TimeSeries target is a **built-in automation target** that triggers a Smart TimeSeries build whenever its input data changes. Like the [Event Curve target](/docs/topics/automations/targets/curve#ecurve--build-an-event-curve), the build result fires `data` service actions that can trigger further automations downstream — making this target primarily useful as a link in a **chained automation pipeline**.
+The timeseries build targets build a Smart or Event TimeSeries when the data it depends on is updated.
 
-:::note Built-in targets
-Built-in targets are provided by OpenDataDSL and referenced using the `@` prefix on their script name (e.g. `@TimeseriesTarget`). They are available to all tenants without any additional configuration.
-:::
+| Id | Name | Template | Services | Actions |
+|---|---|---|---|---|
+| `odsl.timeseries` | Build a Smart TimeSeries | `build Smart Timeseries [timeseries]` | data | update |
+| `odsl.etimeseries` | Build an Event TimeSeries | `build Event Timeseries [timeseries]` | data | update |
 
----
+Neither target supports `@transformer` or property-change filtering. The `odsl.etimeseries` target is used by the platform for Event TimeSeries builds.
 
-## `timeseries` — Build a Smart TimeSeries
+## Inputs
 
-### Inputs
+| Input | Description |
+|---|---|
+| `timeseries` | The id of the TimeSeries to build |
 
-| Input | Required | Type | Description |
-|---|---|---|---|
-| `timeseries` | ✅ | `SmartTimeSeries` | The ID of the Smart TimeSeries to build |
+## Created for you by the platform
 
-This target only applies to the `data` service and the `update` action. Transformation and property overrides are not supported — the build logic is defined in the Smart TimeSeries configuration itself.
+You don't normally create these automations yourself. When you save a [Smart TimeSeries](/docs/odsl/variable/smarttimeseries) or an [Event TimeSeries](/docs/odsl/variable/eventtimeseries), the platform creates its build automations, and when you delete it the platform removes them.
 
----
+You can list them with ODSL:
 
-## Using this target in an automation
+```js
+find ${automation} where target = "odsl.timeseries"
+find ${automation} where target = "odsl.etimeseries"
+```
 
-A typical use case is rebuilding a Smart TimeSeries whenever its underlying base data is updated:
+## What an Event TimeSeries build automation looks like
+
+Event lists are data items, so an Event TimeSeries build automation has a condition on the **event list** with the `data` service and the `update` action. The condition also has `did` set to the id of the Event TimeSeries, so the platform knows which item the automation belongs to. For an Event TimeSeries `MY_OBJECT:EVENT_SERIES` built from the event list `MY_OBJECT:TRADES`, the automation looks like this:
+
+```json
+{
+  "target": "odsl.etimeseries",
+  "template": "When 'MY_OBJECT:TRADES' is updated, build Event Timeseries [timeseries]",
+  "enabled": true,
+  "conditions": [
+    {
+      "source": "private",
+      "service": "data",
+      "id": "MY_OBJECT:TRADES",
+      "action": "update",
+      "did": "MY_OBJECT:EVENT_SERIES"
+    }
+  ],
+  "properties": {
+    "timeseries": "MY_OBJECT:EVENT_SERIES"
+  }
+}
+```
+
+## Reacting to a build
+
+A built timeseries is saved like any other data, so you can create your own automations on it with the `data` service and the `update` action. Use the id of the built TimeSeries, not the id of its inputs. For example, to email the team each time the Event TimeSeries is rebuilt:
 
 <Tabs>
 <TabItem value="odsl" label="ODSL">
 
 ```js
-//#region Rebuild a Smart TimeSeries when its base data is updated
-ab = AutomationBuilder("data", "private", "MY_OBJECT:BASE_PRICE")
-ab.addCondition("update")
-ab.setTarget("timeseries")
-ab.setProperty("timeseries", "MY_OBJECT:ADJUSTED_PRICE")
-ab.icon = "graph-up"
-ab.enabled = true
-save ${automation:ab}
-//#endregion
+a = AutomationBuilder("data", "private", "MY_OBJECT:EVENT_SERIES").build()
+
+c = SimpleObject()
+c.source = "private"
+c.service = "data"
+c.id = "MY_OBJECT:EVENT_SERIES"
+c.action = "update"
+conds = []
+conds.add(c)
+a.conditions = conds
+
+a.target = "odsl.email"
+a.template = "When 'MY_OBJECT:EVENT_SERIES' is updated, send an email to [to] with subject [subject]"
+a.icon = "envelope-at text-outlook"
+a.properties.to = "trading@mycompany.com"
+a.properties.subject = "MY_OBJECT:EVENT_SERIES has been rebuilt"
+a.properties.attachment = false
+a.enabled = true
+save ${automation:a}
 ```
 
 </TabItem>
@@ -59,19 +99,22 @@ save ${automation:ab}
 POST https://api.opendatadsl.com/api/automation/v1
 
 {
-  "target": "timeseries",
-  "icon": "graph-up",
+  "target": "odsl.email",
+  "template": "When 'MY_OBJECT:EVENT_SERIES' is updated, send an email to [to] with subject [subject]",
+  "icon": "envelope-at text-outlook",
   "enabled": true,
   "conditions": [
     {
+      "source": "private",
       "service": "data",
-      "action": "update",
-      "id": "MY_OBJECT:BASE_PRICE",
-      "source": "private"
+      "id": "MY_OBJECT:EVENT_SERIES",
+      "action": "update"
     }
   ],
   "properties": {
-    "timeseries": "MY_OBJECT:ADJUSTED_PRICE"
+    "to": "trading@mycompany.com",
+    "subject": "MY_OBJECT:EVENT_SERIES has been rebuilt",
+    "attachment": false
   }
 }
 ```
@@ -81,87 +124,11 @@ POST https://api.opendatadsl.com/api/automation/v1
 
 ---
 
-## Chaining automations with Smart TimeSeries builds
-
-After the Smart TimeSeries is built, the platform fires a `data` service `update` action on the result. A second automation can react to this — for example to send a notification, publish to a queue, or trigger a report.
-
-```
-data:update (base)  →  [timeseries target]  →  Smart TimeSeries built  →  data:update (result)  →  [downstream target]
-```
-
-:::note
-Because the Smart TimeSeries build fires a `data:update` action on the result timeseries, use the result timeseries ID as the condition `id` in any downstream automation — not the base data ID.
-:::
-
-### Example: rebuild and notify
-
-The following example rebuilds a Smart TimeSeries when base data changes, then sends an email notification when the rebuilt timeseries is updated:
-
-```js
-//#region Stage 1 — rebuild Smart TimeSeries when base data changes
-ab = AutomationBuilder("data", "private", "MY_OBJECT:BASE_PRICE")
-ab.addCondition("update")
-ab.setTarget("timeseries")
-ab.setProperty("timeseries", "MY_OBJECT:ADJUSTED_PRICE")
-ab.icon = "graph-up"
-ab.enabled = true
-save ${automation:ab}
-//#endregion
-
-//#region Stage 2 — notify when the Smart TimeSeries has been rebuilt
-ab = AutomationBuilder("data", "private", "MY_OBJECT:ADJUSTED_PRICE")
-ab.addCondition("update")
-ab.setTarget("email")
-ab.setProperty("to", "data-team@example.com")
-ab.setProperty("subject", "Smart TimeSeries updated: MY_OBJECT:ADJUSTED_PRICE")
-ab.icon = "envelope-at text-outlook"
-ab.enabled = true
-save ${automation:ab}
-//#endregion
-```
-
-### Example: rebuild and publish to a queue
-
-```js
-//#region Stage 1 — rebuild Smart TimeSeries when base data changes
-ab = AutomationBuilder("data", "private", "MY_OBJECT:BASE_PRICE")
-ab.addCondition("update")
-ab.setTarget("timeseries")
-ab.setProperty("timeseries", "MY_OBJECT:ADJUSTED_PRICE")
-ab.icon = "graph-up"
-ab.enabled = true
-save ${automation:ab}
-//#endregion
-
-//#region Stage 2 — publish the rebuilt timeseries to a queue
-ab = AutomationBuilder("data", "private", "MY_OBJECT:ADJUSTED_PRICE")
-ab.addCondition("update")
-ab.setTarget("queue_subject")
-ab.setProperty("queue", "MY_DOWNSTREAM_QUEUE")
-ab.setProperty("subject", "timeseries.update.MY_OBJECT.ADJUSTED_PRICE")
-ab.icon = "send text-red"
-ab.enabled = true
-save ${automation:ab}
-//#endregion
-```
-
----
-
-## Comparison with related targets
-
-| Target | Builds | After build fires | Typical use |
-|---|---|---|---|
-| `timeseries` | Smart TimeSeries | `data:update` on the result | Rebuild derived timeseries when inputs change, then chain downstream |
-| `curve` | Smart Curve | Stores the result | Rebuild and store a derived curve when inputs change |
-| `ecurve` | Event Curve | `curve` service actions | Rebuild an event-driven curve and chain downstream |
-
----
-
 ## Related pages
 
-- [Curve Build Targets](/docs/topics/automations/targets/curve) — the equivalent targets for Smart Curves and Event Curves
-- [Email Target](/docs/topics/automations/targets/email) — send a notification after a Smart TimeSeries rebuild
-- [Queue Target](/docs/topics/automations/targets/queue) — publish the rebuilt timeseries to a message queue
-- [Automation Basics](/docs/topics/automations/basics) — how automations work and the full trigger reference
-- [Creating Automations](/docs/topics/automations/creating) — step-by-step guide including chaining and advanced `@` properties
-- [Automation Targets](/docs/topics/automations/targets) — overview of all available targets
+- [Automation Basics](/docs/topics/automations/basics): how automations work, conditions and templates
+- [Creating Automations](/docs/topics/automations/creating): step-by-step guide to setting up automations
+- [Curve Build Targets](/docs/topics/automations/targets/curve): the equivalent targets for Smart and Event Curves
+- [Email Target](/docs/topics/automations/targets/email): send a notification when a build completes
+- [Export Group Target](/docs/topics/automations/targets/curve-export): export data when it changes
+- [Automation Targets](/docs/topics/automations/targets): overview of all available targets

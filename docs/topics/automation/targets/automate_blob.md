@@ -1,7 +1,7 @@
 ---
 slug: /topics/automations/targets/blob
 title: Azure Storage Targets
-description: Send automation data to Azure Blob Storage or Azure Data Lake Storage using the built-in blob targets
+description: Send automation data to Azure Blob Storage or Azure Data Lake Storage using the built-in storage targets
 sidebar_position: 3
 tags:
 - topics
@@ -15,58 +15,76 @@ tags:
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-The Azure storage targets are **built-in automation targets** that write triggered data directly to cloud storage. Two variants are available — one for Azure Blob Storage and one for Azure Data Lake Storage Gen2 (ADLS).
+The Azure storage targets write the triggering data as a file to your own Azure storage whenever an automation fires. There are two built-in storage targets: one for Azure Blob Storage and one for Azure Data Lake Storage (ADLS).
 
-:::note Built-in targets
-Built-in targets are provided by OpenDataDSL and referenced using the `@` prefix on their script name (e.g. `@BlobTarget`). They are available to all tenants without any additional configuration.
-:::
+| Id | Name | Template | Icon |
+|---|---|---|---|
+| `odsl.blob` | Save to an Azure Blob | `send to [path] in an Azure Blob Container [container] at URL [storage]` | `database text-success` |
+| `odsl.adls` | Save to an Azure Data Lake | `send to [path] in an Azure Datalake Storage Container [container] at URL [storage]` | `database-fill text-info` |
 
-## Available storage targets
-
-| Code | Name | Description |
-|---|---|---|
-| `blob` | Save to an Azure Blob | Writes data to an Azure Blob Storage container |
-| `adls` | Save to an Azure Data Lake | Writes data to an Azure Data Lake Storage Gen2 container |
-
-Both targets use the same underlying `@BlobTarget` script and accept the same inputs. The only difference is whether the storage endpoint is treated as a standard blob container (`blob`) or an ADLS Gen2 hierarchical namespace container (`adls`).
-
----
+Both targets work with any service and any action, and both support the `@transformer` property and property-change filtering.
 
 ## Inputs
 
-| Input | Required | Description |
-|---|---|---|
-| `container` | ✅ | The name of the blob or ADLS container to store the file in |
-| `storage` | ✅ | The URL of the storage account (e.g. `https://mystorageaccount.blob.core.windows.net`) |
-| `path` | ✅ | The path within the container where the file will be written, including the filename |
+| Input | Description |
+|---|---|
+| `storage` | The URL of your Azure storage |
+| `container` | The name of the container to write to |
+| `path` | The folder path within the container |
+| `name` | The file name. It can include dates, for example `${date:yyyyMMdd}` |
 
-:::tip Dynamic paths
-You can embed date expressions in `path` to organise files by date automatically — for example, `data/${yyyy}/${MM}/${dd}/MY_DATASET.csv` will resolve to a date-partitioned folder structure at the time the automation fires.
+:::warning The file name is required
+`name` does not appear in the template, but the target needs it to write the file, so always set it.
 :::
+
+You can also set `contentType`, which defaults to `application/json`.
+
+## Default properties
+
+| Target | Property | Value |
+|---|---|---|
+| `odsl.blob` | `adls` | `false` |
+| `odsl.adls` | `adls` | `true` |
+
+Include the `adls` property in every storage automation you create.
+
+## How it works
+
+- The file is written with the triggering data, after any `@transformer` has been applied
+- Dates in `name` are filled in from the ondate of the triggering data, or today when there is no ondate
+- The file is written using the OpenDataDSL application's credentials in **your** Azure (Entra) tenant, so your storage account must grant that application access to the container
 
 ---
 
-## `blob` — Save to an Azure Blob
+## odsl.blob: Save to an Azure Blob
 
-Use this target to write data to a standard Azure Blob Storage container.
-
-### Using this target in an automation
+### Example: save a dataset when it is complete
 
 <Tabs>
 <TabItem value="odsl" label="ODSL">
 
 ```js
-//#region Write dataset output to Azure Blob Storage on completion
-ab = AutomationBuilder("dataset", "private", "MY_PROVIDER.FEED.PRODUCT")
-ab.addCondition("complete")
-ab.setTarget("blob")
-ab.setProperty("storage", "https://mystorageaccount.blob.core.windows.net")
-ab.setProperty("container", "market-data")
-ab.setProperty("path", "feeds/MY_PROVIDER/MY_PROVIDER.FEED.PRODUCT.csv")
-ab.icon = "database text-success"
-ab.enabled = true
-save ${automation:ab}
-//#endregion
+a = AutomationBuilder("dataset", "private", "MY.PROVIDER.FEED").build()
+
+c = SimpleObject()
+c.source = "private"
+c.service = "dataset"
+c.id = "MY.PROVIDER.FEED"
+c.action = "complete"
+conds = []
+conds.add(c)
+a.conditions = conds
+
+a.target = "odsl.blob"
+a.template = "When 'MY.PROVIDER.FEED' is complete, send to [path] in an Azure Blob Container [container] at URL [storage]"
+a.icon = "database text-success"
+a.properties.storage = "https://mycompanystorage.blob.core.windows.net"
+a.properties.container = "market-data"
+a.properties.path = "feeds/MY.PROVIDER.FEED"
+a.properties.name = "MY.PROVIDER.FEED_${date:yyyyMMdd}.json"
+a.properties.adls = false
+a.enabled = true
+save ${automation:a}
 ```
 
 </TabItem>
@@ -76,69 +94,24 @@ save ${automation:ab}
 POST https://api.opendatadsl.com/api/automation/v1
 
 {
-"target": "blob",
-"icon": "database text-success",
-"enabled": true,
-"conditions": [
-{
-"service": "dataset",
-"action": "complete",
-"id": "MY_PROVIDER.FEED.PRODUCT",
-"source": "private"
-}
-],
-"properties": {
-"storage": "https://mystorageaccount.blob.core.windows.net",
-"container": "market-data",
-"path": "feeds/MY_PROVIDER/MY_PROVIDER.FEED.PRODUCT.csv"
-}
-}
-```
-
-</TabItem>
-</Tabs>
-
-### With a date-partitioned path
-
-<Tabs>
-<TabItem value="odsl" label="ODSL">
-
-```js
-//#region Write curve output to Azure Blob Storage with a date-partitioned path
-ab = AutomationBuilder("curve", "private", "MY_CURVE_OBJECT:CLOSE")
-ab.addCondition("success")
-ab.setTarget("blob")
-ab.setProperty("storage", "https://mystorageaccount.blob.core.windows.net")
-ab.setProperty("container", "curves")
-ab.setProperty("path", "MY_CURVE_OBJECT/${yyyy}/${MM}/${dd}/CLOSE.csv")
-ab.icon = "database text-success"
-ab.enabled = true
-save ${automation:ab}
-//#endregion
-```
-
-</TabItem>
-<TabItem value="rest" label="REST API">
-
-```json
-POST https://api.opendatadsl.com/api/automation/v1
-
-{
-  "target": "blob",
+  "target": "odsl.blob",
+  "template": "When 'MY.PROVIDER.FEED' is complete, send to [path] in an Azure Blob Container [container] at URL [storage]",
   "icon": "database text-success",
   "enabled": true,
   "conditions": [
     {
-      "service": "curve",
-      "action": "success",
-      "id": "MY_CURVE_OBJECT:CLOSE",
-      "source": "private"
+      "source": "private",
+      "service": "dataset",
+      "id": "MY.PROVIDER.FEED",
+      "action": "complete"
     }
   ],
   "properties": {
-    "storage": "https://mystorageaccount.blob.core.windows.net",
-    "container": "curves",
-    "path": "MY_CURVE_OBJECT/${yyyy}/${MM}/${dd}/CLOSE.csv"
+    "storage": "https://mycompanystorage.blob.core.windows.net",
+    "container": "market-data",
+    "path": "feeds/MY.PROVIDER.FEED",
+    "name": "MY.PROVIDER.FEED_${date:yyyyMMdd}.json",
+    "adls": false
   }
 }
 ```
@@ -148,27 +121,42 @@ POST https://api.opendatadsl.com/api/automation/v1
 
 ---
 
-## `adls` — Save to an Azure Data Lake
+## odsl.adls: Save to an Azure Data Lake
 
-Use this target to write data to an Azure Data Lake Storage Gen2 container. The ADLS target uses the same inputs as the blob target but writes using the ADLS hierarchical namespace API, making it compatible with analytics services such as Azure Synapse and Azure Databricks.
+Use this target for an Azure Data Lake Storage Gen2 container, for example one used by Azure Synapse or Databricks. It takes the same inputs as `odsl.blob`, with `adls` set to `true`.
 
-### Using this target in an automation
+### Example: save a curve as CSV when it is updated
+
+This example also uses `@transformer` to turn the curve into CSV before it is written. `curve-to-csv` is the name of a mustache script in your tenant.
 
 <Tabs>
 <TabItem value="odsl" label="ODSL">
 
 ```js
-//#region Write dataset output to Azure Data Lake on completion
-ab = AutomationBuilder("dataset", "private", "MY_PROVIDER.FEED.PRODUCT")
-ab.addCondition("complete")
-ab.setTarget("adls")
-ab.setProperty("storage", "https://mydatalakeaccount.dfs.core.windows.net")
-ab.setProperty("container", "market-data")
-ab.setProperty("path", "feeds/MY_PROVIDER/${yyyy}/${MM}/${dd}/MY_PROVIDER.FEED.PRODUCT.csv")
-ab.icon = "database-fill text-info"
-ab.enabled = true
-save ${automation:ab}
-//#endregion
+ab = AutomationBuilder("data", "private", "MY_OBJECT:CURVE")
+ab.set("@transformer", "curve-to-csv")
+a = ab.build()
+
+c = SimpleObject()
+c.source = "private"
+c.service = "data"
+c.id = "MY_OBJECT:CURVE"
+c.action = "update"
+conds = []
+conds.add(c)
+a.conditions = conds
+
+a.target = "odsl.adls"
+a.template = "When 'MY_OBJECT:CURVE' is updated, transform the data using [@transformer], then send to [path] in an Azure Datalake Storage Container [container] at URL [storage]"
+a.icon = "database-fill text-info"
+a.properties.storage = "https://mycompanylake.dfs.core.windows.net"
+a.properties.container = "curves"
+a.properties.path = "forward/MY_OBJECT"
+a.properties.name = "CURVE_${date:yyyyMMdd}.csv"
+a.properties.contentType = "text/csv"
+a.properties.adls = true
+a.enabled = true
+save ${automation:a}
 ```
 
 </TabItem>
@@ -178,21 +166,26 @@ save ${automation:ab}
 POST https://api.opendatadsl.com/api/automation/v1
 
 {
-  "target": "adls",
+  "target": "odsl.adls",
+  "template": "When 'MY_OBJECT:CURVE' is updated, transform the data using [@transformer], then send to [path] in an Azure Datalake Storage Container [container] at URL [storage]",
   "icon": "database-fill text-info",
   "enabled": true,
   "conditions": [
     {
-      "service": "dataset",
-      "action": "complete",
-      "id": "MY_PROVIDER.FEED.PRODUCT",
-      "source": "private"
+      "source": "private",
+      "service": "data",
+      "id": "MY_OBJECT:CURVE",
+      "action": "update"
     }
   ],
   "properties": {
-    "storage": "https://mydatalakeaccount.dfs.core.windows.net",
-    "container": "market-data",
-    "path": "feeds/MY_PROVIDER/${yyyy}/${MM}/${dd}/MY_PROVIDER.FEED.PRODUCT.csv"
+    "storage": "https://mycompanylake.dfs.core.windows.net",
+    "container": "curves",
+    "path": "forward/MY_OBJECT",
+    "name": "CURVE_${date:yyyyMMdd}.csv",
+    "contentType": "text/csv",
+    "adls": true,
+    "@transformer": "curve-to-csv"
   }
 }
 ```
@@ -200,84 +193,26 @@ POST https://api.opendatadsl.com/api/automation/v1
 </TabItem>
 </Tabs>
 
-:::note ADLS storage URL
-For ADLS Gen2, the storage URL uses the `dfs.core.windows.net` endpoint rather than `blob.core.windows.net`. Ensure your storage account has the hierarchical namespace enabled.
+:::tip
+If many automations write to the same storage account and container, create a [custom target](/docs/topics/automations/targets/custom) with `storage` and `container` fixed, so users only give the path and file name.
 :::
-
----
-
-## Transforming data before writing
-
-Both storage targets support the `@transformer` property, which lets you reshape the triggered data using a mustache script before it is written to storage. This is useful when downstream consumers expect a specific format such as CSV or JSON.
-
-<Tabs>
-<TabItem value="odsl" label="ODSL">
-
-```js
-//#region Write transformed CSV to Azure Blob Storage on dataset completion
-ab = AutomationBuilder("dataset", "private", "MY_PROVIDER.FEED.PRODUCT")
-ab.addCondition("complete")
-ab.setTarget("blob")
-ab.setProperty("storage", "https://mystorageaccount.blob.core.windows.net")
-ab.setProperty("container", "market-data")
-ab.setProperty("path", "feeds/MY_PROVIDER/${yyyy}/${MM}/${dd}/MY_PROVIDER.FEED.PRODUCT.csv")
-ab.setProperty("@transformer", "example-odsl\\0.DEMO\\DefaultTemplates\\AutomationObject_CSV")
-ab.icon = "database text-success"
-ab.enabled = true
-save ${automation:ab}
-//#endregion
-```
-
-</TabItem>
-<TabItem value="rest" label="REST API">
-
-```json
-POST https://api.opendatadsl.com/api/automation/v1
-
-{
-  "target": "blob",
-  "icon": "database text-success",
-  "enabled": true,
-  "conditions": [
-    {
-      "service": "dataset",
-      "action": "complete",
-      "id": "MY_PROVIDER.FEED.PRODUCT",
-      "source": "private"
-    }
-  ],
-  "properties": {
-    "storage": "https://mystorageaccount.blob.core.windows.net",
-    "container": "market-data",
-    "path": "feeds/MY_PROVIDER/${yyyy}/${MM}/${dd}/MY_PROVIDER.FEED.PRODUCT.csv",
-    "@transformer": "example-odsl\\0.DEMO\\DefaultTemplates\\AutomationObject_CSV"
-  }
-}
-```
-
-</TabItem>
-</Tabs>
-
-See [Advanced automation features](/docs/topics/automations/creating#advanced-features) for the full set of `@` properties available across all automation targets.
 
 ---
 
 ## Choosing between the two targets
 
-| | `blob` | `adls` |
+| | `odsl.blob` | `odsl.adls` |
 |---|---|---|
 | **Storage type** | Azure Blob Storage | Azure Data Lake Storage Gen2 |
-| **Storage URL** | `*.blob.core.windows.net` | `*.dfs.core.windows.net` |
-| **Namespace** | Flat | Hierarchical |
-| **Best for** | General file storage, archiving | Analytics pipelines, Synapse, Databricks |
+| **adls property** | `false` | `true` |
 | **Icon** | `database text-success` | `database-fill text-info` |
 
 ---
 
 ## Related pages
 
-- [Automation Basics](/docs/topics/automations/basics) — how automations work and the full trigger reference
-- [Creating Automations](/docs/topics/automations/creating) — step-by-step guide including advanced `@` properties
-- [Custom Targets](/docs/topics/automations/targets/custom) — pre-configure storage account and container so users only need to specify a path
-- [Email Target](/docs/topics/automations/targets/email) — send data by email instead of writing to storage
-- [Automation Targets](/docs/topics/automations/targets) — overview of all available targets
+- [Automation Basics](/docs/topics/automations/basics): how automations work, conditions and templates
+- [Creating Automations](/docs/topics/automations/creating): step-by-step guide to setting up automations
+- [Custom Targets](/docs/topics/automations/targets/custom): fix the storage account and container for your team
+- [Email Target](/docs/topics/automations/targets/email): send data by email instead of writing to storage
+- [Automation Targets](/docs/topics/automations/targets): overview of all available targets

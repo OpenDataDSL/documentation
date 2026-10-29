@@ -27,20 +27,32 @@ Every automation has:
 | Part | Description |
 |------|-------------|
 | **Conditions** | One or more combinations of `service`, `action`, `id` and `source`. The automation fires when **any** condition matches |
-| **Target** | What happens when it fires, for example `email`, `script`, `process` or `qualitycheck` |
+| **Target** | What happens when it fires, for example `odsl.email`, `odsl.script`, `odsl.process` or `odsl.qualitycheck` |
+| **Template** | The sentence that describes the automation; the platform makes its name from it |
 | **Properties** | The inputs the target needs, for example `to` and `subject` for an email |
 | **Enabled** | Set to `false` to pause the automation without deleting it |
 
-In ODSL you create automations with an `AutomationBuilder`:
+In ODSL you create an automation from an `AutomationBuilder`, then set its fields and save it:
 
 ```js
 //#region
-ab = AutomationBuilder(service, source, id)
-ab.addCondition(action)
-ab.setTarget(target)
-ab.setProperty(name, value)
+a = AutomationBuilder(service, source, id).build()
+c = SimpleObject()
+c.service = service
+c.source = source
+c.id = id
+c.action = action
+conds = []
+conds.add(c)
+a.conditions = conds
+a.target = "odsl.email"
+a.template = "When '<id>' <action text>, <target template>"
+a.properties.to = "someone@example.com"
+save ${automation:a}
 //#endregion
 ```
+
+Every automation also needs a **template**: the sentence that describes it. Use the text the item's Automations panel offers, for example `When 'TRAINING.MYGASHUB.SETTLEMENTS' is late, send an email to [to] with subject [subject]`, so the automation is shown in the portal. Target ids start with `odsl.`, for example `odsl.email` and `odsl.process`. See [Templates](/docs/topics/automations/basics#templates).
 
 Some of the actions you can trigger on:
 
@@ -48,7 +60,7 @@ Some of the actions you can trigger on:
 |---------|---------|
 | `dataset` | update, late, complete, missing, correction |
 | `curve` | create, update, delete, build, success, warning, failed |
-| `data` | create, update, delete, validated (curves and timeseries only). Event lists are data items too, so automations on events use the `data` service |
+| `data` | create, update, delete, validated, invalid (validated and invalid for curves and timeseries only). Event lists are data items too, so automations on events use the `data` service |
 | `object` | create, update, delete |
 | `process` | run, success, warning, failed, and others |
 | `script` | run, success, warning, failed, and others |
@@ -59,29 +71,43 @@ See [Automation Basics](/docs/topics/automations/basics) for the full list.
 
 ## Step 2: Run Quality Checks When Data Arrives
 
-In the Quality Checks module you attached check functions to the settlements dataset. The `qualitycheck` and `criticalcheck` targets run those checks automatically. Both apply to the `dataset` service and the `update` action.
+In the Quality Checks module you attached check functions to the settlements dataset. The `odsl.qualitycheck` and `odsl.criticalcheck` targets run those checks automatically. Both apply to the `dataset` service and the `update` action.
 
 ```js
 //#region
 use training
 
 // Run the quality checks whenever the settlements dataset is updated
-ab = AutomationBuilder("dataset", "private", "TRAINING.MYGASHUB.SETTLEMENTS")
-ab.addCondition("update")
-ab.setTarget("qualitycheck")
-ab.setProperty("dsid", "TRAINING.MYGASHUB.SETTLEMENTS")
-ab.icon = "ui-checks text-red"
-ab.enabled = true
-save ${automation:ab}
+a = AutomationBuilder("dataset", "private", "TRAINING.MYGASHUB.SETTLEMENTS").build()
+c = SimpleObject()
+c.service = "dataset"
+c.source = "private"
+c.id = "TRAINING.MYGASHUB.SETTLEMENTS"
+c.action = "update"
+conds = []
+conds.add(c)
+a.conditions = conds
+a.target = "odsl.qualitycheck"
+a.template = "When 'TRAINING.MYGASHUB.SETTLEMENTS' is updated, run quality checks on [dsid]"
+a.icon = "ui-checks text-red"
+a.properties.dsid = "TRAINING.MYGASHUB.SETTLEMENTS"
+save ${automation:a}
 
 // Run the critical checks as well
-ab = AutomationBuilder("dataset", "private", "TRAINING.MYGASHUB.SETTLEMENTS")
-ab.addCondition("update")
-ab.setTarget("criticalcheck")
-ab.setProperty("dsid", "TRAINING.MYGASHUB.SETTLEMENTS")
-ab.icon = "ui-checks text-red"
-ab.enabled = true
-save ${automation:ab}
+a = AutomationBuilder("dataset", "private", "TRAINING.MYGASHUB.SETTLEMENTS").build()
+c = SimpleObject()
+c.service = "dataset"
+c.source = "private"
+c.id = "TRAINING.MYGASHUB.SETTLEMENTS"
+c.action = "update"
+conds = []
+conds.add(c)
+a.conditions = conds
+a.target = "odsl.criticalcheck"
+a.template = "When 'TRAINING.MYGASHUB.SETTLEMENTS' is updated, run critical checks on [dsid]"
+a.icon = "ui-checks text-red"
+a.properties.dsid = "TRAINING.MYGASHUB.SETTLEMENTS"
+save ${automation:a}
 
 print "Dataset check automations saved"
 //#endregion
@@ -190,25 +216,31 @@ run MY_GAS_HUB_DAILY_SUMMARY
 
 ## Step 6: Start the Process from an Automation
 
-A schedule is a good fit when you know when the data will arrive. When you don't, start the process as soon as the dataset is complete using the `process` target.
+A schedule is a good fit when you know when the data will arrive. When you don't, start the process as soon as the dataset is complete using the `odsl.process` target.
 
 ```js
 //#region
 use training
 
-ab = AutomationBuilder("dataset", "private", "TRAINING.MYGASHUB.SETTLEMENTS")
-ab.addCondition("complete")
-ab.setTarget("process")
-ab.setProperty("process", "MY_GAS_HUB_DAILY_SUMMARY")
-ab.icon = "play-fill text-success"
-ab.enabled = true
-
-save ${automation:ab}
+a = AutomationBuilder("dataset", "private", "TRAINING.MYGASHUB.SETTLEMENTS").build()
+c = SimpleObject()
+c.service = "dataset"
+c.source = "private"
+c.id = "TRAINING.MYGASHUB.SETTLEMENTS"
+c.action = "complete"
+conds = []
+conds.add(c)
+a.conditions = conds
+a.target = "odsl.process"
+a.template = "When 'TRAINING.MYGASHUB.SETTLEMENTS' is complete, run [process]"
+a.icon = "play-fill text-success"
+a.properties.process = "MY_GAS_HUB_DAILY_SUMMARY"
+save ${automation:a}
 print "Dataset complete automation saved"
 //#endregion
 ```
 
-To run a single script directly instead, use the `script` target with the `script` property set to the script name.
+To run a single script directly instead, use the `odsl.script` target with the `script` property set to the script name.
 
 ---
 
@@ -220,15 +252,22 @@ Because a process run fires `success`, `warning` and `failed` actions, you can a
 //#region
 use training
 
-ab = AutomationBuilder("process", "private", "MY_GAS_HUB_DAILY_SUMMARY")
-ab.addCondition("failed")
-ab.setTarget("email")
-ab.setProperty("to", "your.name@example.com")
-ab.setProperty("subject", "Process failed: MY_GAS_HUB_DAILY_SUMMARY")
-ab.icon = "envelope-at text-outlook"
-ab.enabled = true
-
-save ${automation:ab}
+a = AutomationBuilder("process", "private", "MY_GAS_HUB_DAILY_SUMMARY").build()
+c = SimpleObject()
+c.service = "process"
+c.source = "private"
+c.id = "MY_GAS_HUB_DAILY_SUMMARY"
+c.action = "failed"
+conds = []
+conds.add(c)
+a.conditions = conds
+a.target = "odsl.email"
+a.template = "When 'MY_GAS_HUB_DAILY_SUMMARY' has failed, send an email to [to] with subject [subject]"
+a.icon = "envelope-at text-outlook"
+a.properties.to = "your.name@example.com"
+a.properties.subject = "Process failed: MY_GAS_HUB_DAILY_SUMMARY"
+a.properties.attachment = false
+save ${automation:a}
 print "Process failure automation saved"
 //#endregion
 ```
@@ -269,15 +308,15 @@ To pause an automation, set `enabled` to `false` and save it. To remove it, dele
 //#region
 use training
 
-auto = ${automation:"MY_AUTOMATION_ID"}
-auto.enabled = false
-save ${automation:auto}
+a = ${automation:"MY_AUTOMATION_ID"}
+a.enabled = false
+save ${automation:a}
 
 // delete ${automation:"MY_AUTOMATION_ID"}
 //#endregion
 ```
 
-Replace `MY_AUTOMATION_ID` with an `_id` from the list above. The `name` of an automation is generated by the platform from its target and properties, so it is a readable description of what the automation does.
+Replace `MY_AUTOMATION_ID` with an `_id` from the list above. The `name` of an automation is generated by the platform from its template and properties, so it is a readable description of what the automation does.
 
 ---
 
@@ -285,10 +324,10 @@ Replace `MY_AUTOMATION_ID` with an `_id` from the list above. The `name` of an a
 
 | What | Configuration |
 |------|---------------|
-| Quality checks on arrival | `dataset` `update` → `qualitycheck` and `criticalcheck` |
+| Quality checks on arrival | `dataset` `update` → `odsl.qualitycheck` and `odsl.criticalcheck` |
 | Scheduled summary | Process `MY_GAS_HUB_DAILY_SUMMARY`, cron `30 19 ? * MON-FRI * EU1` |
-| Summary on completion | `dataset` `complete` → `process` |
-| Failure notification | `process` `failed` → `email` |
+| Summary on completion | `dataset` `complete` → `odsl.process` |
+| Failure notification | `process` `failed` → `odsl.email` |
 
 ## Exercise
 

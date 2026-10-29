@@ -1,7 +1,7 @@
 ---
 slug: /topics/automations/targets/curve
 title: Curve Build Targets
-description: Trigger Smart Curve and Event Curve builds automatically using automation targets
+description: How Smart Curve and Event Curve builds are triggered by automations
 sidebar_position: 4
 tags:
 - topics
@@ -13,48 +13,84 @@ tags:
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-The curve build targets are **built-in automation targets** that trigger curve builds in response to data changes. Two variants are available — one for Smart Curves and one for Event Curves — each with different behaviour after the build completes.
+The curve build targets build a Smart or Event Curve when the data it depends on is updated.
 
-:::note Built-in targets
-Built-in targets are provided by OpenDataDSL and referenced using the `@` prefix on their script name (e.g. `@CurveTarget`). They are available to all tenants without any additional configuration.
-:::
+| Id | Name | Template | Services | Actions |
+|---|---|---|---|---|
+| `odsl.curve` | Build a Smart Curve | `build Smart Curve [curve]` | data | update |
+| `odsl.ecurve` | Build an Event Curve | `build Event Curve [curve]` | event, data | update |
 
-## Available curve targets
+Neither target supports `@transformer` or property-change filtering. The `event` service is mapped to `data`, so conditions on event lists use the `data` service. The icons are `graph-up text-success` for Smart Curves and `graph-up-arrow text-primary` for Event Curves.
 
-| Code | Name | Script | Description |
-|---|---|---|---|
-| `curve` | Build a Smart Curve | `@CurveTarget` | Builds and stores the Smart Curve result |
-| `ecurve` | Build an Event Curve | `@EventCurveTarget` | Builds the Event Curve and fires automations on the result |
+## Inputs
 
----
+| Input | Description |
+|---|---|
+| `curve` | The id of the Curve to build |
 
-## `curve` — Build a Smart Curve
+## Created for you by the platform
 
-Use this target to trigger a Smart Curve build whenever input data changes. The built curve is calculated and stored, making the updated result immediately available for reporting and downstream consumers.
+You don't normally create these automations yourself. When you save a [Smart Curve](/docs/odsl/variable/smartcurve) or an [Event Curve](/docs/odsl/variable/eventcurve), the platform creates its build automations, and when you delete it the platform removes them.
 
-### Inputs
+You can list them with ODSL:
 
-| Input | Required | Type | Description |
-|---|---|---|---|
-| `curve` | ✅ | `SmartCurve` | The ID of the Smart Curve to build |
+```js
+find ${automation} where target = "odsl.curve"
+find ${automation} where target = "odsl.ecurve"
+```
 
-### Using this target in an automation
+## What an Event Curve build automation looks like
 
-A typical use case is rebuilding a Smart Curve whenever the underlying base data is updated:
+Event lists are data items, so an Event Curve build automation has a condition on the **event list** with the `data` service and the `update` action. The condition also has `did` set to the id of the Event Curve, so the platform knows which item the automation belongs to. For an Event Curve `MY_OBJECT:CURVE` built from the event list `MY_OBJECT:TRADES`, the automation looks like this:
+
+```json
+{
+  "target": "odsl.ecurve",
+  "template": "When 'MY_OBJECT:TRADES' is updated, build Event Curve [curve]",
+  "icon": "graph-up-arrow text-primary",
+  "enabled": true,
+  "conditions": [
+    {
+      "source": "private",
+      "service": "data",
+      "id": "MY_OBJECT:TRADES",
+      "action": "update",
+      "did": "MY_OBJECT:CURVE"
+    }
+  ],
+  "properties": {
+    "curve": "MY_OBJECT:CURVE"
+  }
+}
+```
+
+## Reacting to a build
+
+A built curve is saved like any other data, so you can create your own automations on it with the `data` service and the `update` action. Use the id of the built Curve, not the id of its inputs. For example, to email the team each time the Event Curve is rebuilt:
 
 <Tabs>
 <TabItem value="odsl" label="ODSL">
 
 ```js
-//#region Rebuild a Smart Curve when its base data is updated
-ab = AutomationBuilder("data", "private", "MY_CURVE_OBJECT:BASE_PRICE")
-ab.addCondition("update")
-ab.setTarget("curve")
-ab.setProperty("curve", "MY_CURVE_OBJECT:SMART_PRICE")
-ab.icon = "graph-up text-success"
-ab.enabled = true
-save ${automation:ab}
-//#endregion
+a = AutomationBuilder("data", "private", "MY_OBJECT:CURVE").build()
+
+c = SimpleObject()
+c.source = "private"
+c.service = "data"
+c.id = "MY_OBJECT:CURVE"
+c.action = "update"
+conds = []
+conds.add(c)
+a.conditions = conds
+
+a.target = "odsl.email"
+a.template = "When 'MY_OBJECT:CURVE' is updated, send an email to [to] with subject [subject]"
+a.icon = "envelope-at text-outlook"
+a.properties.to = "trading@mycompany.com"
+a.properties.subject = "MY_OBJECT:CURVE has been rebuilt"
+a.properties.attachment = false
+a.enabled = true
+save ${automation:a}
 ```
 
 </TabItem>
@@ -64,179 +100,36 @@ save ${automation:ab}
 POST https://api.opendatadsl.com/api/automation/v1
 
 {
-"target": "curve",
-"icon": "graph-up text-success",
-"enabled": true,
-"conditions": [
-{
-"service": "data",
-"action": "update",
-"id": "MY_CURVE_OBJECT:BASE_PRICE",
-"source": "private"
-}
-],
-"properties": {
-"curve": "MY_CURVE_OBJECT:SMART_PRICE"
-}
-}
-```
-
-</TabItem>
-</Tabs>
-
-:::note
-`allowTransformation` and `allowPropertyChange` are both disabled for this target. The curve build process is fully managed by the platform and does not support pre-processing or property overrides.
-:::
-
----
-
-## `ecurve` — Build an Event Curve
-
-Use this target to trigger an Event Curve build whenever related event data or base data changes. Unlike the Smart Curve target, the Event Curve target does not simply store the result — after the build completes, the platform fires automations on the resulting curve. This means the `ecurve` target is typically the first step in a **chained automation pipeline**.
-
-### Inputs
-
-| Input | Required | Type | Description |
-|---|---|---|---|
-| `curve` | ✅ | `EventCurve` | The ID of the Event Curve to build |
-
-### Using this target in an automation
-
-A typical use case is rebuilding an Event Curve when new trade events arrive, which then triggers a downstream notification or storage automation via the curve's own `success` or `failed` action:
-
-<Tabs>
-<TabItem value="odsl" label="ODSL">
-
-```js
-//#region Rebuild an Event Curve when trade events are updated
-ab = AutomationBuilder("event", "private", "MY_OBJECT:TRADES")
-ab.addCondition("update")
-ab.setTarget("ecurve")
-ab.setProperty("curve", "MY_OBJECT:CURVE")
-ab.icon = "graph-up-arrow text-primary"
-ab.enabled = true
-save ${automation:ab}
-//#endregion
-```
-
-</TabItem>
-<TabItem value="rest" label="REST API">
-
-```json
-POST https://api.opendatadsl.com/api/automation/v1
-
-{
-"target": "ecurve",
-"icon": "graph-up-arrow text-primary",
-"enabled": true,
-"conditions": [
-{
-"service": "event",
-"action": "update",
-"id": "MY_OBJECT:TRADES",
-"source": "private"
-}
-],
-"properties": {
-"curve": "MY_OBJECT:CURVE"
-}
+  "target": "odsl.email",
+  "template": "When 'MY_OBJECT:CURVE' is updated, send an email to [to] with subject [subject]",
+  "icon": "envelope-at text-outlook",
+  "enabled": true,
+  "conditions": [
+    {
+      "source": "private",
+      "service": "data",
+      "id": "MY_OBJECT:CURVE",
+      "action": "update"
+    }
+  ],
+  "properties": {
+    "to": "trading@mycompany.com",
+    "subject": "MY_OBJECT:CURVE has been rebuilt",
+    "attachment": false
+  }
 }
 ```
 
 </TabItem>
 </Tabs>
-
----
-
-## Chaining automations with curve builds
-
-Automations can trigger actions that themselves trigger further automations. This makes it straightforward to build multi-step reactive pipelines where each stage hands off to the next.
-
-### Smart Curve pipeline
-
-When base data is updated, an automation can rebuild a Smart Curve. Because the curve build itself fires `curve` service actions (`success`, `warning`, `failed`), a second automation can react to the build result — for example by sending a notification or writing the curve to storage.
-
-```
-Data updated  →  [curve target]  →  Smart Curve stored  →  curve:success  →  [email / blob target]
-```
-
-```js
-//#region Step 1 — rebuild Smart Curve when base data changes
-ab = AutomationBuilder("data", "private", "MY_CURVE_OBJECT:BASE_PRICE")
-ab.addCondition("update")
-ab.setTarget("curve")
-ab.setProperty("curve", "MY_CURVE_OBJECT:SMART_PRICE")
-ab.icon = "graph-up text-success"
-ab.enabled = true
-save ${automation:ab}
-//#endregion
-
-//#region Step 2 — notify when the Smart Curve build succeeds
-ab = AutomationBuilder("curve", "private", "MY_CURVE_OBJECT:SMART_PRICE")
-ab.addCondition("success")
-ab.setTarget("email")
-ab.setProperty("to", "curves-team@example.com")
-ab.setProperty("subject", "Smart Curve ready: MY_CURVE_OBJECT:SMART_PRICE")
-ab.icon = "envelope-at text-outlook"
-ab.enabled = true
-save ${automation:ab}
-//#endregion
-```
-
-### Event Curve pipeline
-
-When events are updated, an automation triggers an Event Curve build. The build result fires a `curve` service action, which a second automation can use to write the result to storage or send a notification.
-
-```
-Event updated  →  [ecurve target]  →  Event Curve built  →  curve:success  →  [blob / email target]
-```
-
-```js
-//#region Step 1 — rebuild Event Curve when trade events are updated
-ab = AutomationBuilder("event", "private", "MY_OBJECT:TRADES")
-ab.addCondition("update")
-ab.setTarget("ecurve")
-ab.setProperty("curve", "MY_OBJECT:CURVE")
-ab.icon = "graph-up-arrow text-primary"
-ab.enabled = true
-save ${automation:ab}
-//#endregion
-
-//#region Step 2 — write the built curve to Azure Blob on success
-ab = AutomationBuilder("curve", "private", "MY_OBJECT:CURVE")
-ab.addCondition("success")
-ab.setTarget("blob")
-ab.setProperty("storage", "https://mystorageaccount.blob.core.windows.net")
-ab.setProperty("container", "curves")
-ab.setProperty("path", "MY_OBJECT/${yyyy}/${MM}/${dd}/CURVE.csv")
-ab.icon = "database text-success"
-ab.enabled = true
-save ${automation:ab}
-//#endregion
-```
-
-:::tip Reacting to build failures
-You can add a parallel automation on the `failed` action of the `curve` service to alert your team if a build goes wrong — without interfering with the success path.
-:::
-
----
-
-## Choosing between the two targets
-
-| | `curve` | `ecurve` |
-|---|---|---|
-| **Curve type** | Smart Curve | Event Curve |
-| **Trigger service** | `data` | `event`, `data` |
-| **After build** | Stores the result | Fires `curve` service automations on the result |
-| **Typical use** | Keep derived curves up to date when inputs change | Drive downstream pipelines from event-based curve builds |
-| **Icon** | `graph-up text-success` | `graph-up-arrow text-primary` |
 
 ---
 
 ## Related pages
 
-- [Automation Basics](/docs/topics/automations/basics) — how automations work and the full trigger reference
-- [Creating Automations](/docs/topics/automations/creating) — step-by-step guide including chaining and advanced `@` properties
-- [Email Target](/docs/topics/automations/targets/email) — send notifications when a curve build completes
-- [Azure Storage Targets](/docs/topics/automations/targets/blob) — write curve output to blob or data lake storage
-- [Automation Targets](/docs/topics/automations/targets) — overview of all available targets
+- [Automation Basics](/docs/topics/automations/basics): how automations work, conditions and templates
+- [Creating Automations](/docs/topics/automations/creating): step-by-step guide to setting up automations
+- [TimeSeries Build Targets](/docs/topics/automations/targets/timeseries): the equivalent targets for Smart and Event TimeSeries
+- [Email Target](/docs/topics/automations/targets/email): send a notification when a build completes
+- [Export Group Target](/docs/topics/automations/targets/curve-export): export data when it changes
+- [Automation Targets](/docs/topics/automations/targets): overview of all available targets

@@ -197,13 +197,22 @@ Use an automation on the process `failed` event to email the team:
 
 ```js
 //#region Email on failure
-ab = AutomationBuilder("process", "private", "ECB_FX")
-ab.addCondition("failed")
-ab.setTarget("email")
-ab.setProperty("to", "ops-team@company.com")
-ab.setProperty("subject", "Process failed: ECB_FX")
-ab.enabled = true
-save ${automation:ab}
+a = AutomationBuilder("process", "private", "ECB_FX").build()
+c = SimpleObject()
+c.service = "process"
+c.source = "private"
+c.id = "ECB_FX"
+c.action = "failed"
+conds = []
+conds.add(c)
+a.conditions = conds
+a.target = "odsl.email"
+a.template = "When 'ECB_FX' has failed, send an email to [to] with subject [subject]"
+a.icon = "envelope-at text-outlook"
+a.properties.to = "ops-team@company.com"
+a.properties.subject = "Process failed: ECB_FX"
+a.properties.attachment = false
+save ${automation:a}
 //#endregion
 ```
 
