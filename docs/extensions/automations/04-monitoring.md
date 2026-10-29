@@ -103,9 +103,28 @@ To see the runs of one automation, select the clock button on its row in the Aut
 
 ### Reading a run
 
-Select a row to see the whole log entry, including the reason (who or what changed the item), the invocation ids (to find the request in the platform's logs) and the automation id. **Open automation** opens it in the editor.
+Select a row to see the whole log entry, including the reason (who or what changed the item), the invocation ids and the automation id. **Open automation** opens it in the editor.
 
 ![A failed run](/img/extensions/automations/log-entry.png)
+
+### Invocations
+
+The **Invocation** is the request or process run that triggered the automation, and the **Root invocation** the one that started the whole chain (for example the scheduled process whose save triggered it). Select either id to see what it belongs to:
+
+| It belongs to | What you see |
+|-|-|
+| A process execution | The process, its status, trigger, reason, start and end times (with how long it took), message, phases with their logs, errors, warnings and the log. **Started by** links to the invocation that started the process, when there is one |
+| An API call | Each call of that request: when, the method and service, the item and query parameters, the HTTP status, how long it took, the response size, and who made it with which application |
+
+Both are looked up, so an id can show a process execution and the API calls it made. **Back to the run** returns to the log entry.
+
+![The process execution behind a run](/img/extensions/automations/invocation-process.png)
+
+![The API call that saved the curve and triggered the run](/img/extensions/automations/invocation-api.png)
+
+:::note
+Process executions and API call records can be removed by housekeeping, and runs in another environment are not shown. When an id no longer leads anywhere, the dialog says so.
+:::
 
 ---
 
