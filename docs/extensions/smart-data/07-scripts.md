@@ -37,6 +37,31 @@ To have a script offered here, give it the category in its first comment, as `NG
 
 ---
 
+## Creating a new script
+
+To start a script from scratch, select **New script** on the Script card. Tom does this for the clean dark spread, to move its calculation into a function.
+
+![New script: NGE_DARK_SPREAD_FUNCTIONS with a first function cleanDark, and the expression changed to call it](/img/extensions/smart-data/new-script.png)
+
+| Field | Example | Notes |
+|-|-|-|
+| **Script id** | `NGE_DARK_SPREAD_FUNCTIONS` | Letters, digits, underscores and dots. It must not be the id of an existing private script |
+| **Description** | `Dark spread functions for Northgate's smart curves` | Written in the script's first comment, with the category `curve-build` (or `timeseries-build`) |
+| **First function** | `cleanDark` | The function to write. Its parameters are `base` and the inputs, in lower case |
+| **Expression** | Ticked | Changes the expression to call the function with `BASE` and the inputs. Ticked by default when the expression is empty or just `BASE` |
+
+Select **Create it**. The script is saved at once as a private script, chosen in the Script card, and opened in the Script tab. The function returns `base` until you write it: a comment for each parameter says which curve, timeseries or value it gets.
+
+![The new script in the Script tab: the header comment, and cleanDark with a comment for each parameter](/img/extensions/smart-data/new-script-tab.png)
+
+Write the calculation, test it with **Run** (the arguments are filled in from the smart curve, see below), and select **Save script**. Then save the smart curve itself, which now uses the script.
+
+:::note
+The script is created even if you do not save the smart curve. Delete it in the Script Manager if you no longer need it.
+:::
+
+---
+
 ## The Script tab
 
 When the smart data uses a script, the workspace has a **Script** tab with the script's id. It is the [Script Manager](/docs/extensions/script-manager/overview)'s code editor, runner and debugger, so you can change and test the script without leaving the smart curve.

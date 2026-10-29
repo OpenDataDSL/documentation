@@ -56,7 +56,7 @@ The cards on the left, from the top:
 | **Base curve** or **Base timeseries** | The base, called `BASE` in the expression, with **Find** |
 | **Inputs** | The curves, timeseries and values the expression uses, with **+ Curve**, **+ Timeseries** and **+ Value** |
 | **Expression** | The formula, with intellisense |
-| **Script** | The script whose functions the expression can use, and the functions it has |
+| **Script** | The script whose functions the expression can use, the functions it has, and **New script** to create one |
 | **Conversion** | FX provider, currency, units, timezone, precision and conversion factors |
 | **Build** (curves) or **Calendar** (timeseries) | When the platform builds and stores it, and its stored builds; or the calendar of a smart timeseries |
 | **Stored document** | The definition as it will be stored, for checking |

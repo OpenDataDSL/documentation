@@ -87,7 +87,7 @@ The [ODSL reference for smart curves](/docs/odsl/variable/smartcurve) and [for s
 
 ## Scripts
 
-When a calculation does not fit in one expression, write it as a function in an ODSL script and call it from the expression, for example `cleanSpark(BASE, GAS, CARBON, EFFICIENCY, EMISSION_FACTOR)`. The **Script** list offers the scripts in the category `curve-build` (smart curves) or `timeseries-build` (smart timeseries), private and public, and you can type any other script id. A smart timeseries without a script can still use the functions of the public script `#TimeSeriesScript`. The public script `#CurveScript` has curve functions such as `timespread`, `interpolate` and `hourly`.
+When a calculation does not fit in one expression, write it as a function in an ODSL script and call it from the expression, for example `cleanSpark(BASE, GAS, CARBON, EFFICIENCY, EMISSION_FACTOR)`. The **Script** list offers the scripts in the category `curve-build` (smart curves) or `timeseries-build` (smart timeseries), private and public, and you can type any other script id or create a new one with **New script**. A smart timeseries without a script can still use the functions of the public script `#TimeSeriesScript`. The public script `#CurveScript` has curve functions such as `timespread`, `interpolate` and `hourly`.
 
 ---
 

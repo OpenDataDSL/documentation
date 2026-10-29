@@ -79,7 +79,9 @@ module.exports = function extensionCatalog(context) {
     name: 'extension-catalog',
 
     getPathsToWatch() {
-      return [path.join(extDir, '**', '*.{md,mdx,json}')];
+      // Glob patterns need forward slashes: with path.join on Windows (backslashes) the pattern matches
+      // nothing, so a new extension folder only appeared after restarting npm start
+      return [path.join(extDir, '**', '*.{md,mdx,json}').replace(/\\/g, '/')];
     },
 
     async loadContent() {
