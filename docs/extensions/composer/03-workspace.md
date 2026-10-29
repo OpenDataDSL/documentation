@@ -158,6 +158,7 @@ Each column has display settings:
 | **Chart type** | line, spline, area, areaspline, column, scatter or step |
 | **Line style** | Solid, Dash, Dot and others |
 | **Axis** | 1 (left) or 2 (right), for example a spread on axis 2 under two prices on axis 1. Each axis is labelled with the currency and units of the columns on it, such as EUR/MWh |
+| **Draw order** | Normal draws the columns in their order, so later columns are on top. Choose **Behind the other columns** to put a column at the back, for example an area or columns behind price lines, or **In front of the other columns** to bring it forward |
 | **Colour** | The series colour |
 
 ---

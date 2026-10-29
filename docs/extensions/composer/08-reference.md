@@ -119,7 +119,7 @@ A setting that is left out takes its default, shown in brackets. `rsi`, `macd`, 
 | Calendar and range (timeseries) | `options.calendar`, `options.range` |
 | Observed (timeseries) | `options.observed`, or a column's `options.observed` |
 | Conversion | `options.conversion` (worksheet) or a column's `options.conversion`: `fx`, `currency`, `units`, `timezone`, `precision`, `rounding`, `factors.density`, `factors.timefactor`, `factors.heatRate` and custom unit factors |
-| Chart | a column's `options.display.chartOptions`: `type`, `colour`, `style`, `axis` |
+| Chart | a column's `options.display.chartOptions`: `type`, `colour`, `style`, `axis`, `layer` (`back` or `front`; empty: the column order) |
 | Portal layout | `options.display.layout`: `table`, `table+chart` or `chart` |
 | Automatic builds | `options.autoBuild`: `false` turns the build automation off |
 | Scripts | `scripts`: the scripts whose functions the expressions use |
