@@ -1,0 +1,7 @@
+{
+  "label": "Smart Data",
+  "link": {
+    "type": "generated-index",
+    "description": "Create, preview, build and track smart curves and smart timeseries: data calculated from a base curve or timeseries and other inputs with an ODSL expression, from a library of examples or with Fusion AI."
+  }
+}
