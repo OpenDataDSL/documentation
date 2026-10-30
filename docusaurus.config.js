@@ -57,7 +57,7 @@ module.exports = {
     mermaid: true,
   },
   themes: ['@docusaurus/theme-mermaid'],
-  plugins: [require.resolve('./plugins/extension-catalog')],
+  plugins: [require.resolve('./plugins/extension-catalog'), require.resolve('./plugins/insight-catalog')],
   presets: [
     [
       '@docusaurus/preset-classic',
