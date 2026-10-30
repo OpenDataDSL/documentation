@@ -48,6 +48,7 @@ The **Alerts** extension puts these alerts in one screen and answers questions l
 | [Python](/docs/extensions/alerts/python) | The same from Python with the `odsl` package |
 | [REST API](/docs/extensions/alerts/rest-api) | The same from any language |
 | [Automations](/docs/extensions/alerts/automations) | Send an email or a Teams message when an alert is raised, closed, handed over, changes priority or gets a comment |
+| [Insights](/docs/extensions/alerts/insights) | Reports on your alerts, starting with the [Alert Audit Report](/docs/public/insights/alert-audit-report): who did what and when, the whole history of any alert, and response times |
 
 ---
 
@@ -59,4 +60,5 @@ The **Alerts** extension puts these alerts in one screen and answers questions l
 - [Alerts in Python](/docs/extensions/alerts/python)
 - [Alerts REST API](/docs/extensions/alerts/rest-api)
 - [Notifications and automations](/docs/extensions/alerts/automations)
+- [Insights](/docs/extensions/alerts/insights): reports on your alerts
 - [Reference](/docs/extensions/alerts/reference): fields, timeline entries, permissions and installation

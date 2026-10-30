@@ -29,7 +29,7 @@ common = find ${alert:"common"} where status == "open"
 public = find ${alert:public} where status == "open"
 ```
 
-`find` returns the alerts without their timelines. Read an alert by its id to get the timeline.
+`find` returns the alerts with their timelines. On a shared alert, your team's own comments are only added to the timeline when you read that one alert by its id.
 
 ---
 

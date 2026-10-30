@@ -36,7 +36,7 @@ tags: [extension, alerts, reference]
 | `commentCount` | Number | Comments on the alert |
 | `tenantCommentCount` | Number | On shared alerts: your team's comments |
 | `metrics` | Object | Times in seconds: `openSeconds`, `secondsClient`, `secondsOpenDataDSL`, `secondsVendor`; `reopens`, `handoffs`, `agentSince` (when the current party got it) and `firstResponseAt` |
-| `timeline` | List | Everything that happened (see below). Not included in lists |
+| `timeline` | List | Everything that happened (see below). On shared alerts, your team's comments are only included when one alert is read |
 | `environment` | Text | Your alerts: the data environment |
 | `_version` | Number | Goes up with every change; send it back to make sure nobody changed the alert meanwhile |
 
@@ -81,6 +81,7 @@ These rules are applied by the platform, whichever way you work: the screen, ODS
 | Feature policy | `extension.odsl.alerts` | Who sees the menu item (everyone by default) |
 | Security policy | `AlertsPrivate` | Read, raise, change and delete your alerts (category Alerts, source private, service alert) |
 | Security policies | `AlertsCommon`, `AlertsPublic` | Read shared alerts and comment on them |
+| Insight | `odsl.alerts.audit` | The [Alert Audit Report](/docs/public/insights/alert-audit-report), in the screen's **Insights** (category `odsl.alerts`) |
 
 Without the security policies nobody in your company can see alerts, in the screen or through the API. To limit who works on alerts, change the members of these policies (for example to a group) in the portal's security settings.
 

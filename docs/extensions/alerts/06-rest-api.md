@@ -47,7 +47,7 @@ Every request that changes an alert returns the alert as it now is.
 GET alert/v1/private?_filter={"status":"open","agent":"client"}&_sort={"created.at":-1}&_limit=50&_count=true
 ```
 
-With `_count=true`, the `x-total-count` response header holds the number of matching alerts. Lists leave out the timeline; read one alert to get it.
+With `_count=true`, the `x-total-count` response header holds the number of matching alerts. Lists include each alert's timeline (leave it out with `_project`, for example `{"timeline":0}`, when you do not need it). On a shared alert, your team's own comments are only merged into the timeline when you read that one alert.
 
 Useful filters:
 

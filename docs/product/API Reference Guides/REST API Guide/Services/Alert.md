@@ -19,7 +19,7 @@ https://api.opendatadsl.com/api/alert
 |**Method**|**Path**|**Example**|**Description**|
 |-|-|-|-|
 |GET|||Get the build information for this service|
-|GET|\{release\}/\{source\}|v1/private|List alerts. Lists do not include the timeline|
+|GET|\{release\}/\{source\}|v1/private|List alerts, with their timelines (on shared alerts, your company's own comments are only included when one alert is read)|
 |GET|\{release\}/\{source\}/\{id\}|v1/private/ALR-2026-000401|Retrieve an alert with its timeline|
 |POST|\{release\}/\{source\}|v1/private|Raise an alert. An open alert with the same key counts another occurrence instead|
 |POST|\{release\}/\{source\}|v1/private|With the alert's `_id` in the body: change that alert, as PATCH does|

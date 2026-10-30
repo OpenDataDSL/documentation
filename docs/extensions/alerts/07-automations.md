@@ -100,4 +100,4 @@ You can also see, test and change these automations in the [Automations extensio
 
 ## Next
 
-[Reference](/docs/extensions/alerts/reference)
+[Insights](/docs/extensions/alerts/insights)
