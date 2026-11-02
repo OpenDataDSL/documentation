@@ -135,6 +135,35 @@ This release also fixes three platform bugs in these calendars:
 | `deliveryCalendar` | Optional. Defaults to the trading calendar. |
 | `rules` | At least one plain English rule; every rule must follow the grammar |
 
+### Financial expiry calendar
+
+`POST expiry/v1/private`
+
+```json
+{
+  "_id": "NGE_GBPUSD_FX",
+  "_type": "FinancialExpiryCalendar",
+  "name": "GBP/USD FX forwards",
+  "tradingCalendar": "#UKBANKHOLIDAYS",
+  "crossCalendar": "NGE_USD_SETTLEMENT",
+  "baseCalendar": "#UKBANKHOLIDAYS",
+  "offset": 2
+}
+```
+
+| Field | Description |
+|-|-|
+| `tradingCalendar` | Required. The trading (quoting) calendar. |
+| `crossCalendar` | Required. The cross calendar: for an FX pair, the calendar of the other currency. |
+| `baseCalendar` | Required. The base calendar. |
+| `offset` | The spot offset, 0 to 10 business days (default 0) |
+
+Each calendar must exist and be a holiday calendar (a calendar of business days). It is stored as a `VarExpiryCalendar` whose `calendar` is `{"_type": "FinancialExpiryCalendar", "tradingCalendarCode", "crossCode", "baseCode", "offset"}`, as before. The stored names `tradingCalendarCode`, `crossCode` and `baseCode` are accepted in the body too.
+
+:::note
+This release also fixes the start and end of financial tenors (`Financial` in `odsl-calendar`), which are the delivery start and end of financial curve contracts. They were worked out separately from the expiry and could disagree with it: spot ignored the cross and base calendars, month and year ends rolled into the next month instead of back (modified following), and end-end was missed. They now come from the financial expiry calendar, as the expiry always has. Expiries do not change. In a comparison of every tenor from SP to 5Y over two years of curve dates, a few percent of start and end dates change, each to the date of the expiry.
+:::
+
 ---
 
 ## The calendar manager functions
@@ -146,8 +175,10 @@ This release also fixes three platform bugs in these calendars:
 | `POST calendar/v1/private?_function=test` | A holiday calendar as for saving, plus `start`, `end` (default this year and next) and `check` (dates) | `rules` (checks with `count`, and `weekly` for weekly closures), `holidays`, `months`, `years`, `checks` |
 | `GET calendar/v1/SOURCE/ID?_function=test` | `start`, `end` | The same, for a stored calendar |
 | `POST expiry/v1/private?_function=test` | An expiry calendar as for saving, plus `ondate`, `tenors` (default Month), `start`, `end` | `rules` (checks with `count`), `rows` (one per contract) |
-| `GET expiry/v1/SOURCE/ID?_function=test` | `ondate`, `tenor` (comma separated), `start`, `end` | The same, for a stored calendar (including financial calendars) |
-| `POST expiry/v1/private?_function=trace` | An expiry calendar, `ondate`, `contract` | The contract's dates, and the steps of its expiry, delivery start and delivery end rules |
+| `GET expiry/v1/SOURCE/ID?_function=test` | `ondate`, `tenor` (comma separated), `start`, `end` | The same, for a stored calendar |
+| `POST expiry/v1/private?_function=test` | A financial expiry calendar as for saving, plus `ondate` and `codes` (tenors, default SP to 10Y) | `valid`, `problems`, `spot`, `spotDow`, `endEnd`, `offset`, the three calendars, `rows` (one per tenor: `code`, `group`, `start`, `end`, `expiry`, `dow`, `days`, `nominal`, `move`, `endEnd`, `closed`, `error`) |
+| `GET expiry/v1/SOURCE/ID?_function=test` on a financial expiry calendar | `ondate`, `codes` (comma separated) | The same, for the stored calendar |
+| `POST expiry/v1/private?_function=trace` | An expiry calendar, `ondate`, `contract` | The contract's dates, and the steps of its expiry, delivery start and delivery end rules. For a financial expiry calendar, `contract` is a tenor (SP, ON, 3M...) and the result has `spot`, `spotRule` and `expiryRule` steps |
 | `GET calendar/v1/SOURCE?_function=health&_id=A,B` | Calendar ids | A health check per calendar |
 | `GET expiry/v1/SOURCE?_function=health&_id=A,B` | Expiry calendar ids | A health check per expiry calendar |
 | `GET calendar/v1/private?_function=access` (or `expiry`) | | `admin`: the user is an OpenDataDSL user; `publicEdit`: the user can create, change and delete public calendars |
@@ -210,7 +241,9 @@ Everyone else can only read public calendars: a save or delete is refused.
 | *This expiry calendar has no rule for ...* | No rule covers that tenor: add a rule with no `for`, or one `for` that tenor. |
 | A rule gives no holidays in the test range | Its `from` and `to` years are outside the range, or another rule gives the same date. |
 | A holiday is marked *on a closed day* | It falls on a weekend. Add an `on Saturday shift` or `on Sunday shift` option if a substitute day is needed. |
-| Save is not shown | The calendar is public, financial, or another calendar with nothing to edit. Use **Save as copy** for a public calendar. |
+| Save is not shown | The calendar is public, or another calendar with nothing to edit. Use **Save as copy** for a public calendar. |
+| *... is not a financial tenor* | A financial expiry calendar only has financial tenors: SP, ON, TN, SN, SW, or a number of weeks, months or years such as 2W, 3M, 1Y. |
+| A month tenor of a financial expiry calendar is **Closed in** its base calendar | Month and year tenors are moved on the trading and cross calendars only: see [Financial expiry calendars](/docs/extensions/calendar-manager/financial#how-the-dates-are-worked-out). |
 | *The interval must divide a day exactly* | An intraday interval such as 7 minutes leaves part of a day over. Choose one from the list. |
 | *... is not a time zone* | Use a time zone name such as `Europe/Paris`, not an abbreviation such as CET. |
 | An intraday calendar has intervals on weekends | It has no holiday calendar, or its holidays setting is **Every interval of the day (off-peak)**. |

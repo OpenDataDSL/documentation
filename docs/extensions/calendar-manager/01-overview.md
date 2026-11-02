@@ -33,6 +33,7 @@ Throughout these pages we follow Northgate Energy, a fictional gas and power tra
 | **Expiry calendar** | Rules that work out, for each contract (a month, quarter, season, year, week or day), its expiry (the last trading day) and optionally when its delivery starts and ends. Its rules move on a **trading calendar**, and its delivery rules on a **delivery calendar**. |
 | **Intraday calendar** | Hourly, half-hourly or quarter-hourly intervals in a time zone, with the hours of the day it keeps (such as peak, 08:00 to 20:00) and an optional holiday calendar for the days it is open. It has no rules. |
 | **Monthly, weekly and offset daily calendars** | Calendars set up from a few settings: one date a month, quarter, half year or year on a day of the month; one date every few weeks on a day of the week; or a day that starts at an hour in a time zone, such as the gas day. Monthly and weekly calendars can move a date that is not a business day. |
+| **Financial expiry calendar** | The tenors of FX forwards, deposits and overnight index swaps (ON, TN, SN, weeks, months, years), counted from spot on three calendars. It has no rules: it is set up from a trading, a cross and a base calendar and a spot offset. |
 | **Other calendars** | Daily, sparse and other built-in calendars with nothing to set. The Calendar Manager lists them and shows their dates. |
 | **Rule** | One line of plain English. The platform reads it with a grammar (an ANTLR 4 grammar for holiday rules and one for expiry rules). A rule that does not follow the grammar is marked in red, where the mistake is. |
 | **Private and public calendars** | Private calendars belong to your company and you can change them. Public calendars, whose ids start with `#`, are maintained by OpenDataDSL and used by every tenant: you can test them and copy them. Only OpenDataDSL users can change them. |
@@ -46,8 +47,8 @@ Throughout these pages we follow Northgate Energy, a fictional gas and power tra
 | Screen | Where | What it does |
 |-|-|-|
 | **Calendars** tab | **Manage**, **Calendars** | Every calendar you can read, private and public, with filters, counts and CSV export |
-| **Editor** tab | Same screen, with a calendar open | The rules, checked as you type, with suggestions, the rule builder and edit as text (or, for an intraday, monthly, weekly or offset daily calendar, its settings); save, save as a copy, delete and history |
-| **Test** panel | Next to the rules | Holidays, a year view, business days, date checks and changes for a holiday calendar; expiries, a year view, a step by step trace and changes for an expiry calendar |
+| **Editor** tab | Same screen, with a calendar open | The rules, checked as you type, with suggestions, the rule builder and edit as text (or, for an intraday, monthly, weekly, offset daily or financial expiry calendar, its settings); save, save as a copy, delete and history |
+| **Test** panel | Next to the rules | Holidays, a year view, business days, date checks and changes for a holiday calendar; expiries, a year view, a step by step trace and changes for an expiry calendar; the tenors from spot, a trace and changes for a financial expiry calendar |
 | **Syntax guide** tab | Same screen | The rule syntax with examples you can add to the calendar, and the grammars themselves |
 | **Insights** tab | Same screen | Calendar Health Check, Holiday Calendar Comparison, Business Days by Month and Calendar Changes |
 
@@ -66,6 +67,7 @@ Saving a calendar needs the **update** action on the calendar or expiry calendar
 - [Testing a calendar](/docs/extensions/calendar-manager/testing): every view of the Test panel, including the step by step trace
 - [Intraday calendars](/docs/extensions/calendar-manager/intraday): hourly and sub-hourly calendars, peak and off-peak hours, and testing them
 - [Monthly, weekly and offset daily calendars](/docs/extensions/calendar-manager/other-calendars): month-end, quarterly and yearly dates, fortnightly dates and the gas day
+- [Financial expiry calendars](/docs/extensions/calendar-manager/financial): FX and money market tenors from spot, on three calendars
 - [Rule syntax](/docs/extensions/calendar-manager/rule-syntax): every kind of holiday and expiry rule, with examples
 - [Insights](/docs/extensions/calendar-manager/insights): the calendar insight reports
 - [Reference](/docs/extensions/calendar-manager/reference): the platform functions, the extension contents and troubleshooting

@@ -95,7 +95,7 @@ Each stored rule that does not follow the grammar: the calendar, the rule number
 
 ### All calendars
 
-Every calendar checked: its type, number of rules, holidays this year and next year (holiday calendars), its trading calendar and next expiry (expiry calendars), its holiday calendar, interval and time zone (intraday calendars), and its status.
+Every calendar checked: its type, number of rules, holidays this year and next year (holiday calendars), its trading calendar and next expiry (expiry calendars; the 1M tenor from today for a financial expiry calendar), its holiday calendar, interval and time zone (intraday calendars), and its status.
 
 ![Every private calendar checked, with its holidays, next expiry and status](/img/insights/calendar-health/all-calendars.png)
 
