@@ -121,6 +121,28 @@ print(found[0]['_id'], found[0]['occurrences'])
 
 The fields are those of [Raise an alert](/docs/extensions/alerts/odsl#raise-an-alert) in ODSL. Raising again with the key of an open alert counts another occurrence instead of creating a new alert.
 
+### Raising from a process
+
+When your script runs as a process, pass the SDK client to `process.TASK`. The client then tells the platform which run it is part of, and an alert it raises is a [root alert](/docs/extensions/alerts/odsl#raising-from-a-process) about the run:
+
+```python
+from odsl import process, sdk
+
+t = odsl.get('process-task', None, task_id)
+p = odsl.get('process', None, t['name'])
+run = process.TASK(p, t, odsl)
+
+# ... the file is missing
+odsl.update('alert', 'private', {
+    'title': 'ICE Endex settlement file not available on the SFTP server',
+    'severity': 'high',
+    'agent': 'opendatadsl',
+    'affects': ['ICE.NDEX.NLB', 'ICE.NDEX.TTF']
+})
+```
+
+Without a `subject` the alert is about the process and the task input `ondate` (today when there is none). Send `'root': False` for an alert that is not about the run failing.
+
 ---
 
 ## Using requests

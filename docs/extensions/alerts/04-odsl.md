@@ -129,6 +129,8 @@ save ${alert:n}
 | `key` | An id for the problem itself (see below) |
 | `comment` | A first comment |
 | `description`, `assignee`, `tags` | Optional |
+| `root` | `true` or `false`: whether this alert is the root cause of a failed run (see [Raising from a process](#raising-from-a-process)) |
+| `affects` | The dataset ids a failed run was meant to load |
 
 ### Raising the same problem again
 
@@ -142,6 +144,28 @@ for a in found
     print a._id + " occurred " + a.occurrences + " times"
 next
 ```
+
+### Raising from a process
+
+An alert raised by a script running in a process is a **root alert**: the alert that explains what went wrong in the run, usually that data could not be collected or loaded. The platform records the run on it (`trace`), so that later problems caused by the same run, such as late data or a curve that could not be built, can be traced back to it.
+
+A root alert raised without a `subject` is about the process itself: its subject is the process and the date the run is for (the process input `ondate`, else today), with category `process` and issue `load`. Without a `key` it gets `process/<process name>/<date>/load`, so when a retry of the run fails again, the same alert counts another occurrence instead of a new alert being raised.
+
+```js
+// Inside the loader process
+n = SimpleObject()
+n.title = "ICE Endex settlement file not available on the SFTP server"
+n.severity = "high"
+n.agent = "opendatadsl"
+n.affects = ["ICE.NDEX.NLB", "ICE.NDEX.TTF"]
+save ${alert:n}
+```
+
+`affects` lists the datasets the run was meant to load. It matters most when the run fails before loading anything.
+
+Set `root` to `false` for an alert raised in a process that is not about the run failing, such as a warning about the data it loaded. You can also raise a root alert outside a process with `root` set to `true`.
+
+The alerts the platform raises itself (late or incomplete data, curve builds, exports) are never roots.
 
 ---
 

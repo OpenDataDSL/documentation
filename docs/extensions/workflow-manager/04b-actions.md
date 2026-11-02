@@ -8,7 +8,7 @@ tags: [extension, workflow manager, actions, gateways, odsl, run, debug]
 
 # Writing and testing actions
 
-Every step of a workflow runs an **action**: a short piece of ODSL with inputs, outputs and exits. OpenDataDSL publishes public actions (ids start with `#`); your company can write its own. Switch the list on the left to **Actions** to see them by category, and open one to edit, run or debug it.
+Every step of a workflow runs an **action**: a short piece of ODSL with inputs, outputs and exits. OpenDataDSL publishes public actions (ids start with `#`); your company can write its own. Switch the list on the left to **Actions** to see them by category, and open one to edit, run or debug it. The extension also installs a [library of general actions](./action-library), with ids starting `wm_`.
 
 Priya needs a step that OpenDataDSL does not publish: one that checks the EEX file has a price for every contract, and ends with `complete` or `partial`. She writes it as a private action and tests it before she adds it to her workflow.
 

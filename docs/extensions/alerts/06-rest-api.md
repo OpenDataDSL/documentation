@@ -82,6 +82,15 @@ POST alert/v1/private
 
 Only `title` is required. See [Raise an alert](/docs/extensions/alerts/odsl#raise-an-alert) for the fields and defaults, and for what a `key` does. The response is the new alert, or the open alert with the same key with one more occurrence.
 
+A program running as a process can say which run it is part of with these headers. An alert it raises is then a [root alert](/docs/extensions/alerts/odsl#raising-from-a-process) about the run, and everything it saves is traced to the run:
+
+| Header | Value |
+|-|-|
+| `x-odsl-trace` | The trace: the process execution id, or the trace the run was started with |
+| `x-odsl-process` | The process name |
+| `x-odsl-execution` | The process execution id |
+| `x-odsl-ondate` | The date the run is for (`yyyy-mm-dd`, optional) |
+
 ---
 
 ## Change an alert

@@ -32,6 +32,10 @@ tags: [extension, alerts, reference]
 | `resolution` | Text | What was wrong and what was done, set when closed |
 | `created`, `updated`, `closed` | Object | `at` (date) and `by` (who) |
 | `relatedTo` | Text | An earlier closed alert with the same key, if any |
+| `root` | Boolean | `true` on a root alert: the alert that explains what went wrong in a run (see [Raising from a process](/docs/extensions/alerts/odsl#raising-from-a-process)) |
+| `affects` | List | On a root alert: the dataset ids the run was meant to load |
+| `trace` | Object | The run the alert was last raised in: `id` (the trace, shared by everything the run started), `type` (`process` or `script`), `process` (its name) and `execution` (its execution id) |
+| `traces` | List | Every trace id the alert has been raised under |
 | `origin` | Object | `type`: `system` (raised by the platform) or `user` |
 | `commentCount` | Number | Comments on the alert |
 | `tenantCommentCount` | Number | On shared alerts: your team's comments |

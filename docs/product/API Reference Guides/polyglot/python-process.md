@@ -31,6 +31,7 @@ odslrun.py has the following features:
 * Checks for the name of a private script as the input parameter
 * Pulls the script from the platform and applies to the current context
 * Starts the process and runs your script in a MAIN phase
+* Links SDK to the run: everything your script saves is traced to the run, and an alert it raises is a [root alert](/docs/extensions/alerts/odsl#raising-from-a-process) about the run
 
 ##### Example commandline for the process
 
