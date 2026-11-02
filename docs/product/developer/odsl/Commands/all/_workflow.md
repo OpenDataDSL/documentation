@@ -37,7 +37,7 @@ abort: abort expression
 ```
 #### Description
 
-The configuration of a workflow is best done using the workflow GUI in the web portal (Not available yet), but it can also be done in OpenDataDSL code.
+The configuration of a workflow is best done in the web portal with the [Workflow Manager](/docs/extensions/workflow-manager/overview), which lets you draw a workflow as a diagram and writes this code for you, but it can also be done in OpenDataDSL code.
 
 ##### Anatomy of a workflow
 

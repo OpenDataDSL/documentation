@@ -1,0 +1,7 @@
+{
+  "label": "Workflow Manager",
+  "link": {
+    "type": "generated-index",
+    "description": "Design workflows by dragging actions onto a diagram and configuring them, with the ODSL code kept in step, then create, schedule and run the processes that run them."
+  }
+}
