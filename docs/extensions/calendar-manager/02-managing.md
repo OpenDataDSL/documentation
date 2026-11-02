@@ -117,14 +117,14 @@ A note at the top of the editor warns that every tenant uses the calendar, so a 
 To create a public calendar, start a new calendar and give it an id that starts with `#`, such as `#EPEX_DA_PEAK_HOURS`: the title shows **Public** and the calendar is saved in the public calendars. An id cannot move between private and public once saved; copy the calendar instead.
 
 :::caution
-Test a change to a public calendar before you save it. The **Changes** tab shows exactly which dates or contracts move, and the [Calendar Usage Report](/docs/public/insights/calendar-usage) shows what uses the calendar.
+Test a change to a public calendar before you save it. The **Changes** tab shows exactly which dates or contracts move, and [Calendar Usage Across Services](/docs/public/insights/calendar-usage-across-services) shows everything that uses the calendar.
 :::
 
 ---
 
 ## Deleting a calendar
 
-Select **Delete** in the editor of a private calendar and confirm. Timeseries, curves and expiry calendars that use the calendar no longer find it, so check the [Calendar Usage Report](/docs/public/insights/calendar-usage) first.
+Select **Delete** in the editor of a private calendar and confirm. Timeseries, curves and expiry calendars that use the calendar no longer find it, so check [Calendar Usage Across Services](/docs/public/insights/calendar-usage-across-services) first.
 
 :::caution
 Deleting cannot be undone from the Calendar Manager.

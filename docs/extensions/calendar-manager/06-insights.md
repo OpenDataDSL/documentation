@@ -8,7 +8,7 @@ tags: [extension, calendar manager, insights, reports]
 
 # Insights
 
-The **Insights** tab of the Calendar Manager lists four insight reports about your calendars. They are listed only on this tab, not in the general report list.
+The **Insights** tab of the Calendar Manager lists five insight reports about your calendars. They are listed only on this tab, not in the general report list.
 
 | Insight | What it answers | Page |
 |-|-|-|
@@ -16,5 +16,6 @@ The **Insights** tab of the Calendar Manager lists four insight reports about yo
 | **Holiday Calendar Comparison** | Which holidays do two or more calendars share this year, and which dates do they disagree on? | [Holiday Calendar Comparison](/docs/public/insights/holiday-calendar-comparison) |
 | **Business Days by Month** | How many business days does each calendar have in each month of a year? | [Business Days by Month](/docs/public/insights/business-days-by-month) |
 | **Calendar Changes** | Which calendars changed in a period, who changed them, and what changed in their rules? | [Calendar Changes](/docs/public/insights/calendar-changes) |
+| **Calendar Usage Across Services** | What uses a calendar, in every service that keeps one: timeseries, curves, dataset feeds, groups, objects and other calendars, directly or through another calendar or curve? | [Calendar Usage Across Services](/docs/public/insights/calendar-usage-across-services) |
 
 Other public insights about calendars are in the **Reports** menu, in the **Calendars** category: the [Calendar Report](/docs/public/insights/calendar-report), [Holiday Report](/docs/public/insights/holiday-report), [Expiry Report](/docs/public/insights/expiry-report) and [Calendar Usage Report](/docs/public/insights/calendar-usage).

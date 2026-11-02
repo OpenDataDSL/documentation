@@ -182,6 +182,7 @@ This release also fixes the start and end of financial tenors (`Financial` in `o
 | `GET calendar/v1/SOURCE?_function=health&_id=A,B` | Calendar ids | A health check per calendar |
 | `GET expiry/v1/SOURCE?_function=health&_id=A,B` | Expiry calendar ids | A health check per expiry calendar |
 | `GET calendar/v1/private?_function=access` (or `expiry`) | | `admin`: the user is an OpenDataDSL user; `publicEdit`: the user can create, change and delete public calendars |
+| `GET calendar/v1/private?_function=usage-indexes` | `force=true` to check every collection again | `indexes`: per collection, the indexes made sure of (`ok`) and any that failed. Indexes the calendar fields that [Calendar Usage Across Services](/docs/public/insights/calendar-usage-across-services#speed) searches: private collections for every user, public ones for OpenDataDSL users |
 | `POST calendar/v1/private?_function=test` | A calendar that is not a holiday calendar, as for saving (`_id`, `name`, `calendar`), plus `start` and `end` (days in its time zone; default the next 7 days, at most 92, for an intraday calendar) | `valid`, `problems`, `total`, `days` (one per day: `count`, `first`, `last`, `hours`, `holiday`, `dayHours`), `intervals` (at most 3,000: `local`, `offset`, `utc`) |
 | `GET calendar/v1/SOURCE/ID?_function=test` on a calendar that is not a holiday calendar | `start`, `end` | The same, for the stored calendar |
 
