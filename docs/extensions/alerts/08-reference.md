@@ -67,6 +67,7 @@ Every entry has `id`, `type`, `at` and `by`.
 | `impact-resolved` | `impact`, `subject`, `issue`, `resolution` | On a root cause: a problem folded in recovered |
 | `linked` | `alert`, `alertSource`, `title` on the root cause; `root`, `rootSource`, `title` on the alert | An alert raised before its root cause was linked to it |
 | `root-closed` | `root`, `rootSource`, `resolution` | On a linked alert: its root cause was closed |
+| `dataset-fixed` | `dataset`, `configSource`, `changes` (`target`, `field`, `from`, `to`), `outcome`, `text` | OpenDataDSL corrected the dataset's configuration (calendar, expected tenors, times, priority or alerts) from this alert and checked the delivery again. When the delivery became a holiday or complete, the alert was closed |
 
 ---
 
