@@ -82,12 +82,12 @@ The report asks each service for the items that name the calendar, with a filter
 |-|-|-|
 | `data` | Timeseries, curves, smart, event and composed data | `calendar` (not the DAILY calendar of a curve's own dates), `expiryCalendar`, `dataCalendar`, `holidayCalendar`, `properties.holidayCalendar`, `properties.expiryCalendar` |
 | `object` | Objects such as products | `holidayCalendar`, `expiryCalendar`, `calendar`, `dataCalendar`, `tradingCalendar` |
-| `dataset_feed` | Dataset feeds | `calendar`, `loaders.calendar` |
+| `dataset` (`dataset/v1/feed`) | The dataset feeds of the datasets you monitor, private, common and public | `calendar`, `loaders.calendar` |
 | `group` | Groups, such as curve build groups | `calendar` |
 | `calendar` | Intraday, monthly, weekly, combined and holiday calendars | `calendar.holidayCalendarCode`, `calendar.calendars`, a holiday calendar embedded as a rule |
 | `expiry` | Expiry and financial expiry calendars | `calendar.tradingCalendarCode`, `calendar.deliveryCalendarCode`, `calendar.crossCode`, `calendar.baseCode` |
 
-Private items are always searched; public items too when the calendar is public (dataset feeds and groups are private only). Datasets are not searched one by one: a dataset's deliveries are expected on the days of its feed's calendar, so the feed stands for all its datasets. With **Include indirect use**, the same search runs for each calendar and expiry calendar found (up to three levels and 40 calendars), and then the smart curves (`baseCurve`) and smart timeseries (`baseTimeSeries`) built on the curves and timeseries found are added (up to four levels). At most 10,000 items of a service are listed.
+Private items are always searched; public items too when the calendar is public. Groups are private only, and dataset feeds are searched in one request whatever their source. Only the feeds of the datasets you monitor are found. Datasets are not searched one by one: a dataset's deliveries are expected on the days of its feed's calendar, so the feed stands for all its datasets. With **Include indirect use**, the same search runs for each calendar and expiry calendar found (up to three levels and 40 calendars), and then the smart curves (`baseCurve`) and smart timeseries (`baseTimeSeries`) built on the curves and timeseries found are added (up to four levels). At most 10,000 items of a service are listed.
 
 :::caution
 The report only finds what you can read: items in services or sources your security policies do not let you read are not counted. A count of 0 is not proof that nothing in other teams' data uses the calendar. Settings kept by OpenDataDSL for your company, such as the calendar of your alert SLA, are not searched.
