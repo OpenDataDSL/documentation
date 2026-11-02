@@ -90,7 +90,7 @@ Change the order with **Sort**: newest or oldest raised first, most recently occ
 |-|-|
 | Header | Title, priority, status, who it is with, and the action buttons (see [Working with alerts](/docs/extensions/alerts/working-with-alerts)) |
 | **Alert** | The message and the facts: id, type, category, what it is about, when it was raised and by whom, last occurred, last changed, closed, resolution, tags and key |
-| **Root cause and impact** | On a root cause: the run, the datasets it was meant to load, the problems folded into it and the alerts linked to it. On a linked alert: its root cause. See [Root causes](/docs/extensions/alerts/root-causes) |
+| **Root cause and impact** | On a root cause: the run, the datasets it was meant to load, the problems folded into it and the alerts linked to it. On a linked alert: its root cause. **Link to root cause** links an alert to a root cause by hand, or removes the link. See [Root causes](/docs/extensions/alerts/root-causes) |
 | **Dataset delivery** | For an alert about a dataset delivery: the delivery behind it (see below) |
 | **Time** | How long it has been open, and the time with OpenDataDSL, your team and data vendors. For an open alert the time with the current party is still counting |
 | **Timeline** | Everything that happened, oldest first. Comments show their text; comments only your team and OpenDataDSL can see are marked |

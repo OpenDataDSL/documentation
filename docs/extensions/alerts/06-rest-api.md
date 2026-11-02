@@ -113,6 +113,17 @@ At least one is needed. The result is newest first, at most 2,000, with the fiel
 
 ---
 
+## Link an alert to a root cause
+
+```
+PATCH alert/v1/private/ALR-2026-000415/cause
+{"root": "ALR-2026-000412"}
+```
+
+`rootSource` (`private`, `common` or `public`) is taken from the root cause's id when it is left out. Send `{"root": null}` to remove the link. The response is the alert. A private root cause must be yours, in the same data environment; a root cause cannot be linked to another. On shared alerts only OpenDataDSL can link.
+
+---
+
 ## Change an alert
 
 ```json

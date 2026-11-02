@@ -72,11 +72,22 @@ A linked alert closes itself when its item recovers, as before. When the root ca
 
 ---
 
+## Linking an alert by hand
+
+Only problems the platform finds are folded into a root cause. An alert someone raises, for example a quality problem a trader spotted, is always raised as an alert of its own, and is not linked automatically.
+
+To connect it to the root cause, open the alert and select **Link to root cause**. Choose one of the open root causes (yours, and the shared ones about common and public data), or choose **Not linked** to remove a link. The alert is then marked **Caused by**, it is listed under the root cause's **Linked alerts**, and closing the root cause is noted on it, just like an alert linked automatically. Both timelines record the link, and its removal.
+
+A root cause cannot be linked to another root cause. On a shared root cause, other companies never see that your alert is linked to it.
+
+---
+
 ## On the Alerts screen
 
 | Where | What you see |
 |-|-|
 | The list | **Root cause 2/3** on a root cause: 2 of the 3 problems folded into it are still open. **Caused by ALR-...** on a linked alert |
+| **Link to root cause** | On an alert of yours that is not a root cause: link it to an open root cause, or remove the link |
 | **Kind** filter | **Root causes only**, or **Caused by a root cause** |
 | **Trace id** filter | The alerts raised in one run, by its trace id |
 | **Root cause and impact** card | On a root cause: the run (process, execution and trace id), the datasets it was meant to load, the problems folded in grouped as datasets, curves and exports, and the linked alerts. On a linked alert: the root cause, which you can open |

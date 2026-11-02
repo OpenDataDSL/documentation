@@ -32,7 +32,7 @@ The report comes with the [Alerts extension](/docs/extensions/alerts/overview). 
 | **From**, **To** | The first and last day of the period, both included. Changing either one switches **Period** to **Custom** |
 | **Alerts** | **Yours and followed datasets** (the default), **Only your alerts**, or **Yours and all shared alerts**, as on the Alerts screen |
 | **Alert id** | The id of one alert, such as `ALR-2026-000405`, to see its whole history (see [One alert's history](#one-alerts-history)) |
-| **Event** | All events, or only raised, comments, comment edits and deletions, hand-overs, priority changes, closed and reopened, root causes (problems folded in, recovered and linked), or dataset configuration fixes made by OpenDataDSL |
+| **Event** | All events, or only raised, comments, comment edits and deletions, hand-overs, priority changes, closed and reopened, root causes (problems folded in, recovered, linked and unlinked), or dataset configuration fixes made by OpenDataDSL |
 | **Person** | Only the events of people whose name or email contains these words |
 | **Search** | Only the events whose alert (id, title, dataset or item) or text contains every word, in any case |
 | **Refresh** | Reads the alerts again |

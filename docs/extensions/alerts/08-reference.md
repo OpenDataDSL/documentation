@@ -36,7 +36,7 @@ tags: [extension, alerts, reference]
 | `affects` | List | On a root alert: the dataset ids the run was meant to load |
 | `trace` | Object | The run the alert was last raised in: `id` (the trace, shared by everything the run started), `type` (`process` or `script`), `process` (its name) and `execution` (its execution id) |
 | `traces` | List | Every trace id the alert has been raised under |
-| `cause` | Object | On an alert raised before its root cause: `id` and `source` of the root cause |
+| `cause` | Object | On an alert linked to a root cause (raised before it, or linked by hand): `id` and `source` of the root cause |
 | `impactCount`, `openImpactCount` | Number | On a root cause: the problems folded into it that you can see, and how many are still open |
 | `impacts` | List | On a root cause read by id: the problems folded into it (see below) |
 | `linked` | List | On a root cause read by id: the alerts linked to it, with `_id`, `_source`, `title`, `status`, `severity` and `subject` |
@@ -65,7 +65,8 @@ Every entry has `id`, `type`, `at` and `by`.
 | `severity` | `from`, `to` | Priority changed |
 | `impact` | `impact`, `subject`, `issue`, `severity`, `via`, `title` | On a root cause: a problem was folded in |
 | `impact-resolved` | `impact`, `subject`, `issue`, `resolution` | On a root cause: a problem folded in recovered |
-| `linked` | `alert`, `alertSource`, `title` on the root cause; `root`, `rootSource`, `title` on the alert | An alert raised before its root cause was linked to it |
+| `linked` | `alert`, `alertSource`, `title` on the root cause; `root`, `rootSource`, `title` on the alert | An alert was linked to the root cause: automatically (raised before the root cause) or by hand. A shared root cause does not name your alerts on its timeline |
+| `unlinked` | `alert`, `alertSource`, `title` on the root cause; `root`, `rootSource` on the alert | The link to a root cause was removed (or replaced by another) |
 | `root-closed` | `root`, `rootSource`, `resolution` | On a linked alert: its root cause was closed |
 | `dataset-fixed` | `dataset`, `configSource`, `changes` (`target`, `field`, `from`, `to`), `outcome`, `text` | OpenDataDSL corrected the dataset's configuration (calendar, expected tenors, times, priority or alerts) from this alert and checked the delivery again. When the delivery became a holiday or complete, the alert was closed |
 
