@@ -127,7 +127,9 @@ To count business days, the builder writes *days* in the plural with *using cale
 
 Select **Save**. The Calendar Manager checks the rules first: if any rule does not follow the grammar, nothing is saved and the rules in red need fixing. The platform checks them again when it saves, so a calendar with a broken rule can no longer be stored.
 
-Each save makes a new version. The title shows the version number. When you save a new calendar with the id of a private calendar that already exists, you are asked whether to save over it as a new version.
+Each save makes a new version. The title shows the version number. When you save a new calendar with the id of a calendar that already exists, you are asked whether to save over it as a new version.
+
+OpenDataDSL users can also save public calendars; you are asked to confirm, because every tenant uses them. See [Public calendars](/docs/extensions/calendar-manager/managing#public-calendars).
 
 :::note
 A combined holiday calendar is saved as a holiday calendar with the same rules. The platform keeps the rules of an expiry calendar grouped by tenor, so after saving they are shown in that order: balance, days, weekends, weeks, months, quarters, seasons, half years and years, then the rules for every tenor.

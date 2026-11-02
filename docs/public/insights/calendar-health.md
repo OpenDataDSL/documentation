@@ -1,6 +1,6 @@
 ---
 title: Calendar Health Check
-description: An insight report of the Calendar Manager that checks every holiday and expiry calendar for rules that no longer follow the grammar, missing calendars, ended rules and missing holidays
+description: An insight report of the Calendar Manager that checks every holiday, expiry and intraday calendar for rules that no longer follow the grammar, missing calendars, ended rules and missing holidays
 slug: /public/insights/calendar-health
 catalog_summary: Holiday and expiry calendars with broken rules, missing trading calendars or no holidays next year
 tags: [insight, report, calendars, holidays, expiry, calendar manager]
@@ -8,12 +8,13 @@ tags: [insight, report, calendars, holidays, expiry, calendar manager]
 
 # Calendar Health Check
 
-Calendars are set up once and then trusted for years. Meanwhile a market adds a holiday, a rule written with a typo was stored half understood, or an expiry calendar still points at a trading calendar that was renamed. **The Calendar Health Check** checks every holiday and expiry calendar at once and answers questions like:
+Calendars are set up once and then trusted for years. Meanwhile a market adds a holiday, a rule written with a typo was stored half understood, or an expiry calendar still points at a trading calendar that was renamed. **The Calendar Health Check** checks every holiday, expiry and intraday calendar at once and answers questions like:
 
 - Do all our calendar rules still follow the rule grammar?
 - Does every expiry calendar's trading and delivery calendar exist?
 - Which holiday calendars have no holidays next year, because their rules have ended?
 - When is the next expiry of each expiry calendar?
+- Does every intraday calendar have a valid interval, time zone and holiday calendar?
 
 At Northgate Energy, Priya Shah runs the check every December, before the new year's curves are built on `NGE_TRADING` and `NGE_TTF_EXPIRY`. It finds two problems: the old gas desk calendar `NGE_GAS_OLD` has a rule with stray words that was stored half understood, and the old NBP expiry calendar points at a trading calendar that no longer exists.
 
@@ -80,6 +81,7 @@ One row per issue, errors first.
 | The calendar could not be read | Error |
 | The next expiry could not be worked out | Error |
 | The calendar (or expiry calendar) has no rules | Warning |
+| An intraday calendar's interval does not divide a day, its time zone is unknown, its holiday calendar is missing or intraday, or every hour is left out | Error |
 | No holidays next year: the rules may have ended | Warning |
 | Fewer holidays next year than this year | Note |
 | N rules end this year or earlier | Note |
@@ -92,7 +94,7 @@ Each stored rule that does not follow the grammar: the calendar, the rule number
 
 ### All calendars
 
-Every calendar checked: its type, number of rules, holidays this year and next year (holiday calendars), its trading calendar and next expiry (expiry calendars), and its status.
+Every calendar checked: its type, number of rules, holidays this year and next year (holiday calendars), its trading calendar and next expiry (expiry calendars), its holiday calendar, interval and time zone (intraday calendars), and its status.
 
 ![Every private calendar checked, with its holidays, next expiry and status](/img/insights/calendar-health/all-calendars.png)
 

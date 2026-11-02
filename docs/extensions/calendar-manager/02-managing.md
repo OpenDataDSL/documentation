@@ -21,7 +21,7 @@ The tab lists every holiday calendar, expiry calendar and other calendar you can
 | Control | What it does |
 |-|-|
 | **Search** | Shows the calendars whose id, name or description contains the words you type |
-| **Type** | All calendars, holiday calendars, expiry calendars or other calendars (business, daily, monthly...) |
+| **Type** | All calendars, holiday calendars, expiry calendars, intraday calendars or other calendars (business, daily, monthly...) |
 | **Source** | Private and public, private only or public only |
 | **Sort by** | ID, name, or the last changed first |
 | **Export** | Downloads the calendars that match the filters as CSV |
@@ -31,7 +31,7 @@ The tab lists every holiday calendar, expiry calendar and other calendar you can
 
 | Card | What it shows |
 |-|-|
-| **Holiday calendars**, **Expiry calendars**, **Other calendars** | How many of each you can read |
+| **Holiday calendars**, **Expiry calendars**, **Intraday calendars**, **Other calendars** | How many of each you can read |
 | **Private** | Your company's own calendars, which you can change |
 | **Public** | Calendars maintained by OpenDataDSL |
 
@@ -41,10 +41,10 @@ The tab lists every holiday calendar, expiry calendar and other calendar you can
 |-|-|
 | **ID** | The calendar id. Public ids start with `#`. |
 | **Name** | The name, with the description under it |
-| **Type** | **Holiday**, **Expiry**, or the kind of other calendar (Business, Daily...) |
+| **Type** | **Holiday**, **Expiry**, **Intraday**, or the kind of other calendar (Business, Daily...) |
 | **Source** | **Private** or **Public** |
 | **Rules** | How many rules an expiry calendar has (the calendar lists do not include the rules of holiday calendars: open one to see them) |
-| **Trading calendar** | For an expiry calendar, the calendar its rules move on, and the delivery calendar when it is different |
+| **Based on** | For an expiry calendar, the calendar its rules move on, and the delivery calendar when it is different. For an intraday calendar, its holiday calendar, interval and time zone. |
 | **Last changed** | When the current version was saved, and by whom |
 | **Version** | The current version number |
 
@@ -59,20 +59,22 @@ When you open a calendar, the editor shows its rules, checks each one against th
 | Calendar | What you can do |
 |-|-|
 | A private holiday or expiry calendar | Edit, test, save, save as a copy, delete, history |
-| A public calendar | Test, save as a copy, history. A note explains it is maintained by OpenDataDSL. |
+| A public calendar | Test, save as a copy, history. A note explains it is maintained by OpenDataDSL. OpenDataDSL users can also edit, save and delete it: see [Public calendars](#public-calendars). |
 | A financial (FX) expiry calendar | Test only: it is defined by cross and base calendars, not rules |
+| A private intraday calendar | Edit its interval, time zone, hours and holiday calendar, test, save, save as a copy, delete, history. See [Intraday calendars](/docs/extensions/calendar-manager/intraday). |
 | Another calendar (business, daily...) | See its dates and definition |
 
 ---
 
 ## Creating a calendar
 
-Select **New holiday calendar** or **New expiry calendar** in the header.
+Select **New holiday calendar**, **New expiry calendar** or **New intraday calendar** in the header.
 
 - A new holiday calendar starts with `Every Saturday` and `Every Sunday`.
 - A new expiry calendar starts with a common month rule: `go to the end of the previous month then go back 1 days using calendar`. Choose its **Trading calendar** before you test it.
+- A new intraday calendar starts as every hour of every day in UK time.
 
-Give it an **ID** (letters, digits, dots, underscores and dashes; no spaces and no `#`, which is for public calendars), a **Name** and a **Description**, write the rules and select **Save**. See [Editing rules](/docs/extensions/calendar-manager/editing).
+Give it an **ID** (letters, digits, dots, underscores and dashes; no spaces and no `#`, which is for public calendars and only OpenDataDSL users can use), a **Name** and a **Description**, write the rules and select **Save**. See [Editing rules](/docs/extensions/calendar-manager/editing).
 
 At Northgate Energy, Priya creates `NGE_TRADING` with the weekend rules, the UK bank holidays and two office closures:
 
@@ -98,6 +100,22 @@ Last Monday in August named 'Summer Bank Holiday'
 Select **Save as copy** in the editor, or the copy button in the list. The copy is a new, unsaved private calendar with the same rules, an id ending in `_COPY` and the name followed by `(copy)`. Change the id if you want, then select **Save**.
 
 This is how you change a public calendar: copy it, change the copy, and point your timeseries, curves or expiry calendars at the copy.
+
+---
+
+## Public calendars
+
+Public calendars are maintained by OpenDataDSL. Users of the OpenDataDSL tenant (and users with the platform's admin role, who manage all public data) can change them in the Calendar Manager like a private calendar: edit, test, **Save**, **Delete** and **History** all work, in the public calendars. For everyone else a public calendar is read only.
+
+A note at the top of the editor warns that every tenant uses the calendar, so a save applies to every timeseries, curve and expiry calendar on it, in every tenant. **Save** and **Delete** ask you to confirm for a public calendar.
+
+![The UK bank holiday calendar open for an OpenDataDSL user, with the warning that every tenant uses it](/img/extensions/calendar-manager/public-edit.png)
+
+To create a public calendar, start a new calendar and give it an id that starts with `#`, such as `#EPEX_DA_PEAK_HOURS`: the title shows **Public** and the calendar is saved in the public calendars. An id cannot move between private and public once saved; copy the calendar instead.
+
+:::caution
+Test a change to a public calendar before you save it. The **Changes** tab shows exactly which dates or contracts move, and the [Calendar Usage Report](/docs/public/insights/calendar-usage) shows what uses the calendar.
+:::
 
 ---
 

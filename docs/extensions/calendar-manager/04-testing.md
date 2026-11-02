@@ -8,6 +8,8 @@ tags: [extension, calendar manager, test, holidays, expiry, delivery]
 
 # Testing a calendar
 
+This page covers holiday and expiry calendars. For hourly and sub-hourly calendars, see [Intraday calendars](/docs/extensions/calendar-manager/intraday#testing-an-intraday-calendar).
+
 The **Test** panel works out the dates the calendar gives, with the rules as they are in the editor, saved or not. It runs when you open a calendar, when you change the test settings, and a moment after you stop typing a rule. Select **Test** in the header or **Run** in the panel to run it now. The time of the last run is shown at the top, with *(with your changes)* when the editor has unsaved changes.
 
 :::note

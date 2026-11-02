@@ -40,7 +40,7 @@ It opens with your private calendars changed in the last 90 days.
 |-|-|
 | **Calendars changed** | Calendars and expiry calendars whose current version was saved in the period |
 | **New calendars** | Those still on their first version |
-| **Holiday calendars**, **Expiry calendars** | How many of each changed |
+| **Holiday calendars**, **Expiry calendars**, **Intraday calendars** | How many of each changed |
 | **Changed by** | How many people saved them |
 
 ---
@@ -49,7 +49,7 @@ It opens with your private calendars changed in the last 90 days.
 
 One row per calendar, the most recent change first: when it was saved, the calendar, its type, its version (with **new** for a first version) and who saved it.
 
-Click a row to see what changed against the version before: the rules line by line (lines removed in red, added in green), and any change of name or, for an expiry calendar, of trading or delivery calendar. For a first version, its rules are listed. Click the row again to close it.
+Click a row to see what changed against the version before: the rules line by line (lines removed in red, added in green), or for an intraday calendar its definition (interval, time zone, hours, holiday calendar), and any change of name or, for an expiry calendar, of trading or delivery calendar. For a first version, its rules are listed. Click the row again to close it.
 
 ![The change to NGE_TTF_EXPIRY: one rule added for weekend contracts](/img/insights/calendar-changes/detail.png)
 

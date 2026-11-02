@@ -14,7 +14,7 @@ tags: [extension, calendar manager, reference, api]
 
 | Kind | Service | Sources | Notes |
 |-|-|-|-|
-| Holiday and other calendars | `calendar` | `private`, `public` | Versioned. A holiday calendar keeps its rules in `calendar.rules`, each with its plain English text in `code`. |
+| Holiday, intraday and other calendars | `calendar` | `private`, `public` | Versioned. A holiday calendar keeps its rules in `calendar.rules`, each with its plain English text in `code`. An intraday calendar keeps its definition in `calendar`. |
 | Expiry calendars | `expiry` | `private`, `public` | Versioned. The rules are in `calendar.rules.map`, by tenor, each with its plain English text in `rule.code`. |
 
 Every save makes a new version: `SERVICE/v1/SOURCE/ID/*` lists the versions and `SERVICE/v1/SOURCE/ID/N` reads version N.
@@ -45,6 +45,42 @@ Every save makes a new version: `SERVICE/v1/SOURCE/ID/*` lists the versions and 
 | `rules` | The rules: a string is a plain English rule; an object is a stored rule (such as an embedded calendar) and is kept as it is |
 
 Every plain English rule must follow the grammar, or nothing is saved and the error names each rule that does not.
+
+### Intraday calendar
+
+`POST calendar/v1/private`
+
+```json
+{
+  "_id": "NGE_DE_PEAK_HOURS",
+  "_type": "VarCalendar",
+  "name": "German power peak hours",
+  "description": "Hours 08:00 to 20:00 on EEX trading days",
+  "calendar": {
+    "_type": "IntradayCalendar",
+    "period": 3600000,
+    "timezoneCode": "Europe/Berlin",
+    "holidayCalendarCode": "#EEX_POWER",
+    "useHolidays": false,
+    "withoutHours": [0, 1, 2, 3, 4, 5, 6, 7, 20, 21, 22, 23]
+  }
+}
+```
+
+| Field | Description |
+|-|-|
+| `calendar._type` | `IntradayCalendar` (`BlockCalendar` and `HourBlockCalendar` are intraday calendars too, and are kept as they are) |
+| `period` | The interval in milliseconds: at least one minute, at most 12 hours, and it must divide a day exactly |
+| `timezoneCode` | The time zone of the hours. Defaults to `UTC`. |
+| `holidayCalendarCode` | Optional. The calendar that decides which days are open. It must exist and must not be an intraday calendar. |
+| `useHolidays` | `false`: days the holiday calendar closes have no intervals. `true`: those days keep every interval (off-peak). |
+| `withoutHours` | The hours of the day (0 to 23, in the time zone) to leave out. At least one hour must be kept. |
+
+The calendar's own `_id` and `_name` are set from the record's `_id` and `name`. A definition that breaks one of these rules is refused with the reason.
+
+:::note
+Until this release, the holiday calendar of a stored intraday calendar was not looked up when the calendar was read, so every day was open whatever `holidayCalendarCode` said. It is now applied. A calendar whose holiday calendar is `DAILY` (every day) does not change; check any other stored intraday calendar with a holiday calendar before the release, because its indexes on weekends and holidays will change.
+:::
 
 ### Expiry calendar
 
@@ -82,6 +118,9 @@ Every plain English rule must follow the grammar, or nothing is saved and the er
 | `POST expiry/v1/private?_function=trace` | An expiry calendar, `ondate`, `contract` | The contract's dates, and the steps of its expiry, delivery start and delivery end rules |
 | `GET calendar/v1/SOURCE?_function=health&_id=A,B` | Calendar ids | A health check per calendar |
 | `GET expiry/v1/SOURCE?_function=health&_id=A,B` | Expiry calendar ids | A health check per expiry calendar |
+| `GET calendar/v1/private?_function=access` (or `expiry`) | | `admin`: the user is an OpenDataDSL user; `publicEdit`: the user can create, change and delete public calendars |
+| `POST calendar/v1/private?_function=test` | A calendar that is not a holiday calendar, as for saving (`_id`, `name`, `calendar`), plus `start` and `end` (days in its time zone; default the next 7 days, at most 92, for an intraday calendar) | `valid`, `problems`, `total`, `days` (one per day: `count`, `first`, `last`, `hours`, `holiday`, `dayHours`), `intervals` (at most 3,000: `local`, `offset`, `utc`) |
+| `GET calendar/v1/SOURCE/ID?_function=test` on a calendar that is not a holiday calendar | `start`, `end` | The same, for the stored calendar |
 
 ### A rule check
 
@@ -102,6 +141,19 @@ Every plain English rule must follow the grammar, or nothing is saved and the er
 | `periodStart`, `expiry`, `deliveryStart`, `deliveryEnd` | The contract's dates |
 | `expiryRule`, `deliveryStartRule`, `deliveryEndRule` | Each with `rule`, `ruleNumber` and `steps`: `step` (the text of the step), `date` (after it) and `note` |
 | `notes` | What is not ruled, or could not be worked out |
+
+---
+
+## Who can change public calendars
+
+Public calendars and expiry calendars are saved with `POST calendar/v1/public` and `POST expiry/v1/public` (the Calendar Manager uses the source that matches the id: `public` for an id starting with `#`), and deleted with `DELETE .../public/ID`. The platform allows it for:
+
+| User | Why |
+|-|-|
+| Users of the OpenDataDSL tenant | The built-in policies `ManagePublic-calendar-Built-In` and `ManagePublic-expiry-Built-In`: create, read, update and delete on the public calendar and expiry services |
+| Users with the admin role | The built-in policy `ManageAllPublicData-Built-In`, which covers every public service |
+
+Everyone else can only read public calendars: a save or delete is refused.
 
 ---
 
@@ -126,5 +178,8 @@ Every plain English rule must follow the grammar, or nothing is saved and the er
 | *This expiry calendar has no rule for ...* | No rule covers that tenor: add a rule with no `for`, or one `for` that tenor. |
 | A rule gives no holidays in the test range | Its `from` and `to` years are outside the range, or another rule gives the same date. |
 | A holiday is marked *on a closed day* | It falls on a weekend. Add an `on Saturday shift` or `on Sunday shift` option if a substitute day is needed. |
-| Save is not shown | The calendar is public, financial or has no rules. Use **Save as copy** for a public calendar. |
-| *Request failed (403)* when saving | Your security policies do not allow you to update calendars. |
+| Save is not shown | The calendar is public, financial, or another calendar with nothing to edit. Use **Save as copy** for a public calendar. |
+| *The interval must divide a day exactly* | An intraday interval such as 7 minutes leaves part of a day over. Choose one from the list. |
+| *... is not a time zone* | Use a time zone name such as `Europe/Paris`, not an abbreviation such as CET. |
+| An intraday calendar has intervals on weekends | It has no holiday calendar, or its holidays setting is **Every interval of the day (off-peak)**. |
+| *Request failed (403)* when saving | Your security policies do not allow you to update calendars, or the calendar is public and you are not an OpenDataDSL user. |
