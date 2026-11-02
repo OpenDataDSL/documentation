@@ -25,6 +25,8 @@ The Alerts screen shows changes as they happen while it is open. To be told when
 
 The **id** of the condition is what the alert is about (its subject id, such as a dataset or curve id), or `*` for every alert. An alert about nothing in particular is matched by its own id.
 
+A problem folded into a [root cause](/docs/extensions/alerts/root-causes) instead of raising an alert still runs `raised` for its item, and `closed` when it recovers, so automations on a dataset or curve id keep working. The alert they receive has the root cause's id as `_id`, the item as `subject`, and an `impact` object: `via` (how it was linked), `root`, `rootSource` and `status`.
+
 | Source | Alerts |
 |-|-|
 | `private` | Your alerts |

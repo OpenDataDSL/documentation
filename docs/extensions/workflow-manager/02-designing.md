@@ -41,7 +41,9 @@ To add an activity, **drag it onto the canvas**. Drop it on an activity that has
 
 The diagram runs from top to bottom: each activity has its input at the top and its exits side by side along the bottom. A connection that goes back up to an earlier activity (a loop) curves out to the side. An exit that is not connected is shown in amber. Every workflow starts at the **Start** at the top: drag from its port to the first activity.
 
-Priya drags `#http_download` from the palette, then connects the Start to it. She clicks `#load_csv_prices` in the palette, which adds it after the download, connected to the `ok` exit. She drags the `failed` exit of the download to the Failed end.
+Tom starts a new workflow `load_ice_endex` from a blank diagram. He clicks `wm_is_business_day`, `wm_check_dataset` and `wm_run_process` in the palette: the first is connected to the Start, and each of the others is added below the step before it, connected to its first open exit. He then drags the `holiday` exit of the first step to an empty part of the canvas and chooses **Success end**.
+
+![The holiday exit of the first step dragged to empty canvas: a menu offers Success end, Failed end, Gateway (decision) or Cancel](/img/extensions/workflow-manager/connect-menu.png)
 
 ---
 
@@ -64,6 +66,8 @@ Select an action to configure it in the side panel:
 
 **Duplicate** copies the activity with its inputs, without its connections.
 
+![The download step selected in the load_eex_settlements workflow: it runs wm_read_url in the DOWNLOAD phase, with url set to input.url, format to csv and options to headerpos=0](/img/extensions/workflow-manager/designer-action.png)
+
 ---
 
 ## Gateways
@@ -73,13 +77,13 @@ A gateway is a decision. Drag **Gateway (decision)** from the palette, then eith
 - choose a gateway action in **Runs the action**, whose result is the exit taken, or
 - leave it empty and write the **Decision code**: ODSL assignments, where the value of the **last** assignment is the exit taken.
 
-Only assignments are allowed in a workflow block (no `if` or loops), so a decision usually reads a value an earlier activity returned. For example, Priya's check action returns `complete` or `partial` in its `status` output:
+Only assignments are allowed in a workflow block (no `if` or loops), so a decision that needs more than one line belongs in a gateway action.
 
-```js
-result = output.check.status
-```
+Priya's `check_file` gateway runs her own gateway action `check_eex_file`, which counts the rows of the file: `rows` is `output.download.data` (what the `download` step read) and `expected` is `42`. Its exit `complete` goes on to `load`, and `partial` and `failed` go to `notify`.
 
-Name the gateway's exits with **Add** under Exits and routing (here `complete` and `partial`), then connect each one.
+![The check_file gateway selected: it runs check_eex_file in the LOAD phase, with rows set to output.download.data and expected to 42, and its exits complete, partial and failed routed](/img/extensions/workflow-manager/designer-gateway.png)
+
+With decision code instead, the gateway starts with the exits `yes` and `no`: change them with **Add** and the remove buttons under **Exits and routing**, then connect each one. For example `result = output.check.status`, after a step `check` whose `status` output is `complete` or `partial`, with the exits `complete` and `partial`.
 
 ---
 
@@ -115,6 +119,8 @@ Phases are set in the workflow settings (click the empty canvas):
 
 Priya puts the download in a phase `DOWNLOAD` with 3 retries, 10 minutes apart, then a reschedule in 1 hour, because the EEX file is sometimes late.
 
+![The workflow settings with the phases DOWNLOAD (3 retries, 10 minutes apart, then reschedule in 1 hour), LOAD and NOTIFY](/img/extensions/workflow-manager/workflow-settings.png)
+
 Removing a phase moves its activities to the first remaining phase. Actions, gateways and sub-workflows must always be in a phase; end events can be in a phase or after all of them.
 
 ---
@@ -134,5 +140,7 @@ Click an empty part of the canvas to see the settings of the whole workflow:
 ## Checks
 
 The chip at the right of the toolbar shows the result of the checks, such as **2 errors, 1 warning**, or **Ready to run**. Click it to list them, and click one to go to the activity it is about. Activities with a problem show a red or amber mark.
+
+![The checks listed below the diagram of load_ice_endex: end events that cannot be reached, the incomplete exit of the dataset check not connected and its dsid input not set](/img/extensions/workflow-manager/checks.png)
 
 Errors stop the workflow from running: no Start connection, no end event, an action that is not chosen, an activity outside a phase, a name used twice, a connection to an activity that does not exist. Warnings are worth a look: an exit that is not connected (the run fails if it is taken), a required input that is not set, an activity that cannot be reached from the Start, an action that was not found.

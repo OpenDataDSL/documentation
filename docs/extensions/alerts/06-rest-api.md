@@ -93,6 +93,26 @@ A program running as a process can say which run it is part of with these header
 
 ---
 
+## Problems folded into root causes
+
+The problems recorded on [root causes](/docs/extensions/alerts/root-causes) are kept apart from the alerts. Reading a root cause by id includes them (`impacts`, `impactCount`, `openImpactCount` and their timeline entries), and lists give `impactCount` and `openImpactCount`. To list them across root causes:
+
+```
+GET alert/v1/private?_function=impacts&from=2026-11-02&to=2026-11-02
+GET alert/v1/private?_function=impacts&trace=7a1c2e90-1f44-4d0b-9b0e-5c2b8e6f1d31
+GET alert/v1/private?_function=impacts&root=ALR-2026-000412
+```
+
+| Parameter | Meaning |
+|-|-|
+| `trace` | The problems of one run, by its trace id |
+| `root` | The problems folded into one root cause |
+| `from`, `to` | Problems first seen, or recovered, in the period. A date (`2026-11-02`) or a date and time; `to` is included when it is a date |
+
+At least one is needed. The result is newest first, at most 2,000, with the fields of the `impacts` of a root cause (see the [Reference](/docs/extensions/alerts/reference#problems-folded-into-a-root-cause)) plus `root` and `rootSource`. You see your own problems, and on shared root causes only yours.
+
+---
+
 ## Change an alert
 
 ```json

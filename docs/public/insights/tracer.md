@@ -1,6 +1,6 @@
 ---
 title: Tracer
-description: An item insight that collects audit, usage, automation and queue activity for the selected item into one log, newest first
+description: An item insight that collects audit, usage, automation and queue activity for the selected item into one log, newest first, or everything one run started, by its trace id
 slug: /public/insights/tracer
 catalog_summary: Audit, usage, automation and queue activity for an item in one log
 tags: [insight, report, tracer, audit, automations, queues, processes]
@@ -14,6 +14,7 @@ When something goes wrong, the evidence is spread over several logs: who changed
 - Which automations did this process run trigger, and did its queue messages get through?
 - Who changed this item recently, and what did they change?
 - Who read the item after it was updated?
+- What did one run start, from the data it loaded to the exports that failed because of it?
 
 At Northgate Energy, Tom Clarke traces last night's run of the process `NGE_EOD_CURVES` after the risk system missed a TTF price.
 
@@ -33,6 +34,7 @@ The trace runs as soon as the report opens, for **Today**, and rows appear as ea
 |-|-|
 | **Date range** | **Today**, **Yesterday**, **Last 3 days** or **Last 7 days**. Choosing one fills in **Start** and **End** and runs the trace again. |
 | **Start**, **End** | Change either date and time to set your own range |
+| **Trace id** | A run's trace id, such as the one on a [root cause](/docs/extensions/alerts/root-causes). The report then follows that run instead of the item (see [Following a run](#following-a-run)). Clear it to go back to the item. A `TRACE` report property fills it in when the report opens |
 | **Export (CSV)** | Downloads the trace log as shown, as `trace-log.csv` |
 | **Debug log** | At the bottom of the page: each step of the trace and how many entries were found |
 
@@ -54,6 +56,24 @@ The **Trace entries found** card counts the rows. The **Trace Log** table lists 
 ![The Tracer report for the timeseries NGE.TTF:MID](/img/insights/tracer/data.png)
 
 For the TTF mid price, the trace shows the load at 07:40, the property change and new value, the email and smart curve build automations it triggered, the message sent to the ETRM queue, and the people who read it afterwards.
+
+---
+
+## Following a run
+
+Every piece of work a process run starts carries the run's **trace id**, however many steps later: the data it saves, the automations those saves trigger, the curves they build and the exports that follow. Give the trace id in **Trace id** to see all of it in one log, oldest first.
+
+| Service | What is read |
+|-|-|
+| `process` | The run that started the trace, and every process run started from it |
+| `delivery` | Each dataset delivery the run made (private and common), with the loader and reason |
+| `curve build`, `export` | Each curve build and export that ran in the trace, with its status or error |
+| `automationlog` | The automations that ran in the trace |
+| `queuelog` | The queue messages sent in the trace |
+| `alert` | The alerts raised in the trace; a root cause is marked |
+| `alert impact` | The problems folded into root causes in the trace, and whether they recovered |
+
+The date range is not used while a trace id is given. Each part is read on its own: one you cannot read is noted in the debug log and the rest is shown.
 
 ---
 
@@ -89,6 +109,7 @@ Only the audit trail, usage and queue messages for a queue are limited to the da
 |-|-|
 | **No trace entries found for the selected range.** | Choose a longer range. For a process, open the report from the run on the executions list, so that the run is passed to it. |
 | A process trace shows only audit and usage rows | The report was opened without a run (`EXECID`). Open it from the selected execution. |
+| **Nothing found for trace ...** | Check the trace id. Runs before the platform started recording traces have none. |
 
 ---
 
@@ -99,3 +120,4 @@ Only the audit trail, usage and queue messages for a queue are limited to the da
 - [Item Audit Report](/docs/public/insights/item-audit-report)
 - [Automation Logs](/docs/public/insights/automation-logs)
 - [Queue Log](/docs/public/insights/queue-log)
+- [Root causes](/docs/extensions/alerts/root-causes): alerts that follow a run

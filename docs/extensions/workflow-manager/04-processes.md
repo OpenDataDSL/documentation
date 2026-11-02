@@ -35,7 +35,9 @@ Processes run the **saved** workflow. Save your changes before you run it. A new
 
 3. Click **Create process**.
 
-Priya creates `WF_LOAD_EEX_SETTLEMENTS`, running **Weekdays at 18:00 UK time** with the calendar `#EEX` and the input `ondate` set to `today`.
+Priya's process `WF_LOAD_EEX_SETTLEMENTS` runs on the custom cron `30 18 * * MON-FRI * EU1` (weekdays at 18:30 UK time), skips the holidays of `#EEX`, gives the workflow the address of the EEX file as `url` and the market data team as `team_email`, and may run for at most 30 minutes.
+
+![The process WF_LOAD_EEX_SETTLEMENTS being edited: custom cron 30 18 MON-FRI EU1, holiday calendar #EEX, group ETL, the workflow inputs url and team_email, and a maximum run time of PT30M](/img/extensions/workflow-manager/process-form.png)
 
 **Edit** changes a process; the fields the form does not show are kept. The bin button deletes it (the workflow stays).
 
@@ -51,10 +53,16 @@ Priya creates `WF_LOAD_EEX_SETTLEMENTS`, running **Weekdays at 18:00 UK time** w
 
 **Runs** lists the latest runs of a process: when they started and ended, the status and message, how they were started (scheduled, manual or by an automation), and the status of each **phase**. Click **log** next to a phase to read what it logged. A run that is still going is refreshed every few seconds.
 
+![The recent runs of WF_LOAD_EEX_SETTLEMENTS: one run failed, with its DOWNLOAD phase log open showing two retries before the file arrived, and its LOAD phase failed because 2 contracts had no price](/img/extensions/workflow-manager/processes.png)
+
 **Show on diagram** colours the phase boxes on the Design tab with that run: green for a phase that succeeded, red for one that failed, blue for one still running. Click **Clear run** on the status line to remove the colours.
+
+![The failed run shown on the diagram: the DOWNLOAD and NOTIFY phase boxes in green and the LOAD phase box in red](/img/extensions/workflow-manager/run-on-diagram.png)
 
 ---
 
 ## All workflow processes
 
 Switch the list on the left to **Processes** to see every process that runs a workflow, with the workflow and its schedule. Click one to open its workflow at the Processes tab, with its runs shown.
+
+![The list switched to Processes, with WF_BUILD_SPARK_SPREADS selected and its workflow build_spark_spreads open at the Processes tab](/img/extensions/workflow-manager/processes-list.png)

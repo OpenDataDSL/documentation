@@ -41,6 +41,8 @@ Your alerts are those of the data environment you are working in, shown at the t
 | **Raised** | When the alert was raised: the last 7, 30 or 90 days (the default), 12 months, any time, or a custom range |
 | **Search** | Words in the alert's id, title, message, description, key or resolution, or in the id of what it is about. Every word must match, in any case |
 | **Dataset id** | One dataset, such as `ICE.NDEX.NLB`, or a pattern with `*`, such as `ICE.*` |
+| **Kind** | **Root causes only**, or the alerts **Caused by a root cause** (see [Root causes](/docs/extensions/alerts/root-causes)) |
+| **Trace id** | The alerts raised in one run, by its trace id |
 
 **Reset** puts the filters back to their defaults. **Refresh** reads everything again, including the datasets you follow.
 
@@ -67,7 +69,7 @@ The figures use every filter except **Status** and **With**, so you always see b
 |-|-|
 | **Raised** | When the alert was raised |
 | **Priority** | Critical, High, Medium or Low |
-| **Alert** | The title, the id, a **Shared** label on shared alerts, and how many times it occurred when more than once |
+| **Alert** | The title, the id, a **Shared** label on shared alerts, and how many times it occurred when more than once. A root cause is marked **Root cause** with the problems folded into it still open and in total (**2/3**); an alert raised before its root cause is marked **Caused by** and the root cause's id |
 | **Type** | The kind of problem |
 | **Dataset or item** | What the alert is about, and the date for a dataset delivery or curve build |
 | **With** | Who has to act next |
@@ -88,6 +90,7 @@ Change the order with **Sort**: newest or oldest raised first, most recently occ
 |-|-|
 | Header | Title, priority, status, who it is with, and the action buttons (see [Working with alerts](/docs/extensions/alerts/working-with-alerts)) |
 | **Alert** | The message and the facts: id, type, category, what it is about, when it was raised and by whom, last occurred, last changed, closed, resolution, tags and key |
+| **Root cause and impact** | On a root cause: the run, the datasets it was meant to load, the problems folded into it and the alerts linked to it. On a linked alert: its root cause. See [Root causes](/docs/extensions/alerts/root-causes) |
 | **Dataset delivery** | For an alert about a dataset delivery: the delivery behind it (see below) |
 | **Time** | How long it has been open, and the time with OpenDataDSL, your team and data vendors. For an open alert the time with the current party is still counting |
 | **Timeline** | Everything that happened, oldest first. Comments show their text; comments only your team and OpenDataDSL can see are marked |

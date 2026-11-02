@@ -36,6 +36,10 @@ tags: [extension, alerts, reference]
 | `affects` | List | On a root alert: the dataset ids the run was meant to load |
 | `trace` | Object | The run the alert was last raised in: `id` (the trace, shared by everything the run started), `type` (`process` or `script`), `process` (its name) and `execution` (its execution id) |
 | `traces` | List | Every trace id the alert has been raised under |
+| `cause` | Object | On an alert raised before its root cause: `id` and `source` of the root cause |
+| `impactCount`, `openImpactCount` | Number | On a root cause: the problems folded into it that you can see, and how many are still open |
+| `impacts` | List | On a root cause read by id: the problems folded into it (see below) |
+| `linked` | List | On a root cause read by id: the alerts linked to it, with `_id`, `_source`, `title`, `status`, `severity` and `subject` |
 | `origin` | Object | `type`: `system` (raised by the platform) or `user` |
 | `commentCount` | Number | Comments on the alert |
 | `tenantCommentCount` | Number | On shared alerts: your team's comments |
@@ -59,6 +63,25 @@ Every entry has `id`, `type`, `at` and `by`.
 | `status` | `from`, `to` | Closed or reopened |
 | `agent` | `from`, `to` | Handed over |
 | `severity` | `from`, `to` | Priority changed |
+| `impact` | `impact`, `subject`, `issue`, `severity`, `via`, `title` | On a root cause: a problem was folded in |
+| `impact-resolved` | `impact`, `subject`, `issue`, `resolution` | On a root cause: a problem folded in recovered |
+| `linked` | `alert`, `alertSource`, `title` on the root cause; `root`, `rootSource`, `title` on the alert | An alert raised before its root cause was linked to it |
+| `root-closed` | `root`, `rootSource`, `resolution` | On a linked alert: its root cause was closed |
+
+---
+
+## Problems folded into a root cause
+
+| Field | Meaning |
+|-|-|
+| `id` | The problem's id |
+| `subject` | The item: `service` (`dataset`, `curve` or `curve-export`), `id` and `ondate` |
+| `title`, `message`, `issue`, `severity`, `key` | As the alert would have had them |
+| `via` | How it was linked: `trace` (same run), `affects` (named by the root cause), `loader` (loaded by its process), `curve-input` (built from an affected item) or `export-curve` (exports an affected curve) |
+| `trace` | The trace id of the run it came from, if any |
+| `status` | `open` or `resolved` (recovered), with `resolvedAt` and `resolution` |
+| `occurrences`, `firstAt`, `lastAt` | How many times it happened, first and last |
+| `tid`, `environment` | Whose item it is |
 
 ---
 

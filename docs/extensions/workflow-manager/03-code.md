@@ -17,23 +17,31 @@ The code follows the [workflow syntax](/docs/odsl/variable/workflow). For Priya'
 
 ```js
 load_eex_settlements = workflow in "eex"
-    // Downloads and loads the EEX settlement prices
-    in ondate as Scalar "The trading day"
+    // Downloads and loads the EEX settlement prices every evening
+    in url as Scalar "The address of the EEX settlement file"
+    in team_email as Scalar "Who to tell when something is wrong"
     exit "success", "failed"
 
     WF_START
-        "ok" -> download
+        "ok" -> business_day
     end
 
     phase "DOWNLOAD" retries 3 delay 10 minutes then reschedule 1 hours
-        WF_ACTION download download_in
-            "ok" -> load
-            "failed" -> no_file
-            download_in.url = "https://example.com/eex/" + input.ondate + ".csv"
-            result = ${action:"#http_download"}.run(download_in, output)
+        WF_GATEWAY business_day business_day_in
+            "business_day" -> today
+            "holiday" -> holiday
+            business_day_in.calendar = "#EEX"
+            result = ${action:"wm_is_business_day"}.run(business_day_in, output)
         end
-    end
+        WF_ACTION today today_in
+            "ok" -> download
+            "failed" -> notify
+            today_in.calendar = "#EEX"
+            result = ${action:"wm_resolve_date"}.run(today_in, output)
+        end
 ```
+
+![The Code tab of load_eex_settlements: the ODSL in the editor, marked as in step with the diagram, with the Check syntax and Download buttons](/img/extensions/workflow-manager/code.png)
 
 The positions of the activities on the canvas are kept in a comment at the end, `// @layout {...}`. It does not change what the workflow does. A workflow written in code without it is laid out automatically when you open it.
 

@@ -36,6 +36,7 @@ The **Alerts** extension puts these alerts in one screen and answers questions l
 | **Type** | What kind of problem it is: delivery, completeness, quality, metadata, corrections, build, export, or another type |
 | **Key** | An optional id for the problem itself, such as `dataset/ICE.NDEX.NLB/2026-10-27/completeness`. Raising an alert with the key of an open alert does not create a second one: it counts another occurrence |
 | **Timeline** | Everything that happened to the alert, in order, with who did it and when |
+| **Root cause** | The alert raised by a failed data load. Late data, failed curves and failed exports that it explains are recorded on it instead of raising alerts of their own (see [Root causes](/docs/extensions/alerts/root-causes)) |
 
 ---
 

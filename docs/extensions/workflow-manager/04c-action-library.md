@@ -8,9 +8,11 @@ tags: [extension, workflow manager, actions, library]
 
 # The action library
 
-Installing the Workflow Manager adds a library of general actions to your private actions, ready to drag onto a workflow. They cover the steps most workflows need: working out dates, checking data has arrived, making decisions, reading files from the web, starting other processes and telling people what happened.
+Installing the Workflow Manager adds a library of general actions to your private actions, ready to drag onto a workflow. The [sample workflows](./templates) show them in use. They cover the steps most workflows need: working out dates, checking data has arrived, making decisions, reading files from the web, starting other processes and telling people what happened.
 
 Their ids start with `wm_`, so they do not clash with your own actions. They are in your **private** actions, so you can open them in the Actions tab, see how they work and change them, or copy one to start an action of your own. Upgrading the extension puts the library versions back, so copy an action before changing it if you want to keep your changes.
+
+![The Actions list with the library actions by category, and wm_check_timeseries open in the editor, a gateway with the inputs id and date, the outputs last_date and last_value and the exits updated and stale](/img/extensions/workflow-manager/action-library.png)
 
 In the tables, an input marked *optional* can be left empty.
 
@@ -36,7 +38,7 @@ Builds a text, such as an email body or a file name, by filling the `{name}` pla
 | Input | |
 |-|-|
 | template | The text with placeholders, e.g. `Prices for {ondate} loaded` |
-| values | The values to put in, by name |
+| values | The values to put in, by name, e.g. `{"ondate": output.today.date}` (`id` cannot be a placeholder, as every object has an id) |
 
 Outputs: `text`. Exits: `ok`, `failed`.
 

@@ -32,7 +32,7 @@ The report comes with the [Alerts extension](/docs/extensions/alerts/overview). 
 | **From**, **To** | The first and last day of the period, both included. Changing either one switches **Period** to **Custom** |
 | **Alerts** | **Yours and followed datasets** (the default), **Only your alerts**, or **Yours and all shared alerts**, as on the Alerts screen |
 | **Alert id** | The id of one alert, such as `ALR-2026-000405`, to see its whole history (see [One alert's history](#one-alerts-history)) |
-| **Event** | All events, or only raised, comments, comment edits and deletions, hand-overs, priority changes, or closed and reopened |
+| **Event** | All events, or only raised, comments, comment edits and deletions, hand-overs, priority changes, closed and reopened, or root causes (problems folded in, recovered and linked) |
 | **Person** | Only the events of people whose name or email contains these words |
 | **Search** | Only the events whose alert (id, title, dataset or item) or text contains every word, in any case |
 | **Refresh** | Reads the alerts again |
@@ -53,6 +53,7 @@ The line under the filters says what is shown: the period, how many alerts were 
 | **Followed datasets** | The common and public datasets your company has added to its own datasets. By default the report includes only the shared alerts about these |
 | **With** | Who has to act next: your team, OpenDataDSL, or a data vendor such as ICE or EEX |
 | **First response** | The first comment, hand-over or close by someone other than the person who raised the alert |
+| **Root cause** | An alert raised by a failed data load. Problems it explains (late data, failed curves and exports) are folded into it instead of raising alerts (see [Root causes](/docs/extensions/alerts/root-causes)) |
 
 ---
 
@@ -70,6 +71,7 @@ The line under the filters says what is shown: the period, how many alerts were 
 | **Comments** | Comments added |
 | **Hand-overs** | Alerts handed from one party to another |
 | **Closed** | Alerts closed |
+| **Folded in** | Problems recorded on a root cause instead of raising alerts |
 | **People** | Different people (and the platform) who made the events |
 
 | Table | What it shows |
@@ -119,6 +121,7 @@ How quickly alerts raised in the period were answered and closed. Alerts raised 
 | **First response** | The average time from raised to the first response (a comment, hand-over or close by someone other than the raiser) |
 | **Time to close** | The average time from raised to closed, for the closed alerts |
 | **By Priority** | The same for each priority, plus the average time each alert spent with OpenDataDSL, with your team and with data vendors |
+| **By Kind** | The same for root causes, alerts caused by a root cause, and other alerts |
 
 ---
 
@@ -142,6 +145,7 @@ For a shared alert, the history also includes your team's own comments, which on
 | Alerts read for a period | The alerts changed in the period that were raised before its end, up to 1,000 per source (yours, common, public), most recently changed first. Only their events inside the period are shown |
 | One alert | The alert read by its id, from the source its id belongs to |
 | Response times | The alert's raised and closed times, and the time with each party that the platform measures for every alert |
+| Problems folded into root causes | Kept apart from the alerts: read for the period with the alert service's `impacts` function and shown as events on their root cause (**Problem folded in**, **Problem recovered**). For one alert, they are part of its history |
 
 :::note
 Your team's comments on shared alerts are kept apart from the shared alert, so they appear only in [one alert's history](#one-alerts-history), not in the period view.

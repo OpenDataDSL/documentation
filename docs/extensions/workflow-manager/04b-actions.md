@@ -62,12 +62,17 @@ The action then appears in the **Actions** section of the designer's palette.
 ## Running an action
 
 1. Open the **Input** tab below the editor. It has a field for each input the action declares (required ones are marked with a red star), and a box for any other values as JSON. Numbers, `true`, `false` and JSON are read as they are; anything else is text. The input is kept for the action in your browser.
+
+   ![The Input tab of the action check_eex_file, with rows set to a list of 38 rows and expected set to 40](/img/extensions/workflow-manager/action-input.png)
+
 2. Click **Run** (Ctrl+Enter). Unsaved changes are run as they are, without saving them.
 3. The **Result** tab shows the **exit** the action returned and the **outputs** it set. A warning shows when the exit is not one the action declares, because a workflow could not route it. **Log** shows what it printed and logged.
 
 Errors are listed with their line; click one to go to it in the editor.
 
 Priya sets `rows` to a list of 38 rows and `expected` to `40`, runs the action, and sees the exit `partial` with `missing` = 2.
+
+![The result of running check_eex_file: the exit partial and the output missing with the value 2, and one log line](/img/extensions/workflow-manager/action-run.png)
 
 ---
 

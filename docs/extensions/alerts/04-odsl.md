@@ -165,7 +165,7 @@ save ${alert:n}
 
 Set `root` to `false` for an alert raised in a process that is not about the run failing, such as a warning about the data it loaded. You can also raise a root alert outside a process with `root` set to `true`.
 
-The alerts the platform raises itself (late or incomplete data, curve builds, exports) are never roots.
+The alerts the platform raises itself (late or incomplete data, curve builds, exports) are never roots: while a root alert is open, the problems it explains are recorded on it instead. See [Root causes](/docs/extensions/alerts/root-causes).
 
 ---
 

@@ -21,6 +21,8 @@ It answers questions like:
 
 Throughout these pages we follow Northgate Energy, a fictional gas and power trader. Priya Shah, a market data analyst, builds a workflow `load_eex_settlements` that downloads the EEX settlement file every evening, loads the prices, checks them, and ends as failed (so the team is alerted) when the file is missing.
 
+![The Workflow Manager with the load_eex_settlements workflow open: the list of workflows on the left, the palette, the diagram from top to bottom with its DOWNLOAD, LOAD and NOTIFY phases, and the workflow settings on the right](/img/extensions/workflow-manager/overview.png)
+
 ---
 
 ## Key ideas
@@ -55,14 +57,17 @@ A workflow opens in three tabs:
 
 The button at the left of the title hides the list, to give the diagram more room. The expand button (at the right of the diagram's toolbar, and next to Save) makes the open workflow fill the whole portal frame; click it again or press Esc to go back. It works the same way for an open action.
 
+![The load_eex_settlements workflow expanded to fill the frame, with the check_file gateway selected and its settings in the side panel](/img/extensions/workflow-manager/expanded.png)
+
 ---
 
 ## Creating a workflow
 
 1. Click **New workflow**.
-2. Enter an **id** (letters, digits, `_`, `.` and `-`; it cannot change later), a **category** and a **description**. Priya enters `load_eex_settlements` in the category `eex`.
-3. The workflow opens with a Start and two end events, Success and Failed. Drag actions onto the canvas and connect them (see [Designing a workflow](./designing)).
-4. Click **Save** (or press Ctrl+S).
+2. Choose **Blank workflow**, or one of the [sample workflows](./templates) to start from: the gallery shows a preview of each diagram.
+3. Enter an **id** (letters, digits, `_`, `.` and `-`; it cannot change later), a **category** and a **description**. Priya enters `load_eex_settlements` in the category `eex`.
+4. The workflow opens in the designer. A blank workflow has a Start and two end events, Success and Failed: drag actions onto the canvas and connect them (see [Designing a workflow](./designing)).
+5. Click **Save** (or press Ctrl+S).
 
 **Copy** saves a copy of the open workflow under a new id. For a public workflow the button is **Copy to private**, the quickest way to start from an OpenDataDSL workflow.
 

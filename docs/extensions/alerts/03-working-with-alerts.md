@@ -113,4 +113,4 @@ Only OpenDataDSL can close, hand over or change the priority of a shared alert. 
 
 ## Next
 
-[Alerts in ODSL](/docs/extensions/alerts/odsl)
+[Root causes](/docs/extensions/alerts/root-causes)
