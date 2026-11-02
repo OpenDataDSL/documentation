@@ -18,7 +18,7 @@ At Northgate Energy, Tom Clarke looks after the German power hour calendars: `NG
 
 ## Creating an intraday calendar
 
-Select **New intraday calendar** in the header. A new calendar starts as every hour of every day in UK time. Give it an **ID**, a **Name** and a **Description**, set the fields below and select **Save**.
+Choose **Intraday** in the **New other calendar...** menu in the header. A new calendar starts as every hour of every day in UK time. Give it an **ID**, a **Name** and a **Description**, set the fields below and select **Save**.
 
 To open one, click it on the **Calendars** tab: choose **Intraday calendars** in **Type** to list only them.
 

@@ -1,6 +1,6 @@
 ---
 title: Calendar Health Check
-description: An insight report of the Calendar Manager that checks every holiday, expiry and intraday calendar for rules that no longer follow the grammar, missing calendars, ended rules and missing holidays
+description: An insight report of the Calendar Manager that checks every holiday, expiry, intraday, monthly, weekly and offset daily calendar for rules that no longer follow the grammar, missing calendars, ended rules and missing holidays
 slug: /public/insights/calendar-health
 catalog_summary: Holiday and expiry calendars with broken rules, missing trading calendars or no holidays next year
 tags: [insight, report, calendars, holidays, expiry, calendar manager]
@@ -8,7 +8,7 @@ tags: [insight, report, calendars, holidays, expiry, calendar manager]
 
 # Calendar Health Check
 
-Calendars are set up once and then trusted for years. Meanwhile a market adds a holiday, a rule written with a typo was stored half understood, or an expiry calendar still points at a trading calendar that was renamed. **The Calendar Health Check** checks every holiday, expiry and intraday calendar at once and answers questions like:
+Calendars are set up once and then trusted for years. Meanwhile a market adds a holiday, a rule written with a typo was stored half understood, or an expiry calendar still points at a trading calendar that was renamed. **The Calendar Health Check** checks every holiday, expiry and intraday calendar, and every monthly, weekly and offset daily calendar, at once and answers questions like:
 
 - Do all our calendar rules still follow the rule grammar?
 - Does every expiry calendar's trading and delivery calendar exist?
@@ -82,6 +82,7 @@ One row per issue, errors first.
 | The next expiry could not be worked out | Error |
 | The calendar (or expiry calendar) has no rules | Warning |
 | An intraday calendar's interval does not divide a day, its time zone is unknown, its holiday calendar is missing or intraday, or every hour is left out | Error |
+| A monthly, weekly or offset daily calendar has a setting out of range, a weekly calendar of several weeks has no reference date, or its holiday calendar is missing or not a holiday calendar | Error |
 | No holidays next year: the rules may have ended | Warning |
 | Fewer holidays next year than this year | Note |
 | N rules end this year or earlier | Note |

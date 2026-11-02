@@ -32,7 +32,8 @@ Throughout these pages we follow Northgate Energy, a fictional gas and power tra
 | **Holiday calendar** | A daily calendar with holiday rules. Each rule gives one holiday a year (such as Christmas Day) or a weekly closure (every Saturday). Its business days are the days no rule closes. |
 | **Expiry calendar** | Rules that work out, for each contract (a month, quarter, season, year, week or day), its expiry (the last trading day) and optionally when its delivery starts and ends. Its rules move on a **trading calendar**, and its delivery rules on a **delivery calendar**. |
 | **Intraday calendar** | Hourly, half-hourly or quarter-hourly intervals in a time zone, with the hours of the day it keeps (such as peak, 08:00 to 20:00) and an optional holiday calendar for the days it is open. It has no rules. |
-| **Other calendars** | Business, daily, monthly and other calendars with no rules. The Calendar Manager lists them and shows their dates, but there is nothing to edit. |
+| **Monthly, weekly and offset daily calendars** | Calendars set up from a few settings: one date a month, quarter, half year or year on a day of the month; one date every few weeks on a day of the week; or a day that starts at an hour in a time zone, such as the gas day. Monthly and weekly calendars can move a date that is not a business day. |
+| **Other calendars** | Daily, sparse and other built-in calendars with nothing to set. The Calendar Manager lists them and shows their dates. |
 | **Rule** | One line of plain English. The platform reads it with a grammar (an ANTLR 4 grammar for holiday rules and one for expiry rules). A rule that does not follow the grammar is marked in red, where the mistake is. |
 | **Private and public calendars** | Private calendars belong to your company and you can change them. Public calendars, whose ids start with `#`, are maintained by OpenDataDSL and used by every tenant: you can test them and copy them. Only OpenDataDSL users can change them. |
 | **Test** | Working out the dates a calendar gives, with your unsaved changes, before you save: holidays and business days, or expiries and delivery periods. |
@@ -45,7 +46,7 @@ Throughout these pages we follow Northgate Energy, a fictional gas and power tra
 | Screen | Where | What it does |
 |-|-|-|
 | **Calendars** tab | **Manage**, **Calendars** | Every calendar you can read, private and public, with filters, counts and CSV export |
-| **Editor** tab | Same screen, with a calendar open | The rules, checked as you type, with suggestions, the rule builder and edit as text (or, for an intraday calendar, its interval, time zone, hours and holiday calendar); save, save as a copy, delete and history |
+| **Editor** tab | Same screen, with a calendar open | The rules, checked as you type, with suggestions, the rule builder and edit as text (or, for an intraday, monthly, weekly or offset daily calendar, its settings); save, save as a copy, delete and history |
 | **Test** panel | Next to the rules | Holidays, a year view, business days, date checks and changes for a holiday calendar; expiries, a year view, a step by step trace and changes for an expiry calendar |
 | **Syntax guide** tab | Same screen | The rule syntax with examples you can add to the calendar, and the grammars themselves |
 | **Insights** tab | Same screen | Calendar Health Check, Holiday Calendar Comparison, Business Days by Month and Calendar Changes |
@@ -64,6 +65,7 @@ Saving a calendar needs the **update** action on the calendar or expiry calendar
 - [Editing rules](/docs/extensions/calendar-manager/editing): checking rules as you type, suggestions, the rule builder, saving and history
 - [Testing a calendar](/docs/extensions/calendar-manager/testing): every view of the Test panel, including the step by step trace
 - [Intraday calendars](/docs/extensions/calendar-manager/intraday): hourly and sub-hourly calendars, peak and off-peak hours, and testing them
+- [Monthly, weekly and offset daily calendars](/docs/extensions/calendar-manager/other-calendars): month-end, quarterly and yearly dates, fortnightly dates and the gas day
 - [Rule syntax](/docs/extensions/calendar-manager/rule-syntax): every kind of holiday and expiry rule, with examples
 - [Insights](/docs/extensions/calendar-manager/insights): the calendar insight reports
 - [Reference](/docs/extensions/calendar-manager/reference): the platform functions, the extension contents and troubleshooting

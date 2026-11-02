@@ -82,6 +82,38 @@ The calendar's own `_id` and `_name` are set from the record's `_id` and `name`.
 Until this release, the holiday calendar of a stored intraday calendar was not looked up when the calendar was read, so every day was open whatever `holidayCalendarCode` said. It is now applied. A calendar whose holiday calendar is `DAILY` (every day) does not change; check any other stored intraday calendar with a holiday calendar before the release, because its indexes on weekends and holidays will change.
 :::
 
+### Monthly, weekly and offset daily calendars
+
+`POST calendar/v1/private` with a `VarCalendar` record, as for an intraday calendar, and one of these as `calendar`:
+
+```json
+{"_type": "MonthlyCalendar", "period": 1, "dom": 32, "holidayCalendarCode": "NGE_TRADING", "rollBackwards": true}
+{"_type": "WeeklyCalendar", "period": 2, "dow": 5, "refdate": "2026-01-02", "holidayCalendarCode": "NGE_TRADING", "rollBackwards": true}
+{"_type": "OffsetDailyCalendar", "timezone": "Europe/London", "hour": 5, "dayOffset": 0}
+```
+
+| Field | Calendar | Description |
+|-|-|-|
+| `period` | Monthly | 1, 2, 3, 4, 6 or 12 months, counted from January |
+| `dom` | Monthly | The day of the month, 1 to 31, or 32 for the last day of the month |
+| `period` | Weekly | 1 to 52 weeks |
+| `dow` | Weekly | The day of the week, 1 (Monday) to 7 (Sunday) |
+| `refdate` | Weekly | A date (yyyy-mm-dd) in one of the weeks the calendar keeps; needed when `period` is more than 1 |
+| `holidayCalendarCode` | Monthly, weekly | Optional. A holiday calendar; a date that is not one of its business days is moved |
+| `rollBackwards` | Monthly, weekly | `true` to move such a date to the business day before, `false` (the default) to the next business day |
+| `timezone`, `hour` | Offset daily | The time zone, and the hour (0 to 23) each day starts in it |
+| `dayOffset` | Offset daily | Moves the index of each day by this many days (-7 to 7) |
+
+A definition that breaks one of these rules is refused with the reason. The calendar's own id and name are set from the record (an offset daily calendar keeps them in `code` and `name`).
+
+:::note
+This release also fixes three platform bugs in these calendars:
+
+- **Monthly calendars with a period of more than a month or a holiday calendar.** The dates of a range were stepped on from the previous date after any holiday move, so they drifted (half-yearly on the last day: 2 February, then 1 September instead of 31 July), and a month whose date was moved into the next month could be missed. A range starting in a month outside the period started the period there (quarterly from February: February, May, August, November). Monthly on the 1st with holidays moved back could also loop forever when the 1st was a holiday. Each date now comes from its own month. Monthly calendars without a holiday calendar and with a period of one month give exactly the same dates as before.
+- **Weekly calendars of more than two weeks, and dates before the reference date.** A date off the cycle was moved by the remainder rather than to the next week of the cycle, so a 3 week calendar could land off its cycle, and before the reference date it moved backwards. Weekly calendars of one week, and of two weeks after their reference date, give the same dates as before.
+- **A monthly or weekly calendar whose holiday calendar is not a holiday calendar** (such as `DAILY`) could not be read at all. Such a holiday calendar is now ignored when the calendar is read, and refused when it is saved.
+:::
+
 ### Expiry calendar
 
 `POST expiry/v1/private`
@@ -182,4 +214,7 @@ Everyone else can only read public calendars: a save or delete is refused.
 | *The interval must divide a day exactly* | An intraday interval such as 7 minutes leaves part of a day over. Choose one from the list. |
 | *... is not a time zone* | Use a time zone name such as `Europe/Paris`, not an abbreviation such as CET. |
 | An intraday calendar has intervals on weekends | It has no holiday calendar, or its holidays setting is **Every interval of the day (off-peak)**. |
+| *... is not a holiday calendar* | A monthly or weekly calendar's holiday calendar must have holiday rules, such as `#BUSINESS`, not a daily calendar. |
+| *A calendar of every N weeks needs a reference date* | Give a date in one of the weeks the calendar keeps. |
+| A quarterly calendar gives January, April, July and October | Periods are counted from January, so a quarterly calendar cannot start in another month. |
 | *Request failed (403)* when saving | Your security policies do not allow you to update calendars, or the calendar is public and you are not an OpenDataDSL user. |

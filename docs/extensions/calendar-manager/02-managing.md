@@ -21,7 +21,7 @@ The tab lists every holiday calendar, expiry calendar and other calendar you can
 | Control | What it does |
 |-|-|
 | **Search** | Shows the calendars whose id, name or description contains the words you type |
-| **Type** | All calendars, holiday calendars, expiry calendars, intraday calendars or other calendars (business, daily, monthly...) |
+| **Type** | All calendars, holiday, expiry, intraday, monthly, weekly or offset daily calendars, or other calendars (daily, sparse...) |
 | **Source** | Private and public, private only or public only |
 | **Sort by** | ID, name, or the last changed first |
 | **Export** | Downloads the calendars that match the filters as CSV |
@@ -31,7 +31,7 @@ The tab lists every holiday calendar, expiry calendar and other calendar you can
 
 | Card | What it shows |
 |-|-|
-| **Holiday calendars**, **Expiry calendars**, **Intraday calendars**, **Other calendars** | How many of each you can read |
+| **Holiday calendars**, **Expiry calendars**, **Intraday calendars**, **Other calendars** | How many of each you can read. **Other calendars** counts monthly, weekly, offset daily and the rest. |
 | **Private** | Your company's own calendars, which you can change |
 | **Public** | Calendars maintained by OpenDataDSL |
 
@@ -41,10 +41,10 @@ The tab lists every holiday calendar, expiry calendar and other calendar you can
 |-|-|
 | **ID** | The calendar id. Public ids start with `#`. |
 | **Name** | The name, with the description under it |
-| **Type** | **Holiday**, **Expiry**, **Intraday**, or the kind of other calendar (Business, Daily...) |
+| **Type** | **Holiday**, **Expiry**, **Intraday**, **Monthly**, **Weekly**, **Offset daily**, or the kind of other calendar (Daily, Sparse...) |
 | **Source** | **Private** or **Public** |
 | **Rules** | How many rules an expiry calendar has (the calendar lists do not include the rules of holiday calendars: open one to see them) |
-| **Based on** | For an expiry calendar, the calendar its rules move on, and the delivery calendar when it is different. For an intraday calendar, its holiday calendar, interval and time zone. |
+| **Based on** | For an expiry calendar, the calendar its rules move on, and the delivery calendar when it is different. For an intraday, monthly, weekly or offset daily calendar, its holiday calendar and its settings in a few words. |
 | **Last changed** | When the current version was saved, and by whom |
 | **Version** | The current version number |
 
@@ -62,17 +62,19 @@ When you open a calendar, the editor shows its rules, checks each one against th
 | A public calendar | Test, save as a copy, history. A note explains it is maintained by OpenDataDSL. OpenDataDSL users can also edit, save and delete it: see [Public calendars](#public-calendars). |
 | A financial (FX) expiry calendar | Test only: it is defined by cross and base calendars, not rules |
 | A private intraday calendar | Edit its interval, time zone, hours and holiday calendar, test, save, save as a copy, delete, history. See [Intraday calendars](/docs/extensions/calendar-manager/intraday). |
-| Another calendar (business, daily...) | See its dates and definition |
+| A private monthly, weekly or offset daily calendar | Edit its settings, test, save, save as a copy, delete, history. See [Monthly, weekly and offset daily calendars](/docs/extensions/calendar-manager/other-calendars). |
+| Another calendar (daily, sparse...) | See its dates and definition |
 
 ---
 
 ## Creating a calendar
 
-Select **New holiday calendar**, **New expiry calendar** or **New intraday calendar** in the header.
+Select **New holiday calendar** or **New expiry calendar** in the header, or choose **Intraday**, **Monthly, quarterly or yearly**, **Weekly** or **Offset daily** in the **New other calendar...** menu.
 
 - A new holiday calendar starts with `Every Saturday` and `Every Sunday`.
 - A new expiry calendar starts with a common month rule: `go to the end of the previous month then go back 1 days using calendar`. Choose its **Trading calendar** before you test it.
 - A new intraday calendar starts as every hour of every day in UK time.
+- A new monthly calendar starts as monthly on the 1st, a new weekly calendar as every Monday, and a new offset daily calendar as the German gas day (06:00, Europe/Berlin).
 
 Give it an **ID** (letters, digits, dots, underscores and dashes; no spaces and no `#`, which is for public calendars and only OpenDataDSL users can use), a **Name** and a **Description**, write the rules and select **Save**. See [Editing rules](/docs/extensions/calendar-manager/editing).
 
