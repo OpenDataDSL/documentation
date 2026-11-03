@@ -101,7 +101,9 @@ Playbook runs also stop at the limit, with the status **Stopped**, and can be re
 
 Some companies sign in through more than one Microsoft Entra tenant, linked to the same OpenDataDSL tenant. Their Fusion AI usage is billed as one: the Billing and Token Usage insights add up the usage of every linked tenant, and the included bundles, budget and limit apply to that total.
 
-The budget, limit and notifications you save apply to the combined usage. Set them from one of the linked tenants only. If they are set on more than one, the insight shows the values of the tenant you are signed in to.
+The budget, limit and notifications you save apply to the combined usage, and you can save them from any of the linked tenants: saving copies the same values to every linked tenant, so they are the same whichever tenant you sign in with.
+
+If the linked tenants still have different values, for example from before they were linked, the safest values apply until you next save: the lowest budget, the lowest limit, and everyone on any of the notify lists. The Billing insight shows the values that apply and tells you which ones differ.
 
 ---
 

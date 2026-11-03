@@ -76,6 +76,19 @@ The audit records themselves, 50 to a page, with the number in the range in the 
 
 ![The Audit Log tab with one record selected and its change details below](/img/insights/audit-report/audit-log.png)
 
+Newest records come first. Select any column heading to sort the whole log by that column (not just the page on screen), and select it again to reverse the order. The arrow in the heading shows the current sort.
+
+Narrow the log with the filters above the table:
+
+| Filter | What it does |
+|-|-|
+| **Action** | Shows only records with this action, such as `update` |
+| **User** | Shows only records made by this user |
+| **Service** | Shows only records for this service, such as `curve` or `process` |
+| **Clear filters** | Removes all three filters |
+
+Each list offers the actions, users and services that appear in the date range and search. The filters work together with the date range and search, and narrow only the Audit Log (and its export): the other tabs still summarise everything in the range.
+
 Select a row to see its changes in **Change Details** underneath. The report reads the full record when you select it.
 
 | Column | What it shows |
@@ -87,7 +100,7 @@ Select a row to see its changes in **Change Details** underneath. The report rea
 
 A record with no field changes, such as a create, delete or rollback, shows **This entry has no recorded field changes.**
 
-Select **Export (CSV)** to download every record that matches the date range and search, not just the page on screen.
+Select **Export (CSV)** to download every record that matches the date range, search and filters, in the current sort order, not just the page on screen.
 
 ### By User
 
@@ -114,7 +127,7 @@ The 100 items with the most audit records in the range: **Events**, **Distinct S
 ![The Most Changed Entities tab](/img/insights/audit-report/entities.png)
 
 :::tip
-Every summary tab has its own **Export (CSV)** button, which downloads the table as shown.
+Select any column heading in the summary tables, the Overview's top five lists and **Change Details** to sort by that column, and again to reverse it. Every summary tab has its own **Export (CSV)** button, which downloads the table as shown, in the order shown.
 :::
 
 ---
@@ -135,8 +148,8 @@ The report shows only what your security policies let you read in the audit serv
 | Problem | What to do |
 |-|-|
 | **No audit entries fall in the selected range.** | Widen the date range. Remember the presets work in UTC. |
-| A record you expected is missing | Check the search box is empty, and that you are in the right data environment: each environment has its own audit trail. |
-| The Audit Log is not in date order | The list is shown in the order the platform returns it. Use **Export (CSV)** and sort the file, or narrow the date range. |
+| A record you expected is missing | Check the search box is empty, **Clear filters** on the Audit Log, and check you are in the right data environment: each environment has its own audit trail. |
+| A filter list does not show the value you want | The lists only offer values found in the date range and search. Widen the date range or clear the search. |
 
 ---
 
