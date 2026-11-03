@@ -29,6 +29,8 @@ The cards at the top:
 
 Under the cards are four reports, two to a row. Each is also an [insight report](#insight-reports).
 
+At the bottom, **Schedules** summarises everything that runs on a cron: how many schedules there are, how many fired and how many were missed in the last 24 hours, what is coming up and which schedules need attention. See [Schedules](/docs/extensions/automations/schedules#the-schedule-summary-on-the-overview-tab).
+
 ---
 
 ## Automations by target and by service
@@ -138,8 +140,9 @@ The four reports of the Overview are also insight reports, in the **Automations*
 | **Automations by Service** | Automations per service, enabled and disabled |
 | **Automation Failures** | Up to 100 runs that were not successful in the period, with their status and full message |
 | **Busiest Automations** | Up to 50 automations that ran most often in the period, with their target |
+| **Cron Schedule Diagnostics** | Every schedule (scheduled automations, processes, reports and more), what the scheduler fired and what ran, with the problems found. See [Cron Schedule Diagnostics](/docs/extensions/automations/cron-diagnostics) |
 
-Each has **Refresh**, **CSV** (the table as a CSV file) and **Help**. Automation Failures and Busiest Automations have the same [Period](#choosing-a-period) as the Overview.
+The first four have **Refresh**, **CSV** (the table as a CSV file) and **Help**. Automation Failures and Busiest Automations have the same [Period](#choosing-a-period) as the Overview.
 
 ![The Automation Failures insight for the last 30 days](/img/extensions/automations/insight-failures.png)
 

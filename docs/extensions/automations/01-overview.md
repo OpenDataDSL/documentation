@@ -16,6 +16,7 @@ Automations quietly do a lot of work: they send settlement prices to the people 
 - Can I switch off all the automations for a curve while it is being rebuilt, and switch them back on afterwards?
 - Does this automation still work? Can I try it now, for yesterday's curve?
 - How do I set up a new automation for a curve without knowing the platform's automation format?
+- Can I send the latest curve every weekday at 08:00, and did yesterday's run really happen?
 
 Throughout these pages we follow Northgate Energy, a fictional gas and power trader. Its market data team looks after about forty automations: emails when the ICE Endex settlement prices arrive, the forward curves sent to the ETRM through the queue `etrm-curves`, Teams messages when a process fails, and the automations other extensions keep, such as validation checks and Composer compositions. Priya Shah, a market data analyst, uses the extension every morning.
 
@@ -28,7 +29,7 @@ Throughout these pages we follow Northgate Energy, a fictional gas and power tra
 | Idea | What it means |
 |-|-|
 | **Automation** | A rule that sends something to a target when something happens to an item. It reads as a sentence, for example *When 'NORTHGATE.TTF:FWD_CURVE' is updated, send a message to the queue etrm-curves*. |
-| **Trigger** | The item (a curve, a timeseries, a process, a report, a master data record...), its service and source, and what happens to it: it is created, updated, deleted, has failed, is successful and so on. An automation can be for one item or for any item of a service. |
+| **Trigger** | The item (a curve, a timeseries, a process, a report, a master data record...), its service and source, and what happens to it: it is created, updated, deleted, has failed, is successful and so on. An automation can be for one item or for any item of a service. A **scheduled** automation runs at set times instead, and sends its item as it is then. |
 | **Target** | What the automation does: send an email, send a message to a queue, post to Teams or a webhook, run a process, build a curve, or one of your company's own targets. |
 | **Settings** | What the target needs, such as the email address and subject, or the queue name. Some automations also transform the data with a mustache script first, or only fire when a property has a given value. |
 | **Owner** | The person the automation runs as. It can only read and send what its owner can. |
@@ -44,8 +45,9 @@ Throughout these pages we follow Northgate Energy, a fictional gas and power tra
 | **Automations** tab | Same screen | Every automation, with filters, on and off switches, bulk changes, export and the editor |
 | **Activity** tab | Same screen | The automation log: every run, by period, status, target or item |
 | **Targets** tab | Same screen | What each automation target does and how many automations use it |
+| **Schedules** tab | Same screen | Everything that runs on a cron, when it runs next and how it ran, with adding and changing the schedules of processes, reports and scheduled automations |
 | **New** tab | Same screen | Create an automation for any item from what the platform offers for it |
-| Insight reports | **Insights** | Automations by Target, Automations by Service, Automation Failures and Busiest Automations |
+| Insight reports | **Insights** | Automations by Target, Automations by Service, Automation Failures, Busiest Automations and Cron Schedule Diagnostics |
 
 Every screen has a **Help** link that opens the matching page of this guide.
 

@@ -77,7 +77,8 @@ Saving also sets the automation's environment to the one you are signed in to.
 |-|-|-|
 | Feature policy | `extension.odsl.automations` | Gives everyone the `odsl.automations.manage` feature. Change its members to limit who sees the screen |
 | Menu item | **Operations**, **Automations** | The screen with the Overview, Automations, Activity, Targets and New tabs |
-| Insight reports | `odsl.automations.by_target`, `odsl.automations.by_service`, `odsl.automations.failures`, `odsl.automations.busiest` | Category **Automations** |
+| Insight reports | `odsl.automations.by_target`, `odsl.automations.by_service`, `odsl.automations.failures`, `odsl.automations.busiest`, `odsl.automations.cron_diagnostics` | Category **Automations** |
+| Security policies | `AutomationsCrontab`, `AutomationsCrontabLog` | Read access for everyone to the schedule entries and the scheduler's log, used by Cron Schedule Diagnostics. Change their members to limit who sees the schedules |
 
 The feature only decides who sees the screen. What each person can read and change is decided by the platform's security policies, as everywhere else.
 
@@ -87,6 +88,7 @@ The feature only decides who sees the screen. What each person can read and chan
 
 | What you see | Why, and what to do |
 |-|-|
+| A scheduled automation does not run | Open [Cron Schedule Diagnostics](/docs/extensions/automations/cron-diagnostics) for it: it shows whether the scheduler fired it, whether it ran and what to check |
 | An automation never runs | Check it is enabled, that its item is the right one (the source matters: an item in common data is not the same as a private one), and that the action is the one that really happens (a curve loaded by a process is **updated**, not **created**) |
 | It runs but every run fails | Read the message in the Activity tab. Common causes: the target no longer exists (the editor says so), a setting is wrong (a queue name, an email address), the transformer script was renamed, or the owner no longer has access to the item or script |
 | A message such as `Request failed: 403 Forbidden - ...` | The platform refused the change. The text after the dash is the platform's reason, usually a missing permission |

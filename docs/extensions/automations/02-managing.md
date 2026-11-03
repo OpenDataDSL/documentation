@@ -119,6 +119,8 @@ The editor shows a field for every setting of the automation:
 - Any other setting the target accepts, with the target's description under it.
 - Any other property already stored on the automation.
 
+Some settings belong to the target, not the automation, and are listed under the fields as **Set by the target**. For example **Send an email** always sends the data in the body (`attachment` = `false`) and **Send an email with an attachment** always attaches it (`attachment` = `true`). The platform applies them every time the automation runs, so to change one, choose the other target.
+
 | Setting | What it is |
 |-|-|
 | **Transformer (a mustache script)** | For automations that transform the data first: the mustache script that turns the item into what the target sends. Start typing to pick from your mustache scripts |
