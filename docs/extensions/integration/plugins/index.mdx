@@ -1,0 +1,49 @@
+---
+title: Integration plug-ins
+description: The downstream systems that have a ready-made Integration plug-in, what each one sends, and where to find its guide
+slug: /extensions/integration/plugins
+sidebar_position: 0
+sidebar_label: Overview
+tags: [extension, integration, plug-in]
+---
+
+import PluginCatalog from '@site/src/components/PluginCatalog';
+
+# Integration plug-ins
+
+A plug-in teaches the Integration extension how to talk to one downstream system, such as an ETRM, or to one kind of destination, such as a message queue, a storage account or a webhook. It brings the codes the system knows each curve and timeseries by, the settings each group needs, and the ODSL that sends the data in the system's own format. Groups, schedules and the daily report then work the same way for every system.
+
+Pick a plug-in below to see what it needs and how it sends your data. The generic plug-ins (Message queue, Azure Blob Storage, Azure Data Lake, Azure Files, Webhook, Azure Event Grid and Power BI) all send the same content, described in [What the generic plug-ins send](/docs/extensions/integration/plugins/generic-content); copy one on the Integrations screen for each destination of its kind.
+
+<PluginCatalog extension="integration" />
+
+---
+
+## Installing a plug-in
+
+Open **Operations**, then **Integrations**, and select **New system**: the dialog lists every published plug-in that is not installed yet. Select **Install** on the one you want. With no systems installed, the opening page lists them too.
+
+Installing a plug-in installs the Integration extension as well when it is missing. While a plug-in is installed, the Integration extension cannot be uninstalled. See [Getting started](/docs/extensions/integration/getting-started) for setting up a first group once the plug-in is installed.
+
+---
+
+## What a plug-in brings
+
+| Part | What it is | Where you see it |
+|-|-|-|
+| Identities | The codes the system knows each curve or timeseries by, such as a Molecule product. | Columns on each group's **Items** tab. |
+| Group settings | What each group sending to the system is asked for, such as a test environment or a timezone. | Each group's **Settings** tab. |
+| Data properties | Settings kept on each curve or timeseries. | Columns on each group's **Items** tab. |
+| Secrets | What the system needs to connect, such as a user and an API key. You set their values; they are kept in the secret store. | The **Secrets** part of the **Plug-in** tab, and each group's **Settings** tab. |
+| Runner | The ODSL that turns each item into the system's format and sends it. | The schedule of each group. |
+
+All of a plug-in's codes, settings and secrets are listed on the **Plug-in** tab of the Integrations screen.
+
+---
+
+## No plug-in for your system?
+
+- [Set it up as a custom system](/docs/extensions/integration/custom-systems): choose its codes and settings and write the ODSL, starting from a template.
+- [Design it with Fusion AI](/docs/extensions/integration/fusion-ai): describe the system and answer a few questions.
+- [Copy a plug-in](/docs/extensions/integration/custom-systems#copying-a-system): a custom system that uses a plug-in's ODSL, for a second destination of the same kind, or to split one system into two.
+- [Write a plug-in extension](/docs/extensions/integration/reference#writing-a-plug-in-extension): package a system so it can be installed in any environment, as Molecule is.

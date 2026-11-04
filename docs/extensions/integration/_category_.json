@@ -1,0 +1,7 @@
+{
+  "label": "Integration",
+  "link": {
+    "type": "generated-index",
+    "description": "Send curves and timeseries to the systems downstream of the platform, such as an ETRM, a risk engine or a data lake, on a schedule, with each system's codes and settings, and a daily report of what was sent against what you expect."
+  }
+}

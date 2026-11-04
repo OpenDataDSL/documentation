@@ -1,0 +1,8 @@
+{
+  "label": "Home",
+  "position": 0.7,
+  "link": {
+    "type": "generated-index",
+    "description": "The portal home page that starts from the work: what do you want to do today? Task tiles from your installed extensions, with the tasks that have open alerts first."
+  }
+}

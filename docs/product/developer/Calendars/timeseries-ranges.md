@@ -142,14 +142,14 @@ The following table explains how the dates are determined and transformed:
 
 |Format|Example|Used Start Date|Used End Date|
 |-|-|-|-|
-|yyyy|2024|2024-01-01T00:00:00|2024-12-31T23:59:59|
-|yyyy-MM|2024-10|2024-10-01T00:00:00|2024-10-31T23:59:59|
-|yyyy-MM-dd|2024-10-12|2024-10-12T00:00:00|2024-10-12T23:59:59|
-|yyyy-MM-ddT00|2024-10-12T11|2024-10-12T11:00:00|2024-10-12T11:59:59|
-|yyyy-MM-ddTHH:mm|2024-10-12T11:36|2024-10-12T11:36:00|2024-10-12T11:36:59|
-|yyyy-MM-ddTHH:mm:ss|2024-10-12T11:36:24|2024-10-12T11:36:24|2024-10-12T11:36:24|
-|yyyy-MM-ddTHH:mm:ss[timezone]|2024-10-12T11:36:24[Europe/Amsterdam]|2024-10-12T09:36:24[UTC]|2024-10-12T09:36:24[UTC]|
-|Any absolute tenor|2024M10|2024-10-01T00:00:00|2024-10-31T23:59:59|
+|`yyyy`|2024|2024-01-01T00:00:00|2024-12-31T23:59:59|
+|`yyyy-MM`|2024-10|2024-10-01T00:00:00|2024-10-31T23:59:59|
+|`yyyy-MM-dd`|2024-10-12|2024-10-12T00:00:00|2024-10-12T23:59:59|
+|`yyyy-MM-ddT00`|2024-10-12T11|2024-10-12T11:00:00|2024-10-12T11:59:59|
+|`yyyy-MM-ddTHH:mm`|2024-10-12T11:36|2024-10-12T11:36:00|2024-10-12T11:36:59|
+|`yyyy-MM-ddTHH:mm:ss`|2024-10-12T11:36:24|2024-10-12T11:36:24|2024-10-12T11:36:24|
+|`yyyy-MM-ddTHH:mm:ss[timezone]`|2024-10-12T11:36:24[Europe/Amsterdam]|2024-10-12T09:36:24[UTC]|2024-10-12T09:36:24[UTC]|
+|`Any absolute tenor`|2024M10|2024-10-01T00:00:00|2024-10-31T23:59:59|
 
 ## Date Rules
 [Date rules](/docs/kb/daterules) can be used in date ranges and will be calculated based on a reference date point of now.

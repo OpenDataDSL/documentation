@@ -105,6 +105,7 @@ Run it in VS Code with the OpenDataDSL extension. `save e` saves the extension t
 | `icon` | A [Bootstrap icon](https://icons.getbootstrap.com/) name, optionally followed by a colour class such as `text-primary` |
 | `tags` | Tags for the extension catalogue |
 | `preview` | `true` if the extension uses features from the next platform release, so it can only be installed in the **preview** environment. Defaults to `false`. |
+| `standalone` | `true` if the extension can be opened independently from the portal. Defaults to `false`. |
 | `views` | The views, added with `e.addView(id)` |
 | `resources` | Everything installed with the extension (see below) |
 
@@ -126,6 +127,7 @@ Run it in VS Code with the OpenDataDSL extension. `save e` saves the extension t
 | `script` | The Mustache script for the page, without the `.mustache` suffix |
 | `insights` | `true` to add an **Insights** tab listing the extension's insights |
 | `excel` | `true` to show the view in the Excel add-in instead of the portal |
+| `home` | `true` to offer the view as the portal home page, as the Home extension's Tasks view does |
 
 ### Placing views
 
@@ -147,6 +149,7 @@ Run it in VS Code with the OpenDataDSL extension. `save e` saves the extension t
 | `script` | Every script the extension uses: each view's page, every partial the pages include, and every insight page |
 | `reportconfig` | Every insight report id |
 | `policy` | The feature policy and every data policy |
+| `task` | Every task tile the extension adds to the Home page, by id (see [Adding tasks](/docs/extensions/home/adding-tasks)) |
 
 `script` can instead hold lifecycle scripts, which run when the extension is installed, upgraded or uninstalled:
 
