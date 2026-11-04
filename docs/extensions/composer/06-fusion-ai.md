@@ -50,6 +50,20 @@ Columns that keep their id keep their colours and conversion settings. Each chan
 
 ---
 
+## When Fusion asks you a question
+
+Sometimes Fusion needs a decision from you before it can design the composition, for example which of two curves you mean, or which hub or currency to use. It then shows the question in a dialog with two to four options:
+
+- Select an option to answer.
+- When more than one option can apply, select each one you want, then **Send**.
+- Or type your own answer in the box and select **Send**.
+
+Fusion carries on with your answer. **Cancel** stops the request, and nothing is changed.
+
+Fusion is told only to ask when the answer changes what it does, so most requests never ask anything.
+
+---
+
 ## Good descriptions
 
 | Say | For example |

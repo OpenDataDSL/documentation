@@ -43,6 +43,16 @@ So **Fix the errors** works on the error you just got, and you do not need to pa
 
 Each conversation is per script, and is kept in your Fusion AI chat history in the category **scripts**.
 
+### When Fusion asks you a question
+
+Sometimes Fusion needs a decision from you first, for example which of two curves you mean, or whether to change the whole script or only a function. It then asks in the panel, with two to four options:
+
+- Select an option to answer.
+- When more than one option can apply, select each one you want, then **Send**.
+- Or type your own answer in the box at the bottom.
+
+Fusion carries on with your answer, and the question shows the option you picked.
+
 ---
 
 ## Reviewing and applying a change

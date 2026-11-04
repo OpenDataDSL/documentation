@@ -83,7 +83,7 @@ When Fusion needs a decision from you before it can carry on, it asks instead of
 
 Any text Fusion wrote while working shows above the question, so you can see what led to it. Once you have answered, the card shows the option you picked. The question and your answer stay in the conversation when you reopen it later.
 
-Fusion stops at the question and does nothing else until you answer, so no tokens are spent on a path you did not want. Questions are only asked in the chat, where someone is there to answer. Agents and playbook runs work without anyone watching, so they never stop to ask.
+Fusion stops at the question and does nothing else until you answer, so no tokens are spent on a path you did not want. Fusion asks in the same way when you use it in other extensions: in [Composer](/docs/extensions/composer/fusion-ai#when-fusion-asks-you-a-question), [Smart Data](/docs/extensions/smart-data/fusion-ai#when-fusion-asks-you-a-question) and the [Scripts](/docs/extensions/script-manager/fusion-ai#when-fusion-asks-you-a-question) Fusion AI panel. Agents and playbook runs work without anyone watching, so they never stop to ask.
 
 ---
 

@@ -51,6 +51,20 @@ Select **Apply** to put the change in the workspace (it is not saved yet), or **
 
 ---
 
+## When Fusion asks you a question
+
+Sometimes Fusion needs a decision from you before it can design the definition, for example which of two curves you mean, or which hub or currency to use. It then shows the question in a dialog with two to four options:
+
+- Select an option to answer.
+- When more than one option can apply, select each one you want, then **Send**.
+- Or type your own answer in the box and select **Send**.
+
+Fusion carries on with your answer. **Cancel** stops the request, and nothing is changed.
+
+Fusion is told only to ask when the answer changes what it does, so most requests never ask anything.
+
+---
+
 ## Fixing a failed preview
 
 When the preview fails, **Ask Fusion AI to fix it** appears under the message (see [When the preview fails](/docs/extensions/smart-data/workspace#when-the-preview-fails)). Fusion is given the error, the ondate or range and the definition, and suggests a change in the same way, to apply or not.
