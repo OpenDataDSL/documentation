@@ -1,6 +1,6 @@
 ---
 title: Studio
-description: "Chat with Fusion AI in the Studio: conversations, choosing an assistant, tool activity, feedback, and saving a conversation as an agent"
+description: "Chat with Fusion AI in the Studio: conversations, choosing an assistant, tool activity, questions Fusion asks you, feedback, and saving a conversation as an agent"
 slug: /extensions/fusion-ai/studio
 sidebar_position: 2
 tags: [extension, fusion-ai, chat, ai-assistant]
@@ -70,6 +70,20 @@ While Fusion works, the tools it calls and its log lines appear live in a **Work
 ![Fusion at work, with the tools it is calling](/img/extensions/fusion-ai/studio-working.png)
 
 When the answer arrives, the block folds into a summary such as **Used 3 tools, 1 log entry**. Select it to see each tool and the values Fusion passed to it. This is a good way to check where an answer came from: which curve, which dates, which dataset.
+
+---
+
+## When Fusion asks you a question
+
+When Fusion needs a decision from you before it can carry on, it asks instead of guessing. For example, it might ask which of several matching curves you mean, which date range or currency to use, or which of two approaches to take. The question appears as a card with two to four options:
+
+- **Pick an option** to answer. Your choice is sent as your next message, and Fusion carries on from there.
+- When more than one option can apply, tick the ones you want and select **Send**.
+- **Or type your own answer** in the message box if none of the options fit.
+
+Any text Fusion wrote while working shows above the question, so you can see what led to it. Once you have answered, the card shows the option you picked. The question and your answer stay in the conversation when you reopen it later.
+
+Fusion stops at the question and does nothing else until you answer, so no tokens are spent on a path you did not want. Questions are only asked in the chat, where someone is there to answer. Agents and playbook runs work without anyone watching, so they never stop to ask.
 
 ---
 
