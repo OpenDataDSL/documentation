@@ -78,7 +78,7 @@ Choose a task to open the screen that does the job:
 - Some open a screen of the portal, such as **Data**.
 - An extension can also open a web page, in a new browser tab.
 
-When the portal cannot open an extension screen itself, the Home page opens it in place with **Back to tasks** at the top. Press **Escape** or **Back to tasks** to return.
+The task opens in the portal like any menu item, with the menu showing where you are. If you cannot use the screen it opens, for example its extension is not installed in this environment or you do not have access to it, the page tells you instead.
 
 :::tip
 Press **/** anywhere on the page to jump to the search box.

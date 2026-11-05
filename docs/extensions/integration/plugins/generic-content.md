@@ -26,6 +26,7 @@ Each curve or timeseries becomes one item message:
   "ondate": "2026-11-03",
   "group": "NGE_CURVES",
   "system": "Message queue",
+  "correction": false,
   "values": [
     {"tenor": "M01", "start": "2026-12-01", "value": 32.15},
     {"tenor": "M02", "start": "2027-01-01", "value": 33.4}
@@ -40,6 +41,7 @@ Each curve or timeseries becomes one item message:
 | `name`, `kind` | The item's name, and `curve` or `timeseries`. |
 | `ondate` | The date the run sends. |
 | `group`, `system` | The group and the system name. A copy of a plug-in sends its own name. |
+| `correction`, `note` | `correction` is `true` when the item is sent again because its data was corrected (see [Corrections](/docs/extensions/integration/corrections)), with `note` saying what changed, such as `value 2026-10-01: 39.1 to 39.7`; otherwise `false` and no `note`. |
 | `values` | A curve: the contracts of the curve for the ondate, each with `tenor`, `start` and `value`. A timeseries: its values, each with `time` (such as `2026-11-01T00:00:00`) and `value`. |
 
 Items with no values are skipped and not sent.
@@ -57,6 +59,7 @@ With **Messages** set to `group`, the item messages are sent together:
   "groupName": "Gas and power curves",
   "ondate": "2026-11-03",
   "created": "2026-11-04T08:05:00Z",
+  "correction": false,
   "part": 1,
   "parts": 1,
   "count": 2,
@@ -64,7 +67,7 @@ With **Messages** set to `group`, the item messages are sent together:
 }
 ```
 
-`created` is when the run started (UTC). A group with more items than **Most items in one message** is sent in several messages, numbered by `part` of `parts`. JSON files hold the same, always as one part.
+`created` is when the run started (UTC), and `correction` is `true` for a run that sends corrections. A group with more items than **Most items in one message** is sent in several messages, numbered by `part` of `parts`. JSON files hold the same, always as one part.
 
 With one message per group, the items are reported complete once they are collected. When the send at the end of the run fails, every one of them is marked failed with the reason, so the daily report shows them as not sent.
 
@@ -94,8 +97,54 @@ A curve's rows have `tenor` and `start`, a timeseries' rows `time`. A field with
 | `{ondate}` | The ondate, such as `2026-11-03`. |
 | `{yyyymmdd}`, `{yyyy}`, `{mm}`, `{dd}` | The ondate, or its year, month or day. |
 | `{run}` | When the run started, such as `20261104080500`: a file per run. |
+| `{correction}` | `_correction` when the run sends corrections, else nothing: `{group}_{yyyymmdd}{correction}.{ext}` keeps corrections in files of their own. |
 | `{code}` | The item's code, with one file per item. When the pattern has no `{code}`, `_{code}` is added before the extension. |
-| `{ext}` | `csv` or `json`. |
+| `{ext}` | `csv` or `json`. With a transformer, from its content type: `csv`, `json`, `xml`, `html`, `tsv`, else `txt`. |
+
+---
+
+## Transforming with a Mustache template
+
+When the receiving system needs another layout, such as its own CSV columns, XML or a JSON shape of its own, set a **Transformer** in the group's settings: the name of a mustache script (`#` for a public one). The template is applied to what would have been sent, and its text is sent instead, by the Message queue, Webhook, Azure Blob Storage, Azure Data Lake and Azure Files plug-ins. Set **Content type** to the kind of text it makes, such as `text/csv`: a webhook sends it as the content-type header, and a file gets the matching extension.
+
+The template gets the [item message](#an-item-message) (one message or file per curve or timeseries) or the [group message](#a-group-message), with two additions:
+
+| Field | What it is |
+|-|-|
+| `rows` | One row per value, as in a [CSV file](#csv-files): `id`, `code`, `name`, `kind`, `ondate`, `tenor`, `start`, `time` and `value`, plus `text` (the value as text, such as `241.19` or `100`) and `comma` (true on every row but the last). |
+| `comma` on each of `items` | True on every item but the last, for templates that make JSON. |
+
+A CSV file with the system's own columns:
+
+```
+curve,tenor,delivery,price
+{{#rows}}
+{{{code}}},{{tenor}},{{start}},{{text}}
+{{/rows}}
+```
+
+which makes:
+
+```
+curve,tenor,delivery,price
+B.TTF,M01,2026-12-01,32.15
+B.TTF,M02,2027-01-01,33.4
+```
+
+JSON in a shape of your own:
+
+```
+{"ondate": "{{ondate}}", "prices": [{{#rows}}
+  {"code": "{{{code}}}", "tenor": "{{tenor}}", "price": {{text}}}{{#comma}},{{/comma}}{{/rows}}
+]}
+```
+
+Tips:
+
+- Use `{{text}}` for values: numbers in the data are read as decimals by the template engine, so `{{value}}` shows `100` as `100.0`.
+- `{{name}}` escapes characters such as `&` for HTML. Use three braces, `{{{name}}}`, for text that may hold them.
+- The template is applied by the platform, as an automation's transformer is. A template that cannot be applied fails the send, with the reason in the item's message.
+- Save the template as a script with the script type **mustache**.
 
 ---
 
@@ -108,3 +157,5 @@ Values are sent with up to 6 decimal places, the platform default.
 ## A dry run
 
 Untick **Send** in a group's settings for a dry run: everything is built and counted, nothing is sent and no secret is needed. Each item shows as skipped with the number of values it would have sent, for example `skipped: dry run, 3 values not sent`.
+
+To see what would have been sent, select **Preview** next to the item's message on the **Items** tab of the [daily report](/docs/extensions/integration/report#reading-the-report). It shows the item's message as JSON, its CSV rows for a CSV file, its Event Grid event, its Power BI rows, or the text of the group's [transformer](#transforming-with-a-mustache-template). With **Messages** set to `group` the run sends everything together, so the preview is the item's part of it: the group message with only that item. Long previews are cut short.

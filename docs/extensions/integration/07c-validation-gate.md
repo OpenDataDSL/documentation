@@ -96,5 +96,6 @@ An item that is not available every day and has no data for the date is not held
 
 ## Next
 
+- [Corrections](/docs/extensions/integration/corrections): send data again when a dataset corrects it.
 - [Alerts and the cutoff](/docs/extensions/integration/alerts-and-cutoff): be told when something is not sent.
 - [Integration reference](/docs/extensions/integration/reference): where the settings are kept, and troubleshooting.

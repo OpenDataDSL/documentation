@@ -32,9 +32,17 @@ Hover over a cell to see the number sent, expected and failed or missing.
 
 For Northgate on 3 November, NL POWER is red because the Dutch power curve had no curve for the date, and GB POWER is red because the GB power curve had no Molecule product.
 
-The **Items** tab lists every item with its group, kind, the two matrix properties, its identities, state, message, validation status (when the validation gate applies to it) and when it was sent. Type in **Filter the rows below** or choose a status to find items quickly.
+The **Items** tab lists every item with its group, kind, the two matrix properties, its identities, state, message, validation status (when the validation gate applies to it), when it was sent and, for a system that confirms what it loads, when it was confirmed. Type in **Filter the rows below** or choose a status to find items quickly.
 
-![The Items tab of the report with the missing Dutch power curve and the failed GB power curve](/img/extensions/integration/report-items.png)
+![The Items tab of the report with the validation status and confirmation time of each item, the missing Dutch power curve, the failed GB power curve and the Dutch solar capture price waiting for Molecule to confirm](/img/extensions/integration/report-items.png)
+
+An item sent again as a [correction](/docs/extensions/integration/corrections) shows **corrected** next to its state, with what changed under its message; the status **Sent again as a correction** lists them.
+
+![A day's report with the TTF curve sent again as a correction](/img/extensions/integration/report-corrected.png)
+
+After a dry run (with the system's send setting unticked), each item has **Preview** next to its message: it opens what would have been sent for the item, such as the Molecule payload or the message, CSV rows or template text of a generic plug-in, with **Copy** to take it elsewhere. A run that sends replaces the preview.
+
+![The preview of what a Molecule dry run would have sent for the TTF curve](/img/extensions/integration/dry-run-preview.png)
 
 The **Groups** tab lists each group in the report with the number of items, the number sent and the time of its last run.
 

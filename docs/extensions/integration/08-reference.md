@@ -26,8 +26,11 @@ tags: [extension, integration, reference, plug-in, secrets, troubleshooting]
 | A group's schedule | `process` | `INTEGRATION_<GROUP>`, such as `INTEGRATION_NGE_MOLECULE_CURVES` | Service `Integration`. |
 | A run | `process-exec` | | Name = the process id. |
 | A report's cutoff | `reportconfig` and `process` | Settings in the report configuration's `properties.integration.cutoff`; the check is the process `INTEGRATION_CUTOFF_<KEY>` | Script `odsl.integration.cutoff`, input `{report, plugin}`, scheduled at the cutoff time. See [Alerts and the cutoff](/docs/extensions/integration/alerts-and-cutoff). |
-| Alerts | `alert` (private) | Keys `integration/INTEGRATION_<KEY>/<group>/<ondate>` (a group) and `integration/INTEGRATION_<KEY>/<ondate>/cutoff` | Category `integration`; issue `export`, `cutoff` or `validation`. |
+| Alerts | `alert` (private) | Keys `integration/INTEGRATION_<KEY>/<group>/<ondate>` (a group), `integration/INTEGRATION_<KEY>/<ondate>/cutoff` and `integration/<group>/corrections` | Category `integration`; issue `export`, `cutoff` or `validation`. |
 | Validation of the data sent | `validation` and `validationconfig` (private) | A curve's record `<id>:<ondate>`; a timeseries' records of its observations on the ondate | Read by the runs of groups with the validation gate. Kept by the [Validation extension](/docs/extensions/validation/overview). |
+| A group's corrections | `process` | `INTEGRATION_CORRECT_<GROUP>`, such as `INTEGRATION_CORRECT_NGE_MOLECULE_CAPTURE` | Service `Integration`, the system's script, input `{group, corrections: "true"}`, scheduled (every 15 minutes by default). See [Corrections](/docs/extensions/integration/corrections). |
+| A group's corrections log | `report` (private) | `INTEGRATION_CORRECTIONS_<GROUP>:<date>` | One a day: the corrections found and what happened to each (`entries`), the datasets watched, each item's dataset (`index`) and the corrections already seen. Fixed report, category `Integration`, template `odsl.integration.corrections`. |
+| Corrections of datasets | `correction` | One record per changed value | Recorded by the platform when a dataset delivery changes a value: `dsid`, `ondate`, `property`, `tenor`, `previous`, `new`. Read by the corrections process. |
 | A system's confirmations | `process` | `INTEGRATION_CONFIRM_<CODE>`, such as `INTEGRATION_CONFIRM_MOLECULE` | Service `Integration`, script `odsl.integration.confirm`, input `{system}`, no schedule. Confirmations are on while it exists and is enabled. See [Round-trip confirmations](/docs/extensions/integration/confirmations). |
 | A system's report configuration | `reportconfig` (private) | `INTEGRATION_<KEY>`, such as `INTEGRATION_MOLECULE` | Fixed report, category `Integration`, `mergeUpdates` on with `mergeKeys` `["key"]`. Made by the first run when it does not exist. |
 | A day's report | `report` (private) | `INTEGRATION_<KEY>:<ondate>` | One report a day: each group's run is merged into it, with no new version. |
@@ -49,6 +52,7 @@ tags: [extension, integration, reference, plug-in, secrets, troubleshooting]
   "secrets": {"user": "molecule_user_pl"},
   "alerts": {"raise": true, "severity": "high", "agent": "client"},
   "optional": ["NGE.POWER.DE:BASE"],
+  "transformation": {"name": "exportBlendedCurves", "parameters": {"count": 12, "skip": 0}},
   "validation": "required",
   "noValidateItems": ["NGE.POWER.GB:BASE"],
   "validateItems": []
@@ -66,7 +70,9 @@ tags: [extension, integration, reference, plug-in, secrets, troubleshooting]
 | `secrets` | Optional: the secret records this group reads instead of the system's, by secret name. Left out when the group uses the system's secrets. |
 | `alerts` | Optional: `raise` (true to raise an alert when items fail or have no data), `severity` and `agent`. |
 | `optional` | Optional: the ids of the items that are not available every day. |
+| `transformation` | Optional: which of the system's transformations the group uses, with its parameter values: `{name, parameters}`. Left out, the first the system lists. The hooks read `ctx.transformation` and `intParam(ctx, "name", default)`. |
 | `validation` | Optional: `required` sends only validated data (the [validation gate](/docs/extensions/integration/validation-gate)). Left out, the group sends all data. |
+| `corrections` | Optional: `mode` (`send` or `approve`; left out, corrections are off), `lookback` (days, default 62) and `resend` (`all`, or `first` for only the first ondate a value is in). See [Corrections](/docs/extensions/integration/corrections). |
 | `validateItems`, `noValidateItems` | Optional: the ids of the items that differ from the group: always validated, or never. An item in neither list follows `validation`. |
 
 ---
@@ -85,7 +91,9 @@ tags: [extension, integration, reference, plug-in, secrets, troubleshooting]
 }
 ```
 
-The script is the system's runner. The settings are read from the group at the start of every run, so changes on the **Settings** tab apply from the next run without saving the schedule again. **Run now** adds `ondate` to the input.
+The script is the system's runner. The settings are read from the group at the start of every run, so changes on the **Settings** tab apply from the next run without saving the schedule again. **Run now** adds `ondate` to the input. A [history export](/docs/extensions/integration/how-it-works#history-exports) adds `from` and `to` (yyyy-MM-dd, both sent) instead, and optionally `calendar` (default the group's calendar, else `BUSINESS`) and `alerts` (`true` to raise the group's alerts for the dates). It sends at most 400 dates; giving both `ondate` and `from` is refused. To start one with the REST API: `POST process-exec/v1` with `{"name": "INTEGRATION_<GROUP>", "body": {"group": "<GROUP>", "from": "2026-10-01", "to": "2026-10-31"}}`.
+
+A group's corrections process `INTEGRATION_CORRECT_<GROUP>` runs the same script with the input `{"group": "<GROUP>", "corrections": "true"}`. Its other input decides on corrections on the group's **Corrections** tab: `approve` (keys of corrections waiting for approval), `ignore` (keys of open corrections) and `resend` (keys of failed ones), each a list or comma separated text of keys `<data id>|<ondate>`, such as `NGE.SOLAR.DE:CAPTURE|2026-10-01`, and `reindex` (`true` to work out the items' datasets again now). The run sends each corrected ondate as a run for that date would, with only the corrected items and the input `correction` `true`: the hooks see `ctx.correction` true and `item.correction` (what changed).
 
 ---
 
@@ -115,7 +123,7 @@ A day's report data has:
 | `cutoff` | The result of the cutoff check, when it has run: `ondate`, `time`, `checked`, `ok`, `count` and `problems` (a list of text). |
 | `matrix` | `rowProperty`, `columnProperty`, `columns` (each `label`), `rows` (each `label` and `cells` with `exported`, `expected`, `failed`, `text`, `cls`, `empty`), `hasMatrix`. |
 | `groups` | Each group's `key`, `group`, `groupName`, `items`, `complete`, `time`, `allComplete`. |
-| `items` | Each item's `key`, `id`, `name`, `group`, `groupName`, `kind`, `row`, `column`, `identity`, `state` (`complete`, `sent`, `failed`, `missing` or `skipped`), `status`, `message`, `ondate`, `time`, `received` (when the system confirmed or failed it), `optional` (`true` for an item not available every day without data for the ondate: its state is then `skipped` and its status `not available`), `validation` (the validation status the gate found: `valid`, `warning`, `overridden`, `failed`, `severe`, `error` or `not validated`; empty when the gate is off for the item), `held` (`true` when the gate held the item back: its state is then `failed` and its status `held back by validation`). |
+| `items` | Each item's `key`, `id`, `name`, `group`, `groupName`, `kind`, `row`, `column`, `identity`, `state` (`complete`, `sent`, `failed`, `missing` or `skipped`), `status`, `message`, `ondate`, `time`, `received` (when the system confirmed or failed it), `optional` (`true` for an item not available every day without data for the ondate: its state is then `skipped` and its status `not available`), `validation` (the validation status the gate found: `valid`, `warning`, `overridden`, `failed`, `severe`, `error` or `not validated`; empty when the gate is off for the item), `held` (`true` when the gate held the item back: its state is then `failed` and its status `held back by validation`), `preview` (a dry run: what would have been sent, at most 6,000 characters; empty otherwise), `corrected` and `correction` (when the item was last sent again as a correction, and what changed; empty otherwise). |
 
 ### Scheduled emails
 
@@ -165,9 +173,15 @@ e.resources.script.integration = "odsl-extensions\extensions\integration\molecul
 | `dependencies` | The extensions it needs. A code without a publisher (`integration`) means the same publisher's extension (`odsl.integration`). |
 | `configuration.integration.reportKey` | Optional: the report key of groups that name none, such as `QUEUE`. Without it the key is the extension code. A copy uses its own code. |
 | `configuration.integration.copiedFrom`, `follows` | On a copy: the system it was copied from, and the plug-in whose ODSL its script imports (when it uses it). |
+| `configuration.integration.transformations` | Optional: the ways a group can turn its data into what the system takes, `[{name, label, description, parameters}]`: `name` is the function the runner calls for it, `parameters` fields like the group settings. Each group chooses one on its **Settings** tab (the first is the default). |
 | `configuration.integration` | What the system needs. Each field of `identities`, `groupSettings` and `dataProperties` has `name`, `label`, `type` (`text`, `number`, `boolean` or `select`), `default`, `options` (for `select`), `description` and, for identities, `required`. `default` is an ODSL keyword, so set it with `f.set("default", value)`. Each of `secrets` has `name` (what the runner reads with `intSecret`), `label`, `secret` (the secret record that keeps the value, such as `molecule_user`), `required` and `description`. |
 
 The runner is written like a custom system's ODSL (see [How the ODSL works](/docs/extensions/integration/custom-systems#how-the-odsl-works)), with the plug-in's own id in `integrationRun(input, "odsl.molecule")`. The engine reads the secrets from the installed extension record, so a plug-in installed before it listed its secrets reads none: the Molecule runner then falls back to its fixed records.
+
+
+In a dry run, a runner's `integrationExportItem` can return `intDryRun(status, preview)` instead of the status text: `preview` is the text it would have sent, kept on the item as `preview` and shown with **Preview** on the daily report.
+
+A runner can apply a Mustache template to its data with the engine's `intTryTransform(template, data)`, as the generic plug-ins do for their **Transformer** setting: `template` is the name of a mustache script (`#` for a public one) or the template text, `data` an object or a list. It returns `value` (the text) and `error` (null when it worked). The template is applied on the platform with `POST script/v1?_function=mustache` and the body `{template, data}`, which answers `{text}`; in ODSL that is `run script mustache with req`.
 
 ---
 
@@ -212,7 +226,14 @@ Their ids are `odsl.integration.check-exports`, `check-held`, `check-cutoff`, `s
 
 | Problem | Cause and fix |
 |-|-|
+| A correction is not sent | Check the group's **Corrections** tab. The item must come from a watched dataset (set the data property `correction_dsid` when it is not built from the dataset's events), the corrected ondate must be within the look back, and corrections recorded before corrections were switched on are not sent (use a history export). |
+| A corrections run says `none of the ... items comes from a dataset` | No item has a `dsid` property or a `correction_dsid` data property. Set `correction_dsid` on the items to the dataset they come from. |
+| A monthly correction is sent for weekdays only | The group's calendar is `BUSINESS`. Set its calendar to `DAILY` on the **Settings** tab when the system needs every day. |
+| A CSV file has quotes around all its text, and `\n` where its lines should end | The platform's file services wrote the text as a JSON string. Fixed in `AzureBlobService` and `AzureFileService` (odsl-service): text is now written as it is. The platform needs the build with that fix. |
+| A run fails with `The transformation <name> is not one of <system>'s (...)` | The group chose a transformation the system no longer lists. Choose one on the group's **Settings** tab and save. |
+| A send fails with `transformer <name>: ...` | The group's Mustache template could not be applied: the script does not exist, is not a mustache script, or has an error. The reason follows the name. |
 | An item fails with `No <code> identity set` or `No molecule identity set` | The item has no code for the system. Set it on the group's **Items** tab. |
+| A history export fails with `There are no BUSINESS dates from ... to ...` or `... a history export sends at most 400, so split it` | The range has no dates in the calendar (for example a weekend), or too many. Check the dates and the **Calendar**, or run several shorter exports. |
 | An item is missing with `No curve for 2026-11-03` | The curve was not built for the date. Choose **The curve for the ondate, or the latest one before it** under **Curves**, or run the group again for that date with **Run now** once it is built. |
 | An item fails with `Cannot read ...: not found` | The group holds an id that no longer exists. Remove it from the group. |
 | The run stops with `Set the url in the group settings` | The system needs a group setting that is empty. Fill it in on the group's **Settings** tab. |

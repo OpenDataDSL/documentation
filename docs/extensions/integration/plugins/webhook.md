@@ -29,6 +29,8 @@ Once installed, the plug-in's codes, settings and secrets are listed on the **Pl
 | Group setting | **Token header** (`tokenHeader`) | `Authorization` unless you change it. The header the token secret is sent in, when it is set. |
 | Group setting | **Messages** (`layout`) | `item` or `group`, `group` unless you change it. `item`: one message or file per curve or timeseries; `group`: one for the whole run. |
 | Group setting | **Most items in one message** (`maxItems`) | `100` unless you change it. With one message per group, a bigger group is sent in several messages, each with `part` and `parts`. |
+| Group setting | **Transformer** (`transformer`) | Optional: the name of a mustache script (`#` for a public one) to transform the data with. Its text is sent instead of the JSON or CSV. See [Transforming with a Mustache template](/docs/extensions/integration/plugins/generic-content#transforming-with-a-mustache-template). |
+| Group setting | **Content type** (`contentType`) | With a transformer: the content type of its text, such as `text/csv` or `application/xml`, `text/plain` unless you change it. It is sent as the content-type header. |
 | Group setting | **Send** (`send`) | Ticked unless you change it. Untick for a dry run: everything is built and counted, nothing is sent. |
 | Secret, kept in `integration_webhook_token` | **Token** (`token`) | Sent in the token header, for example Bearer and the token; leave it unset when the endpoint needs none. |
 

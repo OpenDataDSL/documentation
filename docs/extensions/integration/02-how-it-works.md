@@ -11,15 +11,18 @@ tags: [extension, integration, plug-in, identities, data properties, schedule]
 An integration has four parts: the **system** the data goes to, the **groups** of curves and timeseries that go there, the **codes and settings** on each item, and the **run** that sends them. This page explains each one and what happens to every item in a run.
 
 ```mermaid
-flowchart LR
-  D[Curves and timeseries] --> G[Group<br/>settings for the system]
-  G --> R[Run<br/>scheduled process]
+flowchart TD
+  subgraph setup [" "]
+    direction LR
+    D[Curves and<br/>timeseries] --> G[Group<br/>settings for the system] --> R[Run<br/>scheduled process]
+  end
+  style setup fill:none,stroke:#c8ced6,stroke-dasharray:4 4
   R --> E[Integration engine<br/>reads each item for the date]
   E --> V{Validation gate<br/>optional}
-  V -- validated --> S[System ODSL<br/>plug-in or custom]
-  V -. not validated: held back .-> P
-  S --> X[Downstream system]
   E --> P[Daily report<br/>sent against expected]
+  V -- validated --> S[System ODSL<br/>plug-in or custom]
+  V -. not validated:<br/>held back .-> P
+  S --> X[Downstream system]
   X -. optional: confirms or fails<br/>what it received .-> P
 ```
 
@@ -120,6 +123,25 @@ The run itself ends **failed** when any item failed or had no data, so it shows 
 :::note
 A run sends what it has. One late curve does not hold back the others: the four curves that are there are sent, and the late one shows as missing. Run the group again for the same date when the curve arrives.
 :::
+
+---
+
+## History exports
+
+A history export sends a group for every date of a range, to load history into a system or to send a period again after a fix. On the group's **Schedule and runs** tab, under **History export**:
+
+1. Give the **First ondate** and the **Last ondate**. Both are sent.
+2. Check the **Calendar**: the dates sent are its business days. It starts as the group's own calendar; `DAILY` sends every day.
+3. Tick **Raise the group's alerts for these dates** only if you want them. A history export raises no alerts unless you do, since it sends earlier dates.
+4. Select **Run the history export**, check the dates, and select **Run it**.
+
+![The History export part of the Schedule and runs tab, sending October 2026 day by day](/img/extensions/integration/history-export.png)
+
+The group's process runs once and sends the dates one after the other, oldest first. Each date is a run like the one above, for that date: the curves for the date are read, sent, and merged into that day's report, replacing what it said for the group. A date with problems does not stop the others. The run's message counts the dates sent completely and names the ones with problems, such as `History export of NGE_MOLECULE_CURVES from 2026-10-01 to 2026-10-31: 21 of 22 dates sent completely; problems on 2026-10-12 (...)`. Its log shows each date's run.
+
+A history export sends at most 400 dates. For longer periods, run several. It takes as long as the runs of all its dates together, so a long one on a busy system is best started outside the system's working hours.
+
+When a dataset corrects data that was already sent, a group with [corrections](/docs/extensions/integration/corrections) on sends the corrected items again for the dates the corrections change, by itself, without a history export.
 
 ---
 

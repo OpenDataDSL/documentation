@@ -35,13 +35,14 @@ Select **Create the system**. The screen opens on its **System setup** tab.
 
 ![The System setup tab of Northgate Risk with its identity, the two group settings and the API key secret from the REST template, and no data properties yet](/img/extensions/integration/custom-setup.png)
 
-At the top are the name, the description and whether the system takes curves, timeseries or both. Below are four tables:
+At the top are the name, the description and whether the system takes curves, timeseries or both. Below are five tables:
 
 | Table | What it holds | In the ODSL |
 |-|-|-|
 | **Identities** | The codes the system knows each curve or timeseries by. A new system has one, named after its code. **Required** stops items without it from being sent. | `item.identity.northgate_risk` |
 | **Group settings** | What each group sending to the system is asked for, such as the URL to send to. They show on each group's **Settings** tab. | `ctx.settings.url` |
 | **Data properties** | Settings kept on each curve or timeseries. They show as columns on each group's **Items** tab. | `item.dataProperties.book` |
+| **Transformations** | Optional: the different ways a group can turn its data into what the system takes, each a function of the ODSL with its own parameters. Each group chooses one on its **Settings** tab. See [Transformations](#transformations). | `ctx.transformation`, `intParam(ctx, "count", 12)` |
 | **Secrets** | What the system needs to connect, such as a user or an API key. Only their names are kept here; the values are set in the next step. | `intSecret(ctx, "apikey")` |
 
 Each row has a **Name** (a letter, then letters, digits or `_`), a **Label** for the screens, a **Type** (**Text**, **Number**, **True/false** or **Choice**), a **Default**, the **Choices** for a choice (separated by commas) and a **Description** shown as a hint. A secret has a **Name**, a **Label**, **Kept in** (the secret record that holds its value: left empty, the system's code, `_` and the name, such as `northgate_risk_apikey`), **Required** and a **Description**. A run stops before sending anything when a required secret is not set. **Add** adds a row and the cross removes one. Select **Save the system**.
@@ -165,6 +166,24 @@ function restPost(pUrl, pHeaders, pBody)
 	end
 end
 ```
+
+### Transformations
+
+When groups need the data turned into the system's format in different ways, list each way in the **Transformations** table: the **Function** that does it, a **Label** for the screens, a **Description**, and its **Parameters** as `name:type=default`, separated by commas, such as `count:number=12, skip:number=0` (types `text`, `number` and `boolean`; text when no type is given). Each group sending to the system then chooses one on its **Settings** tab, with its parameter values; the first is the default.
+
+The engine gives the hooks the choice as `ctx.transformation` (the function's name) and its parameters, which `intParam(ctx, "name", default)` reads. ODSL cannot call a function by its name, so the hook calls the matching one:
+
+```js
+function integrationExportItem(ctx, item)
+	if ctx.transformation == "exportMonths"
+		integrationExportItem = exportMonths(ctx, item, toInt(intParam(ctx, "count", 12)), toInt(intParam(ctx, "skip", 0)))
+	else
+		integrationExportItem = exportAll(ctx, item)
+	end
+end
+```
+
+A group that names a transformation the system does not list cannot run: the run fails with the transformations there are. The [Molecule plug-in](/docs/extensions/integration/plugins/molecule#blended-curves) works this way, with **Standard marks** and **Blended curves**.
 
 ### Good to know when writing the ODSL
 
