@@ -171,6 +171,7 @@ e.resources.script.integration = "odsl-extensions\extensions\integration\molecul
 |-|-|
 | `plugin` | `true` for a plug-in. |
 | `dependencies` | The extensions it needs. A code without a publisher (`integration`) means the same publisher's extension (`odsl.integration`). |
+| `configuration.integration.kinds` | The kinds of data it takes: `curve`, `timeseries` and `options` ([options and traded options](/docs/extensions/integration/plugins/generic-content#options-and-traded-options)). Left out, `curve` and `timeseries`. An item of another kind fails with `... does not take options` without reaching the runner. |
 | `configuration.integration.reportKey` | Optional: the report key of groups that name none, such as `QUEUE`. Without it the key is the extension code. A copy uses its own code. |
 | `configuration.integration.copiedFrom`, `follows` | On a copy: the system it was copied from, and the plug-in whose ODSL its script imports (when it uses it). |
 | `configuration.integration.transformations` | Optional: the ways a group can turn its data into what the system takes, `[{name, label, description, parameters}]`: `name` is the function the runner calls for it, `parameters` fields like the group settings. Each group chooses one on its **Settings** tab (the first is the default). |
@@ -249,6 +250,7 @@ Their ids are `odsl.integration.check-exports`, `check-held`, `check-cutoff`, `s
 | A copy that uses a plug-in's ODSL fails with `Unknown function` after the plug-in was updated | The plug-in's ODSL now imports a library the copy's script does not (imports inside an imported script are not followed). Select **Refresh the link** on the copy's **System setup** tab. |
 | A group is not offered under **Attach a group**, or a run stops with `Group ... is a group of object: only groups of data (curves and timeseries) can be sent` | Only groups of the data service can send to a system. Make a group of data with the curves and timeseries. |
 | An item that is not published every day shows as **Missing data** and raises alerts | Tick **Not every day** for it on the group's **Items** tab. |
+| An item fails with `... does not take options: it takes curves and timeseries` | The system's plug-in does not send options. The generic plug-ins send them from their version of 2026-11-05: install the plug-in again to update it. |
 | An item is held back with `Not sent because it has no validation set up` | The group or the item has the validation gate on, but the curve or timeseries has no validation configuration. Set one up in the Validation extension, or choose **Not validated** for the item on the group's **Items** tab. |
 | An item is held back with `Not sent because it has not been validated for 2026-11-03` | Its checks have not run for the date yet, for example because the curve was saved after the export. Run its validation, then run the group again with **Run now**. A failure can be passed with an override in the Validation extension. |
 | A timeseries is held back although its latest value passed | The gate checks the observations on the ondate the run sends. Check the timeseries' validation records for that date. |

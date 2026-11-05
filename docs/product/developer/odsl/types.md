@@ -645,6 +645,139 @@ EventCurve(eventlist, calendar, property, tenor)
 
 ---
 
+### EventOptions
+**Description:** Options data (an option chain for each maturity) built from events, see [EventOptions](/docs/odsl/variable/eventoptions)
+
+**Construction:**
+```odsl
+EventOptions(eventlist)
+```
+
+**Properties:**
+* `event` - The name of the eventlist that these options use (in the form objectId:eventListId)
+* `source` - Optional source of the events: private, common or public (default private, public for # events)
+* `filter` - Optional filter (JSON) used to filter the events
+* `tenor` - The name of the property in the event with the tenor/maturity code of the option (default absolute)
+* `strike` - The name of the property in the event with the strike price (default STRIKE_PRICE)
+* `callPut` - The name of the property in the event that says if the option is a call or a put (default CONTRACT_TYPE)
+* `callValue` - The value of the callPut property for a call option (default C)
+* `putValue` - The value of the callPut property for a put option (default P)
+* `value` - The main value column, used when no column is given (default SETTLEMENT_PRICE)
+* `columns` - The event properties shown in the strike table (default SETTLEMENT_PRICE, OPTION_VOLATILITY, DELTA_FACTOR, OPEN_INTEREST, TOTAL_VOLUME)
+* `calendar` - The optional expiry calendar of the options
+* `holidayCalendar` - The optional holiday calendar, the calendar of the strike timeseries (default daily)
+* `timezone` - The timezone of the ondates (default UTC)
+* `currency` - An optional currency code
+* `units` - An optional units code
+* `name` - The name of the options
+* `description` - A description of the options
+* `positions` - Optional eventlist with the positions held (one event per option, the event time is the position date); when set only the held options are returned
+* `positionSource` - The source of the position events: private (default), common or public
+* `positionFilter` - Optional filter (JSON) used to filter the position events, e.g. on a book or product
+* `positionTenor` - The property in the position events with the tenor, absolute or relative (default tenor)
+* `positionStrike` - The property in the position events with the strike price (default strike)
+* `positionCallPut` - The property in the position events that says if it is a call or a put (default callput)
+* `positionVolume` - The property in the position events with the volume held, negative for a short position (default volume)
+* `positionPrice` - The property in the position events with the traded price (default price)
+* `identity` - The configured identity for these options
+* `version` - The version information
+* `links` - Gets linked items
+
+**Methods:**
+* `build(ondate)` - Builds these options for an ondate - **returns:** Options
+  * `ondate` (Date) - The ondate to build the options for
+* `ondates()` - Gets the ondates these options can be built for - **returns:** OptionsDates
+* `add(name, reference)` - Adds a linked item - **returns:** Void
+  * `name` (String) - The name of the link (must be unique for this item)
+  * `reference` (Reference) - The item to link to
+
+**Service where this type is used:** `data`
+
+
+
+---
+
+### Options
+**Description:** The options for one ondate: the tenors (maturities), each with an option chain of strikes with the call and put values, see [Options](/docs/odsl/variable/options)
+
+**Construction:**
+```odsl
+o = ${data:"NGE.EUA:OPTIONS:2026-09-16"}
+```
+
+**Properties:**
+* `ondate` - The ondate of these options (YYYY-MM-DD)
+* `name` - The name of the options
+* `description` - A description of the options
+* `currency` - The currency code
+* `units` - The units code
+* `timezone` - The timezone of the ondate
+* `value` - The main value column
+* `columns` - The columns in the strike tables
+* `tenors` - The tenors (maturities) in delivery order
+* `identity` - The configured identity
+* `version` - The version information
+* `links` - Gets linked items
+
+**Methods:**
+* `tenor(tenor)` - Gets a tenor (maturity) by its tenor, absolute or relative code, null when it is not there - **returns:** OptionTenor
+  * `tenor` (String) - The tenor code, e.g. 2026M09 or M01
+* `value(tenor, strike, callPut, column)` - Gets a value of one option - **returns:** Scalar
+  * `tenor` (String) - The tenor code, e.g. 2026M09 or M01
+  * `strike` (Number) - The strike price
+  * `callPut` (String) - C for the call, P for the put
+  * `column` (String) - The column, e.g. OPTION_VOLATILITY
+* `count()` - The number of options (call and put prices at a strike count separately) - **returns:** Number
+
+**Service where this type is used:** `data`
+
+
+
+---
+
+### OptionTenor
+**Description:** One maturity of the options with its option chain (the strikes in ascending order)
+
+**Properties:**
+* `tenor` - The tenor of this maturity (the value of the tenor property, e.g. 2026M09)
+* `absolute` - The absolute tenor code, e.g. 2026M09
+* `relative` - The relative tenor code on the ondate, e.g. M01
+* `start` - The start of the delivery period (date)
+* `end` - The end of the delivery period (date, inclusive)
+* `expiry` - The expiry date of the options
+* `strikes` - The strikes (option chain rows) in ascending order
+
+**Methods:**
+* `strike(strike)` - Gets the option chain row for a strike, null when the strike is not there - **returns:** OptionStrike
+  * `strike` (Number) - The strike price
+* `nearest(price)` - Gets the option chain row with the strike nearest to a price (e.g. the at-the-money strike for the underlying price) - **returns:** OptionStrike
+  * `price` (Number) - The price, e.g. the underlying futures price
+* `values(callPut, column)` - Gets one column of the calls (C) or puts (P) as a list in strike order (missing values are null) - **returns:** List
+  * `callPut` (String) - C for the calls, P for the puts
+  * `column` (String) - The column, e.g. OPTION_VOLATILITY
+* `strikePrices()` - Gets the strike prices as a list in ascending order - **returns:** List
+
+
+
+---
+
+### OptionStrike
+**Description:** One row of an option chain: a strike with the call and put values side by side
+
+**Properties:**
+* `strike` - The strike price
+* `call` - The call option values by column (empty when there is no call at this strike)
+* `put` - The put option values by column (empty when there is no put at this strike)
+
+**Methods:**
+* `get(callPut, column)` - Gets a value of the call (C) or put (P) at this strike - **returns:** Scalar
+  * `callPut` (String) - C for the call, P for the put
+  * `column` (String) - The column, e.g. SETTLEMENT_PRICE
+
+
+
+---
+
 ### Contracts
 **Description:** Contracts are used on a curve as a set of contract objects that represent the future periods and values
 

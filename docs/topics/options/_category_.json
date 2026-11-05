@@ -1,0 +1,8 @@
+{
+  "label": "Options",
+  "position": 1,
+  "link": {
+    "type": "generated-index",
+    "description": "Options data built from exchange events: option chains per maturity, single option timeseries and the options a client holds"
+  }
+}

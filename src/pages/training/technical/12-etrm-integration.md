@@ -297,5 +297,5 @@ You have now completed the core modules of the Technical track:
 | 10 to 12 | Automated scripts and checks, loaded external data and integrated with an ETRM |
 
 :::note Next Step
-Return to the [Technical Training home](/training/technical) to continue with the QuickStart Developer track or the General Tutorials.
+Continue with [Module 13](/training/technical/options) to build option chains from settlement events and read the options your desk holds, or return to the [Technical Training home](/training/technical) for the QuickStart Developer track and the General Tutorials.
 :::

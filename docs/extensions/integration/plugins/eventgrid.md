@@ -24,10 +24,10 @@ Once installed, the plug-in's codes, settings and secrets are listed on the **Pl
 
 | Kind | Name | What it is |
 |-|-|-|
-| Identity | `eventgrid_code` | The code the receiving system knows the curve or timeseries by. Left empty, the data id is sent, such as `NGE.GAS.TTF:MID`. |
+| Identity | `eventgrid_code` | The code the receiving system knows the data by. Left empty, the data id is sent, such as `NGE.GAS.TTF:MID`. |
 | Group setting | **Topic endpoint** (`url`) | `https://<topic>.<region>-1.eventgrid.azure.net/api/events`. |
 | Group setting | **Event type** (`eventType`) | `OpenDataDSL.Integration.Data` unless you change it. The eventType of each event. |
-| Group setting | **Messages** (`layout`) | `item` or `group`, `item` unless you change it. `item`: one message or file per curve or timeseries; `group`: one for the whole run. |
+| Group setting | **Messages** (`layout`) | `item` or `group`, `item` unless you change it. `item`: one message or file per data item; `group`: one for the whole run. |
 | Group setting | **Most items in one message** (`maxItems`) | `100` unless you change it. With one message per group, a bigger group is sent in several messages, each with `part` and `parts`. |
 | Group setting | **Send** (`send`) | Ticked unless you change it. Untick for a dry run: everything is built and counted, nothing is sent. |
 | Secret, kept in `integration_eventgrid_key` | **Topic key** (`key`) | An access key of the topic, sent as aeg-sas-key. |

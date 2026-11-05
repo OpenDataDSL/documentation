@@ -45,7 +45,7 @@ The Integrations screen opens on its home page, which lists your systems with th
 
 ## Groups
 
-The curves and timeseries to send are kept in an ordinary group of data (see the **Groups** screen). Groups of other services, such as master data objects, cannot be attached. When you attach a group to a system, the group gets the system's settings, such as which Molecule environment to use. A group sends to one system; to send the same curve to two systems, put it in two groups.
+The curves, timeseries and options to send are kept in an ordinary group of data (see the **Groups** screen). Groups of other services, such as master data objects, cannot be attached. When you attach a group to a system, the group gets the system's settings, such as which Molecule environment to use. A group sends to one system; to send the same curve to two systems, put it in two groups.
 
 Every group also has these settings, whatever the system:
 
@@ -115,7 +115,7 @@ Every item ends the run in one of these states:
 | **complete** | Sent to the system. |
 | **skipped** | Left out on purpose by the system, for example in a dry run. |
 | **missing** | There is no data to send: no curve for the date. |
-| **failed** | Not sent: the item could not be read, is not a curve or timeseries, has no required code, or the system refused it. The message says why. |
+| **failed** | Not sent: the item could not be read, is not a curve, timeseries or options, is a kind of data the system does not take, has no required code, or the system refused it. The message says why. |
 | **held back** | Not sent by the [validation gate](/docs/extensions/integration/validation-gate): its data has not passed validation. The message says why. In the report's counts and alerts it is a failure. |
 
 The run itself ends **failed** when any item failed or had no data, so it shows in the process runs and can raise an alert. Its message lists each problem, for example `Molecule: 3 of 5 items sent for 2026-11-03; NGE.POWER.NL:BASE: No curve for 2026-11-03; NGE.POWER.GB:BASE: No molecule identity set`.

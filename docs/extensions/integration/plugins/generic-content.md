@@ -15,7 +15,7 @@ The generic plug-ins (Message queue, Azure Blob Storage, Azure Data Lake, Azure 
 
 ## An item message
 
-Each curve or timeseries becomes one item message:
+Each curve, timeseries or options becomes one item message:
 
 ```json
 {
@@ -38,13 +38,50 @@ Each curve or timeseries becomes one item message:
 |-|-|
 | `id` | The data id. |
 | `code` | The item's code for the plug-in (its identity, such as `queue_code`), else the data id. |
-| `name`, `kind` | The item's name, and `curve` or `timeseries`. |
+| `name`, `kind` | The item's name, and `curve`, `timeseries` or `options`. |
 | `ondate` | The date the run sends. |
 | `group`, `system` | The group and the system name. A copy of a plug-in sends its own name. |
 | `correction`, `note` | `correction` is `true` when the item is sent again because its data was corrected (see [Corrections](/docs/extensions/integration/corrections)), with `note` saying what changed, such as `value 2026-10-01: 39.1 to 39.7`; otherwise `false` and no `note`. |
-| `values` | A curve: the contracts of the curve for the ondate, each with `tenor`, `start` and `value`. A timeseries: its values, each with `time` (such as `2026-11-01T00:00:00`) and `value`. |
+| `values` | A curve: the contracts of the curve for the ondate, each with `tenor`, `start` and `value`. A timeseries: its values, each with `time` (such as `2026-11-01T00:00:00`) and `value`. Options: one entry per option, see [Options and traded options](#options-and-traded-options). |
 
 Items with no values are skipped and not sent.
+
+---
+
+## Options and traded options
+
+[Options](/docs/topics/options/options-data) are read like curves: the option chains for the ondate (or, with the group's **Curves** setting on the latest on or before it, the latest options up to then). A [positions view](/docs/topics/options/traded-options) is sent the same way, with only the options your company holds and your position volume and traded price. The message has one value per option, that is per tenor, strike and call or put, with every column the options have:
+
+```json
+{
+  "id": "NGE.EUA:OPTIONS",
+  "code": "Q.EUA",
+  "name": "EUA futures options",
+  "kind": "options",
+  "ondate": "2026-11-03",
+  "group": "NGE_OPTIONS",
+  "system": "Message queue",
+  "correction": false,
+  "currency": "EUR",
+  "units": "t",
+  "value": "SETTLEMENT_PRICE",
+  "columns": ["SETTLEMENT_PRICE", "OPTION_VOLATILITY"],
+  "traded": false,
+  "values": [
+    {"tenor": "2026M12", "start": "2026-12-01", "end": "2026-12-31", "expiry": "2026-12-14", "strike": 85, "callput": "C", "SETTLEMENT_PRICE": 0.91, "OPTION_VOLATILITY": 22.0791},
+    {"tenor": "2026M12", "start": "2026-12-01", "end": "2026-12-31", "expiry": "2026-12-14", "strike": 85, "callput": "P", "SETTLEMENT_PRICE": 1.05}
+  ]
+}
+```
+
+| Field | What it is |
+|-|-|
+| `currency`, `units` | The currency and units of the prices. |
+| `value`, `columns` | The main value column and the columns of the options, in order. |
+| `traded`, `positionDate` | `traded` is `true` for a positions view, with `positionDate`, the date of the position set used. |
+| `values` | One entry per option: `tenor`, the delivery period (`start` and `end`, the last day), `expiry`, `strike`, `callput` (`C` or `P`) and each column it has a value for, such as `SETTLEMENT_PRICE`, `OPTION_VOLATILITY`, `DELTA_FACTOR`, and for traded options `POSITION_VOLUME` and `TRADED_PRICE`. A side the exchange did not publish is left out. |
+
+In a CSV file and in Power BI, each value of each option is one row: see [CSV files](#csv-files).
 
 ---
 
@@ -85,6 +122,18 @@ NGE.SOLAR.DE:CAPTURE,NGE.SOLAR.DE:CAPTURE,German solar capture price,timeseries,
 
 A curve's rows have `tenor` and `start`, a timeseries' rows `time`. A field with a comma, a quote or a line break is quoted, with quotes doubled. Power BI rows have the same columns.
 
+A file with options has four more columns, and one row for each value of each option, in the order of the options' columns:
+
+```
+id,code,name,kind,ondate,tenor,start,time,value,expiry,strike,callput,column
+NGE.GAS.TTF:MID,B.TTF,"TTF gas, forward curve",curve,2026-11-03,M01,2026-12-01,,32.15,,,,
+NGE.EUA:OPTIONS,B.EUA,EUA futures options,options,2026-11-03,2026M12,2026-12-01,,0.91,2026-12-14,85,C,SETTLEMENT_PRICE
+NGE.EUA:OPTIONS,B.EUA,EUA futures options,options,2026-11-03,2026M12,2026-12-01,,22.0791,2026-12-14,85,C,OPTION_VOLATILITY
+NGE.EUA:OPTIONS,B.EUA,EUA futures options,options,2026-11-03,2026M12,2026-12-01,,1.05,2026-12-14,85,P,SETTLEMENT_PRICE
+```
+
+Files without options keep the nine columns. Power BI rows of options have `expiry`, `strike`, `callput` and `column` too.
+
 ---
 
 ## File names
@@ -107,11 +156,11 @@ A curve's rows have `tenor` and `start`, a timeseries' rows `time`. A field with
 
 When the receiving system needs another layout, such as its own CSV columns, XML or a JSON shape of its own, set a **Transformer** in the group's settings: the name of a mustache script (`#` for a public one). The template is applied to what would have been sent, and its text is sent instead, by the Message queue, Webhook, Azure Blob Storage, Azure Data Lake and Azure Files plug-ins. Set **Content type** to the kind of text it makes, such as `text/csv`: a webhook sends it as the content-type header, and a file gets the matching extension.
 
-The template gets the [item message](#an-item-message) (one message or file per curve or timeseries) or the [group message](#a-group-message), with two additions:
+The template gets the [item message](#an-item-message) (one message or file per data item) or the [group message](#a-group-message), with two additions:
 
 | Field | What it is |
 |-|-|
-| `rows` | One row per value, as in a [CSV file](#csv-files): `id`, `code`, `name`, `kind`, `ondate`, `tenor`, `start`, `time` and `value`, plus `text` (the value as text, such as `241.19` or `100`) and `comma` (true on every row but the last). |
+| `rows` | One row per value, as in a [CSV file](#csv-files): `id`, `code`, `name`, `kind`, `ondate`, `tenor`, `start`, `time` and `value`, plus `text` (the value as text, such as `241.19` or `100`) and `comma` (true on every row but the last). Rows of options also have `expiry`, `strike`, `callput` and `column`, empty on other rows. |
 | `comma` on each of `items` | True on every item but the last, for templates that make JSON. |
 
 A CSV file with the system's own columns:

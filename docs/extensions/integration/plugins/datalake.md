@@ -1,6 +1,6 @@
 ---
 title: The Azure Data Lake plug-in
-description: Writes curves and timeseries as CSV or JSON files to a file system in Azure Data Lake Storage Gen2
+description: Writes curves, timeseries and options as CSV or JSON files to a file system in Azure Data Lake Storage Gen2
 slug: /extensions/integration/plugins/datalake
 sidebar_position: 4
 catalog_title: Azure Data Lake
@@ -12,7 +12,7 @@ tags: [extension, integration, plug-in, generic, azure, data lake, files, csv]
 
 # The Azure Data Lake plug-in
 
-The Azure Data Lake Integration extension (`odsl.integration_datalake`) writes curves and timeseries as CSV or JSON files to a file system in Azure Data Lake Storage Gen2, ready for Synapse, Databricks, Fabric or any tool reading the lake.
+The Azure Data Lake Integration extension (`odsl.integration_datalake`) writes curves, timeseries and options as CSV or JSON files to a file system in Azure Data Lake Storage Gen2, ready for Synapse, Databricks, Fabric or any tool reading the lake.
 
 ---
 
@@ -24,11 +24,11 @@ Once installed, the plug-in's codes, settings and secrets are listed on the **Pl
 
 | Kind | Name | What it is |
 |-|-|-|
-| Identity | `lake_code` | The code the receiving system knows the curve or timeseries by. Left empty, the data id is sent, such as `NGE.GAS.TTF:MID`. |
+| Identity | `lake_code` | The code the receiving system knows the data by. Left empty, the data id is sent, such as `NGE.GAS.TTF:MID`. |
 | Group setting | **File system URL** (`url`) | `https://<account>.dfs.core.windows.net/<file system>`, optionally followed by a folder. |
 | Group setting | **File format** (`format`) | `csv` or `json`, `csv` unless you change it. `csv`: one row per value; `json`: the item message, or all of them with their group. Not used with a transformer. See [What the generic plug-ins send](/docs/extensions/integration/plugins/generic-content). |
 | Group setting | **File name** (`fileName`) | `{group}_{yyyymmdd}.{ext}` unless you change it. A pattern of the file name: see [File names](/docs/extensions/integration/plugins/generic-content#file-names). |
-| Group setting | **Messages** (`layout`) | `item` or `group`, `group` unless you change it. `item`: one message or file per curve or timeseries; `group`: one for the whole run. |
+| Group setting | **Messages** (`layout`) | `item` or `group`, `group` unless you change it. `item`: one message or file per data item; `group`: one for the whole run. |
 | Group setting | **Transformer** (`transformer`) | Optional: the name of a mustache script (`#` for a public one) to transform the data with. Its text is sent instead of the JSON or CSV. See [Transforming with a Mustache template](/docs/extensions/integration/plugins/generic-content#transforming-with-a-mustache-template). |
 | Group setting | **Content type** (`contentType`) | With a transformer: the content type of its text, such as `text/csv` or `application/xml`, `text/plain` unless you change it. A file gets the matching `{ext}`. |
 | Group setting | **Send** (`send`) | Ticked unless you change it. Untick for a dry run: everything is built and counted, nothing is sent. |

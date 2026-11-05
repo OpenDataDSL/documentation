@@ -49,6 +49,15 @@ const TRACKS = [
     ],
   },
   {
+    id: 'options',
+    label: 'Options',
+    color: '#f472b6',
+    description: 'Build option chains from settlement events, follow single options over time, and read only the options you hold.',
+    modules: [
+      { number: '13', title: 'Options and Traded Options', description: 'Build option chains with EventOptions, analyse strikes and smiles, upload positions and read the options you hold.', href: '/training/technical/options', tags: ['ODSL', 'Options'], status: 'available' },
+    ],
+  },
+  {
     id: 'quickstart',
     label: 'QuickStart Developer',
     color: '#34d399',
@@ -81,8 +90,8 @@ const TRACKS = [
 ];
 
 const STATS = [
-  { value: '6', label: 'Learning Tracks' },
-  { value: '12', label: 'Core Modules' },
+  { value: '7', label: 'Learning Tracks' },
+  { value: '13', label: 'Core Modules' },
   { value: '9', label: 'QuickStart Modules' },
   { value: '5', label: 'General Tutorials' },
 ];
@@ -138,7 +147,7 @@ export default function TechnicalTrainingHome() {
             <Link to="/training" className={styles.breadcrumb}>← All Tracks</Link>
             <div className={styles.heroEyebrow}>Technical Track</div>
             <h1 className={styles.heroTitle}>Developer & Data Engineer Training</h1>
-            <p className={styles.heroSubtitle}>Hands-on scripting with the ODSL language — build event workflows, timeseries, smart curves, quality checks, and automated data pipelines. Includes the full QuickStart Developer track and general tutorials.</p>
+            <p className={styles.heroSubtitle}>Hands-on scripting with the ODSL language — build event workflows, timeseries, smart curves, options, quality checks, and automated data pipelines. Includes the full QuickStart Developer track and general tutorials.</p>
             <div className={styles.statsRow}>
               {STATS.map(s => (
                 <div key={s.label} className={styles.statItem}>

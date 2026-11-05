@@ -1,6 +1,6 @@
 ---
 title: The Webhook plug-in
-description: Posts curves and timeseries as JSON to a webhook or HTTP endpoint
+description: Posts curves, timeseries and options as JSON to a webhook or HTTP endpoint
 slug: /extensions/integration/plugins/webhook
 sidebar_position: 6
 catalog_title: Webhook
@@ -12,7 +12,7 @@ tags: [extension, integration, plug-in, generic, webhook, http, rest]
 
 # The Webhook plug-in
 
-The Webhook Integration extension (`odsl.integration_webhook`) posts curves and timeseries as JSON to any HTTP endpoint: a webhook, an Azure Function or Logic App, Power Automate, or your own API.
+The Webhook Integration extension (`odsl.integration_webhook`) posts curves, timeseries and options as JSON to any HTTP endpoint: a webhook, an Azure Function or Logic App, Power Automate, or your own API.
 
 ---
 
@@ -24,10 +24,10 @@ Once installed, the plug-in's codes, settings and secrets are listed on the **Pl
 
 | Kind | Name | What it is |
 |-|-|-|
-| Identity | `webhook_code` | The code the receiving system knows the curve or timeseries by. Left empty, the data id is sent, such as `NGE.GAS.TTF:MID`. |
+| Identity | `webhook_code` | The code the receiving system knows the data by. Left empty, the data id is sent, such as `NGE.GAS.TTF:MID`. |
 | Group setting | **URL** (`url`) | The address the JSON is posted to. |
 | Group setting | **Token header** (`tokenHeader`) | `Authorization` unless you change it. The header the token secret is sent in, when it is set. |
-| Group setting | **Messages** (`layout`) | `item` or `group`, `group` unless you change it. `item`: one message or file per curve or timeseries; `group`: one for the whole run. |
+| Group setting | **Messages** (`layout`) | `item` or `group`, `group` unless you change it. `item`: one message or file per data item; `group`: one for the whole run. |
 | Group setting | **Most items in one message** (`maxItems`) | `100` unless you change it. With one message per group, a bigger group is sent in several messages, each with `part` and `parts`. |
 | Group setting | **Transformer** (`transformer`) | Optional: the name of a mustache script (`#` for a public one) to transform the data with. Its text is sent instead of the JSON or CSV. See [Transforming with a Mustache template](/docs/extensions/integration/plugins/generic-content#transforming-with-a-mustache-template). |
 | Group setting | **Content type** (`contentType`) | With a transformer: the content type of its text, such as `text/csv` or `application/xml`, `text/plain` unless you change it. It is sent as the content-type header. |

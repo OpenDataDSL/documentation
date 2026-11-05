@@ -35,7 +35,7 @@ Select **Create the system**. The screen opens on its **System setup** tab.
 
 ![The System setup tab of Northgate Risk with its identity, the two group settings and the API key secret from the REST template, and no data properties yet](/img/extensions/integration/custom-setup.png)
 
-At the top are the name, the description and whether the system takes curves, timeseries or both. Below are five tables:
+At the top are the name, the description and the kinds of data the system takes: curves, timeseries, options, or any of them. Items of a kind it does not take fail without reaching its ODSL. Below are five tables:
 
 | Table | What it holds | In the ODSL |
 |-|-|-|
@@ -136,8 +136,8 @@ What the hooks are given:
 | `intSecret(ctx, "apikey")` | The value of one of the system's secrets, `""` when it is not set. `intSecretId(ctx, "apikey")` is the secret record it was read from, for messages. |
 | `ctx.group`, `ctx.groupName`, `ctx.system`, `ctx.report` | The group's id and name, the system's name and the report the run goes into. |
 | `item.dataid` | The id of the curve or timeseries. |
-| `item.name`, `item.kind`, `item.type` | Its name, `curve` or `timeseries`, and its data type. |
-| `item.data` | The curve for the date (`item.data.contracts`, each with `tenor`, `start` and `value`) or the whole timeseries (`item.data.getValues()`, each with `time` and `value`). |
+| `item.name`, `item.kind`, `item.type` | Its name, `curve`, `timeseries` or `options`, and its data type. |
+| `item.data` | The curve for the date (`item.data.contracts`, each with `tenor`, `start` and `value`), the whole timeseries (`item.data.getValues()`, each with `time` and `value`), or the [options](/docs/topics/options/options-data) for the date (`item.data.tenors`, each with `strikes`, each with `strike`, `call` and `put`). |
 | `item.identity` | Its codes, such as `item.identity.northgate_risk`. |
 | `item.dataProperties` | Its data properties, such as `item.dataProperties.location`. |
 | `results` | In `integrationEnd`: one result per item with `dataid`, `state`, `status` and `message`. |
@@ -208,12 +208,14 @@ A group that names a transformation the system does not list cannot run: the run
 
 | Choice | What it does |
 |-|-|
-| **System name**, **Code**, **Description** | As for a new blank system. The copy's id is `custom.<code>`, its script `integration\custom\<code>` and its report `INTEGRATION_<CODE>`. |
+| **System name**, **Code**, **Description** | As for a new blank system. The copy's id is `custom.<code>`, its script `integration\custom\<code>` and its report `INTEGRATION_<CODE>`. The description starts as `<name>: a copy of <system>`; change it to say what the copy is for. |
 | **Use the plug-in's ODSL** | For a copy of a plug-in. The copy's script imports the plug-in's ODSL, so it gets the plug-in's updates. The plug-in cannot be uninstalled while a copy uses it. |
 | **Copy the ODSL into the new system** | The plug-in's ODSL is copied into the new system's script, pointed at the new system, ready for you to change. It no longer follows the plug-in. A copy of a custom system always gets its own copy of the ODSL. |
 | **Use the same secrets** | The copy reads the same secret records: the same account or connection. |
 | **New secrets for the copy** | The copy reads records named after its code, such as `molecule_power_user`. Set their values on its **System setup** tab. |
 | **Daily report** | Start with an empty matrix, with the same matrix properties, or with the same matrix and expected counts. |
+
+The copy has its own name everywhere: on the screens, on the platform's **Extensions** screen and in its script, whose header names the copy and the system it was copied from, such as `Molecule gas (custom.molecule_gas): a copy of Molecule (odsl.molecule)`. Renaming a system on its **System setup** tab renames it in the script header too.
 
 The copy opens on its **System setup** tab. A copy that uses a plug-in's ODSL says so above its script, with two buttons:
 
@@ -226,7 +228,23 @@ The copy opens on its **System setup** tab. A copy that uses a plug-in's ODSL sa
 
 ## Deleting a system
 
-**Delete the system** on the **System setup** tab deletes it after a second click. It can only be deleted once no group sends to it: remove each group first with **Remove** on the **Groups** tab (see [Removing a group from a system](/docs/extensions/integration/how-it-works#removing-a-group-from-a-system)). The system's script and its stored reports are kept.
+**Delete the system** on the **System setup** tab opens a dialog that lists what goes with the system and what is kept.
+
+![Deleting Molecule gas: its group stops sending to it, its processes and scheduled email are deleted, and its script and secrets can be deleted too](/img/extensions/integration/delete-system.png)
+
+| Deleted | Kept |
+|-|-|
+| The system, with its codes, settings, data properties and secret names. | The groups and their curves and timeseries, ready to attach to another system. |
+| The system's settings on each group that sends to it, so the groups stop sending. | The stored reports and their matrix. |
+| The processes of its groups (their schedules and corrections schedules), its confirmations process and its report's cutoff. | The system's codes and data properties on the items. To clear them, remove each group first with **Remove** on the **Groups** tab (see [Removing a group from a system](/docs/extensions/integration/how-it-works#removing-a-group-from-a-system)). |
+| The scheduled emails of its report. | The cutoff and scheduled emails of a report that another system's groups also use. |
+
+When groups send to the system, tick **Stop the group sending** (**Stop all 3 groups sending** for three groups) before you can delete it: a group left sending to a deleted system would fail every run. Two more choices are off unless you tick them:
+
+| Choice | What it does |
+|-|-|
+| **Also delete its ODSL** | Deletes the script `integration\custom\<code>`. Leave it to keep the code, for example to create the system again with the same code. |
+| **Also delete its secrets** | Deletes the secret records the system and its groups read that no other system or group reads. Shared secrets are always kept. |
 
 :::note
 A custom system depends on the Integration extension, so the Integration extension cannot be uninstalled while a custom system exists.

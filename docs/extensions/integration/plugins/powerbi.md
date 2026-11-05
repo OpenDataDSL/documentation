@@ -1,6 +1,6 @@
 ---
 title: The Power BI streaming dataset plug-in
-description: Pushes the values of curves and timeseries as rows to a Power BI streaming or push dataset
+description: Pushes the values of curves, timeseries and options as rows to a Power BI streaming or push dataset
 slug: /extensions/integration/plugins/powerbi
 sidebar_position: 8
 catalog_title: Power BI streaming dataset
@@ -12,7 +12,7 @@ tags: [extension, integration, plug-in, generic, power bi, dashboard, streaming]
 
 # The Power BI streaming dataset plug-in
 
-The Power BI Streaming Dataset Integration extension (`odsl.integration_powerbi`) pushes the values of curves and timeseries as rows to a Power BI streaming or push dataset, so a dashboard shows them as soon as they are sent.
+The Power BI Streaming Dataset Integration extension (`odsl.integration_powerbi`) pushes the values of curves, timeseries and options as rows to a Power BI streaming or push dataset, so a dashboard shows them as soon as they are sent.
 
 ---
 
@@ -24,8 +24,8 @@ Once installed, the plug-in's codes, settings and secrets are listed on the **Pl
 
 | Kind | Name | What it is |
 |-|-|-|
-| Identity | `powerbi_code` | The code the receiving system knows the curve or timeseries by. Left empty, the data id is sent, such as `NGE.GAS.TTF:MID`. |
-| Group setting | **Messages** (`layout`) | `item` or `group`, `group` unless you change it. `item`: one message or file per curve or timeseries; `group`: one for the whole run. |
+| Identity | `powerbi_code` | The code the receiving system knows the data by. Left empty, the data id is sent, such as `NGE.GAS.TTF:MID`. |
+| Group setting | **Messages** (`layout`) | `item` or `group`, `group` unless you change it. `item`: one message or file per data item; `group`: one for the whole run. |
 | Group setting | **Send** (`send`) | Ticked unless you change it. Untick for a dry run: everything is built and counted, nothing is sent. |
 | Secret, kept in `integration_powerbi_pushurl` | **Push URL** (`pushUrl`) | The Push URL of the dataset (API info in Power BI), which holds its key. |
 
@@ -37,7 +37,7 @@ Set the secret values in the **Secrets** part of the **Plug-in** tab (see [Getti
 
 Each value is one row, with the columns of the [CSV files](/docs/extensions/integration/plugins/generic-content#csv-files): `id`, `code`, `name`, `kind`, `ondate`, `tenor`, `start`, `time` and `value`. Rows are posted in requests of at most 2,000, the Power BI limit. With **Messages** set to `group` (the default) the rows of the whole group are posted at the end of the run; with `item`, the rows of each curve or timeseries as it is read.
 
-Create the dataset in Power BI as an API (streaming) dataset with these columns: `value` as a number and the others as text. Then copy its **Push URL** from its **API info** into the **Push URL** secret. The URL holds the dataset key, which is why it is a secret.
+Create the dataset in Power BI as an API (streaming) dataset with these columns: `value` as a number and the others as text. To send [options](/docs/extensions/integration/plugins/generic-content#options-and-traded-options), add the text columns `expiry`, `strike`, `callput` and `column`: each value of each option is a row. Then copy its **Push URL** from its **API info** into the **Push URL** secret. The URL holds the dataset key, which is why it is a secret.
 
 What each message or file holds, the CSV columns and the file names are the same for every generic plug-in: see [What the generic plug-ins send](/docs/extensions/integration/plugins/generic-content).
 

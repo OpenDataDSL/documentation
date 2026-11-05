@@ -46,6 +46,8 @@ The timezone used is the item's `molecule_timezone`, else the group's **Timezone
 
 The plug-in signs in to Molecule with the user and the production API key, or the test API key for the test environment. Set their values in the **Secrets** part of the **Plug-in** tab (see [Getting started](/docs/extensions/integration/getting-started#2-set-the-secrets)). A group can use another Molecule account by naming its own secret records on its **Settings** tab. A run that has to send stops with, for example, `Set the secret molecule_production (Molecule production API key) on the Plug-in tab of the Integrations screen` when one it needs is not set; a dry run does not need them.
 
+The Molecule plug-in sends curves and timeseries. [Options](/docs/extensions/integration/plugins/generic-content#options-and-traded-options) in a group set up for Molecule are not sent: they fail with `Molecule does not take options: it takes curves and timeseries`.
+
 ---
 
 ## Mark levels

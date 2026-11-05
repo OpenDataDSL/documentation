@@ -80,6 +80,9 @@ A data id is the object id and the data property name, separated by a colon, for
 |curve:-ONDATE|TEST:CURVE:-ONDATE?_ondate=2026-10-23|The curve for the _ondate, or the latest one before it|
 |curve:&lt;ONDATE|TEST:CURVE:&lt;ONDATE?_ondate=2026-10-23|The latest curve before the _ondate|
 |curve:-ABSOLUTE|TEST:CURVE:-ABSOLUTE?_ondate=2026-10-23|The curve for the _ondate or the latest one before it, rolled forward to the _ondate so its tenors are relative to that date|
+|options:date|NGE.EUA:OPTIONS:2026-09-16|The options (an option chain per tenor) for the date, see [Options](#options). `L`, `L-n` and `-date` work as for curves|
+|options:tenor:strike:C or P|NGE.EUA:OPTIONS:2026M09:85:C|A timeseries of one option's main value, one value for each ondate|
+|options:tenor:strike:C or P:column|NGE.EUA:OPTIONS:2026M09:85:C:OPTION_VOLATILITY|A timeseries of one column of one option|
 
 ---
 
@@ -143,6 +146,51 @@ GET https://api.opendatadsl.com/api/data/v1/private/NGE.POWER.DE:BASE:2026-10-23
     &gas=NGE.GAS.TTF:MID
 Authorization: Bearer {{token}}
 ```
+
+---
+
+## Options
+
+Options data is stored as events, one per ondate, tenor, call or put, and strike. An [EventOptions](/docs/odsl/variable/eventoptions) data item says which events to use, and the options are built from them when you read it. See the [Options topic](/docs/topics/options/intro).
+
+|**Id**|**Example**|**What you get**|
+|-|-|-|
+|options|NGE.EUA:OPTIONS|The ondates: `_type` VarOptionsDates, a list of dates each referencing the options for that date. `_range` works as for curve dates|
+|options:date|NGE.EUA:OPTIONS:2026-09-16|The options for the date (`_type` VarOptions), not found when there are no events that day|
+|options:L|NGE.EUA:OPTIONS:L|The latest options|
+|options:tenor:strike:C or P|NGE.EUA:OPTIONS:2026M09:85:C|A daily timeseries of the call's main value (`P` for the put). The tenor can be absolute or relative|
+|options:tenor:strike:C or P:column|NGE.EUA:OPTIONS:2026M09:85:C:OPTION_VOLATILITY|A daily timeseries of one column|
+
+A positions view (an EventOptions with `positions` set) is read the same way and returns only the options held, with `POSITION_VOLUME` and `TRADED_PRICE` added. See [Traded options](/docs/topics/options/traded-options).
+
+### Options Entity
+
+|**Name**|**Description**|**Type**|
+|-|-|-|
+|_id|The id of the options, ending with the ondate|String|
+|_type|Always VarOptions|String|
+|_subtype|Always VarEventOptions|String|
+|ondate|The ondate (YYYY-MM-DD)|String|
+|name, description|The name and description of the options|String|
+|currency, units|The currency and units codes|String|
+|timezone|The timezone of the ondate|String|
+|value|The main value column|String|
+|columns|The columns of each call and put, in order|String[]|
+|tenors|The tenors in delivery order|OptionTenor[]|
+|properties|`event`, `modified`, and for a positions view `positions`, `positionDate` and `unpriced`|Object|
+|_identity|The configured identities|Object|
+|_objid, _dataid, _objtype|The object, data id and object type the options belong to|String|
+
+### OptionTenor Entity
+
+|**Name**|**Description**|**Type**|
+|-|-|-|
+|tenor|The tenor (the value of the tenor property, e.g. 2026M09)|String|
+|absolute|The absolute [period code](/docs/odsl/calendar/period-code)|String|
+|relative|The relative period code on the ondate|String|
+|start, end|The delivery period (the end is the last day)|String(Date)|
+|expiry|The expiry date of the options|String(Date)|
+|strikes|The strikes in ascending order: `strike`, and `call` and `put` objects with a value per column. A side with no option, and a column with no value, are left out|Object[]|
 
 ---
 
@@ -325,6 +373,22 @@ Authorization: Bearer {{token}}
 
 ### List curve tenors
 GET https://api.opendatadsl.com/api/data/v1/public/%23DCE.AG.CN.A.NO1_SOYBEAN.FUT:SETTLE?_function=list
+Authorization: Bearer {{token}}
+
+### Get the options for an ondate
+GET https://api.opendatadsl.com/api/data/v1/private/NGE.EUA:OPTIONS:2026-09-16
+Authorization: Bearer {{token}}
+
+### Get the latest options
+GET https://api.opendatadsl.com/api/data/v1/private/NGE.EUA:OPTIONS:L
+Authorization: Bearer {{token}}
+
+### Get the volatility of one option over time
+GET https://api.opendatadsl.com/api/data/v1/private/NGE.EUA:OPTIONS:2026M09:85:C:OPTION_VOLATILITY?_range=from(2026-09-01)
+Authorization: Bearer {{token}}
+
+### Get the options held for an ondate (a positions view)
+GET https://api.opendatadsl.com/api/data/v1/private/NGE.EUA:POSITIONS_VIEW:2026-09-16
 Authorization: Bearer {{token}}
 ```
 

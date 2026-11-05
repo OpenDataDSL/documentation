@@ -1708,6 +1708,21 @@ Unbiased covariances are given by the formula
 
 ---
 
+### EventOptions(eventlist)
+
+**Category:** Construction
+
+**Description:** Creates new EventOptions: options data (an option chain per tenor) built from events. Defaults suit ICE options events: tenor absolute, strike STRIKE_PRICE, callPut CONTRACT_TYPE (C/P), value SETTLEMENT_PRICE
+
+**Parameters:**
+* `eventlist` (String, EventSummary or Ref) - The eventlist with one event per option (ondate, tenor, call/put, strike)
+
+**Returns:** EventOptions
+
+
+
+---
+
 ### EventTimeSeries(eventlist, property)
 
 **Category:** Construction

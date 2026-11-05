@@ -110,6 +110,12 @@ A curve is a structure that represents a set of values with a time index sometim
 ### [EventCurve](EventCurve)
 A curve that is dynamically built from events
 
+### [EventOptions](eventoptions)
+Options data (an option chain for each maturity) that is dynamically built from events
+
+### [Options](options)
+The options for one ondate: the tenors, each with an option chain of strikes with the call and put values
+
 ### [SmartCurve](SmartCurve)
 A Smart Curve is an expression that is used to build curves on demand
 

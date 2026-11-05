@@ -1,6 +1,6 @@
 ---
 title: The Message queue plug-in
-description: Sends curves and timeseries as JSON messages to one of your company's platform queues (Azure Service Bus), for any system that reads the queue
+description: Sends curves, timeseries and options as JSON messages to one of your company's platform queues (Azure Service Bus), for any system that reads the queue
 slug: /extensions/integration/plugins/queue
 sidebar_position: 2
 catalog_title: Message queue
@@ -12,7 +12,7 @@ tags: [extension, integration, plug-in, generic, queue, service bus]
 
 # The Message queue plug-in
 
-The Message Queue Integration extension (`odsl.integration_queue`) sends curves and timeseries as JSON messages to one of your company's queues on the platform, the Azure Service Bus queues used with `send ... to`. Any system that reads the queue, with the queue's connection string, gets the data as it is sent.
+The Message Queue Integration extension (`odsl.integration_queue`) sends curves, timeseries and options as JSON messages to one of your company's queues on the platform, the Azure Service Bus queues used with `send ... to`. Any system that reads the queue, with the queue's connection string, gets the data as it is sent.
 
 ---
 
@@ -24,9 +24,9 @@ Once installed, the plug-in's codes, settings and secrets are listed on the **Pl
 
 | Kind | Name | What it is |
 |-|-|-|
-| Identity | `queue_code` | The code the receiving system knows the curve or timeseries by. Left empty, the data id is sent, such as `NGE.GAS.TTF:MID`. |
+| Identity | `queue_code` | The code the receiving system knows the data by. Left empty, the data id is sent, such as `NGE.GAS.TTF:MID`. |
 | Group setting | **Queue** (`queue`) | The name of one of your company's queues on the platform; the receiving system reads it with the queue's connection string. |
-| Group setting | **Messages** (`layout`) | `item` or `group`, `item` unless you change it. `item`: one message or file per curve or timeseries; `group`: one for the whole run. |
+| Group setting | **Messages** (`layout`) | `item` or `group`, `item` unless you change it. `item`: one message or file per data item; `group`: one for the whole run. |
 | Group setting | **Most items in one message** (`maxItems`) | `100` unless you change it. With one message per group, a bigger group is sent in several messages, each with `part` and `parts`. |
 | Group setting | **Transformer** (`transformer`) | Optional: the name of a mustache script (`#` for a public one) to transform the data with. Its text is sent instead of the JSON or CSV. See [Transforming with a Mustache template](/docs/extensions/integration/plugins/generic-content#transforming-with-a-mustache-template). |
 | Group setting | **Content type** (`contentType`) | With a transformer: the content type of its text, such as `text/csv` or `application/xml`, `text/plain` unless you change it. |
