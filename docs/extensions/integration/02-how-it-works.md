@@ -15,10 +15,15 @@ flowchart LR
   D[Curves and timeseries] --> G[Group<br/>settings for the system]
   G --> R[Run<br/>scheduled process]
   R --> E[Integration engine<br/>reads each item for the date]
-  E --> S[System ODSL<br/>plug-in or custom]
+  E --> V{Validation gate<br/>optional}
+  V -- validated --> S[System ODSL<br/>plug-in or custom]
+  V -. not validated: held back .-> P
   S --> X[Downstream system]
   E --> P[Daily report<br/>sent against expected]
+  X -. optional: confirms or fails<br/>what it received .-> P
 ```
+
+Two parts are optional. With the [validation gate](/docs/extensions/integration/validation-gate) on, only data that has passed validation is sent, and the rest is held back with the reason in the report. With [round-trip confirmations](/docs/extensions/integration/confirmations) on, the system reports back which items it loaded, and the daily report shows them as confirmed or failed.
 
 ---
 
@@ -47,6 +52,7 @@ Every group also has these settings, whatever the system:
 | **Ondate offset (business days)** | `0` | The date sent, counted from the day the run starts. `-1` sends the previous business day, for a run early in the morning. |
 | **Calendar for the offset** | `BUSINESS` | The calendar the offset is counted on. |
 | **Curves** | **The curve for the ondate** | Or **The curve for the ondate, or the latest one before it**, which sends the last curve there is when today's is missing. |
+| **Validation gate** | **All data** | Or **Only validated data**: an item is only sent when its data has passed validation. Each item can follow the group or not, on the **Items** tab. See [The validation gate](/docs/extensions/integration/validation-gate). |
 
 ### Removing a group from a system
 
@@ -94,11 +100,12 @@ Each group runs as a process on the platform, on the schedule you give it (or wh
 2. Works out the date to send: the run date moved by the ondate offset, or the date you chose for **Run now**.
 3. Reads the system's secrets, and stops if a required one is not set. Then it lets the system get ready, for example by signing in.
 4. Reads each item in the group: a curve for the date, or the whole timeseries, with its identities and data properties.
-5. Hands each item that has data to the system's ODSL, which turns it into the system's format and sends it.
-6. Lets the system finish, for example by sending one message for the whole group.
-7. Merges the result of every item into the system's daily report for the date, replacing this group's earlier results for that date and keeping the other groups'.
+5. With the validation gate on for an item, checks that its data has passed validation, and holds it back when it has not.
+6. Hands each item that has data to the system's ODSL, which turns it into the system's format and sends it.
+7. Lets the system finish, for example by sending one message for the whole group.
+8. Merges the result of every item into the system's daily report for the date, replacing this group's earlier results for that date and keeping the other groups'.
 
-Every item ends the run in one of four states:
+Every item ends the run in one of these states:
 
 | State | What it means |
 |-|-|
@@ -106,6 +113,7 @@ Every item ends the run in one of four states:
 | **skipped** | Left out on purpose by the system, for example in a dry run. |
 | **missing** | There is no data to send: no curve for the date. |
 | **failed** | Not sent: the item could not be read, is not a curve or timeseries, has no required code, or the system refused it. The message says why. |
+| **held back** | Not sent by the [validation gate](/docs/extensions/integration/validation-gate): its data has not passed validation. The message says why. In the report's counts and alerts it is a failure. |
 
 The run itself ends **failed** when any item failed or had no data, so it shows in the process runs and can raise an alert. Its message lists each problem, for example `Molecule: 3 of 5 items sent for 2026-11-03; NGE.POWER.NL:BASE: No curve for 2026-11-03; NGE.POWER.GB:BASE: No molecule identity set`.
 

@@ -25,6 +25,9 @@ tags: [extension, integration, reference, plug-in, secrets, troubleshooting]
 | A group's own secret records | `group` | The group | In `integration.secrets`. |
 | A group's schedule | `process` | `INTEGRATION_<GROUP>`, such as `INTEGRATION_NGE_MOLECULE_CURVES` | Service `Integration`. |
 | A run | `process-exec` | | Name = the process id. |
+| A report's cutoff | `reportconfig` and `process` | Settings in the report configuration's `properties.integration.cutoff`; the check is the process `INTEGRATION_CUTOFF_<KEY>` | Script `odsl.integration.cutoff`, input `{report, plugin}`, scheduled at the cutoff time. See [Alerts and the cutoff](/docs/extensions/integration/alerts-and-cutoff). |
+| Alerts | `alert` (private) | Keys `integration/INTEGRATION_<KEY>/<group>/<ondate>` (a group) and `integration/INTEGRATION_<KEY>/<ondate>/cutoff` | Category `integration`; issue `export`, `cutoff` or `validation`. |
+| Validation of the data sent | `validation` and `validationconfig` (private) | A curve's record `<id>:<ondate>`; a timeseries' records of its observations on the ondate | Read by the runs of groups with the validation gate. Kept by the [Validation extension](/docs/extensions/validation/overview). |
 | A system's confirmations | `process` | `INTEGRATION_CONFIRM_<CODE>`, such as `INTEGRATION_CONFIRM_MOLECULE` | Service `Integration`, script `odsl.integration.confirm`, input `{system}`, no schedule. Confirmations are on while it exists and is enabled. See [Round-trip confirmations](/docs/extensions/integration/confirmations). |
 | A system's report configuration | `reportconfig` (private) | `INTEGRATION_<KEY>`, such as `INTEGRATION_MOLECULE` | Fixed report, category `Integration`, `mergeUpdates` on with `mergeKeys` `["key"]`. Made by the first run when it does not exist. |
 | A day's report | `report` (private) | `INTEGRATION_<KEY>:<ondate>` | One report a day: each group's run is merged into it, with no new version. |
@@ -43,7 +46,12 @@ tags: [extension, integration, reference, plug-in, secrets, troubleshooting]
   "calendar": "BUSINESS",
   "curves": "exact",
   "settings": {"send": true, "test": false, "markLevel": "vendor", "timezone": "Europe/Amsterdam", "monthOffset": 0, "asOfShift": 0},
-  "secrets": {"user": "molecule_user_pl"}
+  "secrets": {"user": "molecule_user_pl"},
+  "alerts": {"raise": true, "severity": "high", "agent": "client"},
+  "optional": ["NGE.POWER.DE:BASE"],
+  "validation": "required",
+  "noValidateItems": ["NGE.POWER.GB:BASE"],
+  "validateItems": []
 }
 ```
 
@@ -56,6 +64,10 @@ tags: [extension, integration, reference, plug-in, secrets, troubleshooting]
 | `curves` | `exact` (the curve for the ondate) or `previous` (the curve for the ondate or the latest one before it). |
 | `settings` | The system's group settings. |
 | `secrets` | Optional: the secret records this group reads instead of the system's, by secret name. Left out when the group uses the system's secrets. |
+| `alerts` | Optional: `raise` (true to raise an alert when items fail or have no data), `severity` and `agent`. |
+| `optional` | Optional: the ids of the items that are not available every day. |
+| `validation` | Optional: `required` sends only validated data (the [validation gate](/docs/extensions/integration/validation-gate)). Left out, the group sends all data. |
+| `validateItems`, `noValidateItems` | Optional: the ids of the items that differ from the group: always validated, or never. An item in neither list follows `validation`. |
 
 ---
 
@@ -86,6 +98,8 @@ The report configuration holds the matrix in `properties.integration`:
  "expected": [{"row": "NL", "column": "GAS", "count": 1}, {"row": "DE", "column": "POWER", "count": 1}]}
 ```
 
+`cutoff`, when set, holds the cutoff settings: `time` (hh:mm), `days` (`MON-FRI`, `*` or `TUE-SAT`), `timezone` (`EU1`, `EU2` or `UTC`), `offset`, `calendar`, `raise`, `severity` and `agent`.
+
 `extraRows` and `extraColumns`, when present, are values added with **Add row** and **Add column** that no item has yet and no cell expects yet. They only keep those rows and columns on the **Report** tab; the runs ignore them.
 
 Each run of a group is merged into the day's report (the configuration's `mergeUpdates`), so the report keeps one version a day. Every list in the report data has a `key` the merge matches on: `<group>|<id>` for an item, the group for a group, and the label for a matrix row, column and cell. A configuration made before reports merged is switched to merging by its next run, after that run has saved the day's report with the keys.
@@ -97,10 +111,11 @@ A day's report data has:
 | Field | What it is |
 |-|-|
 | `name`, `system`, `plugin`, `ondate`, `updated` | What it is for and when it was last changed. |
-| `summary` | `items`, `complete`, `sent`, `failed`, `missing`, `skipped`, `expected`, `cellsShort` (as text), `hasProblems`, `allExpected`, `awaiting` (items are waiting for confirmation), `confirmations` (the system confirms what it receives). |
+| `summary` | `items`, `complete`, `sent`, `failed`, `missing`, `skipped`, `expected`, `cellsShort` (as text), `hasProblems`, `allExpected`, `awaiting` (items are waiting for confirmation), `confirmations` (the system confirms what it receives), `notAvailable` and `hasNotAvailable` (items not available every day without data for the ondate), `held` and `hasHeld` (items the validation gate held back, which `failed` does not count). |
+| `cutoff` | The result of the cutoff check, when it has run: `ondate`, `time`, `checked`, `ok`, `count` and `problems` (a list of text). |
 | `matrix` | `rowProperty`, `columnProperty`, `columns` (each `label`), `rows` (each `label` and `cells` with `exported`, `expected`, `failed`, `text`, `cls`, `empty`), `hasMatrix`. |
 | `groups` | Each group's `key`, `group`, `groupName`, `items`, `complete`, `time`, `allComplete`. |
-| `items` | Each item's `key`, `id`, `name`, `group`, `groupName`, `kind`, `row`, `column`, `identity`, `state` (`complete`, `sent`, `failed`, `missing` or `skipped`), `status`, `message`, `ondate`, `time`, `received` (when the system confirmed or failed it). |
+| `items` | Each item's `key`, `id`, `name`, `group`, `groupName`, `kind`, `row`, `column`, `identity`, `state` (`complete`, `sent`, `failed`, `missing` or `skipped`), `status`, `message`, `ondate`, `time`, `received` (when the system confirmed or failed it), `optional` (`true` for an item not available every day without data for the ondate: its state is then `skipped` and its status `not available`), `validation` (the validation status the gate found: `valid`, `warning`, `overridden`, `failed`, `severe`, `error` or `not validated`; empty when the gate is off for the item), `held` (`true` when the gate held the item back: its state is then `failed` and its status `held back by validation`). |
 
 ### Scheduled emails
 
@@ -177,6 +192,22 @@ The **Integrations** menu item and the **Integration** app need the features `od
 
 ---
 
+## Tasks on the Home page
+
+Installing the Integration extension adds these tasks to the [Home page](/docs/extensions/home/overview), and uninstalling it removes them. Each opens the Integrations screen.
+
+| Group | Task | Counts these open alerts |
+|-|-|-|
+| Check | Check exports to downstream systems | Category `integration`, issue `export` |
+| Check | Check exports held back by validation | Category `integration`, issue `validation` |
+| Check | Check the export cutoff | Category `integration`, issue `cutoff` |
+| Deliver | Send data to a downstream system | |
+| Deliver | Follow today's integration report (under **See all tasks**) | |
+
+Their ids are `odsl.integration.check-exports`, `check-held`, `check-cutoff`, `send-data` and `daily-report`.
+
+---
+
 ## Troubleshooting
 
 | Problem | Cause and fix |
@@ -196,6 +227,12 @@ The **Integrations** menu item and the **Integration** app need the features `od
 | Uninstalling a plug-in fails with `[6404] ... cannot be uninstalled because these installed extensions need it` | A copy uses the plug-in's ODSL. On the copy's **System setup** tab select **Make a copy of the ODSL to change it**, or delete the copy. |
 | A copy that uses a plug-in's ODSL fails with `Unknown function` after the plug-in was updated | The plug-in's ODSL now imports a library the copy's script does not (imports inside an imported script are not followed). Select **Refresh the link** on the copy's **System setup** tab. |
 | A group is not offered under **Attach a group**, or a run stops with `Group ... is a group of object: only groups of data (curves and timeseries) can be sent` | Only groups of the data service can send to a system. Make a group of data with the curves and timeseries. |
+| An item that is not published every day shows as **Missing data** and raises alerts | Tick **Not every day** for it on the group's **Items** tab. |
+| An item is held back with `Not sent because it has no validation set up` | The group or the item has the validation gate on, but the curve or timeseries has no validation configuration. Set one up in the Validation extension, or choose **Not validated** for the item on the group's **Items** tab. |
+| An item is held back with `Not sent because it has not been validated for 2026-11-03` | Its checks have not run for the date yet, for example because the curve was saved after the export. Run its validation, then run the group again with **Run now**. A failure can be passed with an override in the Validation extension. |
+| A timeseries is held back although its latest value passed | The gate checks the observations on the ondate the run sends. Check the timeseries' validation records for that date. |
+| No alert is raised for a group with failures | Tick **Raise an alert when items fail or have no data** on the group's **Settings** tab. An alert that cannot be raised (for example on the none plan) is noted at the end of the run's message. |
+| The cutoff alert lists a group that did not run | The group is attached to the system with the same report key but has no items in the day's report: check its schedule, or remove it from the system. |
 | Items stay **sent** | The system has not confirmed them. Check the runs of `INTEGRATION_CONFIRM_<CODE>` on the Processes screen: a confirmation that matched nothing is listed in the run's message as `not found in the sent data`. |
 | A confirmation run fails with `Confirmations are not switched on for ...` | Switch them on on the system's **Plug-in** or **System setup** tab, or check `body.system` is the system's extension id. |
 | A confirmation run says `not understood: ... (no ondate)` | Give `ondate` in the body or on the item. |

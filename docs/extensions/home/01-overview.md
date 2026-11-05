@@ -49,6 +49,8 @@ The Home extension adds these tasks. A task only shows when the extension that d
 | Deliver | Create or update a dashboard | Composer | |
 | Under **See all tasks** | Review automations, Edit a script, Promote changes between environments | Automations, Scripts, Promote | |
 
+Other extensions add tasks of their own when they are installed. For example, [Integration](/docs/extensions/integration/reference#tasks-on-the-home-page) adds checks for exports that failed, were held back by validation or missed their cutoff.
+
 Shared alerts about common and public data are counted only for the datasets your team follows, the same as on the [Alerts](/docs/extensions/alerts/overview) screen.
 
 ---

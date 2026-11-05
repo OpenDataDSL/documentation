@@ -16,7 +16,7 @@ Every system has a daily report: one stored report per date sent, named `INTEGRA
 
 ![The report INTEGRATION_MOLECULE for 3 November 2026 with its KPI cards and the matrix of location by category](/img/extensions/integration/report.png)
 
-The cards at the top count the items: **Items**, **Sent**, **Failed**, **Missing data**, **Skipped**, and **Cells short of expected** when the report has a matrix.
+The cards at the top count the items: **Items**, **Sent**, **Failed**, **Missing data**, **Skipped**, and **Cells short of expected** when the report has a matrix. **Held back by validation** shows when the [validation gate](/docs/extensions/integration/validation-gate) kept items back.
 
 The **Matrix** tab counts the items by two data properties of your choice, here `location` down the side and `category` across. Each cell shows what was sent against what you expect, and its colour says whether that is enough:
 
@@ -32,7 +32,7 @@ Hover over a cell to see the number sent, expected and failed or missing.
 
 For Northgate on 3 November, NL POWER is red because the Dutch power curve had no curve for the date, and GB POWER is red because the GB power curve had no Molecule product.
 
-The **Items** tab lists every item with its group, kind, the two matrix properties, its identities, state, message and when it was sent. Type in **Filter the rows below** or choose a status to find items quickly.
+The **Items** tab lists every item with its group, kind, the two matrix properties, its identities, state, message, validation status (when the validation gate applies to it) and when it was sent. Type in **Filter the rows below** or choose a status to find items quickly.
 
 ![The Items tab of the report with the missing Dutch power curve and the failed GB power curve](/img/extensions/integration/report-items.png)
 
@@ -67,6 +67,12 @@ Expect every item you send. Then a cell turns amber or red as soon as one curve 
 The **Stored reports** part of the **Report** tab shows the report for any date it was stored, chosen under **Ondate**. **Open the report** on the **Overview** tab opens the latest one there. The reports are also on the platform's **Reports** screen, category **Integration**, and you can add automations to them like any other report, for example to email the report when a run has failed (see [Automations](/docs/topics/automations/basics)).
 
 When several groups share a report key, the screen shows a **Report** box to choose between the system's reports.
+
+---
+
+## The cutoff
+
+The **Cutoff** part of the **Report** tab sets the time by which everything in the report should be sent, and raises an alert when it is not. See [Alerts and the cutoff](/docs/extensions/integration/alerts-and-cutoff#the-cutoff).
 
 ---
 

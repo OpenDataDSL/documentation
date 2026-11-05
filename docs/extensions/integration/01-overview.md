@@ -13,10 +13,12 @@ Your curves and timeseries rarely stop at the platform. An ETRM needs the mornin
 - Can our German, Dutch and UK curves go to Molecule every weekday morning, with the product codes Molecule uses?
 - Can the monthly capture prices go to the ETRM as quarter hours for next month?
 - Did everything we expect reach the ETRM today, by location and commodity?
+- Did the risk engine confirm it loaded what we sent it, and why did it reject the rest?
+- Can we make sure only curves that have passed validation reach the ETRM?
 - Can we send data to our own risk engine or lakehouse, which has no ready-made connector?
 - Can Fusion AI write the code that sends it?
 
-![The Integrations opening page: what the extension does and how data flows from groups through the integration engine to the downstream systems](/img/extensions/integration/hero.png)
+![The Integrations opening page: what the extension does and how data flows from groups through the integration engine to the downstream systems, which can confirm or fail what they received](/img/extensions/integration/hero.png)
 
 Throughout these pages we follow Northgate Energy, a fictional gas and power trader. Every weekday at 08:00 it sends the previous business day's forward curves for TTF, NBP and German, Dutch and UK power to its ETRM, Molecule. On the 25th of each month it sends next month's solar and wind capture prices as quarter hours. It also sends curves to its own risk engine, **Northgate Risk**, and to the **Northgate Lakehouse**, neither of which has a plug-in.
 
@@ -33,6 +35,8 @@ Throughout these pages we follow Northgate Energy, a fictional gas and power tra
 | **Secrets** | What a system needs to connect, such as a user and an API key. Their values are kept in the platform's secret store, never on the screen or in the ODSL. |
 | **Run** | A scheduled process per group. It works out the date to send, reads each item and hands it to the system's ODSL, which turns it into the system's format and sends it. |
 | **Daily report** | One report per system per date. Every group's run is merged into it. It shows a matrix of two data properties (for example location by category) with the number sent against the number expected. |
+| **Confirmations** | Optional for each system: the system reports back which items it loaded, so an item is **sent** until the system confirms it (**complete**) or fails it with a reason. See [Round-trip confirmations](/docs/extensions/integration/confirmations). |
+| **Validation gate** | Optional for each group, and for each item in it: only data that has passed validation is sent. Anything else is held back, and the report and the alert say why. See [The validation gate](/docs/extensions/integration/validation-gate). |
 
 ---
 
@@ -54,4 +58,5 @@ Throughout these pages we follow Northgate Energy, a fictional gas and power tra
 - [Custom systems](/docs/extensions/integration/custom-systems): send data to a system that has no plug-in, with your own codes, settings, secrets and ODSL.
 - [Using Fusion AI](/docs/extensions/integration/fusion-ai): describe a system and let Fusion AI ask what it needs and write the ODSL.
 - [Plug-ins](/docs/extensions/integration/plugins): the systems with a ready-made plug-in, starting with [Molecule](/docs/extensions/integration/plugins/molecule): what Molecule needs, how curves and timeseries become Molecule marks.
+- [The validation gate](/docs/extensions/integration/validation-gate): send only data that has passed validation.
 - [Integration reference](/docs/extensions/integration/reference): where everything is kept, writing a plug-in extension, and troubleshooting.
