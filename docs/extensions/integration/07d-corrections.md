@@ -111,4 +111,5 @@ With [group alerts](/docs/extensions/integration/alerts-and-cutoff#group-alerts)
 
 ## Next
 
+- [Insights](/docs/extensions/integration/insights): the corrections of every group over a period, in the Integration Corrections report.
 - [Integration reference](/docs/extensions/integration/reference): where the settings and logs are kept, and troubleshooting.

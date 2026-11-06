@@ -28,7 +28,7 @@ tags: [extension, home, tasks, reference, rest api]
 | `requires` | List of text | Extension ids that must be installed for the task to show |
 | `target` | Object | Required: what the task opens (below) |
 | `alerts` | Object | The alerts that belong to the task (below) |
-| `properties` | Object | Anything else an extension wants to keep with its task |
+| `properties` | Object | Anything else an extension wants to keep with its task. Keys may not start with `$` |
 | `created`, `createdBy`, `updated`, `updatedBy` | | Set by the service |
 
 ### target
@@ -36,8 +36,8 @@ tags: [extension, home, tasks, reference, rest api]
 | Field | For | Description |
 |-|-|-|
 | `type` | All | `view`, `portal` or `url` |
-| `extension`, `view` | view | The extension id and the view id |
-| `properties` | view | Properties passed to the view |
+| `extension`, `view` | view | The extension id and the view's name as the menu shows it (`v.name`), for example `Smart Data` |
+| `properties` | view | Properties passed to the view, with `TASK` added (the task id). See [Opening a view with context](/docs/extensions/home/adding-tasks#opening-a-view-with-context) for what each view reads |
 | `section`, `name`, `tabname` | portal | The portal screen; `name` is required |
 | `url`, `newTab` | url | The address (`https://` or `http://`) and whether it opens in a new tab (default true) |
 
@@ -45,7 +45,7 @@ tags: [extension, home, tasks, reference, rest api]
 
 | Field | Description |
 |-|-|
-| `filter` | The open alerts that belong to the task, as a filter on alert fields. Default: every open alert. `$where`, `$function`, `$accumulator` and `$expr` are not allowed |
+| `filter` | The open alerts that belong to the task, as a filter on alert fields, sent as an object or JSON text and kept as JSON text. Default: every open alert. `$where`, `$function`, `$accumulator` and `$expr` are not allowed |
 | `sources` | `private`, `common` and `public` (default all three) |
 | `followedOnly` | Default true: shared alerts count only for the datasets your team follows |
 | `label` | The word for one alert, at most 40 characters (default **open alert**) |

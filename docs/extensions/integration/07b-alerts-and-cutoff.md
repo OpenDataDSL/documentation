@@ -69,11 +69,24 @@ At the cutoff the check lists:
 - groups sending to the report that did not run for the date;
 - no report at all, when nothing was sent.
 
-The result is shown at the top of the day's report and in its [scheduled email](/docs/extensions/integration/report#emailing-the-report-on-a-schedule), as it was at the cutoff. A later run does not change it, but running the check again does.
+The result is shown at the top of the day's report and in its [scheduled email](/docs/extensions/integration/report#emailing-the-report-on-a-schedule), as it was at the cutoff. Running the check again replaces it.
 
 ![The report email with the cutoff result: two problems found at the 09:30 check](/img/extensions/integration/cutoff-email.png)
 
-With problems, the check raises one alert for the report and the date, with every problem in its message. When a later check finds everything sent, it closes the alert. The alert's key is `integration/INTEGRATION_<KEY>/<ondate>/cutoff`, its subject the report and the ondate, and its issue `cutoff`, or `validation` when items were held back by the validation gate (unless the alert was already open with an issue).
+With problems, the check raises one alert for the report and the date, with every problem in its message. The alert's key is `integration/INTEGRATION_<KEY>/<ondate>/cutoff`, its subject the report and the ondate, and its issue `cutoff`, or `validation` when items were held back by the validation gate (unless the alert was already open with an issue).
+
+### After the cutoff
+
+What was not sent by the cutoff is often sent or confirmed later: the system confirms a curve at 09:40, or a group is run again once its data arrives. Each time the day's report changes after a missed cutoff (a confirmation, a run, a [correction](/docs/extensions/integration/corrections)), what is still not sent is checked again:
+
+| What is left | What happens |
+|-|-|
+| Nothing | The alert is closed, with the resolution `Everything was sent after the cutoff, by <time>`, and the report shows **Everything was sent after the cutoff** under the cutoff result. |
+| Fewer or other problems | The open alert is updated with what is still not sent, and the report shows **Still not sent** with the number left. |
+| The same problems | The alert is left as it is. |
+
+The cutoff result itself still says what was found at the cutoff, so the day still counts as a missed cutoff in the report and in the [Integration Delivery History](/docs/public/insights/integration-delivery-history). An alert someone has closed is not opened again. Running the check again for the date also closes the alert when everything is now sent.
+
 
 ---
 

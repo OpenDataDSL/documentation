@@ -32,7 +32,7 @@ t.requires = "acme.positions"
 t.target = SimpleObject()
 t.target.type = "view"
 t.target.extension = "acme.positions"
-t.target.view = "limits"
+t.target.view = "Positions"
 t.alerts = SimpleObject()
 t.alerts.filter = '{"category": "limits"}'
 t.alerts.label = "breach"
@@ -65,11 +65,28 @@ Set `requires` to your extension's id, so the task only shows where your extensi
 
 | Target | Fields | Opens |
 |-|-|-|
-| An extension view | `type` `view`, `extension`, `view` (the view id given to `e.addView`), optional `properties` | That view, with `properties` passed to it as report properties (and `ID` set to the extension id, as for a menu item) |
+| An extension view | `type` `view`, `extension`, `view` (the view's name, `v.name`, as the menu shows it: not the id given to `e.addView`), optional `properties` | That view, with `properties` passed to it as report properties (and `ID` set to the extension id, as for a menu item) |
 | A portal screen | `type` `portal`, `section`, `name`, optional `tabname` | That screen, for example `Information` > `Data` |
 | A web page | `type` `url`, `url` (`https://` or `http://`), optional `newTab` (default true) | The page |
 
 Give view properties as JSON text in ODSL: `t.target.properties = '{"STATUS": "open"}'`.
+
+### Opening a view with context
+
+A task opens its view ready for the job, not just on its first page. The view receives `target.properties`, plus `TASK` set to the task's id, and acts on the ones it knows:
+
+| View | Properties it reads | Example task |
+|-|-|-|
+| Smart Data | `ACTION` `new` (the New dialog) or `ai` (Create with Fusion AI); `KIND` `curve` or `timeseries`; `TAB` `items` or `library` | `{"ACTION": "new", "KIND": "curve"}` opens the New dialog with a smart curve chosen |
+| Composer | `ACTION` `new` (the New composition dialog) or `ai`; `TAB` `gallery`, `compositions`, `library` or `templates` | `{"ACTION": "new"}` |
+| Alerts | `STATUS` (`open`, `closed`, `all`), `TYPES` (comma separated), `KIND` (`root`, `caused`), `PRIORITY`, `WITH` (`client`, `opendatadsl`, `vendor`), `RANGE` (`7`, `30`, `90`, `365`, `all`), `SHOW` (`mine`, `own`, `all`), `TEXT`, `DSID` | `{"STATUS": "open", "TYPES": "delivery,completeness", "RANGE": "all"}` |
+| Validation | `TAB` `dashboard`, `issues`, `records`, `configs` or `functions` | `{"TAB": "issues"}` |
+| Export data | `TAB` `export`, `items`, `options`, `preview`, `api` or `schedules`; `GROUP`; `IDS` | `{"TAB": "schedules"}` |
+| Automations | `TAB` `overview`, `list`, `log`, `targets`, `schedules` or `create`; `ITEM`; `TARGET` | `{"TAB": "log"}` |
+| Integrations | `TAB` `overview`, `groups`, `report` or `plugin`; `SYSTEM` (a plug-in id) | `{"TAB": "report"}` |
+| Fusion AI | `PROMPT`: text put in the message box, ready to edit and send | `{"PROMPT": "Help me onboard a new data source: "}` |
+
+Your own extension's views can read them too, with `function viewProps() { return {{#json}}{{properties}}{{/json}}; }` in the view.
 
 ---
 

@@ -47,6 +47,7 @@ Throughout these pages we follow Northgate Energy, a fictional gas and power tra
 | **Integrations** | **Operations** menu | Opens on a home page with your systems, how each one is doing, and the plug-ins you can install. Choose a system to manage the groups that send to it, their codes, settings and schedules, its secrets and its daily report. Create custom systems. |
 | **Integration** app | **Groups**, then a group, then **Apps** | The same screen for the selected group. A group that sends nowhere yet can be attached to a system. |
 | Integration reports | **Reports**, category **Integration** | One report `INTEGRATION_<KEY>` per system, stored for each date sent. |
+| [Insights](/docs/extensions/integration/insights) | **Integrations**, **Insights** tab | Reports across every system over a period: delivery day by day, the items that keep failing, send times, corrections and the codes of each system. |
 
 ---
 
@@ -59,4 +60,5 @@ Throughout these pages we follow Northgate Energy, a fictional gas and power tra
 - [Using Fusion AI](/docs/extensions/integration/fusion-ai): describe a system and let Fusion AI ask what it needs and write the ODSL.
 - [Plug-ins](/docs/extensions/integration/plugins): the systems with a ready-made plug-in, starting with [Molecule](/docs/extensions/integration/plugins/molecule): what Molecule needs, how curves and timeseries become Molecule marks.
 - [The validation gate](/docs/extensions/integration/validation-gate): send only data that has passed validation.
+- [Insights](/docs/extensions/integration/insights): delivery over time, problem items, send times, corrections and codes across every system.
 - [Integration reference](/docs/extensions/integration/reference): where everything is kept, writing a plug-in extension, and troubleshooting.
