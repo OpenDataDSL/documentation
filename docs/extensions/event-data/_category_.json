@@ -1,0 +1,7 @@
+{
+  "label": "Event Data",
+  "link": {
+    "type": "generated-index",
+    "description": "Find event lists in private, common and public data, view, filter, export and chart their events, import events from CSV files, and build event curves, event timeseries and option chains from them."
+  }
+}
