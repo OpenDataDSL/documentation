@@ -16,7 +16,7 @@ Northgate wants its **Northgate Lakehouse** to get the day's curves and timeseri
 
 ## Designing a new system
 
-Select **New system**, then **Design with Fusion AI** on **Describe it to Fusion AI** (or **Design one with Fusion AI** on the opening page). Type what the system is and how it takes data, and select **Send** (or press Ctrl+Enter).
+Select **New system**, then **Design a Custom ODSL system with Fusion AI** (or **Design with Fusion AI** on **Describe it to Fusion AI** on the home page). Type what the system is and how it takes data, and select **Send** (or press Ctrl+Enter).
 
 When Fusion AI needs a decision that is yours to make, it asks a question with a few choices, under a short note on what led to it.
 

@@ -31,9 +31,9 @@ Confirmations are optional for each system. Use them when the system loads what 
 ## Switching confirmations on
 
 1. On the Integrations screen, choose the system.
-2. On its **Plug-in** tab (**System setup** for a custom system), select **Switch confirmations on** under **Round-trip confirmations**.
+2. On its **System setup** tab, select **Switch confirmations on** under **Round-trip confirmations**.
 
-![The Round-trip confirmations part of the Plug-in tab, switched on, with the REST call the system makes](/img/extensions/integration/confirm-setup.png)
+![The Round-trip confirmations part of the System setup tab, switched on, with the REST call the system makes](/img/extensions/integration/confirm-setup.png)
 
 This makes the process `INTEGRATION_CONFIRM_<CODE>` for the system, such as `INTEGRATION_CONFIRM_MOLECULE`. The system runs it to report back. From the next run of each group, items sent to the system show as **sent**.
 
@@ -55,7 +55,7 @@ Content-Type: application/json
 {
   "name": "INTEGRATION_CONFIRM_MOLECULE",
   "body": {
-    "system": "odsl.molecule",
+    "system": "INTEGRATION.MOLECULE",
     "ondate": "2026-11-03",
     "items": [
       {"id": "NGE.GAS.TTF:MID", "status": "complete", "message": "Loaded 12 contracts"},
@@ -68,8 +68,8 @@ Content-Type: application/json
 
 | Field | What it is |
 |-|-|
-| `name` | The system's confirmation process, as shown on its **Plug-in** tab. |
-| `body.system` | The system's extension id, such as `odsl.molecule` or `custom.northgate_risk`. |
+| `name` | The system's confirmation process, as shown on its **System setup** tab. |
+| `body.system` | The system's id, such as `INTEGRATION.MOLECULE` or `INTEGRATION.NORTHGATE_RISK`. Optional: the confirmation process already names its system. A system that confirmed before 2026-11-07 with `odsl.molecule` or `custom.northgate_risk` goes on working: the id finds the system upgraded from it. |
 | `body.ondate` | The date the data was sent for. An item can give its own `ondate`. |
 | `body.items` | One entry for each curve or timeseries. |
 | `id` | The curve or timeseries id, such as `NGE.GAS.TTF:MID`. |

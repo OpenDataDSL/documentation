@@ -18,9 +18,9 @@ The Azure Event Grid Integration extension (`odsl.integration_eventgrid`) publis
 
 ## What it needs
 
-Once installed, the plug-in's codes, settings and secrets are listed on the **Plug-in** tab of the Integrations screen when **Azure Event Grid** is chosen under **System**.
+Once installed, add a system that sends with it: select **New system** and choose **Azure Event Grid** under **Sends with**. The plug-in's codes, settings and secrets are listed on the system's **System setup** tab. Each system on the plug-in has its own secrets, groups and daily report, and its own codes when you choose them (see [The codes a system sends with](/docs/extensions/integration/how-it-works#the-codes-a-system-sends-with)).
 
-![The Plug-in tab for Azure Event Grid with its identity, group settings and secrets](/img/extensions/integration/eventgrid-plugin.png)
+![The System setup tab of a system on Azure Event Grid with its identity, group settings and secrets](/img/extensions/integration/eventgrid-plugin.png)
 
 | Kind | Name | What it is |
 |-|-|-|
@@ -32,7 +32,7 @@ Once installed, the plug-in's codes, settings and secrets are listed on the **Pl
 | Group setting | **Send** (`send`) | Ticked unless you change it. Untick for a dry run: everything is built and counted, nothing is sent. |
 | Secret, kept in `integration_eventgrid_key` | **Topic key** (`key`) | An access key of the topic, sent as aeg-sas-key. |
 
-Set the secret values in the **Secrets** part of the **Plug-in** tab (see [Getting started](/docs/extensions/integration/getting-started#2-set-the-secrets)). A group can use its own secret records instead, named on its **Settings** tab, for example to send to a second account.
+Set the secret values in the **Secrets** part of the system's **System setup** tab (see [Getting started](/docs/extensions/integration/getting-started#2-set-the-secrets)). A group can use its own secret records instead, named on its **Settings** tab, for example to send to a second account.
 
 ---
 
@@ -70,7 +70,7 @@ Northgate Energy forwards its marks to a Service Bus queue in its own subscripti
 
 ## One plug-in, several destinations
 
-Each group sending to Azure Event Grid has its own settings, so groups can already send to different topics. To keep destinations apart, with their own secrets, report and groups, select **Copy to a new system** on the **Plug-in** tab (see [Copying a system](/docs/extensions/integration/custom-systems#copying-a-system)). The copy uses this plug-in's ODSL, so it gets its updates.
+Each group sending to Azure Event Grid has its own settings, so groups can already send to different topics. To keep destinations apart, with their own secrets, codes, report and groups, add a system for each one on this plug-in: select **New system** and choose **Azure Event Grid** under **Sends with**, or **Copy to a new system** on a system's **System setup** tab (see [Copying a system](/docs/extensions/integration/custom-systems#copying-a-system)). The plug-in is installed once, and every system on it gets its updates.
 
 ---
 

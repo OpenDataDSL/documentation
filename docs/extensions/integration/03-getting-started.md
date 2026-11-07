@@ -12,17 +12,25 @@ This walk-through sets up Northgate Energy's morning curves for Molecule: the gr
 
 ---
 
-## 1. Install the plug-in
+## 1. Install the plug-in and add the system
 
 Open **Operations**, then **Integrations**. The screen opens on its home page: what the extension does, your systems, the plug-ins you can install and the ways to build your own. With no systems yet, it starts with how an integration is set up.
 
 ![The Integrations home page with no systems yet, and the Molecule plug-in under Plug-ins you can install](/img/extensions/integration/landing.png)
 
-Select **Install** on **Molecule**. You can also select **New system** at the top of the screen at any time: it lists the plug-ins that are not installed yet, next to the ways to build your own system.
+Select **Install** on **Molecule**. Installing a plug-in installs the Integration extension too when it is missing. The **New system** dialog then opens with Molecule chosen under **Sends with**: the plug-in is how the data is sent, and the system is where it goes. You can also select **New system** at the top of the screen at any time; it lists the plug-ins that are not installed yet under **Plug-ins you can install**.
 
-![The New system dialog with the Molecule plug-in, Describe it to Fusion AI and New blank system](/img/extensions/integration/new-system-dialog.png)
+![The New system dialog after installing Molecule: sending with the Molecule plug-in, the system name Molecule, its code molecule and the plug-in's shared codes](/img/extensions/integration/new-system-dialog.png)
 
-Installing a plug-in installs the Integration extension too when it is missing. The screen then opens on the new system's **Overview** tab.
+| Field | Northgate | Notes |
+|-|-|-|
+| **Sends with** | **Molecule (odsl.molecule)** | An installed plug-in, or **Custom ODSL** to write the ODSL yourself (see [Custom systems](/docs/extensions/integration/custom-systems)). |
+| **System name** | `Molecule` | How the system shows on the screens and in its daily report. |
+| **Code** | `molecule` | Filled in from the name. Letters, digits and `_`. The system's id is `INTEGRATION.MOLECULE` and its report `INTEGRATION_MOLECULE`. It cannot be changed later. |
+| **Description** | | Optional. |
+| **Codes** | **Shared: the plug-in's codes** | For the first system on a plug-in. A second system on the same plug-in can have its own codes; see [The codes a system sends with](/docs/extensions/integration/how-it-works#the-codes-a-system-sends-with). |
+
+Select **Create the system**. The screen opens on the new system's **System setup** tab. To send to a second Molecule account, or to split Molecule power from Molecule gas, add another system on the same plug-in later: the plug-in is installed once.
 
 Once you have systems, the home page lists them, each with its groups, curves and timeseries, schedules, latest run and secrets. Select a system to work on it. **All systems** at the top of the screen goes back to the home page.
 
@@ -32,9 +40,9 @@ Once you have systems, the home page lists them, each with its groups, curves an
 
 ## 2. Set the secrets
 
-Molecule needs a user and an API key. Open the **Plug-in** tab: its **Secrets** part lists each secret the plug-in reads, the secret record its value is kept in, and whether it is set.
+Molecule needs a user and an API key. On the **System setup** tab, the **Secrets** part lists each secret the plug-in reads, the secret record the system keeps its value in, and whether it is set.
 
-![The Secrets part of the Plug-in tab: the Molecule user and the production API key are set, the test API key is not](/img/extensions/integration/plugin-secrets.png)
+![The Secrets part of the System setup tab: the Molecule user and the production API key are set, the test API key is not](/img/extensions/integration/plugin-secrets.png)
 
 Select **Set the value**, type the value and select **Save the value** (or press Enter). The eye button shows what you typed. Setting a value creates the secret or replaces its value; **Remove** deletes it after a second click. Values are never shown back.
 

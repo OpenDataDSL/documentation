@@ -66,7 +66,7 @@ A template has the same `properties.composition`, with input placeholders such a
 
 | `_type` | Field | Value |
 |-|-|-|
-| `CompositionDataElement` | `id` | A curve or timeseries id. On a timeseries worksheet, `CURVE:TENOR` is one tenor of a curve as a timeseries, for example `ICIS.ESGM.NL.TTF.ASS.FUT:MID:GM01`. |
+| `CompositionDataElement` | `id` | A curve, timeseries or options id. On a timeseries worksheet, `CURVE:TENOR` is one tenor of a curve as a timeseries, for example `ICIS.ESGM.NL.TTF.ASS.FUT:MID:GM01`, and `OPTIONS:TENOR:STRIKE:C\|P[:COLUMN]` one option, for example `#ICE.NDEX.EFO:OPTIONS:2026M12:85:C:OPTION_VOLATILITY`. On curve and options worksheets an options id comes with `options.option` (see Settings). |
 | `CompositionExpressionElement` | `expression` | An ODSL expression using the ids of earlier columns |
 | `CompositionLinkElement` | `element` | `COMPOSITION/COLUMN`, a column of another composition's stored build for the same ondate |
 
@@ -113,9 +113,11 @@ A setting that is left out takes its default, shown in brackets. `rsi`, `macd`, 
 
 | Setting | Field |
 |-|-|
-| Worksheet type | `options.index`: `curve` or `timeseries` |
+| Worksheet type | `options.index`: `curve`, `timeseries` or `options` |
+| Option chain tenor (options) | `options.tenor`: an absolute or relative tenor; empty: the first tenor |
+| Options column | a column's `options.option`: `side` (`C` or `P`), `column` (empty: the main value; `#STRIKE` on a curve worksheet: the strike), on a curve worksheet `strike` (`atm`, `delta:0.25` or a strike price) and `tenorCode` (`relative` or `absolute`), on an options worksheet `tenor` |
 | Tenor types (curve) | `options.tenors`: a list of `type` and `count` |
-| Fixed ondate (curve) | `options.ondate` |
+| Fixed ondate (curve and options) | `options.ondate` |
 | Calendar and range (timeseries) | `options.calendar`, `options.range` |
 | Observed (timeseries) | `options.observed`, or a column's `options.observed` |
 | Conversion | `options.conversion` (worksheet) or a column's `options.conversion`: `fx`, `currency`, `units`, `timezone`, `precision`, `rounding`, `factors.density`, `factors.timefactor`, `factors.heatRate` and custom unit factors |

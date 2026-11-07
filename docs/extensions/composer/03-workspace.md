@@ -68,17 +68,17 @@ Removing a column that an expression uses asks first.
 
 ## Data columns
 
-A data column shows a curve or a timeseries from the platform. Start typing part of its id for suggestions, or select **Find** to look it up by its dimensions.
+A data column shows a curve, a timeseries or options data from the platform (see [Options](#options)). Start typing part of its id for suggestions, or select **Find** to look it up by its dimensions.
 
 ### Finding data
 
 **Find** opens the data finder, which works the same way as finding data in the portal:
 
-1. Choose **Public** or **Private** data, and, on a timeseries worksheet, whether to look for curves, timeseries or both.
+1. Choose **Public** or **Private** data, and, when the column can show more than one kind, whether to look for curves, timeseries, options or all of them.
 2. Select **Filter by...** and choose a dimension, such as **source**. Its values are listed, for example `ICE` and `EEX`. Pick one or more.
 3. Add another dimension, such as **location**, and pick `Germany`. Each dimension only lists the values that are left after the filters before it, and the list shows the data that matches all of them.
 4. Narrow it further by typing part of the id in **Id contains**.
-5. To check the data before you use it, select the eye at the end of a row. For a curve it shows the latest curve, on today or the most recent date before it, with each tenor and its value. For a timeseries it shows the last 10 values. Select it again to close it.
+5. To check the data before you use it, select the eye at the end of a row. For a curve it shows the latest curve, on today or the most recent date before it, with each tenor and its value. For a timeseries it shows the last 10 values. For options it shows the latest option chains: choose a tenor to see its strikes with the call and put values. Select it again to close it.
 6. Click a row, or **Use this** in the preview, to use it.
 
 The list shows the currency and units of each curve and timeseries next to its name and kind.
@@ -236,13 +236,47 @@ Values can be converted to another currency or unit. Settings cascade: a **colum
 
 ---
 
+## Options
+
+Options data (an EventOptions, such as `#ICE.NDEX.EFO:OPTIONS`) holds an option chain for each tenor: the strikes, with the values of the call and the put at each one, such as the settlement price, the volatility and the delta. Composer can use it on every type of worksheet. Choose options in a data column, by search or with **Find**, and Composer sets the column's **Source** to options and shows what to take from the chains.
+
+| Worksheet | What an options column shows | Settings |
+|-|-|-|
+| **Curve** | One value per tenor: for example the volatility of each tenor at the money, next to the futures curve | **Tenors as** (relative tenors such as `M01`, which line up with other curves, or absolute tenors such as `2026M10`), **Strike**, **Side** (call or put) and **Column** |
+| **Timeseries** | One option over time: its value on each ondate | **Option tenor** (absolute or relative), **Strike**, **Side** and **Column**. It is saved as `OPTIONS:TENOR:STRIKE:C\|P:COLUMN` |
+| **Options** | One tenor's option chain: a row for each strike | **Option tenor** (empty: the worksheet's tenor), **Side** and **Column** |
+
+On a curve worksheet the **Strike** can be:
+
+| Strike | Taken from each tenor's option chain |
+|-|-|
+| **At the money** | The strike where the call and the put are worth the most nearly the same |
+| **By delta** | The strike whose delta on the chosen side is nearest a value, such as `0.25` for a 25 delta option |
+| **A strike price** | That strike, for example `85`. Tenors without it are left out |
+
+The **Column** is the options column to show, such as `SETTLEMENT_PRICE`, `OPTION_VOLATILITY` or `DELTA_FACTOR`; empty shows the options' main value. On a curve worksheet, `#STRIKE` shows the strike itself, for example the at the money strike of each tenor.
+
+### Options worksheets
+
+Set the worksheet **Type** to **Options** to show one tenor's option chain, with a row for each strike. Choose the **Tenor** in the properties; each column can choose another, so one worksheet can compare the volatility smile of two tenors. Typical columns are the call and the put volatility of the same tenor, and expressions such as the difference between them:
+
+| Id | Column |
+|-|-|
+| `CALL_VOL` | Options, side call, column `OPTION_VOLATILITY` |
+| `PUT_VOL` | Options, side put, column `OPTION_VOLATILITY` |
+| `SKEW` | Expression `CALL_VOL - PUT_VOL` |
+
+An expression on an options worksheet is calculated strike by strike, with the other columns' values at that strike, and `#STRIKE` for the strike. An options worksheet has no linked columns, composed curves or tenor types, and it can be fixed to an ondate like a curve worksheet. The chart shows the strikes along the bottom.
+
+---
+
 ## Properties
 
 | Section | Settings |
 |-|-|
 | Name and description | Shown in the list, the portal and Excel |
 | **Stored in** | The master data record it is stored on, with **Move to...**, and the template it was created from |
-| **Worksheet** | **Type** (curve or timeseries) and how it is shown in the portal. For a curve worksheet: a fixed **Ondate** (blank for the report's ondate), and the **tenor types** to show and how many of each, for example 12 months, 4 quarters and 2 years. For a timeseries worksheet: the **Calendar** the timeseries are aligned to (**BUSINESS**, business days, when empty; or for example `DAILY`, `HOURLY` or `MONTHLY`, but not an expiry calendar such as `#REOD`) and the **Range**. |
+| **Worksheet** | **Type** (curve, timeseries or options) and how it is shown in the portal. For an options worksheet: the **Tenor** of the option chain and a fixed **Ondate**. For a curve worksheet: a fixed **Ondate** (blank for the report's ondate), and the **tenor types** to show and how many of each, for example 12 months, 4 quarters and 2 years. For a timeseries worksheet: the **Calendar** the timeseries are aligned to (**BUSINESS**, business days, when empty; or for example `DAILY`, `HOURLY` or `MONTHLY`, but not an expiry calendar such as `#REOD`) and the **Range**. |
 | **Report** | Enabled, hide in the report list, hide in Excel, Excel output |
 | **Meta data** | Owner, team, stage (dev, test, production), commodity, product and location, used to find and filter compositions |
 | **Conversion defaults** | The worksheet's conversion settings, inherited by the columns |

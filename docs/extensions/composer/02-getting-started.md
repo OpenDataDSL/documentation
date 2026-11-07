@@ -111,6 +111,7 @@ Composer remembers the area, everyone's or mine, the widths and the order of the
 | **Describe it to Fusion AI** | Say what you want in your own words, and Fusion finds the data and designs the columns. See [Designing with Fusion AI](/docs/extensions/composer/fusion-ai). |
 | **Blank curve composition** | An empty curve worksheet: add the curves and expressions yourself |
 | **Blank timeseries composition** | An empty timeseries worksheet |
+| **Blank options composition** | An empty options worksheet, with a row for each strike of one option chain (see [Options](/docs/extensions/composer/workspace#options)) |
 | **My template: ...** | One of your organisation's templates |
 | **Library: ...** | One of the OpenDataDSL templates |
 

@@ -20,7 +20,7 @@ flowchart TD
   R --> E[Integration engine<br/>reads each item for the date]
   E --> V{Validation gate<br/>optional}
   E --> P[Daily report<br/>sent against expected]
-  V -- validated --> S[System ODSL<br/>plug-in or custom]
+  V -- validated --> S[System<br/>sends with its plug-in<br/>or its Custom ODSL]
   V -. not validated:<br/>held back .-> P
   S --> X[Downstream system]
   X -. optional: confirms or fails<br/>what it received .-> P
@@ -32,14 +32,40 @@ Two parts are optional. With the [validation gate](/docs/extensions/integration/
 
 ## Systems
 
-A system is where the data goes. Every system says what it needs: the codes it knows data by, the settings each group needs, the settings each item can have, the secrets it connects with, and the ODSL that sends the data. There are two kinds.
+A system is one destination for the data: a name, a code, the secrets it connects with, and the codes its data is sent with. It sends with a **plug-in**, or with ODSL you write.
 
-| Kind | Where it comes from | Who changes it |
+| Sends with | What it is | Who changes how it sends |
 |-|-|-|
-| **Plug-in** | An extension made for the system, such as the Molecule plug-in. You install it on the Integrations screen or the Extensions screen; installing a plug-in installs the Integration extension too when it is missing. | Its publisher. On the screen you see what it needs on the **Plug-in** tab. |
-| **Custom system** | Set up on the Integrations screen by your company, for a system that has no plug-in. | You, on its **System setup** tab, or with Fusion AI. |
+| **A plug-in** | An extension made for a kind of destination, such as Molecule, Azure Blob Storage or a webhook. Install it on the Integrations screen or the Extensions screen; installing a plug-in installs the Integration extension too when it is missing. The plug-in says what its systems need: the codes they know data by, the settings each group needs, the settings each item can have, the secrets they connect with, and the ODSL that sends the data. | Its publisher. Each system on it has its own name, code, secrets, groups and daily report. |
+| **Custom ODSL** | For a destination that has no plug-in. You choose the codes, settings and secrets and write the ODSL, or Fusion AI writes it with you. See [Custom systems](/docs/extensions/integration/custom-systems). | You, on its **System setup** tab. |
 
-The Integrations screen opens on its home page, which lists your systems with their groups, schedules, latest run and secrets. Choose one to work on it. While you work on a system, the **System** box at the top switches to another one, and **All systems** goes back to the home page. Custom systems are marked **custom**.
+Many systems can send with one plug-in. Northgate writes its curves to two Azure Blob Storage containers, one for the trading desk and one for finance: two systems on the Azure Blob Storage plug-in, each with its own storage account key, groups and daily report. Ten destinations of the same kind need the plug-in installed once, and ten systems.
+
+To add a system, select **New system**: choose the plug-in it **Sends with** (or **Custom ODSL**), give it a name, a code and a description, and choose its codes. The dialog also lists the plug-ins you can install; installing one comes back to the dialog with it chosen.
+
+Each system is kept as a private object `INTEGRATION.<CODE>` of type `INTEGRATION_SYSTEM`, such as `INTEGRATION.FINANCE_BLOB`. Its code names its daily report `INTEGRATION_<CODE>` and its secret records, such as `finance_blob_accountkey`, and cannot be changed later.
+
+The Integrations screen opens on its home page, which lists your systems with their plug-in, groups, schedules, latest run and secrets. Choose one to work on it. While you work on a system, the **System** box at the top switches to another one, and **All systems** goes back to the home page. The **System setup** tab has the system's name, description and codes, with **Copy to a new system** and **Delete the system**, and, for a system on a plug-in, what the plug-in needs.
+
+![The top of the System setup tab of Molecule: its name, id, code and report, its description, its codes shared with the plug-in, and Save the system, Copy to a new system and Delete the system](/img/extensions/integration/system-setup.png)
+
+### The codes a system sends with
+
+Each system chooses the identities (see below) its items are sent with:
+
+| Codes | The identities | Use it when |
+|-|-|-|
+| **Shared** | The plug-in's own, such as `blob_code`, shared by every system on the plug-in that chooses them. | The systems are one downstream system split in two, such as Molecule power and Molecule gas: a curve has one Molecule code. |
+| **Own codes** | Named after the system's code: its code, `_` and the plug-in's identity, such as `finance_blob_blob_code`. | The destinations know the same curve by different codes. |
+| **The same codes as** another system | That system's identities. | A new system for a destination that already has its codes, such as a test copy of a production system. |
+
+A new system has its own codes when the plug-in already has a system, and shared codes otherwise. Change them on the **System setup** tab. The plug-in's ODSL reads the identities by the plug-in's names whichever you choose, so it works the same for every system. Choosing other codes does not copy the codes already given: give the items their codes on the **Items** tab.
+
+### Systems set up before 2026-11-07
+
+Before systems were kept as objects, each plug-in was one system, and a custom system was an extension `custom.<code>`. Those keep sending as they did, and the home page marks them **not upgraded** with an **Upgrade to systems** card. The upgrade lists what it does before anything changes: it makes an object for each system with the same name, code, report key, secrets and shared codes, points its groups, its report, its confirmation and cutoff processes at it, and removes the extension record of a custom system. A custom system that used a plug-in's ODSL becomes a system on that plug-in.
+
+![The upgrade: Molecule becomes INTEGRATION.MOLECULE on the plug-in odsl.molecule, and the custom system Northgate Risk becomes INTEGRATION.NORTHGATE_RISK with its own script](/img/extensions/integration/upgrade.png)
 
 ---
 
@@ -77,7 +103,7 @@ To stop sending a group, select **Remove** on its row on the **Groups** tab, or 
 
 ## Identities and data properties
 
-**Identities** are the codes the downstream system knows each curve or timeseries by. Molecule calls the TTF curve `M.TTF.F`; the lakehouse calls it `ttf_mid`. They are kept on the data item itself, one per system, so the same curve can carry its Molecule code and its lakehouse key at once. A system can mark an identity as required: an item without it is not sent.
+**Identities** are the codes the downstream system knows each curve or timeseries by. Molecule calls the TTF curve `M.TTF.F`; the lakehouse calls it `ttf_mid`. They are kept on the data item itself, one per system (or per set of shared codes), so the same curve can carry its Molecule code and its lakehouse key at once. A system can mark an identity as required: an item without it is not sent.
 
 **Data properties** are settings kept on each curve or timeseries, such as the timezone of its quarter hours. They also hold the values the daily report counts by, such as `location` (`NL`, `GB`, `DE`) and `category` (`GAS`, `POWER`, `SOLAR`).
 
@@ -87,7 +113,7 @@ You set both on a group's **Items** tab, for every item in the group at once.
 
 ## Secrets
 
-**Secrets** are what a system needs to connect, such as a user and a password or an API key. Each secret of a system is kept in a secret record on the platform, named on the system: Molecule's user is kept in `molecule_user`. You set a secret's value on the system's **Plug-in** or **System setup** tab. The screen never shows a value back: it only shows whether it is set. Only the runs read them.
+**Secrets** are what a system needs to connect, such as a user and a password or an API key. Each secret of a system is kept in a secret record on the platform, named on the system: Molecule's user is kept in `molecule_user`. You set a secret's value on the system's **System setup** tab. Two systems on one plug-in can read the same records, for the same account, or records of their own, such as `finance_blob_accountkey`. The screen never shows a value back: it only shows whether it is set. Only the runs read them.
 
 The secret store keeps the values in your company's own Azure Key Vault when it has one (see [Keeping your secrets in your own Azure Key Vault](/docs/it/key-vault)), otherwise in OpenDataDSL's.
 
@@ -99,7 +125,7 @@ A group uses the system's secrets unless it names its own on its **Settings** ta
 
 Each group runs as a process on the platform, on the schedule you give it (or when you select **Run now**). A run:
 
-1. Reads the group and checks it is set up for this system.
+1. Reads the group and its system, and checks that the group is set up for the system and that the system sends with this plug-in or ODSL.
 2. Works out the date to send: the run date moved by the ondate offset, or the date you chose for **Run now**.
 3. Reads the system's secrets, and stops if a required one is not set. Then it lets the system get ready, for example by signing in.
 4. Reads each item in the group: a curve for the date, or the whole timeseries, with its identities and data properties.

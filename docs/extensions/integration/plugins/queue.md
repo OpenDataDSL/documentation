@@ -18,9 +18,9 @@ The Message Queue Integration extension (`odsl.integration_queue`) sends curves,
 
 ## What it needs
 
-Once installed, the plug-in's codes, settings and secrets are listed on the **Plug-in** tab of the Integrations screen when **Message queue** is chosen under **System**.
+Once installed, add a system that sends with it: select **New system** and choose **Message queue** under **Sends with**. The plug-in's codes, settings and secrets are listed on the system's **System setup** tab. Each system on the plug-in has its own secrets, groups and daily report, and its own codes when you choose them (see [The codes a system sends with](/docs/extensions/integration/how-it-works#the-codes-a-system-sends-with)).
 
-![The Plug-in tab for Message queue with its identity, group settings and secrets](/img/extensions/integration/queue-plugin.png)
+![The System setup tab of a system on Message queue with its identity, group settings and secrets](/img/extensions/integration/queue-plugin.png)
 
 | Kind | Name | What it is |
 |-|-|-|
@@ -63,7 +63,7 @@ Each run sends one message per curve, such as `{"id": "NGE.GAS.TTF:MID", "code":
 
 ## One plug-in, several destinations
 
-Each group sending to Message queue has its own settings, so groups can already send to different queues. To keep destinations apart, with their own secrets, report and groups, select **Copy to a new system** on the **Plug-in** tab (see [Copying a system](/docs/extensions/integration/custom-systems#copying-a-system)). The copy uses this plug-in's ODSL, so it gets its updates.
+Each group sending to Message queue has its own settings, so groups can already send to different queues. To keep destinations apart, with their own secrets, codes, report and groups, add a system for each one on this plug-in: select **New system** and choose **Message queue** under **Sends with**, or **Copy to a new system** on a system's **System setup** tab (see [Copying a system](/docs/extensions/integration/custom-systems#copying-a-system)). The plug-in is installed once, and every system on it gets its updates.
 
 ---
 

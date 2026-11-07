@@ -1,0 +1,7 @@
+{
+  "label": "Data Loaders",
+  "link": {
+    "type": "generated-index",
+    "description": "Build data loaders step by step that extract CSV files, JSON APIs, XML documents and Excel workbooks, map their columns to the fields of an event type, and load them as events on a schedule."
+  }
+}

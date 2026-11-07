@@ -8,7 +8,7 @@ tags: [extension, integration, custom system, odsl, rest api, template]
 
 # Custom systems
 
-When a system has no plug-in, such as your own risk engine, an in-house API or a data lake, set it up as a **custom system**. You choose the codes it knows data by, the settings and secrets it needs, and write the ODSL that sends the data. Everything else works as for a plug-in: groups, the **Items** tab, schedules and the daily report.
+When a system has no plug-in, such as your own risk engine, an in-house API or a data lake, set it up as a **custom system**: a system that sends with **Custom ODSL**. You choose the codes it knows data by, the settings and secrets it needs, and write the ODSL that sends the data. Everything else works as for a plug-in: groups, the **Items** tab, schedules and the daily report.
 
 Northgate's risk engine, **Northgate Risk**, takes each curve as a JSON message over a REST API, signed with an API key. This page sets it up from the REST API template. To have Fusion AI design the system with you instead, see [Using Fusion AI](/docs/extensions/integration/fusion-ai).
 
@@ -16,15 +16,16 @@ Northgate's risk engine, **Northgate Risk**, takes each curve as a JSON message 
 
 ## 1. Create the system
 
-Select **New system**, then **Set it up** on **New blank system** (or **New blank system** on the opening page).
+Select **New system** and choose **Custom ODSL** under **Sends with** (or select **New blank system** on the home page, which chooses it for you).
 
-![The New system dialog with the New blank system form for Northgate Risk, starting from the REST API template](/img/extensions/integration/new-blank-system.png)
+![The New system dialog for Northgate Risk, sending with Custom ODSL and starting from the REST API template](/img/extensions/integration/new-blank-system.png)
 
 | Field | Example | Notes |
 |-|-|-|
 | **System name** | `Northgate Risk` | How the system shows in the **System** box. |
-| **Code** | `northgate_risk` | Filled in from the name. Letters, digits and `_`. It becomes the name of the system's code (its identity), its id `custom.northgate_risk` and its script `integration\custom\northgate_risk`, and cannot be changed later. |
+| **Code** | `northgate_risk` | Filled in from the name. Letters, digits and `_`. It becomes the name of the system's code (its identity), its id `INTEGRATION.NORTHGATE_RISK` and its script `integration\custom\northgate_risk`, and cannot be changed later. |
 | **Description** | `The Northgate risk engine, which revalues the books each morning` | |
+| **Codes** | **As named below** | The identities you choose on the **System setup** tab. Or the same codes as another custom system. |
 | **Start the ODSL from** | **Send each item as JSON to a REST API** | Or **Blank: the three hooks to fill in**. |
 
 Select **Create the system**. The screen opens on its **System setup** tab.
@@ -119,7 +120,7 @@ function integrationEnd(ctx, results)
 	integrationEnd = ""
 end
 
-res = integrationRun(input, "custom.northgate_risk")
+res = integrationRun(input, "INTEGRATION.NORTHGATE_RISK")
 if res.ok == false
 	fail res.message
 end
@@ -202,27 +203,21 @@ A group that names a transformation the system does not list cannot run: the run
 
 ## Copying a system
 
-**Copy to a new system**, on a plug-in's **Plug-in** tab or a custom system's **System setup** tab, makes a new custom system with the same codes, group settings, data properties and secrets. Use it to send the same way to another destination, such as a second queue from a generic queue plug-in, or to split one system, such as Molecule power and Molecule gas, each with its own groups and daily report. No groups are copied.
+**Copy to a new system**, on any system's **System setup** tab, makes a new system with the same settings, codes and secrets, and a name, report and groups of its own. Use it to send the same way to another destination, such as a second blob container or queue, or to split one system, such as Molecule power and Molecule gas. No groups are copied.
 
-![Copying Molecule to a new system, Molecule power, using Molecule's ODSL and the same secrets](/img/extensions/integration/copy-system.png)
+![Copying Molecule to a new system, Molecule power, on the Molecule plug-in with the same codes and secrets](/img/extensions/integration/copy-system.png)
 
 | Choice | What it does |
 |-|-|
-| **System name**, **Code**, **Description** | As for a new blank system. The copy's id is `custom.<code>`, its script `integration\custom\<code>` and its report `INTEGRATION_<CODE>`. The description starts as `<name>: a copy of <system>`; change it to say what the copy is for. |
-| **Use the plug-in's ODSL** | For a copy of a plug-in. The copy's script imports the plug-in's ODSL, so it gets the plug-in's updates. The plug-in cannot be uninstalled while a copy uses it. |
-| **Copy the ODSL into the new system** | The plug-in's ODSL is copied into the new system's script, pointed at the new system, ready for you to change. It no longer follows the plug-in. A copy of a custom system always gets its own copy of the ODSL. |
+| **System name**, **Code**, **Description** | As for a new system. The copy's id is `INTEGRATION.<CODE>` and its report `INTEGRATION_<CODE>`. The description starts as `<name>: a copy of <system>`; change it to say what the copy is for. |
+| **With the plug-in** | For a system on a plug-in, and the default. The copy is another system on the same plug-in, so it gets the plug-in's updates. It has no ODSL of its own. |
+| **Copy the ODSL into a Custom ODSL system** | The plug-in's ODSL is copied into the new system's script `integration\custom\<code>`, pointed at the new system, ready for you to change, with the plug-in's codes, group settings, data properties, transformations and secrets as its own. It no longer gets the plug-in's updates. A copy of a custom system is always one. |
+| **Codes** | The same codes as the system copied (the default), shared, its own, or the same as another system on the plug-in. See [The codes a system sends with](/docs/extensions/integration/how-it-works#the-codes-a-system-sends-with). |
 | **Use the same secrets** | The copy reads the same secret records: the same account or connection. |
 | **New secrets for the copy** | The copy reads records named after its code, such as `molecule_power_user`. Set their values on its **System setup** tab. |
 | **Daily report** | Start with an empty matrix, with the same matrix properties, or with the same matrix and expected counts. |
 
-The copy has its own name everywhere: on the screens, on the platform's **Extensions** screen and in its script, whose header names the copy and the system it was copied from, such as `Molecule gas (custom.molecule_gas): a copy of Molecule (odsl.molecule)`. Renaming a system on its **System setup** tab renames it in the script header too.
-
-The copy opens on its **System setup** tab. A copy that uses a plug-in's ODSL says so above its script, with two buttons:
-
-| Button | What it does |
-|-|-|
-| **Refresh the link** | Rewrites the script's imports from the plug-in's ODSL as it is now. Use it when an update of the plug-in starts importing another library. |
-| **Make a copy of the ODSL to change it** | After a second click, replaces the script with a copy of the plug-in's ODSL. The system then no longer follows the plug-in. |
+The copy has its own name everywhere: on the screens and, for a Custom ODSL copy, in its script, whose header names the copy and the system it was copied from, such as `Molecule gas (INTEGRATION.MOLECULE_GAS): a copy of Molecule (INTEGRATION.MOLECULE)`. Renaming a custom system on its **System setup** tab renames it in the script header too. The copy opens on its **System setup** tab.
 
 ---
 
@@ -234,7 +229,7 @@ The copy opens on its **System setup** tab. A copy that uses a plug-in's ODSL sa
 
 | Deleted | Kept |
 |-|-|
-| The system, with its codes, settings, data properties and secret names. | The groups and their curves and timeseries, ready to attach to another system. |
+| The system object, with its codes, settings, data properties and secret names. A plug-in stays installed for its other systems; uninstall it on the Extensions screen. | The groups and their curves and timeseries, ready to attach to another system. |
 | The system's settings on each group that sends to it, so the groups stop sending. | The stored reports and their matrix. |
 | The processes of its groups (their schedules and corrections schedules), its confirmations process and its report's cutoff. | The system's codes and data properties on the items. To clear them, remove each group first with **Remove** on the **Groups** tab (see [Removing a group from a system](/docs/extensions/integration/how-it-works#removing-a-group-from-a-system)). |
 | The scheduled emails of its report. | The cutoff and scheduled emails of a report that another system's groups also use. |
@@ -243,11 +238,11 @@ When groups send to the system, tick **Stop the group sending** (**Stop all 3 gr
 
 | Choice | What it does |
 |-|-|
-| **Also delete its ODSL** | Deletes the script `integration\custom\<code>`. Leave it to keep the code, for example to create the system again with the same code. |
+| **Also delete its ODSL** | For a custom system: deletes the script `integration\custom\<code>`. Leave it to keep the code, for example to create the system again with the same code. |
 | **Also delete its secrets** | Deletes the secret records the system and its groups read that no other system or group reads. Shared secrets are always kept. |
 
 :::note
-A custom system depends on the Integration extension, so the Integration extension cannot be uninstalled while a custom system exists.
+A custom system made before 2026-11-07 is an extension `custom.<code>`, which depends on the Integration extension, so the Integration extension cannot be uninstalled while one exists. The [upgrade](/docs/extensions/integration/how-it-works#systems-set-up-before-2026-11-07) turns each into a system object and removes its extension record. Its script keeps working: the engine still accepts `integrationRun(input, "custom.<code>")`.
 :::
 
 ---

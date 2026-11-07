@@ -28,7 +28,7 @@ Throughout these pages we follow Northgate Energy, a fictional gas and power tra
 
 | Idea | What it means |
 |-|-|
-| **System** | A downstream system the data goes to. It comes as a **plug-in** (an extension made for that system, such as Molecule) or as a **custom system** you set up on this screen, with your own ODSL. |
+| **System** | One destination the data goes to, with a name, a code, its secrets and the codes its data is sent with. A system sends with a **plug-in** (an extension made for a kind of destination, such as Molecule or Azure Blob Storage), so many systems can use one plug-in, such as a blob container per desk. A **Custom ODSL** system sends with ODSL you write instead. |
 | **Group** | A group of curves and timeseries. You attach a group to a system; the group holds that system's settings for it. A group sends to one system. |
 | **Identities** | The codes the downstream system knows each curve or timeseries by, such as the Molecule product `M.TTF.F`. They are kept on the data item. |
 | **Data properties** | Settings kept on each curve or timeseries, such as the timezone of its quarter hours, and the values the report counts by, such as `location` and `category`. |
@@ -44,7 +44,7 @@ Throughout these pages we follow Northgate Energy, a fictional gas and power tra
 
 | Screen | Where | What it does |
 |-|-|-|
-| **Integrations** | **Operations** menu | Opens on a home page with your systems, how each one is doing, and the plug-ins you can install. Choose a system to manage the groups that send to it, their codes, settings and schedules, its secrets and its daily report. Create custom systems. |
+| **Integrations** | **Operations** menu | Opens on a home page with your systems, how each one is doing, and the plug-ins you can install. Choose a system to manage the groups that send to it, their codes, settings and schedules, its secrets and its daily report. Create systems on the installed plug-ins, and Custom ODSL systems. |
 | **Integration** app | **Groups**, then a group, then **Apps** | The same screen for the selected group. A group that sends nowhere yet can be attached to a system. |
 | Integration reports | **Reports**, category **Integration** | One report `INTEGRATION_<KEY>` per system, stored for each date sent. |
 | [Insights](/docs/extensions/integration/insights) | **Integrations**, **Insights** tab | Reports across every system over a period: delivery day by day, the items that keep failing, send times, corrections and the codes of each system. |
@@ -56,7 +56,7 @@ Throughout these pages we follow Northgate Energy, a fictional gas and power tra
 - [How integrations work](/docs/extensions/integration/how-it-works): systems, groups, codes and settings, what happens in a run, and how each item is judged.
 - [Getting started with a plug-in](/docs/extensions/integration/getting-started): install Molecule, set its secrets, attach a group, give its curves their codes and schedule it.
 - [The daily report](/docs/extensions/integration/report): the matrix of sent against expected, setting the expectations, and the stored reports.
-- [Custom systems](/docs/extensions/integration/custom-systems): send data to a system that has no plug-in, with your own codes, settings, secrets and ODSL.
+- [Custom systems](/docs/extensions/integration/custom-systems): send data to a system that has no plug-in, with your own codes, settings, secrets and ODSL, and copy or delete a system.
 - [Using Fusion AI](/docs/extensions/integration/fusion-ai): describe a system and let Fusion AI ask what it needs and write the ODSL.
 - [Plug-ins](/docs/extensions/integration/plugins): the systems with a ready-made plug-in, starting with [Molecule](/docs/extensions/integration/plugins/molecule): what Molecule needs, how curves and timeseries become Molecule marks.
 - [The validation gate](/docs/extensions/integration/validation-gate): send only data that has passed validation.

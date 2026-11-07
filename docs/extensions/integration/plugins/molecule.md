@@ -18,9 +18,9 @@ The Molecule ETRM Integration extension (`odsl.molecule`) is a plug-in for the M
 
 ## What it needs
 
-Once installed, the plug-in's codes, settings and secrets are listed on the **Plug-in** tab of the Integrations screen when **Molecule** is chosen under **System**.
+Once installed, add a system that sends with it: select **New system** and choose **Molecule** under **Sends with**. The plug-in's codes, settings and secrets are listed on the system's **System setup** tab. Each system on the plug-in has its own secrets, groups and daily report, and its own codes when you choose them (see [The codes a system sends with](/docs/extensions/integration/how-it-works#the-codes-a-system-sends-with)).
 
-![The Plug-in tab for Molecule with its identities, group settings, data properties and secrets](/img/extensions/integration/plugin.png)
+![The System setup tab of a system on Molecule with its identities, group settings, data properties and secrets](/img/extensions/integration/plugin.png)
 
 | Kind | Name | What it is |
 |-|-|-|
@@ -44,7 +44,7 @@ Once installed, the plug-in's codes, settings and secrets are listed on the **Pl
 
 The timezone used is the item's `molecule_timezone`, else the group's **Timezone**, else the timezone of the data itself, else UTC. Northgate gives its German capture prices `Europe/Berlin` and its Dutch ones `Europe/Amsterdam`.
 
-The plug-in signs in to Molecule with the user and the production API key, or the test API key for the test environment. Set their values in the **Secrets** part of the **Plug-in** tab (see [Getting started](/docs/extensions/integration/getting-started#2-set-the-secrets)). A group can use another Molecule account by naming its own secret records on its **Settings** tab. A run that has to send stops with, for example, `Set the secret molecule_production (Molecule production API key) on the Plug-in tab of the Integrations screen` when one it needs is not set; a dry run does not need them.
+The plug-in signs in to Molecule with the user and the production API key, or the test API key for the test environment. Set their values in the **Secrets** part of the system's **System setup** tab (see [Getting started](/docs/extensions/integration/getting-started#2-set-the-secrets)). A group can use another Molecule account by naming its own secret records on its **Settings** tab. A run that has to send stops with, for example, `Set the secret molecule_production (Molecule production API key) on the System setup tab of the Integrations screen` when one it needs is not set; a dry run does not need them.
 
 The Molecule plug-in sends curves and timeseries. [Options](/docs/extensions/integration/plugins/generic-content#options-and-traded-options) in a group set up for Molecule are not sent: they fail with `Molecule does not take options: it takes curves and timeseries`.
 
@@ -120,6 +120,19 @@ Molecule takes at most 1,000 marks in one call, so a month of quarter hours goes
 :::note
 The Molecule curve export groups used before this plug-in (the scripts `molecule-export-curves` and `molecule-export-timeseries`) keep working alongside it. A curve can be in an export group and in an integration group, but then it is sent twice.
 :::
+
+---
+
+## More than one Molecule system
+
+Each system on the Molecule plug-in has its own secrets, groups and daily report. Add one with **New system**, choosing **Molecule** under **Sends with**, or with **Copy to a new system** on a system's **System setup** tab:
+
+| To | Codes | Secrets |
+|-|-|-|
+| Split one Molecule into two reports, such as Molecule power and Molecule gas | **Shared**: a curve has one Molecule product | The same secrets |
+| Send to a second Molecule account or tenant | **Own codes** when the second tenant has other products, else **Shared** | New secrets for the system, such as `molecule_uk_user` |
+
+The first system on the plug-in, with the code `molecule`, keeps the secret records listed above.
 
 ---
 

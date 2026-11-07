@@ -8,7 +8,7 @@ tags: [extension, composer, templates, library]
 
 # Library templates
 
-The Composer **Library** has 50 OpenDataDSL templates, in twelve categories: Curves, Power, Gas, Oil, Carbon, Coal, Pricing, Risk, FX, Metals, Agriculture and Timeseries. Open one in the Library tab to preview it with its default inputs, use it, or copy it to change it. Featured templates are marked (featured).
+The Composer **Library** has 58 OpenDataDSL templates, in thirteen categories: Curves, Power, Gas, Oil, Carbon, Coal, Pricing, Risk, FX, Metals, Agriculture, Options and Timeseries. Open one in the Library tab to preview it with its default inputs, use it, or copy it to change it. Featured templates are marked (featured).
 
 Inputs such as plant efficiencies, emission factors and densities come with typical defaults that you can change when you use the template.
 
@@ -126,6 +126,23 @@ Inputs such as plant efficiencies, emission factors and densities come with typi
 | Template | What it shows | Worksheet | Inputs |
 |-|-|-|-|
 | **Soybean crush spread**<br/>`#CT_SOYBEAN_CRUSH` | The board crush margin by tenor: the value of the soybean meal and oil from a bushel of soybeans less the cost of the beans, in dollars per bushel. | curve | Soybean curve, Soybean meal curve, Soybean oil curve, Soybean price divisor |
+
+---
+
+## Options
+
+These read options data (an EventOptions, such as `ICE.NDEX.EFO:OPTIONS`), on curve, options and timeseries worksheets; see [Options](/docs/extensions/composer/workspace#options). Choose the options with **Find** when you use the template.
+
+| Template | What it shows | Worksheet | Inputs |
+|-|-|-|-|
+| **At the money volatility term structure**<br/>`#CT_ATM_VOLATILITY_TERM_STRUCTURE` | The futures curve with the at the money strike and implied volatility of each tenor's option chain. | curve | Options, Futures curve |
+| **25 delta risk reversal and butterfly**<br/>`#CT_RISK_REVERSAL_BUTTERFLY` | For each tenor, the implied volatility of the 25 delta call and put and at the money, with the risk reversal (call less put) and the butterfly (their average less at the money). | curve | Options, Delta |
+| **At the money straddle by tenor**<br/>`#CT_ATM_STRADDLE` | The price of the at the money call and put of each tenor and the straddle (call plus put), the market's expected move. | curve | Options |
+| **Volatility smile**<br/>`#CT_VOLATILITY_SMILE` | The implied volatility of the calls and puts of one tenor, strike by strike. | options | Options, Tenor |
+| **Smile of two tenors**<br/>`#CT_SMILE_COMPARISON` | The call implied volatility of two tenors side by side, strike by strike, with the difference between them. | options | Options, First tenor, Second tenor |
+| **Option chain**<br/>`#CT_OPTION_CHAIN` | One tenor's option chain: the call and put settlement prices, their deltas, and the forward implied by put-call parity at each strike. | options | Options, Tenor |
+| **Open interest by strike**<br/>`#CT_OPEN_INTEREST_BY_STRIKE` | The open interest of the calls and puts of one tenor at each strike, with the put to call ratio. | options | Options, Tenor |
+| **Option price history**<br/>`#CT_OPTION_HISTORY` | One option over time: its settlement price and implied volatility on each day. | timeseries | Options, Tenor, Strike, Call or put, Range |
 
 ---
 
