@@ -68,6 +68,32 @@ The file has the columns `event`, `eventid`, `eventtime`, `eventstart`, `eventen
 
 ---
 
+## Deleting events
+
+When you are allowed to delete a list's events, the Events tab has a tick box at the start of each row and a **Delete selected** button. The platform decides: Event Data asks it what you may do with the list's events when the list opens, and shows neither when you may not delete them. Common events can normally only be read.
+
+| Control | What it does |
+|-|-|
+| The tick box on a row | Picks that event. Picked rows are shaded. |
+| The tick box in the header | Picks every row shown, or none. With the row filter on, only the rows it shows. |
+| **Delete N events** | Asks first, listing the events, then deletes each one with every earlier version of it. |
+
+Priya picks two broker quotes that were sent by mistake.
+
+![Two broker quotes picked to be deleted](/img/extensions/event-data/events-delete.png)
+
+![Confirming the delete](/img/extensions/event-data/delete-confirm.png)
+
+The events are deleted a few at a time, with a progress bar and a **Stop** button. The platform checks your delete rights on each event, so an event you may not delete is left and reported with the platform's reason, while the others are deleted. The page is then read again.
+
+:::caution
+A delete cannot be undone. Event curves, event timeseries and event options built from the list leave out the deleted events from then on; a build stored earlier keeps them until it is built again.
+:::
+
+The picked events are forgotten when you change page or apply filters: delete one page at a time.
+
+---
+
 ## Charting events
 
 The **Chart** tab draws one number field of the events over time.

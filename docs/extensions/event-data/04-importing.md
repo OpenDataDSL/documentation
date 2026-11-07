@@ -109,7 +109,7 @@ An event saved with the same id as one already in the list replaces it. So when 
 | A column with a unique id | One event per id, updated when the file is imported again. |
 
 :::caution
-Events are not removed by an import. To take readings out of a list, delete the events on the platform.
+Events are not removed by an import. To take readings out of a list, [delete them on the Events tab](/docs/extensions/event-data/events#deleting-events).
 :::
 
 ---

@@ -72,6 +72,7 @@ A value used in a header cannot contain `,`, `;` or `&`: the headers option is s
 | **Separator** | Comma, semicolon, tab, pipe or spaces. |
 | **Header line** | The line with the column names; `0` when there is none. |
 | **Lines to skip after the header** | Lines between the header and the first row. |
+| **Request headers**, **Request body (POST)**, **Body type** | Optional, as for a JSON API. |
 
 Header names keep only their letters and digits (`Trade Date` is `TradeDate`). Values that are plain numbers with a point are read as numbers; others, such as `31,25`, stay text until the mapping converts them.
 
@@ -83,6 +84,7 @@ Header names keep only their letters and digits (`Trade Date` is `TradeDate`). V
 |-|-|
 | **Records path** | Where the list of records is, with dots, e.g. `data.readings`. Empty when the document is the list. |
 | **Request headers** | Optional, as `Name&Value;Name2&Value2`, e.g. `Accept&application/json`. |
+| **Request body (POST)**, **Body type** | Optional: see [Sending a request body](#sending-a-request-body). |
 
 Each record's fields are columns; fields of objects inside it are paths such as `reading.mw`.
 
@@ -98,6 +100,35 @@ Attributes are columns; child elements are paths. The text of an element is its 
 
 ---
 
+## Sending a request body
+
+Some data feeds only answer a POST request with a body, such as a list of the codes you want. CSV, JSON and web page sources can send one: leave **Request body (POST)** empty to read the URL as a web browser does (a GET), or fill it in to send a POST.
+
+![A JSON source that sends a POST with form fields](/img/extensions/etl/post-body.png)
+
+| Body type | Use for | Content-Type sent |
+|-|-|-|
+| **Form fields** | `name=value&name2=value2`, as a web form sends | `application/x-www-form-urlencoded` |
+| **JSON** | A JSON document, such as `{"codes": ["XAUUSD", "XAGUSD"]}` | `application/json` |
+| **Plain text** | Anything else | `text/plain` |
+
+A `Content-Type` in **Request headers** is used instead. The body can use the dates (`{date:yyyy-MM-dd}`, `{previous:yyyyMMdd}`), variables and secrets, as the URL does; in form fields their values are URL-encoded. With sets of variables, one request is sent for each set. Backslashes in the body are taken out by the platform.
+
+### Example: prices a page loads with its scripts
+
+A page of live metal prices fills its tables with a script, so the tables the platform reads are empty. The browser's developer tools (the **Network** tab) show the script calling a data feed: a POST to `https://www.metalsdaily.com/__dta/pd.ashx` with the form field `com=XAUUSD|XAGUSD`, which answers `{"p": [{"a": "XAUUSD", "b": "4068.35", ...}]}`. Read it as a **JSON API**:
+
+| Setting | Value |
+|-|-|
+| **URL** | `https://www.metalsdaily.com/__dta/pd.ashx` |
+| **Records path** | `p` |
+| **Request body (POST)** | `com=XAUUSD\|XAGUSD\|XPTUSD\|XPDUSD` |
+| **Body type** | **Form fields** |
+
+Each code is a row, with the fields `a` (the code), `b` (bid), `c` (ask) and so on. A data feed that a page uses for itself is not a published API: it can change without notice, and the site's terms may limit how its data can be used.
+
+---
+
 ## Table on a web page
 
 For prices published on a web page as an HTML table.
@@ -106,7 +137,8 @@ For prices published on a web page as an HTML table.
 |-|-|
 | **Table** | The table, as a CSS selector such as `div#main > table:nth-of-type(1)`. Select **Show the page and choose the table** to fill it in. |
 | **Header row** | The row of the table with the column names, counting rows of the head, body and foot; `0` when there is none. The data starts on the next row. |
-| **Request headers** | Optional, as for CSV. |
+| **Request headers** | Optional, as for a JSON API. |
+| **Request body (POST)**, **Body type** | Optional: see [Sending a request body](#sending-a-request-body). |
 
 **Show the page and choose the table** opens the page as the platform reads it, without its scripts. Every table is outlined; point at one and click it, or choose it from the list on the right, which says how many rows and columns each has. The selected table's first rows are shown under its selector. **Use this table** fills in the selector.
 
@@ -117,7 +149,7 @@ For prices published on a web page as an HTML table.
 | Good to know | |
 |-|-|
 | Cells | The text of each cell: header cells (`th`) first, then data cells (`td`), for each row. Empty cells give no value. Dots in header names become spaces, and repeated names get a number. |
-| Tables built by scripts | Pages that fill their tables with JavaScript after they load have empty tables (or none) in the page the platform reads. Look for the JSON API the page calls, or use custom ODSL. |
+| Tables built by scripts | Pages that fill their tables with JavaScript after they load have empty tables (or none) in the page the platform reads. Look for the data feed the page calls and read it as a JSON API (often with a [request body](#sending-a-request-body)), or use custom ODSL. |
 | Pages that change | The selector follows the page's structure. If the page is rearranged, a run fails with **No table rows found** and you choose the table again. |
 | Secrets in the URL | The page cannot be shown when its URL needs a secret: type the selector yourself. |
 

@@ -93,6 +93,8 @@ The list is created with the first events when it does not exist. A dataset id i
 | Definitions of a list | `GET data/v1/private` and `public` with `_filter` on the type and `event` |
 | Save a definition or import events | `POST object/v1/private` with the record id and the property |
 | Delete a definition | `DELETE data/v1/private/ID/*`, then the property is removed from the record |
+| What you may do with a list's events | `GET policy/v1?_function=rights&service=event&key=LIST&source=SOURCE` |
+| Delete an event | `DELETE event/v1/SOURCE/OBJ:LIST:EVENTID/*` (every version) |
 | Built curve or options | `GET data/v1/private/ID` (ondates), then `ID:ONDATE` |
 | Built timeseries | `GET data/v1/private/ID?_range=last(100)` |
 | Tenor history | `GET data/v1/private/ID:TENOR?_range=last(250)` |
@@ -123,6 +125,7 @@ The extension adds three tasks to the [Home page](/docs/extensions/home/overview
 | Use the screens | The feature policy `extension.odsl.event_data`. |
 | See events | Read access to the events; common events only for the datasets your company is licensed for. |
 | Import events and save definitions | Permission to update the master data record. |
+| Delete events | The delete action on the event service in a security policy that covers the events. Common events can normally only be read. |
 
 ---
 
@@ -137,3 +140,5 @@ The extension adds three tasks to the [Home page](/docs/extensions/home/overview
 | **The filter must be a JSON object** | Write the filter as JSON with quoted names, for example `{"site": "Nordsee West"}`. |
 | A save or import fails | The message after **Request failed** is the platform's reason, for example a missing permission on the record. |
 | Imported rows replace each other | The event ids are the same: tick more columns under **Event id**. |
+| No tick boxes on the Events tab | You may not delete this list's events, or they are common events. |
+| Some events were not deleted | Your delete rights do not cover them; the message gives the platform's reason. |
