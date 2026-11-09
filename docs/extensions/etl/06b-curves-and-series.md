@@ -44,6 +44,10 @@ The step is optional, does not change the loader and can be used before or after
 
 The list under the form shows every event timeseries, curve and options definition on the record that uses the loader's event list. View, chart, change or delete them in **Information**, **Event Data** (the [Event Data extension](/docs/extensions/event-data/overview)).
 
+### Loaders with a record for each value of a field
+
+For a loader that saves to [a record for each value of a field](/docs/extensions/etl/building#a-record-for-each-value-of-a-field), **Make them on** chooses where: **Each record from the sample** makes the same definitions on every record the sample makes, or choose one record. Only records that are there already are offered, so run the loader once first; the step names the ones that are not there yet.
+
 :::note
 The values in **One for each value of** come from the sample. A hub that first appears in later files needs its own series: come back and create it, with **Only events where**.
 :::

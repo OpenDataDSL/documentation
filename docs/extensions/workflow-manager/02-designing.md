@@ -38,8 +38,11 @@ To add an activity, **drag it onto the canvas**. Drop it on an activity that has
 | See the whole workflow | Click the fit button |
 | Lay it out again | Click **Tidy up**: the activities are placed top to bottom in the order they run, one row per step |
 | Undo or redo | Ctrl+Z and Ctrl+Y, or the toolbar buttons |
+| Change how the diagram looks | Choose a theme in the toolbar: **Bold**, **Classic**, **Outline**, **High contrast** or **Dark** |
 
-The diagram runs from top to bottom: each activity has its input at the top and its exits side by side along the bottom. A connection that goes back up to an earlier activity (a loop) curves out to the side. An exit that is not connected is shown in amber. Every workflow starts at the **Start** at the top: drag from its port to the first activity.
+The diagram runs from top to bottom: each activity has its input at the top and its exits side by side along the bottom. A connection that goes back up to an earlier activity (a loop) curves out to the side. The theme only changes the colours of the diagram, for you: it is kept in your browser and does not change the workflow. **Bold** gives each kind of step a solid coloured head (actions blue, gateways amber, sub-workflows purple, success ends green, failed ends red), **Outline** keeps the colours on the borders and text, **High contrast** uses dark, thick lines for projectors and small screens, and **Dark** suits a dark portal (it is the starting theme when the portal is dark). The New workflow gallery draws its previews in the same theme.
+
+An exit that is not connected is shown in amber. Every workflow starts at the **Start** at the top: drag from its port to the first activity.
 
 Tom starts a new workflow `load_ice_endex` from a blank diagram. He clicks `wm_is_business_day`, `wm_check_dataset` and `wm_run_process` in the palette: the first is connected to the Start, and each of the others is added below the step before it, connected to its first open exit. He then drags the `holiday` exit of the first step to an empty part of the canvas and chooses **Success end**.
 

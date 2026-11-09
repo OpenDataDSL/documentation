@@ -1,0 +1,7 @@
+{
+  "label": "Group Manager",
+  "link": {
+    "type": "generated-index",
+    "description": "Manage every kind of group in one place: lists of data and master data, policy user groups and the curve build, quality, approval and export groups, with their members, what uses them, their history and health checks."
+  }
+}

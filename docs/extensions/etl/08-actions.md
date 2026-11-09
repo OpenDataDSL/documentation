@@ -44,12 +44,12 @@ Turns rows into events with the loader's mapping, conditions, event id and `_dsi
 
 ## etl_load
 
-Saves events to the event list `target.list` of the record `target.object`, 500 at a time.
+Saves events to the event list `target.list` of the record `target.object`, 500 at a time. With `target.mode` `split`, it saves them to a record for each value of the field `target.split.field` instead: it fills the record id template from each event, makes the records that are not there (with `target.split.type` and the fields), and saves each record's events.
 
 | | Name | Notes |
 |-|-|-|
 | In | `loader`, `events` | |
-| Out | `saved`, `list`, `message` | Events saved, the list as `RECORD:LIST`, why it failed. |
+| Out | `saved`, `list`, `records`, `created`, `missing`, `message` | Events saved; the list as `RECORD:LIST` (the record id template for a split); records the events went to; records made; events with no value of the split field (not saved); why it failed. |
 | Exits | `ok`, `failed` | |
 
 ---
@@ -61,7 +61,7 @@ Adds the run to the day's run report `ETL_<CODE>:<date>` and raises or closes th
 | | Name | Notes |
 |-|-|-|
 | In | `loader`, `status` | `status`: success, empty or failed. |
-| In | `started`, `url`, `extracted`, `events`, `skipped`, `problemCount`, `problems`, `saved`, `stage`, `message`, `ondate` | All optional. |
+| In | `started`, `url`, `extracted`, `events`, `skipped`, `problemCount`, `problems`, `saved`, `records`, `created`, `stage`, `message`, `ondate` | All optional. `records` and `created` are passed for a loader with a record for each value of a field. |
 | Out | `report` | The id of the stored report. |
 | Exits | `ok`, `failed` | `failed` when the report could not be saved. |
 

@@ -65,12 +65,13 @@ The process input is `loader` (and `ondate` for a run for a date). The broker se
 | `filters` | `column`, `op` (notempty, empty, equals, notequals, contains, notcontains), `value`. |
 | `mapping` | `target`, `kind` (column, constant, template, ondate), `column`, `value`, `dataType` (text, number, integer, boolean, date, datetime), `format`, `decimal`, `scale`, `nulls`, `required`, `values`. |
 | `eventid`, `dsid` | Templates with column names in braces; the event id also takes `{eventtime}` (yyyyMMddHHmmss), `{date}` and `{row}`. |
+| `target` | `object` and `list` for one record. For a record for each value of a field: `mode` `split`, `list` and `split`: `field`, `id` (the record id template), `type`, `update` (`missing` or `always`), `fields` (`name` and `value`, a template of mapped fields) and `markers` (the field names the templates use). |
 
 ---
 
 ## Run report fields
 
-Each stored report has `loader`, `name`, `target`, `last` (the latest run) and `runs`. A run has `key` (its time, HHmmss), `status`, `started`, `finished`, `ondate`, `url`, `extracted`, `events`, `saved`, `skipped`, `problemCount`, `problems`, `stage` (extract, transform or load) and `message`.
+Each stored report has `loader`, `name`, `target`, `last` (the latest run) and `runs`. A run has `key` (its time, HHmmss), `status`, `started`, `finished`, `ondate`, `url`, `extracted`, `events`, `saved`, `skipped`, `problemCount`, `problems`, `stage` (extract, transform or load) and `message`; for a split loader also `records` and `created`.
 
 ---
 

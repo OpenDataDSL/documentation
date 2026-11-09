@@ -105,6 +105,24 @@ Priya keeps the suggested mapping, leaves out the `TOTAL` line with the conditio
 The event id is what makes a rerun safe. With the event time, hub, contract and broker in the id, loading the 5 November file again replaces those events instead of adding copies.
 :::
 
+### A record for each value of a field
+
+All the events of a loader can go to one record, or to a record for each value of one of the mapped fields: a record for each commodity, hub or site. Choose **A record for each value of a field**. The loader makes the records it needs on each run, with the type and fields you choose.
+
+![A record for each commodity on a page of metal prices: the record id template, the type MetalPrice, its fields and the four records the sample makes](/img/extensions/etl/split-records.png)
+
+| Setting | Example | Notes |
+|-|-|-|
+| **Split on** | `commodity` | A mapped field. Each value gets its own record, and an event with no value is not saved. |
+| **Record id** | `COOKSON.{commodity}` | Must contain the field split on. Other mapped fields can be used too. The id is made capitals, and anything but letters, digits, dots, `_` and `-` becomes `_`: `Gold (AU) AM` gives `COOKSON.GOLD_AU_AM`. |
+| **Type of the records** | `MetalPrice` | A master data type (not an event type). The list offers your private types and the public ones. |
+| **Records that are there already** | **Leave them as they are** | Or **Set their fields on every run**. A record made by the loader always gets the type and fields; an existing record keeps its type. |
+| **Fields of the records** | `name` = `Cookson {commodity}` | A fixed value (`Cookson Gold`), a mapped field in braces (`{commodity}`), or both. **Add the fields of the type** adds a row for each field of the type, filled in when a mapped field has the same name. |
+
+The values come from the first event of each record. Use text fields where you can: numbers are written without trailing zeros, and a date field as `yyyy-MM-dd`. **The records the sample makes** shows each record, how many sample events go to it, its fields, and whether it is **new** or **there already**.
+
+The run report shows how many records the events went to and how many were made. The event list is the same name on every record, for example `COOKSON.GOLD_AU_AM:METALS`.
+
 ---
 
 ## 6. Deploy and run
@@ -121,7 +139,7 @@ The 20 settlements are now `BrokerSettlement` events in `NGE.BROKERS:SETTLEMENTS
 
 ## 7. Curves and series
 
-Optional, and done once: make event timeseries, curves or options from the events, kept on `NGE.BROKERS`. See [Curves and series](/docs/extensions/etl/curves-and-series).
+Optional, and done once: make event timeseries, curves or options from the events, kept on `NGE.BROKERS`. With a record for each value of a field, they are made on each record (or one you choose). See [Curves and series](/docs/extensions/etl/curves-and-series).
 
 ---
 
