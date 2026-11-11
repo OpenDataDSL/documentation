@@ -139,6 +139,16 @@ sequenceDiagram
     C->>L: its build automation builds it for 2026-10-08
 ```
 
+### Automations on a composition
+
+The automatic build above is one automation. To do something else whenever the composition is built, select **Automations** in the workspace toolbar. It opens the same Automations panel as the portal, for the saved composition (a composition is a report, so these are the report's automations):
+
+1. Use the tags and the filter to find what you want to happen, for example **Email the report** or running a script.
+2. Select **Configure...**, fill in its settings, such as who to email, and select **Save**. The sentence at the top fills in as you type.
+3. The automation is listed under **In use**. The colour down its side shows its state: green on and complete, amber a setting without a value, grey turned off. Select **Configure...** to change it, or the cross to delete it.
+
+The composition must be saved first: automations run on the saved composition, each time a build of it is stored (by **Build**, by the build automation, or by a schedule). Test runs and the run log are on the platform's Automations screen.
+
 ### Automations on composed curves and timeseries
 
 You can add automations to a composed curve like any other curve, for example to email the curve or send it to a queue whenever it changes. A composed curve changes whenever its composition is built, so its automations run each time a build is stored (by **Build**, by the build automation, or by a schedule), with the curve for that ondate.

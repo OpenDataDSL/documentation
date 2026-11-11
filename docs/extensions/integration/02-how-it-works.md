@@ -123,7 +123,7 @@ A group uses the system's secrets unless it names its own on its **Settings** ta
 
 ## What happens in a run
 
-Each group runs as a process on the platform, on the schedule you give it (or when you select **Run now**). A run:
+Each group runs as a process on the platform: on the schedule you give it, when one of its items is updated or passes validation (see [Sending items as they change](#sending-items-as-they-change)), or when you select **Run now**. A run:
 
 1. Reads the group and its system, and checks that the group is set up for the system and that the system sends with this plug-in or ODSL.
 2. Works out the date to send: the run date moved by the ondate offset, or the date you chose for **Run now**.
@@ -168,6 +168,47 @@ The group's process runs once and sends the dates one after the other, oldest fi
 A history export sends at most 400 dates. For longer periods, run several. It takes as long as the runs of all its dates together, so a long one on a busy system is best started outside the system's working hours.
 
 When a dataset corrects data that was already sent, a group with [corrections](/docs/extensions/integration/corrections) on sends the corrected items again for the dates the corrections change, by itself, without a history export.
+
+---
+
+## Sending items as they change
+
+A group can also send each curve or timeseries as it changes, as well as on its schedule or instead of one. On the group's **Schedule and runs** tab, under **Send items as they change**, choose how under **Send an item** and select **Send items this way**:
+
+| Send an item | When it is sent | Use it when |
+|-|-|-|
+| **When it is updated** | As soon as it is saved, validated or not. | The system should have the data as soon as it is there. |
+| **When it passes validation (or its failure is overridden)** | Once it has passed its [validation checks](/docs/extensions/validation/overview), or someone has overridden a failure. Each version is sent once: a curve when its ondate passes, a timeseries when new observations pass. Checking unchanged data again sends nothing. | Only checked data should reach the system. Items with no validation checks are never sent this way. |
+
+Northgate's trading desk wants the gas and power curves in Molecule as soon as they are built, not only at 08:00: the schedule still sends the whole group every weekday morning, and each curve built during the day goes straight away.
+
+![Send items as they change, switched on for Gas and power curves when they are updated: it runs as Priya Shah, with the automation When 'NGE_MOLECULE_CURVES' has an item updated, run 'INTEGRATION_NGE_MOLECULE_CURVES'](/img/extensions/integration/group-updates.png)
+
+The monthly capture prices go to Molecule's risk reports, so they are sent only once the analysts' checks have passed:
+
+![Send items as they change for Monthly capture prices, when they pass validation, with the automation When 'NGE_MOLECULE_CAPTURE' has an item validated, run 'INTEGRATION_NGE_MOLECULE_CAPTURE'](/img/extensions/integration/group-validated.png)
+
+Each time an item of the group is saved, or passes validation, the group's process runs for that item alone:
+
+| Item | What is sent |
+|-|-|
+| A curve | The curve for the ondate it was saved for. A curve rebuilt for an earlier date sends that date again. |
+| A timeseries | The timeseries for the group's ondate: the run date moved by the ondate offset, as on a scheduled run. |
+
+The result goes into that day's report and replaces what it said for the item, keeping the group's other items. The group's alert, when it raises alerts, is judged on all the group's items for the day, so sending one item does not close an alert about another. The run shows in the group's runs with the trigger `automation` and a message such as `Update of NGE.GAS.TTF:MID: Molecule: 1 of 1 items sent for 2026-11-04`, or `NGE.SOLAR.DE:CAPTURE passed validation: ...`.
+
+![The groups of Molecule: Gas and power curves runs weekdays at 08:00 UK time and on updates, Monthly capture prices on the 25th and when validated](/img/extensions/integration/groups-on-updates.png)
+
+To change how a group sends, choose the other way under **Send an item** and select **Save the change**.
+
+Things to know:
+
+- **It is a platform automation.** Switching it on saves the automation `When '<group id>' has an item updated, run [process]` (or `has an item validated`), which also shows on the platform's Automations screen. The platform keeps it in step with the group: an item added to the group is watched from then on, and one removed is not. If the screen says **The automation does not watch the group's items as they are now**, select **Update the automation**. **Switch off** pauses it, and **Remove the automation** deletes it. Removing the group from its system, or deleting the system, deletes it too.
+- **It runs as you.** An automation runs with the access of its owner: whoever switched it on last.
+- **The process is needed.** It runs the group's process `INTEGRATION_<GROUP>`. If the group has none yet, switching it on creates one with no schedule. Choose **Not scheduled** under **Runs** to send on updates only.
+- **One run per item.** Saving or validating many items at once, such as a whole curve build, starts a run for each. For a group whose items are all rebuilt together each day, the schedule alone is usually better.
+- **Dynamic groups** have no list of items for the platform to watch, so they cannot send on updates.
+- **The validation gate.** When the group only sends validated data (the [validation gate](/docs/extensions/integration/validation-gate)), send items when they pass validation. Sent when they are updated, an item saved before it is validated is held back by the run its update starts, and only a later run sends it. The other way round, sending when items pass validation does not stop a scheduled run sending data that is not validated: turn the gate on for that.
 
 ---
 

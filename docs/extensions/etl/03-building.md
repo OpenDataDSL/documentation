@@ -41,6 +41,12 @@ An API that needs a key or values in the URL, such as a latitude and longitude, 
 
 Enter a **Date to load** (Priya uses 05/11/2026, a day with a file) and select **Extract a sample**. The platform reads the source as a run would and keeps the first 50 rows. The settings of the other kinds are in [Sources](/docs/extensions/etl/sources).
 
+### Extract all
+
+A source with a deep history may fill some columns only further down: a price published since 2020 next to a volume added in 2024, or records that gain a field later on. The first 50 rows then miss those columns, and you cannot map them. **Extract all** reads every row of the source, and every set of variables, and keeps the first 50 rows and then each later row that fills a column the rows before it left empty (up to 200 rows in all). So every column with a value anywhere in the source is in the sample, with an example value. The status shows how many rows were read, for example *Read all 4,812 rows: 9 columns. The sample keeps the first 50 rows and 3 later rows that fill other columns.*
+
+It takes as long as a run's extract, so use it when a column you expect is missing from the sample, or once the loader reads a large file. A loader's runs always read every row, whichever you used.
+
 :::note
 The column names are the ones the platform gives: the CSV reader keeps only the letters and digits of a header, so `Trade Date` becomes `TradeDate` and `Volume (MWh)` becomes `VolumeMWh`.
 :::
@@ -61,6 +67,36 @@ The **Columns** table says what each column looks like: a number (and whether it
 `05/11/2026` could be the 5th of November or the 11th of May. The profile says **day or month first? check** when no value settles it, and takes day first. Check the format on the Map step.
 :::
 
+### Columns to use
+
+A spreadsheet often has columns you do not want: a change on the previous month next to each price, notes, or columns for something else. **Columns to use** at the top of the Examine step lists them, with the column letter of each for an Excel sheet: select **Choose**, then untick the ones to leave out. Type in the box to show only the columns whose name contains a text, then **Leave out the ... shown** or **Use the ... shown**.
+
+For the MAFF timber prices, type ` 2` to show the change columns (the second column of each product is numbered 2) and leave them all out. Then tick column **C** again: it holds the dates, and its heading is merged with column B, so it is numbered 2 as well.
+
+![Columns to use: the date column C used, and the change column E of the product left out, 2 of 3 columns used](/img/extensions/etl/columns-to-use.png)
+
+The columns left out are taken out of the sample and the mapping, and with **Each column is a series** they are not series. A run leaves them out in the same way.
+
+### Each column is a series
+
+Many sources have the date in the first column and then one column for each product, so a row holds one date and many prices. **The shape of the data** at the top of the step turns them into one row for each product and date:
+
+| Choice | What it does |
+|-|-|
+| **Each row is an event** | The default: the columns are the fields of one event. |
+| **Each column is a series** | Each column you do not keep is a series. Every row gives one row for each series, with the columns you keep, `series` (the column's name), `value` (its cell) and, with the next option, `description`. |
+| **Columns to keep on every event** | Usually the date. It starts with the first column. |
+| **The first row describes each column** | For a source with a row of product ids as the header and a row of descriptions under it. The descriptions become the `description` column, and that row is not loaded. It is ticked when the first row is text and the rows below have numbers. |
+| **Leave out empty cells** | Ticked: a series with no value for a date gives no event, as for products with a shorter history. |
+
+For example, the EIA workbook of U.S. stocks has a title row, a row with **Sourcekey** and the series ids (`MTTSTUS1`, `MCRSTUS1`, ...), a row with **Date** and each series' description, then a row for each month. Set the **Header row** to `2` on the Extract step, so the ids are the column names, then choose **Each column is a series**:
+
+![The shape of the data: keep Sourcekey (the dates), the first row describes each column, empty cells left out, and 4 series](/img/extensions/etl/shape-columns.png)
+
+On the Map step, map **Sourcekey** to the event time, and `series`, `description` and `value` to fields. On the Destination step, choose **A record for each value of a field**: it splits on the series field and names each record from its description, such as `EIA.STOCKS.MCRSTUS1` named *U.S. Ending Stocks of Crude Oil (Thousand Barrels)*. See [A record for each value of a field](#a-record-for-each-value-of-a-field).
+
+The sample shows up to 2,000 of these rows; a run makes them all. Use **Extract all** when the first rows of the source are empty for most series.
+
 ---
 
 ## 3. Event type
@@ -74,6 +110,19 @@ The **Columns** table says what each column looks like: a number (and whether it
 ![Step 3: the new event type BrokerSettlement with a property for each column](/img/extensions/etl/event-type.png)
 
 Priya defines `BrokerSettlement` and describes the price properties. A new type is saved as a private event type when you select **Next**, and the columns are mapped to the properties they were made from.
+
+### When the sample changes after the type is saved
+
+A new sample can have columns the first one did not, for example after **Extract all** finds a column whose history starts later. Go back to the **Event type** step:
+
+![The saved type RigHistory, with a notice that the sample has two columns the type does not have, volume and region](/img/extensions/etl/type-new-columns.png)
+
+- **Add them to the type** adds a property for each new column, made the same way as the others.
+- **Change the type** opens the saved type for any other change: rename a property, change its type or description, remove one, or **Start again from the columns**.
+
+The type keeps its id and is saved again over itself when you select **Next**. On the Map step, the new properties are mapped from their columns, and everything you had already mapped stays as it is. **Suggest a mapping** starts the mapping again from the type, using the column each property was made from. Events already loaded keep the fields they have.
+
+With **Use an event type**, the step lists the columns that no property of the chosen type matches by name. Map them to a property with another name or as free fields on the Map step, or add properties to the type in the master data types.
 
 ---
 
@@ -96,7 +145,7 @@ Priya keeps the suggested mapping, leaves out the `TOTAL` line with the conditio
 | **Record** | `NGE.BROKERS` | Search your private master data records, or select **Create a new record**. |
 | **Event list** | `SETTLEMENTS` | In capitals. A new name makes a new list; an existing one adds to it. |
 | **Time zone of the times** | `UTC` | For dates and times in the source with no offset. |
-| **Event id template** | `{eventtime}_{Hub}_{Contract}_{Broker}` | Tick the columns that make a row unique. The preview shows the first ids and warns when two sample rows get the same id. |
+| **Event id template** | `{eventtime}_{Hub}_{Contract}_{Broker}` | Tick the columns that make a row unique, or the **Mapped fields** under them. A mapped field gives its value after its changes and value map, such as `{eventtime}_{product}` with the product names translated into English. A column and a field with the same name: the column is used. The preview shows the first ids and warns when two sample rows get the same id. |
 | **_dsid template** | `NGE.BROKER.{Hub}` | Optional: PROVIDER.FEED.PRODUCT, so the dataset monitoring tools can follow the events. |
 | **Raise an alert when a run fails** | ticked, **high** | The next run that works closes it. |
 | **Fail the run when any row cannot be loaded** | not ticked | When ticked, one problem row fails the whole run (and nothing is saved). |

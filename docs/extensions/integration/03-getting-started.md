@@ -12,6 +12,21 @@ This walk-through sets up Northgate Energy's morning curves for Molecule: the gr
 
 ---
 
+## The tour
+
+The first time you open **Integrations**, a short tour shows you round the home page: how your data flows, adding a system, your systems, the plug-ins you can install and building your own. The first time you open a system, a second tour shows its tabs: Overview, Groups, Report and System setup.
+
+![A step of the home page tour: Your systems is highlighted, with a note explaining the system cards and Skip the tour, Back and Next buttons](/img/extensions/integration/tour.png)
+
+- Select **Next**, or press the right arrow or Enter, to move on; **Back** or the left arrow goes back.
+- Select **Skip the tour**, or press Esc, to close it.
+- Each tour starts by itself once. To see it again, select **Tour** next to **Help** at the top of the page.
+- It does not start by itself when Integrations is opened on a particular system, for example from a Home page task.
+
+![A step of the system tour: the Groups tab is highlighted, with a note on attaching groups, their codes, settings and schedule, and sending items as they change](/img/extensions/integration/tour-system.png)
+
+---
+
 ## 1. Install the plug-in and add the system
 
 Open **Operations**, then **Integrations**. The screen opens on its home page: what the extension does, your systems, the plug-ins you can install and the ways to build your own. With no systems yet, it starts with how an integration is set up.
@@ -111,7 +126,7 @@ Here the GB power curve has no Molecule product yet, and its new code `M.GBB.F` 
 
 Open the **Schedule and runs** tab. Choose when the group runs under **Runs** and select **Save schedule** (or **Create the process** the first time).
 
-![The Schedule and runs tab, running weekdays at 08:00 UK time, with the last three runs](/img/extensions/integration/group-schedule.png)
+![The Schedule and runs tab, running weekdays at 08:00 UK time and sending items when they are updated, with the last three runs](/img/extensions/integration/group-schedule.png)
 
 | Runs | Cron |
 |-|-|
@@ -124,6 +139,8 @@ Open the **Schedule and runs** tab. Choose when the group runs under **Runs** an
 | The 25th of each month at 08:00 UK time | `0 8 25 * * * EU1` |
 
 **Custom cron** takes any platform cron expression (see [Cron expressions](/docs/kb/cron)). **Not scheduled** keeps the process for **Run now** only. Untick **Enabled** to pause the schedule.
+
+To also send each curve as soon as it is built, or as soon as it passes validation, use **Send items as they change**: see [Sending items as they change](/docs/extensions/integration/how-it-works#sending-items-as-they-change).
 
 To send now, select **Run now**. Leave the date empty to send the date the schedule would, or choose an ondate to send an earlier date again, for example once a late curve has arrived. **Refresh runs** updates the list of runs; each run's message lists what was not sent and why.
 

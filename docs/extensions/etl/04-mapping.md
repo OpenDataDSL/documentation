@@ -1,9 +1,9 @@
 ---
 title: Mapping columns to fields
-description: How the Map step turns columns into event fields, with data types, date formats, decimal commas, empty values, value maps, conditions and previews
+description: How the Map step turns columns into event fields, with data types, date formats, decimal commas, empty values, value maps, calculated fields, conditions and previews
 slug: /extensions/etl/mapping
 sidebar_position: 4
-tags: [extension, data loaders, etl, mapping, event type, date format, filters]
+tags: [extension, data loaders, etl, mapping, event type, date format, filters, calculated fields]
 ---
 
 # Mapping columns to fields
@@ -38,7 +38,7 @@ The gear opens a field's settings.
 | **Value from** | **A column**, **A fixed value** (the same for every event, such as `MWh`), **A template of columns** (columns in braces, such as `{Hub} {Contract}`, also `{date}` and `{row}`) or **The run date**. |
 | **Change the text** | Changes the values before they are saved, for example to take part of them or to drop text that is in the way. See [Changing the text](#changing-the-text). |
 | **Data type** | text, number, integer, boolean, date or datetime. |
-| **Date format** | For dates: a Java date pattern such as `dd/MM/yyyy` or `dd/MM/yyyy HH:mm`, or ISO for `2026-11-06` and `2026-11-06T17:30:00Z`. **Another pattern** takes any pattern. |
+| **Date format** | For dates: a Java date pattern such as `dd/MM/yyyy` or `dd/MM/yyyy HH:mm`, or ISO for `2026-11-06` and `2026-11-06T17:30:00Z`. **Japanese** reads Japanese dates (see [Japanese dates](#japanese-dates)). **Another pattern** takes any pattern. |
 | **Decimal separator** | For numbers: a point (`1,234.56`) or a comma (`1.234,56`). |
 | **Multiply by** | For numbers: for example `0.01` to turn pence into pounds. |
 | **Empty values** | Texts that mean no value, such as `n/a, -`. An empty value saves no field. |
@@ -78,6 +78,40 @@ The name column has no heading, so it is called **Column 2**. To load the date a
 :::note
 A text that looks like a number, such as `007`, is saved as a number. Numbers are saved with up to 6 decimals.
 :::
+
+### Japanese dates
+
+The date format **Japanese** reads the dates of Japanese government statistics:
+
+| Text | Date |
+|-|-|
+| 令和７年10月 (Reiwa 7, October) | 2025-10-01 |
+| 令和８年１月 | 2026-01-01 |
+| 平成31年4月, 令和元年5月 | 2019-04-01, 2019-05-01 |
+| 2026年1月15日 | 2026-01-15 |
+| 令和６年 (a year only) | 2024-01-01 |
+
+It knows the Reiwa (令和), Heisei (平成) and Showa (昭和) eras, 元 for the first year of an era, full-width digits such as `１０`, and full-width spaces. Tables of monthly figures often give the year only on the first month of each year, and the rest of the rows say just `11月`: those rows take the year of the row above, so `令和７年10月`, `11月`, `12月`, `令和８年１月`, `２月` become 2025-10-01, 2025-11-01, 2025-12-01, 2026-01-01 and 2026-02-01. A month with no year above it is a problem.
+
+---
+
+## Calculated fields
+
+A calculated field is worked out for each event from the fields mapped as numbers, with `+`, `-`, `*`, `/` and brackets. Select **Add a calculated field**, give it a name and an expression:
+
+| Field | Expression |
+|-|-|
+| `settle_gbp` | `settle * fx` |
+| `value_gbp` | `settle_gbp * volume` |
+
+![Two calculated fields: settle_gbp from settle and fx, and value_gbp from settle_gbp and volume, with their values on the first event](/img/extensions/etl/calc-fields.png)
+
+- An expression can use the fields mapped as numbers, and the calculated fields above it. Click a field under the table to add it to the expression.
+- Write a name with spaces in braces, such as `{settle price}`. Numbers can be written as `1000`, `0.5` or `1e-3`.
+- When a field it uses has no value, the calculated field is left out of that event. A value that is not a number, or dividing by zero, makes the row a problem.
+- The values show on the first event and in the preview. A run keeps 6 decimal places, so a run's values can differ from the preview's after the sixth decimal.
+
+[Spreadsheet uploads](/docs/extensions/etl/uploads) also have calculated fields, which can use the record's properties too.
 
 ---
 

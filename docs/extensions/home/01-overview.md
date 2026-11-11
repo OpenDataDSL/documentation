@@ -27,7 +27,10 @@ When something needs you, the page says so. A task with **open alerts** moves to
 | **Priority** | How high a task sits in its group. Tasks with open alerts always come first |
 | **Needs you now** | The tasks that have open alerts, the most urgent first: highest alert priority, then the most alerts |
 | **Alerts on a task** | A task can say which alerts belong to it, for example production issues are the root cause alerts raised by failed loads and timed out processes. Alerts can also name a task directly |
-| **Featured** | Most tasks show straight away. Others only show under **See all tasks**, or when you search for them |
+| **My tasks** | The tasks on your home page. You choose them, starting from the ones suggested for your role, and the choice follows you to any computer |
+| **All tasks** | Every task your team has, with **+** to add one to My tasks |
+| **Your own tasks** | Tasks you make yourself: what they open and which alerts they count. Only you see them |
+| **Featured** | Before you choose your tasks, most tasks show straight away; the others only under All tasks, or when you search for them |
 
 ---
 
@@ -58,5 +61,6 @@ Shared alerts about common and public data are counted only for the datasets you
 ## Next
 
 - [Using the Home page](/docs/extensions/home/using): the page, searching, and opening tasks
+- [Your own tasks](/docs/extensions/home/my-tasks): choose the tasks on your page from your role, and make your own
 - [Adding tasks](/docs/extensions/home/adding-tasks): add tiles from your own extensions, and link alerts to them
 - [Reference](/docs/extensions/home/reference): every field of a task tile, and the REST API

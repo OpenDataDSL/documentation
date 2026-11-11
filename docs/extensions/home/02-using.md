@@ -14,7 +14,9 @@ Open the Home page from **Information > Tasks**. Once the portal shows extension
 
 ## The page
 
-The page opens with the date and a greeting, the question **What do you want to do today?**, a box to describe what you want to do, and a row of buttons for the groups.
+The page opens with the date and a greeting, the question **What do you want to do today?**, a box to describe what you want to do, **My tasks** and **All tasks**, and a row of buttons for the groups.
+
+**My tasks** are the tasks you chose for your home page; until you choose, the tasks most people start with. **All tasks** are every task your team has. See [Your own tasks](/docs/extensions/home/my-tasks) to choose yours, add tasks to your list and make tasks of your own.
 
 Below them are the tasks, in their groups: **Check**, **Find**, **Build** and **Deliver**, then any groups your extensions add. Within a group the most important tasks come first.
 
@@ -44,13 +46,13 @@ The counts come from your open alerts, and the shared alerts about the common an
 
 ## Choosing a group
 
-The buttons under the search box show one group at a time. **All tasks** shows everything again. **Needs you now** shows only the tasks with open alerts, with the number of them on the button.
+The buttons under **My tasks** and **All tasks** show one group at a time. **All groups** shows them all again. **Needs you now** shows only the tasks with open alerts, with the number of them on the button.
 
 ---
 
 ## Searching for a task
 
-Type what you want to do in the box. The tasks are narrowed as you type: every word you type must appear in the task's name, its description, the group, or the extra words the task is known by. For example, **curve** finds **Create or update a curve**, and **cron** finds **Review automations** even though it is under **See all tasks**.
+Type what you want to do in the box. The search looks through every task, not only yours, so you can find a task and add it to your list with **+**. The tasks are narrowed as you type: every word you type must appear in the task's name, its description, the group, or the extra words the task is known by. For example, **curve** finds **Create or update a curve**, and **cron** finds **Review automations** even when it is not on your page.
 
 ![Searching for a curve task](/img/extensions/home/search.png)
 
@@ -60,13 +62,13 @@ When nothing matches, press **Go** and Fusion AI picks up to three tasks that fi
 
 ![Fusion AI suggesting tasks](/img/extensions/home/fusion-ai.png)
 
-**Show all tasks** clears the search. The question is saved in your Fusion AI chat history, under the Home category, and uses Fusion AI tokens like any other question.
+**Show my tasks** clears the search. The question is saved in your Fusion AI chat history, under the Home category, and uses Fusion AI tokens like any other question.
 
 ---
 
 ## See all tasks
 
-Some tasks are not shown straight away, to keep the page short. **See all tasks** at the bottom shows them, with the number that are hidden; **Show fewer tasks** hides them again. A hidden task with open alerts is always shown under **Needs you now**.
+**See all tasks** at the bottom of My tasks says how many more tasks there are and opens **All tasks**. Before you choose your tasks, a few tasks are left off the page to keep it short; one of them with open alerts is still shown under **Needs you now**.
 
 ---
 

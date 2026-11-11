@@ -48,7 +48,7 @@ Saves events to the event list `target.list` of the record `target.object`, 500 
 
 | | Name | Notes |
 |-|-|-|
-| In | `loader`, `events` | |
+| In | `loader`, `events`, `history` (optional) | `history` `true` saves the events as a history load (the `_history` option of the object service): no automations, curve builds or dataset monitoring for them. The workflow passes the process input `history`, which **Run now** sets with **Load as history**. |
 | Out | `saved`, `list`, `records`, `created`, `missing`, `message` | Events saved; the list as `RECORD:LIST` (the record id template for a split); records the events went to; records made; events with no value of the split field (not saved); why it failed. |
 | Exits | `ok`, `failed` | |
 

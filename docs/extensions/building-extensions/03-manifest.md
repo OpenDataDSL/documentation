@@ -117,7 +117,8 @@ Run it in VS Code with the OpenDataDSL extension. `save e` saves the extension t
 
 | Property | Description |
 |-|-|
-| `section` | The section of the portal menu, for example `Extensions`, `Information` or `Manage`. Defaults to `Extension`. |
+| `section` | The menu group the view appears in (see [Menu groups](#menu-groups)), for example `Data`, `Deliver` or `Build` |
+| `order` | The position of the menu item within its group. Built-in items use 10, 20, 30 and so on; items without an order come after them, in name order. |
 | `name` | The menu item. Views with the same section and name are tabs of one menu item. |
 | `tabname` | The tab name. Defaults to `Main`. Use `Apps` to add the view to the menu item's **Apps** tab. |
 | `appname` | The view's name in the **Apps** tab, when `tabname` is `Apps` |
@@ -137,6 +138,24 @@ Run it in VS Code with the OpenDataDSL extension. `save e` saves the extension t
 | A new tab on an existing menu item | The existing item's `section` and `name`, and your own `tabname` |
 | An app in the Apps tab | `tabname` to `Apps` and an `appname` |
 | A view in the Excel add-in | `excel` to `true` |
+
+### Menu groups
+
+The portal menu is a rail of groups. Selecting a group opens a panel listing its menu items, each with its icon, name and description (the view's `description`, or the extension's when no view of the item has one). Set `section` to one of these groups:
+
+| Group | `section` | What goes here |
+|-|-|-|
+| Data | `Data` | Finding, viewing and editing data and master data |
+| Reports and dashboards | `Reports` | Reports, dashboards and auditing |
+| Monitor | `Monitor` | Alerts, validation, processes and deliveries |
+| Load and deliver | `Deliver` | Loading data in and sending it out: loaders, integrations, exports, automations |
+| Build | `Build` | Scripts, workflows, notebooks, calendars and promotion |
+| Fusion AI | `AI` | Fusion AI |
+| Manage | `Manage` | Groups and bulk management |
+| Solutions | any other section | Industry and customer solutions; each section is a heading in the panel |
+| ODSL Admin | `ODSL Admin` | OpenDataDSL administration |
+
+The older sections still work: `Information` goes to Data and `Operations` to Monitor. Screens that host extension tabs (Master Data, Data, Events and Groups) still match on the screen's own section and name, so keep `Information` or `Manage` on those views.
 
 ---
 

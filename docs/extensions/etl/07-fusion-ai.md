@@ -36,6 +36,14 @@ When a choice is yours, such as which date is the event time or which columns id
 
 ---
 
+## Sources in another language
+
+When the column names or the values are not in English, such as a Japanese government table, Fusion AI gives the fields short English names and puts the original headings in its notes. It translates values that name things, such as prefectures, regions, products and grades, with a value map (one line for each value it sees in the sample: add any others later), and leaves numbers and dates as they are. For Japanese dates it proposes the **Japanese** date format. It also tells you which rows are data, so you can set the first and last row of data on the source. See [the e-Stat example](/docs/extensions/etl/sources#example-japanese-timber-prices-from-e-stat).
+
+---
+
 ## Changing the text of a field
 
-In a field's settings, under **Change the text**, describe how the values should change, in your own words, and select **Ask Fusion AI**. Fusion AI sees the values the field gets in the sample, writes the change, and shows what the values become. Select **Use this** to keep it, or say what to change and ask again. See [Changing the text](/docs/extensions/etl/mapping#changing-the-text).
+In a field's settings, under **Change the text**, describe how the values should change, in your own words, and select **Ask Fusion AI**. Fusion AI sees the values the field gets in the sample, writes the change, and shows what the values become. Select **Use this** to keep it, or say what to change and ask again.
+
+When each value needs its own answer, such as *translate the product names into English* or *replace the codes with their names*, Fusion AI gives a value map instead: a table of each value from the source and the text to save. Values not in it are listed, as they are kept as they are. **Use this value map** adds it to the field's **Value map**, where you can edit it, replacing any entry for the same value. The map covers the values in the sample: add any others the source gives later. See [Changing the text](/docs/extensions/etl/mapping#changing-the-text).

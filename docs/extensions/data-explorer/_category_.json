@@ -1,0 +1,7 @@
+{
+  "label": "Data Explorer",
+  "link": {
+    "type": "generated-index",
+    "description": "Find, look at, chart and compare your master data, curves, timeseries and options in one screen, with the tabs and actions other extensions add."
+  }
+}

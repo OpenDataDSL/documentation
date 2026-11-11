@@ -74,6 +74,8 @@ A held back item is not sent. In the day's report:
 
 The run's message lists each held back item with its reason, and the run ends failed, like a run with any other failure.
 
+To send each item as soon as it has passed validation, rather than waiting for the next scheduled run or **Run now**, choose **When it passes validation** under [Sending items as they change](/docs/extensions/integration/how-it-works#sending-items-as-they-change) on the group's **Schedule and runs** tab. Overriding a failure then sends the item too.
+
 | Message | What to do |
 |-|-|
 | `Not sent because it failed validation for <date> (<status>): <message>` | Fix the data, or override the failure in the Validation extension with a reason, then run the group again with **Run now**. |
@@ -96,6 +98,7 @@ An item that is not available every day and has no data for the date is not held
 
 ## Next
 
+- [Sending items as they change](/docs/extensions/integration/how-it-works#sending-items-as-they-change): send each item when it passes validation.
 - [Corrections](/docs/extensions/integration/corrections): send data again when a dataset corrects it.
 - [Alerts and the cutoff](/docs/extensions/integration/alerts-and-cutoff): be told when something is not sent.
 - [Integration reference](/docs/extensions/integration/reference): where the settings are kept, and troubleshooting.

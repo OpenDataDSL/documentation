@@ -26,6 +26,7 @@ tags: [extension, home, tasks, reference, rest api]
 | `keywords` | List of text | Extra words the search matches |
 | `extension` | Text | The extension that added the task |
 | `requires` | List of text | Extension ids that must be installed for the task to show |
+| `roles` | List of text | The roles the task is suggested to: `operations`, `analyst`, `curves`, `trader`, `integration`, `manager` (or any short lower case name) |
 | `target` | Object | Required: what the task opens (below) |
 | `alerts` | Object | The alerts that belong to the task (below) |
 | `properties` | Object | Anything else an extension wants to keep with its task. Keys may not start with `$` |
@@ -73,6 +74,20 @@ Saving a task replaces it entirely: send every field you want to keep. Each save
 :::note
 The task service used to keep personal to-do tasks. They are no longer shown or created: process time-outs now raise an alert (category `process`, issue `timeout`), which counts on **Check for overnight production issues**.
 :::
+
+---
+
+## Each user's tasks
+
+A user's list and their own tasks are kept in their own setting called `Home` (`GET` and `POST setting/v1/Home`), one document per user:
+
+| Field | Description |
+|-|-|
+| `defined` | True once the user has chosen their tasks; until then the page shows the featured tasks |
+| `role` | The role they picked: `operations`, `analyst`, `curves`, `trader`, `integration`, `manager` or `other` |
+| `mine` | The ids of the tasks on their home page |
+| `seen` | Every task id there was when they last chose, so tasks added later are offered as new |
+| `tasks` | Their own tasks, in the task tile form (ids starting `my.`); the alerts filter and the view properties are kept as JSON text |
 
 ---
 

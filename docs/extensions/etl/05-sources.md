@@ -43,7 +43,7 @@ A variable is a name, such as `lat`, and a value for each **set**. With several 
 | In the headers | Values are used as they are. |
 | In the rows | Each row gets its set's values as columns of the same names (unless the row already has a column with that name), so the Map step can use `site` as a field or in the event id. |
 
-A sample reads the first 3 sets; a run reads them all.
+A sample reads the first 3 sets; **Extract all** and a run read them all.
 
 ### Secrets
 
@@ -60,7 +60,7 @@ The value is never stored in the loader, the process or the workflow: the `etl_e
 ![Setting the value of the API key](/img/extensions/etl/secret-value.png)
 
 :::caution
-A value used in a header cannot contain `,`, `;` or `&`: the headers option is split on them. Excel sources cannot send headers, so put the key in the URL.
+A value used in a header cannot contain `,`, `;` or `&`: the headers option is split on them.
 :::
 
 ---
@@ -159,10 +159,34 @@ For prices published on a web page as an HTML table.
 
 | Setting | Notes |
 |-|-|
-| **Sheet** | The sheet name. Default: the first sheet. |
+| **Sheet** | The sheet name, or its number: `1` is the first sheet, `2` the second. Default: the first sheet. A name that is not in the workbook reads the first sheet. |
 | **Header row** | The row number of the column names; the data starts on the next row. Rows with no values are skipped. |
+| **First row of data** | Optional: the row number of the first row to read, when the data does not start right after the header row, for example below yearly figures. |
+| **Last row of data** | Optional: the row number of the last row to read, to leave out ratios, totals, notes or another table below. |
+| **Stop at the first empty row** | The data ends at the first row with nothing in it, after the data starts. For a sheet that grows at the bottom, with an empty row and then a totals line below the data, where a fixed last row would not do. With a last row too, it stops at whichever comes first. A cell with only spaces counts as empty. |
+| **Request headers** | Optional, as for a JSON API, for example an API key the file's site asks for. |
 
-Up to 104 columns (A to CZ) are read.
+The platform names itself to the file's site as `OpenDataDSL/1.0`, unless the request headers set a `User-Agent`. Up to 104 columns (A to CZ) are read. Column names are put on one line: line breaks and runs of spaces (full-width spaces too) become one space, and a dot becomes a space. A column with no name is called **Column** and its letter, such as **Column C**. When two columns have the same name, the second is numbered: `Price`, `Price 2`. A heading merged across several columns gives each of them the same name, so they are numbered too; **Columns to use** on the Examine step shows each column's letter.
+
+:::note
+Before November 2026 a column name kept its line breaks and dots, and a second column of the same name replaced the first. Open an older Excel loader and select **Extract** to see the new names, then check the mapping.
+:::
+
+### Example: Japanese timber prices from e-Stat
+
+The Ministry of Agriculture, Forestry and Fisheries publishes monthly timber prices (木材価格統計) on [e-Stat](https://www.e-stat.go.jp) as an Excel workbook. The sheet **素材・木材チップ価格** (log and wood chip prices) has headings over several rows, yearly figures, then the months, then ratios, then a table of prefectures, with notes at the end. Each product has two columns: the price and the change on the previous month. `…` means no data and `nc` could not be calculated.
+
+To load the monthly prices of the national average:
+
+1. **Excel workbook**, the URL of the file, **Sheet** `素材・木材チップ価格` (or `2`), **Header row** the row with the product names, **First row of data** the first month and **Last row of data** the last month.
+2. **Map**: **Event time** from column C, data type **date**, date format **Japanese**. Add a field for each price with an English name, such as `sugi_medium_log` for すぎ中丸太, data type **number**, and `…, nc` as **Empty values**. Leave out the change columns (the ones numbered `2`).
+3. Or ask [Fusion AI](/docs/extensions/etl/fusion-ai#sources-in-another-language): it proposes the English names and translates values such as prefectures with a value map.
+
+For the prefecture table, load another sheet range with a field such as `prefecture` from column C and a value map from 北海道 to Hokkaido and so on, or use [a record for each value of a field](/docs/extensions/etl/building).
+
+:::note
+e-Stat gives each month's file its own id in the URL (`sinfid`), so the URL of the latest file changes every month. Its API, which needs an application id, can find the latest file of a statistic.
+:::
 
 ---
 

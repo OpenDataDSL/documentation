@@ -41,7 +41,7 @@ save ${task:t}
 ```
 
 - The id needs at least one dot. For an extension's tasks use the extension id and a name: `acme.positions.check-limits`.
-- Lists, such as `keywords` and `requires`, can be written as comma separated text.
+- Lists, such as `keywords`, `requires` and `roles`, can be written as comma separated text.
 - The alerts filter is written as JSON text, because a `SimpleObject` cannot hold the `$` keys a filter often needs (`$in`, `$or`).
 - Only tenant admins and OpenDataDSL can save and delete tasks.
 
@@ -58,6 +58,8 @@ e.resources.task.tile_check_limits = "acme.positions.check-limits"
 Publishing the extension copies the task with it. Installing the extension adds the task to the tenant's task service, and upgrading it replaces the task with the published one. Uninstalling the extension removes the task.
 
 Set `requires` to your extension's id, so the task only shows where your extension is installed.
+
+Set `roles` to the roles that need the task (`operations`, `analyst`, `curves`, `trader`, `integration`, `manager`), for example `t.roles = "operations, manager"`. When someone picks their role to choose their tasks, the tasks naming it are suggested. A task with no roles is suggested by its group: Check for data operations and team leads, Find for analysts and traders, Build for curve builders, Deliver for integration.
 
 ---
 

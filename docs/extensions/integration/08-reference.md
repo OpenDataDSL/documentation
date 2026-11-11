@@ -25,6 +25,7 @@ tags: [extension, integration, reference, plug-in, secrets, troubleshooting]
 | A secret's value | `secret` | The record named in **Kept in**, such as `molecule_user` | Kept in the secret store; never shown on the screens. |
 | A group's own secret records | `group` | The group | In `integration.secrets`. |
 | A group's schedule | `process` | `INTEGRATION_<GROUP>`, such as `INTEGRATION_NGE_MOLECULE_CURVES` | Service `Integration`. |
+| Sending a group's items as they change | `automation` | An id the platform gives it | Target `odsl.process`, on the group's `itemupdated` or `itemvalidated`. See [Sending items as they change](#sending-items-as-they-change). |
 | A run | `process-exec` | | Name = the process id. |
 | A report's cutoff | `reportconfig` and `process` | Settings in the report configuration's `properties.integration.cutoff`; the check is the process `INTEGRATION_CUTOFF_<KEY>` | Script `odsl.integration.cutoff`, input `{report, system}`, scheduled at the cutoff time. See [Alerts and the cutoff](/docs/extensions/integration/alerts-and-cutoff). |
 | Alerts | `alert` (private) | Keys `integration/INTEGRATION_<KEY>/<group>/<ondate>` (a group), `integration/INTEGRATION_<KEY>/<ondate>/cutoff` and `integration/<group>/corrections` | Category `integration`; issue `export`, `cutoff` or `validation`. |
@@ -36,6 +37,7 @@ tags: [extension, integration, reference, plug-in, secrets, troubleshooting]
 | A system's report configuration | `reportconfig` (private) | `INTEGRATION_<KEY>`, such as `INTEGRATION_MOLECULE` | Fixed report, category `Integration`, `mergeUpdates` on with `mergeKeys` `["key"]`. Made by the first run when it does not exist. |
 | A day's report | `report` (private) | `INTEGRATION_<KEY>:<ondate>` | One report a day: each group's run is merged into it, with no new version. |
 | A report's scheduled email | `automation` | Its own id | Target `odsl.email`, on `INTEGRATION_<KEY>:L` (the latest stored date), action `schedule`. Shown in Automations. |
+| Whether you have seen the tours | `setting` | `Integration` (your own) | `toured` (the home page tour) and `touredSystem` (the system tour), set when you finish or skip a tour. Also kept in this browser. |
 
 ---
 
@@ -124,6 +126,36 @@ tags: [extension, integration, reference, plug-in, secrets, troubleshooting]
 ```
 
 The script is the system's runner. The settings are read from the group at the start of every run, so changes on the **Settings** tab apply from the next run without saving the schedule again. **Run now** adds `ondate` to the input. A [history export](/docs/extensions/integration/how-it-works#history-exports) adds `from` and `to` (yyyy-MM-dd, both sent) instead, and optionally `calendar` (default the group's calendar, else `BUSINESS`) and `alerts` (`true` to raise the group's alerts for the dates). It sends at most 400 dates; giving both `ondate` and `from` is refused. To start one with the REST API: `POST process-exec/v1` with `{"name": "INTEGRATION_<GROUP>", "body": {"group": "<GROUP>", "from": "2026-10-01", "to": "2026-10-31"}}`.
+
+### Sending items as they change
+
+```json
+{
+  "_type": "VarAutomation",
+  "target": "odsl.process",
+  "template": "When 'NGE_MOLECULE_CURVES' has an item updated, run [process]",
+  "icon": "play-fill text-success",
+  "enabled": true,
+  "conditions": [
+    {"source": "private", "service": "group", "id": "NGE_MOLECULE_CURVES", "action": "itemupdated"},
+    {"source": "private", "service": "data", "id": "NGE.GAS.TTF:MID", "action": "update"}
+  ],
+  "properties": {
+    "process": "INTEGRATION_NGE_MOLECULE_CURVES",
+    "intTrigger": "itemupdated",
+    "@transformer": "{\"intTriggered\": \"true\"{{! the item data is not needed: the run reads the item }}}"
+  }
+}
+```
+
+| Field | What it is |
+|-|-|
+| `conditions` | The group, with the action `itemupdated`, then one `update` condition for each item (`OBJECT:ITEM`). To send items when they pass validation, the group's action is `itemvalidated` and each item's `validated`, and the template `When '<group id>' has an item validated, run [process]`. The group service rewrites the item conditions whenever the group is saved, so the screen saves the group again after saving the automation; for `itemvalidated` it does so from the platform update of 10 November 2026, and before it the screen sets them and shows when they no longer match the group's items. Not for dynamic groups. On the platform the group's id is its object id. |
+| `properties.process` | The group's process. The automation runs it with an input of the process's own input (`group`) and the automation's properties, with `id` (the item updated, `OBJECT:ITEM`) and, for a curve, `ondate`. |
+| `properties.intTrigger` | `itemupdated` or `itemvalidated`. Tells the engine the run was started by an item: it sends only the item named by `id`, for `ondate` when there is one, and merges it into the day's report. An item no longer in the group is logged and nothing is sent. The hooks see `ctx.trigger` `update` or `validated`. |
+| `properties.@transformer` | An inline template that replaces the item's data by `{"intTriggered": "true"}`. The run reads the item itself; and item data with a `_type`, such as a curve, would not be merged into the process input at all, so the run would not know which item was updated. |
+
+It runs as its owner, whoever saved it last. It is found with `GET automation/v1` filtered on `target` `odsl.process`, and its template is the one `GET group/v1/private/<id>?_function=listAutomations` offers.
 
 A group's corrections process `INTEGRATION_CORRECT_<GROUP>` runs the same script with the input `{"group": "<GROUP>", "corrections": "true"}`. Its other input decides on corrections on the group's **Corrections** tab: `approve` (keys of corrections waiting for approval), `ignore` (keys of open corrections) and `resend` (keys of failed ones), each a list or comma separated text of keys `<data id>|<ondate>`, such as `NGE.SOLAR.DE:CAPTURE|2026-10-01`, and `reindex` (`true` to work out the items' datasets again now). The run sends each corrected ondate as a run for that date would, with only the corrected items and the input `correction` `true`: the hooks see `ctx.correction` true and `item.correction` (what changed).
 
@@ -228,9 +260,12 @@ A runner can apply a Mustache template to its data with the engine's `intTryTran
 | `GET object/v1/private/<id>`, `DELETE object/v1/private/<id>` | Reads or deletes a system. Systems are listed with `find` on the private objects of type `INTEGRATION_SYSTEM`. |
 | `DELETE extension/v1/private/<id>` | Removes a custom system's extension record (`custom.<code>`) after its upgrade. |
 | `POST script/v1/private?_function=check` | Checks ODSL for syntax errors. |
+| `GET group/v1/private/<id>?_function=listAutomations` | The automations the platform offers for a group, for the exact template of sending on updates. |
+| `GET automation/v1`, `POST automation/v1`, `GET automation/v1/<id>`, `DELETE automation/v1/<id>` | Lists, reads, saves and deletes the automations that send a group's items as they change, and the scheduled emails of a report. |
 | `GET secret/v1` with `_filter` on `_id` | Lists the secret records a system reads, for their status. The list holds where each value is kept, never the value. |
 | `POST secret/v1` | Sets a secret's value (`_id`, `_type: VarSecret`, `value`, `enabled`). |
 | `DELETE secret/v1/<id>` | Removes a secret. |
+| `GET setting/v1/Integration`, `POST setting/v1` | Reads and saves your Integration settings: whether you have seen the tours. |
 
 ---
 
@@ -253,6 +288,8 @@ Installing the Integration extension adds these tasks to the [Home page](/docs/e
 | Deliver | Follow today's integration report (under **See all tasks**) | |
 
 Their ids are `odsl.integration.check-exports`, `check-held`, `check-cutoff`, `send-data` and `daily-report`.
+
+The Integrations screen takes these view properties: `SYSTEM` (a system id, its code or its plug-in) and `TAB` (`overview`, `groups`, `report` or `plugin`) open a system on a tab, and `TOUR` `true` always starts the tour, `false` never does. The tour does not start by itself when `SYSTEM` or `TAB` is given.
 
 ---
 
@@ -280,6 +317,9 @@ Their ids are `odsl.integration.check-exports`, `check-held`, `check-cutoff`, `s
 | The run stops with `Set the secret molecule_production (Molecule production API key) ...` | The plug-in needs a secret that is not set. Set it on the system's **System setup** tab. |
 | Saving a secret fails with `... which OpenDataDSL can only read` | Your company keeps its secrets in its own Azure Key Vault with read access. Add the secret in the vault (see [Keeping your secrets in your own Azure Key Vault](/docs/it/key-vault)). |
 | Uninstalling a plug-in fails with `[6404] ... cannot be uninstalled because these installed extensions need it` | A custom system copied before 2026-11-07 still uses the plug-in's ODSL. Upgrade the systems on the home page: the copy becomes a system on the plug-in. |
+| Sending when items pass validation sends nothing | The items have no validation checks, or their data has not passed them yet: see the item's validation on the Validation screen. Each version of the data is sent once, so checking unchanged data again sends nothing. |
+| A run started by an item says `<item> was updated (or validated) but is not in group <group>: nothing sent` | The item was removed from the group after the update was saved, or the automation's conditions are out of step with the group. Save the group again (its **Settings** tab) and the platform sets them from its items. |
+| Sending on updates sends the whole group | The platform did not pass the automation's properties to the run: the automation has no `@transformer`. Switch it off and on again on the **Schedule and runs** tab, which saves it with one. |
 | A run stops with `The system INTEGRATION.<CODE> was not found` | The group's system was deleted. Attach the group to another system. |
 | A run stops with `Group ... is set up for INTEGRATION.<CODE> (...), not ...` | The group's process runs another system's ODSL. Save the group's schedule again on its **Schedule and runs** tab, which points the process at its system's ODSL. |
 | Items of a second system on a plug-in fail with a missing code, such as `No molecule identity set` | The system has its own codes, and the items have none yet. Give them their codes on the group's **Items** tab, or choose **Shared** codes on the system's **System setup** tab. |

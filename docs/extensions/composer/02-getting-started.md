@@ -14,7 +14,12 @@ This walk-through creates a composition from the **Curve spread** library templa
 
 ## 1. Open Composer
 
-Open **Composer** from the Extensions section of the menu. It opens on the **Gallery** (see [The gallery](#the-gallery)). The **Compositions** tab lists the compositions in your organisation, with counts at the top: how many match the filters, how many are yours, how many came from a template, and how many templates there are.
+Open **Composer** from the Extensions section of the menu. It opens on the **Gallery** (see [The gallery](#the-gallery)).
+
+### The tour
+
+The first time you open Composer, a short tour shows you round: the page is shaded except the part being explained, with a note beside it. Use **Next** and **Back**, or the arrow keys, and **Esc** or **Skip the tour** to leave. The first time you open a composition, the workspace has a tour of its own. Composer remembers that you have seen them, on any computer. Select **Tour** beside Help (in the workspace, the signpost button beside Help) to take a tour again at any time.
+ The **Compositions** tab lists the compositions in your organisation, with counts at the top: how many match the filters, how many are yours, how many came from a template, and how many templates there are.
 
 ---
 
@@ -52,11 +57,13 @@ The composition opens in the workspace: a toolbar, the chart and the table.
 |-|-|
 | **Ondate** and **Run** | Run the composition for a date. A curve composition starts at the previous weekday, the latest settled curves. |
 | **Build** | Build and store the composition for a range of ondates (see [Builds, composed curves and automation](/docs/extensions/composer/builds-and-automation)) |
+| **Automations** | Add an automation to the saved composition, for example to email it whenever it is built (see [Automations on a composition](/docs/extensions/composer/builds-and-automation#automations-on-a-composition)) |
 | The three layout buttons | Show a table, a table and a chart, or a chart |
 | **Columns**, **Properties** | Open the side panel |
 | **Undo** and **Redo** | Step back through your changes, and forward again (Ctrl+Z, Ctrl+Y) |
 | **Save** | Save your changes |
 | **More** | Ask Fusion AI to change it, Export CSV, Clone, Move to, Save as template, Delete |
+| **Tour** (signpost) | A short tour of the workspace |
 
 Select a column heading in the table, or a series in the chart, to open that column in the side panel.
 
