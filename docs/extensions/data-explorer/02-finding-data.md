@@ -104,6 +104,8 @@ Select **+** beside **Starred and groups** to see the groups of data and master 
 
 ![The groups dialog](/img/extensions/data-explorer/groups.png)
 
+A data group can also hold a tenor of a curve, written as the curve's id, a colon and the tenor: `ICE.NDEX.NLB:SETTLE:M01` is the front month of the ICE Endex TTF settlement curve. It is listed as a **Tenor**, with the curve's name and the tenor, currency and units, and opens as a timeseries: the tenor's value on each ondate. **More** > **Open the curve** opens the curve it comes from.
+
 Curve build, quality, approval and export groups and policy user groups are not listed here: use [Group Manager](/docs/extensions/group-manager/overview) for those.
 
 ---
@@ -127,7 +129,7 @@ Select a row or card to open it (see [Looking at data](/docs/extensions/data-exp
 | **Chart** | Puts the selected curves and timeseries on the [chart board](/docs/extensions/data-explorer/chart-board) |
 | **Add to group** | Adds the selected items to a group, or makes a new group of them (see [Groups and automations](/docs/extensions/data-explorer/actions#adding-to-a-group)) |
 | **Make a dynamic group** | Makes a group from the filters, so it always holds what they find (see [Dynamic groups](/docs/extensions/data-explorer/actions#dynamic-groups)) |
-| **More** | What other extensions do with a selection (bulk updates, adding validation), **Download this page** as CSV and **Copy the selected ids** |
+| **More** | What other extensions do with a selection (bulk updates, adding validation), **Download this page** as CSV, **Copy this page** to paste into Excel, and **Copy the selected ids** |
 
 ![Selected curves and the More menu](/img/extensions/data-explorer/selection.png)
 

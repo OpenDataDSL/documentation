@@ -8,7 +8,7 @@ tags: [extension, promotion, environments, deployment, compare]
 
 # Reviewing and pushing
 
-The **Review and push** tab reads every item in the basket in your environment and in the target, and compares them. Nothing is changed until you select **Push**.
+The **Review and push** tab reads every item in the basket in your environment and in the target, and compares them. Nothing is changed until you select **Push**. The first time you open it, a short tour explains each part (see [The tour](/docs/extensions/promotion/selecting#the-tour)).
 
 ![Priya's spread release compared with production](/img/extensions/promotion/review.png)
 

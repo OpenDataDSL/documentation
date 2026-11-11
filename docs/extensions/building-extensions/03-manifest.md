@@ -157,6 +157,20 @@ The portal menu is a rail of groups. Selecting a group opens a panel listing its
 
 The older sections still work: `Information` goes to Data and `Operations` to Monitor. Screens that host extension tabs (Master Data, Data, Events and Groups) still match on the screen's own section and name, so keep `Information` or `Manage` on those views.
 
+Where the menu items sit today, so you can choose an `order` between them:
+
+| Group | Items by `order` |
+|-|-|
+| Data | 5 Tasks (Home), 10 Master Data, 20 Data, 25 Data Explorer, 30 Events, 35 Event Data, 40 Smart Data (portal), 45 Smart Data, 50 GEO Data, 60 Composer, 70 Data Reconciliation |
+| Reports | 10 Reports, 20 Dashboards, 30 Auditing, then pinned dashboards and reports |
+| Monitor | 10 Alerts (portal), 12 Alerts, 15 Validation, 20 Executions, 30 Processes, 40 Process Timeline, 50 Curves, 60 Datasets |
+| Deliver | 10 Data Loaders, 20 Integrations, 30 Export data, 40 Automations, 50 Aggregator, 80 Data Packages, 90 Queues |
+| Build | 10 Scripts (portal), 15 Scripts, 20 Types, 30 Calendars (portal), 35 Calendars, 40 Workflows, 50 Notebooks, 60 Promote |
+| AI | 10 Fusion AI |
+| Manage | 10 Groups (portal), 15 Group Manager, 20 Data Management, 30 Master Data Management |
+| Solutions | Extensions: 10 Simple Portfolio, 90 Example. Packaging: 10 Components, 20 Packaging, 30 Analysis |
+| ODSL Admin | 10 Tenants, 20 Common Policies, 30 Alert Manager |
+
 ---
 
 ## Resources

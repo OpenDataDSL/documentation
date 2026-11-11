@@ -36,12 +36,13 @@ A curve opens on the **Curve** tab with its latest curve compared with the previ
 | **Style** | How each curve is drawn: **Periods** (a flat line over each delivery period), **Line**, **Column**, **Area** or **Points** |
 | **Covered periods** | Untick to hide quarters and years whose months are all shown |
 | **CSV** | The grid below the chart as a CSV file |
+| **Copy table** | The grid, to paste into Excel: each value lands in its own cell |
 
 Contracts are drawn over their delivery periods, so months, quarters and years line up on one date axis: the shorter periods are on top and the longer ones thinner and lighter behind them. Periods of a week or less get a marker. Intraday and gas periods are shown in the curve's timezone. The grid lists every contract by period type, with its start, end and length, and a column per curve. Values implied from another tenor (for example months shaped from a quarter) are in italics.
 
 ### What changed
 
-When the curve is compared with another, **What changed** below it shows how many contracts were compared, how many went up and down, the average change and the biggest move, a chart of the change of each contract (**Change** or **%**), and a table with both values, the change and the change in percent. Contracts that are new or gone are marked. **CSV** downloads the table.
+When the curve is compared with another, **What changed** below it shows how many contracts were compared, how many went up and down, the average change and the biggest move, a chart of the change of each contract (**Change** or **%**), and a table with both values, the change and the change in percent. Contracts that are new or gone are marked. **CSV** downloads the table and **Copy table** copies it, to paste into Excel.
 
 ![What changed in the German power base curve](/img/extensions/data-explorer/changes.png)
 
@@ -61,7 +62,9 @@ To watch a curve change every day, put it on the chart board **Against the previ
 
 ## Timeseries
 
-A timeseries opens on **Chart**, with its values over the last year and the table below. Choose **1M** to **5Y**, **All**, or **Dates** for a range of your own, and how it is drawn: **Line**, **Column**, **Area**, **Steps** or **Points**. **CSV** downloads the values.
+A timeseries opens on **Chart**, with its values over the last year and the table below. Choose **1M** to **5Y**, **All**, or **Dates** for a range of your own, and how it is drawn: **Line**, **Column**, **Area**, **Steps** or **Points**. **CSV** downloads the values and **Copy table** copies them, to paste into Excel.
+
+A tenor of a curve kept in a group (see [Groups](/docs/extensions/data-explorer/finding-data#groups)) opens here too, with its value on each ondate. Its header says which curve it comes from.
 
 ---
 
@@ -79,6 +82,7 @@ The line above the table says how big it is and what it looks like: **a correlat
 | **Colours** | How the cells are coloured. **Automatic** colours a correlation matrix from -1 to 1, changes centred on nought, a statistics table each column on its own, and anything else from its lowest to its highest value; **No colours** turns it off |
 | **Lower half only** | For a symmetric matrix: hides the half above the diagonal, which repeats the half below |
 | **CSV** | Downloads what is shown, with the labels: the values, or the changes when comparing |
+| **Copy table** | Copies the same, to paste into Excel |
 
 Priya opens `NGE.RISK:CORRELATION`, the correlations of the hub prices, with the lower half only:
 

@@ -10,7 +10,7 @@ tags: [extension, data explorer, options, option chain, volatility, smile, surfa
 
 Options data (event options, see [Options data](/docs/topics/options/intro)) has an option chain for every ondate: for each tenor a table of strikes with call and put values such as the settlement price, volatility, delta, open interest and volume. Find options with the **Options** kind in the finder. Priya opens `NGE.GAS.TTF:OPTIONS`, the TTF options.
 
-Every options tab has an **Ondate** (latest by default, or one of the last 90) and **CSV (all tenors)**, which downloads every tenor, strike and side of the chain.
+Every options tab has an **Ondate** (latest by default, or one of the last 90) and **CSV (all tenors)**, which downloads every tenor, strike and side of the chain, and **Copy table**, which copies them to paste into Excel.
 
 ---
 

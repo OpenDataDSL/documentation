@@ -46,7 +46,7 @@ When the board has curves, everything is drawn on one date axis by delivery peri
 
 ## Themes, table and CSV
 
-Choose a theme for the chart: **House**, **Midnight** (dark), **Paper** or **Neon**. **Table** shows the values instead of the chart, a row per delivery period or date and a column per series. **CSV** downloads them.
+Choose a theme for the chart: **House**, **Midnight** (dark), **Paper** or **Neon**. **Table** shows the values instead of the chart, a row per delivery period or date and a column per series. **CSV** downloads them and **Copy table** copies them, to paste into Excel.
 
 ![Spot prices and a front month history on the Midnight theme](/img/extensions/data-explorer/board-midnight.png)
 

@@ -86,6 +86,8 @@ The Data Explorer shows only what the platform lets you read. Groups you can see
 | A tab from another extension says it could not be opened | That extension's view could not be shown here; open it from its own menu item |
 | **There is no curve before ...** | The curve has no ondate before the one shown, so there is nothing to compare with |
 | **There is no matrix ...** | The matrix has no ondate on or before the one asked for, or none before it to compare with |
+| **The browser did not allow copying here** | The page is not allowed to use the clipboard: use **CSV** instead |
+| A group member shows as not found | The id is not a data item, nor a tenor of a curve you can see (`CURVE_ID:TENOR`) |
 | No smiles for a value | That column has no values for the tenors chosen; choose another value or side |
 | A group is not offered in Add to group | It is dynamic, of the other service (data or master data), or not shared with you |
 | Starred items are gone on another computer | They are not: starred items are a group; the finder state is what stays on the browser |

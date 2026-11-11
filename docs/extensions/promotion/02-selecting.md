@@ -14,6 +14,16 @@ Open **Manage** > **Promote** in the environment you want to promote from. The h
 
 ---
 
+## The tour
+
+The first time you open **Promote**, a short tour shows you round the screen: the route from your environment to the target, the three tabs, the kinds of item, finding and ticking items, and the basket. The part being explained is highlighted, with a note beside it. Use **Next** and **Back** (or the arrow keys), and **Skip the tour** or Esc to leave.
+
+![The tour explaining the kinds of item](/img/extensions/promotion/tour.png)
+
+The first time you open the **Review and push** tab with items in the basket, a second tour explains the review: the counts, the states, what to do with each item, comparing, the items they need, automations, and pushing. Each tour shows once; select **Tour** next to **Help** at the top of the screen to take the one for the tab you are on again.
+
+---
+
 ## Finding items
 
 The list on the left has every kind of item you can promote, with the number of items of that kind in your environment (and how many of them are in the basket). Select a kind to list its items, 50 a page, sorted by id. Type in the filter box to find items by id, name or description.
