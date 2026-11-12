@@ -33,6 +33,7 @@ A curve opens on the **Curve** tab with its latest curve compared with the previ
 | **Ondate** | **Latest**, or one of the last 90 ondates |
 | **Or a date** | Any date: the curve on that date, or the last one before it |
 | **Compare with** | **Nothing**, **The previous curve** (the last curve before this one, so Friday for a Monday), or another ondate |
+| **Line up by** | When comparing: **Delivery period** (the same month with the same month) or **Tenor** (`M01` with `M01`, even when it was a different month on the other ondate) |
 | **Style** | How each curve is drawn: **Periods** (a flat line over each delivery period), **Line**, **Column**, **Area** or **Points** |
 | **Covered periods** | Untick to hide quarters and years whose months are all shown |
 | **CSV** | The grid below the chart as a CSV file |
@@ -45,6 +46,12 @@ Contracts are drawn over their delivery periods, so months, quarters and years l
 When the curve is compared with another, **What changed** below it shows how many contracts were compared, how many went up and down, the average change and the biggest move, a chart of the change of each contract (**Change** or **%**), and a table with both values, the change and the change in percent. Contracts that are new or gone are marked. **CSV** downloads the table and **Copy table** copies it, to paste into Excel.
 
 ![What changed in the German power base curve](/img/extensions/data-explorer/changes.png)
+
+### Lining up by tenor
+
+By default the two curves line up by delivery period: December is compared with December, whatever tenor it had on each ondate. Choose **Line up by** **Tenor** to compare each tenor with the same tenor instead, for example to see how the front month moved over a month end, when `M01` rolls from November to December. The earlier curve is then drawn over the delivery periods of the curve shown (its `M01` over this `M01`), and the grid and **What changed** have a row per tenor. **What changed** adds a **Was** column with the period the tenor had on the earlier ondate, highlighted where it differs. Intraday tenors are matched without their timezone offset, so `QH01[+02]` lines up with `QH01[+01]` across a clock change. Tenors the earlier curve has that this one does not are in the tables but not the chart. The choice is kept as you change ondates, and **CSV** and **Copy table** follow it.
+
+![What changed by tenor over the November month end](/img/extensions/data-explorer/changes-by-tenor.png)
 
 :::tip
 To watch a curve change every day, put it on the chart board **Against the previous curve**: the board shows its changes too, next to other curves.
