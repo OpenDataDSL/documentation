@@ -12,6 +12,20 @@ Open **Information**, **Scripts**. The scripts are on the left, and the script y
 
 ---
 
+## The tour
+
+The first time you open the Script Manager, a short tour shows you round the screen: private and public scripts, finding a script, the folders, and starting a new script. The first time you open a script, a second tour shows what you can do with it: the editor, Run, Debug, Save, the **...** menu, Schedule, Fusion AI, more room for the editor and the other tabs.
+
+![A step of the screen tour: the script tree is highlighted, with a note on folders and Skip the tour, Back and Next buttons](/img/extensions/script-manager/tour.png)
+
+- Select **Next**, or press the right arrow or Enter, to move on; **Back** or the left arrow goes back.
+- Select **Skip the tour**, or press Esc, to close it.
+- Each tour starts by itself once, on any computer you use. To see one again, select **Tour** next to **Help** at the top of the screen: with a script open it shows the script's tour, otherwise the screen's.
+
+![A step of the script tour: the Run button is highlighted, with a note on running the script, a function or a region](/img/extensions/script-manager/tour-script.png)
+
+---
+
 ## The script tree
 
 ![The script tree with the Northgate folders](/img/extensions/script-manager/tree.png)

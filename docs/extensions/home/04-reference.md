@@ -14,7 +14,7 @@ tags: [extension, home, tasks, reference, rest api]
 
 | Field | Type | Description |
 |-|-|-|
-| `_id` | Text | Required. At least one dot, letters, digits, `_`, `-`, `#` and `:`, for example `odsl.home.check-issues` |
+| `_id` | Text | Required. At least one dot, letters, digits, `_`, `-`, `#` and `:`, for example `odsl.alerts.check-issues` |
 | `_type` | Text | Always `VarTaskTile`, set by the service |
 | `name` | Text | Required, at most 120 characters |
 | `description` | Text | At most 400 characters |

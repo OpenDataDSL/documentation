@@ -17,7 +17,7 @@ The Data Explorer is the place for anything about a record or a data item, so ot
 | Extension | On master data | On data | With a selection |
 |-|-|-|-|
 | Master Data Management | **Edit** tab: change the record's properties | | **Bulk update in Master Data Management**: change properties or the type of the selected records together |
-| Data Management | | **Edit** tab on curves and timeseries: change the definition and values | **Bulk update in Data Management** |
+| Data Management | | **Edit** tab on curves and timeseries: change the definition and values. Not on smart data (the **Smart Data** tab), event data (the **Event list** tab) or metric timeseries (the **Metric** tab) | **Bulk update in Data Management** |
 | Smart Data | **Smart Data** tab, and **New smart curve** / **New smart timeseries** actions that open it ready to make one on this record | **Smart Data** tab on smart curves and timeseries: open it in the smart data workspace | |
 | Event Data | **Event Data** tab: the record's event lists | **Events** tab on event lists, with **New event curve**, **New event timeseries** and **New event options** actions; **Event list** tab on event curves, timeseries and options, opening the list with the definition | |
 | Validation | | **Validation** tab on curves and timeseries | **Add validation**: bulk changes with the selected curves or timeseries |
@@ -51,6 +51,7 @@ e.configuration.data_explorer.contributions = [dxRecord, dxNewCurve, dxOpen]
 | `place` | `record` (master data), `data` (a data item) or `selection` (the ticked results) |
 | `kind` | `tab`, or `action` (the item's More menu; the results' More menu for `selection`) |
 | `types` | What it is for: `object`, `curve`, `timeseries`, `options`, `eventlist`, or a precise type such as `smartcurve`, `eventcurve`, `eventoptions`, `curvedates`, also `smart` and `event`. Empty: everything of the place |
+| `exclude` | Types it is not for, even when `types` matches (the same names as `types`, also `metrictimeseries` and `curveseries`). Data Management's **Edit** excludes `smart`, `event` and `metrictimeseries` |
 | `sources` | `private`, `public` or both (the default) |
 | `view` | The id of the view to open (`e.addView("...")`) |
 | `properties` | Text holding JSON, passed to the view. `@id`, `@source`, `@type`, `@kind`, `@ids` and `@field.NAME` (a field of the data item, such as `@field.event`) are filled in |

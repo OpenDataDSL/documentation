@@ -54,7 +54,7 @@ Throughout these pages we follow Northgate Energy, a fictional gas and power tra
 | **Compare versions** tab | Same screen | Any two versions side by side, and Restore |
 | **Audit trail** tab | Same screen | Who created and changed the script, when and why |
 
-Every screen has a **Help** link that opens the matching page of this guide.
+Every screen has a **Help** link that opens the matching page of this guide, and **Tour** at the top gives a short [tour of the screen](/docs/extensions/script-manager/editing#the-tour).
 
 :::note
 What you can do with a script depends on your security policies: you need the **update** action on a script to change it, and the **run** action to run or debug it. The screen shows **Can edit** or **Read only** next to the script's name.

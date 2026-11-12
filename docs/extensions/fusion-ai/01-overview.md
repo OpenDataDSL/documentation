@@ -60,6 +60,30 @@ It also installs five insights, listed with your other insights:
 
 ---
 
+## Help and the tour
+
+Every Fusion AI screen has a **Help** link at the top that opens its page of this documentation. Each insight has one beside its title, and some forms have links to the section about them, such as **Writing a good assistant**.
+
+The first time you open a screen, a short tour shows you round it: the part being explained is highlighted, with a note beside it.
+
+![The Studio tour: the second of ten steps, on the message box](/img/extensions/fusion-ai/tour.png)
+
+- Use **Next** and **Back**, or the arrow keys, to move through it.
+- **Skip the tour**, or Esc, leaves it.
+- Each tour shows once, on any computer you use. Select **Tour** next to **Help** to take it again.
+- It does not start when you arrive on a particular task, for example from a playbook card in the chat.
+
+| Screen | The tour shows |
+|-|-|
+| **Studio** | Asking a question, choosing an assistant, suggestions, your conversations, and saving a chat as an agent |
+| **Agents** | A new agent: its questions, a schedule, running it, and running it from an automation |
+| **Assistants** | A new assistant: its name, description and prompt, the model and effort, and limiting it to its own tools |
+| **Tools** | A new tool: the function name, the script, who can use it, the description and the input properties |
+| **Playbooks** | The library, finding a playbook, drafting one with Fusion, uploading one and writing your own |
+| **Tasks** | Filtering tasks, starting a task from a playbook, and running it |
+
+---
+
 ## Before you start
 
 Fusion AI is a premium feature. It needs an AI API key configured for your tenant. Until it is, the Studio shows **Fusion AI is not enabled**; speak to your system administrator or to OpenDataDSL support. See [Administration](/docs/extensions/fusion-ai/administration) for the settings and policies that control who can use each part of Fusion AI.

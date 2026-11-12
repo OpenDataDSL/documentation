@@ -29,6 +29,24 @@ A notebook is any private script with the category `notebook`, so a notebook a c
 
 ---
 
+## The getting started panel
+
+The first time you open Notebooks, a **Getting started with notebooks** panel at the top of the screen explains what a notebook is and the four steps of using one: start a notebook, write and run cells, see the results, and save and share.
+
+![The getting started panel at the top of the Notebooks screen](/img/extensions/notebooks/intro.png)
+
+| Control | What it does |
+|-|-|
+| **Browse the examples** | Closes the panel and opens the **Examples** tab |
+| **New notebook** | Closes the panel and creates a notebook (from an open notebook, it goes back to the list first) |
+| **Read the guide** | Opens this guide |
+| **Show this every time I open Notebooks** | Keeps the panel showing each time you open the screen. Untick it to see the panel only when you ask for it. |
+| **Got it** (or the cross, or **Esc**) | Closes the panel. It does not show by itself again. |
+
+**Getting started** in the header shows the panel again at any time, from the list or from an open notebook, and hides it when it is showing. The choice is kept with your user settings, so it follows you to any computer.
+
+---
+
 ## Creating a notebook
 
 Select **New notebook**.

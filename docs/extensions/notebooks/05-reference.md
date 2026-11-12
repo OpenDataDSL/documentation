@@ -60,6 +60,7 @@ Any ODSL script can be opened as a notebook: its regions become cells, and code 
 | Unsaved changes | Offered when you open the notebook again |
 | The input variable | Given to the kernel when it starts |
 | The tab you last used | My notebooks or Examples |
+| Whether you have seen the getting started panel | So it shows only the first time (also kept in your user settings, `Notebooks`, so it follows you) |
 
 They are kept in this browser only: a colleague, or you on another computer, does not see them. Clearing the browser's site data removes them.
 

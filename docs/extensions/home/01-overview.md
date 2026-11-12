@@ -34,16 +34,16 @@ When something needs you, the page says so. A task with **open alerts** moves to
 
 ---
 
-## The tasks that come with the extension
+## The tasks you start with
 
-The Home extension adds these tasks. A task only shows when the extension that does the work is installed.
+Each task comes with the extension that does the work, so it appears when that extension is installed and goes when it is removed. The Home extension itself adds **Find and validate data**.
 
-| Group | Task | Opens | Counts these open alerts |
+| Group | Task | Opens (and comes with) | Counts these open alerts |
 |-|-|-|-|
 | Check | Check for overnight production issues | Alerts | Root causes, process and system alerts, failed loads and time-outs |
 | Check | Check for data validation failures | Validation | Quality and validation alerts |
 | Check | Check delivery against SLA | Alerts | Late and incomplete dataset deliveries |
-| Find | Find and validate data | The **Data** screen | |
+| Find | Find and validate data | The **Data** screen (comes with Home) | |
 | Find | Chart and compare data | Composer | |
 | Build | Create or update a curve | Smart Data | Curve build failures |
 | Build | Create or update a derivation | Smart Data | |
@@ -52,7 +52,7 @@ The Home extension adds these tasks. A task only shows when the extension that d
 | Deliver | Create or update a dashboard | Composer | |
 | Under **See all tasks** | Review automations, Edit a script, Promote changes between environments | Automations, Scripts, Promote | |
 
-Other extensions add tasks of their own when they are installed. For example, [Integration](/docs/extensions/integration/reference#tasks-on-the-home-page) adds checks for exports that failed, were held back by validation or missed their cutoff.
+Other extensions add more tasks of their own. For example, [Integration](/docs/extensions/integration/reference#tasks-on-the-home-page) adds checks for exports that failed, were held back by validation or missed their cutoff.
 
 Shared alerts about common and public data are counted only for the datasets your team follows, the same as on the [Alerts](/docs/extensions/alerts/overview) screen.
 

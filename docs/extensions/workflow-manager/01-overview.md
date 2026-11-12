@@ -61,6 +61,20 @@ The button at the left of the title hides the list, to give the diagram more roo
 
 ---
 
+## The tour
+
+The first time you open the Workflow Manager, a short tour shows you round the screen: the part being explained is picked out, with a note beside it. Use **Next** and **Back**, or the arrow keys, and press Esc or **Skip the tour** to leave it.
+
+![Step 2 of the tour of the Workflow Manager screen, picking out the Workflows, Actions and Processes buttons](/img/extensions/workflow-manager/tour.png)
+
+Two more short tours start by themselves the first time you open a workflow (the palette, the diagram, the settings, the checks, saving) and the first time you open an action (the code, running and debugging it, saving).
+
+![Step 3 of the tour of a workflow, picking out the palette](/img/extensions/workflow-manager/tour-workflow.png)
+
+Each tour is shown once: finishing or skipping it is remembered for you, on any computer. To see one again, click **Tour** next to Help at the top of the screen. It runs the tour of what is on show: the open workflow, the open action, or the screen when nothing is open.
+
+---
+
 ## Creating a workflow
 
 1. Click **New workflow**.

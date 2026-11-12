@@ -36,6 +36,7 @@ Throughout these pages we follow Northgate Energy, a fictional gas and power tra
 | Starred | Your own favourites, kept as a group only you can see |
 | Chart board | One chart of several curves and timeseries, with what changed since the previous curve |
 | Tabs from other extensions | Other extensions add their own tabs and actions, such as Edit, Smart Data, Event Data and Validation |
+| Insights | The platform's insight reports for an item (audit, usage, rights, seasonality, the history of a curve's ondates ...), run in place |
 
 ---
 
@@ -44,7 +45,7 @@ Throughout these pages we follow Northgate Energy, a fictional gas and power tra
 | Screen | What it is for |
 |-|-|
 | **Explore** | Find master data and data, and see the results as a table or as cards |
-| An opened item | A curve against its previous curve with what changed, tenor histories, a timeseries chart, an option chain, smiles and surface, a correlation, covariance or statistics matrix and how it changed, a record with its data, and the tabs other extensions add |
+| An opened item | A curve against its previous curve with what changed, tenor histories, a timeseries chart, an option chain, smiles and surface, a correlation, covariance or statistics matrix and how it changed, what a metric timeseries measures, a record with its data, insight reports, and the tabs other extensions add |
 | **Chart board** | Several series on one chart, with themes and saved boards |
 
 The Data Explorer is in the **Information** menu. It is also on the Home page as the **Find data**, **Chart and compare curves** and **Look at option chains and volatility smiles** tasks.

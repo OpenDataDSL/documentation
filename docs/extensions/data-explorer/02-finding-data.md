@@ -118,7 +118,7 @@ The last items you opened are under **Recent**, newest first. Select one to open
 
 ## The results
 
-The results show 50 at a time, with the pager at the top. **Table** shows the id, name, kind, currency, units, calendar and when it was last updated (for master data: type and tags). **Cards** show each item as a card with a small sketch of its latest values: the latest curve from the first tenor to the last, or the last 30 values of a timeseries, green when it ended higher than it started and red when lower.
+The results show 50 at a time, with the pager at the top. **Table** shows the id, name, kind, currency, units and calendar (for master data: type and tags; select a tag to find everything with it). **Cards** show each item as a card with a small sketch of its latest values: the latest curve from the first tenor to the last, or the last 30 values of a timeseries, green when it ended higher than it started and red when lower.
 
 ![The results as cards](/img/extensions/data-explorer/cards.png)
 

@@ -58,6 +58,8 @@ A Home page task or a link can open the Data Explorer ready for a job with view 
 | Groups | `GET group/v1`, `GET group/v1/ID` (members), `POST group/v1?_replace=true` |
 | Automations | `GET data/v1/{source}/ID?_function=listAutomations`, `POST automation/v1` |
 | Other extensions | `GET extension/v1/private` (their views and `configuration.data_explorer`), `GET extension/v1/private/EXT/view/VIEW?_properties=...` |
+| A metric timeseries | Its metrics `GET metric/v1?_function=listMetrics&provider=PROVIDER`; saving `POST object/v1/private` with `{_id: RECORD, KEY: {_id: KEY, _type: "VarMetricTimeSeries", provider, metric, ...}}`; recent values `GET data/v1/{source}/ID?_range=last(48)` |
+| Insights | `GET reportconfig/v1/all?_limit=-1` (categories Item Insights and Data Insights); running one `GET report/v1/{source}/REPORT` with `Accept: text/html` and `_properties={"ID", "SOURCE", "SERVICE": "data"}` |
 
 ---
 
@@ -75,6 +77,7 @@ The Data Explorer shows only what the platform lets you read. Groups you can see
 | View | **Data Explorer** in the Information menu |
 | Feature policy | `extension.odsl.data_explorer` (feature `odsl.data_explorer.manage`) |
 | Home page tasks | **Find data**, **Chart and compare curves**, **Look at option chains and volatility smiles** |
+| Insight reports | **Timeseries Profile** (`odsl.data_explorer.tsprofile`) and **Curve Ondate History** (`odsl.data_explorer.curvehistory`), in Data Insights |
 
 ---
 
@@ -87,6 +90,8 @@ The Data Explorer shows only what the platform lets you read. Groups you can see
 | **There is no curve before ...** | The curve has no ondate before the one shown, so there is nothing to compare with |
 | **There is no matrix ...** | The matrix has no ondate on or before the one asked for, or none before it to compare with |
 | **The browser did not allow copying here** | The page is not allowed to use the clipboard: use **CSV** instead |
+| The **Metric** tab says it could not read the metrics of a provider | The platform could not list them (for an Azure provider, Azure did not answer): the metric that is saved is still shown |
+| A report on the **Insights** tab says it could not be run | The report's template failed on the platform: open it from the portal's Data screen to see its own message |
 | A group member shows as not found | The id is not a data item, nor a tenor of a curve you can see (`CURVE_ID:TENOR`) |
 | No smiles for a value | That column has no values for the tenors chosen; choose another value or side |
 | A group is not offered in Add to group | It is dynamic, of the other service (data or master data), or not shared with you |

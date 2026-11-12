@@ -39,6 +39,7 @@ Throughout these pages we follow Northgate Energy, a fictional gas and power tra
 
 | Screen | What it is for |
 |-|-|
+| **Getting started** | A panel that explains notebooks and how to start, shown the first time you open the screen and from the **Getting started** button at any time |
 | **My notebooks** | Your company's notebooks as cards, with a filter. Open one, or create a new one. |
 | **Examples** | The example notebooks. Preview one, or copy it to your notebooks with **Use this notebook**. |
 | **The notebook** | The cells, with the toolbar to run them, stop, restart the kernel, see its variables and save. |

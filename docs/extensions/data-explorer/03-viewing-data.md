@@ -1,9 +1,9 @@
 ---
 title: Looking at data
-description: Open a curve, timeseries, matrix or master data record to chart it, compare it with its previous curve or ondate and see what changed
+description: Open a curve, timeseries, matrix or master data record to chart it, compare it with its previous curve or ondate, see what changed, edit a metric timeseries and run insight reports
 slug: /extensions/data-explorer/viewing-data
 sidebar_position: 3
-tags: [extension, data explorer, curves, timeseries, matrices, correlation, master data, changes]
+tags: [extension, data explorer, curves, timeseries, matrices, correlation, master data, changes, metrics, insights]
 ---
 
 # Looking at data
@@ -18,7 +18,7 @@ Select a result to open it in place. The header shows its name, kind, id, source
 | **Add an automation** | Something the platform does when it changes (see [Automations](/docs/extensions/data-explorer/actions#automations)) |
 | **More** | What other extensions do with it, **Open its master data** and **Copy the id** |
 
-The tabs depend on what it is: the Data Explorer's own tabs come first, then the tabs other extensions add (their extension is named beside the tab), then **Details**. See [What other extensions add](/docs/extensions/data-explorer/extensions).
+The tabs depend on what it is: the Data Explorer's own tabs come first, then the tabs other extensions add (their extension is named beside the tab), then **Insights** and **Details**. See [What other extensions add](/docs/extensions/data-explorer/extensions).
 
 ---
 
@@ -50,6 +50,12 @@ When the curve is compared with another, **What changed** below it shows how man
 To watch a curve change every day, put it on the chart board **Against the previous curve**: the board shows its changes too, next to other curves.
 :::
 
+### Curve series
+
+A curve series is a curve whose ondates each hold values at delivery times (hourly, half hourly or daily) instead of tenors. Each one can be large, so it opens with **Compare with** set to **Nothing**: only the curve itself is read. Choose **The previous curve** or an ondate to compare it. A curve series has no **Tenor history** tab, because it has no tenors.
+
+![A curve series of hourly values](/img/extensions/data-explorer/curve-series.png)
+
 ---
 
 ## Tenor history
@@ -65,6 +71,31 @@ To watch a curve change every day, put it on the chart board **Against the previ
 A timeseries opens on **Chart**, with its values over the last year and the table below. Choose **1M** to **5Y**, **All**, or **Dates** for a range of your own, and how it is drawn: **Line**, **Column**, **Area**, **Steps** or **Points**. **CSV** downloads the values and **Copy table** copies them, to paste into Excel.
 
 A tenor of a curve kept in a group (see [Groups](/docs/extensions/data-explorer/finding-data#groups)) opens here too, with its value on each ondate. Its header says which curve it comes from.
+
+### Metric timeseries
+
+A metric timeseries is built by the platform from what it measures, for example how many data requests your team made each hour. Besides **Chart**, it has a **Metric** tab to see and change what it measures. Priya keeps `NGE.PLATFORM:READS`, the data reads of the Northgate team:
+
+![The Metric tab of a metric timeseries](/img/extensions/data-explorer/metric.png)
+
+| Field | What it is |
+|-|-|
+| **Provider** | Where the measurements come from: **Platform requests** (ODSLRequest), **Processes** (ODSLProcess), or Azure Service Bus, Azure Batch or the Azure web server farm |
+| **Metric** | What is measured. The list is read from the provider: for platform requests ReadRequests, ReadRequestDuration, ReadRequestResponseSize, WriteRequests and DeleteRequests; for processes RunRequests, RunRequestDuration and PhaseDuration |
+| **Phase** | For PhaseDuration: the name of the process phase to time |
+| **Filter** | Which requests or processes to count, as ODSL query text or JSON |
+| **Calendar** | The interval of each value, HOURLY if empty |
+| **Observed** | How the measurements in one interval are combined: summed, averaged, beginning, end, high or low |
+| **Timezone**, **Fill value** | The timezone of the intervals, and the value for an interval with nothing to measure (0 if empty) |
+| **Name**, **Units**, **Description** | How it is described |
+
+**Save** keeps the changes on its master data record; the platform checks that the metric belongs to the provider. **Undo changes** shows it as it was saved. **Recent values** charts the last 24, 48 or 168 values the platform builds from the saved settings, so save first to see the effect of a change.
+
+:::note
+Saving a field empty leaves the value the platform already has, so a filter cannot be removed by clearing it here. Use the Details tab to see what is stored.
+:::
+
+A metric timeseries has no **Edit** tab from Data Management: the **Metric** tab replaces it. Public metric timeseries, and those you cannot update, are shown but cannot be changed.
 
 ---
 
@@ -103,6 +134,28 @@ A statistics table is not square: here each hub has a row and each statistic a c
 A master data record opens on **Overview**: its data on the left (select one to open it, or **Chart them** to put its curves and timeseries on the chart board) and its properties and tags on the right. Select a tag to find everything with that tag.
 
 ![The TTF record with the tabs and actions other extensions add](/img/extensions/data-explorer/record.png)
+
+---
+
+## Insights
+
+**Insights** lists the platform's insight reports for the item, as cards: the reports for its kind of data first, then the reports for any item. Select a card to run the report here, with the item filled in; **All insights** goes back to the cards and **Refresh** runs the report again. The report stays open while you look at the item's other tabs.
+
+![The insight reports for a curve](/img/extensions/data-explorer/insights.png)
+
+| Reports | For |
+|-|-|
+| **Audit Report**, **Usage**, **Your Access Rights**, **Relationships**, **Tracer**, **Automations**, **Automation Logs** | Any data item: who changed it and when, how much it is used, your rights on it, what it is linked to, and its automations |
+| **Data Report** | Any data item |
+| **Curve Ondate History** | Curves (including curve series): each ondate's tenors, front value and average, the tenors that came and went, and missing weekdays |
+| **Curve Dependency Report** | Curves and smart timeseries: what it is built from |
+| **Seasonality Chart** | Timeseries and curves with tenors (not metric or composed timeseries, nor curve series) |
+| **Timeseries Profile** | Timeseries: the spread of the values, averages by month, the largest moves and the gaps |
+| **Event Analysis** | Event lists |
+
+The reports are those of the portal's data screens (the **Item Insights** and **Data Insights** categories), so the reports your team adds there show here too.
+
+![The Curve Ondate History report of the TTF forward curve](/img/extensions/data-explorer/insight-open.png)
 
 ---
 
