@@ -1,0 +1,7 @@
+{
+  "label": "Auditing",
+  "link": {
+    "type": "generated-index",
+    "description": "Investigate problems using every platform log in one place: process runs, schedules, scripts, automations, queue messages, changes, dataset deliveries, alerts, Fusion AI runs and API requests, and follow one run through all of them."
+  }
+}
