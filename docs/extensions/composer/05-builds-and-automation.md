@@ -102,6 +102,21 @@ If a composed timeseries has no values, reading it explains why: the composition
 
 ---
 
+## Changing a composed curve or timeseries
+
+Open a composed curve or timeseries on the portal's Data screen, or in the [Data Explorer](/docs/extensions/data-explorer/viewing-data), and select its **Composer** tab. It shows the composition and column it is made from, and lets you change:
+
+| Field | What it is |
+|-|-|
+| **Column** | The column of the composition it takes its values from |
+| **Name**, **Description** | How it is described |
+
+**Save** keeps the changes; **Undo changes** shows it as it was saved. **Open the composition in Composer** opens the composition in the workspace, to change its columns, data or formulas and build it again. Public composed data is shown but cannot be changed. On any other data item the tab says it is for composed data only.
+
+![The Composer tab of a composed curve](/img/extensions/composer/composed-tab.png)
+
+---
+
 ## Linked columns
 
 A linked column (see [The workspace](/docs/extensions/composer/workspace)) shows a column of another composition by reading that composition's build for the same ondate. Build the linked composition for the ondates you need, or let automation do it: when the linked composition is built, the compositions that link to it are built too.

@@ -144,6 +144,55 @@ A master data record opens on **Overview**: its data on the left (select one to 
 
 ---
 
+## Definitions
+
+Curve series, matrices, event curves, event timeseries and event options have a **Definition** tab to change how they are defined. **Save** keeps the changes on the item's master data record; **Undo changes** shows it as it was saved. Public items, and those you cannot update, are shown but cannot be changed.
+
+### Curve series and matrices
+
+Their values are saved by the processes that load or build them, so the definition only describes them.
+
+![The Definition tab of a curve series](/img/extensions/data-explorer/definition.png)
+
+| Field | Curve series | Matrix |
+|-|-|-|
+| **Name**, **Source**, **Description** | Yes | Yes |
+| **Currency**, **Units**, **Timezone** | Yes | Yes |
+| **Calendar of the values** | The interval of the values in each curve, for example HOURLY | |
+| **Expiry calendar** | The calendar that sets each ondate, needed to save a curve | |
+
+A field saved empty keeps the value the platform already has, so it cannot be removed here.
+
+### Event curves, timeseries and options
+
+Their values are built from the events of an event list, so the definition says which events and how. The fields are grouped: **Events** (the event list and where it is, the event properties to read and a filter), then **Curve**, **Timeseries** or **Options**, and for event options **Positions** (an optional event list of the options held, so that only those are returned).
+
+![The Definition tab of an event curve](/img/extensions/data-explorer/event-definition.png)
+
+| Field | Event curve | Event timeseries | Event options |
+|-|-|-|-|
+| **Event list**, **Source of the events**, **Filter** | Yes | Yes | Yes (the filter as JSON) |
+| Event properties | **Value property**, **Tenor property** | **Value property**, **Date field** (start if empty) | **Tenor**, **Strike**, **Call or put** property, **Call value**, **Put value**, **Main value property**, **Columns** (separated by commas) |
+| Calendars | **Expiry calendar**, **Holiday calendar** | **Calendar** | **Expiry calendar**, **Holiday calendar** |
+| Other | **Currency**, **Units**, **Value transformation**, **Include** | **Timezone**, **Currency**, **Units** | **Timezone**, **Currency**, **Units**, and the **Positions** fields |
+
+An event curve or event options saved with a field empty loses it, so its default applies (shown under each field). An event timeseries keeps the value it had, as curve series and matrices do. A filter stored as JSON must be saved as valid JSON. The **Event list** tab of the Event Data extension opens the event list itself.
+
+Which tab changes what:
+
+| Kind of data | Where to change it |
+|-|-|
+| Stored curve, timeseries | **Edit** (Data Management): the definition and the values |
+| Smart curve, smart timeseries | **Smart Data** |
+| Event curve, event timeseries, event options | **Definition**; the events in **Event list** (Event Data) |
+| Event list | **Events** (Event Data) |
+| Metric timeseries | **Metric** |
+| Composed curve, composed timeseries | **Composer** |
+| Curve series, matrix | **Definition** |
+
+
+---
+
 ## Insights
 
 **Insights** lists the platform's insight reports for the item, as cards: the reports for its kind of data first, then the reports for any item. Select a card to run the report here, with the item filled in; **All insights** goes back to the cards and **Refresh** runs the report again. The report stays open while you look at the item's other tabs.

@@ -12,7 +12,7 @@ tags: [extension, promotion, reference, environments, permissions]
 
 ## Installing
 
-Install the extension in every environment you promote from: your test or UAT environment to push to production, and production too if you want to copy items from production to a test environment. The screen does not work in the preview environment, which runs the next platform release on its own servers.
+Install the extension in every environment you promote from: your test or UAT environment to push to production, and production too if you want to copy items from production to a test environment. Preview is offered as a target, so you can push items from production (or a test environment) to try them on the next release. The screen itself does not work in the preview environment, which runs the next platform release on its own servers.
 
 The extension installs:
 

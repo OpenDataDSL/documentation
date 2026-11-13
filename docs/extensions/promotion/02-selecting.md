@@ -10,6 +10,8 @@ tags: [extension, promotion, environments, deployment]
 
 Open **Manage** > **Promote** in the environment you want to promote from. The header shows the route: **From** your environment **to** the target. The target is production unless you choose another environment in the list (for example a UAT environment between test and production). In production, the list has your other environments, so you can copy items from production to a test environment to work on them.
 
+The list also has **preview**, the environment that runs the next platform release. Push items there from production to try them on the new release before it reaches production. Preview runs on its own servers, and Promotion sends the requests for it there.
+
 ![The Select tab with two master data records in the basket](/img/extensions/promotion/select.png)
 
 ---
