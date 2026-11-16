@@ -1,6 +1,6 @@
 ---
 title: Web Portal
-description: Web portal information
+description: The OpenDataDSL web portal, how to sign in, how the screen and menu are laid out, and where extensions fit in
 sidebar_position: 1
 slug: /user/portal
 tags:
@@ -11,93 +11,100 @@ import {Portal} from '/src/components/Schema'
 
 <Portal />
 
-## Accessing The Portal
-You can access the web portal from the `Portal` link on this web site or by clicking [here](https://portal.opendatadsl.com/).
+The web portal is where you work with OpenDataDSL in your browser: find and chart your data, load and deliver it, check that it arrived and is right, build scripts and workflows, and run reports and dashboards. Most of its screens are **extensions**, so your portal shows the screens your organisation has installed.
 
-Once on the main portal page, you will need to Sign in by clicking the Blue Sign In button in the top right corner of the page.
+![The portal with the Data group open](/img/portal/layout.png)
 
-Enter your company log-in details to gain access to the portal.
+---
 
-### First-time login 
-If this is the first time you have logged into the Web Portal, you will be required to enter some additional information to get you onboarded as a client.
-You will be presented with a number of Microsoft screens which will authenticate you against your own Active Directory and you may be asked to accept some permissions for the OpenDataDSL application.
+## Signing in
 
-Once authenticated, if you are the first person to log-in from your organisation, you will be asked for the name of your company.
-You will then be asked for your own name and a few other details. 
+Open the portal from the **Portal** link on this site, or go to [portal.opendatadsl.com](https://portal.opendatadsl.com/).
 
-## Portal Layout
-:::note
-The portal is rapidly evolving, so the layout shown below may not exactly match what you see. 
+1. Select **Sign in** at the top right of the page.
+2. Sign in with your work account: the same Microsoft account you use for your company email.
+3. Complete any checks your company asks for, such as a code on your phone.
+4. The portal opens on your **Home** page.
+
+There is no separate OpenDataDSL password. If you cannot get in, ask your administrator to add you to your organisation in the portal.
+
+### First sign-in
+The first time anyone from your company signs in, Microsoft may ask you to accept the permissions the OpenDataDSL application needs. If you are the first person from your organisation, you are then asked for the name of your company. You are also asked for your own name and a few other details.
+
+:::tip
+If the portal keeps asking you to sign in, or signs you in as the wrong account, open your profile menu and select **Fix sign-in...**. It clears the saved sign-in details and starts a fresh sign-in.
 :::
 
-![](/img/portal/main_screen.png)
+---
 
-## Home Screen
-The home screen of the portal contains an up-to-date summary of all your vital statistics. 
+## The screen
+
+The screen has four parts:
+
+| Part | Where | What it is for |
+|-|-|-|
+| **Rail** | Far left | The OpenDataDSL logo, **Home**, one button for each menu group, and **Panel** at the bottom |
+| **Panel** | Next to the rail | The items in the selected menu group, each with a short description |
+| **Header** | Top | The name of the screen you are on, **Notifications** (the bell) and your profile menu (your picture or initials) |
+| **Page** | The rest | The screen you opened, with **About**, **Privacy** and **Terms of use** at the bottom |
+
+Select **Panel** at the bottom of the rail to switch between keeping the panel open and showing the rail only. See [The menu](/docs/user/portal/menu) for the two layouts and everything in each group.
+
+---
+
+## The menu groups
+
+| Group | What you find there |
+|-|-|
+| **Home** | Your task-based home page |
+| **Data** | Find, view, chart and build data: Data Explorer, Composer, Smart Data, Event Data |
+| **Monitor** | Check that everything ran and arrived: Alerts, Validation, Auditing, Executions, Processes, Curves, Datasets |
+| **Deliver** | Get data in and out: Data Loaders, Integrations, Queues, Export data, Automations, Aggregator |
+| **Build** | Scripts, types, calendars, workflows, notebooks and promotion between environments |
+| **AI** | Fusion AI: Studio, Playbooks, Agents, Assistants and Tools |
+| **Manage** | Groups and bulk changes to data and master data |
+| **Solutions** | Extensions for a particular business problem, such as portfolios or data reconciliation |
+| **Reports** | Reports, dashboards and the dashboards you have pinned |
+
+A group shows only the items you have: if an extension is not installed, or you do not have access to it, its item is not in the menu.
+
+<InDepth href="/docs/user/portal/menu" />
+
+---
+
+## Home
+Home is the first page you see after signing in. It asks **What do you want to do today?** and shows your tasks in groups, with the ones that need you now at the top.
 
 <InDepth href="/docs/user/portal/home" />
 
-## Dashboards
-OpenDataDSL dashboards allow you to perform real-time monitoring and drill-down into historic events in order to resolve any issues.
+---
 
-### Execution Dashboard
-The execution dashboard is used to monitor process executions in real-time.
-You can also drill-down into specific executions to check the correct flow and understand why and where they failed.
+## Extensions
+Almost every item in the menu is an **extension**: a screen, or a set of screens, for one job. Extensions can also add tabs to other screens, reports to the Insights tabs and tasks to your Home page. Your organisation chooses which ones are installed, and new extensions and new versions arrive without you having to install anything on your computer.
 
-<InDepth href="/docs/user/portal/executions" />
+- See which extensions your organisation has in the portal: profile menu > **Account** > **Organization** > **Extensions**.
+- See every extension, what it does and its user guide in the [Extensions catalog](/docs/extensions).
 
-### Process Dashboard
-The process dashboard is similar to the execution dashboard, but is focussed on the processes rather than the process executions.
-It gives you vital summary information about the executions of a specific process.
+<InDepth href="/docs/user/portal/extensions" />
 
-<InDepth href="/docs/user/portal/process" />
+---
 
-### Process Timeline
-The process timeline gives you a 24 hour snapshot of processes that have run and are going to run.
-It also provides a real-time view of running processes.
+## Your profile, account and settings
+Your profile menu, at the top right, has your account, your settings, the data environments you can switch between and **Sign out**.
 
-<InDepth href="/docs/user/portal/timeline" />
+<InDepth href="/docs/user/portal/settings" />
 
-### Auditing
-The auditing dashboard allows you to drill-down into specific events that have happened by specific users or on specific entities.
+---
 
-<InDepth href="/docs/user/portal/auditing" />
+## The built-in screens
+A few screens are part of the portal itself rather than extensions. Each has its own page:
 
-## Views
-OpenDataDSL views focus on various aspects of information in both the public and private spaces
-
-### Smart Data View
-The smart data view allows you to create, edit and view all your smart timeseries and curves.
-
-### Geo Data
-The geo data view gives you access to the stored geometry in your objects/documents.
-You can filter your data to zoom-in on the locations within the map
-
-### Data View
-The data view gives you direct access to all the TimeSeries and Curves in OpenDataDSL.
-You can filter and find, chart and export data.
-
-### Objects View
-The objects view shows all the public and private objects in OpenDataDSL allowing you to filter, find and navigate through the object database.
-Clicking on data assets in an object allows you to inspect and chart that data.
-
-### Events View
-The events view gives you access to all the stored events
-
-## Manage
-
-### Account Management
-The account management tool allows you to update your own personal details, your organization details and settings, billing information and support.
-
-### Data Packages
-Data packages are pre-configured ETL processes for data sets you may want to load into your private repository.
-These data sets generally require you have have an account with the vendor or are not freely distributable.
-
-### Queues
-You can view or manage you message queues here
-
-## Tools
-OpenDataDSL tools allow you to configure your settings
-
-### Settings Tool
-The settings tool allows you to personalise the portal to suit your own preferences.
+| Screen | Menu | Guide |
+|-|-|-|
+| Executions | **Monitor** > **Executions** | [Executions](/docs/user/portal/executions) |
+| Processes | **Monitor** > **Processes** | [Processes](/docs/user/portal/process) |
+| Curves | **Monitor** > **Curves** | [Curve builds](/docs/user/portal/curves) |
+| Datasets | **Monitor** > **Datasets** | [Dataset monitoring](/docs/user/portal/dataset) |
+| Reports and Dashboards | **Reports** | [Reports and dashboards](/docs/user/portal/reports) |
+| Types | **Build** > **Types** | [Modelling](/docs/odsl/dm/modelling) |
+| Queues | **Deliver** > **Queues** | [Queues](/docs/odsl/dm/queues) |

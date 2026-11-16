@@ -1,100 +1,34 @@
 ---
-title: Favourites 🆕
-description: Dataset monitoring dashboard in the web portal
-sidebar_position: 7
+title: Favourites and groups
+description: Starred items and groups of data and master data in the web portal
+sidebar_position: 12
 slug: /user/portal/favourites
 tags:
 - portal
 - groups
 - favourites
-- new
 ---
-## What are favourites?
+Favourites and groups let you keep the data and master data you use most within easy reach.
 
-Favourites are groups of master data records or data items which you can categorise and have easy access to.
-Favourites are accessed through the **Favourites** toolbar button on the following screens:
+---
 
-* Master Data
-* Data
+## Starred items
 
-## Creating Favourites
+In **Data** > **Data Explorer**, select the star beside a result, or beside the name of an item you have opened, to star it. **Starred** on the shelf lists your starred items. They are kept as your own favourites group, which only you can see, so you can also use them anywhere a group is used.
 
-Favourites are groups which can be created in [ODSL code](/docs/odsl/variable/group) or in the Web Portal.
+See [Starred items](/docs/extensions/data-explorer/finding-data#starred-items) in the Data Explorer guide.
 
-### Types of favourite groups
-There are 2 types of favourite groups:
-* Dynamic
-* Static
+---
 
-#### Dynamic favourite groups
-Dynamic favourite groups use an expression to create the list of items in the group
+## Groups
 
-#### Static favourite groups
-Static favourite groups are a list of items which you manually maintain.
+A group is a list of data or master data items with a name and a category. There are two kinds:
 
-### Creating a dynamic favourite group
+| Kind | What it holds |
+|-|-|
+| **Static** | The items you add to it |
+| **Dynamic** | Whatever its rule finds when you open it |
 
-#### Select the content type
-To create a dynamic favourite group, go to either:
-* Master Data - to create a group of master data records
-* Data - to create a group a data items
-
-#### Create a filter
-Use the filter widget to define the dynamic filter to find the items
-
-For example:
-
-![](/img/portal/fav_filter.png)
-
-#### Save the filter
-
-Click the save button to save the filter expression to a favourite group:
-
-![](/img/portal/fav_save.png)
-
-This will open up a dialog to create a new dynamic favourites group:
-
-![](/img/portal/fav_add_group.png)
-
-Fill in the details and click ok to save the new favourites group.
-
-### Creating a static favourite group
-
-#### Select the content type
-To create a dynamic favourite group, go to either:
-* Master Data - to create a group of master data records
-* Data - to create a group a data items
-
-#### Add an item
-Find the item you want to add to a group and click the add to group button, e.g.
-
-![](/img/portal/fav_item.png)
-
-After clicking the **Add to group** button, a dialog will pop-up where you can eithee:
-* Add the item to an existing group or groups
-* Create a new group and add the item to it.
-
-Click ok to add the item.
-
-## Using Favourites
-
-Clicking the **Favourites* button shows a menu of all the favourite groups that you have either created or are shared with you.
-
-![](/img/portal/fav_screen1.png)
-
-Each top level name is the type of group (**Providers, Commodity, Features, Favourites**)
-
-:::note
-These may be different in your portal
-:::
-
-Then the groups are organised by category, so in this case the categories are:
-* FX
-* Power
-* Natural Gas
-* Crude Oil
-
-Under each category are a list of 1 or more groups.
-
-Clicking on a group will focus back to the underlying screen and show the items belonging to that group.
-
+- In **Data** > **Data Explorer**, select **+** beside **Starred and groups** to list the groups you can see, open one, or pin it to the shelf. Select items in the results and choose **Add to group** to add them to a group or make a new one. See [Groups](/docs/extensions/data-explorer/finding-data#groups).
+- In **Manage** > **Group Manager**, create, change and share groups, including curve build, quality, approval and export groups and policy user groups. See [Group Manager](/docs/extensions/group-manager/overview).
+- In ODSL code, see [Groups](/docs/odsl/variable/group).

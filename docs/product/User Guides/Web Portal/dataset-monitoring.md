@@ -1,156 +1,77 @@
 ---
-title: Dataset Monitoring 🆕
-description: Dataset monitoring dashboard in the web portal
-sidebar_position: 6
+title: Dataset monitoring
+description: The Datasets screen in the web portal, for checking that your datasets were delivered on time and passed their quality checks
+sidebar_position: 9
 slug: /user/portal/dataset
 tags:
   - portal
   - dashboard
   - dataset
   - monitoring
-  - new
 ---
-The dataset monitoring dashboard is used to monitor datasets for completeness and quality in real-time.
+**Monitor** > **Datasets** shows whether the datasets you depend on have been delivered, are complete and have passed their quality checks, with any alerts raised about them.
 
-## Layout
-The dataset monitoring dashboard contains 3 distinct sections:
-* Overview - a summary of the current status of all monitored datasets and alerts
-* Dataset list - detailed information about all monitored datasets
-* Reports - curated public and private reports specifically about datasets
+![The Datasets screen](/img/portal/datasets.png)
 
-## Dataset Overview Screen
-The overview screen gives you a summary of the current status of all the datasets that you care about.
+---
 
-In the **view by** dropdown, you can filter by:
-* **Provider**
-  > This summarises the status information by the data provider
-* **Category**
-  > This summarises the status information by the custom category that you assign to datasets 
-* **Priority**
-  > This summarises the status information by the custom priority that you assign to datasets
+## The toolbar
 
-## Dataset List
-The dataset list is the main screen for viewing and changing monitoring information on datasets.
+| Control | What it does |
+|-|-|
+| **Groups**, **List view**, **Feed view**, **Report view** | Shows the datasets grouped (by provider, for example), as a list, by feed, or the dataset reports |
+| **Smart** | Switches the smart view on or off |
+| **Monitored** | Switches between the datasets you monitor and every dataset you can see |
+| **Current**, **Next available**, **Custom** | Which deliveries to show: the current ones, the next ones due, or the deliveries for a date you choose |
+| Date | The delivery date, with arrows for the previous and next date |
+| **Group status** | Shows only the groups with a particular status, or **All** |
+| **Refresh** | Reads the status again; the arrow beside it has more options |
 
-The list of datasets you see are the datasets that you want to monitor.
+---
 
-### Adding datasets to the monitored list
-To add datasets, click the **Monitored** button at the top left of your screen.
+## The summary
 
-![](/img/portal/dm_monitored_button.png)
+| Chart | What it counts |
+|-|-|
+| **Delivery Status** | Datasets **Waiting**, **Partial**, **Missing**, **Loaded**, **Active**, **Late**, **Holiday** and **Failed** |
+| **Quality Checks** | Datasets **Unchecked**, **Valid**, with **Warnings** and **Failed** |
+| **Critical Checks** | Critical checks **Waiting**, **Valid** and **Failed** |
+| **Alerts** | Alerts **Open**, **InProgress** and **Closed** |
 
-The list now shows all the datasets in the system that you are entitled to see.
+---
 
-To add a dataset into your monitored list, click the **add** ![](/img/portal/dm_add_button.png) button.
+## Completeness and quality checks
 
-Clicking the **Monitored** button again takes you back to your monitored datasets list.
+The table lists the datasets, grouped by what you choose in **View by** (for example **Provider**), with the number of datasets in each. **Delivery Status**, **Quality Checks** and **Critical Checks** show how many are in each state: point at a bar to see its count. **NONE** means none of the group's datasets have that kind of check.
 
-### Filtering the dataset list
-You can filter the dataset list using the following attributes:
-* **Category**
-> This is a user-definable category that you can assign to your monitored datasets
-* **Feed**
-> This is the code for the feed (usually used in conjunction with the Provider attribute)
-* **Delivery Status**
-> This is the current delivery status of the dataset
-* **DSID**
-> This is the unique id for a dataset
-* **Quality Status**
-> This is the curreny quality status of the dataset
-* **Priority**
-> This is a user-definable priority that you can assign to your monitored datasets
-* **Provider**
-> This is the code for the provider of the data for the dataset
-* **Product**
-> This is the code for the product, the last part of the dataset id
-* **Smart Feed Status**
-> This is the current status of smart feeds that load datasets
-* **Source**
-> This is the location of where the data is stored, usually private, common or public
+### Delivery status
+| Status | Meaning |
+|-|-|
+| **Waiting** | Not due yet |
+| **Active** | The delivery has started |
+| **Partial** | Some of the data has arrived |
+| **Loaded** | Complete |
+| **Late** | Due, but not complete yet |
+| **Missing** | Not delivered |
+| **Holiday** | Not expected today, because of the dataset's holiday calendar |
+| **Failed** | The delivery failed |
 
-### Dataset information
-Each entry in the list of datasets has icons representing various statuses of the dataset
+### Quality status
+| Status | Meaning |
+|-|-|
+| **Unchecked** | No quality checks have run |
+| **Valid** | Passed every check |
+| **Warnings** | Passed, with warnings |
+| **Failed** | Failed one or more checks |
 
-![](/img/portal/dm_dataset_icons.png)
+---
 
-* **Delivery Status**
-> This is the current delivery status of the dataset, it can be one of:
-> * waiting
-> * active
-> * partial
-> * holiday
-> * loaded
-> * late
-> * missing
-* **Delivery Score**
-> This is the score for the delivery on this day, used for historic reporting of KPIs etc.
-* **Quality Status**
-> This is the overall quality status of the dataset after running your quality checks, it can be one of:
-> * unchecked
-> * valid
-> * warning
-> * failed
-> * severe
-* **Smart Status**
-> If this is loaded using a smart loader, then this is the current status of the smart loader, can be one of:
-> * waiting
-> * running
-> * loaded
-> * failed
-> * holiday
-* **Alerts**
-> This is the number of alerts raised for this dataset
+## Alerts
 
-### Dataset actions
-Actions you can perform on a dataset become active when you hover over the dataset, they are shown below:
+The **Alerts** list on the right shows the alerts raised about the datasets, filtered by **Impact** and **Status**. To work with alerts, open **Monitor** > [**Alerts**](/docs/extensions/alerts/overview).
 
-![](/img/portal/dm_dataset_action_buttons.png)
-
-* **Edit**
-> This opens a side panel allowing you to edit the dataset
-* **Remove**
-> This button removes the dataset from being monitored in dataset monitoring
-* **Copy**
-> This copies the id of the dataset to the clipboard
-
-## Dataset tabs
-After clicking on a dataset, the right side of the screen shows information about the dataset which is described in this section.
-
-### General tab
-This tab shows all the basic status information about this dataset for the selected date.
-
-The screenshot below shows all the status information along with detailed information about the completeness and quality checks.
-
-![](/img/portal/dm_tab_general.png)
-
-### Feed tab
-This shows the configuration information for the feed that this dataset belongs to.
-
-The screenshot below shows typical feed information and logging information from a smart loader. 
-
-![](/img/portal/dm_tab_feed.png)
-
-### Data tab
-This shows the data for this dataset for the selected date.
-
-### Timeline tab
-This shows all the activity that has happened to this dataset for the selected date.
-
-### Alerts tab
-This shows any alerts that have been raised for this dataset for the selected date.
-
-### Insights tab
-This shows a list of insights (both public and private) that report on various aspects of this dataset.
-
-The screenshot below shows a set of insights for datasets, these will be added to over time, and you can add your own private insights which will be added to this screen if you save the insights with the category: ```Dataset Monitoring Insights```
-
-![](/img/portal/dm_tab_insights.png)
-
-### Other tabs
-Other tabs may be shown which represent documentation about this dataset which are either provided by us or by your own internal teams.
-
+---
 
 ## More information
-Some links with further information about dataset monitoring:
-
-* [Data Monitoring Topic](/docs/odsl/dm/monitoring)
+- [Data monitoring](/docs/odsl/dm/monitoring)
+- [Validation](/docs/extensions/validation/overview): the checks behind the quality status

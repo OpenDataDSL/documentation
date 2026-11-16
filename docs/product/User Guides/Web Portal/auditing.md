@@ -1,34 +1,17 @@
 ---
 title: Auditing
-description: Auditing dashboard in the web portal
-sidebar_position: 6
+description: Where to find the audit records of the platform in the web portal
+sidebar_position: 11
 slug: /user/portal/auditing
 tags:
   - portal
   - dashboard
   - audit
 ---
-The auditing dashboard in the Web Portal allows you to drill-down into specific events that have happened by specific users or on specific entities.
+**Monitor** > **Auditing** brings every platform log together in one place: audit records of who changed what, process and script logs, automation logs and more. Use it to find out what happened to an item, who did it and when.
 
-## Layout
-The auditing dashboard is a paged, filterable list of audit records in reverse time-order.
+Auditing is an extension. Its user guide explains how to search, filter and read the logs:
 
-### Filtering
-There is a top-level filter that allows you to show either public or private audit records, defaulting to private.
+- [Auditing](/docs/extensions/auditing/overview)
 
-You can then filter on the following:
-* Service
-* Action
-* User
-
-## Audit Records
-The following information is displayed for audit records:
-
-|Name|Description|
-|-|-|
-|Service|The name of the service submitting the audit record|
-|Action|The action that was performed|
-|Time|The timestamp of when the action occurred|
-|User|The email address of the user or the ID of the application that performed the action|
-|Reason|The reason the action was taken|
-|Description|A description of the audit record|
+You can also see the audit records of a single item from the **Insights** tab on many screens: choose the **Audit Report**.

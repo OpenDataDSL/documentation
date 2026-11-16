@@ -1,7 +1,7 @@
 ---
-title: Execution Dashboard
-description: Process execution dashboard in the web portal
-sidebar_position: 3
+title: Executions
+description: The Executions screen in the web portal, for following process runs and finding out why one failed
+sidebar_position: 6
 slug: /user/portal/executions
 tags:
   - portal
@@ -9,116 +9,72 @@ tags:
   - process
   - execution
 ---
-The execution dashboard is used to monitor process executions in real-time.
-You can also drill-down into specific executions to check the correct flow and understand why and where they failed.
+**Monitor** > **Executions** shows your process runs (executions) as they happen. Use it to check that your loaders and other processes ran, and to find out why and where one failed.
 
-## Layout
-The execution dashboard screen contains 3 distinct sections:
-* Filter panel - used for filtering the process executions
-* Filtered list - the process executions which match the filter
-* Detail panel - details of the currently selected process execution
+![The Executions screen](/img/portal/executions.png)
 
-![](/img/portal/executions_layout.png)
+The screen has two parts: the list of executions on the left, and the details of the one you select on the right.
 
-## Filter panel
-The filter panel allows you to filter the process executions to the range and type of execution you want to focus on.
+---
 
-You can filter on the following:
-* Time range - you can select all executions within the last:
-  * 12 hours
-  * 24 hours
-  * 48 hours
-  * Week
-  * Month
-* How the process was triggered
-  * Scheduled
-  * Manual
-  * Event
-* The status of the execution
-  * Running
-  * Success
-  * Failed
+## The list of executions
 
-:::note
-The summary chart shows all the executions for the currently selected range only
-:::
-
-## Filtered list
-The filtered list shows the process executions which match the currently selected filters.
-
-Each item in the list contains the following information:
-* The status of the execution represented by an icon
-* The name of the process
-* The service name of the process
-* How the process was triggered
-* The timestamp of when the process execution started
-* The loader message of the process if it exists, otherwise the status message
-
-*An example item from the list*
-
-![](/img/portal/executions_item.png)
-
-### Actions
-#### Click on process execution item
-When you click on an item in the list, the details of that process execution are shown in the detail panel.
-
-#### Hover over process execution item, click on run button
-Displays a process configuration dialog where you can amend the process configuration (if needed) and run the process.
-:::note
-Amending the configuration on this screen is only for that one manual run and not saved
-:::
-
-#### Hover over process execution item, click on copy button
-Copies the process execution id into the clipboard
-
-## Detail panel
-The detail panel shows the full details of the currently selected process execution.
-
-The detail panel is broken into 3 sections:
-* Process execution details
-* Phases
-* Process details
-
-### Process execution details
-This section displays information about the process execution itself - the table below explains each item of information:
-
-|Name|Description|
+### Filters
+| Filter | What it does |
 |-|-|
-|Started|The timestamp of when the process execution actually started|
-|Ended|The timestamp of when the process execution completed|
-|Duration|The amount of time, in seconds, that the execution ran for|
-|Status|The status of the process execution, if the process is complete, this is the final status|
-|Trigger|How the process was triggered|
-|Trigger time|If the process is scheduled, this is the timestamp of when it was scheduled to run|
-|Reason|The reason why this process was executed|
-|Message|The status message of this execution|
-|Loader message|If this is an ETL process, this is details about what was loaded|
+| **Range** | Executions in the last **12H**, **24H**, **48H**, week (**1W**) or month (**1M**), or a date range you choose with the calendar button |
+| **Type** | The kind of process, for example ETL |
+| **Trigger** | How the run started: scheduled, manual, by an event and so on |
+| **Status** | The coloured buttons count the runs in the range that **Failed**, ended with a **Warning**, ended in **Success** or are **Running**. Select one to show or hide those runs. |
+| **Search** and **Type expression to filter results** | Find runs by name, or filter them with an expression |
 
-### Phases
-This section breaks the process down into individual phases as determined by the workflow that has been run.
+### Each execution
+Each run in the list shows:
+- its status icon
+- the name of the process
+- its service and type, and when it started
+- the loader message if there is one (what was loaded), otherwise the status message
 
-Each phase shows:
-* The phase status
-* Phase name
-* Logging information
-* Duration of the phase
+Point at a run to see its buttons:
 
-*An example phases section*
-
-![](/img/portal/executions_phases.png)
-
-Underneath the phases section is a button for you to show details about the TimeSeries and Curves that were updated during the process execution.
-
-### Process details
-This section shows information about the process:
-
-|Name|Description|
+| Button | What it does |
 |-|-|
-|Name|The name of the process|
-|Description|A description of the process|
-|Service|The service category of the process, e.g. ETL|
-|Status|The status of the process, either enabled or disabled|
-|Calendar|The calendar associated with the process, if any|
-|Cron|The cron trigger expression used to schedule the process|
-|Next run|The timestamp of when the next time this process will be run|
-|Workflow|The name of the workflow that this process runs|
+| **Run** | Opens the process's configuration so you can change it for this one run, then runs it. The changes are not saved to the process. |
+| **Stop** | Stops a run that is still going |
+| **Copy** | Copies the execution id |
+
+---
+
+## The details of an execution
+
+Select a run to see its details on the right.
+
+### Execution tab
+| Field | What it is |
+|-|-|
+| **Job** | The job that ran it |
+| **Started** and **Ended** | When the run started and finished |
+| **Duration** | How long it took |
+| **Status** | The status of the run; for a finished run, its final status |
+| **Trigger** | How the run started |
+| **Trigger time** | When it was due to start, for a scheduled or triggered run |
+| **Reason** | Why it ran |
+| **Message** | The status message |
+| **Loader message** | For a data loader, what it loaded |
+
+Below them, **Phases** breaks the run down into the phases of its workflow, for example **EXTRACT**, **TRANSFORM** and **LOAD**. Each phase shows its status, its log lines with their level (for example **DEBUG** or **INFO**) and how long it took. **Warnings** lists the warnings raised during the run. **Previous** and **Next** move between the runs. **Data Changes** shows the timeseries and curves the run changed.
+
+### Details tab
+The process itself: its name, description, service, status (enabled or disabled), when and by whom it was last changed, its schedule (**Cron**), when it runs next and its **Workflow**.
+
+### Assistant tab
+Ask Fusion AI about the run, for example **Why did this process fail?** or **Can you find all processes that failed overnight?**
+
+### Insights tab
+Reports about the process, such as its **Execution History**, **Audit Report**, **Automations**, **Automation Logs** and **Cron Schedule Diagnostics** (what the schedule expected, what was fired and what ran). Select one to run it.
+
+---
+
+## See also
+- [Processes](/docs/user/portal/process): the processes themselves and their schedules
+- [Alerts](/docs/extensions/alerts/overview): alerts raised when a process fails

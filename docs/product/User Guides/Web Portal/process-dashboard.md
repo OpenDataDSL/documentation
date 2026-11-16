@@ -1,112 +1,61 @@
 ---
-title: Process Dashboard
-description: Process dashboard in the web portal
-sidebar_position: 4
+title: Processes
+description: The Processes screen in the web portal, for your processes, their schedules and the history of their runs
+sidebar_position: 7
 slug: /user/portal/process
 tags:
   - portal
   - dashboard
   - process
 ---
-The process dashboard is similar to the execution dashboard, but is focussed on the processes rather than the process executions.
-It gives you vital summary information about the executions of a specific process.
+**Monitor** > **Processes** lists your processes: the scheduled or triggered jobs that run your data loaders, workflows and scripts. Where [Executions](/docs/user/portal/executions) is about individual runs, Processes is about the process itself: how it is set up, when it runs and how it has been running.
 
-## Layout
-The process dashboard screen contains 3 sections
-* Process list - the list of all your processes
-* Configuration panel - configuration details for the currently selected process
-* Executions panel - interactive panel showing details about all the executions of the currently selected process
+![The Processes screen](/img/portal/processes.png)
 
-![](/img/portal/process_layout.png)
+---
 
-## Process List
-The process list section is a list of all your processes. 
-You can use the search box to search for a specific process.
+## The list of processes
 
-### Actions
-#### Click on process
-Clicking on a process shows details about that process in the configuration panel and executions that have happened in the executions panel
+The list on the left shows every process, with its name, description and service. Choose a service from the list at the top to show only its processes, or type an expression in **Type expression to filter results**.
 
-#### Hover over a process, click on run button
-Displays a process configuration dialog where you can amend the process configuration (if needed) and run the process.
-:::note
-Amending the configuration on this screen is only for that one manual run and not saved
-:::
+Point at a process to see its buttons:
 
-#### Hover over a process, click on copy button
-Copies the process name into the clipboard
-
-## Configuration Panel
-This section shows information about the process:
-
-|Name|Description|
+| Button | What it does |
 |-|-|
-|Name|The name of the process|
-|Description|A description of the process|
-|Service|The service category of the process, e.g. ETL|
-|Status|The status of the process, either enabled or disabled|
-|Calendar|The calendar associated with the process, if any|
-|Cron|The cron trigger expression used to schedule the process|
-|Next run|The timestamp of when the next time this process will be run|
-|Workflow|The name of the workflow that this process runs|
-|Inputs|The inputs section shows all the variables that will be passed into the process|
+| **Edit** | Changes the process |
+| **Run** | Opens the process's configuration so you can change it for this one run, then runs it. The changes are not saved to the process. |
+| **Copy** | Copies the process name |
 
-## Executions Panel
-The executions panel shows information about the historic executions of the currently selected process.
+**Automations** at the top of the screen opens the automations for the selected process.
 
-### Execution summary
-![](/img/portal/process_summary.png)
+---
 
-The execution summary section shows a summarised view with the following information:
-* A calendar month showing the days that the process ran and the status of the last run of that day
-* The total amount of processing time for this process for
-  * The current month
-  * The current year
-  * All time
-* A chart showing the count of the number of runs broken down by status
+## The details of a process
 
-### Execution details
-![](/img/portal/process_details.png)
+Select a process to see its details on the right.
 
-The execution details contain information about a specific process execution
-
-|Name|Description|
+### Configuration tab
+| Field | What it is |
 |-|-|
-|Started|The timestamp of when the process execution actually started|
-|Ended|The timestamp of when the process execution completed|
-|Duration|The amount of time, in seconds, that the execution ran for|
-|Status|The status of the process execution, if the process is complete, this is the final status|
-|Trigger|How the process was triggered|
-|Trigger time|If the process is scheduled, this is the timestamp of when it was scheduled to run|
-|Reason|The reason why this process was executed|
-|Message|The status message of this execution|
-|Loader message|If this is an ETL process, this is details about what was loaded|
+| **Name** and **Description** | The process name and what it does |
+| **Service** | The service it belongs to, for example ETL |
+| **Status** | **Enabled** or **Disabled** |
+| **Last modified** | When it was last changed, and by whom |
+| **Cron** | The schedule, as a cron expression with its calendar |
+| **Next run** | When it runs next |
+| **Workflow** | The workflow it runs |
+| **Inputs** | The values passed into the process when it runs |
 
-### Phases
-This section breaks the process down into individual phases as determined by the workflow that has been run.
+### Executions tab
+The history of the process's runs:
 
-Each phase shows:
-* The phase status
-* Phase name
-* Logging information
-* Duration of the phase
+- The number of runs that **Failed**, ended in **Success**, are **Running** or are **Waiting**.
+- A calendar month showing the days the process ran, coloured by the status of the day's last run. **Previous month** and **Next month** move the calendar, and **Go to current selection** returns to the run you are looking at. Select a day to see its last run.
+- The total processing time of the process this month, this year and of all time.
+- **Execution Details** of the selected run, with its phases and warnings, as on the [Executions](/docs/user/portal/executions#execution-tab) screen.
 
-Underneath the phases section is a button for you to show details about the TimeSeries and Curves that were updated during the process execution.
+### Insights tab
+Reports about the process, such as its execution history, audit records and automations.
 
-
-### Actions
-#### Click on a date in the calendar
-Displays the last process execution of the selected date
-
-#### Click on the up or down arrow above the calendar
-Clicking up moves the calendar to the previous month.
-
-Clicking down moves the calendar to the next month
-
-#### Click the current selection button above the calendar
-Moves the calendar to the date of the currently selected process execution
-
-#### Click on the left or right arrow above the execution details
-Clicking left shows the previous process execution for the selected date
-
-Clicking left shows the next process execution for the selected date
+### Documentation tabs
+Some processes have more tabs, named after the provider or the data set, with documentation about the data they load.

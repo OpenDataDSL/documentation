@@ -1,7 +1,7 @@
 ---
 title: Process Timeline
 description: Process timeline dashboard in the web portal
-sidebar_position: 5
+sidebar_position: 13
 slug: /user/portal/timeline
 tags:
   - portal
@@ -9,6 +9,10 @@ tags:
   - process
   - timeline
 ---
+:::note
+The Process Timeline is no longer in the portal menu. To open it, add `/process-timeline` to the end of the portal address, for example `https://portal.opendatadsl.com/process-timeline`. For process runs, use **Monitor** > [**Executions**](/docs/user/portal/executions).
+:::
+
 The process timeline gives you a 24 hour snapshot of processes that have run and are going to run.
 It also provides a real-time view of running processes.
 
