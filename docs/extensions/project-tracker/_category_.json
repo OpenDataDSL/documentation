@@ -1,0 +1,7 @@
+{
+  "label": "Projects",
+  "link": {
+    "type": "generated-index",
+    "description": "Plan and track client onboarding projects shared between OpenDataDSL, the client and the implementor: tasks by work stream, a Gantt chart, the communication on each task, reminders and project documents."
+  }
+}
