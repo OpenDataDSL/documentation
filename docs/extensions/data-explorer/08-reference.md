@@ -24,7 +24,7 @@ A Home page task or a link can open the Data Explorer ready for a job with view 
 | `KIND` | `curve`, `timeseries`, `options`, `matrix` or `eventlist`: data of this kind only |
 | `SEARCH`, `TEXT` | The search text, and Id contains |
 | `GROUP` | A group id or name: its members are listed |
-| `TAB` | `board`: opens the chart board |
+| `TAB` | `board`: opens the chart board; `geo`: opens GEO Data |
 | `TOUR` | `true` starts the tour, `false` never shows it (it is otherwise shown on a first visit) |
 
 ---
@@ -59,6 +59,7 @@ A Home page task or a link can open the Data Explorer ready for a job with view 
 | Automations | `GET data/v1/{source}/ID?_function=listAutomations`, `POST automation/v1` |
 | Other extensions | `GET extension/v1/private` (their views and `configuration.data_explorer`), `GET extension/v1/private/EXT/view/VIEW?_properties=...` |
 | A metric timeseries | Its metrics `GET metric/v1?_function=listMetrics&provider=PROVIDER`; saving `POST object/v1/private` with `{_id: RECORD, KEY: {_id: KEY, _type: "VarMetricTimeSeries", provider, metric, ...}}`; recent values `GET data/v1/{source}/ID?_range=last(48)` |
+| GEO Data | `GET object/v1/{source}` with `_filter` `{"geoLocation.coordinates": {"$exists": true}}`, near a point the query parameter `geoLocation=within(sphere([LNG,LAT],RADIANS))` (the radius in km divided by 6378.1); types `_distinct=_type`; placing a record `POST object/v1/private` with `{_id, _type, geoLocation: {type: "Point", coordinates: [LNG, LAT]}}` |
 | Insights | `GET reportconfig/v1/all?_limit=-1` (categories Item Insights and Data Insights); running one `GET report/v1/{source}/REPORT` with `Accept: text/html` and `_properties={"ID", "SOURCE", "SERVICE": "data"}` |
 
 ---
@@ -76,7 +77,7 @@ The Data Explorer shows only what the platform lets you read. Groups you can see
 | Extension | `odsl.data_explorer` |
 | View | **Data Explorer** in the Information menu |
 | Feature policy | `extension.odsl.data_explorer` (feature `odsl.data_explorer.manage`) |
-| Home page tasks | **Find data**, **Chart and compare curves**, **Look at option chains and volatility smiles** |
+| Home page tasks | **Find data**, **Chart and compare curves**, **Look at option chains and volatility smiles**, **See your assets on a map** |
 | Insight reports | **Timeseries Profile** (`odsl.data_explorer.tsprofile`) and **Curve Ondate History** (`odsl.data_explorer.curvehistory`), in Data Insights |
 
 ---
@@ -92,6 +93,9 @@ The Data Explorer shows only what the platform lets you read. Groups you can see
 | **The browser did not allow copying here** | The page is not allowed to use the clipboard: use **CSV** instead |
 | The **Metric** tab says it could not read the metrics of a provider | The platform could not list them (for an Azure provider, Azure did not answer): the metric that is saved is still shown |
 | A report on the **Insights** tab says it could not be run | The report's template failed on the platform: open it from the portal's Data screen to see its own message |
+| GEO Data says the map could not be loaded | The map library comes from unpkg.com: the browser must be allowed to reach it. The records are still listed |
+| GEO Data shows country outlines with a note about Google | The map uses the Google Maps the portal page has loaded. Reload the portal page; if the note stays, Google Maps did not load in the portal (check the browser console there) |
+| A record is not on the GEO Data map | Its `geoLocation` is missing or is not a GeoJSON geometry with `type` and `coordinates` (longitude first) |
 | A group member shows as not found | The id is not a data item, nor a tenor of a curve you can see (`CURVE_ID:TENOR`) |
 | No smiles for a value | That column has no values for the tenors chosen; choose another value or side |
 | A group is not offered in Add to group | It is dynamic, of the other service (data or master data), or not shared with you |

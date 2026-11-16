@@ -68,4 +68,4 @@ Every curve shown **Against the previous curve** gets a card below the chart: ho
 
 ## Next
 
-[Groups and automations](/docs/extensions/data-explorer/actions)
+[GEO Data](/docs/extensions/data-explorer/geo-data)

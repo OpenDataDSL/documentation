@@ -97,9 +97,9 @@ Fusion:
 From the card:
 
 - **Run in background** runs the task. Any approvals are emailed.
-- **Open on Tasks tab** opens the task to check or change the values, add a schedule, or run it in the page.
+- **Open the task** opens the Playbooks screen on its **Tasks** tab, with the task open to check or change the values, add a schedule, or run it in the page.
 
-**Fusion never starts a run itself.** Nothing happens until you press Run. If required values are missing, the card lists them and Fusion asks you for them, or you can fill them in on the Tasks tab.
+**Fusion never starts a run itself.** Nothing happens until you press Run. If required values are missing, the card lists them and Fusion asks you for them, or you can open the task and fill them in.
 
 Some ways to ask:
 

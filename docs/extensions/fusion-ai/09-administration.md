@@ -38,10 +38,13 @@ The extension installs feature policies, which decide who sees each tab, and acc
 | Policy | Controls |
 |-|-|
 | `extension.odsl.fusion-ai` | The Fusion AI extension: the Studio, Agents, Assistants, Tools and Architecture tabs |
-| `extension.odsl.fusion-ai.playbooks` | The **Playbooks** tab, for people who write playbooks |
-| `extension.odsl.fusion-ai.tasks` | The **Tasks** tab, for people who run playbooks and approve runs |
+| `extension.odsl.fusion-ai.playbooks` | The **Playbooks** screen, with its **Library**, **My playbooks** and **Tasks** tabs, for people who write or run playbooks and approve runs |
 
-For example, to let only your data team write playbooks while everyone can run them, limit `extension.odsl.fusion-ai.playbooks` to the data team's group and leave `extension.odsl.fusion-ai.tasks` open to everyone.
+To let only your data team write playbooks while everyone can run them, leave `extension.odsl.fusion-ai.playbooks` open to everyone and limit writing to the `FusionAIPlaybooks` access policy (below): give everyone read access and the data team full access.
+
+:::note
+Earlier versions had a separate `extension.odsl.fusion-ai.tasks` policy for a Tasks screen of its own. Tasks is now a tab of the Playbooks screen, so that policy no longer does anything and can be deleted.
+:::
 
 ### Access policies
 

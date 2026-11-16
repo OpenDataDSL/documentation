@@ -26,9 +26,11 @@ A task is tied to the playbook version it was created from, so editing the playb
 
 You can create a task in four places:
 
-- **Tasks** tab: choose a playbook from the list, which shows your own playbooks and the library, then select **New task**
-- **Playbooks** tab: open a playbook and select **New task**
-- **Library**: open a library playbook and select **New task**, to run it without copying it
+- **Tasks** tab of the Playbooks screen: choose a playbook from the list, which shows your own playbooks and the library, then select **New task**
+- **My playbooks** tab: open a playbook and select **New task**
+- **Library** tab: open a library playbook and select **New task**, to run it without copying it
+
+From **My playbooks** and the **Library**, the screen switches to the **Tasks** tab with the new task open, ready to fill in.
 - **Fusion chat**: ask Fusion to run a playbook (see [Library and chat](/docs/extensions/fusion-ai/playbooks/library-and-chat))
 
 The task shows:

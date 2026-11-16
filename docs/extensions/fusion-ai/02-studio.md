@@ -126,7 +126,7 @@ Ask Fusion to run a [playbook](/docs/extensions/fusion-ai/playbooks/overview) an
 
 ![A playbook task prepared in the chat](/img/extensions/fusion-ai/studio-playbook-card.png)
 
-Check the values, then select **Run in background**, or **Open on Tasks tab** to change them first. Fusion never starts a run itself. See [The library, extensions and chat](/docs/extensions/fusion-ai/playbooks/library-and-chat#running-a-playbook-from-the-chat).
+Check the values, then select **Run in background**, or **Open the task** to change them first: it opens on the **Tasks** tab of the Playbooks screen. Fusion never starts a run itself. See [The library, extensions and chat](/docs/extensions/fusion-ai/playbooks/library-and-chat#running-a-playbook-from-the-chat).
 
 ---
 

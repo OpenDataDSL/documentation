@@ -18,7 +18,7 @@ Fusion AI is used in three ways:
 |-|-|-|
 | **Chat** | Ask a question and get an answer, with tables, code and the tools Fusion used to find it | The **Studio** tab, or any AI tool connected through the [MCP server](/docs/product/mcp/overview) |
 | **Agents** | A saved set of questions that runs on demand, on a schedule or from an automation | The **Agents** tab |
-| **Playbooks** | A written, repeatable job that runs step by step, with checks and approvals, as a task | The **Playbooks** and **Tasks** tabs |
+| **Playbooks** | A written, repeatable job that runs step by step, with checks and approvals, as a task | The **Playbooks** screen, with its **Tasks** tab |
 
 ---
 
@@ -44,8 +44,7 @@ The **Fusion AI** extension adds a **Fusion AI** entry to the **Information** se
 | **Agents** | Save sets of questions as agents, schedule them, or run them from automations | [Agents](/docs/extensions/fusion-ai/agents) |
 | **Assistants** | See the built-in assistants and create your own | [Assistants](/docs/extensions/fusion-ai/assistants) |
 | **Tools** | Register custom tools backed by your own scripts | [Custom tools](/docs/extensions/fusion-ai/tools) |
-| **Playbooks** | Browse the playbook library, and write your own playbooks | [Playbooks](/docs/extensions/fusion-ai/playbooks/overview) |
-| **Tasks** | Fill in and run playbook tasks, and approve runs | [Running playbook tasks](/docs/extensions/fusion-ai/playbooks/running) |
+| **Playbooks** | Browse the playbook library and write your own playbooks on the **Library** and **My playbooks** tabs. Fill in and run playbook tasks, and approve runs, on the **Tasks** tab | [Playbooks](/docs/extensions/fusion-ai/playbooks/overview), [Running playbook tasks](/docs/extensions/fusion-ai/playbooks/running) |
 | **Architecture** | The diagram above | |
 
 It also installs five insights, listed with your other insights:
@@ -79,8 +78,8 @@ The first time you open a screen, a short tour shows you round it: the part bein
 | **Agents** | A new agent: its questions, a schedule, running it, and running it from an automation |
 | **Assistants** | A new assistant: its name, description and prompt, the model and effort, and limiting it to its own tools |
 | **Tools** | A new tool: the function name, the script, who can use it, the description and the input properties |
-| **Playbooks** | The library, finding a playbook, drafting one with Fusion, uploading one and writing your own |
-| **Tasks** | Filtering tasks, starting a task from a playbook, and running it |
+| **Playbooks** | The library, the Tasks tab, finding a playbook, drafting one with Fusion, uploading one and writing your own |
+| **Playbooks**, **Tasks** tab | Filtering tasks, starting a task from a playbook, and running it (the first time you open the tab) |
 
 ---
 

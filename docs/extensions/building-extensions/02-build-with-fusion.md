@@ -38,7 +38,7 @@ When the run finishes, the extension is in your tenant's portal menu for the peo
 There are two ways to start:
 
 - **From the library**: open **Information > Fusion AI > Playbooks**, find **Build an extension** in the **Library** tab, and select **New task**. Then open the task on the **Tasks** tab.
-- **From the chat**: describe what you want in the [Studio](/docs/extensions/fusion-ai/studio). Fusion finds the playbook and prepares a task from what you said, shown as a card. Anything still needed is marked; tell Fusion, or select **Open on Tasks tab** to fill it in.
+- **From the chat**: describe what you want in the [Studio](/docs/extensions/fusion-ai/studio). Fusion finds the playbook and prepares a task from what you said, shown as a card. Anything still needed is marked; tell Fusion, or select **Open the task** to fill it in on the **Tasks** tab of Playbooks.
 
 ![Asking for an extension in the Studio](/img/extensions/building/ext-chat.png)
 
