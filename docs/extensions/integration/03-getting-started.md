@@ -14,7 +14,7 @@ This walk-through sets up Northgate Energy's morning curves for Molecule: the gr
 
 ## The tour
 
-The first time you open **Integrations**, a short tour shows you round the home page: how your data flows, adding a system, your systems, the plug-ins you can install and building your own. The first time you open a system, a second tour shows its tabs: Overview, Groups, Report and System setup.
+The first time you open **Integrations**, a short tour shows you round the home page: how your data flows, adding a system, your systems, the plug-ins you can install and building your own. The first time you open a system, a second tour shows its tabs: Overview, Groups, Report, System setup and Documentation.
 
 ![A step of the home page tour: Your systems is highlighted, with a note explaining the system cards and Skip the tour, Back and Next buttons](/img/extensions/integration/tour.png)
 

@@ -1,0 +1,7 @@
+{
+  "label": "Documentation Manager",
+  "link": {
+    "type": "generated-index",
+    "description": "Find, read and edit all the documentation kept on the platform: the documents about your records, data, projects and integrations, and your own guides, notes and runbooks."
+  }
+}

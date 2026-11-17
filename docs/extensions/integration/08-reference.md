@@ -37,6 +37,7 @@ tags: [extension, integration, reference, plug-in, secrets, troubleshooting]
 | A system's report configuration | `reportconfig` (private) | `INTEGRATION_<KEY>`, such as `INTEGRATION_MOLECULE` | Fixed report, category `Integration`, `mergeUpdates` on with `mergeKeys` `["key"]`. Made by the first run when it does not exist. |
 | A day's report | `report` (private) | `INTEGRATION_<KEY>:<ondate>` | One report a day: each group's run is merged into it, with no new version. |
 | A report's scheduled email | `automation` | Its own id | Target `odsl.email`, on `INTEGRATION_<KEY>:L` (the latest stored date), action `schedule`. Shown in Automations. |
+| A system's documents | `documentation` (private) | Scope `object`, entity the system's id, name `about` or a slug of the title, language `en`, such as `object:INTEGRATION.MOLECULE:about` | Markdown, with the title in a `title:` tag. The service links each one to the system object (`_links.<name>`), which is how the screen lists them. See [Documenting a system](/docs/extensions/integration/documentation). |
 | Whether you have seen the tours | `setting` | `Integration` (your own) | `toured` (the home page tour) and `touredSystem` (the system tour), set when you finish or skip a tour. Also kept in this browser. |
 
 ---
@@ -265,13 +266,14 @@ A runner can apply a Mustache template to its data with the engine's `intTryTran
 | `GET secret/v1` with `_filter` on `_id` | Lists the secret records a system reads, for their status. The list holds where each value is kept, never the value. |
 | `POST secret/v1` | Sets a secret's value (`_id`, `_type: VarSecret`, `value`, `enabled`). |
 | `DELETE secret/v1/<id>` | Removes a secret. |
+| `GET documentation/v1/private/object:<system id>:<name>`, `POST documentation/v1/private`, `DELETE documentation/v1/private/<record id>` | Reads, saves and deletes a system's documents. A read with no document answers an empty record. A delete needs the record's id, so the document is read first. |
 | `GET setting/v1/Integration`, `POST setting/v1` | Reads and saves your Integration settings: whether you have seen the tours. |
 
 ---
 
 ## Access
 
-The **Integrations** menu item and the **Integration** app need the features `odsl.integration.manage` and `odsl.integration.group`, given by the feature policy `extension.odsl.integration`. Everything else follows your normal rights on groups, data, processes, reports, scripts, secrets and extensions: for example, creating a custom system needs the right to update extensions, and setting a secret's value the right to update secrets. Without the right to list secrets, the screens show their status as unknown.
+The **Integrations** menu item and the **Integration** app need the features `odsl.integration.manage` and `odsl.integration.group`, given by the feature policy `extension.odsl.integration`. Everything else follows your normal rights on groups, data, processes, reports, scripts, secrets, documentation and extensions: for example, creating a custom system needs the right to update extensions, and setting a secret's value the right to update secrets. Without the right to list secrets, the screens show their status as unknown. Writing a system's documentation needs the right to update documentation.
 
 ---
 
@@ -289,7 +291,7 @@ Installing the Integration extension adds these tasks to the [Home page](/docs/e
 
 Their ids are `odsl.integration.check-exports`, `check-held`, `check-cutoff`, `send-data` and `daily-report`.
 
-The Integrations screen takes these view properties: `SYSTEM` (a system id, its code or its plug-in) and `TAB` (`overview`, `groups`, `report` or `plugin`) open a system on a tab, and `TOUR` `true` always starts the tour, `false` never does. The tour does not start by itself when `SYSTEM` or `TAB` is given.
+The Integrations screen takes these view properties: `SYSTEM` (a system id, its code or its plug-in) and `TAB` (`overview`, `groups`, `report`, `plugin` or `docs`) open a system on a tab, and `TOUR` `true` always starts the tour, `false` never does. The tour does not start by itself when `SYSTEM` or `TAB` is given.
 
 ---
 

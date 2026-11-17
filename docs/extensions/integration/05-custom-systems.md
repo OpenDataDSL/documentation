@@ -241,6 +241,8 @@ When groups send to the system, tick **Stop the group sending** (**Stop all 3 gr
 | **Also delete its ODSL** | For a custom system: deletes the script `integration\custom\<code>`. Leave it to keep the code, for example to create the system again with the same code. |
 | **Also delete its secrets** | Deletes the secret records the system and its groups read that no other system or group reads. Shared secrets are always kept. |
 
+When the system has documentation, **Also delete its documentation** lists its documents and is ticked. Untick it to keep them in the documentation service (see [Documenting a system](/docs/extensions/integration/documentation#when-a-system-is-deleted)).
+
 :::note
 A custom system made before 2026-11-07 is an extension `custom.<code>`, which depends on the Integration extension, so the Integration extension cannot be uninstalled while one exists. The [upgrade](/docs/extensions/integration/how-it-works#systems-set-up-before-2026-11-07) turns each into a system object and removes its extension record. Its script keeps working: the engine still accepts `integrationRun(input, "custom.<code>")`.
 :::

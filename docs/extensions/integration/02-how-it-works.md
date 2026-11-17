@@ -45,7 +45,7 @@ To add a system, select **New system**: choose the plug-in it **Sends with** (or
 
 Each system is kept as a private object `INTEGRATION.<CODE>` of type `INTEGRATION_SYSTEM`, such as `INTEGRATION.FINANCE_BLOB`. Its code names its daily report `INTEGRATION_<CODE>` and its secret records, such as `finance_blob_accountkey`, and cannot be changed later.
 
-The Integrations screen opens on its home page, which lists your systems with their plug-in, groups, schedules, latest run and secrets. Choose one to work on it. While you work on a system, the **System** box at the top switches to another one, and **All systems** goes back to the home page. The **System setup** tab has the system's name, description and codes, with **Copy to a new system** and **Delete the system**, and, for a system on a plug-in, what the plug-in needs.
+The Integrations screen opens on its home page, which lists your systems with their plug-in, groups, schedules, latest run and secrets. Choose one to work on it. While you work on a system, the **System** box at the top switches to another one, and **All systems** goes back to the home page. The **System setup** tab has the system's name, description and codes, with **Copy to a new system** and **Delete the system**, and, for a system on a plug-in, what the plug-in needs. The **Documentation** tab keeps the system's own documents, such as what it is for, who to contact and a runbook (see [Documenting a system](/docs/extensions/integration/documentation)).
 
 ![The top of the System setup tab of Molecule: its name, id, code and report, its description, its codes shared with the plug-in, and Save the system, Copy to a new system and Delete the system](/img/extensions/integration/system-setup.png)
 
