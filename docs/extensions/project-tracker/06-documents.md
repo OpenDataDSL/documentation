@@ -18,7 +18,7 @@ Requirements, designs, meeting notes and runbooks belong with the project. The *
 
 1. Choose the project and open the **Documents** tab.
 2. Select **New document**.
-3. Give it a title and choose what to **Start from**: Blank, Notes, Meeting notes, Requirements, Design or Runbook.
+3. Give it a title and choose what to **Start from**: Blank, Notes, Meeting notes, Requirements, Design, Runbook or Evidence. The Evidence template is for documents that show a task is done; see [Evidence and sign-off](/docs/extensions/project-tracker/evidence).
 4. Select **Create**. The document opens for editing.
 
 You can also create a document from a task: select **New document** in the task panel, and the new document is linked to the task. Save the task to keep the link.

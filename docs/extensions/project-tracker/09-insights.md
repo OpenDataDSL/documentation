@@ -21,6 +21,7 @@ Open it from the **Insights** of the Projects menu item.
 | Parties and people | By party: late tasks, total days late, the share done on time; by person: open, late, coming up, reminders sent, oldest late task |
 | Late and at risk | Late tasks, blocked tasks, tasks waiting for late work, and tasks due soon that are not started or not assigned |
 | Milestones | Each milestone's first planned date, its due date now, how many days it moved, and when it was done |
+| Evidence and sign-off | The tasks that need evidence: their state (no evidence, evidence provided, rejected, signed off), the evidence attached by kind and what is still to provide, who signs each one off, and who signed off or rejected it and when |
 | Schedule changes | The tasks whose due date was moved, how often and by how many days |
 | Communication | The emails, calls, meetings, comments and decisions on the tasks, or the reminders, or the changes |
 

@@ -14,6 +14,7 @@ tags: [insight, report, projects, onboarding, extension]
 - Which work streams and which parties are behind?
 - What is late, blocked or at risk in the next two weeks?
 - Which milestones have moved, and by how much?
+- Which tasks are still waiting for evidence or a sign-off, and from whom?
 - What was agreed, and with whom?
 
 Open it from the **Insights** of **Manage > Projects**.
@@ -43,6 +44,7 @@ The figures at the top: work done (each task weighted by its days, open tasks by
 | Parties and people | By party: tasks, done, open, late, total days late, the share done on time and what is due in the next 14 days. By person: open, late, due soon, done, reminders sent and their oldest late task |
 | Late and at risk | Late tasks, blocked tasks, tasks waiting for a late task, and tasks due in the next 14 days that are not assigned or not started, with the reason |
 | Milestones | Each milestone's first planned date (before its first date change), its due date now, the days it moved and when it was done |
+| Evidence and sign-off | The tasks that need [evidence and a sign-off](/docs/extensions/project-tracker/evidence): figures for evidence tasks, no evidence (with how many are partly provided and the pieces still to provide), evidence provided, rejected and signed off; and for each task the evidence attached by kind (data loader, data, integration, document), the evidence prepared and still to provide, its state, who signs it off, and who signed off or rejected it, when and with what comment. Tasks waiting for evidence come first |
 | Schedule changes | Tasks whose due date was moved: how many times, the days moved out and brought in, and when it last moved |
 | Communication | The activity logs of the tasks: emails, calls, meetings, comments and decisions (or reminders, or changes), newest first, with a date and a text filter, 50 to a page |
 
@@ -50,10 +52,12 @@ The figures at the top: work done (each task weighted by its days, open tasks by
 
 ![Milestones and how far they moved](/img/extensions/project-tracker/insight-milestones.png)
 
+![Evidence and sign-off](/img/extensions/project-tracker/insight-evidence.png)
+
 Every tab has a **CSV** button.
 
 ---
 
 ## Where the data comes from
 
-The private object collections `project` and `project_task` of the [Projects](/docs/extensions/project-tracker/reference) extension. Moves of due dates and the communication come from the tasks' activity logs.
+The private object collections `project` and `project_task` of the [Projects](/docs/extensions/project-tracker/reference) extension. Moves of due dates and the communication come from the tasks' activity logs; the evidence and sign-offs from the tasks' `evidence`.

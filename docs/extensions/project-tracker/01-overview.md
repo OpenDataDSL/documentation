@@ -36,6 +36,7 @@ Throughout these pages we follow the onboarding of **Northgate Energy**, a ficti
 | Waits for | A task that cannot start until other tasks are done |
 | Activity log | Everything recorded on a task: emails, calls, meetings, comments and decisions, plus reminders and changes |
 | Document | A markdown document kept in the platform's documentation service and linked to tasks |
+| Evidence and sign-off | Proof that a task is done (a data loader's loading history, a curve, timeseries or options, an integration's deliveries, or an evidence document), formally signed off by the person responsible |
 | Plan template | A set of tasks a new project starts from: the built-in **Standard onboarding** plan, or one you saved |
 | Partner | An implementor that OpenDataDSL allows to work on a client's projects. The client shares each project with it |
 | Added project | A project of another tenant (a client's) on your own Projects screen, worked on in its own tenant |
@@ -50,6 +51,7 @@ Throughout these pages we follow the onboarding of **Northgate Energy**, a ficti
 | **Tasks** tab | The tasks by work stream, with filters, the status changed in the list, and the task panel to change everything else and record what was said |
 | **Gantt** tab | The plan on a timeline, with dependencies, milestones, today and the go-live; drag tasks to reschedule them |
 | **Documents** tab | Markdown documents for the project, linked to tasks |
+| **Evidence** tab | The evidence of the tasks that need a formal sign-off, provided or still to provide; select a piece of evidence to see it, and sign the task off there |
 | **People** tab | The parties and the people tasks are assigned to |
 | **Settings** tab | Project details, work streams, plan templates, reminders and the defaults for new projects |
 | **Project Status** insight | A status report: progress against the plan, late and at-risk work, milestones, schedule changes and communication |

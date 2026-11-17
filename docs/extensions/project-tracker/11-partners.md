@@ -39,7 +39,7 @@ On the project's **Settings** tab, the **Who can open this project** card lists,
 
 ![The Who can open this project card with Shared chosen and ETRMServices ticked](/img/extensions/project-tracker/share-card.png)
 
-A partner that works on a shared project can do what your own users can on the **Tasks**, **Gantt**, **Documents** and **People** tabs: add, change and delete tasks, record emails, calls, meetings, comments and decisions, move dates, and write and link documents. On the **Settings** tab it can change the project details and work streams. It cannot:
+A partner that works on a shared project can do what your own users can on the **Tasks**, **Gantt**, **Documents**, **Evidence** and **People** tabs: add, change and delete tasks, record emails, calls, meetings, comments and decisions, move dates, and write and link documents. On the **Settings** tab it can change the project details and work streams. It cannot:
 
 - delete the project;
 - change who the project is shared with;
@@ -108,6 +108,7 @@ A few things work differently:
 | **Shared with partners** | Not shown; only the project's own tenant decides who it is shared with |
 | **Delete** | Replaced by **Remove from my projects** |
 | **New project** copying a plan | You can copy the plan of an added project into a new project of your own |
+| Evidence | Chosen and read in the project's own tenant: the client's dataset feeds, data and integration systems. You can add and view evidence; only the person named in **Signed off by** can sign a task off (see [Evidence and sign-off](/docs/extensions/project-tracker/evidence#projects-of-other-tenants)) |
 
 ---
 
