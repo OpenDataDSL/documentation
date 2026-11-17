@@ -42,6 +42,7 @@ Under the name you see the kind, the id once it is saved, and **Unsaved changes*
 | **Script** | When it uses a script | The script in the Script Manager's editor (see [Scripts](/docs/extensions/smart-data/scripts)) |
 | **Compare versions** | Once saved | Its versions side by side (see [Versions and the audit trail](/docs/extensions/smart-data/history)) |
 | **Audit trail** | Once saved | Who changed it and its script, and what |
+| **Documentation** | Once saved | Its documentation: what it is for, how it is calculated, who uses it (see [Documentation](#documentation)) |
 
 ---
 
@@ -151,6 +152,35 @@ The status shows the platform's message, with a hint, and **Ask Fusion AI to fix
 
 :::note
 Each save of a smart curve makes the platform build it for new ondates with the new definition. Stored builds of past ondates are not changed: build them again if they should use the new definition (see [Building smart curves](/docs/extensions/smart-data/building)).
+:::
+
+---
+
+## Documentation
+
+The **Documentation** tab holds a document about the smart curve or timeseries, written in markdown: what it is for, how it is calculated, where its inputs come from, who uses it and who to ask. Everyone who can open it can read it. The tab's icon shows lines when it has a document.
+
+![The Documentation tab of the clean spark spread: what it is for, the expression and its inputs, checks and contacts](/img/extensions/smart-data/docs-tab.png)
+
+To write it, select **Edit**. The first time, the document starts from a template filled in from the definition: the name and description, the expression, a table with `BASE` and each input and what it is, and headings for who uses it, checks and contacts.
+
+![Writing the documentation: the template on the left and the preview on the right](/img/extensions/smart-data/docs-new.png)
+
+| Control | What it does |
+|-|-|
+| Toolbar | Bold, italic, headings, lists, task lists, quotes, links, code, a table and a divider |
+| **Write**, **Split** and **Preview** | The text only, the text with a live preview beside it (the default), or the preview only |
+| **Save** (or Ctrl+S) | Saves the document. The tab shows a star while there are unsaved changes, and you are asked before leaving with them |
+| **Cancel** | Stops editing; you are asked first when there are changes |
+| Download | Downloads the document as a markdown (`.md`) file |
+| Delete | Deletes the document |
+
+Enter continues a list, and Tab and Shift+Tab indent a list item.
+
+The document is kept in the platform's documentation service, separately from the definition: saving it does not make a new version of the smart curve, and changing the definition does not change the document. Update the document when you change what the smart curve does. It is linked from the master data record the smart curve is stored on, so it is found from the record too (see [How documentation is stored](/docs/extensions/smart-data/reference#how-documentation-is-stored)).
+
+:::note
+**Save as...** and **Duplicate** do not copy the documentation. Deleting a smart curve or timeseries completely deletes its documentation too; a roll back keeps it.
 :::
 
 ---

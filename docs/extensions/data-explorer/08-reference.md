@@ -39,6 +39,7 @@ A Home page task or a link can open the Data Explorer ready for a job with view 
 | Groups you make | The group service, type `favourite`, the category you chose |
 | Dynamic groups | `dynamicOptions`: `service` (`data` or `object`), `source`, `filter` (on the data items, as JSON text) and `objectFilter` (on their master data, as JSON text) |
 | Automations | The automation service, owned by you |
+| Documents | The documentation service (private), scope `object`: a record's documents have the record's id as the entity and a name made from the title (`object:NGE.GAS.TTF:how-the-ttf-hub-is-priced`); a data item's document has its record as the entity and its own key as the name (`object:NGE.GAS.TTF:FORWARD`), as the Smart Data extension keeps it. Saving one adds a link to it (`_links`) on the record. Notes on public and common items are kept in private with the item's own ids (`object:#ICE.NDEX.NLB:SETTLE`, a record's `object:#ICE.NDEX.NLB:notes`) |
 
 ---
 
@@ -60,13 +61,14 @@ A Home page task or a link can open the Data Explorer ready for a job with view 
 | Other extensions | `GET extension/v1/private` (their views and `configuration.data_explorer`), `GET extension/v1/private/EXT/view/VIEW?_properties=...` |
 | A metric timeseries | Its metrics `GET metric/v1?_function=listMetrics&provider=PROVIDER`; saving `POST object/v1/private` with `{_id: RECORD, KEY: {_id: KEY, _type: "VarMetricTimeSeries", provider, metric, ...}}`; recent values `GET data/v1/{source}/ID?_range=last(48)` |
 | GEO Data | `GET object/v1/{source}` with `_filter` `{"geoLocation.coordinates": {"$exists": true}}`, near a point the query parameter `geoLocation=within(sphere([LNG,LAT],RADIANS))` (the radius in km divided by 6378.1); types `_distinct=_type`; placing a record `POST object/v1/private` with `{_id, _type, geoLocation: {type: "Point", coordinates: [LNG, LAT]}}` |
+| Documentation | A record's documents are its `_links` entries with `_service` `documentation`; reading one `GET documentation/v1/{source}/SCOPE:ENTITY:NAME` (a Link or JSON document with `Accept: text/html`); saving `POST documentation/v1/private` with `{_type: "VarDocumentation", documentationType: "Default", scope, entity, name, language: "en", content, tags: ["title:..."]}`; deleting `DELETE documentation/v1/private/OBJECTID` |
 | Insights | `GET reportconfig/v1/all?_limit=-1` (categories Item Insights and Data Insights); running one `GET report/v1/{source}/REPORT` with `Accept: text/html` and `_properties={"ID", "SOURCE", "SERVICE": "data"}` |
 
 ---
 
 ## Permissions
 
-The Data Explorer shows only what the platform lets you read. Groups you can see are your own and the shared ones. Adding to a group changes it for everyone who uses it. Tabs and actions from other extensions follow those extensions' own rules (for example editing needs the update right).
+The Data Explorer shows only what the platform lets you read. Groups you can see are your own and the shared ones. Adding to a group changes it for everyone who uses it. Tabs and actions from other extensions follow those extensions' own rules (for example editing needs the update right). Changing the documentation of a private item needs the update right on it; notes on public and common items are your organisation's own.
 
 ---
 
@@ -92,6 +94,8 @@ The Data Explorer shows only what the platform lets you read. Groups you can see
 | **There is no matrix ...** | The matrix has no ondate on or before the one asked for, or none before it to compare with |
 | **The browser did not allow copying here** | The page is not allowed to use the clipboard: use **CSV** instead |
 | The **Metric** tab says it could not read the metrics of a provider | The platform could not list them (for an Azure provider, Azure did not answer): the metric that is saved is still shown |
+| **The documentation could not be read** | The platform's documentation service did not answer: open the tab again. If it keeps happening, check that your tenant has the documentation service (it is not part of the community plan) |
+| A deleted document is still linked from the record in the portal | Deleting a document does not remove the link the platform added to the record when it was saved. The Data Explorer leaves such links out |
 | A report on the **Insights** tab says it could not be run | The report's template failed on the platform: open it from the portal's Data screen to see its own message |
 | GEO Data says the map could not be loaded | The map library comes from unpkg.com: the browser must be allowed to reach it. The records are still listed |
 | GEO Data shows country outlines with a note about Google | The map uses the Google Maps the portal page has loaded. Reload the portal page; if the note stays, Google Maps did not load in the portal (check the browser console there) |

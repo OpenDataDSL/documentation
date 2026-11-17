@@ -18,7 +18,7 @@ Select a result to open it in place. The header shows its name, kind, id, source
 | **Add an automation** | Something the platform does when it changes (see [Automations](/docs/extensions/data-explorer/actions#automations)) |
 | **More** | What other extensions do with it, **Open its master data** and **Copy the id** |
 
-The tabs depend on what it is: the Data Explorer's own tabs come first, then the tabs other extensions add (their extension is named beside the tab), then **Insights** and **Details**. See [What other extensions add](/docs/extensions/data-explorer/extensions).
+The tabs depend on what it is: the Data Explorer's own tabs come first, then the tabs other extensions add (their extension is named beside the tab), then **Documentation**, **Insights** and **Details**. See [What other extensions add](/docs/extensions/data-explorer/extensions).
 
 ---
 
@@ -190,6 +190,53 @@ Which tab changes what:
 | Composed curve, composed timeseries | **Composer** |
 | Curve series, matrix | **Definition** |
 
+
+---
+
+## Documentation
+
+**Documentation** is where you write down what an item is, where it comes from, how it is used and who to ask about it. Documents are written in markdown and kept in the platform's documentation service, so the portal shows them too.
+
+![The documentation of the TTF forward curve](/img/extensions/data-explorer/documentation.png)
+
+### Writing a document
+
+1. Open the item and select **Documentation**.
+2. Select **Edit**. A new document starts with what is already known about the item (its id, kind, currency, units and calendar) and headings to fill in: **What it is**, **Where it comes from**, **How it is used**, **Checks and known issues** and **Contacts**.
+3. Write in the left pane; the right pane shows the result as you type. Use **Write** or **Preview** for one pane only.
+4. Select **Save**, or press **Ctrl+S**.
+
+![Writing a document, with the preview beside it](/img/extensions/data-explorer/documentation-edit.png)
+
+The toolbar adds bold and italic text, headings, bulleted, numbered and task lists, quotes, links, code, tables and dividers. **Enter** continues a list, and **Tab** and **Shift+Tab** indent a list item. **Download** saves the document as a markdown file, and **Delete** deletes it.
+
+If you leave the tab, open another item or go back to the results with changes that are not saved, you are asked whether to discard them.
+
+### A data item's document
+
+A curve, timeseries, matrix or event list has one document of its own. It is also listed on the **Documentation** tab of its master data record, marked **About its data**, so the record shows everything written about it and its data. A curve's tenor has no Documentation tab: document the curve.
+
+A smart curve or timeseries shows the same document on the **Documentation** tab of the Smart Data extension.
+
+### A master data record's documents
+
+A record can have several documents. They are listed on the left; select one to read or change it. Select **New document**, give it a title and choose what to start from: **About this record** (what is known about the record, and the same headings as a data item's document) or one of the starters (**Notes**, **Meeting notes**, **Requirements**, **Design**, **Runbook** and others). The dialog shows the name the document is saved under, made from the title.
+
+![A record's documents: one about its data, and one of its own](/img/extensions/data-explorer/documentation-record.png)
+
+![A new document for a record](/img/extensions/data-explorer/documentation-new.png)
+
+### Public and common data
+
+Public and common items show their **Published documentation**, if there is any, which you can read and download but not change. Linked documents (a page on the provider's website, for example) are shown as the platform renders them.
+
+Below it, **Your notes** is a document of your own about the item, kept in your organisation's documentation: only your organisation sees it.
+
+![The published documentation of a public curve, with your notes below it](/img/extensions/data-explorer/documentation-public.png)
+
+### Who can change documents
+
+You can write and change the documents of private items you are allowed to update; otherwise you can read them but not change them. Anyone can write their own notes on public and common items.
 
 ---
 

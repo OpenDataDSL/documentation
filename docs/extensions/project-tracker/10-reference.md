@@ -76,7 +76,7 @@ An activity log entry has `id`, `at` (date and time), `by` (email, empty for the
 | `items` | `[{id, type, ref, label, days, points, added, addedBy, planned, plannedBy, note}]`. An item with an empty `ref` is prepared: its `type` and `label` (and `note`, `planned`, `plannedBy`) are set and the evidence is still to provide; providing it sets `ref`, `added` and `addedBy`. `type` is `feed` (`ref` a dataset feed `PROVIDER.FEED`, `days` 1 to 31), `data` (`ref` a curve, timeseries or options id, `points` 10 to 1000), `integration` (`ref` an integration system id such as `INTEGRATION.MOLECULE`, `days` 1 to 31) or `doc` (`ref` a project document name) |
 | `signOff` | null, or `{status, by, at, comment, items}`: `status` is `signed` or `rejected`, and `items` lists what was signed off as `type\|ref\|days` (or `\|points`) |
 
-The evidence is read with the normal services: `dataset/v1/info` and `dataset/v1/delivery` for a feed; `data/v1/{source}/ID?_raw=true`, then `?_range=last(n)` for a timeseries or `ID:-ONDATE?_ondate=today` for a curve or options; the integration system's object, the `group/v1` groups with `integration.systemId`, and the stored `report/v1/private/INTEGRATION_...` reports of each day. Charts use the platform's Highcharts partial `#odsl-highcharts`.
+The evidence is read with the normal services: `dataset/v1/info` and `dataset/v1/delivery` for a feed; `data/v1/{source}/ID?_raw=true`, then `?_range=last(n)` for a timeseries, or for a curve or options its ondates with `?_range=last(90)` and the curve with `ID:ONDATE` (the ondate chosen) or `ID:-ONDATE?_ondate=today` (the latest); the integration system's object, the `group/v1` groups with `integration.systemId`, and the stored `report/v1/private/INTEGRATION_...` reports of each day. For data with an id `RECORD:ITEM` the item's own documentation is read too: `documentation/v1/private/object:RECORD:ITEM`, as Smart Data's Documentation tab writes it. Charts use the platform's Highcharts partial `#odsl-highcharts`.
 
 A task is at **Evidence provided** only when it has evidence and none of it is still to provide; until then it is at **No evidence** (the screen shows how much is provided). The task screen only offers **Sign off** and **Reject** to the person in `signOffBy`, and **Sign off** only when nothing is still to provide. For a project of another tenant, the `projectshare` service also enforces it: a sign-off can only be added or changed by the person in `signOffBy` (not changed in the same save) under their own name, a sign-off is refused while any item is still to provide, and a sign-off is cleared when the evidence items, the person or `required` change. `evidence` refuses an item that is still to provide.
 
@@ -116,7 +116,7 @@ An added project is a record in your own `project` collection with `kind: link`,
 | `delete` | POST | `tenant`, `environment`, `coll` (`task` or `doc`); `{_id, project}` as the body | Deletes a task or document. Projects cannot be deleted |
 | `subscribe`, `unsubscribe` | POST | `tenant`, `environment` (left out for your own project); `{_id: SignalR connection id, project}` as the body | Joins or leaves the project's realtime group. Answers `{group, live}` |
 | `notify` | POST | `tenant`, `environment` (left out for your own project); `{_id: project code, kind, id, action, connection}` as the body | Tells the people with the project open what was just saved: `kind` is `project`, `task` or `doc`, `action` is `save` or `delete` |
-| `evidence` | GET | `tenant`, `environment`, `project`, `task`, `item` | Reads one evidence item of the task in the client's tenant: `{type, ref, ...}` with the datasets and deliveries, the data, the integration reports or the document. Only items attached to the task can be read |
+| `evidence` | GET | `tenant`, `environment`, `project`, `task`, `item`, `ondate` (optional, `yyyy-MM-dd`, for a curve or options) | Reads one evidence item of the task in the client's tenant: `{type, ref, ...}` with the datasets and deliveries, the data (for a curve or options also `ondates`, the latest 90 newest first, and the `ondate` asked for; for an id `RECORD:ITEM` also `doc`, the item's documentation), the integration reports or the document. Only items attached to the task can be read |
 | `evidenceOptions` | GET | `tenant`, `environment`, `project`, `kind` (`feeds`, `systems` or `data`), `q` | What can be attached as evidence in the client's tenant: its dataset feeds, its integration systems, or up to 25 curves, timeseries and options whose id contains `q` |
 
 For example `GET projectshare/v1?_function=list&tenant=<tid>&environment=production&coll=task&project=NORTHGATE`.
@@ -132,7 +132,7 @@ A Home page task or a link can open the Projects screen with these properties:
 | Property | Values |
 |-|-|
 | `PROJECT` | A project code |
-| `TAB` | `overview`, `tasks`, `gantt`, `docs`, `people` or `settings` |
+| `TAB` | `overview`, `tasks`, `gantt`, `docs`, `evidence`, `people`, `insights` or `settings` |
 | `TASK` | A task id: opens its project and the task panel |
 | `SHOW` | `mine`, `late`, `soon` or `blocked`: the Tasks tab with that filter |
 | `ACTION` | `newproject`, or `newtask` (with `PROJECT`) |
@@ -147,7 +147,7 @@ A Home page task or a link can open the Projects screen with these properties:
 | Menu item | **Manage > Projects** (view script `odsl.project_tracker.manage`) |
 | Feature policy | `extension.odsl.project_tracker` |
 | Security policies | `Projects` (object/project), `ProjectTasks` (object/project_task), `ProjectDocuments` (documentation, private) |
-| Insight | `odsl.project_tracker.status`, Project Status |
+| Insight | `odsl.project_tracker.status`, Project Status, category `odsl.project_tracker`. The screen's **Insights** tab lists every insight report of that category (`reportconfig/v1/all`) and runs the chosen one as a page (`report/v1/{source}/{id}`, Accept `text/html`) with the properties `ID` and `PROJECT` (the chosen project's code, or the link id of a project of another tenant). The view sets `insights = false`, so the portal does not add its own Insights tab |
 | Home page tasks | `odsl.project_tracker.late`, `odsl.project_tracker.mine`, `odsl.project_tracker.new` |
 | Scripts | `odsl.project_tracker.common`, `.gantt`, `.manage`, `.insight.status`, `.reminders`, `.email` |
 

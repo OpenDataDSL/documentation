@@ -37,6 +37,7 @@ Throughout these pages we follow Northgate Energy, a fictional gas and power tra
 | Chart board | One chart of several curves and timeseries, with what changed since the previous curve |
 | GEO Data | Master data records with a location (`geoLocation`) on a map: wind and solar farms, gas storage, weather stations |
 | Tabs from other extensions | Other extensions add their own tabs and actions, such as Edit, Smart Data, Event Data and Validation |
+| Documentation | What an item is, where it comes from and who to ask, written in markdown with a live preview and kept in the platform's documentation service, with notes of your own on public data |
 | Insights | The platform's insight reports for an item (audit, usage, rights, seasonality, the history of a curve's ondates ...), run in place |
 
 ---
@@ -46,7 +47,7 @@ Throughout these pages we follow Northgate Energy, a fictional gas and power tra
 | Screen | What it is for |
 |-|-|
 | **Explore** | Find master data and data, and see the results as a table or as cards |
-| An opened item | A curve against its previous curve with what changed, tenor histories, a timeseries chart, an option chain, smiles and surface, a correlation, covariance or statistics matrix and how it changed, what a metric timeseries measures, a record with its data, insight reports, and the tabs other extensions add |
+| An opened item | A curve against its previous curve with what changed, tenor histories, a timeseries chart, an option chain, smiles and surface, a correlation, covariance or statistics matrix and how it changed, what a metric timeseries measures, a record with its data, its documentation, insight reports, and the tabs other extensions add |
 | **GEO Data** | Master data with a location on a map, what is near a point, and their data |
 | **Chart board** | Several series on one chart, with themes and saved boards |
 

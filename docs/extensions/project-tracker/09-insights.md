@@ -10,7 +10,9 @@ tags: [extension, projects, insight, report]
 
 The **Project Status** insight is a status report for one project, or all of them: progress against the plan, work streams, parties and people, late and at-risk work, milestones and how far they moved, schedule changes, and the communication recorded on the tasks.
 
-Open it from the **Insights** of the Projects menu item.
+Open it on the **Insights** tab of **Manage > Projects**. The tab lists the insight reports that come with Projects as cards and runs the one you choose below them, for the project chosen at the top of the screen (or all projects when none is chosen). Choosing another project runs it again for that project; **Refresh** runs it again with the latest data. Inside the report you can still pick another project, a party or an as-of date.
+
+![The Insights tab running Project Status for the Northgate project](/img/extensions/project-tracker/insights-tab.png)
 
 ![The Project Status insight for the Northgate project](/img/extensions/project-tracker/insight-overview.png)
 

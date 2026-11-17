@@ -60,7 +60,7 @@ Restoring changes what the platform builds from now on, but not the builds alrea
 | Choice | What happens |
 |-|-|
 | **Roll back** | Deletes the current version: the version before becomes the current one. The dialog shows what the roll back undoes. Stored builds are kept |
-| **Delete it completely** | Deletes every version, its build automation and (for a smart curve) all its stored builds. You are asked again, with the number of builds and their ondates |
+| **Delete it completely** | Deletes every version, its build automation, its [documentation](/docs/extensions/smart-data/workspace#documentation) and (for a smart curve) all its stored builds. You are asked again, with the number of builds and their ondates |
 
 A smart curve or timeseries with one version can only be deleted completely.
 

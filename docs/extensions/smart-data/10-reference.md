@@ -82,6 +82,27 @@ The same, with type `VarSmartTimeSeries`, `baseTimeSeries` instead of `baseCurve
 
 ---
 
+## How documentation is stored
+
+The document on the **Documentation** tab is a record of type `VarDocumentation` (markdown, language `en`) in the documentation service, with the scope `object`, the entity the record id and the name the id on the record. The clean spark spread's document has the key `object:NGE_SPREADS:CLEAN_SPARK_DE`:
+
+```json
+{
+  "_type": "VarDocumentation",
+  "documentationType": "Default",
+  "scope": "object",
+  "entity": "NGE_SPREADS",
+  "name": "CLEAN_SPARK_DE",
+  "language": "en",
+  "content": "# German clean spark spread\n\nThe margin of a gas plant in Germany ...",
+  "tags": ["title:German clean spark spread"]
+}
+```
+
+Because the scope is a service, the documentation service adds a link to the record when the document is saved: `_links.CLEAN_SPARK_DE` on `NGE_SPREADS`, a reference to `documentation` `object:NGE_SPREADS:CLEAN_SPARK_DE`. In a script, read it with `${documentation:"private"/"object:NGE_SPREADS:CLEAN_SPARK_DE"}`.
+
+---
+
 ## Smart data areas
 
 A smart data area is a private master data record of type `smart_data_area`, created by the extension when you choose **A new smart data area** while saving.
@@ -112,6 +133,9 @@ A smart data area is a private master data record of type `smart_data_area`, cre
 | Roll back | `DELETE data/v1/private/RECORD:ID` (deletes the current version) |
 | Delete completely | `DELETE data/v1/private/RECORD:ID/*` |
 | Audit trail | `GET audit/v1/private` with `_filter` `{"service": "data", "key": "RECORD:ID"}` |
+| Read its documentation | `GET documentation/v1/private/object:RECORD:ID` (no `_id` in the answer: there is none) |
+| Save its documentation | `POST documentation/v1/private` with the `VarDocumentation` record |
+| Delete its documentation | `DELETE documentation/v1/private/{_id}` (by the record's `_id`, read first) |
 
 The preview and the builds are made by the platform itself, so what you see in the preview is what the saved smart data gives.
 
@@ -125,6 +149,7 @@ The preview and the builds are made by the platform itself, so what you see in t
 | Saving and deleting | Permission to update the master data record it is stored on, and its data |
 | Reading the base and inputs | Read access to that data, private or public |
 | The Script tab | The same rights as the Script Manager: **update** on the script to save it, **run** to run or debug it |
+| The Documentation tab | Read and update on the documentation service to write the document; read to see it |
 
 ---
 

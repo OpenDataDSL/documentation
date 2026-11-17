@@ -17,7 +17,7 @@ tags: [insight, report, projects, onboarding, extension]
 - Which tasks are still waiting for evidence or a sign-off, and from whom?
 - What was agreed, and with whom?
 
-Open it from the **Insights** of **Manage > Projects**.
+Open it on the **Insights** tab of **Manage > Projects**, where it opens on the project chosen in the screen.
 
 ![The Overview tab of Project Status for the Northgate Energy onboarding](/img/extensions/project-tracker/insight-overview.png)
 

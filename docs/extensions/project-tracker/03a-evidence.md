@@ -41,7 +41,7 @@ Select **Add evidence**, choose what kind of evidence it is, then what it is. Yo
 | Evidence | What you choose | What it shows |
 |-|-|-|
 | **Data loader** | A dataset feed (provider and feed, such as `ICE.ENDEX`) and the days of history, 7 by default (1 to 31) | Every monitored dataset of the feed and its loading status for each of those days |
-| **Data** | A curve, timeseries or options id: type part of it to search, or type the whole id. For a timeseries, the number of values to show (90 by default) | A chart of the data: the latest values of a timeseries, today's curve by tenor, or today's option chain by strike |
+| **Data** | A curve, timeseries or options id: type part of it to search, or type the whole id. For a timeseries, the number of values to show (90 by default) | A chart of the data: the latest values of a timeseries, or a curve by tenor or an option chain by strike, for the ondate you choose (the latest by default) |
 | **Integration** | An integration system and the days of history, 7 by default | What the system was sent each day, from its daily integration reports |
 | **Document** | A project document, or **New evidence document** to write one from the **Evidence** template | The document |
 
@@ -94,8 +94,18 @@ The datasets of the feed, one row each, and a column for each day, newest first.
 | Kind | Shows |
 |-|-|
 | Timeseries | A line chart of the latest values, the latest value and its date, and the last 10 values |
-| Curve | Today's curve as a chart by tenor, and a table of the tenors with their start and end |
-| Options | Today's option chain: choose the tenor to see the call and put values by strike, as a chart and a table |
+| Curve | The latest curve (on or before today) as a chart by tenor, and a table of the tenors with their start and end |
+| Options | The latest option chain: choose the tenor to see the call and put values by strike, as a chart and a table |
+
+For a curve or options, **Curve date** (or **Date**) lists the ondates it has, newest first (the latest 90). Choose one, or use the arrows for the ondate before or after, to see the curve or option chain of that day. For options, the tenor you chose stays chosen. **Refresh** on the Evidence tab reads the chosen ondate again.
+
+![Choosing the ondate of a curve](/img/extensions/project-tracker/evidence-curve-ondates.png)
+
+#### The data's own documentation
+
+Smart curves and timeseries can have their own documentation, written in Smart Data on the item's **Documentation** tab: what the data is for, its data sources, its script and the design choices behind it. When the data has documentation (and for every smart curve or timeseries), the evidence has two tabs: **Data** shows the chart, and **Documentation** shows the documentation, so whoever signs the task off can check the logic as well as the numbers. A smart curve or timeseries with no documentation yet shows **Documentation (none)**.
+
+![The documentation of a smart curve, shown with its evidence](/img/extensions/project-tracker/evidence-data-documentation.png)
 
 ![A timeseries as evidence](/img/extensions/project-tracker/evidence-timeseries.png)
 

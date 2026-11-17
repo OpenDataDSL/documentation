@@ -54,7 +54,7 @@ Throughout these pages we follow the onboarding of **Northgate Energy**, a ficti
 | **Evidence** tab | The evidence of the tasks that need a formal sign-off, provided or still to provide; select a piece of evidence to see it, and sign the task off there |
 | **People** tab | The parties and the people tasks are assigned to |
 | **Settings** tab | Project details, work streams, plan templates, reminders and the defaults for new projects |
-| **Project Status** insight | A status report: progress against the plan, late and at-risk work, milestones, schedule changes and communication |
+| **Insights** tab | The **Project Status** insight, run for the chosen project: a status report: progress against the plan, late and at-risk work, milestones, schedule changes and communication |
 | Reminders | A daily check emails people before their tasks are due and while they are late, and raises an alert for each late task |
 | Working with partners | Share a project with your implementor; OpenDataDSL and implementors add the client's projects to their own screen and work on them there |
 | Home page tasks | **Catch up on late project tasks** (with the number late), **My project tasks** and **Start an onboarding project** |
