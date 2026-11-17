@@ -26,7 +26,7 @@ Open it from the **Insights** of **Manage > Projects**.
 
 | Filter | What it does |
 |-|-|
-| Project | One project, or all projects (cancelled projects are left out) |
+| Project | One project, or all projects (cancelled projects are left out). Projects you added from another tenant are included, with their tenant after the name |
 | Done by | Only the tasks of one party |
 | As of | The day the report is worked out for; today by default. Late, due soon and the plan line are counted from this day |
 

@@ -37,6 +37,8 @@ Throughout these pages we follow the onboarding of **Northgate Energy**, a ficti
 | Activity log | Everything recorded on a task: emails, calls, meetings, comments and decisions, plus reminders and changes |
 | Document | A markdown document kept in the platform's documentation service and linked to tasks |
 | Plan template | A set of tasks a new project starts from: the built-in **Standard onboarding** plan, or one you saved |
+| Partner | An implementor that OpenDataDSL allows to work on a client's projects. The client shares each project with it |
+| Added project | A project of another tenant (a client's) on your own Projects screen, worked on in its own tenant |
 
 ---
 
@@ -52,6 +54,7 @@ Throughout these pages we follow the onboarding of **Northgate Energy**, a ficti
 | **Settings** tab | Project details, work streams, plan templates, reminders and the defaults for new projects |
 | **Project Status** insight | A status report: progress against the plan, late and at-risk work, milestones, schedule changes and communication |
 | Reminders | A daily check emails people before their tasks are due and while they are late, and raises an alert for each late task |
+| Working with partners | Share a project with your implementor; OpenDataDSL and implementors add the client's projects to their own screen and work on them there |
 | Home page tasks | **Catch up on late project tasks** (with the number late), **My project tasks** and **Start an onboarding project** |
 
 The extension adds **Projects** to the **Manage** menu.
@@ -67,5 +70,6 @@ The extension adds **Projects** to the **Manage** menu.
 - [Documents](/docs/extensions/project-tracker/documents): write project documents and link them to tasks
 - [People](/docs/extensions/project-tracker/people): the parties and people on a project
 - [Settings](/docs/extensions/project-tracker/settings): work streams, templates and defaults
+- [Working with partners](/docs/extensions/project-tracker/partners): share projects and work on the projects of client tenants
 - [Project Status insight](/docs/extensions/project-tracker/insights): report on progress
 - [Reference](/docs/extensions/project-tracker/reference): where everything is kept

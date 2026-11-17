@@ -21,6 +21,7 @@ tags: [extension, projects, reference]
 | Documents | Private documentation service (`documentation/v1/private`) | `odsl.project:<project code>:<document name>` |
 | Late task alerts | Private alerts (`alert/v1/private`), category `project` | Key `project/<project code>/<task id>/late` |
 | Reminder process | Process `PROJECT_REMINDERS` | |
+| Projects added from other tenants | The `project` collection, `kind: link` | `LINK-` the tenant id, the environment and the project code, such as `LINK-0b1c-production-NORTHGATE` |
 
 ---
 
@@ -39,6 +40,8 @@ tags: [extension, projects, reference]
 | `docs` | The project's documents, `[{name, title, created, createdBy, updated, updatedBy}]` |
 | `reminders` | `{enabled}` |
 | `changes` | The last 50 changes to the project, `[{at, by, what}]` |
+| `sharedWith` | The partner tenants the project is shared with, `[{tid, name}]` |
+| `private` | `true`: OpenDataDSL cannot open the project; only its own tenant and the partners in `sharedWith` can. Only the own tenant can set it |
 
 ---
 
@@ -78,6 +81,29 @@ The process `PROJECT_REMINDERS` runs the script `odsl-extensions\extensions\proj
 | `note`, `by` | | The message and the sender's email for a `task` reminder |
 
 The emails use the template `odsl-extensions\extensions\project_tracker\odsl.project_tracker.email`.
+
+---
+
+## Projects of other tenants
+
+An added project is a record in your own `project` collection with `kind: link`, `tenant`, `tenantName`, `environment`, `code`, `name`, `client`, `added` and `addedBy`. The project, its tasks and its documents stay in their own tenant, and the screen reads and writes them through the `projectshare` service:
+
+| Function | Method | Parameters | What it does |
+|-|-|-|-|
+| `tenants` | GET | | `{mode, tenants: [{tid, name}]}`: `mode` is `opendatadsl` (any tenant), `partner` (the client tenants set up for it) or `none` |
+| `partners` | GET | | The partner tenants allowed to work on your projects, `[{tid, name}]` |
+| `environments` | GET | `tenant` | The tenant's environments |
+| `projects` | GET | `tenant`, `environment` | The tenant's projects you can open |
+| `get` | GET | `tenant`, `environment`, `coll` (`project`, `task` or `doc`), `id`, `project` for a doc | One record |
+| `list` | GET | `tenant`, `environment`, `coll=task`, `project`, `light` | A project's tasks; `light=true` leaves out the logs and descriptions |
+| `save` | POST | `tenant`, `environment`, `coll`; the record as the body | Saves a project, task or document. A partner cannot change `sharedWith` or `reminders` |
+| `delete` | POST | `tenant`, `environment`, `coll` (`task` or `doc`); `{_id, project}` as the body | Deletes a task or document. Projects cannot be deleted |
+| `subscribe`, `unsubscribe` | POST | `tenant`, `environment` (left out for your own project); `{_id: SignalR connection id, project}` as the body | Joins or leaves the project's realtime group. Answers `{group, live}` |
+| `notify` | POST | `tenant`, `environment` (left out for your own project); `{_id: project code, kind, id, action, connection}` as the body | Tells the people with the project open what was just saved: `kind` is `project`, `task` or `doc`, `action` is `save` or `delete` |
+
+For example `GET projectshare/v1?_function=list&tenant=<tid>&environment=production&coll=task&project=NORTHGATE`.
+
+Realtime updates use the platform's SignalR hub. Everyone with a project open is in the group `project:<tenant database>:<environment>:<project code>`, whichever tenant they work from, and receives `OnProjectChange` messages `{changes: [{group, project, kind, id, action, by, at, connection}]}`. A message only says what changed and who changed it; the screen then reads the record again through the normal calls, which check access. `subscribe`, `unsubscribe` and `notify` work on your own projects too, when `tenant` is left out. A partner can open a project only when its tenant has the client in its `PROJECT_CLIENTS` tenant setting (set by OpenDataDSL in the Tenant Manager) and the project's `sharedWith` names its tenant. A project with `private: true` is open only to the partners in its `sharedWith`: for OpenDataDSL it is not listed and every call about it (`get`, `list`, `save`, `delete`, `subscribe`, `notify`) is refused with 403. A save from another tenant cannot set or clear `private`. Saved records are versioned in the client's tenant, under the caller's name.
 
 ---
 

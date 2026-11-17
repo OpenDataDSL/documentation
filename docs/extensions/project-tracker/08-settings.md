@@ -1,6 +1,6 @@
 ---
 title: Settings
-description: Project details, work streams, plan templates, shifting the plan, deleting a project, and the defaults for new projects
+description: Project details, work streams, who can open the project, plan templates, shifting the plan, deleting a project, and the defaults for new projects
 slug: /extensions/project-tracker/settings
 sidebar_position: 8
 tags: [extension, projects, settings, work streams, templates]
@@ -62,6 +62,14 @@ When the whole plan slips, enter a number of days and select **Shift open tasks*
 ## Delete the project
 
 **Delete** removes the project, all its tasks and their activity logs, and its documents, after you type the project code to confirm. To keep the history, set the status to **Live** or **Cancelled** instead.
+
+A project added from another tenant has **Remove from my projects** instead, which only takes it off your Projects screen. See [Working with partners](/docs/extensions/project-tracker/partners#removing-a-project-from-your-screen).
+
+---
+
+## Who can open this project
+
+**Shared**: OpenDataDSL can open the project to help you, and so can the implementors you tick under **Partners** (only those OpenDataDSL has set up for your tenant are listed). **Private**: OpenDataDSL cannot open it; only people in your tenant and the partners you tick can. See [Sharing a project](/docs/extensions/project-tracker/partners#sharing-a-project) and [Keeping a project private](/docs/extensions/project-tracker/partners#keeping-a-project-private).
 
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Communication and reminders
-description: Record every email, call, meeting and decision on the task it is about, send reminders, and let a daily check remind people and raise alerts for late tasks
+description: Record every email, call, meeting and decision on the task it is about, see what others change as they save it, send reminders, and let a daily check remind people and raise alerts for late tasks
 slug: /extensions/project-tracker/communication
 sidebar_position: 5
 tags: [extension, projects, communication, reminders, alerts]
@@ -38,6 +38,38 @@ The **Recent activity** card on the Overview tab shows the latest entries across
 
 :::note
 Emails are not picked up from mailboxes: paste the ones that matter into the task they are about.
+:::
+
+---
+
+## Working on a project together
+
+When several people have the same project open, what one of them saves shows on the others' screens straight away, without reloading. **Live**, next to **New project**, says it is working.
+
+![The Projects header with Live next to New project](/img/extensions/project-tracker/live-indicator.png)
+
+What updates by itself:
+
+- **Tasks**: status, dates, assignee and every other field, in the task list, the Gantt chart, the figures and the Overview. New tasks appear and deleted tasks go.
+- **The task panel**: if you have a task open, it shows the other person's changes and new activity log entries as they save them. A short message at the bottom of the panel says who changed it.
+- **Documents**: a document you are reading shows the new version.
+- **People and Settings**: the project's details, work streams, parties and people.
+
+A message in the corner says who changed what, for example **Tom Baker changed NORTHGATE-4**.
+
+![The task panel after Tom Baker added an email to the activity log, with Colin's unsaved description kept](/img/extensions/project-tracker/live-task-panel.png)
+
+Your own unsaved work is never overwritten:
+
+- In the task panel, the fields you have changed keep your values, and everything else takes theirs. If you both changed the same field, the panel says so in red, for example **Colin Hartley also changed status: saving keeps your version**.
+- On the **People** and **Settings** tabs, and in a document you are editing, your changes stay as they are, with a note that someone else saved meanwhile. Saving keeps your version; **Cancel** in a document shows theirs.
+- If someone deletes the task or document you are editing, you are told, and saving creates it again.
+- If someone deletes the project you have open, you are taken back to **All projects** with a note saying who deleted it.
+
+This works across tenants too: the client's own users, OpenDataDSL and the implementor see each other's changes whichever tenant they work from (see [Working with partners](/docs/extensions/project-tracker/partners)).
+
+:::note
+Only the project you have chosen is updated live. With **All projects** chosen, the cards and lists show what was there when you opened them. If **Live** is not shown, or says **Not live**, changes made by others show when you choose the project again or reload the page. After a break in the connection, the page reads the open project again by itself. Activity log entries written by the daily reminder check show the next time the task is read.
 :::
 
 ---
