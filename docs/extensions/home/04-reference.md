@@ -18,7 +18,7 @@ tags: [extension, home, tasks, reference, rest api]
 | `_type` | Text | Always `VarTaskTile`, set by the service |
 | `name` | Text | Required, at most 120 characters |
 | `description` | Text | At most 400 characters |
-| `group` | Text | `check`, `find`, `build`, `deliver` or another short lower case name. Default `other` (shown as **More tasks**) |
+| `group` | Text | `check`, `find`, `build`, `deliver`, `support` or another short lower case name. Default `other` (shown as **More tasks**) |
 | `icon` | Text | A Bootstrap icon name. Default `check2-square` |
 | `priority` | Number | 0 to 100, default 50 |
 | `featured` | Boolean | Default true. False: only under **See all tasks** or in a search |

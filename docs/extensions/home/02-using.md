@@ -18,7 +18,9 @@ The page opens with the date and a greeting, the question **What do you want to 
 
 **My tasks** are the tasks you chose for your home page; until you choose, the tasks most people start with. **All tasks** are every task your team has. See [Your own tasks](/docs/extensions/home/my-tasks) to choose yours, add tasks to your list and make tasks of your own.
 
-Below them are the tasks, in their groups: **Check**, **Find**, **Build** and **Deliver**, then any groups your extensions add. Within a group the most important tasks come first.
+Below them are the tasks, in their groups: **Check**, **Find**, **Build**, **Deliver** and **Support**, then any groups your extensions add. Within a group the most important tasks come first.
+
+**Help**, next to **New task**, opens this guide in a new tab. The **New task** and **Choose your tasks** windows have a **Help** link of their own, at the top right.
 
 ---
 

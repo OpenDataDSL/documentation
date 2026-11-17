@@ -44,6 +44,9 @@ Each task comes with the extension that does the work, so it appears when that e
 | Check | Check for data validation failures | Validation | Quality and validation alerts |
 | Check | Check delivery against SLA | Alerts | Late and incomplete dataset deliveries |
 | Find | Find and validate data | The **Data** screen (comes with Home) | |
+| Support | Log a product support ticket | The OpenDataDSL service desk, Product Support (comes with Home) | |
+| Support | Log a data support ticket | The OpenDataDSL service desk, Data Support (comes with Home) | |
+| Support | View open support requests | Your organisation's open requests on the OpenDataDSL service desk (comes with Home) | |
 | Find | Chart and compare data | Composer | |
 | Build | Create or update a curve | Smart Data | Curve build failures |
 | Build | Create or update a derivation | Smart Data | |

@@ -131,7 +131,7 @@ See [Alerts in ODSL](/docs/extensions/alerts/odsl) for raising alerts.
 
 ## Groups, priority and featured tasks
 
-- `group`: `check`, `find`, `build` or `deliver` come first, in that order. Any other short name (`data-quality`) makes a new group, shown after them with its name as the label (**Data quality**).
+- `group`: `check`, `find`, `build`, `deliver` or `support` come first, in that order. Any other short name (`data-quality`) makes a new group, shown after them with its name as the label (**Data quality**).
 - `priority`: 0 to 100, default 50. Higher priority tasks come first in their group.
 - `featured`: set it to false for a task that should only show under **See all tasks** or in a search.
 - `keywords`: other words people might type for the task.
