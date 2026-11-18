@@ -25,6 +25,8 @@ tags: [extension, data loaders, etl, reference, troubleshooting]
 | Secret values | secret | `etl_<code>_<name>` by default |
 | Event timeseries, curves and options | data, private (on the record) | `RECORD:ID`, e.g. `NGE.BROKERS:SETTLE_TTF_FRONT` |
 | Smart timeseries made by a set of series | data, private (on the record) | `RECORD:ID`, e.g. `EIA.STOCKS.MCRSTUS1:PRICE` |
+| A loader's documents | documentation, private | scope `odsl.etl`, entity the code, name `about` or one made from the title |
+| The list of a loader's documents | object, custom collection `etl_loader_docs` | the code |
 | Sets of series | object, custom collection `etl_series_sets` | the set code, e.g. `SOURCE_CONVERSIONS` |
 | A spreadsheet upload's layout and its last 20 uploads | object, custom collection `etl_loaders` (in the loader: `upload`, `uploads`) | the code |
 | Master data records made by a spreadsheet upload | object, private | the master data _id template, e.g. `MAFF_8166` |
@@ -137,4 +139,6 @@ Each stored report has `loader`, `name`, `target`, `last` (the latest run) and `
 | **Server returned HTTP response code: 403** | The site refused the request although the file opens in a browser. It may need a header, such as an API key, in **Request headers**, or it may not allow automated downloads: check the site's terms, and ask the site for access or for a data feed. |
 | **No table rows found at ...** | The page has changed: choose the table again. |
 | **This platform does not have the ETL service (etl/v1) deployed yet** | The platform version in use has no `etl` service route, so the page cannot be shown. Type the table selector, or ask your administrator to update the platform. |
+| **Could not read the list of documents** | The custom collection `etl_loader_docs` could not be read: try again, or check you can read the object service. |
+| **The documentation was not deleted** | The loader is deleted, but its documents are not: delete them in the Documentation Manager (scope `odsl.etl`). |
 | **changed** in the list | The loader was changed after it was deployed: select **Deploy again**. |

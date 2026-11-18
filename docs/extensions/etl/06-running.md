@@ -111,5 +111,6 @@ Deleting the loader and all its versions removes:
 - For a deployed loader, the process (and so its schedule) and the workflow, and the custom action of an ODSL source.
 - The run report configuration, if you tick **Also delete the run report configuration**.
 - The loader's own secrets (those named `etl_<code>_...`), if you tick **Also delete this loader's secrets**. Shared secrets are never deleted.
+- The loader's [documentation](/docs/extensions/etl/documentation), unless you untick **Also delete its documentation**.
 
 Events already loaded, any curves and series built from them, and stored run reports stay. A new loader that has not been saved yet is simply thrown away.

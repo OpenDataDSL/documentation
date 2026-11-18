@@ -40,7 +40,7 @@ Select **Add evidence**, choose what kind of evidence it is, then what it is. Yo
 
 | Evidence | What you choose | What it shows |
 |-|-|-|
-| **Data loader** | A dataset feed (provider and feed, such as `ICE.ENDEX`) and the days of history, 7 by default (1 to 31) | Every monitored dataset of the feed and its loading status for each of those days |
+| **Data loader** | A dataset feed (provider and feed, such as `ICE.ENDEX`) and the days of history, 7 by default (1 to 31) | Every monitored dataset of the feed and its loading status for each of those days, up to yesterday |
 | **Data** | A curve, timeseries or options id: type part of it to search, or type the whole id. For a timeseries, the number of values to show (90 by default) | A chart of the data: the latest values of a timeseries, or a curve by tenor or an option chain by strike, for the ondate you choose (the latest by default) |
 | **Integration** | An integration system and the days of history, 7 by default | What the system was sent each day, from its daily integration reports |
 | **Document** | A project document, or **New evidence document** to write one from the **Evidence** template | The document |
@@ -85,7 +85,7 @@ The evidence is read when you open it, so it always shows how things are now.
 
 ### Data loader
 
-The datasets of the feed, one row each, and a column for each day, newest first. Each cell shows whether the dataset loaded, loaded late, is missing, partial, waiting, loading, or the day was a holiday. Hover a cell for the time it loaded and the details. The figures above give the share of the expected deliveries that loaded, and the late, missing and waiting ones; holidays are not counted.
+The datasets of the feed, one row each, and a column for each day, newest first. The days end yesterday, since today's loads may still be running. Each cell shows whether the dataset loaded, loaded late, is missing, partial, waiting, loading, or the day was a holiday. Hover a cell for the time it loaded and the details. The figures above give the share of the expected deliveries that loaded, and the late, missing and waiting ones; holidays are not counted.
 
 ![The loading history of the ICE.ENDEX feed](/img/extensions/project-tracker/evidence-feed.png)
 

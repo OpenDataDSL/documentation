@@ -39,6 +39,7 @@ Throughout these pages we follow Northgate Energy, a fictional gas and power tra
 | **Curves and series** | Event timeseries, event curves and event options made once from the events, kept on the same master data record and built by the platform whenever they are read. |
 | **Deploying** | Saves a workflow made of the standard ETL actions and a process that runs it, which you can run now or on a schedule. |
 | **Spreadsheet upload** | A loader for a workbook loaded by hand, never scheduled. You describe its layout once (dataset information, a row per record, the values by date), then drop each new workbook on the page to make its records, events and series. |
+| **Documentation** | Notes about a loader for the people who look after it, such as an About page made from its settings, kept in the documentation service. |
 | **Calculated field** | A field worked out from others with `+ - * /`, such as `real_price = input_price * ConvertedFactor`. |
 
 ---
@@ -73,6 +74,7 @@ Each tour shows once, on any computer you use. Select **Tour**, next to **Help**
 - [Deploying, running and scheduling](/docs/extensions/etl/running): runs, run reports and alerts.
 - [Curves and series](/docs/extensions/etl/curves-and-series): event timeseries, curves and options from the events.
 - [Spreadsheet uploads](/docs/extensions/etl/uploads): load a workbook by hand, its layout described once.
+- [Documentation](/docs/extensions/etl/documentation): keep notes about each loader, starting with an About page.
 - [Fusion AI](/docs/extensions/etl/fusion-ai): let Fusion AI propose the event type and the mapping.
 - [The ETL actions](/docs/extensions/etl/actions): the standard actions, also usable in your own workflows.
 - [Reference](/docs/extensions/etl/reference): where everything is kept, and troubleshooting.
