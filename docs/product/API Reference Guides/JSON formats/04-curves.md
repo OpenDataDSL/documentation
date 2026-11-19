@@ -59,38 +59,64 @@ Smart, event and composed curves are definitions: saving one with `contracts` is
 | `tenor` | String | Yes | The tenor, as a [period code](/docs/odsl/calendar/period-code): a relative code such as `M01`, `Q01`, `Y01`, or an absolute code such as `2026M12` |
 | `value` | Number | Yes | The value, or `"NaN"` for a missing value |
 | `status` | Object | No | The [status](./overview#status) of the value |
-| `properties` | Object | No | Your own properties, for example a vendor contract code |
+| `properties` | Object | No | The [standard contract properties](#standard-contract-properties), worked out by the platform, and your own properties, for example a vendor contract code |
 | `_type` | String | Output | The period type: `Day`, `Week`, `Weekend`, `Month`, `Quarter`, `Season`, `HalfYear`, `Year`, `Balance`, `Custom` and so on |
 | `_createdFromTenor` | String | Output | The tenor the contract was sent with, when it was converted |
 | `ondate` | Object | Output | The curve date, copied from the curve |
 
+An absolute tenor is stored as the matching relative tenor for the curve date: a contract sent as `2027Q01` on 2026-11-18 is stored with `tenor` `Q01`, and `_createdFromTenor` keeps `2027Q01`.
+
+### Standard contract properties
+
+When a curve is saved, the platform works out these properties for every contract from its tenor, the curve date and the expiry calendar, and adds them to the contract's `properties`:
+
+| **Property** | **Type** | **What it is** |
+|-|-|-|
+| `absolute` | String | The absolute tenor [period code](/docs/odsl/calendar/period-code) of the contract, for example `2026M12` |
+| `relative` | String | The relative tenor [period code](/docs/odsl/calendar/period-code) for the curve date, for example `M01` |
+| `start` | Date | The first day of delivery |
+| `end` | Date | The last day of delivery |
+| `expiry` | Date | The date the contract stops trading, from the expiry calendar |
+
+```json
+"properties": {
+  "absolute": "2026M04",
+  "end": "2026-04-30",
+  "expiry": "2026-04-27",
+  "relative": "M00",
+  "start": "2026-04-28"
+}
+```
+
+You do not need to send them. A `start`, `end` or `expiry` you send is kept instead of the calculated one. For a custom tenor, `start`, `end` and `expiry` are the curve date.
+
 ### Example
 
-What you send, inside an object:
+What you send, inside an object. `NGE_EOM` is the [expiry calendar example](./calendars#expiry-calendar): contracts expire at the end of the previous month. The quarter is sent with an absolute tenor:
 
 ```json
 {
   "_type": "VarCurve",
-  "ondate": {"curveDate": "2026-11-18", "expiryCalendar": "#REOMHENG"},
+  "ondate": {"curveDate": "2026-11-18", "expiryCalendar": "NGE_EOM"},
   "timezone": "Europe/Berlin",
   "currency": "EUR",
   "units": "MWH",
   "contracts": [
     {"tenor": "M01", "value": 104.25},
     {"tenor": "M02", "value": 109.80},
-    {"tenor": "Q01", "value": 101.15},
+    {"tenor": "2027Q01", "value": 101.15},
     {"tenor": "Y01", "value": 88.40}
   ]
 }
 ```
 
-What you read back for `NGE.POWER.DE:BASE:2026-11-18` (two contracts shown):
+What you read back for `NGE.POWER.DE:BASE:2026-11-18` (two contracts shown), with the standard contract properties added:
 
 ```json
 {
   "_type": "VarCurve",
   "_id": "NGE.POWER.DE:BASE:2026-11-18",
-  "ondate": {"curveDate": "2026-11-18", "expiryCalendar": "#REOMHENG"},
+  "ondate": {"curveDate": "2026-11-18", "expiryCalendar": "NGE_EOM"},
   "currency": "EUR",
   "units": "MWH",
   "timezone": "Europe/Berlin",
@@ -104,17 +130,29 @@ What you read back for `NGE.POWER.DE:BASE:2026-11-18` (two contracts shown):
       "_type": "Month",
       "value": 104.25,
       "status": {},
-      "ondate": {"curveDate": "2026-11-18", "expiryCalendar": "#REOMHENG"},
-      "properties": {}
+      "ondate": {"curveDate": "2026-11-18", "expiryCalendar": "NGE_EOM"},
+      "properties": {
+        "absolute": "2026M12",
+        "end": "2026-12-31",
+        "expiry": "2026-11-30",
+        "relative": "M01",
+        "start": "2026-12-01"
+      }
     },
     {
       "tenor": "Q01",
-      "_createdFromTenor": "Q01",
+      "_createdFromTenor": "2027Q01",
       "_type": "Quarter",
       "value": 101.15,
       "status": {},
-      "ondate": {"curveDate": "2026-11-18", "expiryCalendar": "#REOMHENG"},
-      "properties": {}
+      "ondate": {"curveDate": "2026-11-18", "expiryCalendar": "NGE_EOM"},
+      "properties": {
+        "absolute": "2027Q01",
+        "end": "2027-03-31",
+        "expiry": "2026-12-31",
+        "relative": "Q01",
+        "start": "2027-01-01"
+      }
     }
   ],
   "properties": {},
@@ -222,7 +260,7 @@ An event curve builds a curve for each date from the events of an event list: on
 | `filter` | String | No | A filter on the events |
 | `source` | String | No | The source of the events |
 | `valueTransformation` | String | No | An expression applied to every value, for example `value * 1.1` |
-| `name`, `description`, `currency`, `units`, `timezone`, `precision`, `properties` | | No | As for a curve. `properties.include` names event properties copied onto each contract |
+| `name`, `description`, `currency`, `units`, `timezone`, `precision`, `properties` | | No | As for a curve. `properties.include` names event properties copied onto each contract, as well as the [standard contract properties](#standard-contract-properties) |
 
 ```json
 {
