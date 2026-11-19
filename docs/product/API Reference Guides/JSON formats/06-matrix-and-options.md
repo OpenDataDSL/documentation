@@ -31,7 +31,7 @@ A matrix is a two dimensional table of numbers with labelled rows and columns, f
 | `currency`, `units`, `timezone` | String | No | The currency, units and timezone of the values |
 | `precision` | Object | No | Decimal places and rounding, see [Numbers](./overview#numbers-and-missing-values) |
 | `properties` | Object | No | Your own properties |
-| `_identity` | Object | No | External codes |
+| `_identity` | Object | No | The codes other systems use for the matrix, by provider, see [Identities](./overview#identities) |
 
 ```json
 {

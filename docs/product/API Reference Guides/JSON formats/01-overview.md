@@ -65,9 +65,76 @@ Fields whose names start with `_` are kept for the platform. You can read them, 
 | `_links` | Object | You | Links to other entities, see [Links](./master-data#links) |
 | `_access` | String | You | A data role used by security policies on master data |
 | `_objid`, `_dataid`, `_objtype` | String | Platform | On data (timeseries, curves, events): the object id, the data id within the object and the object type |
-| `_identity` | Object | You | On data: external codes for the item, see the [Data service](/docs/api/rest/service/data#identities) |
+| `_identity` | Object | You | On data: the codes other systems use for the item, see [Identities](#identities) |
 
 When you save an entity, leave the version fields out, or send them back as you read them: the platform replaces them.
+
+---
+
+## Identities
+
+Data items (timeseries, curves, matrices, options) can carry identities: the codes that other systems, such as your ETRM or a risk system, use for them. They are kept in `_identity`, an object with one code per identity provider. The provider names are your own choice.
+
+```json
+"_identity": {
+  "ETRM": "GAS_TTF_DA",
+  "RISK": "TTF-DA-IDX"
+}
+```
+
+An item with no identities has an empty `_identity` object.
+
+A curve's identities belong to the curve, not to each curve date: they are kept on the curve's [list of dates](./curves#curve-dates) (`NGE.POWER.DE:BASE`), and added to the curve for each date when you read it. A matrix works the same way.
+
+### Setting identities
+
+Set and remove identities with the `identity` function of the [Data service](/docs/api/rest/service/data#identities): a PUT to `data/v1/private?_function=identity` with `action` set to `PUT`. A provider set to `null` is removed.
+
+```json
+{
+  "action": "PUT",
+  "data": [
+    {"_id": "NGE.GAS.TTF:SPOT", "ETRM": "GAS_TTF_DA", "RISK": "TTF-DA-IDX"},
+    {"_id": "NGE.POWER.DE:BASE", "ETRM": "PWR_DE_BASE"}
+  ]
+}
+```
+
+### Reading identities
+
+To read the identities of several items at once, send `action` `GET` with the ids, and optionally the providers you want (all of them if you leave `identity` out):
+
+```json
+{
+  "action": "GET",
+  "_id": ["NGE.GAS.TTF:SPOT", "NGE.POWER.DE:BASE"],
+  "identity": ["ETRM"]
+}
+```
+
+The response is the request with a `data` list added: one entry per id, holding the codes of the providers asked for and the kind of data. A curve is listed as its list of dates (`VarCurveDates`), with the kind of curve in `_subtype`:
+
+```json
+{
+  "action": "GET",
+  "_id": ["NGE.GAS.TTF:SPOT", "NGE.POWER.DE:BASE"],
+  "identity": ["ETRM"],
+  "data": [
+    {"_id": "NGE.GAS.TTF:SPOT", "ETRM": "GAS_TTF_DA", "_type": "VarTimeSeries"},
+    {"_id": "NGE.POWER.DE:BASE", "ETRM": "PWR_DE_BASE", "_type": "VarCurveDates", "_subtype": "VarCurve"}
+  ]
+}
+```
+
+Smart and event curves are listed as `VarCurveDates` and smart and event timeseries as `VarTimeSeries`, each with the kind in `_subtype`.
+
+### Reading data by its identity
+
+You can also read a data item by another system's code: put `identity.` and the provider name after `private` in the source. This reads the timeseries whose `ETRM` code is `GAS_TTF_DA`:
+
+```js
+GET https://api.opendatadsl.com/api/data/v1/private.identity.ETRM/GAS_TTF_DA
+```
 
 ---
 

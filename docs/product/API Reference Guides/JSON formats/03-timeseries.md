@@ -51,7 +51,7 @@ Smart, event, metric and composed timeseries are definitions: their values are w
 | `properties` | Object | No | Your own properties |
 | `_status` | Object | No | The status of the whole timeseries, see [Status](./overview#status) |
 | `_checks` | Array | Output | The quality checks recorded on the timeseries |
-| `_identity` | Object | No | External codes, see [Identities](/docs/api/rest/service/data#identities) |
+| `_identity` | Object | No | The codes other systems use for the timeseries, by provider, see [Identities](./overview#identities) |
 | `_links` | Object | No | [Links](./master-data#links) |
 | `_objid`, `_dataid`, `_objtype`, `_subtype` | String | Output | Set by the platform |
 
@@ -103,7 +103,7 @@ A `SPARSE` timeseries must use value objects.
   "_dataid": "SPOT",
   "_objid": "NGE.GAS.TTF",
   "_objtype": "#Object",
-  "_identity": {},
+  "_identity": {"ETRM": "GAS_TTF_DA", "RISK": "TTF-DA-IDX"},
   "data": [
     {"time": "2026-11-16", "value": 41.85, "status": {}, "_type": "TimeValue", "_links": {}, "allowLinks": true},
     {"time": "2026-11-17", "value": 42.10, "status": {}, "_type": "TimeValue", "_links": {}, "allowLinks": true},

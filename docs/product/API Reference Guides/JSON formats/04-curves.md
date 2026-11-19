@@ -49,7 +49,7 @@ Smart, event and composed curves are definitions: saving one with `contracts` is
 | `_status` | Object | No | The [status](./overview#status) of the curve |
 | `_merge` | Boolean | No | True to merge these contracts into the saved curve for the date instead of replacing it |
 | `_substituted` | Boolean | Output | True if the curve was substituted by the curve build cut-off |
-| `_identity` | Object | No | External codes, see [Identities](/docs/api/rest/service/data#identities) |
+| `_identity` | Object | No | The codes other systems use for the curve, by provider, see [Identities](./overview#identities). They are kept with the curve, not with each date |
 | `_objid`, `_dataid`, `_objtype`, `_subtype` | String | Output | Set by the platform |
 
 ### Contract
@@ -122,7 +122,7 @@ What you read back for `NGE.POWER.DE:BASE:2026-11-18` (two contracts shown), wit
   "timezone": "Europe/Berlin",
   "precision": {"roundingMode": "HALF_UP", "scale": 6, "useDefault": true, "store": false},
   "_status": {},
-  "_identity": {},
+  "_identity": {"ETRM": "PWR_DE_BASE"},
   "contracts": [
     {
       "tenor": "M01",
@@ -181,6 +181,7 @@ When a curve is saved for a date, the platform also keeps a timeseries of the da
 | `expiryCalendar` | String | The expiry calendar of the curve |
 | `_subtype` | String | The kind of curve: `VarCurve`, `VarEventCurve`, `VarSmartCurve` |
 | `name`, `description`, `timezone`, `precision` | | Copied from the curve |
+| `_identity` | Object | The curve's [identities](./overview#identities), added to the curve for each date when it is read |
 | `data` | Array | One value per curve date: `time` is the date and `value` a reference to `NGE.POWER.DE:BASE:2026-11-18` |
 
 ---
