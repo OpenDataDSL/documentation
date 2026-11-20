@@ -82,6 +82,8 @@ Choose a task to open the screen that does the job:
 - Some open a screen of the portal, such as **Data**.
 - An extension can also open a web page, in a new browser tab.
 
+The bottom right of each task says where it goes, for example **Smart Data > New** or **Information > Data**. A task that opens a web page shows the site's name and an arrow pointing out of the box. Rest the pointer on a task to read it in full, for example **Opens Smart Data, ready to create a new one**.
+
 The task opens in the portal like any menu item, with the menu showing where you are. If you cannot use the screen it opens, for example its extension is not installed in this environment or you do not have access to it, the page tells you instead.
 
 :::tip

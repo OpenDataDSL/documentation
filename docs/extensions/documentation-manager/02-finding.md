@@ -17,13 +17,19 @@ Open **Manage > Documentation**. The screen lists your own documentation, groupe
 | **Documentation** | **Ours (private)** is your own documentation. **Common** and **Public** are shared with every client, for example the public guides to OpenDataDSL data |
 | **Find** | Shows the documents whose title, name, scope, entity or tags contain the text |
 | **Search the text too** | Looks for the text inside the documents as well. The search runs on the platform, so it finds words anywhere in a document |
-| **Scope**, **Kind**, **Language** | Narrow the list to one scope, one kind of document (markdown, web page link or JSON) or one language |
+| **Scope** | Narrow the list to one scope |
+| **Entity** | Comes on once you choose a scope: narrow the list to one entity of that scope, such as the documents about one record. Each entity shows how many documents it has; **(no entity)** is the documents of the scope that have none |
+| **Kind**, **Language** | Narrow the list to one kind of document (markdown, web page link or JSON) or one language |
 
 Priya wants to know which documents mention the Molecule user. She ticks **Search the text too** and types `molecule_user`: only the onboarding design document contains it.
 
 ![Searching the text of the documents](/img/extensions/documentation-manager/find.png)
 
-Click a scope to close or open its group. With many scopes, the groups start closed; **Open all** and **Close all** open or close every group. **CSV** downloads the documents in the list, with their key, language, title, tags, version and when they were saved.
+Priya looks after the curve guides. She chooses the scope `guides`, then the entity `curves`, and sees just the guides about curves.
+
+![The documents of one scope and entity](/img/extensions/documentation-manager/entity-filter.png)
+
+Click a scope to close or open its group. With many scopes, the groups start closed; **Open all** and **Close all** open or close every group. **Templates** shows your templates for new documents (see [Templates](/docs/extensions/documentation-manager/documents#templates)). **CSV** downloads the documents in the list, with their key, language, title, tags, version and when they were saved.
 
 Scopes shown with a link icon, such as `object`, are platform services: their documents are about a record, for example the master data record `ICE.NDEX.TTF`, and show as a documentation link on that record in the Data Explorer.
 

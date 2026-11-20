@@ -32,6 +32,7 @@ Throughout these pages we follow Northgate Energy, a fictional gas and power tra
 | Key | Scope, entity and name together, written `scope:entity:name`. With the language, the key identifies a document |
 | Language | The language the document is written in (`en`, `de`, `fr` ...). A document can have a version in each language |
 | Title | The name shown in lists. When a document has no title, its name is shown |
+| Template | A document people start new documents from, kept in the scope `documentation` with the entity `template` |
 | Version | Every save keeps the previous text as an older version you can look at, compare and restore |
 | Documentation | Where a document is kept: **Ours** (your own, private), **Common** or **Public** (shared with every client) |
 
@@ -42,7 +43,7 @@ Throughout these pages we follow Northgate Energy, a fictional gas and power tra
 | Part of the screen | What it is for |
 |-|-|
 | Summary cards | How many documents, scopes and languages there are, how many are about platform records, and how many changed in the last 30 days |
-| Filters | Choose the documentation, find by title, name, scope, entity or tag, search the text inside the documents, and narrow to a scope, kind or language |
+| Filters | Choose the documentation, find by title, name, scope, entity or tag, search the text inside the documents, and narrow to a scope (and then one of its entities), kind or language |
 | **Documents** list | The documents grouped by scope, with the newest saves easy to spot |
 | The open document | The document as the portal shows it, with its key, language versions, tags and when it was saved, and the buttons to edit, see versions, copy or move, download and delete |
 | Home page tasks | **Find documentation** and **Write a document** |
@@ -54,5 +55,5 @@ The extension adds **Documentation** to the **Manage** menu.
 ## Where next
 
 - [Finding and reading](/docs/extensions/documentation-manager/finding): find a document and read it
-- [Writing and changing documents](/docs/extensions/documentation-manager/documents): edit, create, translate, copy and move documents, versions and deleting
+- [Writing and changing documents](/docs/extensions/documentation-manager/documents): edit, create, templates, translate, copy and move documents, versions and deleting
 - [Reference](/docs/extensions/documentation-manager/reference): how documents are kept, permissions and troubleshooting

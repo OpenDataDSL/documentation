@@ -30,20 +30,37 @@ Choose **New document** and fill in:
 |-|-|
 | **Title** | What the document is called, for example *Morning checks runbook* |
 | **Kind** | Markdown, web page link or JSON with a template |
-| **Start from** | For markdown: a blank page, or a starter with headings for notes, meeting notes, requirements, a design, a runbook or evidence |
+| **Start from** | For markdown: a blank page, or a starter with headings for notes, meeting notes, requirements, a design, a runbook or evidence. Your own [templates](#templates) of the chosen kind are listed too |
 | **Documentation** | Where to keep it: normally **Ours (private)** |
 | **Scope** | The topic, for example `runbooks`. The scopes already in use are offered |
 | **Entity** | Optional: what it is about within the scope, for example `eod`. The entities already in the scope are offered |
 | **Name** | Filled in from the title; change it if you like |
 | **Language** | `en` unless you are writing in another language |
 
-None of scope, entity and name may contain a colon, and the screen tells you when a document with the same key and language is already there. **Create** opens the new document in the editor; it is kept once you save it.
+None of scope, entity and name may contain a colon, and the screen tells you when a document with the same key and language is already there. When you have chosen a scope and entity in the filters, the new document starts there. **Create** opens the new document in the editor; it is kept once you save it.
 
-![Starting a new runbook](/img/extensions/documentation-manager/new-document.png)
+![Starting a new curve guide from a template](/img/extensions/documentation-manager/new-document.png)
 
 :::tip Documents about a record
 To write a document that shows as a documentation link on a master data record, use the scope `object` and the record's id as the entity, for example `object` : `ICE.NDEX.TTF` : `about`. The Data Explorer then lists it on the record's **Documentation** tab.
 :::
+
+---
+
+## Templates
+
+A template is a document that people start new documents from: the layout of a curve guide, an incident report or a vendor meeting, with the headings your team always uses. Templates are ordinary documents kept in the scope `documentation` with the entity `template`, so you read, edit, version and delete them like any other document.
+
+There are two ways to make one:
+
+- Choose **New document**, tick **Make it a template that people can start new documents from**, and write it. The scope and entity are set for you.
+- Open a document you want to reuse and choose **Save as template**. Give the template a name: a copy is saved as a template and the document itself is not changed.
+
+When anyone chooses **New document**, **Start from** lists the templates of the chosen kind: **Our templates** (your own), and any **Common templates** and **OpenDataDSL templates** shared with every client. The new document starts with the template's text, tags and (for links and JSON) its settings, and the template's first heading is replaced by the new document's title.
+
+**Templates**, under the list of documents, shows your templates.
+
+![The templates for new documents](/img/extensions/documentation-manager/templates.png)
 
 ---
 

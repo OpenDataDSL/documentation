@@ -21,6 +21,8 @@ Every document is a record in the platform's documentation service. A record has
 
 The same documents can be read in ODSL, for example `d = ${documentation:"private"/"guides:curves:gas-curve-build"}`, and through the REST API (`documentation/v1/private/guides:curves:gas-curve-build`).
 
+Templates for new documents are documents with the scope `documentation` and the entity `template`, in any of the three documentations.
+
 When the scope is the name of a platform service, such as `object`, and the entity is the id of one of its records, saving the document adds a documentation link named after the document to that record.
 
 ## Who can read and change documents
@@ -37,9 +39,11 @@ Home page tasks and other extensions can open the screen with these properties:
 | `Q` | Text to find |
 | `CONTENT` | `true` to search the text of the documents too |
 | `SCOPE` | Show only this scope |
+| `ENTITY` | With `SCOPE`: show only this entity of the scope |
+| `TEMPLATES` | `true` to show your templates |
 | `ID` | Open the document with this id |
 | `SCOPE`, `ENTITY`, `NAME`, `LANGUAGE` | Open the document with this key (and language) |
-| `ACTION` | `new` to start a new document, with `SCOPE`, `ENTITY`, `NAME` and `TITLE` filled in |
+| `ACTION` | `new` to start a new document, with `SCOPE`, `ENTITY`, `NAME` and `TITLE` filled in. Add `TEMPLATE` `true` to start a new template |
 
 ## Troubleshooting
 
