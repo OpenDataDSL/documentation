@@ -8,6 +8,10 @@ tags: [fusion-ai, mcp, claude, integration]
 
 # Connecting Claude to the Fusion AI MCP Server
 
+:::tip The OpenDataDSL plugin for Claude
+The easiest way to connect Claude is to add the **OpenDataDSL** plugin from **Customize > Plugins** in Claude. It includes this server and adds skills for writing ODSL scripts, insights and extensions, and it works in Claude, Claude Cowork and Claude Code. See [Build with Claude](/docs/extensions/building/claude). The manual set-up below is for when you want only the server.
+:::
+
 ## Claude Desktop
 
 Claude Desktop's configuration file lets you add remote MCP servers using a small local bridge process ([`mcp-remote`](https://www.npmjs.com/package/mcp-remote)), which relays traffic between Claude and the hosted server. This is the recommended and confirmed-working setup.

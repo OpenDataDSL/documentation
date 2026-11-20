@@ -101,7 +101,17 @@ See [Sample Questions](/docs/product/mcp/sample-questions) for examples of descr
 
 | Tool | What it does |
 |---|---|
-| `create_report` | Creates or updates a report definition |
+| `create_report` | Creates or updates a report definition, including insight reports and scheduled reports |
+
+## Extensions
+
+| Tool | What it does |
+|---|---|
+| `get_extension_reference` | Reference material for building extensions and insight pages: page conventions, the manifest, and the inputs of the saving tools |
+| `create_policy` | Creates or updates a feature policy (who sees an extension's views) or a data policy (access to a service's data) |
+| `create_extension` | Creates or updates an extension in your tenant: its views and the scripts, insights and policies it installs. It appears in the portal menu straight away for the people in its feature policy |
+
+See [Build with Claude](/docs/extensions/building/claude) for building a whole extension from Claude with these tools.
 | `save_response_as_report` | Saves the assistant's last response as a shared report your colleagues can view |
 
 ## Monitoring & governance
@@ -122,5 +132,5 @@ See [Sample Questions](/docs/product/mcp/sample-questions) for examples of descr
 | `send_email` | Sends an email |
 
 :::note
-Some tools that change data (`create_smart_curve`, `save_script`, `save_object`, `create_automation`, etc.) are designed to confirm the details with you before committing anything - if the assistant proposes a change, it's expecting your go-ahead before it actually saves it.
+Some tools that change data (`create_smart_curve`, `save_script`, `save_object`, `create_automation`, `create_policy`, `create_extension`, etc.) are designed to confirm the details with you before committing anything - if the assistant proposes a change, it's expecting your go-ahead before it actually saves it.
 :::

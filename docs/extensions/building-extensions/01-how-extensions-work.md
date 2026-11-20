@@ -69,12 +69,13 @@ An extension's id is its **publisher** and **code** joined with a dot, for examp
 
 ---
 
-## Three ways to build an extension
+## Four ways to build an extension
 
 | Way | Best when |
 |-|-|
 | **With a Fusion AI playbook** | You can describe the tabs you want. Fusion plans the extension, writes every page, insight and the manifest, and saves it after you approve. See [Build an extension with Fusion AI](/docs/extensions/building/fusion-ai). |
 | **With Fusion AI in a chat** | You want to change one page of an existing extension, or add a tab. Fusion has the same tools and reference material as the playbook. |
+| **With Claude** | You work in Claude, Claude Cowork or Claude Code. The OpenDataDSL plugin gives Claude the same knowledge and Fusion AI tools, and with Cowork or Claude Code it can also write the files into your repository. See [Build with Claude](/docs/extensions/building/claude). |
 | **By hand** | You want full control, or you keep extensions in source control. Write the pages in VS Code with the OpenDataDSL extension, and create the extension with a `create-extension.odsl` script. |
 
 The playbook is the quickest way to a working extension, and a good way to learn: every file it writes is shown to you before it is saved, and it also hands back the equivalent `create-extension.odsl` script for your source control.
@@ -93,6 +94,7 @@ flowchart LR
 ## Next steps
 
 - [Build an extension with Fusion AI](/docs/extensions/building/fusion-ai): the fastest way to a working extension
+- [Build with Claude](/docs/extensions/building/claude): build extensions, insights and scripts from Claude with the OpenDataDSL plugin
 - [The extension manifest](/docs/extensions/building/manifest): the manifest, views and resources in detail
 - [Writing pages](/docs/extensions/building/pages): page anatomy, the data API and the house style
 - [Example extension](/docs/odsl/extension/odsl.example): an extension built from the platform's HTML components
