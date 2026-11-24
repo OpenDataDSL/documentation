@@ -13,7 +13,7 @@ OpenDataDSL exposes Fusion AI as a standard [Model Context Protocol](https://mod
 The server is hosted for you; there is nothing to install or run yourself. You point your AI client at a single URL:
 
 ```
-https://ai.api.opendatadsl.com/runtime/webhooks/mcp/sse
+https://ai.api.opendatadsl.com/runtime/webhooks/mcp
 ```
 
 and sign in with your normal Microsoft/Entra ID account the first time you use it.

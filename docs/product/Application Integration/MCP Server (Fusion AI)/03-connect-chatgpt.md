@@ -11,7 +11,7 @@ tags: [fusion-ai, mcp, chatgpt, integration]
 ChatGPT can connect to remote MCP servers as a **custom connector**. This is available on plans that support developer/custom connectors (Plus, Pro, Team, Enterprise/Business tiers) - availability and exact menu names can vary as OpenAI rolls the feature out, so use this as a guide rather than a pixel-perfect walkthrough.
 
 :::note
-Unlike the Claude Desktop config file, ChatGPT does not need a local `mcp-remote` bridge - it talks to the hosted SSE endpoint directly.
+Unlike the Claude Desktop config file, ChatGPT does not need a local `mcp-remote` bridge - it talks to the hosted MCP endpoint directly.
 :::
 
 ### 1. Turn on developer mode / custom connectors
@@ -26,7 +26,7 @@ From **Settings → Connectors**, choose **Create** (or **Add custom connector**
 |---|---|
 | Name | OpenDataDSL Fusion AI |
 | Description | Fusion AI tools for the OpenDataDSL platform |
-| MCP Server URL | `https://ai.api.opendatadsl.com/runtime/webhooks/mcp/sse` |
+| MCP Server URL | `https://ai.api.opendatadsl.com/runtime/webhooks/mcp` |
 | Authentication | **No authentication** |
 
 Choose **No authentication** here because the server handles sign-in itself, through the `login_start` / `login_complete` tools described in [Signing In](/docs/product/mcp/signing-in), rather than through an OAuth handshake at connector setup time.
