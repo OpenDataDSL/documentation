@@ -20,7 +20,7 @@ Open the system and choose the **Documentation** tab. Until something is written
 
 **Write the documentation** opens a document called **About** followed by the system's name. It starts from what the screen already knows about the system:
 
-- a table of its name, code, system id, the plug-in or ODSL it sends with, its codes, its daily report and its secrets (the names of the records that keep their values, never the values);
+- a table of its name, code, system id, stage, the plug-in or ODSL it sends with, its codes, its daily report and its secrets (the names of the records that keep their values, never the values);
 - the groups that send to it, with how many curves and timeseries each holds and its schedule;
 - headings to fill in: **What it is for**, **Where the data goes**, **Contacts**, **Checking it is working**, **Known issues** and **Changes**.
 

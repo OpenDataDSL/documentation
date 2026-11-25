@@ -49,6 +49,18 @@ The Integrations screen opens on its home page, which lists your systems with th
 
 ![The top of the System setup tab of Molecule: its name, id, code and report, its description, its codes shared with the plug-in, and Save the system, Copy to a new system and Delete the system](/img/extensions/integration/system-setup.png)
 
+### Stages
+
+Each system has a stage that says where it is in its life: **Sandbox** (trying things out), **Development** (being built), **Testing** (being checked before use) or **Production** (in use). A new system, and a copy of one, starts in Development.
+
+![The top of the Integrations screen on Molecule: the System box, and next to it the stage badge set to Production](/img/extensions/integration/stage.png)
+
+To change it, select the stage badge next to the **System** box and choose another stage. The system is saved with its new stage at once. The stage is a label for you and your team: it does not change what the system sends, where it sends it, or when.
+
+On the home page, each system's card shows its stage, and with more than one system, the **Stage** buttons above the cards show only the systems in that stage. Each button shows how many systems are in it. The screen remembers your choice in this browser. Systems made before stages were added show no stage until you set one, and **No stage** lists them. A system set up the old way (marked **not upgraded**) has no stage until it is upgraded.
+
+![Your systems on the home page with the Production stage chosen: two systems in all, one in Testing and one in Production, and the Molecule card with its Production badge](/img/extensions/integration/stage-filter.png)
+
 ### The codes a system sends with
 
 Each system chooses the identities (see below) its items are sent with:
@@ -60,6 +72,16 @@ Each system chooses the identities (see below) its items are sent with:
 | **The same codes as** another system | That system's identities. | A new system for a destination that already has its codes, such as a test copy of a production system. |
 
 A new system has its own codes when the plug-in already has a system, and shared codes otherwise. Change them on the **System setup** tab. The plug-in's ODSL reads the identities by the plug-in's names whichever you choose, so it works the same for every system. Choosing other codes does not copy the codes already given: give the items their codes on the **Items** tab.
+
+### Updating a plug-in
+
+When a newer version of a plug-in you have installed is published, the home page shows it under **Plug-in updates**, with the version you have, the published version and the systems that use it. A system's **System setup** tab shows the version of its plug-in too, and whether a newer one is published.
+
+![Plug-in updates on the home page: version 5 of Molecule is published, the installed one is version 3, used by Molecule, with an Update button](/img/extensions/integration/plugin-updates.png)
+
+Select **Update**, then confirm. The published version is installed over the one you have, as the Extensions screen does: the plug-in's scripts and settings are replaced, and your systems, groups, codes, secrets, schedules and reports are kept. The next runs of every system on the plug-in use the new version.
+
+The installed version is the published version it was installed from. A plug-in installed before versions were recorded shows **the installed version is not known**, and is offered the update once.
 
 ### Systems set up before 2026-11-07
 

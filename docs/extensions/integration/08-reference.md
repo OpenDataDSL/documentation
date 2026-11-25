@@ -55,6 +55,7 @@ tags: [extension, integration, reference, plug-in, secrets, troubleshooting]
   "plugin": "odsl.integration_blob",
   "codes": "own",
   "reportKey": "FINANCE_BLOB",
+  "stage": "production",
   "secrets": [{"name": "accountKey", "secret": "finance_blob_accountkey"}]
 }
 ```
@@ -65,6 +66,7 @@ tags: [extension, integration, reference, plug-in, secrets, troubleshooting]
 | `plugin` | The plug-in extension it sends with, such as `odsl.integration_blob`, or `custom` for a custom system. |
 | `codes` | The identities its items are sent with: `plugin` (the plug-in's, shared), `own` (`<code>_<identity>`, such as `finance_blob_blob_code`) or another system's id (that system's). The engine gives the plug-in's ODSL each item's identities under the plug-in's names whichever it is. |
 | `reportKey` | The key of its daily report `INTEGRATION_<KEY>`, the default of its groups. |
+| `stage` | Where the system is in its life: `sandbox`, `development`, `testing` or `production`, or none. A new system starts in `development`. Set next to the **System** box (see [Stages](/docs/extensions/integration/how-it-works#stages)); nothing in a run depends on it. |
 | `secrets` | For each secret the plug-in reads (by `name`), the `secret` record that keeps its value. |
 | `script`, `kinds`, `identities`, `groupSettings`, `dataProperties`, `transformations` | A custom system only: its ODSL and what it needs, with the same fields as a plug-in's `configuration.integration` (see [Writing a plug-in extension](#writing-a-plug-in-extension)). A custom system's `secrets` have every field of a plug-in's. |
 | `copiedFrom`, `upgradedFrom` | On a copy, the system it was copied from; on an upgraded system, the plug-in or `custom.<code>` record it was made from. |
@@ -119,7 +121,7 @@ tags: [extension, integration, reference, plug-in, secrets, troubleshooting]
   "_id": "INTEGRATION_NGE_MOLECULE_CURVES",
   "_type": "VarProcess",
   "service": "Integration",
-  "script": "odsl-extensions\\extensions\\integration\\molecule\\odsl.molecule.integration",
+  "script": "odsl-extensions\\extensions\\integration\\molecule\\odsl.molecule.runner",
   "input": {"group": "NGE_MOLECULE_CURVES"},
   "cron": "0 8 * * MON-FRI * EU1",
   "enabled": true
@@ -223,13 +225,16 @@ e.plugin = true
 e.dependencies = ["integration"]
 e.configuration.integration.system = "Molecule"
 e.configuration.integration.description = "Sends curves and timeseries to the Molecule ETRM marks API"
-e.configuration.integration.runner = "odsl-extensions\extensions\integration\molecule\odsl.molecule.integration"
+e.configuration.integration.runner = "odsl-extensions\extensions\integration\molecule\odsl.molecule.runner"
 e.configuration.integration.kinds = ["curve", "timeseries"]
 e.configuration.integration.identities = [...]
 e.configuration.integration.groupSettings = [...]
 e.configuration.integration.dataProperties = [...]
 e.configuration.integration.secrets = [...]
-e.resources.script.integration = "odsl-extensions\extensions\integration\molecule\odsl.molecule.integration"
+e.resources.script.runner = "odsl-extensions\extensions\integration\molecule\odsl.molecule.runner"
+e.resources.script.common = "odsl-extensions\extensions\integration\molecule\odsl.molecule.common"
+e.resources.script.curves = "odsl-extensions\extensions\integration\molecule\odsl.molecule.curves"
+e.resources.script.timeseries = "odsl-extensions\extensions\integration\molecule\odsl.molecule.timeseries"
 ```
 
 | Part | What it is |
@@ -256,7 +261,7 @@ A runner can apply a Mustache template to its data with the engine's `intTryTran
 |-|-|
 | `PUT data/v1/private?_function=identity` | Reads (`action: GET`) or sets (`action: PUT`) the identities of many data items at once. |
 | `PUT data/v1/private?_function=properties` | Reads (`action: GET`, `_id`, `properties`) or sets (`action: PUT`, `data` of `_id` plus name and value) the properties of many data items, without saving the items. A value of `null` removes the property. Each item is checked against your update rights. |
-| `POST extension/v1/private?_publish=true` | Installs a published plug-in. |
+| `POST extension/v1/private?_publish=true` | Installs a published plug-in, or updates an installed one to the published version. The installed record keeps the published `_version` it came from as `_eversion`: a published `_version` above it is a newer version. |
 | `POST object/v1/private` | Saves a system object. |
 | `GET object/v1/private/<id>`, `DELETE object/v1/private/<id>` | Reads or deletes a system. Systems are listed with `find` on the private objects of type `INTEGRATION_SYSTEM`. |
 | `DELETE extension/v1/private/<id>` | Removes a custom system's extension record (`custom.<code>`) after its upgrade. |

@@ -30,7 +30,7 @@ Once installed, add a system that sends with it: select **New system** and choos
 | Group setting | **Use the Molecule test environment** | Sends to the Molecule test environment instead of production. |
 | Group setting | **Default mark level** | The mark level for items with no `molecule_curve_source`; `vendor` unless you change it. |
 | Group setting | **Mark level of corrections** | The mark level of [corrections](/docs/extensions/integration/corrections), for every item. Left empty, corrections go with the item's usual mark level. |
-| Group setting | **Timezone** | The clock quarter hours and sub-daily tenors are counted in, for items with no timezone of their own. |
+| Group setting | **Timezone** | The clock quarter hours are counted in, for timeseries with no `molecule_timezone`. Curves use their own timezone. |
 | Group setting | **Month to send (timeseries)** | Which month of a monthly timeseries to send, counted from the month of the date sent: `0` the same month, `1` the month after. |
 | Group setting | **As-of shift (days)** | Days added to the date sent for the Molecule as-of date. |
 | Transformation | **Standard marks** (`export`) | The default: one mark per contract, as below. |
@@ -42,7 +42,9 @@ Once installed, add a system that sends with it: select **New system** and choos
 | Secret, kept in `molecule_production` | **Production API key** | The API key for Molecule production. |
 | Secret, kept in `molecule_apikey` | **Test API key** | The API key for the Molecule test environment, used when a group has **Use the Molecule test environment** ticked. |
 
-The timezone used is the item's `molecule_timezone`, else the group's **Timezone**, else the timezone of the data itself, else UTC. Northgate gives its German capture prices `Europe/Berlin` and its Dutch ones `Europe/Amsterdam`.
+For a timeseries, the timezone used is its `molecule_timezone`, else the group's **Timezone**, else the timeseries' own timezone, else UTC. Northgate gives its German capture prices `Europe/Berlin` and its Dutch ones `Europe/Amsterdam`.
+
+For a curve, the timezone used is its `molecule_timezone`, else the curve's own timezone, else the group's **Timezone**, else UTC, as the earlier Molecule export did. A curve's sub-daily contracts start at fixed times in its own timezone: a GB day-ahead curve held in CET starts each day at 23:00 UK time, so counting it in `Europe/London` would put the first hour on the day before. The run log says which timezone each item used and where it came from, for example `timezone Europe/Paris (from the curve; the group's Europe/London is not used for curves)`.
 
 The plug-in signs in to Molecule with the user and the production API key, or the test API key for the test environment. Set their values in the **Secrets** part of the system's **System setup** tab (see [Getting started](/docs/extensions/integration/getting-started#2-set-the-secrets)). A group can use another Molecule account by naming its own secret records on its **Settings** tab. A run that has to send stops with, for example, `Set the secret molecule_production (Molecule production API key) on the System setup tab of the Integrations screen` when one it needs is not set; a dry run does not need them.
 
@@ -67,16 +69,16 @@ The mark level of an item is, in this order:
 
 ## How curves are sent
 
-Each contract of the curve for the date that has a value becomes one mark, dated by the contract's start. Contracts with sub-daily tenors (quarter hours `QH`, half hours `HH` and hours `H`) are dated by their day in the timezone and given an interval ending, numbered through the day: `0015`, `0030` ... `2400` for quarter hours.
+Each contract of the curve for the date that has a value becomes one mark, dated by the contract's start. Contracts with sub-daily tenors (quarter hours `QH`, half hours `HH` and hours `H`) are dated by their day in the timezone and given an interval ending: the end of the period on that day's clock, `0015`, `0030` ... `2400` for quarter hours. A day the curve covers only partly keeps its clock times: a curve in UTC whose first half hour is 23:00 to 23:30 sends it as `2330` on that day, and the next as `2400`. On the days the clocks change, the periods are counted on through the day, so a day of quarter hours ends at `2300` or `2500`.
 
 ---
 
 ## Blended curves
 
-Choose a group's **Transformation** on its **Settings** tab. **Standard marks** sends curves as above. **Blended curves** is the export group function `exportBlendedCurves(count, skip)` of `molecule-export-curves`, for curves that Molecule takes as quarter hours:
+Choose a group's **Transformation** on its **Settings** tab. **Standard marks** sends curves as above. **Blended curves** sends the same marks as the export group function `exportBlendedCurves(count, skip)` of the older `molecule-export-curves` script, for curves that Molecule takes as quarter hours, half hours or hours:
 
-1. The curve's intraday contracts (quarter hours, half hours, hours) are sent first, as marks like the standard ones. A curve without any fails with `No Intraday contracts found`, and its months are not sent.
-2. Then each monthly contract, from the one after **Skip** up to **Months**, is sent as quarter hours for every day of its month, every one with the month's value, with the clock changes as in [How timeseries are sent](#how-timeseries-are-sent). Each month is its own send. With **Months** `12` and **Skip** `0` that is M01 to M12; with **Skip** `1` it starts at M02. A curve with fewer months sends the months it has, and a month without a value is left out.
+1. The curve's intraday contracts (quarter hours, half hours, hours) are sent first, as they are, as marks like the standard ones. A first day in half hours is sent as 48 half hours. A curve without any fails with `No Intraday contracts found`, and its months are not sent.
+2. Then each monthly contract, from the one after **Skip** up to **Months**, is sent as **Months as** says, for every day of its month, every one with the month's value: **quarter hours** (the default, 96 a day, interval endings `0015` to `2400`), **half hours** (48 a day, `0030` to `2400`) or **hours** (24 a day, `0100` to `2400`). On the days the clocks change a day has one hour less or more (92 or 100 quarter hours, 46 or 50 half hours, 23 or 25 hours), as in [How timeseries are sent](#how-timeseries-are-sent). Each month is its own send. With **Months** `12` and **Skip** `0` that is M01 to M12; with **Skip** `1` it starts at M02. A curve with fewer months sends the months it has, and a month without a value is left out.
 
 The first send Molecule refuses stops the item, with the part that failed in its message, such as `month 2027M01: batch 2 of 3: Unknown product`. In a dry run the item shows the number of marks and sends it would have made. Timeseries are sent as standard marks with this transformation.
 
@@ -118,8 +120,23 @@ In `values` mode every value of the timeseries is sent as a mark dated by its ow
 Molecule takes at most 1,000 marks in one call, so a month of quarter hours goes in three calls. When Molecule does not answer, the plug-in waits 20 seconds and tries once more. The first call Molecule refuses stops that item, and its message names the call, for example `batch 2 of 3: Invalid product`.
 
 :::note
-The Molecule curve export groups used before this plug-in (the scripts `molecule-export-curves` and `molecule-export-timeseries`) keep working alongside it. A curve can be in an export group and in an integration group, but then it is sent twice.
+The Molecule curve export groups used before this plug-in (the scripts `molecule-export-curves` and `molecule-export-timeseries`) are not part of the plug-in, which neither installs nor needs them. When you move a curve export group to an integration group, disable or delete the export group: a curve in both is sent twice.
 :::
+
+---
+
+## The plug-in's scripts
+
+The plug-in works like the other plug-ins: the integration engine reads the group, its curves and timeseries, the system's secrets and settings, and keeps the [daily report](/docs/extensions/integration/report); the plug-in only turns each item into marks and sends them.
+
+| Script | What it does |
+|-|-|
+| `odsl.molecule.runner` | The runner each group's process runs: the engine's three hooks, each one line. |
+| `odsl.molecule.common` | Settings, mark levels, timezones, the as-of date, the secrets, sending in calls of 1,000 marks, and dry runs. |
+| `odsl.molecule.curves` | Curves: standard marks and blended curves. |
+| `odsl.molecule.timeseries` | Timeseries: quarter hours of a month, values, and the day's quarter hours. |
+
+All four are in the folder `odsl-extensions\extensions\integration\molecule\`. The plug-in no longer installs the earlier runner `odsl.molecule.integration`. A group whose schedule was saved with it changes to `odsl.molecule.runner` when its schedule is saved again on the **Schedule and runs** tab: both send the same marks.
 
 ---
 
