@@ -60,7 +60,7 @@ Add inputs on the **Inputs** tab. Each input has:
 | **Options** | For a choice: the values to choose from |
 | **Validate** | For text: a regular expression the value must match, for example `^[A-Z]{3}$` for a currency code |
 
-Curve and timeseries inputs search the platform as you type, and have a **Find** button to look the data up by its dimensions (see [Finding data](/docs/extensions/composer/workspace#finding-data)). Calendar inputs list the calendars.
+Curve and timeseries inputs search the platform as you type, and have a **Find** button to look the data up by its dimensions (see [Finding data](/docs/extensions/composer/workspace#finding-data)). The finder for a timeseries input also lists curves, so the value can be one tenor of a curve, such as `#ICE.EUA:SETTLE:M01`; you can also type it as `CURVE:TENOR`. Calendar inputs list the calendars.
 
 ---
 

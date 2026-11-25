@@ -79,7 +79,7 @@ Tick the automations, or tick the box in the header to select the whole page, th
 |-|-|
 | **Enable** | Switches the selected automations on |
 | **Disable** | Switches the selected automations off |
-| **Delete** | Deletes the selected automations, after asking. They cannot be brought back |
+| **Delete** | Removes the selected rows, after asking. Each row is one trigger: an automation loses only the triggers you ticked, and is deleted when all its triggers are ticked (see [Deleting an automation](/docs/extensions/automations/managing#deleting-an-automation)) |
 | **Export** | Downloads every automation that matches the filters (all pages, not only the selected ones) as a CSV file |
 
 The changes are made three at a time, with a progress message. If some fail, the message lists them with the reason.
@@ -132,7 +132,7 @@ Change the fields, then select **Save**. Numbers and structured values keep thei
 Priya changes `queue` from `etrm-curves` to `etrm-curves-v2` for the German power base curve, switches it on and saves.
 
 :::note
-The sentence and the trigger cannot be changed in the editor. To make the same automation for another item, or for another action, [create a new one](/docs/extensions/automations/creating) and delete the old one.
+The sentence and the triggers cannot be changed in the editor, but when an automation has several triggers you can remove one with the button next to it (see [Deleting an automation](/docs/extensions/automations/managing#deleting-an-automation)). To make the same automation for another item, or for another action, [create a new one](/docs/extensions/automations/creating) and delete the old one.
 :::
 
 ---
@@ -157,6 +157,22 @@ Test runs are not possible for automations on any item (`anything`), because the
 ## Deleting an automation
 
 Select **Delete** in the editor, or tick automations in the list and select **Delete**. You are asked to confirm, and a deleted automation cannot be brought back. Its runs stay in the automation log.
+
+### Automations with several triggers
+
+An automation can have several triggers, for example the same email when any of three curves is updated. The list shows one row for each trigger, so such an automation appears on several rows.
+
+| You tick | What happens |
+|-|-|
+| Some of an automation's rows | Only those triggers are removed. The automation keeps running for its other triggers |
+| All of an automation's rows | The automation is deleted |
+| A trigger of an automation on a group | Nothing changes: these triggers are made from the group's items and come back when the group changes. Take the item out of the group in **Group Manager**, or tick the group's own row to delete the automation |
+
+Before anything changes, the confirmation lists which automations lose triggers (and how many are left) and which are deleted. Removing a trigger saves the automation, which makes you its owner.
+
+In the editor, an automation with several triggers has a remove button next to each one; **Delete** in the editor always deletes the whole automation with all its triggers.
+
+**Enable** and **Disable** always apply to the whole automation, with all its triggers.
 
 :::tip
 If you might need an automation again, switch it off instead of deleting it.

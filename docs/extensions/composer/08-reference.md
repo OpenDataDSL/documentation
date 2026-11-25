@@ -123,6 +123,7 @@ A setting that is left out takes its default, shown in brackets. `rsi`, `macd`, 
 | Conversion | `options.conversion` (worksheet) or a column's `options.conversion`: `fx`, `currency`, `units`, `timezone`, `precision`, `rounding`, `factors.density`, `factors.timefactor`, `factors.heatRate` and custom unit factors |
 | Chart | a column's `options.display.chartOptions`: `type`, `colour`, `style`, `axis`, `layer` (`back` or `front`; empty: the column order) |
 | Portal layout | `options.display.layout`: `table`, `table+chart` or `chart` |
+| Curve view | `options.display.tenorLabel`: `absolute` or `both` (empty: relative); `options.display.rowOrder`: `type` or `start` (empty: as built); `options.display.chartAlign`: `period` (empty: by tenor). A dashboard widget parameter of the same name overrides each one |
 | Automatic builds | `options.autoBuild`: `false` turns the build automation off |
 | Scripts | `scripts`: the scripts whose functions the expressions use |
 | Meta data | `meta.owner`, `team`, `stage`, `commodity`, `product`, `location` |

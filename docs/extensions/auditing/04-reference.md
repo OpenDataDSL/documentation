@@ -36,6 +36,7 @@ Use these names in **More conditions** on the Logs tab, for example `{"status": 
 | **Time window** | The log's ordering field above. Dataset deliveries are filtered on their ondate by day |
 | **Item** | Matches the start of: Process runs `name`; Schedules `name`; Script runs `script`; Automations `key`, `automation` or `target`; Queue messages `contentId`, `subject` or `queue`; Changes `key`; Deliveries `dsid`; Alerts `subject.id` or `key`; Fusion AI runs `playbook`, `task` or `name`; API requests `key` or `dsid` |
 | **User** | Changes `user`, Process runs `runAs`, Alerts `created.by`, Fusion AI runs `user`, API requests `user`. Any part, any case |
+| **Service** | Changes `service`, API requests `service`, Automations `service` (the service of the item that triggered it), Alerts `subject.service`. The whole name, one or several separated by commas |
 | **Problems only** | Process runs, Script runs, Automations and Fusion AI runs with a failed, error, warning or stopped status; Queue messages `fail`; Changes with status 400 or more; Deliveries late, missing or partial; every Alert; API requests with status 400 or more. Schedules fired record no failures |
 
 ---
@@ -78,6 +79,7 @@ The menu view takes these properties, for links and Home page tasks:
 | `WINDOW` | `24h` | `1h`, `6h`, `24h`, `3d`, `7d` or `30d` |
 | `ITEM` | `ICE.ENDEX.TTF` | Fills in **Item** |
 | `USER` | `tom.clarke` | Fills in **User** |
+| `SERVICE` | `object,curve` | Fills in **Service** |
 | `PROBLEMS` | `true` | Ticks **Problems only** |
 | `LOGS` | `process-exec,automationlog` | The logs shown |
 | `LOG` | `audit` | The log on the Logs tab |
@@ -87,7 +89,7 @@ The menu view takes these properties, for links and Home page tasks:
 
 ## Indexes
 
-The logs grow quickly, so the platform keeps indexes on the fields Auditing filters, sorts and follows by: each log's time field, its item fields, status, user and correlation ids (`invocationId`, `rootInvocationId`, `trace`, `traces`, `messageId`). It creates them the first time a log is read, in the background, so the first searches on a big log can be slower while they are built.
+The logs grow quickly, so the platform keeps indexes on the fields Auditing filters, sorts and follows by: each log's time field, its item fields, status, user, service and correlation ids (`invocationId`, `rootInvocationId`, `trace`, `traces`, `messageId`). It creates them the first time a log is read, in the background, so the first searches on a big log can be slower while they are built.
 
 To make sure of them now, select **Check the log indexes** at the bottom of the **Overview**. It lists each log collection with the indexes made and any that could not be. Your company's own logs are checked for you; the shared logs (API requests, schedules, Fusion AI runs, shared dataset deliveries and alerts) are looked after by OpenDataDSL.
 

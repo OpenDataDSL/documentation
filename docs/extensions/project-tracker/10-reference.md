@@ -42,6 +42,7 @@ tags: [extension, projects, reference]
 | `changes` | The last 50 changes to the project, `[{at, by, what}]` |
 | `sharedWith` | The partner tenants the project is shared with, `[{tid, name}]` |
 | `private` | `true`: OpenDataDSL cannot open the project; only its own tenant and the partners in `sharedWith` can. Only the own tenant can set it |
+| `importedFrom` | For a project created from an Excel or CSV file: `{file, sheet, at, by}` |
 
 ---
 
@@ -58,6 +59,7 @@ tags: [extension, projects, reference]
 | `progress` | 0 to 100 |
 | `milestone` | true for a milestone |
 | `dependsOn` | The ids of the tasks it waits for |
+| `ref` | For a task created from an Excel or CSV file with a Reference column: its reference in the sheet |
 | `docs` | The names of its linked documents |
 | `lastReminded` | The day of the last reminder, `yyyy-MM-dd` |
 | `evidence` | The evidence and sign-off, when the task needs them (see below) |

@@ -42,7 +42,7 @@ The **Use template** dialog asks for:
 | Field | What to enter |
 |-|-|
 | **Name** | A name for your composition, for example "Brent WTI" |
-| **Store in** | An analytics area to keep it in, or **A new analytics area** (give it an id, such as `OIL_ANALYTICS`, and optionally a name, such as "Oil Analytics"), or **An existing master data record** |
+| **Store in** | An analytics area to keep it in, or **A new analytics area** (give it an id, such as `OIL_ANALYTICS`, and optionally a name, such as "Oil Analytics", and a description of what it is for), or **An existing master data record** |
 | The template's inputs | For Curve spread: the first curve, the second curve, and names for them. Start typing part of an id in a curve field to search. |
 
 Select **Create composition**. Composer saves the composition and opens it.
@@ -97,12 +97,12 @@ The **Gallery** tab, the first tab in Composer, shows the compositions of one an
 
 ![The gallery of an analytics area](/img/extensions/composer/composer-gallery.png)
 
-- Choose the **analytics area** to show.
+- Choose the **analytics area** to show. Its description is shown under the filters. Select the pencil beside the area to change its name and description.
 - Choose **Everyone's** compositions, or **Mine** for only the ones you own (the owner in the composition's meta data).
 - Choose the **Card width**: 25%, 33%, 50% or 100% of the page. Each card also has its own width, so you can make one chart wide and keep the others small.
 - Drag a card by its grip, at the top left, to move it. Drop it on the left half of another card to put it before that card, or on the right half to put it after. **Reset order** puts the cards back in name order.
 - Select **Refresh** to show the latest builds.
-- Select **Save as dashboard** to save the cards, in the same order and widths, as a dashboard in the portal. Choose its name, whether each widget shows the chart only, the chart and the table, or the composition's own layout, and whether to share it. Each widget shows the latest build of its composition, with the composition's name as the widget's title. Saving again under the same name updates that dashboard.
+- Select **Save as dashboard** to save the cards, in the same order and widths, as a dashboard in the portal. Choose its name, whether each widget shows the chart only, the chart and the table, or the composition's own layout, and whether to share it. Each widget shows the latest build of its composition, with the composition's name as the widget's title. Saving again under the same name updates that dashboard. The dashboard's **Description** starts as the analytics area's description, and you can change it before saving. Tick **Pin it to the Reports menu** to add the dashboard to the pinned dashboards in the portal's Reports menu; it shows there the next time the portal loads, and **Reload the portal now** does that straight away. Untick it to take a pinned dashboard off the menu.
 - Select a card to open the composition, on the ondate the card shows, as a chart, a table and chart, or a table, however it is set to show. **Back** returns to the gallery.
 
 Composer remembers the area, everyone's or mine, the widths and the order of the cards for you, on any computer you sign in on.

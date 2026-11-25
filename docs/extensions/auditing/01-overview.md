@@ -48,6 +48,7 @@ Open **Monitor > Auditing**. One set of filters at the top drives four tabs.
 | **Time window** | Last hour, 6 hours, 24 hours, 3 days, 7 days or 30 days, or **Custom** with **From** and **To** |
 | **Item** | An id, or the start of one: `ICE.ENDEX.TTF` also finds `ICE.ENDEX.TTF:SETTLE`. Matched against the item each log records (the changed item, the process name, the script, the dataset, the alert subject) |
 | **User** | Part of a name or email. Logs that do not record a user show **n/a** and are left out |
+| **Service** | The platform service a record is about, such as `object`, `curve`, `dataset` or `process`. Pick one from the suggestions or type it; separate several with commas. Only **Changes**, **API requests**, **Automations** and **Alerts** (the service of the alert's subject) record a service: the other logs show **n/a** and are left out |
 | **Problems only** | Only failures: failed runs, scripts and automations, queue messages that could not be sent, refused changes, late, missing or partial deliveries, alerts and API errors |
 | **Log chips** | Select a log to show or hide it; Ctrl-select to show only that log. Each chip shows how many records match and, in red, how many are problems |
 
@@ -72,7 +73,7 @@ Below it, a table per log lists where the problems are: the processes that faile
 
 ![The top failures in each log](/img/extensions/auditing/breakdowns.png)
 
-Select a row to see those records on the **Timeline**: the item (or user) is filled in and **Problems only** is ticked. Rows for a value that is not an item, such as an API service or a queue, add a condition chip under the log chips; select the chip to remove it.
+Select a row to see those records on the **Timeline**: the item, user or service is filled in and **Problems only** is ticked. Rows for a value that is none of these, such as a queue, add a condition chip under the log chips; select the chip to remove it.
 
 ---
 

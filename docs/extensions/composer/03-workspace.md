@@ -83,6 +83,8 @@ A data column shows a curve, a timeseries or options data from the platform (see
 
 The list shows the currency and units of each curve and timeseries next to its name and kind.
 
+On a timeseries worksheet the finder also lists curves, so you can use one tenor of a curve as a timeseries (a tenor timeseries, such as the front month over time). Click the curve to open its latest curve, then choose the tenor from the **Tenor** list or click it in the row of tenors. Under the curve, the finder shows the last 10 values of that tenor, so you can check it has data. Select **Use M01 as a timeseries** to use it: the column's **Source** becomes **Curve tenor**, with the curve and the tenor filled in.
+
 When there are too many matches to count, the finder says **More than** the number shown so far; select the next page to see more, or add a filter to narrow it down.
 
 The dimensions are the ones defined on the types of the master data, such as source, commodity, product and location. Remove a value with the cross on its chip, or select **Clear filters** to start again. Composer remembers your filters for the next time you open the finder.
@@ -160,6 +162,18 @@ Each column has display settings:
 | **Axis** | 1 (left) or 2 (right), for example a spread on axis 2 under two prices on axis 1. Each axis is labelled with the currency and units of the columns on it, such as EUR/MWh |
 | **Draw order** | Normal draws the columns in their order, so later columns are on top. Choose **Behind the other columns** to put a column at the back, for example an area or columns behind price lines, or **In front of the other columns** to bring it forward |
 | **Colour** | The series colour |
+
+### Viewing a curve composition
+
+A curve composition has a **View** button beside the table and chart buttons. Its settings are saved with the composition, so the portal and dashboards show it the same way:
+
+| Setting | |
+|-|-|
+| **Tenors** | **Relative** shows the tenor (M01), **Absolute** the period it is on the ondate (2026M12), and **Both** shows the two in the same cell (M01 2026M12). Hover a tenor in the table to see its period type and delivery period. |
+| **Rows** | **As built** keeps the order of the tenor types in Properties. **By period type** groups the rows under a heading per type (days, months, quarters, years), each in delivery order, the same as Smart Data. **By delivery start** puts the rows in the order their delivery starts, the longer period first when two start on the same day. |
+| **Chart** | **By tenor** puts each tenor at its own place on the bottom axis. **By delivery period** draws each value as a flat line over its delivery period on a date axis, so a month, the quarter and the year it is in overlap, and the ondate is marked. Each column uses its own delivery periods: a column on an earlier ondate has its M01 drawn over that earlier front month, so the columns line up by the month delivered, the same as Data Explorer. Shorter periods are drawn on top; longer ones are thinner and lighter. |
+
+The chart type of a column still applies on a chart by delivery period: line and step draw a flat line over each period, spline a line through the middle of each period, area fills under the period lines, column draws a column over each period and scatter a point in the middle. Indicators are drawn on a chart by tenor only; while an indicator is being drawn the chart is shown by tenor. Export CSV adds the absolute code, period type, start and end of each tenor, in the row order.
 
 ---
 
