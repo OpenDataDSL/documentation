@@ -172,6 +172,18 @@ The values come from the first event of each record. Use text fields where you c
 
 The run report shows how many records the events went to and how many were made. The event list is the same name on every record, for example `COOKSON.GOLD_AU_AM:METALS`.
 
+### Where the events are kept (OpenDataDSL)
+
+OpenDataDSL users working in the OpenDataDSL tenant see one more choice at the top of the **Destination** step (and of the spreadsheet upload screen): **Where the events are kept**.
+
+| Choice | What is saved where |
+|-|-|
+| **Private** | The tenant's own data, as for every client. The default. |
+| **Common** | Each event is saved with `_source` `common`, so it goes to the common database and can be read with `${event:"common"}`. The master data record stays private. |
+| **Public** | The master data record and its events go to the public database, for every client. The record id gets a `#` at the start when it has none, so `NGE.PRICES` becomes `#NGE.PRICES`; with a record for each value of a field, each record made gets the `#`. Event ids are not changed. |
+
+Only OpenDataDSL can write to the common and public databases, so clients never see the choice. A client who opens a loader set to common or public sees where its events go, but cannot change it. A record id that starts with `#` needs **Public**. The choice is not part of a loader [published to the library](/docs/extensions/etl/library): installed loaders keep their events private. The **Curves and series** step works with private events only.
+
 ---
 
 ## 6. Deploy and run

@@ -126,6 +126,8 @@ Each row's properties make its master data record: the **Master data _id** templ
 
 ## What each upload makes
 
+For OpenDataDSL users, the screen starts with **Where the events are kept**: private, common or public, as for [scheduled loaders](/docs/extensions/etl/building#where-the-events-are-kept-opendatadsl). With **Public**, each master data _id gets a `#` at the start.
+
 ![What each upload makes: the master data _id MAFF_{CommodityVariantID}, the master data name, the event list PRICES, the event _id {CommodityVariantID}_{year}{month}, more master data properties (region and commodity from the type, and label from a template), and the calculated field real_price](/img/extensions/etl/upload-makes.png)
 
 | Setting | What it is |

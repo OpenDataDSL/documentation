@@ -1,6 +1,6 @@
 ---
 title: Sources
-description: The settings of each kind of data loader source (CSV, JSON, XML, Excel and custom ODSL), and dates in URLs
+description: The settings of each kind of data loader source (CSV, JSON, XML, Excel, custom ODSL and your own action), and dates in URLs
 slug: /extensions/etl/sources
 sidebar_position: 5
 tags: [extension, data loaders, etl, csv, json, xml, excel, odsl, url]
@@ -190,6 +190,40 @@ e-Stat gives each month's file its own id in the URL (`sinfid`), so the URL of t
 
 ---
 
+## Files on an FTP or SFTP server
+
+A CSV or text file, a JSON or XML document or an Excel workbook can be read from an FTP or SFTP server instead of a web address. Choose the kind of file as usual, and give its location as the URL:
+
+| Server | URL |
+|-|-|
+| FTP | `ftp://ftp.example.com/prices/settle_{date:yyyyMMdd}.csv` (port 21), or `ftp://ftp.example.com:2121/...` |
+| SFTP (over SSH) | `sftp://sftp.example.com/prices/settle_{date:yyyyMMdd}.csv` (port 22), or `sftp://sftp.example.com:2222/...` |
+
+The dates, variables and secrets in braces work as in any URL. When the URL starts with `ftp://` or `sftp://`, **Signing in to the server** appears under it:
+
+![Signing in to an SFTP server with a user and a private key](/img/extensions/etl/ftp-sign-in.png)
+
+| Setting | Notes |
+|-|-|
+| **User** | The user to sign in as. Leave it empty to read an FTP server anonymously. It can use variables and secrets, such as `{user}`. |
+| **Password** | One of the loader's secrets. Add it under **Secrets** first, set its value, then choose it here. |
+| **Private key** | SFTP only: a secret whose value is the text of an SSH private key (PEM or OpenSSH, from its `-----BEGIN` line to its `-----END` line), to sign in with the key instead of a password. Its **Set the value** box takes several lines. |
+
+Things to know:
+
+- The file is read in the format of the kind chosen, whatever its name ends with, so a CSV file called `rates.sdv` is read as CSV.
+- **Request headers** and a **request body** are not used on an FTP or SFTP server, so they are hidden.
+- A table of a web page cannot be read from an FTP server.
+- Do not put the user or password in the URL (`ftp://me:pass@host/...`): use **Signing in to the server**, so the password stays a secret. Previews, run reports and messages show the URL without them.
+- FTP sends the password unencrypted; use SFTP when the server offers it.
+- The server must accept connections from the OpenDataDSL platform. If it only accepts known addresses, ask your administrator or OpenDataDSL for the addresses to allow.
+
+:::note
+Until the platform update of November 2026 is in use, a password for an FTP server cannot contain `@`, `:`, `/`, `%`, `?` or `#`, a password for an SFTP server cannot contain a comma, and a refused sign-in or a missing file both give **the server did not send the file: check the user, the password and the path**. With the update, any password works and the message says which it was.
+:::
+
+---
+
 ## Custom ODSL
 
 For sources the others cannot read: several files, a page that needs a login, a source that needs reshaping. Your code sets `rows` to a list of rows: CSV rows, objects read from JSON or XML, or `SimpleObject`s you build. `ondate` is the date being loaded.
@@ -204,7 +238,20 @@ for hub in ["TTF", "NBP"]
 next
 ```
 
-Deploying saves the code as the action `etl_extract_<code>`. Actions cannot define functions, so write the code inline. The loader's secrets are in `secrets` by name, e.g. `variable(secrets, "API key")`, and its variables in `variables` (`names` and `sets`).
+Deploying saves the code as the action `etl_extract_<code>`.
+
+### Variables and secrets in your code
+
+The **Variables and secrets** card works for custom code too; your code reads them by name instead of from the URL. Click a name under the table to put it into your code at the cursor.
+
+![The Variables and secrets card of a custom loader: a variable curve with two sets, and the secrets client_id and client_secret, each with the code that reads it](/img/extensions/etl/custom-variables.png)
+
+| In your code | Is |
+|-|-|
+| `variable(secrets, "API key")` | The value of the secret `API key`, read from the secret store when the run starts. |
+| `variable(vars, "hub")` | The value of the variable `hub` in the set being read. |
+
+With variables, your code runs once for each set, with that set's values in `vars`. Each set's values are added to its rows as columns, unless a row already has a column of that name, so the Map step can use `hub` as a field or in the event id. **Extract a sample** runs the first 3 sets; a run runs them all. If the code fails for a set, the run stops there with the error.
 
 :::note
 In custom code a secret whose value is only digits loses its leading zeros (`0071` becomes `71`). The standard sources keep them.
@@ -212,4 +259,59 @@ In custom code a secret whose value is only digits loses its leading zeros (`007
 
 :::tip
 A file in Azure storage is read from its URL with a SAS token, like any other URL.
+:::
+
+## Your own action
+
+When the extract is more than a few lines, or you want to use the same steps in several loaders, write it as an action of your own (e.g. with Script Manager) and choose **Your own action**. The loader runs it with values for its inputs; `etl_extract` passes the dates, variables and secrets in, so the action itself needs no settings.
+
+![Your own action: the action ridgeline_extract and its inputs curve, client_id, client_secret and from, with the values filled in for the date to load and the first set](/img/extensions/etl/own-action.png)
+
+| What | Notes |
+|-|-|
+| **Action** | The id of your action. The list offers your actions; the Data Loaders' own (`etl_...`) cannot be used. **Read the action** shows its inputs. |
+| Inputs | A value for each input. Values can have `{date:FORMAT}` and `{previous:FORMAT}`, the loader's variables such as `{curve}` and its secrets such as `{client_secret}`. An input left empty is not passed. The line under the table shows the values for the **Date to load** and the first set, with secrets as `****`. |
+| `ondate` | Always passed: the date being loaded, `yyyy-MM-dd`. |
+| Variables | With several sets the action runs once for each set, and each set's values are added to its rows as columns, unless a row has a column of that name. A sample runs the first 3 sets. |
+| What it returns | `output.rows`, a list of rows (CSV rows, objects read from JSON or XML, or `SimpleObject`s). To fail, set `output.message` and `return "failed"`: the run fails with that message, secrets shown as `****`. An action that sets no rows fails the run too. |
+| Errors | The loader runs your action with errors ignored, as it runs custom ODSL code: a step that fails is skipped and the action carries on. Set `error = null` at the start and check `if error != null` after each step that can fail, as below. |
+
+An action for a price curve API (Ridgeline Analytics, a made-up provider), which gets a token with the client id and secret and then reads a curve:
+
+```js
+ridgeline_extract = action in "ridgeline"
+    // Reads a Ridgeline Analytics price curve
+    in curve as Scalar "The curve name"
+    in client_id as Scalar "Ridgeline client id"
+    in client_secret as Scalar "Ridgeline client secret"
+    in from as Scalar "The first date, yyyy-MM-dd"
+    in ondate as Scalar "The date being loaded" optional
+    out rows as List "One row per value"
+    out message as Scalar "Why it failed"
+    exit "ok", "failed"
+
+    error = null
+    body = '{"client_id": "' + input.client_id + '", "client_secret": "' + input.client_secret + '"}'
+    tk = ${json:"https://api.ridgeline-analytics.example/v1/auth/token", "headers=Content-Type&application/json,base64_requestbody=" + encodeBase64(body)}
+    if error != null
+        output.message = "Could not get a token: " + error
+        return "failed"
+    end
+    url = "https://api.ridgeline-analytics.example/v1/curves?name=" + replace(encodeURI(input.curve), "+", "%20") + "&from=" + input.from + "&to=" + input.ondate
+    data = ${json:url, "headers=Authorization&Bearer " + tk.access_token}
+    if error != null
+        output.message = "Could not read the curve: " + error
+        return "failed"
+    end
+    output.rows = data
+    return "ok"
+end
+```
+
+:::tip
+An action cannot define functions, but it can run other actions (`${action:"name"}.run(in, out)`), so steps used by several extracts can be actions of their own.
+:::
+
+:::note
+Publishing a loader to the library puts its action in the plug-in, so a client gets it when they install the loader. It replaces an action of theirs with the same id.
 :::

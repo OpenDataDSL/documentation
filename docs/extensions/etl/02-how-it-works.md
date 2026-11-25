@@ -12,7 +12,7 @@ A data loader is extract, transform and load in three steps, each done by a stan
 
 ```mermaid
 flowchart LR
-    S[Source: CSV, JSON, XML, Excel or ODSL] --> E[etl_extract: rows]
+    S[Source: CSV, JSON, XML, Excel, ODSL or your own action] --> E[etl_extract: rows]
     E --> T[etl_transform: events]
     T --> L[etl_load: saved to RECORD:LIST]
     L --> R[etl_report: run report and alert]
@@ -43,7 +43,7 @@ The workflow is made by the extension. If you change it in the Workflow Manager,
 
 | Phase | Step | Action | Exits |
 |-|-|-|-|
-| EXTRACT | `extract_rows` | `etl_extract` (or the custom action) reads the source | ok, failed |
+| EXTRACT | `extract_rows` | `etl_extract` (or the custom action) reads the source, or runs your own action | ok, failed |
 | TRANSFORM | `make_events` | `etl_transform` makes events with the mapping | ok, empty (no events), failed |
 | LOAD | `save_events` | `etl_load` saves the events, 500 at a time | ok, failed |
 | RECORD | `record_run`, `record_empty`, `extract_failed`, `transform_failed`, `load_failed` | `etl_report` records the run and raises or closes the alert | ok |

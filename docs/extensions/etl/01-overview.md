@@ -30,7 +30,7 @@ Throughout these pages we follow Northgate Energy, a fictional gas and power tra
 | Idea | What it means |
 |-|-|
 | **Data loader** | A design that says where the data comes from, how its rows become events and where the events go. It has a name and a code, such as `BROKER_GAS_SETTLEMENTS`. |
-| **Source** | A CSV or text file, a JSON API, an XML document, an Excel workbook or a table on a web page, read from a URL, or your own ODSL code. The URL can contain the date being loaded, variables and secrets. |
+| **Source** | A CSV or text file, a JSON API, an XML document, an Excel workbook or a table on a web page, read from a URL or an FTP or SFTP server, or your own ODSL code. The URL can contain the date being loaded, variables and secrets. |
 | **Sample** | The first 50 rows of the source, read by the platform exactly as a run reads them, or with **Extract all**, every row read and the first 50 kept with the later rows that fill other columns. You design the loader with it. |
 | **Event type** | The structure of the events, like a type for master data. Its properties are the fields you map the columns to. You can choose one, define a new one from the columns, or use none. |
 | **Mapping** | Which column, fixed value or template fills each field, with its data type, date format, decimal separator, empty values and value map. |
@@ -39,7 +39,7 @@ Throughout these pages we follow Northgate Energy, a fictional gas and power tra
 | **Curves and series** | Event timeseries, event curves and event options made once from the events, kept on the same master data record and built by the platform whenever they are read. |
 | **Deploying** | Saves a workflow made of the standard ETL actions and a process that runs it, which you can run now or on a schedule. |
 | **Spreadsheet upload** | A loader for a workbook loaded by hand, never scheduled. You describe its layout once (dataset information, a row per record, the values by date), then drop each new workbook on the page to make its records, events and series. |
-| **Library** | Ready-made data loaders published by OpenDataDSL. Install one into your tenant, set its secrets and deploy it; update it when a new version is published. |
+| **Library** | Ready-made data loaders published by OpenDataDSL as plug-in extensions of Data Loaders, with the types they use. Install one, set its secrets and deploy it; update it when a new version is published. |
 | **Documentation** | Notes about a loader for the people who look after it, such as an About page made from its settings, kept in the documentation service. |
 | **Calculated field** | A field worked out from others with `+ - * /`, such as `real_price = input_price * ConvertedFactor`. |
 
@@ -71,7 +71,7 @@ Each tour shows once, on any computer you use. Select **Tour**, next to **Help**
 - [How it works](/docs/extensions/etl/how-it-works): what a loader is made of and what deploying creates.
 - [Building a data loader](/docs/extensions/etl/building): Priya's broker settlements loader, step by step.
 - [Mapping columns to fields](/docs/extensions/etl/mapping): data types, formats, value maps and filters.
-- [Sources](/docs/extensions/etl/sources): the settings of each kind of source, dates in URLs and custom ODSL.
+- [Sources](/docs/extensions/etl/sources): the settings of each kind of source, dates in URLs, custom ODSL and your own extract action.
 - [Deploying, running and scheduling](/docs/extensions/etl/running): runs, run reports and alerts.
 - [Curves and series](/docs/extensions/etl/curves-and-series): event timeseries, curves and options from the events.
 - [Spreadsheet uploads](/docs/extensions/etl/uploads): load a workbook by hand, its layout described once.

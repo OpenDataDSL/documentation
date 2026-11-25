@@ -14,7 +14,7 @@ Installing the extension adds four private actions, category `etl`. Every loader
 
 ## etl_extract
 
-Reads the rows of a CSV, JSON, XML or Excel source, or a table of a web page (`source.selector`), from its URL, filling in the dates, the variables (once for each set) and the secrets.
+Reads the rows of a CSV, JSON, XML or Excel source, or a table of a web page (`source.selector`), from its URL, or runs your own extract action (`source.action`, with `source.inputs`), filling in the dates, the variables (once for each set) and the secrets.
 
 | | Name | Notes |
 |-|-|-|
@@ -22,7 +22,7 @@ Reads the rows of a CSV, JSON, XML or Excel source, or a table of a web page (`s
 | In | `ondate` | Optional, `yyyy-MM-dd`: the date for the placeholders. Default today. |
 | In | `maxSets` | Optional: read only the first sets of variables. |
 | Out | `rows`, `count` | The rows of every set and how many. |
-| Out | `url`, `requests` | The first URL read, with secrets shown as `****`, and how many times the source was read. |
+| Out | `url`, `requests` | The first URL read, with secrets shown as `****` (`action <id>` for your own action), and how many times the source was read. |
 | Out | `started`, `message` | When the run started, why it failed. |
 | Exits | `ok`, `failed` | |
 
@@ -44,7 +44,7 @@ Turns rows into events with the loader's mapping, conditions, event id and `_dsi
 
 ## etl_load
 
-Saves events to the event list `target.list` of the record `target.object`, 500 at a time. With `target.mode` `split`, it saves them to a record for each value of the field `target.split.field` instead: it fills the record id template from each event, makes the records that are not there (with `target.split.type` and the fields), and saves each record's events.
+Saves events to the event list `target.list` of the record `target.object`, 500 at a time. With `target.mode` `split`, it saves them to a record for each value of the field `target.split.field` instead: it fills the record id template from each event, makes the records that are not there (with `target.split.type` and the fields), and saves each record's events. `target.source` `common` saves each event with `_source` `common` (the common database); `public` puts a `#` at the start of each record id (the public database). Without it the events are private.
 
 | | Name | Notes |
 |-|-|-|

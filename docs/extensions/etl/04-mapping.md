@@ -38,7 +38,7 @@ The gear opens a field's settings.
 | **Value from** | **A column**, **A fixed value** (the same for every event, such as `MWh`), **A template of columns** (columns in braces, such as `{Hub} {Contract}`, also `{date}` and `{row}`) or **The run date**. |
 | **Change the text** | Changes the values before they are saved, for example to take part of them or to drop text that is in the way. See [Changing the text](#changing-the-text). |
 | **Data type** | text, number, integer, boolean, date or datetime. |
-| **Date format** | For dates: a Java date pattern such as `dd/MM/yyyy` or `dd/MM/yyyy HH:mm`, or ISO for `2026-11-06` and `2026-11-06T17:30:00Z`. **Japanese** reads Japanese dates (see [Japanese dates](#japanese-dates)). **Another pattern** takes any pattern. |
+| **Date format** | For dates: a Java date pattern such as `dd/MM/yyyy` or `dd/MM/yyyy HH:mm`, or ISO for `2026-11-06` and `2026-11-06T17:30:00Z`. **Japanese** reads Japanese dates (see [Japanese dates](#japanese-dates)). **Unix timestamp** reads numbers such as `1795182490` (see [Unix timestamps](#unix-timestamps)). **Another pattern** takes any pattern. |
 | **Decimal separator** | For numbers: a point (`1,234.56`) or a comma (`1.234,56`). |
 | **Multiply by** | For numbers: for example `0.01` to turn pence into pounds. |
 | **Empty values** | Texts that mean no value, such as `n/a, -`. An empty value saves no field. |
@@ -92,6 +92,21 @@ The date format **Japanese** reads the dates of Japanese government statistics:
 | 令和６年 (a year only) | 2024-01-01 |
 
 It knows the Reiwa (令和), Heisei (平成) and Showa (昭和) eras, 元 for the first year of an era, full-width digits such as `１０`, and full-width spaces. Tables of monthly figures often give the year only on the first month of each year, and the rest of the rows say just `11月`: those rows take the year of the row above, so `令和７年10月`, `11月`, `12月`, `令和８年１月`, `２月` become 2025-10-01, 2025-11-01, 2025-12-01, 2026-01-01 and 2026-02-01. A month with no year above it is a problem.
+
+### Unix timestamps
+
+The date format **Unix timestamp** reads the number of seconds since midnight on 1 January 1970, UTC, as many APIs give the time:
+
+| Text | Date and time (UTC) |
+|-|-|
+| `1795182490` | 2026-11-20 13:48:10 |
+| `1795182490123` (milliseconds) | 2026-11-20 13:48:10 |
+| `1709164800.5` | 2024-02-29 00:00:00 |
+| `1.79518249E9` | 2026-11-20 13:48:10 |
+
+A number of 12 digits or more is taken as milliseconds. Fractions of a second are dropped. The time is UTC whatever the event's timezone. Anything that is not a number is a problem.
+
+When the sample is examined, a column of such numbers is suggested as a Unix timestamp only when its name says it is a time (for example `timestamp`, `created_at` or `updated`); otherwise it is suggested as a number, and you choose **Unix timestamp** yourself.
 
 ---
 

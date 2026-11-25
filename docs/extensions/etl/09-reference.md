@@ -25,7 +25,9 @@ tags: [extension, data loaders, etl, reference, troubleshooting]
 | Secret values | secret | `etl_<code>_<name>` by default |
 | Event timeseries, curves and options | data, private (on the record) | `RECORD:ID`, e.g. `NGE.BROKERS:SETTLE_TTF_FRONT` |
 | Smart timeseries made by a set of series | data, private (on the record) | `RECORD:ID`, e.g. `EIA.STOCKS.MCRSTUS1:PRICE` |
-| A library entry | object, the custom collection `etl_loaders` in the public database (`public.etl_loaders`) | `#<CODE>` |
+| A library loader | extension, public: a plug-in of `odsl.etl` with the loader in `configuration.etl`, and its types and extract action as resources | `odsl.etl_<code>` |
+| An installed library plug-in | extension, private | `odsl.etl_<code>` |
+| Events kept in common or public (OpenDataDSL loaders) | event, common (each event with `_source` `common`), or object and event, public (record id `#<RECORD>`) | `target.source` of the loader |
 | A loader's documents | documentation, private | scope `odsl.etl`, entity the code, name `about` or one made from the title |
 | The list of a loader's documents | object, custom collection `etl_loader_docs` | the code |
 | Sets of series | object, custom collection `etl_series_sets` | the set code, e.g. `SOURCE_CONVERSIONS` |
@@ -65,7 +67,7 @@ The process input is `loader` (and `ondate` for a run for a date). The broker se
 
 | Field | Notes |
 |-|-|
-| `source` | `kind` csv, json, xml, excel or odsl; `url`; csv `separator` (a regular expression for comma, semicolon, tab, pipe or spaces), `headerpos`, `datapos`; json and xml `path`; csv, json, xml, html and excel `headers`; excel `sheet` (a name, or a number from 1), `headerRow`, `firstRow`, `lastRow`, `stopAtBlank` (true: stop at the first empty row after the data starts); html `selector`, `headerRow`; `dates`, the URL's placeholders. |
+| `source` | `kind` csv, json, xml, excel, html, odsl or action; `url`; action `action` (the id) and `inputs` (`[{name, value}]`, the values with their placeholders); csv `separator` (a regular expression for comma, semicolon, tab, pipe or spaces), `headerpos`, `datapos`; json and xml `path`; csv, json, xml, html and excel `headers` (not for FTP); `ftp` for a URL starting `ftp://` or `sftp://`: `user`, `password` and `key` (SFTP), the password and key by the name of one of the loader's secrets; excel `sheet` (a name, or a number from 1), `headerRow`, `firstRow`, `lastRow`, `stopAtBlank` (true: stop at the first empty row after the data starts); html `selector`, `headerRow`; `dates`, the date placeholders of the URL, the body or the inputs. |
 | `source.variables` | `names` and `sets` (a list of values for each set, as text). |
 | `source.secrets` | `name` and `secret` (the secret record). Never the value. |
 | `exclude` | The columns left out with **Columns to use**, when there are any. |
@@ -73,9 +75,9 @@ The process input is `loader` (and `ondate` for a run for a date). The broker se
 | `columns` | Every column the mapping, conditions and templates use. |
 | `calcs` | Only with calculated fields: `name` and `rpn`, the expression as numbers (`t` `n`), fields (`f`) and operators (`o`: `+ - * /` and `neg`) in reverse Polish order, worked out in order after the mapping. |
 | `filters` | `column`, `op` (notempty, empty, equals, notequals, contains, notcontains), `value`. |
-| `mapping` | `target`, `kind` (column, constant, template, ondate), `column`, `value`, `dataType` (text, number, integer, boolean, date, datetime), `format` (a Java date pattern, empty for ISO, or `JPDATE` for Japanese dates), `decimal`, `scale`, `nulls`, `required`, `values`. |
+| `mapping` | `target`, `kind` (column, constant, template, ondate), `column`, `value`, `dataType` (text, number, integer, boolean, date, datetime), `format` (a Java date pattern, empty for ISO, `JPDATE` for Japanese dates, or `UNIX` for Unix timestamps in seconds or milliseconds), `decimal`, `scale`, `nulls`, `required`, `values`. |
 | `eventid`, `dsid` | Templates with column names, or mapped field names (their text after the change and value map), in braces; a column wins over a field of the same name. The event id also takes `{eventtime}` (yyyyMMddHHmmss), `{date}` and `{row}`. |
-| `target` | `object` and `list` for one record. For a record for each value of a field: `mode` `split`, `list` and `split`: `field`, `id` (the record id template), `type`, `update` (`missing` or `always`), `fields` (`name` and `value`, a template of mapped fields) and `markers` (the field names the templates use). |
+| `target` | `object` and `list` for one record. For a record for each value of a field: `mode` `split`, `list` and `split`: `field`, `id` (the record id template), `type`, `update` (`missing` or `always`), `fields` (`name` and `value`, a template of mapped fields) and `markers` (the field names the templates use). `source` `common` or `public` (OpenDataDSL only; left out for private). |
 
 ---
 
@@ -126,13 +128,14 @@ Each stored report has `loader`, `name`, `target`, `last` (the latest run) and `
 | What you see | What to do |
 |-|-|
 | **The ETL actions ... are not in this environment** | Install the extension again, or run its `upload-actions.odsl` script in the environment. |
+| **the action ... failed** or **set no rows (output.rows)** | Your own action returned `failed` (its message follows) or did not set `output.rows`. Run it on its own in Script Manager with the values from the line under the inputs. |
 | **Could not read ... FileNotFoundException** | No file at that URL for that date: check the date placeholders and the **Date to load**. |
 | **The source has no rows** | Check the separator, header line, records path or sheet. |
 | **This is not an .xlsx workbook** (spreadsheet upload) | Save the workbook as `.xlsx` in Excel (File, Save As, Excel Workbook) and drop that. |
 | **The workbook has no sheet ...** (spreadsheet upload) | A sheet was renamed: change the sheet names under **How the workbook is laid out**. |
 | **... is not a number field it can use** (calculated field) | Map that column as a number, check the spelling (names are case sensitive), or put a name with spaces in braces. |
 | A column is text when it should be a number | Set the decimal separator, and list texts such as `n/a` as empty values. |
-| **is not a date in the format** | Change the field's date format; for `2026-11-06T17:30:00Z` use ISO. With **Japanese** (`JPDATE`), a month-only row needs a row with a year above it. |
+| **is not a date in the format** | Change the field's date format; for `2026-11-06T17:30:00Z` use ISO. With **Japanese** (`JPDATE`), a month-only row needs a row with a year above it. With **Unix timestamp** (`UNIX`), the text must be a number. |
 | Excel rows you do not want, such as totals or notes | Set the **First row of data** and **Last row of data**. |
 | **ids are made by more than one sample row** | Add columns to the event id, or the last of those rows replaces the others. |
 | **The secret ... could not be read** | Set its value on the Extract step (**Set the value**), or check the secret record name. |
@@ -142,6 +145,11 @@ Each stored report has `loader`, `name`, `target`, `last` (the latest run) and `
 | **This platform does not have the ETL service (etl/v1) deployed yet** | The platform version in use has no `etl` service route, so the page cannot be shown. Type the table selector, or ask your administrator to update the platform. |
 | **Could not read the list of documents** | The custom collection `etl_loader_docs` could not be read: try again, or check you can read the object service. |
 | **The documentation was not deleted** | The loader is deleted, but its documents are not: delete them in the Documentation Manager (scope `odsl.etl`). |
-| **Could not publish ... (publishing needs write access to the public library)** | Only users with a security policy that writes to the public source can publish: OpenDataDSL. |
-| **Could not read the library** | The public custom collection `etl_loaders` could not be read: try again. |
+| **Could not publish ... (publishing needs write access to public extensions)** | Only OpenDataDSL can publish extensions. A **Publish dependency ... NOT FOUND** reason means a type the loader uses has been deleted. |
+| **Could not install** | Installing a library loader installs an extension: you need the right to install extensions. |
+| **Could not read the library** | The public extensions could not be read: try again. |
+| **the server did not send the file: check the user, the password and the path** (FTP) | The FTP server refused the user or password, or there is no file at that path. Check both; see [Files on an FTP or SFTP server](/docs/extensions/etl/sources#files-on-an-ftp-or-sftp-server). |
+| **refused the login of ...** (FTP) or **Auth fail** (SFTP) | The user, password or private key is wrong: set the secret's value again. |
+| **could not send ...: 550** (FTP) or **No such file** (SFTP) | There is no file at that path for that date: check the path and the date placeholders. |
+| **The FTP password is the secret ..., which is not one of this loader's secrets** | Add the secret under **Secrets**, or choose another under **Signing in to the server**. |
 | **changed** in the list | The loader was changed after it was deployed: select **Deploy again**. |
