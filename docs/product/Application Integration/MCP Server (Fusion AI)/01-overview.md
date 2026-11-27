@@ -8,7 +8,7 @@ tags: [fusion-ai, mcp, integration, ai-assistant]
 
 # Fusion AI MCP Server
 
-OpenDataDSL exposes Fusion AI as a standard [Model Context Protocol](https://modelcontextprotocol.io) (MCP) server. This lets you talk to your own OpenDataDSL environment - your data, curves, processes, reports, alerts and more - from any MCP-compatible AI client, including Claude and ChatGPT, using plain language instead of the REST API or the ODSL scripting language directly.
+OpenDataDSL exposes Fusion AI as a standard [Model Context Protocol](https://modelcontextprotocol.io) (MCP) server. This lets you talk to your own OpenDataDSL environment - your data, curves, processes, reports, alerts and more - from any MCP-compatible AI client, including Claude, ChatGPT, Perplexity and Microsoft Copilot, using plain language instead of the REST API or the ODSL scripting language directly.
 
 The server is hosted for you; there is nothing to install or run yourself. You point your AI client at a single URL:
 
@@ -37,14 +37,17 @@ The MCP server never sees or stores your password. Every tool call is made under
 ## Prerequisites
 
 - An OpenDataDSL account with a Microsoft/Entra ID identity (the same one you use to sign in to the Portal).
-- An MCP-compatible client - see [Connecting Claude](/docs/product/mcp/connect-claude) or [Connecting ChatGPT](/docs/product/mcp/connect-chatgpt).
+- An MCP-compatible client - see [Connecting Claude](/docs/product/mcp/connect-claude), [Connecting Claude Code](/docs/product/mcp/connect-claude-code), [Connecting ChatGPT](/docs/product/mcp/connect-chatgpt), [Connecting Perplexity](/docs/product/mcp/connect-perplexity) or [Connecting Microsoft Copilot](/docs/product/mcp/connect-copilot).
 
 ## Where to go next
 
 | I want to... | Go to |
 |---|---|
 | Add the server to Claude Desktop | [Connecting Claude](/docs/product/mcp/connect-claude) |
+| Add the server to Claude Code | [Connecting Claude Code](/docs/product/mcp/connect-claude-code) |
 | Add the server to ChatGPT | [Connecting ChatGPT](/docs/product/mcp/connect-chatgpt) |
+| Add the server to Perplexity | [Connecting Perplexity](/docs/product/mcp/connect-perplexity) |
+| Add the server to Copilot Studio, Microsoft 365 Copilot or GitHub Copilot | [Connecting Microsoft Copilot](/docs/product/mcp/connect-copilot) |
 | Understand how sign-in works | [Signing In](/docs/product/mcp/signing-in) |
 | See what the assistant can actually do | [Available Tools](/docs/product/mcp/tools) |
 | Get some ideas for questions to ask | [Sample Questions](/docs/product/mcp/sample-questions) |

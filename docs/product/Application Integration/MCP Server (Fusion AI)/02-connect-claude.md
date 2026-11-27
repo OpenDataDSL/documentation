@@ -12,6 +12,10 @@ tags: [fusion-ai, mcp, claude, integration]
 The easiest way to connect Claude is to add the **OpenDataDSL** plugin from **Customize > Plugins** in Claude. It includes this server and adds skills for writing ODSL scripts, insights and extensions, and it works in Claude, Claude Cowork and Claude Code. See [Build with Claude](/docs/extensions/building/claude). The manual set-up below is for when you want only the server.
 :::
 
+:::note Using Claude Code?
+See [Connecting Claude Code](/docs/product/mcp/connect-claude-code) for adding the server from the terminal or sharing it with a whole repository.
+:::
+
 ## Claude Desktop: add a custom connector (recommended)
 
 The quickest way to connect is to add Fusion AI as a **custom connector**. There is no config file to edit and nothing to install, and once it's added the connector is available everywhere you use Claude with the same account: Claude Desktop, Claude.ai in the browser, Cowork and the mobile apps.
